@@ -1,6 +1,6 @@
 {
  "id": "ue6-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue6-03-k01",
@@ -29,7 +29,7 @@
   {
    "id": "ue6-03-k03",
    "type": "def",
-   "q": "Qu'est-ce que la marge brute d'autofinancement des sociétés intégrées dans le modèle ANC de tableau des flux de trésorerie ?",
+   "q": "Qu'est-ce que la marge brute d'autofinancement des sociétés intégrées dans le modèle de tableau des flux de trésorerie du règlement ANC n° 2020-01 ?",
    "r": "<b>Une ligne obtenue à partir du résultat net des sociétés intégrées</b>, corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité (amortissements et provisions, plus-values de cession). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
    "base": [
     "Définitions#2"
@@ -42,7 +42,7 @@
    "id": "ue6-03-k04",
    "type": "def",
    "q": "Qu'est-ce que la capacité d'autofinancement (CAF) dans le tableau de financement du PCG ?",
-   "r": "<b>La première ressource durable du tableau de financement.</b> Le PCG la détermine à partir de l'EBE et la vérifie à partir du résultat de l'exercice.",
+   "r": "<b>La première ressource durable du tableau de financement</b> : produits encaissables moins charges décaissables, hors cessions. Le PCG la détermine à partir de l'excédent brut d'exploitation (EBE) et la vérifie à partir du résultat de l'exercice.",
    "base": [
     "Définitions#3"
    ],
@@ -54,7 +54,7 @@
    "id": "ue6-03-k05",
    "type": "def",
    "q": "Qu'est-ce que l'excédent de trésorerie d'exploitation (ETE) dans l'analyse par les tableaux de flux ?",
-   "r": "<b>L'EBE diminué de la variation du BFR d'exploitation.</b> Il mesure la trésorerie effectivement dégagée par l'exploitation de l'exercice.",
+   "r": "<b>L'excédent brut d'exploitation (EBE) diminué de la variation du besoin en fonds de roulement (BFR) d'exploitation.</b> Il mesure la trésorerie effectivement dégagée par l'exploitation de l'exercice.",
    "base": [
     "Définitions#4"
    ],
@@ -186,7 +186,7 @@
    "id": "ue6-03-k16",
    "type": "comp",
    "q": "Avec le PCG 2025, dans quel résultat figure la plus-value de cession d'une immobilisation corporelle ou incorporelle ?",
-   "r": "<b>Dans le résultat d'exploitation.</b> Depuis le règlement ANC n° 2022-06, la CAF neutralise les comptes 657 et 757, là où les sujets antérieurs à 2025 neutralisaient 675 et 775.",
+   "r": "<b>Dans le résultat d'exploitation.</b> Avec le règlement ANC n° 2022-06 (exercices ouverts à compter du 1er janvier 2025), la CAF neutralise les comptes 657 et 757 ; les sujets antérieurs à 2025 neutralisaient 675 et 775.",
    "base": [
     "Points de vigilance#1",
     "Ce qui a changé récemment#0"
@@ -334,8 +334,7 @@
    "q": "Dans quelle catégorie du tableau des flux de trésorerie classe-t-on l'impôt sur les bénéfices et la participation des salariés ?",
    "r": "<b>Dans les flux liés à l'activité</b> (et dans la CAF), jamais en investissement ni en financement : ce sont des charges du compte de résultat décaissables.",
    "base": [
-    "Règles essentielles#13",
-    "Chiffres et seuils#0"
+    "Règles essentielles#13"
    ],
    "src": "C. com., art. R. 123-193 ; PCG, modèle de tableau de détermination de la CAF",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927468",
@@ -369,8 +368,8 @@
   {
    "id": "ue6-03-k31",
    "type": "comp",
-   "q": "Quel lien existe-t-il entre le tableau des flux de trésorerie étudié en DCG et les comptes consolidés du DSCG ?",
-   "r": "<b>La logique acquise en DCG sur les comptes sociaux se transpose aux comptes consolidés</b>, pour lesquels le règlement ANC n° 2020-01 prévoit un modèle en trois fonctions (art. 282-43 et 282-44, précisés par le règlement ANC n° 2024-05).",
+   "q": "Pour les comptes consolidés, abordés au DSCG, comment le règlement ANC n° 2020-01 organise-t-il le tableau des flux de trésorerie ?",
+   "r": "<b>En trois fonctions</b>, selon les modèles des art. 282-43 et 282-44, précisés par le règlement ANC n° 2024-05. La logique acquise en DCG sur les comptes sociaux s'y transpose.",
    "base": [
     "Points de vigilance#4",
     "Ce qui a changé récemment#2"

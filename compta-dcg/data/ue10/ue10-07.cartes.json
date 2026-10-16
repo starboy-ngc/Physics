@@ -1,6 +1,6 @@
 {
  "id": "ue10-07",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue10-07-k01",
@@ -102,9 +102,10 @@
    "id": "ue10-07-k09",
    "type": "def",
    "q": "Qu'est-ce que la contribution sociale sur l'impôt sur les sociétés prévue par l'article 235 ter ZC du CGI ?",
-   "r": "<b>Une contribution assise sur l'impôt sur les sociétés</b> : 3,3 % de l'IS diminué d'un abattement qui ne peut excéder 763 000 € par période de douze mois. Elle est enregistrée au compte 6952.",
+   "r": "<b>Une contribution égale à 3,3 % de l'impôt sur les sociétés diminué d'un abattement</b> plafonné à 763 000 € par période de douze mois, enregistrée au compte 6952. Sont exonérés les redevables dont le chiffre d'affaires est inférieur à 7 630 000 € et dont le capital, entièrement libéré, est détenu de manière continue pour 75 % au moins par des personnes physiques ou une société remplissant ces conditions.",
    "base": [
-    "Règles essentielles#1"
+    "Règles essentielles#1",
+    "Chiffres et seuils#1"
    ],
    "src": "CGI, art. 235 ter ZC ; PCG, plan de comptes 2026, compte 6952",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011715",
@@ -165,9 +166,10 @@
    "id": "ue10-07-k14",
    "type": "comp",
    "q": "Que devient la créance sur le Trésor née d'un report en arrière des déficits (carry-back) ?",
-   "r": "<b>Elle s'impute sur l'IS des cinq exercices suivants et est remboursable à l'issue de ce délai</b> ; elle est aussi cessible. Elle est inscrite au débit du compte 444 par le crédit du compte 699.",
+   "r": "<b>Elle s'impute sur l'IS des cinq exercices suivants ; la fraction non utilisée est remboursée à l'issue de ce délai</b>. Elle est aussi cessible et s'inscrit au débit du compte 444 par le crédit du compte 699.",
    "base": [
-    "Règles essentielles#5"
+    "Règles essentielles#5",
+    "Chiffres et seuils#4"
    ],
    "src": "CGI, art. 220 quinquies ; BOI-IS-DEF-20 et BOI-IS-DEF-20-20 ; PCG, comptes 444 et 699",
    "url": "https://bofip.impots.gouv.fr/bofip/5641-PGP.html/identifiant=BOI-IS-DEF-20-20210823",
@@ -177,7 +179,7 @@
    "id": "ue10-07-k15",
    "type": "comp",
    "q": "Quelles entreprises sont soumises à l'obligation de participation des salariés aux résultats ?",
-   "r": "<b>Les entreprises employant au moins cinquante salariés</b>, ainsi que les unités économiques et sociales de cette taille, à compter du premier exercice ouvert après la période de cinq années civiles consécutives prévue par l'article L. 130-1 du CSS. Avec un accord d'intéressement appliqué sans discontinuité, l'obligation ne joue qu'au troisième exercice clos après le franchissement du seuil.",
+   "r": "<b>Les entreprises employant au moins cinquante salariés</b>, ainsi que les unités économiques et sociales de cette taille, à compter du premier exercice ouvert après la période de cinq années civiles consécutives mentionnée au II de l'article L. 130-1 du Code de la sécurité sociale. Avec un accord d'intéressement appliqué sans discontinuité, l'obligation ne joue qu'au troisième exercice clos après le franchissement du seuil.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -336,8 +338,8 @@
   {
    "id": "ue10-07-k28",
    "type": "comp",
-   "q": "Quelles aides consenties à une autre entreprise, comme les abandons de créances, restent déductibles chez l'entreprise qui les consent ?",
-   "r": "<b>Les aides à caractère commercial</b>, ainsi que les aides consenties en application d'un accord constaté ou homologué (C. com., art. L. 611-8) ou à une entreprise en sauvegarde, redressement ou liquidation judiciaire, ces dernières, si elles ne sont pas commerciales, dans certaines limites seulement. Les autres aides ne sont pas déductibles.",
+   "q": "Pour l'impôt sur les bénéfices, quelles aides consenties à une autre entreprise, comme les abandons de créances, restent déductibles chez l'entreprise qui les consent ?",
+   "r": "<b>Les aides à caractère commercial</b>, ainsi que les aides consenties en application d'un accord constaté ou homologué (C. com., art. L. 611-8) ou à une entreprise en sauvegarde, redressement ou liquidation judiciaire ; ces dernières, lorsqu'elles ne sont pas commerciales, ne sont déductibles que dans certaines limites. Les autres aides ne sont pas déductibles.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -348,7 +350,7 @@
   {
    "id": "ue10-07-k29",
    "type": "comp",
-   "q": "Dans quelle limite une aide non commerciale consentie à une entreprise en sauvegarde, redressement ou liquidation judiciaire est-elle déductible chez le créancier ?",
+   "q": "Dans quelle limite une aide non commerciale consentie à une entreprise en sauvegarde, redressement ou liquidation judiciaire est-elle déductible du résultat imposable du créancier ?",
    "r": "<b>À hauteur de la situation nette négative du bénéficiaire</b> et, au-delà, à proportion des participations détenues par d'autres personnes. La même limite s'applique aux aides non commerciales consenties en application d'un accord constaté ou homologué.",
    "base": [
     "Règles essentielles#16"
@@ -411,7 +413,8 @@
    "q": "Dans quels cas une société soumise à l'impôt sur les sociétés est-elle dispensée de verser des acomptes ?",
    "r": "<b>Lorsque l'IS correspondant au bénéfice de référence n'excède pas 3 000 €, et pour le premier exercice d'activité.</b> Dans les autres cas, quatre acomptes trimestriels sont dus, le solde étant versé au plus tard le 15 du quatrième mois suivant la clôture.",
    "base": [
-    "Règles essentielles#2"
+    "Règles essentielles#2",
+    "Chiffres et seuils#2"
    ],
    "src": "CGI, art. 1668 et 1731 ; CGI, ann. III, art. 359 ; BOI-IS-DECLA-20-10 ; PCG, compte 444",
    "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",

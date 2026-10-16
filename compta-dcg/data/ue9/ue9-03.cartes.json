@@ -1,6 +1,6 @@
 {
  "id": "ue9-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue9-03-k01",
@@ -93,7 +93,7 @@
    "id": "ue9-03-k08",
    "type": "comp",
    "q": "À quelle condition de forme un assujetti peut-il déduire la TVA sur une livraison de biens ou une prestation de services ?",
-   "r": "<b>Être en possession des factures</b> : la déduction suppose une facture régulière mentionnant la TVA. Est déductible la TVA qui a grevé les éléments du prix d'une opération imposable.",
+   "r": "<b>Être en possession des factures</b> : la déduction de la TVA qui a grevé les éléments du prix d'une opération imposable suppose une facture régulière mentionnant la TVA.",
    "base": [
     "Règles essentielles#1",
     "Points de vigilance#4"
@@ -106,7 +106,7 @@
    "id": "ue9-03-k09",
    "type": "comp",
    "q": "Pour quelles opérations un assujetti à la TVA doit-il s'assurer qu'une facture est émise ?",
-   "r": "Notamment <b>les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
+   "r": "<b>Les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -203,7 +203,7 @@
    "id": "ue9-03-k17",
    "type": "comp",
    "q": "Chez l'acheteur assujetti, comment enregistre-t-on une facture d'achat de marchandises dont la TVA est déductible ?",
-   "r": "<b>Débit du compte d'achat (compte 60) pour le montant hors taxes</b>, débit de la TVA déductible au compte 44566 « TVA sur autres biens et services », crédit du fournisseur 401 pour le montant TTC.",
+   "r": "<b>Débit du compte d'achat (classe 60) pour le montant hors taxes</b>, débit de la TVA déductible au compte 44566 « TVA sur autres biens et services », crédit du fournisseur 401 pour le montant TTC.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -228,7 +228,7 @@
    "id": "ue9-03-k19",
    "type": "comp",
    "q": "Chez le vendeur, comment enregistre-t-on une facture de vente de marchandises soumise à la TVA ?",
-   "r": "<b>Crédit du compte de produit (compte 70) pour le montant hors taxes collectées</b>, crédit de la TVA collectée au compte 44571, débit du client 411 pour le montant TTC.",
+   "r": "<b>Crédit du compte de produit (classe 70) pour le montant hors taxes collectées</b>, crédit de la TVA collectée au compte 44571, débit du client 411 pour le montant TTC.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -265,7 +265,7 @@
    "id": "ue9-03-k22",
    "type": "comp",
    "q": "Selon le PCG, qu'ajoute-t-on et que retranche-t-on au prix d'achat pour obtenir le coût d'acquisition d'une immobilisation corporelle ?",
-   "r": "<b>On ajoute</b> les droits de douane et taxes non récupérables et, notamment, les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner ; <b>on retranche</b> les remises, rabais commerciaux et escomptes de règlement.",
+   "r": "<b>On ajoute</b> les droits de douane et taxes non récupérables et les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner ; <b>on retranche</b> les remises, rabais commerciaux et escomptes de règlement.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -375,7 +375,7 @@
    "id": "ue9-03-k31",
    "type": "comp",
    "q": "Quelles nouvelles mentions la réforme de la facturation électronique ajoute-t-elle sur les factures ?",
-   "r": "<b>Le numéro SIREN</b> de l'assujetti et de son client, <b>l'adresse de livraison</b> des biens si elle diffère de celle du client, <b>la nature des opérations</b> (biens, services ou les deux) et, le cas échéant, la mention « Option pour le paiement de la taxe d'après les débits ».",
+   "r": "<b>Le numéro SIREN</b> de l'assujetti et de son client, <b>l'adresse de livraison</b> des biens si elle diffère de celle du client, <b>la nature des opérations</b> (livraisons de biens, prestations de services ou les deux) et, le cas échéant, la mention « Option pour le paiement de la taxe d'après les débits ».",
    "base": [
     "Ce qui a changé récemment#2"
    ],
@@ -411,7 +411,7 @@
    "id": "ue9-03-k34",
    "type": "comp",
    "q": "Dans quel code la recodification de la TVA opérée par l'ordonnance du 17 décembre 2025 transfère-t-elle cette taxe ?",
-   "r": "<b>Dans le code des impositions sur les biens et services.</b> L'entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au 1er janvier 2027 : jusqu'au 31 décembre 2026, les articles du CGI restent applicables.",
+   "r": "<b>Dans le code des impositions sur les biens et services.</b> L'entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au 1er janvier 2027 : jusqu'au 31 décembre 2026, les articles du CGI relatifs à la TVA restent applicables.",
    "base": [
     "Ce qui a changé récemment#6"
    ],
@@ -422,8 +422,8 @@
   {
    "id": "ue9-03-k35",
    "type": "comp",
-   "q": "Selon le Code de commerce, quel délai de paiement maximal deux professionnels peuvent-ils convenir, en règle générale, pour régler une facture ?",
-   "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou, par dérogation, quarante-cinq jours fin de mois si ce délai est expressément stipulé.",
+   "q": "Selon le Code de commerce, quel délai de paiement maximal les parties peuvent-elles convenir pour régler une facture ?",
+   "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou quarante-cinq jours fin de mois si ce délai est expressément stipulé.",
    "base": [
     "Chiffres et seuils#1"
    ],

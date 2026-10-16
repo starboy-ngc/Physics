@@ -1,6 +1,6 @@
 {
  "id": "ue4-02",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue4-02-k01",
@@ -29,7 +29,7 @@
   {
    "id": "ue4-02-k03",
    "type": "comp",
-   "q": "Selon quelles règles est imposée à l'IR la rémunération du gérant majoritaire d'une SARL n'ayant pas opté pour le régime des sociétés de personnes ?",
+   "q": "Selon quelles règles est imposée à l'impôt sur le revenu la rémunération du gérant majoritaire d'une SARL n'ayant pas opté pour le régime des sociétés de personnes ?",
    "r": "<b>Selon les règles des traitements et salaires</b> (rémunérations de l'article 62 du CGI) : déduction forfaitaire de 10 % du montant net après cotisations sociales, ou frais réels sur option.",
    "base": [
     "Définitions#1"
@@ -53,7 +53,7 @@
   {
    "id": "ue4-02-k05",
    "type": "comp",
-   "q": "Quelle est la conséquence, pour un salarié, de la renonciation à la déduction forfaitaire de 10 % sur ses salaires ?",
+   "q": "Quelles sont les conséquences, pour un salarié, de la renonciation à la déduction forfaitaire de 10 % sur ses salaires à l'impôt sur le revenu ?",
    "r": "<b>Il déduit ses frais réels justifiés</b> au lieu de la déduction appliquée d'office sur le salaire net ; les allocations pour frais versées par l'employeur deviennent alors imposables.",
    "base": [
     "Règles essentielles#1"
@@ -77,7 +77,7 @@
   {
    "id": "ue4-02-k07",
    "type": "comp",
-   "q": "Quelles indemnités de licenciement sont exonérées en totalité d'impôt sur le revenu ?",
+   "q": "Quelles indemnités de licenciement sont exonérées en totalité d'impôt sur le revenu, quel que soit leur montant ?",
    "r": "<b>Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi</b> et celles allouées par le juge pour un licenciement irrégulier ou sans cause réelle et sérieuse.",
    "base": [
     "Règles essentielles#2"
@@ -90,7 +90,7 @@
    "id": "ue4-02-k08",
    "type": "comp",
    "q": "Quel abattement s'applique aux pensions de retraite pour leur imposition à l'impôt sur le revenu ?",
-   "r": "<b>Un abattement de 10 % distinct de celui des salaires</b>, avec un minimum par pensionné et un plafond apprécié pour l'ensemble du foyer fiscal. Les prestations versées en capital soumises, sur option, au prélèvement forfaitaire de 7,5 % bénéficient d'un abattement de 10 % non plafonné.",
+   "r": "<b>Un abattement de 10 % distinct de celui des salaires</b>, avec un minimum par pensionné et un plafond apprécié pour l'ensemble du foyer fiscal. Les prestations de retraite versées en capital soumises, sur option, au prélèvement forfaitaire de 7,5 % bénéficient d'un abattement de 10 % non plafonné.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -173,7 +173,7 @@
   {
    "id": "ue4-02-k15",
    "type": "comp",
-   "q": "Quels avantages l'option globale pour le barème progressif procure-t-elle, par rapport au PFU, dans l'imposition des dividendes ?",
+   "q": "Quels avantages l'option globale pour le barème progressif procure-t-elle, par rapport au prélèvement forfaitaire unique, dans l'imposition des dividendes ?",
    "r": "<b>L'abattement de 40 %</b> sur les dividendes de sociétés ayant leur siège dans l'UE ou dans un État conventionné, <b>la déduction des frais</b> et <b>la déductibilité d'une fraction de la CSG</b>. Sous PFU, le prélèvement porte sur le montant brut des dividendes, sans abattement ni déduction des frais ou de la CSG.",
    "base": [
     "Règles essentielles#5"
@@ -234,7 +234,7 @@
    "id": "ue4-02-k20",
    "type": "comp",
    "q": "Comment s'impute un déficit foncier constaté au régime réel d'imposition des revenus fonciers ?",
-   "r": "<b>La fraction qui ne provient pas des intérêts d'emprunt s'impute sur le revenu global, dans la limite de 10 700 € par an</b>, relevée à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes.",
+   "r": "<b>Hors intérêts d'emprunt, le déficit s'impute sur le revenu global dans la limite de 10 700 € par an</b> ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes. La limite est portée jusqu'à 21 400 € à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -282,7 +282,7 @@
   {
    "id": "ue4-02-k24",
    "type": "comp",
-   "q": "À quelles conditions la première cession d'un logement autre que la résidence principale est-elle exonérée de plus-value immobilière ?",
+   "q": "À quelles conditions la plus-value réalisée lors de la première cession d'un logement autre que la résidence principale est-elle exonérée ?",
    "r": "<b>Le cédant ne doit pas avoir été propriétaire de sa résidence principale, directement ou indirectement, au cours des quatre années précédant la cession.</b> Seule est exonérée la fraction du prix remployée, dans un délai de 24 mois, à l'acquisition ou la construction de sa résidence principale.",
    "base": [
     "Règles essentielles#9",
@@ -380,7 +380,7 @@
    "id": "ue4-02-k32",
    "type": "comp",
    "q": "Quel régime de plus-value s'applique à la cession de son logement par un loueur en meublé non professionnel ?",
-   "r": "<b>Celui des plus-values immobilières des particuliers</b>, avec réintégration des amortissements déduits depuis la loi de finances pour 2025. Les plus-values professionnelles ne concernent que le loueur en meublé professionnel.",
+   "r": "<b>Celui des plus-values immobilières des particuliers</b>, avec, depuis la loi de finances pour 2025, réintégration des amortissements déduits. Les plus-values professionnelles ne concernent que le loueur en meublé professionnel.",
    "base": [
     "Points de vigilance#5",
     "Règles essentielles#13"
@@ -392,7 +392,7 @@
   {
    "id": "ue4-02-k33",
    "type": "comp",
-   "q": "Comment la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025) modifie-t-elle la plus-value immobilière d'un loueur en meublé non professionnel ?",
+   "q": "Comment la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025) modifie-t-elle le calcul de la plus-value immobilière d'un loueur en meublé non professionnel ?",
    "r": "<b>Le prix d'acquisition retenu est minoré des amortissements admis en déduction pendant la location</b>, pour les cessions réalisées à compter du 15 février 2025, lendemain de la promulgation de la loi.",
    "base": [
     "Ce qui a changé récemment#4"

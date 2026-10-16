@@ -1,6 +1,6 @@
 {
  "id": "ue3-02",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue3-02-k01",
@@ -29,8 +29,8 @@
   {
    "id": "ue3-02-k03",
    "type": "comp",
-   "q": "Selon la jurisprudence, de quoi dépend la qualification d'une relation en contrat de travail ?",
-   "r": "<b>Des conditions de fait dans lesquelles le travail est exécuté.</b> Elle ne dépend ni de la volonté des parties ni de la dénomination qu'elles ont donnée à leur contrat.",
+   "q": "Quelle incidence la volonté des parties et la dénomination du contrat ont-elles sur la qualification de contrat de travail ?",
+   "r": "<b>Aucune : la qualification ne dépend ni de la volonté des parties ni de la dénomination du contrat</b>, mais des conditions de fait d'exécution du travail.",
    "base": [
     "Définitions#0"
    ],
@@ -210,8 +210,8 @@
   {
    "id": "ue3-02-k18",
    "type": "comp",
-   "q": "Comment un contrat d'apprentissage peut-il être rompu pendant les 45 premiers jours de formation pratique en entreprise ?",
-   "r": "<b>Par l'une ou l'autre partie, sans indemnité sauf stipulation contraire du contrat</b> (45 jours consécutifs ou non). Au-delà : accord écrit signé des deux parties, à défaut licenciement pour l'un des motifs prévus par le texte, ou rupture par l'apprenti après sollicitation du médiateur, moyennant un préavis.",
+   "q": "Comment le contrat d'apprentissage peut-il être rompu pendant, puis après, les 45 premiers jours de formation pratique en entreprise ?",
+   "r": "<b>Pendant les 45 premiers jours, consécutifs ou non, par l'une ou l'autre partie, sans indemnité sauf stipulation contraire.</b> Au-delà : par accord écrit signé des deux parties ; à défaut, par licenciement (force majeure, faute grave, inaptitude constatée par le médecin du travail…) ou par l'apprenti après sollicitation du médiateur, moyennant un préavis.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -319,8 +319,8 @@
   {
    "id": "ue3-02-k27",
    "type": "comp",
-   "q": "Depuis le 1er janvier 2024, quelles conséquences le refus d'un CDI proposé au salarié en fin de CDD a-t-il au regard de l'assurance chômage ?",
-   "r": "<b>L'employeur en informe France Travail, par voie dématérialisée, dans le délai d'un mois.</b> L'allocation d'assurance chômage ne peut pas être accordée au demandeur d'emploi qui a refusé deux propositions de CDI dans ces conditions au cours des douze mois précédents. Le silence du salarié vaut rejet de la proposition.",
+   "q": "Depuis le 1er janvier 2024, quelle conséquence sur l'assurance chômage peut avoir le refus par le salarié d'un CDI proposé à l'issue de son CDD ?",
+   "r": "<b>Après deux refus de CDI au cours des douze mois précédents, l'allocation d'assurance chômage ne peut pas être accordée</b>, si les CDI proposés portaient sur le même emploi ou un emploi similaire, avec une rémunération au moins équivalente, une durée du travail équivalente, la même classification et le même lieu de travail. L'employeur informe France Travail du refus dans le délai d'un mois.",
    "base": [
     "Ce qui a changé récemment#1"
    ],

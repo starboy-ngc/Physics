@@ -18,7 +18,7 @@
    "id": "ue4-06-k02",
    "type": "def",
    "q": "De quelles cotisations se compose la contribution économique territoriale (CET) ?",
-   "r": "<b>De la cotisation foncière des entreprises (CFE)</b>, assise sur la valeur locative des biens passibles de taxe foncière, <b>et de la cotisation sur la valeur ajoutée des entreprises (CVAE)</b>, assise sur la valeur ajoutée produite. L'article 1447-0 du CGI qui l'institue est en vigueur jusqu'au 1er janvier 2030.",
+   "r": "<b>De la cotisation foncière des entreprises (CFE)</b>, assise sur la valeur locative des biens passibles de taxe foncière, <b>et de la cotisation sur la valeur ajoutée des entreprises (CVAE)</b>, assise sur la valeur ajoutée produite. L'article 1447-0 du CGI qui l'institue est en vigueur jusqu'au 1er janvier 2030, date à laquelle prend effet son abrogation.",
    "base": [
     "Définitions#0"
    ],
@@ -53,7 +53,7 @@
   {
    "id": "ue4-06-k05",
    "type": "comp",
-   "q": "Comment s'applique la cotisation foncière des entreprises (CFE) l'année de la création de l'entreprise, puis la première année d'imposition ?",
+   "q": "Quel régime la cotisation foncière des entreprises (CFE) prévoit-elle pour une entreprise nouvellement créée ?",
    "r": "<b>Aucune CFE n'est due l'année de la création.</b> La base de la première année d'imposition est ensuite réduite de moitié.",
    "base": [
     "Règles essentielles#0"

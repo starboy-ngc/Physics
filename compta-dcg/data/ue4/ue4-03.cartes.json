@@ -1,6 +1,6 @@
 {
  "id": "ue4-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue4-03-k01",
@@ -116,7 +116,7 @@
    "id": "ue4-03-k10",
    "type": "comp",
    "q": "À quelles conditions le salaire du conjoint de l'exploitant individuel est-il déductible du bénéfice BIC ?",
-   "r": "<b>Le conjoint doit participer effectivement à l'exercice de la profession et le salaire doit avoir donné lieu au versement des cotisations sociales.</b> L'ancienne limite de 17 500 €, qui visait les exploitants non adhérents d'un organisme de gestion agréé, ne figure plus dans le texte en vigueur.",
+   "r": "<b>Le conjoint doit participer effectivement à l'exercice de la profession et le salaire doit avoir donné lieu au versement des cotisations sociales.</b> L'ancienne limite de montant, qui visait les exploitants non adhérents d'un organisme de gestion agréé, ne figure plus dans le texte en vigueur.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -202,7 +202,7 @@
    "id": "ue4-03-k17",
    "type": "comp",
    "q": "Comment est comptabilisé l'excédent de l'amortissement dégressif fiscal sur l'amortissement économique d'un bien ?",
-   "r": "<b>En amortissement dérogatoire</b> (compte 145 du PCG 2025) : c'est l'excédent du dégressif fiscal sur l'amortissement économique qui est ainsi comptabilisé.",
+   "r": "<b>En amortissement dérogatoire</b>, inscrit au compte 145 du PCG 2025.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -420,7 +420,7 @@
    "id": "ue4-03-k35",
    "type": "comp",
    "q": "Comment s'obtient le taux de l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
-   "r": "<b>En multipliant le taux linéaire par un coefficient fixé selon la durée normale d'utilisation du bien</b> : 1,25 pour trois ou quatre ans, 1,75 pour cinq ou six ans, 2,25 au-delà de six ans.",
+   "r": "<b>En multipliant le taux linéaire par un coefficient fixé selon la durée normale d'utilisation du bien</b> : 1,25 pour trois ou quatre ans, 1,75 pour cinq ou six ans, 2,25 pour plus de six ans.",
    "base": [
     "Règles essentielles#6"
    ],

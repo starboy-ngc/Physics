@@ -6,7 +6,7 @@
    "id": "ue9-04-k01",
    "type": "def",
    "q": "Quels numéros de comptes de la classe 5 du PCG correspondent aux comptes de trésorerie « Banques », « Caisse » et « Virements internes » ?",
-   "r": "<b>512 « Banques », 53 « Caisse » et 58 « Virements internes ».</b> Ce sont les comptes financiers (classe 5) utilisés pour enregistrer les opérations de trésorerie.",
+   "r": "<b>512 « Banques », 53 « Caisse » et 58 « Virements internes ».</b> Ce sont les comptes financiers (classe 5) utilisés pour la trésorerie.",
    "base": [
     "Définitions#0"
    ],
@@ -43,8 +43,8 @@
   {
    "id": "ue9-04-k04",
    "type": "comp",
-   "q": "Comment enregistre-t-on un virement de la caisse vers la banque lorsque caisse et banque sont tenues dans des journaux auxiliaires différents ?",
-   "r": "<b>En passant par le compte 58 « Virements internes »</b> : débit 58 / crédit 53 au journal de caisse, puis débit 512 / crédit 58 au journal de banque. Le compte 58 est soldé une fois les deux écritures passées.",
+   "q": "Quel compte du PCG sert de passage pour un virement entre deux comptes de trésorerie tenus dans des journaux auxiliaires différents ?",
+   "r": "<b>Le compte 58 « Virements internes ».</b> Pour un virement de la caisse vers la banque : débit 58 / crédit 53 au journal de caisse, puis débit 512 / crédit 58 au journal de banque ; le compte 58 est soldé une fois les deux écritures passées.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -92,8 +92,8 @@
   {
    "id": "ue9-04-k08",
    "type": "comp",
-   "q": "Que prévoit l'ordonnance n° 2025-1247 du 17 décembre 2025 pour les dispositions relatives à la TVA figurant dans le CGI ?",
-   "r": "<b>Elle transfère la TVA au livre II du code des impositions sur les biens et services (CIBS)</b> et, par son article 9, abroge l'article 261 C du CGI ; Légifrance fixe au 1er janvier 2027 l'abrogation des dispositions TVA du CGI concernées.",
+   "q": "Dans quel code l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère-t-elle les dispositions relatives à la taxe sur la valeur ajoutée ?",
+   "r": "<b>Au livre II du code des impositions sur les biens et services (CIBS).</b> Son article 9 abroge l'article 261 C du CGI ; Légifrance fixe au 1er janvier 2027 l'abrogation des dispositions TVA du CGI concernées.",
    "base": [
     "Ce qui a changé récemment#6"
    ],
@@ -203,8 +203,8 @@
   {
    "id": "ue9-04-k17",
    "type": "comp",
-   "q": "Dans les exercices ouverts à compter du 1er janvier 2025, dans quel compte du PCG enregistre-t-on les remboursements de charges de personnel ?",
-   "r": "<b>Au compte 649 « Remboursements de charges de personnel ».</b> Le PCG ne prévoit plus la technique du transfert de charges : le règlement ANC n° 2022-06 l'a retirée de la liste des produits de l'article 512-1.",
+   "q": "Pour les exercices ouverts à compter du 1er janvier 2025, dans quel compte du PCG enregistre-t-on les remboursements de charges de personnel ?",
+   "r": "<b>Au compte 649 « Remboursements de charges de personnel ».</b> Le PCG ne prévoit plus la technique du transfert de charges : le règlement ANC n° 2022-06 a retiré les transferts de charges de la liste des produits de l'article 512-1.",
    "base": [
     "Ce qui a changé récemment#0"
    ],
@@ -241,7 +241,7 @@
    "id": "ue9-04-k20",
    "type": "comp",
    "q": "Sur quelle assiette les cotisations de sécurité sociale sont-elles calculées selon l'article L. 242-1 du Code de la sécurité sociale ?",
-   "r": "<b>Sur les revenus d'activité retenus pour l'assiette de la CSG</b> : toutes les sommes ainsi que les avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail, d'une activité ou de l'exercice d'un mandat ou d'une fonction élective, quelles qu'en soient la dénomination et la qualité de celui qui les attribue.",
+   "r": "<b>Sur les revenus d'activité retenus pour l'assiette de la CSG</b> : toutes les sommes, avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail, d'une activité ou de l'exercice d'un mandat ou d'une fonction élective, quelles qu'en soient la dénomination et la qualité de celui qui les attribue. En sont notamment exclus les remboursements de frais professionnels, l'intéressement et la participation.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -252,8 +252,8 @@
   {
    "id": "ue9-04-k21",
    "type": "comp",
-   "q": "Selon le Code de la sécurité sociale, quelles sommes ne constituent pas un revenu d'activité, dans les conditions fixées par arrêté ?",
-   "r": "<b>Les remboursements effectués au titre de frais professionnels.</b> N'étant pas un revenu d'activité, ils échappent à l'assiette des cotisations de sécurité sociale ; l'article L. 242-1 exclut en outre de cette assiette notamment l'intéressement et la participation.",
+   "q": "Selon le Code de la sécurité sociale, pourquoi les remboursements de frais professionnels, dans les conditions fixées par arrêté, échappent-ils aux cotisations de sécurité sociale ?",
+   "r": "<b>Parce qu'ils ne constituent pas un revenu d'activité</b>, alors que les cotisations de sécurité sociale sont calculées sur les revenus d'activité retenus pour l'assiette de la CSG. L'article L. 242-1 exclut en outre de cette assiette notamment l'intéressement et la participation.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -264,7 +264,7 @@
   {
    "id": "ue9-04-k22",
    "type": "comp",
-   "q": "Dans l'écriture de paie, quel montant constitue la charge du compte 641 du PCG ?",
+   "q": "Dans l'écriture de paie, quel élément de la rémunération est enregistré en charge au compte 641 du PCG ?",
    "r": "<b>Le salaire brut.</b> Le net à payer, crédité au compte 421 « Personnel – Rémunérations dues », n'est qu'une dette envers les salariés : ne jamais enregistrer le net en charge.",
    "base": [
     "Points de vigilance#0",
@@ -289,8 +289,8 @@
   {
    "id": "ue9-04-k24",
    "type": "comp",
-   "q": "Comment comptabilise-t-on les cotisations patronales de sécurité sociale et de prévoyance dues sur les salaires ?",
-   "r": "<b>Au débit du compte 645 « Charges de sécurité sociale et de prévoyance »</b>, par le crédit des comptes 431 « Sécurité sociale » et 437 « Autres organismes sociaux ».",
+   "q": "Dans quel compte de charges du PCG enregistre-t-on les cotisations patronales de sécurité sociale et de prévoyance ?",
+   "r": "<b>Au compte 645 « Charges de sécurité sociale et de prévoyance »</b>, en contrepartie des comptes 431 « Sécurité sociale » et 437 « Autres organismes sociaux ».",
    "base": [
     "Règles essentielles#10"
    ],
@@ -325,8 +325,8 @@
   {
    "id": "ue9-04-k27",
    "type": "comp",
-   "q": "Comment l'employeur comptabilise-t-il le prélèvement à la source retenu sur les salaires, de la paie jusqu'au reversement ?",
-   "r": "<b>Ce n'est pas une charge de l'employeur</b> : retenu sur la rémunération du salarié, il est crédité au compte 4421 lors de la paie, puis le compte 4421 est débité par le crédit du compte 512 lors du reversement à l'administration.",
+   "q": "Pourquoi le prélèvement à la source opéré sur les salaires n'est-il pas une charge pour l'employeur ?",
+   "r": "<b>Parce qu'il est retenu sur la rémunération du salarié</b> : l'employeur l'opère puis le reverse à l'administration. Il est crédité au compte 4421 lors de la paie, puis ce compte est débité par le crédit du compte 512 lors du reversement.",
    "base": [
     "Règles essentielles#11"
    ],

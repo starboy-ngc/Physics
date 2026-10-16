@@ -1,6 +1,6 @@
 {
  "id": "ue10-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue10-05-k01",
@@ -104,7 +104,7 @@
    "id": "ue10-05-k09",
    "type": "comp",
    "q": "Comment traite-t-on, dans les comptes individuels, une plus-value latente constatée sur des titres à la clôture ?",
-   "r": "<b>Elle n'est pas comptabilisée</b> : la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée n'est jamais enregistrée en comptes individuels.",
+   "r": "<b>Elle n'est pas comptabilisée</b> : seule une valeur d'inventaire inférieure à la valeur nette comptable est constatée, par une dépréciation ; la plus-value entre la valeur d'inventaire et la valeur d'entrée n'est jamais enregistrée en comptes individuels.",
    "base": [
     "Règles essentielles#2",
     "Points de vigilance#6"
@@ -153,7 +153,7 @@
   {
    "id": "ue10-05-k13",
    "type": "comp",
-   "q": "À quelles immobilisations est réservée la tolérance permettant de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
+   "q": "Selon le Code de commerce, à quelles immobilisations est réservée la tolérance qui permet de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
    "r": "<b>Aux seules immobilisations non financières.</b> Pour les titres, toute baisse de la valeur d'inventaire au-dessous du coût d'entrée est dépréciée.",
    "base": [
     "Points de vigilance#5"
@@ -190,8 +190,8 @@
   {
    "id": "ue10-05-k16",
    "type": "comp",
-   "q": "Comment détermine-t-on le coût d'entrée des titres cédés lorsque des titres de même nature ont été acquis à des prix différents ?",
-   "r": "<b>Comme pour les biens fongibles : au coût moyen pondéré d'acquisition ou selon la méthode « premier entré, premier sorti ».</b> Pour le calcul des plus-values imposables, les cessions sont réputées porter par priorité sur les titres de même nature acquis ou souscrits à la date la plus ancienne.",
+   "q": "Selon le Code de commerce, comment détermine-t-on le coût d'entrée des titres cédés lorsque des titres de même nature ont été acquis à des prix différents ?",
+   "r": "<b>Comme pour les biens fongibles : au coût moyen pondéré d'acquisition ou selon la méthode « premier entré, premier sorti ».</b> Fiscalement, pour le calcul des plus-values imposables, les cessions de titres du portefeuille sont réputées porter par priorité sur les titres de même nature acquis ou souscrits à la date la plus ancienne.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -203,7 +203,7 @@
    "id": "ue10-05-k17",
    "type": "comp",
    "q": "Comment rattache-t-on à l'exercice les intérêts courus et non échus sur des obligations détenues par l'entreprise ?",
-   "r": "<b>Ils sont constatés à la clôture</b>, les produits étant rattachés à l'exercice sans considération de leur date d'encaissement : débit du compte 2768 pour les titres immobilisés ou 5088 pour les VMP, crédit du compte 762 ou 764.",
+   "r": "<b>Ils sont constatés à la clôture</b>, les produits étant rattachés à l'exercice sans considération de leur date d'encaissement : au compte 2768 pour les titres immobilisés ou 5088 pour les VMP, par le crédit du compte 762 ou 764.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -227,10 +227,10 @@
    "id": "ue10-05-k19",
    "type": "def",
    "q": "Qu'est-ce que la prime de remboursement d'un emprunt obligataire (compte 169) ?",
-   "r": "<b>La différence entre le prix de remboursement des obligations et leur prix d'émission.</b> Inscrite à l'actif, elle est amortie systématiquement sur la durée de l'emprunt, au prorata des intérêts courus ou par fractions égales, par le compte 6861.",
+   "r": "<b>La différence entre le prix de remboursement des obligations et leur prix d'émission.</b> Inscrite à l'actif, elle est amortie systématiquement sur la durée de l'emprunt, au prorata des intérêts courus ou par fractions égales ; en cas de remboursement partiel ou anticipé, la prime afférente à la fraction remboursée est toujours amortie.",
    "base": [
     "Définitions#5",
-    "Règles essentielles#10"
+    "Points de vigilance#1"
    ],
    "src": "PCG, art. 212-10 ; plan de comptes 2026, comptes 169 et 6861 ; règlement ANC n° 2022-06",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
@@ -240,7 +240,7 @@
    "id": "ue10-05-k20",
    "type": "comp",
    "q": "Pour quel montant le compte 163 « Autres emprunts obligataires » est-il crédité lors de l'émission d'un emprunt obligataire ?",
-   "r": "<b>Pour le prix de remboursement total</b>, ni le nominal ni le prix d'émission. La trésorerie est débitée du prix d'émission encaissé et la différence est portée au débit du compte 169 « Primes de remboursement des emprunts ».",
+   "r": "<b>Pour le prix de remboursement total</b>, et non pour le nominal ni pour le prix d'émission. La trésorerie est débitée du prix d'émission encaissé et la différence est portée au débit du compte 169 « Primes de remboursement des emprunts ».",
    "base": [
     "Règles essentielles#10",
     "Points de vigilance#1"
@@ -253,7 +253,7 @@
    "id": "ue10-05-k21",
    "type": "comp",
    "q": "Quels traitements comptables le PCG admet-il pour les frais d'émission des emprunts ?",
-   "r": "<b>Soit en charges, soit répartis sur la durée de l'emprunt</b> d'une manière appropriée aux modalités de remboursement, une répartition linéaire étant admise si les résultats ne sont pas sensiblement différents. Étalés, ils sont inscrits au compte 481 et amortis par le compte 6862, sans transfert de charges depuis 2025.",
+   "r": "<b>Soit comptabilisés en charges, soit répartis sur la durée de l'emprunt</b> d'une manière appropriée aux modalités de remboursement, une répartition linéaire étant admise si les résultats ne sont pas sensiblement différents. Étalés, ils sont inscrits au compte 481 et amortis par le compte 6862, sans transfert de charges depuis 2025.",
    "base": [
     "Règles essentielles#11",
     "Ce qui a changé récemment#1"
@@ -265,8 +265,8 @@
   {
    "id": "ue10-05-k22",
    "type": "comp",
-   "q": "Selon le PCG 2025, comment les intérêts courus sur emprunts sont-ils rattachés à l'exercice à la clôture ?",
-   "r": "<b>Par nature d'emprunt</b> : 1618 pour les emprunts obligataires convertibles, 1638 pour les autres emprunts obligataires, 1648 pour les emprunts auprès des établissements de crédit (anciens 16881, 16883 et 16884). Le compte 1688 ne vise plus que les autres emprunts et dettes assimilées.",
+   "q": "Selon le PCG 2025, dans quels comptes enregistre-t-on à la clôture les intérêts courus sur emprunts ?",
+   "r": "<b>Dans un compte propre à chaque nature d'emprunt</b> : 1618 pour les emprunts obligataires convertibles, 1638 pour les autres emprunts obligataires, 1648 pour les emprunts auprès des établissements de crédit (anciens 16881, 16883 et 16884). Le compte 1688 ne vise plus que les autres emprunts et dettes assimilées.",
    "base": [
     "Règles essentielles#12"
    ],
@@ -315,7 +315,7 @@
    "id": "ue10-05-k26",
    "type": "def",
    "q": "Qu'est-ce qu'un passif éventuel au sens du Plan comptable général ?",
-   "r": "Il s'agit notamment d'<b>une obligation potentielle de l'entité à l'égard d'un tiers, née d'événements dont l'existence reste incertaine</b>. Il n'est pas comptabilisé au bilan mais mentionné en annexe.",
+   "r": "<b>Il s'agit notamment d'une obligation potentielle de l'entité à l'égard d'un tiers, née d'événements dont l'existence reste incertaine.</b> Il n'est pas comptabilisé au bilan mais mentionné en annexe.",
    "base": [
     "Définitions#4"
    ],
@@ -326,8 +326,8 @@
   {
    "id": "ue10-05-k27",
    "type": "comp",
-   "q": "À quelle condition une provision doit-elle être comptabilisée à la clôture selon le Plan comptable général ?",
-   "r": "<b>Lorsque l'entité a, à la clôture, une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources</b> sans contrepartie au moins équivalente. Encore faut-il que son montant puisse être évalué avec une fiabilité suffisante ; à défaut, le passif est seulement mentionné en annexe.",
+   "q": "Selon le Plan comptable général, à quelles conditions une provision doit-elle être comptabilisée à la clôture ?",
+   "r": "<b>Lorsque, à la clôture, l'entité a une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources</b> sans contrepartie au moins équivalente, et que son montant peut être évalué avec une fiabilité suffisante (sinon, simple mention en annexe). Elle est évaluée à la meilleure estimation de la sortie de ressources.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -339,7 +339,7 @@
    "id": "ue10-05-k28",
    "type": "comp",
    "q": "Comment le Plan comptable général traite-t-il un passif dont le montant ne peut être évalué avec une fiabilité suffisante ?",
-   "r": "<b>Il n'est pas comptabilisé : il est mentionné en annexe</b>, comme un passif éventuel. Une provision comptabilisée est, elle, évaluée à la meilleure estimation de la sortie de ressources.",
+   "r": "<b>Il n'est pas comptabilisé au bilan : il est seulement mentionné en annexe.</b> Il reçoit ainsi le même traitement qu'un passif éventuel, qui n'est jamais comptabilisé au bilan.",
    "base": [
     "Règles essentielles#13",
     "Points de vigilance#2"
@@ -351,8 +351,8 @@
   {
    "id": "ue10-05-k29",
    "type": "comp",
-   "q": "Quelle incidence l'absence ou l'insuffisance de bénéfice a-t-elle sur l'obligation de constituer les provisions nécessaires ?",
-   "r": "<b>Aucune</b> : même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. Il est aussi tenu compte des passifs nés au cours de l'exercice ou d'un exercice antérieur, même connus entre la clôture et l'établissement des comptes.",
+   "q": "Selon le Code de commerce, quelle règle s'applique aux amortissements, dépréciations et provisions d'un exercice sans bénéfice ou au bénéfice insuffisant ?",
+   "r": "<b>Il doit quand même être procédé aux amortissements, dépréciations et provisions nécessaires.</b> Il est aussi tenu compte des passifs nés au cours de l'exercice ou d'un exercice antérieur, même connus entre la clôture et l'établissement des comptes.",
    "base": [
     "Règles essentielles#14"
    ],
@@ -363,7 +363,7 @@
   {
    "id": "ue10-05-k30",
    "type": "comp",
-   "q": "Comment une entreprise peut-elle traduire ses engagements de retraite dans ses comptes annuels ?",
+   "q": "Selon le Code de commerce et le PCG, comment les engagements de retraite d'une entreprise sont-ils traduits dans ses comptes annuels ?",
    "r": "<b>Leur montant est indiqué dans l'annexe</b> ; l'entreprise peut l'inscrire, en tout ou partie, en provision au compte 1521. Le provisionnement de la totalité des engagements est la méthode de référence depuis le règlement ANC n° 2018-01.",
    "base": [
     "Règles essentielles#15"
@@ -425,8 +425,8 @@
   {
    "id": "ue10-05-k35",
    "type": "comp",
-   "q": "Dans quel résultat les dotations et reprises de provisions réglementées sont-elles comptabilisées ?",
-   "r": "<b>En résultat exceptionnel</b>, aux comptes 6872 et 7872 (dont 68725 et 78725 pour les amortissements dérogatoires) : écritures d'origine purement fiscale, elles relèvent du résultat exceptionnel.",
+   "q": "Selon le PCG, dans quel résultat les dotations et reprises de provisions réglementées (compte 14) sont-elles comptabilisées ?",
+   "r": "<b>En résultat exceptionnel</b>, aux comptes 6872 (dotations) et 7872 (reprises), dont 68725 et 78725 pour les amortissements dérogatoires. Ce sont des écritures d'origine purement fiscale, que le PCG classe dans ce résultat.",
    "base": [
     "Points de vigilance#4",
     "Définitions#6"

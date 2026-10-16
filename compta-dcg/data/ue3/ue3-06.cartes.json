@@ -53,8 +53,8 @@
   {
    "id": "ue3-06-k05",
    "type": "def",
-   "q": "Quelles sont les cinq branches du régime général de la sécurité sociale énumérées par le Code de la sécurité sociale ?",
-   "r": "<b>Maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille ; autonomie</b> (art. L. 200-2 du Code de la sécurité sociale).",
+   "q": "Outre la branche autonomie, quelles sont les quatre branches du régime général de la sécurité sociale énumérées par le Code de la sécurité sociale ?",
+   "r": "<b>Maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille</b> (art. L. 200-2 du Code de la sécurité sociale). La cinquième, la branche autonomie, a été créée par la loi n° 2020-992 du 7 août 2020.",
    "base": [
     "Définitions#3"
    ],
@@ -173,8 +173,8 @@
   {
    "id": "ue3-06-k15",
    "type": "comp",
-   "q": "Quel est le délai de prescription des cotisations de sécurité sociale et quel est son point de départ ?",
-   "r": "<b>Trois ans à compter de la fin de l'année civile au titre de laquelle elles sont dues</b>, cinq ans en cas de travail dissimulé.",
+   "q": "Quelle prescription s'applique aux cotisations de sécurité sociale dues par l'employeur ?",
+   "r": "<b>Trois ans à compter de la fin de l'année civile au titre de laquelle elles sont dues</b>, délai porté à cinq ans en cas de travail dissimulé.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -185,8 +185,8 @@
   {
    "id": "ue3-06-k16",
    "type": "comp",
-   "q": "Quel document l'URSSAF doit-elle adresser au cotisant avant un contrôle, et dans quel délai ?",
-   "r": "<b>Un avis de contrôle</b>, qui renvoie à la charte du cotisant contrôlé, adressé au moins trente jours avant le début effectif des opérations, sauf recherche de travail dissimulé.",
+   "q": "Quelle formalité l'URSSAF doit-elle accomplir auprès du cotisant avant d'engager un contrôle ?",
+   "r": "<b>Lui adresser un avis de contrôle</b>, qui renvoie à la charte du cotisant contrôlé, au moins trente jours avant le début effectif des opérations, sauf recherche de travail dissimulé.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -355,7 +355,7 @@
    "id": "ue3-06-k30",
    "type": "comp",
    "q": "Que sont devenus les tribunaux des affaires de sécurité sociale et du contentieux de l'incapacité depuis le 1er janvier 2019 ?",
-   "r": "<b>Ils ont été supprimés</b> et leur contentieux transféré à des tribunaux de grande instance spécialement désignés. Depuis le 1er janvier 2020, avec la fusion des tribunaux de grande instance et d'instance, il relève des tribunaux judiciaires spécialement désignés (pôle social).",
+   "r": "<b>Ils ont été supprimés</b> et leur contentieux transféré à des tribunaux de grande instance et cours d'appel spécialement désignés. Depuis le 1er janvier 2020, avec la fusion des tribunaux de grande instance et d'instance, il relève des tribunaux judiciaires spécialement désignés (pôle social).",
    "base": [
     "Ce qui a changé récemment#0"
    ],

@@ -1,6 +1,6 @@
 {
  "id": "ue9-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue9-01-k01",
@@ -18,7 +18,7 @@
    "id": "ue9-01-k02",
    "type": "def",
    "q": "Comment le Plan comptable général (PCG) définit-il un actif ?",
-   "r": "<b>Un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité</b>, c'est-à-dire une ressource qu'elle contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
+   "r": "<b>Un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité</b>, c'est-à-dire un élément générant une ressource qu'elle contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
    "base": [
     "Définitions#1"
    ],
@@ -52,11 +52,12 @@
   },
   {
    "id": "ue9-01-k05",
-   "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il un stock ?",
-   "r": "<b>Un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production.</b> Il relève de l'actif circulant, alors que l'immobilisation est destinée à servir de façon durable à l'activité.",
+   "type": "comp",
+   "q": "Selon le PCG et le Code de commerce, qu'est-ce qui distingue un stock d'une immobilisation ?",
+   "r": "<b>Leur destination.</b> L'immobilisation est destinée à servir de façon durable à l'activité ; le stock est notamment un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production. Le stock relève donc de l'actif circulant.",
    "base": [
-    "Définitions#4"
+    "Définitions#4",
+    "Définitions#3"
    ],
    "src": "PCG, art. 211-7 ; C. com., art. R. 123-181 et R. 123-182",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
@@ -66,7 +67,7 @@
    "id": "ue9-01-k06",
    "type": "def",
    "q": "Comment le Plan comptable général (PCG) définit-il les charges ?",
-   "r": "<b>Les sommes ou valeurs versées ou à verser</b> en contrepartie de marchandises, approvisionnements, travaux et services consommés, ou en exécution d'une obligation légale. Elles sont enregistrées par nature dans la classe 6.",
+   "r": "<b>Notamment comme les sommes ou valeurs versées ou à verser</b> en contrepartie de marchandises, approvisionnements, travaux et services consommés, ou en exécution d'une obligation légale. Elles sont enregistrées par nature dans la classe 6.",
    "base": [
     "Définitions#5",
     "Règles essentielles#14"
@@ -190,7 +191,7 @@
   {
    "id": "ue9-01-k16",
    "type": "comp",
-   "q": "Quelles qualités le Code de commerce exige-t-il des comptes annuels d'un commerçant ?",
+   "q": "Quelles trois qualités le Code de commerce exige-t-il des comptes annuels d'un commerçant ?",
    "r": "<b>Être réguliers, sincères et donner une image fidèle</b> du patrimoine, de la situation financière et du résultat de l'entreprise.",
    "base": [
     "Règles essentielles#5"
@@ -250,7 +251,7 @@
   {
    "id": "ue9-01-k21",
    "type": "comp",
-   "q": "Selon le Code de commerce, quels bénéfices peuvent être inscrits dans les comptes annuels ?",
+   "q": "En principe, selon le Code de commerce, quels bénéfices peuvent être inscrits dans les comptes annuels d'un exercice ?",
    "r": "<b>Seuls les bénéfices réalisés à la date de clôture de l'exercice.</b> Un gain latent n'est donc pas un produit.",
    "base": [
     "Règles essentielles#9"
@@ -287,7 +288,7 @@
    "id": "ue9-01-k24",
    "type": "def",
    "q": "Selon le PCG modifié par le règlement ANC n° 2022-06, quels produits et charges sont comptabilisés en résultat exceptionnel ?",
-   "r": "<b>Les produits et charges directement liés à un événement majeur et inhabituel</b> ; les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) y restent aussi. Le Code de commerce définit ce résultat comme celui dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise.",
+   "r": "<b>Seuls les produits et charges directement liés à un événement majeur et inhabituel</b> ; les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) y restent toutefois, aux comptes 687 et 787. Le Code de commerce définit ce résultat comme celui dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise.",
    "base": [
     "Règles essentielles#13",
     "Règles essentielles#12"
@@ -309,22 +310,9 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-01-k26",
-   "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quelle partie du compte de résultat se classent les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) ?",
-   "r": "<b>En résultat exceptionnel</b> (comptes 687 et 787) : elles y restent, bien que ce résultat soit désormais recentré sur les produits et charges directement liés à un événement majeur et inhabituel.",
-   "base": [
-    "Règles essentielles#13",
-    "Ce qui a changé récemment#0"
-   ],
-   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes PCG 2026, comptes 687 et 787",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-01-k27",
    "type": "comp",
-   "q": "Où le résultat de l'exercice figure-t-il dans les comptes annuels d'une entreprise ?",
+   "q": "Dans quels deux documents des comptes annuels le résultat de l'exercice apparaît-il ?",
    "r": "<b>Dans deux documents</b> : comme solde du compte de résultat et, au bilan, dans les capitaux propres (compte 120 pour un bénéfice, 129 pour une perte). Cette double inscription maintient l'égalité actif = passif.",
    "base": [
     "Points de vigilance#0",
@@ -375,7 +363,7 @@
    "id": "ue9-01-k31",
    "type": "comp",
    "q": "Sur quoi porte le règlement ANC n° 2026-03 du 6 mars 2026 modifiant le Plan comptable général ?",
-   "r": "<b>Sur la comptabilisation des produits des ventes</b> ; il reprend aussi la définition du résultat exceptionnel (événement majeur et inhabituel) à l'article 531-5 du PCG. Il s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible sur l'exercice en cours à sa date de publication au Journal officiel.",
+   "r": "<b>Sur la comptabilisation des produits des ventes</b> ; il reprend aussi la définition du résultat exceptionnel (événement majeur et inhabituel). Il s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible sur l'exercice en cours à sa date de publication au Journal officiel.",
    "base": [
     "Ce qui a changé récemment#4"
    ],
@@ -411,7 +399,7 @@
    "id": "ue9-01-k34",
    "type": "comp",
    "q": "Depuis le règlement ANC n° 2022-06, dans quel compte inscrire la quote-part de subvention d'investissement virée au résultat ?",
-   "r": "<b>Au compte 747.</b> Un manuel antérieur à la réforme peut encore classer cette opération en 67/77.",
+   "r": "<b>Au compte 747.</b> Un manuel antérieur à la réforme peut encore classer ce produit en 77, parmi les produits exceptionnels.",
    "base": [
     "Points de vigilance#4"
    ],
@@ -429,6 +417,18 @@
    ],
    "src": "C. com., art. L. 123-17 ; PCG, art. 121-5, 122-1 et 122-2",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k36",
+   "type": "comp",
+   "q": "Selon le Code de commerce, pendant combien de temps un commerçant conserve-t-il ses documents comptables et ses pièces justificatives ?",
+   "r": "<b>Pendant dix ans</b>, qu'il s'agisse des documents comptables ou des pièces justificatives.",
+   "base": [
+    "Chiffres et seuils#4"
+   ],
+   "src": "C. com., art. L. 123-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
    "fiab": "stable"
   }
  ]

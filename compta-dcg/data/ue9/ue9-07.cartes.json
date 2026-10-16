@@ -1,6 +1,6 @@
 {
  "id": "ue9-07",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue9-07-k01",
@@ -151,7 +151,7 @@
    "id": "ue9-07-k14",
    "type": "comp",
    "q": "Depuis le plan de comptes issu du règlement ANC n° 2022-06, sur quel compte porte-t-on les intérêts courus non échus d'un emprunt bancaire ?",
-   "r": "<b>Sur le compte 1648</b> (avant 2025 : 16884), en contrepartie de la charge d'intérêts (661). Le compte 1688 ne sert plus qu'aux intérêts courus sur les autres emprunts et dettes assimilées.",
+   "r": "<b>Au crédit du compte 1648</b> (avant 2025 : 16884), par le débit du compte 661. Le compte 1688 ne sert plus qu'aux intérêts courus sur les autres emprunts et dettes assimilées.",
    "base": [
     "Règles essentielles#4",
     "Ce qui a changé récemment#1"
@@ -211,8 +211,8 @@
   {
    "id": "ue9-07-k19",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, quels produits et charges relèvent du résultat exceptionnel ?",
-   "r": "<b>Seulement ceux directement liés à un événement majeur et inhabituel.</b> Les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) restent toutefois en 687 / 787.",
+   "q": "Depuis le règlement ANC n° 2022-06, quel est en principe le critère de classement d'un produit ou d'une charge en résultat exceptionnel ?",
+   "r": "<b>Un lien direct avec un événement majeur et inhabituel.</b> Par exception, restent notamment en résultat exceptionnel les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées), en 687 / 787.",
    "base": [
     "Ce qui a changé récemment#0"
    ],
@@ -259,8 +259,8 @@
   {
    "id": "ue9-07-k23",
    "type": "comp",
-   "q": "Selon l'article 515-1 du PCG, quel taux applique-t-on pour comptabiliser l'impôt sur les bénéfices de l'exercice ?",
-   "r": "<b>Le taux en vigueur à la date de clôture.</b> L'impôt et les contributions qui s'y rattachent sont inscrits dans la rubrique « Impôts sur les bénéfices » de l'exercice au titre duquel l'entreprise en est redevable.",
+   "q": "Selon l'article 515-1 du PCG, à quelle date s'apprécie le taux à appliquer pour comptabiliser l'impôt sur les bénéfices de l'exercice ?",
+   "r": "<b>À la date de clôture : on applique le taux en vigueur à cette date.</b> L'impôt et les contributions qui s'y rattachent sont inscrits dans la rubrique « Impôts sur les bénéfices » de l'exercice au titre duquel l'entreprise en est redevable.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -369,7 +369,7 @@
    "id": "ue9-07-k32",
    "type": "def",
    "q": "Qu'est-ce qu'un dividende fictif au sens du Code de commerce ?",
-   "r": "<b>Un dividende distribué en violation des règles de distribution</b> : fixation par l'assemblée après approbation des comptes et constatation de sommes distribuables, capitaux propres maintenus au moins au niveau du capital et des réserves non distribuables. Sa répartition par les dirigeants est pénalement sanctionnée.",
+   "r": "<b>Un dividende distribué en violation des règles de distribution</b> : dividendes déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables, capitaux propres maintenus au moins au niveau du capital et des réserves non distribuables. Sa répartition par les dirigeants est pénalement sanctionnée.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -380,7 +380,7 @@
   {
    "id": "ue9-07-k33",
    "type": "comp",
-   "q": "Lors de l'affectation du bénéfice d'une société, entre quels comptes le solde du compte 120 est-il réparti ?",
+   "q": "Lors de l'affectation du bénéfice d'une société sans report à nouveau débiteur, entre quels comptes le solde du compte 120 est-il réparti ?",
    "r": "<b>Entre les réserves (1061 légale, 1063 statutaires ou contractuelles, 1068 autres), le compte 457 « Associés – Dividendes à payer » et le compte 110 « Report à nouveau (solde créditeur) »</b>, par le débit du compte 120.",
    "base": [
     "Règles essentielles#15"
@@ -411,6 +411,19 @@
    ],
    "src": "C. com., art. L. 232-13",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229032",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k36",
+   "type": "comp",
+   "q": "Dans le plan de comptes issu du règlement ANC n° 2022-06, sur quel compte enregistre-t-on les charges fiscales sur congés à payer ?",
+   "r": "<b>Sur le compte 44811 « Charges fiscales sur congés à payer »</b> (plan 2024 : 4482), subdivision de 4481 « État – Charges à payer ». Piège : le compte 4482 désigne désormais « État – Produits à recevoir » (plan 2024 : 4487).",
+   "base": [
+    "Ce qui a changé récemment#2",
+    "Règles essentielles#2"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 428, 438, 439, 4481, 44811, 44812, 4482, 467 et 468 ; plan de comptes 2024 (PCG, art. 932-1)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   }
  ]

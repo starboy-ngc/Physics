@@ -115,8 +115,8 @@
   {
    "id": "ue2-06-k10",
    "type": "comp",
-   "q": "À quels créanciers bénéficie le privilège de conciliation, dit « new money » ?",
-   "r": "<b>À ceux qui ont consenti un nouvel apport en trésorerie, ou fourni un nouveau bien ou service, dans le cadre de la conciliation ayant abouti à l'accord homologué.</b> Ils sont payés par privilège.",
+   "q": "Dans une conciliation ayant abouti à un accord homologué, quels créanciers bénéficient du paiement par privilège dit « new money » ?",
+   "r": "<b>Ceux qui ont consenti un nouvel apport en trésorerie, ou fourni un nouveau bien ou service, dans le cadre de la conciliation ayant abouti à l'accord homologué.</b> Ils sont payés par privilège.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -265,7 +265,7 @@
    "id": "ue2-06-k22",
    "type": "comp",
    "q": "Qu'est-ce qui distingue l'action pour insuffisance d'actif de la responsabilité civile ordinaire des dirigeants de SARL ou de SA ?",
-   "r": "<b>Hors procédure collective, les gérants de SARL et les administrateurs ou le directeur général de SA répondent, envers la société ou les tiers, des fautes commises dans leur gestion (prescription de trois ans).</b> En liquidation judiciaire d'une personne morale, l'action pour insuffisance d'actif est exercée par le liquidateur ou le ministère public (subsidiairement par la majorité des contrôleurs) et ne peut pas être fondée sur une simple négligence.",
+   "r": "<b>L'action pour insuffisance d'actif est propre à la liquidation judiciaire d'une personne morale</b> : exercée par le liquidateur ou le ministère public (subsidiairement par la majorité des contrôleurs), elle ne peut être fondée sur une simple négligence. Hors procédure collective, les gérants de SARL et les administrateurs ou le directeur général de SA répondent, envers la société ou les tiers, des fautes commises dans leur gestion (prescription de trois ans).",
    "base": [
     "Points de vigilance#1",
     "Règles essentielles#15"
@@ -303,7 +303,7 @@
    "id": "ue2-06-k25",
    "type": "def",
    "q": "Qu'est-ce que la responsabilité pénale des personnes morales ?",
-   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants</b> ; les collectivités territoriales et leurs groupements ne le sont que pour des activités susceptibles de délégation de service public. Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits ; leur amende maximale est le quintuple de celle des personnes physiques.",
+   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants</b>, les collectivités territoriales et leurs groupements seulement pour des activités susceptibles de faire l'objet de conventions de délégation de service public. Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits. L'amende maximale des personnes morales est le quintuple de celle des personnes physiques.",
    "base": [
     "Définitions#4"
    ],

@@ -1,6 +1,6 @@
 {
  "id": "ue9-08",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue9-08-k01",
@@ -251,7 +251,7 @@
    "id": "ue9-08-k21",
    "type": "comp",
    "q": "Selon le Code de commerce, comment s'exprime l'acceptation d'une lettre de change par le tiré ?",
-   "r": "<b>Par le mot « accepté » ou tout autre mot équivalent, signé du tiré</b> ; la simple signature du tiré apposée au recto de la lettre vaut acceptation. C'est l'acceptation qui engage le tiré à payer à l'échéance.",
+   "r": "<b>Elle est exprimée par le mot « accepté » ou tout autre mot équivalent et signée du tiré</b> ; la simple signature du tiré apposée au recto de la lettre vaut acceptation. C'est l'acceptation qui engage le tiré à payer à l'échéance.",
    "base": [
     "Règles essentielles#10"
    ],
@@ -262,8 +262,8 @@
   {
    "id": "ue9-08-k22",
    "type": "comp",
-   "q": "Quelle différence y a-t-il entre le compte 5113 « Effets à l'encaissement » et le compte 5114 « Effets à l'escompte » ?",
-   "r": "<b>Le 5113 enregistre l'effet remis pour être payé à l'échéance ; le 5114, l'effet payé par avance moyennant agios.</b> Remis à l'encaissement, l'effet sort du compte 413 ; la commission prélevée par la banque est une charge du compte 627.",
+   "q": "Quelle différence le PCG fait-il entre le compte 5113 « Effets à l'encaissement » et le compte 5114 « Effets à l'escompte » ?",
+   "r": "<b>Le 5113 enregistre l'effet remis pour être payé à l'échéance ; le 5114, l'effet payé par avance moyennant agios.</b> Remis à l'encaissement, l'effet passe du compte 413 au compte 5113, qui est soldé à l'avis de crédit de la banque, la commission allant au compte 627.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#11"
@@ -287,7 +287,7 @@
   {
    "id": "ue9-08-k24",
    "type": "comp",
-   "q": "Quelle différence comptable y a-t-il entre l'intérêt d'escompte d'un effet de commerce et l'escompte de règlement accordé à un client ?",
+   "q": "Dans quels comptes le PCG enregistre-t-il respectivement l'intérêt d'escompte d'un effet de commerce et l'escompte de règlement accordé à un client ?",
    "r": "<b>L'intérêt d'escompte d'un effet va au compte 6616</b> « Intérêts bancaires et sur opérations de financement (escompte...) » ; <b>l'escompte de règlement accordé à un client va au compte 665</b> « Escomptes accordés ».",
    "base": [
     "Points de vigilance#2",
@@ -336,7 +336,7 @@
   {
    "id": "ue9-08-k28",
    "type": "comp",
-   "q": "Selon le PCG, quel effet une perte latente de change non couverte, constatée à la clôture, a-t-elle sur le résultat ?",
+   "q": "Selon le PCG, quelle conséquence comptable entraîne une perte latente de change non couverte, constatée à la clôture ?",
    "r": "<b>Elle donne lieu à une provision pour pertes de change</b> (compte 1515 « Provisions pour pertes de change »), l'écart étant inscrit par ailleurs au compte 476. Le gain latent, inscrit au 477, n'est pas pris en résultat.",
    "base": [
     "Règles essentielles#16"
@@ -385,8 +385,8 @@
   {
    "id": "ue9-08-k32",
    "type": "comp",
-   "q": "Que permet la loi n° 2024-537 du 13 juin 2024 pour la lettre de change et le billet à ordre ?",
-   "r": "<b>De les établir, signer, transférer, présenter, remettre, modifier et conserver sous forme électronique</b> (C. com., art. L. 511-1-1 et L. 512-1-1, en vigueur depuis le 14 mars 2025).",
+   "q": "Sous quelle nouvelle forme la loi n° 2024-537 du 13 juin 2024 permet-elle d'établir la lettre de change et le billet à ordre ?",
+   "r": "<b>Sous forme électronique</b> : la lettre de change et le billet à ordre peuvent être établis, signés, transférés, présentés, remis, modifiés et conservés sous cette forme (C. com., art. L. 511-1-1 et L. 512-1-1, en vigueur depuis le 14 mars 2025).",
    "base": [
     "Ce qui a changé récemment#4"
    ],

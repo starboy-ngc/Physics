@@ -1,6 +1,6 @@
 {
  "id": "ue6-02",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue6-02-k01",
@@ -30,7 +30,7 @@
    "id": "ue6-02-k03",
    "type": "comp",
    "q": "Pourquoi le bilan fonctionnel ajoute-t-il les amortissements et dépréciations aux ressources stables au lieu de les déduire de l'actif ?",
-   "r": "<b>Parce qu'ils représentent une ressource conservée par l'entreprise.</b> Les immobilisations et l'actif circulant sont donc retenus pour leur valeur brute, et les amortissements et dépréciations rejoignent les provisions dans les ressources stables.",
+   "r": "<b>Parce qu'ils représentent une ressource conservée par l'entreprise.</b> Ils sont ajoutés aux ressources stables avec les provisions, tandis que les immobilisations et l'actif circulant sont retenus pour leur valeur brute.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -201,7 +201,7 @@
    "id": "ue6-02-k17",
    "type": "comp",
    "q": "Comment le bilan fonctionnel classe-t-il les intérêts courus non échus sur emprunts et les intérêts courus sur concours bancaires (5186) ?",
-   "r": "Ils sont <b>retirés des dettes financières et classés en dettes hors exploitation</b>.",
+   "r": "Ils sont <b>retirés des dettes financières et classés en dettes hors exploitation</b>. Depuis le PCG 2025, les intérêts courus sur emprunts sont enregistrés aux comptes 1618, 1638 ou 1648 selon la nature de l'emprunt (avant 2025 : 1688).",
    "base": [
     "Règles essentielles#8"
    ],
@@ -224,7 +224,7 @@
   },
   {
    "id": "ue6-02-k21",
-   "type": "comp",
+   "type": "def",
    "q": "Comment la Banque de France exprime-t-elle les délais de paiement des clients et des fournisseurs ?",
    "r": "Les <b>créances clients en jours de chiffre d'affaires</b> et les <b>dettes fournisseurs en jours d'achats et charges externes</b>, ces derniers étant retraités du crédit-bail.",
    "base": [
@@ -238,7 +238,7 @@
    "id": "ue6-02-k22",
    "type": "comp",
    "q": "Avant de convertir en jours un ratio de rotation clients ou fournisseurs, que faut-il vérifier sur ses deux termes ?",
-   "r": "<b>Que le numérateur et le dénominateur sont exprimés sur la même base</b> (TTC ou HT), par exemple des créances clients et un chiffre d'affaires tous deux TTC.",
+   "r": "<b>Que le numérateur et le dénominateur sont exprimés sur la même base (TTC ou HT).</b> C'est la règle d'homogénéité des ratios de rotation à respecter, à l'examen, avant toute conversion en jours.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -287,7 +287,7 @@
    "id": "ue6-02-k26",
    "type": "comp",
    "q": "Dans l'analyse de la rentabilité, à quelle condition l'effet de levier de l'endettement est-il favorable ?",
-   "r": "<b>Tant que la rentabilité économique avant impôt (Re) est supérieure au taux de la dette (i).</b> L'écart entre Re et i, multiplié par le rapport des dettes aux capitaux propres, vient alors s'ajouter à Re dans la rentabilité financière.",
+   "r": "<b>Tant que la rentabilité économique avant impôt (Re) est supérieure au taux de la dette (i).</b> L'écart Re − i, multiplié par le rapport dettes / capitaux propres, s'ajoute alors à Re ; le total, diminué de l'IS au taux normal, donne la rentabilité financière après impôt.",
    "base": [
     "Règles essentielles#14"
    ],
@@ -299,7 +299,7 @@
    "id": "ue6-02-k27",
    "type": "comp",
    "q": "Pourquoi le règlement ANC n° 2022-06 modifie-t-il la lecture du résultat d'exploitation utilisé dans la rentabilité économique ?",
-   "r": "Parce que <b>les cessions d'immobilisations incorporelles et corporelles passent en exploitation</b>. Ce règlement modernise les états financiers pour les exercices ouverts à compter du 1er janvier 2025.",
+   "r": "Parce que <b>les cessions d'immobilisations passent en exploitation</b>. Ce règlement modernise les états financiers (bilan, compte de résultat, annexe) pour les exercices ouverts à compter du 1er janvier 2025.",
    "base": [
     "Ce qui a changé récemment#1"
    ],
@@ -367,6 +367,19 @@
    ],
    "src": "PCG, annexe : état des échéances des créances et des dettes",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k33",
+   "type": "comp",
+   "q": "Sur quels postes portent les retraitements automatisés décrits par la Banque de France dans sa note méthodologique « La situation des entreprises » ?",
+   "r": "Sur <b>les dettes financières, les capitaux propres, les produits et charges financiers, la trésorerie active et les participations</b>. Cette procédure automatisée s'applique au niveau de chaque entreprise des groupes à tête française.",
+   "base": [
+    "Règles essentielles#11",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "Banque de France, « La situation des entreprises », note méthodologique (avril 2025)",
+   "url": null,
    "fiab": "stable"
   }
  ]

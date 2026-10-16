@@ -1,6 +1,6 @@
 {
  "id": "ue10-04",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue10-04-k01",
@@ -30,7 +30,7 @@
    "id": "ue10-04-k03",
    "type": "def",
    "q": "De quoi se compose le coût d'acquisition d'un stock acquis à titre onéreux selon le PCG ?",
-   "r": "<b>Du prix d'achat et des droits de douane et taxes non récupérables, déduction faite des remises, rabais et escomptes de règlement</b>, plus les frais de transport, de manutention et autres coûts directement attribuables.",
+   "r": "<b>Du prix d'achat et des droits de douane et taxes non récupérables, déduction faite des remises, rabais et escomptes de règlement</b>, plus les frais de transport, de manutention et autres coûts directement attribuables. Les biens produits sont, eux, enregistrés à leur coût de production et les biens acquis à titre gratuit à leur valeur vénale.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -310,7 +310,7 @@
   {
    "id": "ue10-04-k26",
    "type": "comp",
-   "q": "À quel cours le PCG convertit-il en euros le coût d'entrée des stocks et immobilisations acquis en devises ?",
+   "q": "Hors opération couverte, à quel cours le PCG convertit-il en euros le coût d'entrée des stocks et immobilisations acquis en devises ?",
    "r": "<b>Au cours du jour de l'opération.</b> Les créances et dettes en monnaies étrangères sont, elles, converties sur la base du dernier cours du change, et les liquidités en devises existant à la clôture sur la base du dernier cours de change au comptant.",
    "base": [
     "Règles essentielles#12",
@@ -324,7 +324,7 @@
    "id": "ue10-04-k27",
    "type": "comp",
    "q": "Quel traitement le PCG réserve-t-il à la clôture aux pertes et gains latents de change sur les créances et dettes en monnaie étrangère ?",
-   "r": "<b>Les pertes latentes (476) entraînent, à due concurrence, une provision pour risques</b> au compte 1515 « Provisions pour pertes de change », sous réserve de l'article 420-6. <b>Les gains latents (477) ne sont pas pris en résultat.</b>",
+   "r": "<b>Les pertes latentes (476) entraînent, à due concurrence, une provision pour risques</b> au compte 1515 « Provisions pour pertes de change », sous réserve des dispositions particulières de l'article 420-6. <b>Les gains latents (477) ne sont pas pris en résultat.</b>",
    "base": [
     "Règles essentielles#13"
    ],
@@ -336,7 +336,7 @@
    "id": "ue10-04-k28",
    "type": "comp",
    "q": "Comment le PCG traite-t-il une créance ou une dette en devises couverte, par exemple par un achat ou une vente à terme de devises ?",
-   "r": "<b>Les effets de la couverture sont reconnus de manière symétrique à ceux de l'élément couvert.</b> Les différences de conversion compensées sont isolées en 4768 et 4778 « Différences compensées par couverture de change », et une perte latente qualifiée d'instrument de couverture ne donne lieu à aucune provision.",
+   "r": "<b>Les effets de la couverture sont reconnus de manière symétrique à ceux de l'élément couvert.</b> Les différences de conversion compensées sont isolées en 4768 et 4778 « Différences compensées par couverture de change », et une opération en devise en perte latente qualifiée d'instrument de couverture ne donne lieu à aucune provision.",
    "base": [
     "Points de vigilance#4",
     "Règles essentielles#14"
@@ -348,7 +348,7 @@
   {
    "id": "ue10-04-k29",
    "type": "comp",
-   "q": "À quelle condition la dotation à la provision pour pertes de change peut-elle être limitée à l'excédent des pertes latentes sur les gains latents ?",
+   "q": "Selon le PCG, à quelle condition la dotation à la provision pour pertes de change peut-elle être limitée à l'excédent des pertes latentes sur les gains latents ?",
    "r": "<b>Lorsque pertes et gains latents portent sur des opérations dont les termes sont suffisamment voisins pour constituer une position globale de change.</b> Celle-ci est déterminée devise par devise, hors opérations de couverture et éléments couverts à hauteur de la partie couverte, pour des éléments dont les échéances se situent dans le même exercice.",
    "base": [
     "Règles essentielles#14"
@@ -386,7 +386,7 @@
    "id": "ue10-04-k32",
    "type": "comp",
    "q": "Comment les écarts de conversion sur créances et dettes en devises sont-ils traités pour le résultat imposable selon l'article 38, 4 du CGI ?",
-   "r": "<b>Ils sont pris en compte dans le résultat imposable de l'exercice</b> : pertes latentes (476) déduites, gains latents (477) réintégrés de façon extra-comptable, puisqu'ils ne sont jamais portés en résultat comptable. La provision pour pertes de change, qui couvre une perte déjà déduite, est réintégrée.",
+   "r": "<b>Ils sont pris en compte dans le résultat imposable de l'exercice</b>, de façon extra-comptable : déduction des pertes latentes (476) et réintégration des gains latents (477), qui ne sont jamais portés en résultat comptable. La provision pour pertes de change, qui couvre une perte déjà déduite, est réintégrée.",
    "base": [
     "Règles essentielles#17",
     "Points de vigilance#3"
@@ -399,24 +399,12 @@
    "id": "ue10-04-k33",
    "type": "comp",
    "q": "Quel référentiel régit les stocks, les contrats à long terme et les opérations en devises dans les comptes individuels ?",
-   "r": "<b>Le PCG seul</b> : l'article L. 233-24 du Code de commerce ne vise que les comptes consolidés. En comptes consolidés IFRS, ces opérations relèvent d'IAS 2 (stocks), d'IFRS 15 (contrats de construction) et d'IAS 21 (devises).",
+   "r": "<b>Le PCG, et non les normes IFRS</b> : l'article L. 233-24 du Code de commerce ne vise que les comptes consolidés. En comptes consolidés IFRS, ces opérations relèvent d'IAS 2 (stocks), d'IFRS 15 (contrats de construction) et d'IAS 21 (devises).",
    "base": [
     "Points de vigilance#5"
    ],
    "src": "C. com., art. L. 233-24",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue10-04-k34",
-   "type": "comp",
-   "q": "Sous quel compte le règlement ANC n° 2022-06 range-t-il les provisions pour pertes de change et pour pertes sur contrats ?",
-   "r": "<b>Sous le compte 151 « Provisions pour risques », maintenu</b> : 1515 pour les pertes de change, 1516 pour les pertes sur contrats. Les provisions pour charges sont, elles, regroupées sous la racine 152.",
-   "base": [
-    "Ce qui a changé récemment#0"
-   ],
-   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; plan de comptes 2026, comptes 151 et 152",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
    "fiab": "stable"
   },
   {

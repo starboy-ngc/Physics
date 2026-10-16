@@ -1,6 +1,6 @@
 {
  "id": "ue10-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue10-01-k01",
@@ -260,7 +260,7 @@
    "id": "ue10-01-k22",
    "type": "comp",
    "q": "Comment le PCG traite-t-il l'effet d'un changement de méthode comptable dans les comptes ?",
-   "r": "<b>L'effet, après impôt, est calculé de façon rétrospective</b>, comme si la nouvelle méthode avait toujours été appliquée ; l'impact à l'ouverture est imputé en report à nouveau, sauf si des règles fiscales imposent de le comptabiliser en résultat. Si cet effet ne peut être calculé de façon objective, le changement est appliqué de manière prospective.",
+   "r": "<b>L'effet, après impôt, est calculé de façon rétrospective</b>, comme si la nouvelle méthode avait toujours été appliquée ; l'impact à l'ouverture est imputé en report à nouveau, sauf si des règles fiscales imposent de le comptabiliser en résultat. Si l'effet à l'ouverture ne peut être calculé de façon objective, le changement est appliqué de manière prospective.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -320,7 +320,7 @@
    "id": "ue10-01-k27",
    "type": "comp",
    "q": "Comment le Code de commerce et le PCG traitent-ils les événements connus entre la date de clôture et l'établissement des comptes annuels ?",
-   "r": "<b>Les passifs nés au cours de l'exercice ou d'un exercice antérieur sont pris en compte</b>, même s'ils ne sont connus qu'après la clôture. Les événements de cette période sans lien direct prépondérant avec une situation existant à la clôture font l'objet d'une information dans l'annexe.",
+   "r": "<b>Il est tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur</b>, même s'ils ne sont connus qu'entre la date de clôture et celle de l'établissement des comptes. Les événements de cette période sans lien direct prépondérant avec une situation existant à la clôture font l'objet d'une information dans l'annexe.",
    "base": [
     "Règles essentielles#10"
    ],
@@ -356,10 +356,10 @@
    "id": "ue10-01-k30",
    "type": "def",
    "q": "Selon le PCG 2025, à quel type d'événement des produits et charges doivent-ils être directement liés pour relever du résultat exceptionnel ?",
-   "r": "<b>À un événement majeur et inhabituel</b> (PCG, art. 513-5, issu du règlement ANC n° 2022-06, applicable aux exercices ouverts à compter du 1er janvier 2025).",
+   "r": "<b>À un événement majeur et inhabituel</b> (PCG, art. 513-5, issu du règlement ANC n° 2022-06). Le règlement ANC n° 2026-03 reprend cette définition à l'article 531-5 pour les exercices ouverts à compter du 1er janvier 2027.",
    "base": [
     "Définitions#6",
-    "Ce qui a changé récemment#0"
+    "Ce qui a changé récemment#4"
    ],
    "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",

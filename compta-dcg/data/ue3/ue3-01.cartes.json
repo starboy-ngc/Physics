@@ -1,11 +1,11 @@
 {
  "id": "ue3-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue3-01-k01",
    "type": "def",
-   "q": "Quels droits le Préambule de la Constitution du 27 octobre 1946 garantit-il aux travailleurs en ses alinéas 6, 7 et 8 ?",
+   "q": "Quels droits sociaux le Préambule de la Constitution du 27 octobre 1946 garantit-il en ses alinéas 6, 7 et 8 ?",
    "r": "<b>La liberté syndicale</b> (al. 6), <b>le droit de grève</b>, qui s'exerce dans le cadre des lois qui le réglementent (al. 7), et <b>la participation</b> de tout travailleur, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail et à la gestion des entreprises (al. 8). Le Conseil constitutionnel impose au législateur de concilier le droit de grève avec les autres principes de valeur constitutionnelle.",
    "base": [
     "Définitions#4"
@@ -29,7 +29,7 @@
   {
    "id": "ue3-01-k03",
    "type": "def",
-   "q": "Qui sont les parties à une convention ou à un accord collectif de travail ?",
+   "q": "En principe, qui sont les parties à une convention ou à un accord collectif de travail selon l'article L. 2231-1 du Code du travail ?",
    "r": "<b>Côté salariés</b> : une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de l'accord. <b>Côté employeurs</b> : une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement.",
    "base": [
     "Définitions#1"
@@ -89,10 +89,11 @@
   {
    "id": "ue3-01-k08",
    "type": "comp",
-   "q": "En cas de concours de conventions collectives, comment détermine-t-on les avantages accordés au salarié ?",
-   "r": "<b>Les avantages ayant le même objet ou la même cause ne se cumulent pas</b>, sauf stipulations contraires : seul le plus favorable est accordé. La comparaison se fait avantage par avantage, en regroupant ceux qui ont la même cause ou le même objet, et non par addition d'avantages de nature différente.",
+   "q": "Selon la jurisprudence de l'assemblée plénière de 1988, comment se règle un concours de conventions collectives applicables à un même salarié ?",
+   "r": "<b>Les avantages ayant le même objet ou la même cause ne se cumulent pas</b>, sauf stipulations contraires : seul le plus favorable est accordé, la comparaison se faisant avantage par avantage. Entre branche et entreprise s'appliquent les blocs du Code du travail : équivalence appréciée par ensemble de garanties de la même matière dans les blocs 1 et 2, primauté de l'accord d'entreprise dans le bloc 3.",
    "base": [
-    "Points de vigilance#3"
+    "Points de vigilance#3",
+    "Règles essentielles#3"
    ],
    "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1",
    "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020048",
@@ -186,8 +187,8 @@
   {
    "id": "ue3-01-k16",
    "type": "comp",
-   "q": "Que se passe-t-il lorsqu'un salarié refuse l'application d'un accord de performance collective à son contrat de travail ?",
-   "r": "<b>Il dispose d'un mois pour refuser par écrit</b> ; l'employeur a alors deux mois à compter du refus pour engager un licenciement, qui repose sur un motif spécifique constituant une cause réelle et sérieuse, dès lors que l'accord s'en tient à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne.",
+   "q": "Que se passe-t-il lorsqu'un salarié refuse par écrit l'application d'un accord de performance collective à son contrat de travail ?",
+   "r": "<b>L'employeur dispose de deux mois à compter du refus pour engager un licenciement</b>, qui repose sur un motif spécifique constituant une cause réelle et sérieuse. Toutefois, si l'accord comporte des dispositions étrangères à ses objets et modifiant le contrat, le licenciement est sans cause réelle et sérieuse.",
    "base": [
     "Règles essentielles#9",
     "Ce qui a changé récemment#2"
@@ -199,8 +200,8 @@
   {
    "id": "ue3-01-k17",
    "type": "comp",
-   "q": "Que vaut le licenciement d'un salarié qui refuse un accord de performance collective comportant des dispositions étrangères à ses objets légaux ?",
-   "r": "<b>Il est sans cause réelle et sérieuse</b> lorsque ces dispositions modifient son contrat de travail : l'effet substitutif de l'APC est limité à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne (Cass. soc., 28 mai 2026).",
+   "q": "Que vaut le licenciement d'un salarié qui refuse un accord de performance collective comportant des dispositions étrangères à ses objets légaux et modifiant son contrat ?",
+   "r": "<b>Il est sans cause réelle et sérieuse</b> : l'effet substitutif de l'accord de performance collective est limité à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne (Cass. soc., 28 mai 2026).",
    "base": [
     "Ce qui a changé récemment#2"
    ],
@@ -295,8 +296,8 @@
   {
    "id": "ue3-01-k25",
    "type": "comp",
-   "q": "De quels pouvoirs les agents de contrôle de l'inspection du travail disposent-ils dans les établissements ?",
-   "r": "<b>Un droit d'entrée dans tout établissement où s'appliquent les règles de l'article L. 8112-1</b> pour y assurer surveillance et enquêtes (avec l'accord des occupants pour les locaux habités). Ils peuvent demander la justification d'identité et la présentation des registres obligatoires, et leurs procès-verbaux sont transmis au procureur de la République.",
+   "q": "Où les agents de contrôle de l'inspection du travail ont-ils un droit d'entrée, et quelle limite s'applique aux locaux habités ?",
+   "r": "<b>Dans tout établissement où s'appliquent les règles de l'article L. 8112-1</b>, pour y assurer surveillance et enquêtes ; dans les locaux habités, seulement avec l'accord des occupants. Ils peuvent aussi demander la justification d'identité et la présentation des registres obligatoires, et leurs procès-verbaux sont transmis au procureur de la République.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -307,8 +308,8 @@
   {
    "id": "ue3-01-k26",
    "type": "comp",
-   "q": "Comment fonctionne le régime des amendes administratives prévu par le Code du travail pour certains manquements de l'employeur ?",
-   "r": "<b>Sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales</b>, le directeur régional de l'économie, de l'emploi, du travail et des solidarités peut adresser un avertissement ou prononcer une amende pour certains manquements. La décision se conteste devant le tribunal administratif.",
+   "q": "Quelle autorité peut sanctionner par une amende administrative certains manquements au Code du travail, et à quelles conditions ?",
+   "r": "<b>Le directeur régional de l'économie, de l'emploi, du travail et des solidarités</b>, sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales : il peut adresser un avertissement ou prononcer une amende, notamment en matière de durées maximales de travail, de repos, de salaire minimum et de salaires minima conventionnels, d'installations sanitaires et d'hébergement. La décision se conteste devant le tribunal administratif.",
    "base": [
     "Règles essentielles#14"
    ],
@@ -319,8 +320,8 @@
   {
    "id": "ue3-01-k27",
    "type": "comp",
-   "q": "Quel manquement la loi du 25 juin 2026 a-t-elle ajouté à ceux que sanctionne l'amende administrative de l'article L. 8115-1 du Code du travail ?",
-   "r": "<b>L'absence de document unique d'évaluation des risques professionnels</b>, en plus des manquements déjà visés : durées maximales de travail, repos, salaire minimum, installations sanitaires et hébergement.",
+   "q": "Quel manquement l'amende administrative de l'article L. 8115-1 du Code du travail sanctionne-t-elle aussi depuis le 27 juin 2026 ?",
+   "r": "<b>L'absence de document unique d'évaluation des risques professionnels</b>, qui s'ajoute aux manquements déjà visés, notamment les durées maximales de travail, les repos, le salaire minimum, les installations sanitaires et l'hébergement.",
    "base": [
     "Ce qui a changé récemment#4"
    ],
@@ -332,7 +333,7 @@
    "id": "ue3-01-k28",
    "type": "comp",
    "q": "Quel est le rôle du conseil de prud'hommes dans les litiges du travail ?",
-   "r": "<b>Il règle par voie de conciliation les différends nés à l'occasion de tout contrat de travail entre employeurs et salariés, et juge ceux qui n'ont pas été conciliés</b> ; il connaît aussi des différends nés entre salariés à l'occasion du travail. Il est seul compétent quel que soit le montant de la demande, sauf pour les litiges que la loi attribue à une autre juridiction (accidents du travail, maladies professionnelles).",
+   "r": "<b>Il règle par voie de conciliation les différends nés à l'occasion de tout contrat de travail entre employeurs et salariés et juge ceux qui n'ont pas été conciliés</b>, ainsi que les différends nés entre salariés à l'occasion du travail. Il est seul compétent quel que soit le montant de la demande, hors litiges attribués par la loi à une autre juridiction (notamment accidents du travail et maladies professionnelles).",
    "base": [
     "Règles essentielles#10"
    ],
@@ -380,7 +381,7 @@
    "id": "ue3-01-k32",
    "type": "comp",
    "q": "Quelle juridiction est compétente pour le contentieux des accidents du travail et des maladies professionnelles ?",
-   "r": "<b>Le tribunal judiciaire spécialement désigné (pôle social)</b>, auquel le Code de la sécurité sociale attribue ce contentieux ; le conseil de prud'hommes est incompétent. Ce pôle connaît des litiges du contentieux de la sécurité sociale définis à l'article L. 142-1 de ce code (sauf ceux du 7°) et de ceux relatifs à l'admission à l'aide sociale.",
+   "r": "<b>Le tribunal judiciaire spécialement désigné (pôle social)</b>, auquel le Code de la sécurité sociale attribue ce contentieux ; le conseil de prud'hommes est incompétent. Ce pôle connaît notamment des litiges du contentieux de la sécurité sociale définis à l'article L. 142-1 de ce code (sauf ceux du 7°) et de ceux relatifs à l'admission à l'aide sociale.",
    "base": [
     "Points de vigilance#4",
     "Règles essentielles#15"
@@ -392,7 +393,7 @@
   {
    "id": "ue3-01-k33",
    "type": "comp",
-   "q": "Quels délais de prescription l'article L. 1471-1 du Code du travail fixe-t-il pour les actions portant sur l'exécution et sur la rupture du contrat de travail ?",
+   "q": "En principe, quels délais de prescription l'article L. 1471-1 du Code du travail fixe-t-il pour les actions portant sur l'exécution et sur la rupture du contrat ?",
    "r": "<b>Exécution : 2 ans</b> à compter du jour où celui qui exerce l'action a connu ou aurait dû connaître les faits. <b>Rupture : 12 mois</b> à compter de la notification de la rupture.",
    "base": [
     "Chiffres et seuils#0"
@@ -417,9 +418,10 @@
    "id": "ue3-01-k35",
    "type": "comp",
    "q": "Quelles actions échappent aux délais de deux ans et de douze mois de l'article L. 1471-1 du Code du travail ?",
-   "r": "<b>Les actions en réparation d'un dommage corporel causé à l'occasion de l'exécution du contrat</b>, les actions en paiement ou en répétition du salaire (3 ans, L. 3245-1) et les actions fondées sur la discrimination ou le harcèlement. Ces délais ne font pas obstacle aux délais plus courts prévus par le code, par exemple pour la rupture conventionnelle.",
+   "r": "<b>Les actions en réparation d'un dommage corporel causé à l'occasion de l'exécution du contrat</b>, les actions en paiement ou en répétition du salaire (3 ans, L. 3245-1) et les actions fondées sur la discrimination (5 ans à compter de sa révélation, L. 1134-5) ou le harcèlement. Ces délais ne font pas obstacle aux délais plus courts prévus par le code, par exemple pour la rupture conventionnelle.",
    "base": [
-    "Points de vigilance#1"
+    "Points de vigilance#1",
+    "Chiffres et seuils#2"
    ],
    "src": "C. trav., art. L. 1471-1, al. 3",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",

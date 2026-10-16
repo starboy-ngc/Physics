@@ -1,6 +1,6 @@
 {
  "id": "ue9-09",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue9-09-k01",
@@ -17,10 +17,11 @@
   {
    "id": "ue9-09-k02",
    "type": "def",
-   "q": "Selon le Code de commerce, de quels documents se composent les comptes annuels d'un commerçant ?",
-   "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable. Ils sont établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire.",
+   "q": "Selon l'article L. 123-12 du Code de commerce, de quels documents se composent en principe les comptes annuels d'un commerçant ?",
+   "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable, établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire. Les micro-entreprises sont toutefois dispensées d'annexe, sauf celles qui gèrent des titres de participations et de valeurs mobilières.",
    "base": [
-    "Définitions#1"
+    "Définitions#1",
+    "Règles essentielles#13"
    ],
    "src": "C. com., art. L. 123-12, al. 3",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
@@ -91,7 +92,7 @@
   {
    "id": "ue9-09-k08",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment les mouvements affectant le patrimoine d'un commerçant sont-ils enregistrés au livre-journal ?",
+   "q": "Selon le Code de commerce, dans quel ordre les mouvements affectant le patrimoine d'un commerçant sont-ils enregistrés au livre-journal ?",
    "r": "<b>Chronologiquement, opération par opération et jour par jour.</b> Ils sont ensuite portés sur le grand livre et ventilés selon le plan de comptes.",
    "base": [
     "Règles essentielles#0",
@@ -104,7 +105,7 @@
   {
    "id": "ue9-09-k09",
    "type": "comp",
-   "q": "Que deviennent les écritures des journaux et livres auxiliaires tenus par un commerçant ?",
+   "q": "Selon le Code de commerce, que deviennent les écritures des journaux et livres auxiliaires tenus par un commerçant ?",
    "r": "<b>Elles sont centralisées au moins une fois par mois sur le livre-journal et le grand livre.</b> Ceux-ci sont détaillés en autant de journaux et livres auxiliaires que les besoins du commerce l'exigent.",
    "base": [
     "Règles essentielles#1"
@@ -128,8 +129,8 @@
   {
    "id": "ue9-09-k11",
    "type": "comp",
-   "q": "Selon le Code de commerce, en quelle monnaie et en quelle langue les documents comptables sont-ils établis ?",
-   "r": "<b>En euros et en langue française.</b> Ceux relatifs à l'enregistrement des opérations et à l'inventaire sont établis et tenus sans blanc ni altération d'aucune sorte.",
+   "q": "Selon l'article L. 123-22 du Code de commerce, quelles exigences de forme s'imposent aux documents comptables d'un commerçant ?",
+   "r": "<b>Ils sont établis en euros et en langue française.</b> Ceux relatifs à l'enregistrement des opérations et à l'inventaire sont établis et tenus sans blanc ni altération d'aucune sorte.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -164,7 +165,7 @@
   {
    "id": "ue9-09-k14",
    "type": "comp",
-   "q": "Que fait-on lorsque l'application d'une règle comptable ne suffit pas à donner une image fidèle dans les comptes annuels ?",
+   "q": "Selon le Code de commerce, que fait-on lorsque l'application d'une règle comptable ne suffit pas à donner une image fidèle des comptes annuels ?",
    "r": "<b>Des informations complémentaires sont données dans l'annexe.</b> Si, dans un cas exceptionnel, la règle est impropre à donner une image fidèle, il y est dérogé : la dérogation est mentionnée et motivée dans l'annexe.",
    "base": [
     "Règles essentielles#5"
@@ -248,8 +249,8 @@
   {
    "id": "ue9-09-k21",
    "type": "comp",
-   "q": "Lors du rapprochement entre le compte 512 « Banques » et le relevé de la banque, quels écarts donnent lieu à une écriture ?",
-   "r": "<b>Les mouvements figurant sur le relevé et non encore comptabilisés</b> (frais, prélèvements, virements reçus), car tout mouvement affectant le patrimoine doit être enregistré. Les chèques émis et les remises déjà enregistrés mais pas encore portés sur le relevé n'appellent aucune écriture : ils expliquent l'écart entre les deux soldes.",
+   "q": "Lors du rapprochement du compte 512 « Banques » avec le relevé bancaire, quels mouvements non communs aux deux documents l'entreprise doit-elle enregistrer ?",
+   "r": "<b>Les mouvements figurant sur le relevé et non encore comptabilisés</b> (frais, prélèvements, virements reçus), car tout mouvement affectant le patrimoine doit être enregistré. Les chèques émis et les remises déjà enregistrés à leur date mais pas encore portés sur le relevé n'appellent aucune écriture : ils expliquent l'écart entre les deux soldes.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -260,8 +261,8 @@
   {
    "id": "ue9-09-k22",
    "type": "comp",
-   "q": "Comment les produits et les charges sont-ils classés dans le compte de résultat d'un commerçant ?",
-   "r": "<b>De manière à faire apparaître, par différence, les éléments du résultat courant et le résultat exceptionnel</b>, selon le modèle fixé par règlement de l'ANC.",
+   "q": "Selon le Code de commerce, comment le bilan et le compte de résultat d'un commerçant sont-ils structurés ?",
+   "r": "<b>Le bilan décrit séparément les éléments actifs et passifs et fait apparaître distinctement les capitaux propres.</b> Au compte de résultat, produits et charges sont classés de manière à faire apparaître, par différence, les éléments du résultat courant et le résultat exceptionnel, selon le modèle fixé par règlement de l'ANC.",
    "base": [
     "Règles essentielles#12"
    ],
@@ -323,7 +324,7 @@
    "id": "ue9-09-k27",
    "type": "def",
    "q": "Qu'est-ce que le fichier des écritures comptables (FEC) remis lors d'une vérification de comptabilité ?",
-   "r": "<b>Une copie dématérialisée de ses fichiers d'écritures comptables</b>, conforme aux normes de l'article A. 47 A-1 du LPF, que le contribuable tenant sa comptabilité au moyen de systèmes informatisés remet dès la première intervention sur place pour satisfaire à son obligation de représentation des documents comptables. Le défaut de remise ou la remise non conforme est sanctionné par l'amende de l'article 1729 D du CGI.",
+   "r": "<b>Une copie dématérialisée des fichiers d'écritures comptables</b>, conforme aux normes de l'article A. 47 A-1 du LPF, que le contribuable tenant sa comptabilité au moyen de systèmes informatisés remet dès la première intervention sur place pour satisfaire à son obligation de représentation des documents comptables. Défaut de remise ou remise non conforme : amende de l'article 1729 D du CGI.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -359,10 +360,9 @@
    "id": "ue9-09-k30",
    "type": "comp",
    "q": "Quels changements le règlement ANC n° 2022-06 apporte-t-il pour les exercices ouverts à compter du 1er janvier 2025 ?",
-   "r": "<ul><li>de nouveaux modèles de comptes annuels ;</li><li>un résultat exceptionnel limité aux événements majeurs et inhabituels ;</li><li>la suppression des transferts de charges (le règlement n° 2025-05 maintient le compte 791 pour les seules opérations de concession d'aménagement) ;</li><li>un plan de comptes à l'article 1121-1 du PCG.</li></ul>",
+   "r": "<ul><li>de nouveaux modèles de comptes annuels ;</li><li>un résultat exceptionnel limité aux événements majeurs et inhabituels ;</li><li>la suppression des transferts de charges ;</li><li>un plan de comptes à l'article 1121-1 du PCG.</li></ul>",
    "base": [
-    "Ce qui a changé récemment#0",
-    "Ce qui a changé récemment#6"
+    "Ce qui a changé récemment#0"
    ],
    "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 (PCG, art. 513-5) ; arrêté du 26 décembre 2023",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",

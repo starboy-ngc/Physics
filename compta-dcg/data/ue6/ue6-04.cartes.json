@@ -1,12 +1,12 @@
 {
  "id": "ue6-04",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue6-04-k01",
    "type": "def",
    "q": "Que signifie capitaliser une somme, en mathématiques financières ?",
-   "r": "<b>Calculer la valeur acquise d'un capital C placé n périodes au taux i</b>, soit C × (1 + i)^n. Le programme du DSCG range ce lien entre la valeur et le temps parmi les acquis attendus de l'UE6.",
+   "r": "<b>Calculer la valeur acquise d'un capital C placé n périodes au taux i</b>, soit C × (1 + i)^n.",
    "base": [
     "Définitions#0"
    ],
@@ -18,7 +18,7 @@
    "id": "ue6-04-k02",
    "type": "def",
    "q": "Que signifie actualiser un flux futur, en mathématiques financières ?",
-   "r": "<b>Calculer la valeur aujourd'hui d'un flux futur F</b>, soit F × (1 + i)^−n. Le programme du DSCG range l'actualisation parmi les acquis attendus de l'UE6.",
+   "r": "<b>Calculer la valeur aujourd'hui d'un flux futur F</b>, soit F × (1 + i)^−n.",
    "base": [
     "Définitions#0"
    ],
@@ -30,7 +30,7 @@
    "id": "ue6-04-k03",
    "type": "comp",
    "q": "Quel taux d'actualisation retient-on pour évaluer un projet d'investissement en univers certain ?",
-   "r": "<b>Le coût du capital</b>, c'est-à-dire le coût moyen pondéré des ressources. Le programme du DSCG le cite parmi les acquis de l'UE6, avec les critères de décision d'un investissement en univers certain.",
+   "r": "<b>Le coût du capital</b>, c'est-à-dire le coût moyen pondéré des ressources.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -54,9 +54,10 @@
    "id": "ue6-04-k05",
    "type": "def",
    "q": "Comment le PCG définit-il le coût d'acquisition d'une immobilisation ?",
-   "r": "<b>Le prix d'achat</b>, après déduction des remises et des taxes récupérables, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner. C'est le montant de l'investissement initial, hors taxes.",
+   "r": "<b>Le prix d'achat</b>, après déduction des remises et des taxes récupérables, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner. Il entre, hors taxes, dans l'investissement initial du projet, avec l'augmentation du BFR d'exploitation induite.",
    "base": [
-    "Définitions#3"
+    "Définitions#3",
+    "Règles essentielles#0"
    ],
    "src": "PCG, art. 213-8",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
@@ -162,7 +163,7 @@
   {
    "id": "ue6-04-k14",
    "type": "comp",
-   "q": "Quel flux retient-on en fin de projet d'investissement au titre de la valeur résiduelle, et pourquoi ?",
+   "q": "Au titre de la valeur résiduelle d'un bien cédé en fin de projet d'investissement, quel flux retient-on ?",
    "r": "<b>La valeur résiduelle nette d'impôt</b>, car la plus-value de cession est imposable. La cession est enregistrée pour son prix en 757 et la valeur comptable sortie en 657.",
    "base": [
     "Règles essentielles#3"
@@ -344,7 +345,7 @@
   {
    "id": "ue6-04-k29",
    "type": "def",
-   "q": "Comment l'Insee décompose-t-elle une évolution en valeur ?",
+   "q": "Comment l'Insee décompose-t-il une évolution en valeur ?",
    "r": "<b>En une évolution en volume et une évolution des prix</b> : indice de valeur = indice de volume × indice de prix. C'est la relation multiplicative qui lie taux nominal, taux réel et inflation.",
    "base": [
     "Définitions#8"
@@ -375,30 +376,6 @@
    ],
    "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (prise en compte du risque)",
    "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-04-k32",
-   "type": "comp",
-   "q": "Quels acquis de l'UE6 sur l'investissement le programme de finance du DSCG pose-t-il en prérequis ?",
-   "r": "<b>Actualisation, capitalisation, coût du capital et critères de décision en univers certain.</b> Le DSCG ajoute l'univers incertain et la valeur de l'entreprise.",
-   "base": [
-    "Points de vigilance#4"
-   ],
-   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG)",
-   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-04-k33",
-   "type": "comp",
-   "q": "Quel texte fixe le programme de l'UE6 du DCG à compter de la session 2027 ?",
-   "r": "<b>L'arrêté du 4 août 2025</b> (BO ESR n° 32 du 28 août 2025), qui remplace l'arrêté du 13 février 2019. La politique d'investissement reste une partie à part entière de l'UE6.",
-   "base": [
-    "Ce qui a changé récemment#1"
-   ],
-   "src": "Arrêté du 4 août 2025 ; note de service ESRS2529286N (BO ESR n° 43 du 13 novembre 2025)",
-   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo43/ESRS2529286N",
    "fiab": "stable"
   },
   {

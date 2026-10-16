@@ -1,6 +1,6 @@
 {
  "id": "ue6-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue6-01-k01",
@@ -117,7 +117,8 @@
    "q": "Qu'est-ce que l'excédent brut d'exploitation (EBE) d'une entreprise ?",
    "r": "<b>La valeur ajoutée diminuée des charges de personnel et des impôts sur la production, augmentée des subventions d'exploitation.</b>",
    "base": [
-    "Définitions#3"
+    "Définitions#3",
+    "Règles essentielles#3"
    ],
    "src": "Insee, définition « Excédent brut d'exploitation »",
    "url": "https://www.insee.fr/fr/metadonnees/definition/c1538",
@@ -126,11 +127,11 @@
   {
    "id": "ue6-01-k11",
    "type": "comp",
-   "q": "De quels éléments l'excédent brut d'exploitation (EBE) est-il indépendant, du fait de sa place dans la cascade des soldes intermédiaires de gestion ?",
-   "r": "<b>De la politique d'amortissement, du financement (charges financières) et de l'impôt sur les bénéfices</b> : c'est le premier solde calculé avant les dotations, le résultat financier et l'impôt.",
+   "q": "De quels éléments l'excédent brut d'exploitation (EBE) d'une entreprise est-il indépendant ?",
+   "r": "<b>De la politique d'amortissement, du financement et de l'impôt sur les bénéfices.</b> Réserve : les charges de crédit-bail, comptées dans les autres achats et charges externes du tableau du PCG, pèsent sur l'EBE ; la méthode de la Banque de France les retraite.",
    "base": [
     "Définitions#3",
-    "Règles essentielles#3"
+    "Règles essentielles#10"
    ],
    "src": "Insee, définition « Excédent brut d'exploitation »",
    "url": "https://www.insee.fr/fr/metadonnees/definition/c1538",
@@ -166,7 +167,7 @@
    "id": "ue6-01-k14",
    "type": "comp",
    "q": "Selon l'Insee, à quoi l'excédent brut d'exploitation (EBE) est-il rapporté pour mesurer d'une part le taux de marge, d'autre part la rentabilité économique ?",
-   "r": "<b>À la valeur ajoutée pour le taux de marge ; à la somme des immobilisations brutes corporelles et incorporelles et du besoin en fonds de roulement pour la rentabilité économique.</b> Un taux de marge élevé n'implique donc pas nécessairement une rentabilité économique forte.",
+   "r": "<b>À la valeur ajoutée pour le taux de marge ; à la somme des immobilisations brutes corporelles et incorporelles et du besoin en fonds de roulement pour la rentabilité économique.</b> Un taux de marge élevé n'implique pas nécessairement une rentabilité économique forte.",
    "base": [
     "Points de vigilance#1",
     "Définitions#4"
@@ -191,8 +192,8 @@
   {
    "id": "ue6-01-k16",
    "type": "comp",
-   "q": "Depuis le PCG 2025, à quel niveau de résultat (exploitation, financier ou exceptionnel) appartient la plus ou moins-value de cession d'une immobilisation corporelle ?",
-   "r": "<b>Au résultat d'exploitation</b> (comptes 657 et 757). Les sujets antérieurs à 2025, qui utilisent les comptes 675 et 775, la placent en résultat exceptionnel.",
+   "q": "Depuis le PCG 2025, dans quelle catégorie de charges et de produits du compte de résultat classe-t-on la plus ou moins-value de cession d'une immobilisation incorporelle ou corporelle ?",
+   "r": "<b>En exploitation</b> : elle fait partie du résultat d'exploitation (comptes 657 et 757). Les sujets antérieurs à 2025, qui utilisent les comptes 675 et 775, la placent en résultat exceptionnel.",
    "base": [
     "Règles essentielles#4",
     "Points de vigilance#2"
@@ -217,7 +218,7 @@
    "id": "ue6-01-k18",
    "type": "def",
    "q": "Qu'est-ce que le résultat exceptionnel d'une entreprise depuis le PCG 2025 ?",
-   "r": "<b>Le résultat dont la réalisation n'est pas liée à l'exploitation courante.</b> Depuis le PCG 2025, il comprend notamment les charges et produits découlant d'un événement majeur et inhabituel, ainsi que les écritures d'origine purement fiscale.",
+   "r": "<b>Le résultat dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise.</b> Depuis le PCG 2025, il est recentré sur les charges et produits découlant d'un événement majeur et inhabituel et sur les écritures d'origine purement fiscale.",
    "base": [
     "Définitions#5"
    ],
@@ -265,8 +266,8 @@
   {
    "id": "ue6-01-k22",
    "type": "comp",
-   "q": "Quels éléments la méthode soustractive de la capacité d'autofinancement (CAF) du PCG exclut-elle ?",
-   "r": "<b>Les dotations, les reprises, les produits des cessions et les valeurs comptables des éléments cédés</b>, comme tout produit non encaissable ou charge non décaissable : partant de l'EBE, elle ne retient que des produits encaissables et des charges décaissables.",
+   "q": "Dans la méthode soustractive de la capacité d'autofinancement (CAF) du PCG, quels éléments liés aux amortissements, dépréciations, provisions et cessions d'immobilisations sont exclus ?",
+   "r": "<b>Les dotations et les reprises, ainsi que les produits des cessions et les valeurs comptables des éléments cédés.</b> Partant de l'excédent brut d'exploitation, la CAF se détermine par différence entre produits encaissables et charges décaissables, hors cessions d'immobilisations.",
    "base": [
     "Règles essentielles#7",
     "Définitions#6"
@@ -340,8 +341,8 @@
   {
    "id": "ue6-01-k28",
    "type": "def",
-   "q": "Qu'est-ce qu'un dividende dans une société commerciale selon le Code de commerce ?",
-   "r": "<b>La part des sommes distribuables, notamment du bénéfice distribuable, que l'assemblée générale attribue aux associés</b>, après approbation des comptes annuels.",
+   "q": "En droit des sociétés, qu'est-ce qu'un dividende ?",
+   "r": "<b>La part du bénéfice distribuable attribuée aux associés par l'assemblée générale</b>, après approbation des comptes.",
    "base": [
     "Définitions#7"
    ],
@@ -413,11 +414,11 @@
   {
    "id": "ue6-01-k34",
    "type": "comp",
-   "q": "Quels trois changements du règlement ANC n° 2022-06 déplacent des charges ou des produits du résultat exceptionnel vers l'exploitation ?",
-   "r": "<b>La nouvelle définition du résultat exceptionnel</b> (événement majeur et inhabituel), <b>les cessions d'immobilisations</b> (657 / 757) <b>et la quote-part de subvention d'investissement virée au résultat</b> (747, produit d'exploitation). Applicables aux exercices ouverts à compter du 1er janvier 2025, ils changent le calcul des SIG et de la CAF.",
+   "q": "Quels sont les trois changements de classement des charges et produits, issus du règlement ANC n° 2022-06, qui modifient les soldes intermédiaires de gestion et la CAF ?",
+   "r": "<b>La nouvelle définition du résultat exceptionnel</b> (événement majeur et inhabituel), <b>le passage en exploitation des cessions d'immobilisations incorporelles et corporelles</b> (657 / 757) <b>et l'enregistrement de la quote-part de subvention en 747</b>. Ils s'appliquent aux exercices ouverts à compter du 1er janvier 2025.",
    "base": [
     "Ce qui a changé récemment#0",
-    "Règles essentielles#6"
+    "Règles essentielles#4"
    ],
    "src": "Règlement ANC n° 2022-06 du 4 novembre 2022",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",

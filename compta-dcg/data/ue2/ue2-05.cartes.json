@@ -18,7 +18,7 @@
    "id": "ue2-05-k02",
    "type": "comp",
    "q": "Quelle différence y a-t-il entre délégation de compétence et délégation de pouvoir consenties par l'assemblée générale extraordinaire d'une SA pour augmenter le capital ?",
-   "r": "<b>La délégation de compétence permet au conseil d'administration ou au directoire de décider lui-même l'augmentation ; la délégation de pouvoir ne lui confie que la fixation de ses modalités.</b> L'assemblée générale extraordinaire, seule compétente pour décider l'augmentation, fixe alors la durée de la délégation, 26 mois au plus, et le plafond global de l'augmentation.",
+   "r": "<b>La délégation de compétence permet au conseil d'administration ou au directoire de décider lui-même l'augmentation ; la délégation de pouvoir ne lui confie que la fixation de ses modalités.</b> En cas de délégation de compétence, l'assemblée générale extraordinaire, seule compétente pour décider l'augmentation, fixe la durée de la délégation, 26 mois au plus, et le plafond global de l'augmentation.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -177,7 +177,7 @@
    "id": "ue2-05-k15",
    "type": "comp",
    "q": "Que doivent faire les associés d'une SARL ou d'une SA dont les comptes approuvés font apparaître des capitaux propres inférieurs à la moitié du capital social ?",
-   "r": "<b>Décider, dans les quatre mois suivant l'approbation des comptes, s'il y a lieu à dissolution anticipée</b>, la décision étant publiée. À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital.",
+   "r": "<b>Décider, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée</b>, la décision étant publiée. À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital. Règles écartées en sauvegarde ou en redressement judiciaire.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -201,7 +201,7 @@
    "id": "ue2-05-k17",
    "type": "comp",
    "q": "Quelle sanction encourt une SARL ou une SA qui ne respecte pas la procédure prévue lorsque ses capitaux propres sont inférieurs à la moitié du capital ?",
-   "r": "<b>Une dissolution, jamais automatique : tout intéressé peut seulement la demander en justice.</b> Il en va de même si les associés n'ont pu délibérer valablement ; le tribunal peut accorder à la société un délai maximal de six mois pour régulariser sa situation.",
+   "r": "<b>La dissolution, qui n'est jamais automatique : tout intéressé peut seulement la demander en justice.</b> Il en va de même si les associés n'ont pu délibérer valablement ; le tribunal peut accorder à la société un délai maximal de six mois pour régulariser sa situation.",
    "base": [
     "Points de vigilance#0"
    ],

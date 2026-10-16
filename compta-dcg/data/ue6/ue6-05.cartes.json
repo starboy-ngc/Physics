@@ -1,6 +1,6 @@
 {
  "id": "ue6-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue6-05-k01",
@@ -31,7 +31,7 @@
    "id": "ue6-05-k03",
    "type": "comp",
    "q": "Comment qualifie-t-on un dividende distribué alors que la société n'a pas de bénéfice distribuable ?",
-   "r": "<b>De dividende fictif.</b> C'est aussi le cas d'une distribution qui ramène les capitaux propres sous le capital et les réserves indisponibles ; l'autofinancement ne peut donc pas devenir négatif par distribution excessive.",
+   "r": "<b>De dividende fictif.</b> C'est aussi le cas d'une distribution qui ramène les capitaux propres sous le capital et les réserves indisponibles.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -90,9 +90,9 @@
   },
   {
    "id": "ue6-05-k08",
-   "type": "def",
-   "q": "Qu'est-ce qu'un prêt participatif dans le financement des entreprises ?",
-   "r": "<b>Il relève des quasi-fonds propres</b> : pour l'appréciation de la situation financière des entreprises qui en bénéficient, les prêts participatifs sont assimilés à des fonds propres.",
+   "type": "comp",
+   "q": "Selon le Code monétaire et financier, à quoi les prêts participatifs sont-ils assimilés pour l'appréciation de la situation financière des entreprises qui en bénéficient ?",
+   "r": "<b>À des fonds propres.</b> Le prêt participatif est ainsi classé parmi les quasi-fonds propres.",
    "base": [
     "Définitions#5"
    ],
@@ -127,7 +127,7 @@
   {
    "id": "ue6-05-k11",
    "type": "def",
-   "q": "Selon le Code de commerce, comment s'opère l'augmentation de capital d'une société anonyme ?",
+   "q": "Selon le Code de commerce, par quels deux procédés portant sur les actions s'opère l'augmentation de capital d'une société anonyme ?",
    "r": "<b>Par émission d'actions nouvelles ou par majoration du montant nominal des actions existantes.</b> Les actions nouvelles sont émises à leur nominal ou à ce montant majoré d'une prime d'émission.",
    "base": [
     "Définitions#1"
@@ -151,7 +151,7 @@
   {
    "id": "ue6-05-k13",
    "type": "comp",
-   "q": "Lors d'une augmentation de capital en numéraire d'une société anonyme, comment les actions nouvelles sont-elles libérées ?",
+   "q": "Lors d'une augmentation de capital en numéraire d'une société anonyme, quelles règles de libération s'appliquent aux actions nouvelles et à la prime d'émission ?",
    "r": "<b>Du quart au moins de leur nominal à la souscription, le surplus dans les cinq ans.</b> La prime d'émission, elle, est intégralement versée à la souscription.",
    "base": [
     "Chiffres et seuils#4"
@@ -286,10 +286,10 @@
    "id": "ue6-05-k24",
    "type": "comp",
    "q": "Pourquoi la capacité d'endettement d'une entreprise doit-elle être appréciée crédit-bail inclus ?",
-   "r": "<b>Parce que la Banque de France et les banques comptent le crédit-bail comme une dette</b>, même s'il n'alourdit pas le bilan comptable. La Banque de France l'inclut dans l'endettement retenu pour apprécier la capacité de remboursement et l'autonomie financière.",
+   "r": "<b>Parce que la Banque de France et les banques le comptent comme une dette</b>, alors qu'il n'alourdit pas le bilan comptable : les redevances sont des charges externes (compte 612) et le bien n'est pas à l'actif.",
    "base": [
     "Points de vigilance#1",
-    "Règles essentielles#15"
+    "Règles essentielles#5"
    ],
    "src": "Banque de France, Bulletin n° 220/1 (2018) ; C. mon. fin., art. L. 313-7",
    "url": null,
@@ -349,7 +349,7 @@
    "id": "ue6-05-k29",
    "type": "comp",
    "q": "À quoi sert le coût moyen pondéré du capital (CMPC) dans l'étude des projets d'investissement ?",
-   "r": "<b>C'est le taux d'actualisation des projets.</b> Il pondère le coût des capitaux propres et le coût de la dette après impôt, en principe en valeurs de marché. Avec l'actualisation, c'est un prérequis explicite de la finance du DSCG.",
+   "r": "<b>C'est le taux d'actualisation des projets.</b> Il pondère le coût des capitaux propres et le coût de la dette après impôt par leur part dans le financement (CP + D), en principe en valeurs de marché. Avec l'actualisation, c'est un prérequis explicite de la finance du DSCG.",
    "base": [
     "Règles essentielles#14",
     "Points de vigilance#4"
@@ -373,7 +373,7 @@
   {
    "id": "ue6-05-k31",
    "type": "comp",
-   "q": "Outre la capacité d'autofinancement, quelles ressources le plan de financement d'une entreprise retient-il ?",
+   "q": "Outre la capacité d'autofinancement, quelles sont les principales ressources retenues dans le plan de financement d'une entreprise ?",
    "r": "<b>Les augmentations de capital, les emprunts, les subventions et les cessions.</b> Avec la CAF, elles sont confrontées année par année aux emplois prévisionnels.",
    "base": [
     "Règles essentielles#11"
@@ -385,8 +385,8 @@
   {
    "id": "ue6-05-k32",
    "type": "comp",
-   "q": "Quels emplois le plan de financement d'une entreprise confronte-t-il, année par année, aux ressources ?",
-   "r": "<b>Les investissements, l'augmentation du BFR, les remboursements et les dividendes.</b> Le plan suit ainsi, année par année, la trésorerie cumulée.",
+   "q": "Quels sont les principaux emplois que le plan de financement d'une entreprise confronte, année par année, aux ressources ?",
+   "r": "<b>Les investissements, l'augmentation du BFR, les remboursements et les dividendes.</b> Le plan suit en outre, année par année, la trésorerie cumulée.",
    "base": [
     "Règles essentielles#11"
    ],

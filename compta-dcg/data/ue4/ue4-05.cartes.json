@@ -237,25 +237,13 @@
    "id": "ue4-05-k20",
    "type": "comp",
    "q": "Quand la TVA devient-elle exigible, d'une part pour une livraison de biens, d'autre part pour une prestation de services ?",
-   "r": "<b>Livraison de biens : à la livraison</b>, et dès l'encaissement d'un acompte à concurrence de son montant ; <b>prestation de services : à l'encaissement du prix ou des acomptes</b>, sauf option pour les débits.",
+   "r": "<b>Livraison de biens : à la livraison</b>, et dès l'encaissement d'un acompte, à concurrence de son montant, depuis le 1er janvier 2023 ; <b>prestation de services : à l'encaissement du prix ou des acomptes</b>, sauf option pour les débits.",
    "base": [
-    "Règles essentielles#8"
+    "Règles essentielles#8",
+    "Ce qui a changé récemment#0"
    ],
    "src": "CGI, art. 269, 2-a et 2-c",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue4-05-k21",
-   "type": "comp",
-   "q": "Depuis le 1er janvier 2023, quel est l'effet de l'encaissement d'un acompte sur une livraison de biens au regard de la TVA ?",
-   "r": "<b>La TVA devient exigible à concurrence du montant encaissé</b>, sans attendre la livraison. Cette règle résulte de la loi de finances pour 2022.",
-   "base": [
-    "Ce qui a changé récemment#0",
-    "Règles essentielles#8"
-   ],
-   "src": "CGI, art. 269, 2-a (loi n° 2021-1900 du 30 décembre 2021, art. 30)",
-   "url": "https://bofip.impots.gouv.fr/bofip/13758-PGP.html/ACTU-2022-00148",
    "fiab": "stable"
   },
   {
@@ -347,8 +335,8 @@
   {
    "id": "ue4-05-k29",
    "type": "comp",
-   "q": "Quels sont les quatre taux de TVA applicables en France continentale et leurs principaux domaines d'application ?",
-   "r": "<b>20 %</b> : taux normal ; <b>10 %</b> : restauration, hébergement, transport de voyageurs, travaux dans les logements de plus de deux ans ; <b>5,5 %</b> : produits alimentaires, livres, équipements pour personnes handicapées, rénovation énergétique ; <b>2,1 %</b> : médicaments remboursables, presse.",
+   "q": "En France continentale, à quelles opérations s'applique principalement le taux intermédiaire de TVA de 10 % ?",
+   "r": "<b>La restauration, l'hébergement, le transport de voyageurs et les travaux dans les logements de plus de deux ans.</b> Le taux normal, lui, est de 20 %.",
    "base": [
     "Chiffres et seuils#0"
    ],
@@ -409,8 +397,8 @@
   {
    "id": "ue4-05-k34",
    "type": "comp",
-   "q": "Quelles mentions une facture doit-elle notamment comporter au regard de la TVA ?",
-   "r": "<b>L'identité des parties, le numéro de TVA du vendeur, la date, le numéro séquentiel, la dénomination des biens ou services, le prix hors taxe, le taux et le montant de TVA par taux</b>, ainsi que les mentions spéciales (« autoliquidation », « TVA non applicable, art. 293 B du CGI »).",
+   "q": "Outre l'identité des parties, la date, le numéro séquentiel et la dénomination des biens ou services, quelles mentions une facture doit-elle comporter au regard de la TVA ?",
+   "r": "<b>Le numéro de TVA du vendeur, le prix hors taxe, le taux et le montant de TVA par taux</b>, ainsi que les mentions spéciales le cas échéant (« autoliquidation », « TVA non applicable, art. 293 B du CGI »).",
    "base": [
     "Règles essentielles#14"
    ],
@@ -428,6 +416,18 @@
    ],
    "src": "CGI, ann. II, art. 206, IV ; CGI, art. 298, 4-1° ; BOI-TVA-DED-30-30-40",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k36",
+   "type": "comp",
+   "q": "En France continentale, à quelles opérations s'appliquent principalement le taux réduit de TVA de 5,5 % et le taux particulier de 2,1 % ?",
+   "r": "<b>Taux réduit de 5,5 %</b> : produits alimentaires, livres, équipements pour personnes handicapées, travaux de rénovation énergétique ; <b>taux particulier de 2,1 %</b> : médicaments remboursables, presse.",
+   "base": [
+    "Chiffres et seuils#0"
+   ],
+   "src": "CGI, art. 278, 278-0 bis, 278-0 bis A, 279, 279-0 bis, 281 octies et 298 septies",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179654/",
    "fiab": "stable"
   }
  ]

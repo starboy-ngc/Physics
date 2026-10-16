@@ -1,6 +1,6 @@
 {
  "id": "ue10-06",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue10-06-k01",
@@ -30,7 +30,7 @@
    "id": "ue10-06-k03",
    "type": "comp",
    "q": "Selon le règlement ANC n° 2024-07, applicable aux exercices ouverts à compter du 1er janvier 2026, quels éléments deviennent une rubrique du bilan distincte des dettes ?",
-   "r": "<b>Les « autres fonds propres »</b>, que le règlement distingue des dettes et qui deviennent une rubrique à part entière du bilan. Le plan de comptes au 1er janvier 2026 conserve les subdivisions 1011, 1012 et 1013 du compte 101.",
+   "r": "<b>Les « autres fonds propres »</b>, que le règlement distingue des dettes et qui deviennent une rubrique à part entière du bilan. Sa version commentée précise aussi que le compte 109 est débité en contrepartie de la subdivision « capital souscrit non appelé » du compte 101.",
    "base": [
     "Ce qui a changé récemment#4"
    ],
@@ -68,7 +68,7 @@
    "id": "ue10-06-k06",
    "type": "comp",
    "q": "Quel est le rôle du commissaire aux apports lors de la constitution d'une société anonyme ?",
-   "r": "<b>Il apprécie, sous sa responsabilité, la valeur des apports en nature et des avantages particuliers.</b> Il est désigné à l'unanimité des fondateurs ou, à défaut, par décision de justice.",
+   "r": "<b>Apprécier, sous sa responsabilité, la valeur des apports en nature et des avantages particuliers.</b> Il est désigné à l'unanimité des fondateurs ou, à défaut, par décision de justice. Les fondateurs peuvent s'en dispenser pour des valeurs mobilières ou instruments du marché monétaire évalués au cours moyen pondéré des trois mois précédant l'apport, ou pour des actifs évalués à la juste valeur par un commissaire aux apports dans les six mois.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -128,10 +128,10 @@
    "id": "ue10-06-k11",
    "type": "comp",
    "q": "Quelle libération minimale exige une augmentation de capital en numéraire dans une SA ou une SARL, à la différence de la constitution ?",
-   "r": "<b>Le quart au moins du nominal dans les deux formes, plus la totalité de la prime d'émission</b>, le solde dans les cinq ans à compter du jour où l'augmentation est devenue définitive. À la constitution, on exige un cinquième en SARL et la moitié en SA.",
+   "r": "<b>Le quart au moins du nominal dans la SA comme dans la SARL et, dans la SA, la totalité de la prime d'émission</b>, le solde dans les cinq ans à compter du jour où l'augmentation est devenue définitive. À la constitution, on exige un cinquième des apports en SARL et la moitié du nominal en SA.",
    "base": [
     "Points de vigilance#0",
-    "Règles essentielles#3"
+    "Chiffres et seuils#0"
    ],
    "src": "C. com., art. L. 225-144 et L. 223-32",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
@@ -140,11 +140,11 @@
   {
    "id": "ue10-06-k12",
    "type": "comp",
-   "q": "À quelle condition commune sont subordonnées l'émission par une SA d'actions nouvelles à libérer en numéraire et la déduction fiscale des intérêts de comptes courants d'associés ?",
-   "r": "<b>La libération intégrale du capital.</b> Un compte 109 encore ouvert bloque donc à la fois l'augmentation de capital en numéraire et la déduction des intérêts de comptes courants d'associés.",
+   "q": "Dans une SA ou une SARL, quelle condition commune subordonne l'émission de titres nouveaux à libérer en numéraire et la déduction fiscale des intérêts de comptes courants d'associés ?",
+   "r": "<b>La libération intégrale du capital</b>, exigée avant toute émission d'actions nouvelles à libérer en numéraire dans la SA et avant toute souscription de nouvelles parts en numéraire dans la SARL. Un compte 109 encore ouvert bloque donc à la fois l'augmentation de capital en numéraire et la déduction des intérêts.",
    "base": [
     "Points de vigilance#1",
-    "Règles essentielles#2"
+    "Règles essentielles#3"
    ],
    "src": "C. com., art. L. 225-131 ; CGI, art. 39, 1-3° ; BOI-IS-BASE-35-20",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039260253",
@@ -166,7 +166,7 @@
    "id": "ue10-06-k14",
    "type": "comp",
    "q": "Comment sont libérés les titres de capital émis par une SA en rémunération d'un apport en nature en cours de vie sociale ?",
-   "r": "<b>Intégralement dès leur émission.</b> Un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice, et la prime d'apport est portée au compte 1043.",
+   "r": "<b>Intégralement dès leur émission</b>, la prime d'apport étant portée au compte 1043. Un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice ; si l'assemblée réduit l'évaluation des apports, l'approbation expresse des apporteurs est requise, à défaut de quoi l'augmentation du capital n'est pas réalisée.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -178,7 +178,7 @@
    "id": "ue10-06-k15",
    "type": "comp",
    "q": "Quel est l'effet d'une augmentation de capital par incorporation de réserves, bénéfices ou primes sur le montant total des capitaux propres ?",
-   "r": "<b>Aucun : l'opération ne comporte aucun apport et les capitaux propres totaux sont inchangés.</b> Les réserves, le report à nouveau ou les primes (comptes 106, 110 ou 104) sont simplement virés au capital (compte 1013).",
+   "r": "<b>Aucun : l'opération ne comporte aucun apport et les capitaux propres totaux sont inchangés.</b> Comptablement, le compte 106 (ou 104, 110) est débité par le crédit du compte 1013.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -189,8 +189,8 @@
   {
    "id": "ue10-06-k16",
    "type": "comp",
-   "q": "Quels traitements comptables le PCG admet-il pour les frais d'augmentation de capital depuis le règlement ANC n° 2018-01 ?",
-   "r": "<b>L'inscription à l'actif en frais d'établissement ou l'imputation sur les primes d'émission et de fusion</b>, avec comptabilisation en charges en cas d'insuffisance de la prime. Piège des manuels anciens : l'imputation sur la prime n'est plus qualifiée de « méthode préférentielle ».",
+   "q": "Selon l'article 212-9 du PCG, quels traitements comptables sont admis pour les frais d'augmentation de capital d'une société ?",
+   "r": "<b>L'inscription à l'actif en frais d'établissement ou l'imputation sur les primes d'émission et de fusion</b>, avec comptabilisation en charges en cas d'insuffisance de la prime. Depuis le règlement ANC n° 2018-01, l'imputation sur la prime n'est plus qualifiée de « méthode préférentielle » (piège des manuels anciens).",
    "base": [
     "Points de vigilance#5",
     "Règles essentielles#18"
@@ -239,7 +239,7 @@
    "id": "ue10-06-k20",
    "type": "comp",
    "q": "Dans une SA ou une SARL, quel droit des créanciers distingue la réduction du capital non motivée par des pertes de celle motivée par des pertes ?",
-   "r": "<b>Le droit d'opposition</b>, ouvert au représentant de la masse des obligataires et aux créanciers antérieurs seulement en cas de réduction non motivée par des pertes ; la réduction motivée par des pertes n'ouvre pas ce droit. Saisi, le juge rejette l'opposition ou ordonne le remboursement des créances ou la constitution de garanties.",
+   "r": "<b>Le droit d'opposition</b>, ouvert au représentant de la masse des obligataires et aux créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal, seulement en cas de réduction non motivée par des pertes ; la réduction motivée par des pertes n'ouvre pas ce droit. Saisi, le juge rejette l'opposition ou ordonne le remboursement des créances ou la constitution de garanties.",
    "base": [
     "Règles essentielles#10"
    ],
@@ -262,7 +262,7 @@
   {
    "id": "ue10-06-k22",
    "type": "comp",
-   "q": "Depuis la loi n° 2023-171, que doit faire une SA ou une SARL qui n'a pas reconstitué ses capitaux propres dans le délai de deux exercices ?",
+   "q": "Depuis la loi n° 2023-171, que doit faire une SA ou une SARL n'ayant pas reconstitué dans le délai légal ses capitaux propres inférieurs à la moitié du capital ?",
    "r": "<b>Réduire son capital pour le ramener au plus au seuil fixé par décret</b>, si son capital dépasse ce seuil, au plus tard à la clôture du deuxième exercice suivant. Le seuil est de 1 % du total du bilan (en SA, le capital minimal sert de plancher) ; à défaut, tout intéressé peut demander la dissolution en justice, le tribunal pouvant accorder six mois au plus pour régulariser.",
    "base": [
     "Ce qui a changé récemment#0",
@@ -299,7 +299,7 @@
   {
    "id": "ue10-06-k25",
    "type": "comp",
-   "q": "Quelle assiette retient-on pour la dotation à la réserve légale lorsque la société présente un report à nouveau débiteur ?",
+   "q": "Quelle assiette retient-on pour doter la réserve légale d'une SARL ou d'une société par actions dont le report à nouveau est débiteur ?",
    "r": "<b>Le bénéfice après imputation des pertes antérieures</b> (report à nouveau débiteur), et seulement jusqu'au plafond de 10 % du capital : il faut contrôler le plafond restant avant de doter 5 % en totalité.",
    "base": [
     "Points de vigilance#2"
@@ -323,7 +323,7 @@
   {
    "id": "ue10-06-k27",
    "type": "comp",
-   "q": "Quelle mention l'assemblée générale doit-elle faire lorsqu'elle distribue des sommes prélevées sur les réserves dont elle a la disposition ?",
+   "q": "Quelle mention l'assemblée générale d'une société doit-elle faire lorsqu'elle distribue des sommes prélevées sur les réserves dont elle a la disposition ?",
    "r": "<b>Elle doit indiquer expressément les postes de réserve concernés.</b> Les dividendes sont prélevés par priorité sur le bénéfice distribuable de l'exercice ; les dividendes votés sont portés au compte 457 Associés – dividendes à payer.",
    "base": [
     "Règles essentielles#13"
@@ -383,8 +383,8 @@
   {
    "id": "ue10-06-k32",
    "type": "comp",
-   "q": "Que ne couvre pas la dispense du prélèvement forfaitaire non libératoire sur les dividendes perçus par une personne physique ?",
-   "r": "<b>Les prélèvements sociaux, toujours retenus à la source.</b> Le prélèvement de l'article 117 quater du CGI ne vise que les personnes physiques fiscalement domiciliées en France : l'associé personne morale ne le subit pas.",
+   "q": "Quels prélèvements restent retenus à la source sur les dividendes d'une personne physique dispensée du prélèvement forfaitaire non libératoire ?",
+   "r": "<b>Les prélèvements sociaux</b> : la dispense ne porte que sur le prélèvement forfaitaire non libératoire. Ce prélèvement (CGI, art. 117 quater) ne vise que les personnes physiques fiscalement domiciliées en France : l'associé personne morale ne le subit pas.",
    "base": [
     "Points de vigilance#4"
    ],

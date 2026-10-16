@@ -1,12 +1,12 @@
 {
  "id": "ue2-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue2-03-k01",
    "type": "def",
    "q": "Qu'est-ce qu'une société anonyme (SA) ?",
-   "r": "<b>Une société dont le capital est divisé en actions</b>, constituée entre des associés qui ne supportent les pertes qu'à concurrence de leurs apports. Elle compte deux associés ou plus, et au moins sept lorsque ses actions sont admises aux négociations sur un marché réglementé.",
+   "r": "<b>Une société dont le capital est divisé en actions</b> et qui est constituée entre des associés qui ne supportent les pertes qu'à concurrence de leurs apports. Elle compte deux associés ou plus, et au moins sept lorsque ses actions sont admises aux négociations sur un marché réglementé.",
    "base": [
     "Définitions#0"
    ],
@@ -30,7 +30,7 @@
    "id": "ue2-03-k03",
    "type": "def",
    "q": "Qu'est-ce que le conseil d'administration d'une société anonyme (SA) ?",
-   "r": "<b>L'organe de trois à dix-huit membres, personnes physiques ou morales, qui détermine les orientations de l'activité de la société et veille à leur mise en œuvre</b>, conformément à son intérêt social, en prenant en considération les enjeux sociaux et environnementaux. Ses membres, nommés par l'assemblée générale ou désignés dans les statuts, sont révocables à tout moment par l'assemblée générale ordinaire.",
+   "r": "<b>L'organe de trois à dix-huit membres qui détermine les orientations de l'activité de la société et veille à leur mise en œuvre</b>, conformément à son intérêt social, en prenant en considération les enjeux sociaux et environnementaux de son activité. Ses membres, personnes physiques ou morales, sont révocables à tout moment par l'assemblée générale ordinaire.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -66,7 +66,7 @@
    "id": "ue2-03-k06",
    "type": "comp",
    "q": "Comment la direction et le contrôle sont-ils répartis dans une société anonyme (SA) à directoire et conseil de surveillance ?",
-   "r": "<b>Le directoire dirige la société ; le conseil de surveillance exerce le contrôle permanent de sa gestion par le directoire.</b> Les membres du directoire, personnes physiques, sont nommés par le conseil de surveillance, dont aucun membre ne peut faire partie du directoire. Si le capital est inférieur à 150 000 €, une seule personne peut exercer les fonctions du directoire (directeur général unique).",
+   "r": "<b>Le directoire dirige la société ; le conseil de surveillance exerce le contrôle permanent de sa gestion par le directoire.</b> Les membres du directoire, personnes physiques, sont nommés par le conseil de surveillance, dont aucun membre ne peut faire partie du directoire. Si le capital est inférieur à 150 000 €, les fonctions du directoire peuvent être exercées par une seule personne (directeur général unique).",
    "base": [
     "Règles essentielles#3"
    ],
@@ -89,8 +89,8 @@
   {
    "id": "ue2-03-k08",
    "type": "comp",
-   "q": "Quelle démarche permet aux actionnaires d'une société anonyme (SA) d'obtenir une expertise de gestion ?",
-   "r": "<b>Des actionnaires représentant au moins 5 % du capital, seuls ou groupés, ou une association d'actionnaires remplissant les conditions légales, posent d'abord par écrit des questions sur une ou plusieurs opérations de gestion</b> au président du conseil d'administration ou au directoire. Faute de réponse dans un délai d'un mois ou d'éléments de réponse satisfaisants, ils peuvent demander en référé la désignation d'un ou plusieurs experts.",
+   "q": "Quelle démarche préalable permet aux actionnaires d'une société anonyme (SA) d'obtenir une expertise de gestion ?",
+   "r": "<b>Des actionnaires représentant au moins 5 % du capital, seuls ou groupés, ou une association d'actionnaires remplissant les conditions légales, posent d'abord par écrit des questions sur une ou plusieurs opérations de gestion</b> au président du conseil d'administration ou au directoire. Sans réponse dans un délai d'un mois ou sans éléments de réponse satisfaisants, ils peuvent demander en référé la désignation d'un ou plusieurs experts.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -102,7 +102,7 @@
    "id": "ue2-03-k09",
    "type": "def",
    "q": "Qu'est-ce qu'une convention réglementée dans une société anonyme (SA) ?",
-   "r": "<b>Toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote</b> (ou, pour une société actionnaire, la société qui la contrôle).",
+   "r": "<b>Toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote</b> (ou, pour une société actionnaire, la société qui la contrôle). Les conventions portant sur des opérations courantes conclues à des conditions normales en sont exclues.",
    "base": [
     "Définitions#3"
    ],
@@ -125,7 +125,7 @@
   {
    "id": "ue2-03-k11",
    "type": "comp",
-   "q": "Quelles conventions échappent à la procédure des conventions réglementées dans une société anonyme (SA) ?",
+   "q": "Dans une société anonyme (SA), quelles conventions sont exclues du régime des conventions réglementées, même conclues avec un dirigeant ou un actionnaire visé ?",
    "r": "<b>Les conventions portant sur des opérations courantes conclues à des conditions normales</b>, ainsi que celles conclues entre deux sociétés dont l'une détient, directement ou indirectement, la totalité du capital de l'autre.",
    "base": [
     "Définitions#3"
@@ -161,8 +161,8 @@
   {
    "id": "ue2-03-k14",
    "type": "comp",
-   "q": "Quelles opérations avec la société sont interdites aux administrateurs personnes physiques et au directeur général d'une société anonyme (SA) ?",
-   "r": "<b>Contracter des emprunts auprès de la société, se faire consentir par elle un découvert, ou faire cautionner ou avaliser par elle leurs engagements envers les tiers</b>, à peine de nullité du contrat. L'interdiction s'étend à leurs conjoints, ascendants, descendants et à toute personne interposée ; elle ne s'applique pas, lorsque la société exploite un établissement bancaire ou financier, aux opérations courantes de ce commerce conclues à des conditions normales.",
+   "q": "Quelles opérations avec la société sont interdites aux administrateurs personnes physiques, au directeur général et aux directeurs généraux délégués d'une SA ?",
+   "r": "<b>Contracter des emprunts auprès de la société, se faire consentir par elle un découvert, ou faire cautionner ou avaliser par elle leurs engagements envers les tiers</b>, à peine de nullité du contrat ; l'interdiction s'étend à leurs conjoints, ascendants, descendants et à toute personne interposée. Elle ne s'applique pas, lorsque la société exploite un établissement bancaire ou financier, aux opérations courantes de ce commerce conclues à des conditions normales.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -174,7 +174,7 @@
    "id": "ue2-03-k15",
    "type": "comp",
    "q": "Comment se répartissent les compétences entre l'assemblée générale extraordinaire et l'assemblée générale ordinaire d'une société anonyme (SA) ?",
-   "r": "<b>L'AGE est seule habilitée à modifier les statuts dans toutes leurs dispositions</b>, sans pouvoir augmenter les engagements des actionnaires (sous réserve d'un regroupement d'actions régulièrement effectué). L'AGO prend toutes les autres décisions.",
+   "r": "<b>L'AGE est seule habilitée à modifier les statuts dans toutes leurs dispositions</b>, sans pouvoir augmenter les engagements des actionnaires (sous réserve d'un regroupement d'actions régulièrement effectué). L'AGO prend toutes les décisions autres que celles réservées à l'AGE.",
    "base": [
     "Règles essentielles#7",
     "Règles essentielles#6"
@@ -200,7 +200,7 @@
    "id": "ue2-03-k17",
    "type": "comp",
    "q": "À quelles conditions une société anonyme (SA) peut-elle attribuer un droit de vote double à des actions ?",
-   "r": "<b>Les actions doivent être entièrement libérées et justifier d'une inscription nominative depuis deux ans au moins au nom du même actionnaire.</b> Le droit de vote double est attribué à toutes les actions remplissant ces conditions, par les statuts ou par une assemblée générale extraordinaire ultérieure.",
+   "r": "<b>Les actions doivent être entièrement libérées, et il doit être justifié de leur inscription nominative depuis deux ans au moins au nom du même actionnaire.</b> Le droit de vote double est attribué par les statuts ou par une assemblée générale extraordinaire ultérieure, à toutes les actions remplissant ces conditions.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -212,7 +212,7 @@
    "id": "ue2-03-k18",
    "type": "def",
    "q": "En droit des sociétés, qu'est-ce qu'une action de préférence ?",
-   "r": "<b>Une action avec ou sans droit de vote, assortie de droits particuliers de toute nature, à titre temporaire ou permanent</b>, définis par les statuts. Elle peut être créée à la constitution de la société ou au cours de son existence. Les actions de préférence sans droit de vote ne peuvent dépasser la moitié du capital (le quart si les actions sont admises sur un marché réglementé).",
+   "r": "<b>Une action avec ou sans droit de vote, assortie de droits particuliers de toute nature, à titre temporaire ou permanent</b>, définis par les statuts. Elle peut être créée à la constitution de la société ou au cours de son existence. Les actions de préférence sans droit de vote ne peuvent représenter plus de la moitié du capital (plus du quart si les actions sont admises sur un marché réglementé).",
    "base": [
     "Définitions#4"
    ],
@@ -223,8 +223,8 @@
   {
    "id": "ue2-03-k19",
    "type": "comp",
-   "q": "Depuis la loi du 13 juin 2024, quelles modalités de délibération à distance s'offrent au conseil d'administration d'une société anonyme (SA) ?",
-   "r": "<b>Les statuts peuvent prévoir la consultation écrite des administrateurs, y compris par voie électronique</b>, chacun d'eux pouvant s'y opposer. Sauf disposition contraire des statuts ou du règlement intérieur, l'administrateur qui participe au conseil par un moyen de télécommunication est réputé présent pour le calcul du quorum et de la majorité.",
+   "q": "Depuis la loi n° 2024-537 du 13 juin 2024, comment le conseil d'administration d'une société anonyme (SA) peut-il délibérer sans réunion physique ?",
+   "r": "<b>Par consultation écrite des administrateurs, y compris par voie électronique, si les statuts le prévoient</b>, chacun d'eux pouvant s'y opposer. Sauf disposition contraire des statuts ou du règlement intérieur, l'administrateur qui participe au conseil par un moyen de télécommunication est réputé présent pour le calcul du quorum et de la majorité.",
    "base": [
     "Ce qui a changé récemment#1"
    ],
@@ -248,9 +248,10 @@
    "id": "ue2-03-k21",
    "type": "comp",
    "q": "Dans quelle mesure les règles de la société anonyme s'appliquent-elles à la société par actions simplifiée (SAS) ?",
-   "r": "<b>Dans la mesure où elles sont compatibles avec les dispositions propres à la SAS</b>, à l'exception notamment de l'article L. 224-2 (capital minimal) et des règles relatives au conseil d'administration, à la direction générale, au directoire, au conseil de surveillance et aux assemblées d'actionnaires.",
+   "r": "<b>Dans la mesure où elles sont compatibles avec les dispositions propres à la SAS</b>, à l'exception notamment de l'article L. 224-2 (capital minimal) et des règles relatives au conseil d'administration, à la direction générale, au directoire, au conseil de surveillance et aux assemblées d'actionnaires. Ainsi, la libération des actions de numéraire de moitié au moins à la souscription s'impose aussi à la SAS.",
    "base": [
-    "Définitions#1"
+    "Définitions#1",
+    "Règles essentielles#11"
    ],
    "src": "C. com., art. L. 227-1",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
@@ -259,7 +260,7 @@
   {
    "id": "ue2-03-k22",
    "type": "comp",
-   "q": "Quelles opérations de marché sont interdites à la société par actions simplifiée (SAS) ?",
+   "q": "Quelles opérations sur ses titres sont interdites à la société par actions simplifiée (SAS) ?",
    "r": "<b>L'offre au public de titres financiers et l'admission de ses actions aux négociations sur un marché réglementé.</b> L'article L. 227-2 lui ouvre néanmoins certaines offres, notamment celles réservées à des investisseurs qualifiés ou à un cercle restreint d'investisseurs agissant pour compte propre.",
    "base": [
     "Règles essentielles#11"
@@ -272,7 +273,7 @@
    "id": "ue2-03-k23",
    "type": "def",
    "q": "Qu'est-ce que le président d'une société par actions simplifiée (SAS) ?",
-   "r": "<b>Celui qui représente la société à l'égard des tiers</b>, désigné dans les conditions prévues par les statuts ; il peut être une personne morale. Il est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, dans la limite de l'objet social.",
+   "r": "<b>Celui qui représente la société à l'égard des tiers</b>, désigné dans les conditions prévues par les statuts ; il peut être une personne morale. Il est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société dans la limite de l'objet social. Les statuts peuvent prévoir qu'un directeur général ou un directeur général délégué exerce les mêmes pouvoirs.",
    "base": [
     "Définitions#2"
    ],
@@ -295,7 +296,7 @@
   {
    "id": "ue2-03-k25",
    "type": "comp",
-   "q": "Quelle différence sépare la SAS de la SA quant à la possibilité de confier la direction à une personne morale ?",
+   "q": "Quelle différence sépare la SAS de la société anonyme (SA) quant à la possibilité de confier la direction à une personne morale ?",
    "r": "<b>La SAS peut être présidée par une personne morale</b>, dont les dirigeants sont soumis aux mêmes conditions et obligations et encourent les mêmes responsabilités que s'ils étaient président en leur nom propre. Dans la SA, le président du conseil, le directeur général et les membres du directoire sont nécessairement des personnes physiques.",
    "base": [
     "Points de vigilance#2"
@@ -307,7 +308,7 @@
   {
    "id": "ue2-03-k26",
    "type": "comp",
-   "q": "En matière de révocation, qu'est-ce qui distingue le président de SAS du directeur général de SA ?",
+   "q": "En matière de révocation, qu'est-ce qui distingue le président de SAS du directeur général de société anonyme (SA) ?",
    "r": "<b>Dans la SAS, les conditions de révocation du président relèvent des statuts.</b> Dans la SA, le directeur général est révocable à tout moment par le conseil d'administration, mais une révocation sans juste motif peut donner lieu à dommages-intérêts, sauf lorsqu'il assume les fonctions de président du conseil.",
    "base": [
     "Points de vigilance#3",
@@ -345,7 +346,7 @@
    "id": "ue2-03-k29",
    "type": "comp",
    "q": "Quelles clauses relatives aux actions le Code de commerce permet-il spécialement de prévoir dans les statuts d'une SAS ?",
-   "r": "<b>L'inaliénabilité des actions pour dix ans au plus, l'agrément préalable de toute cession, l'exclusion (obligation pour un associé de céder ses actions), la suspension des droits non pécuniaires et l'exclusion en cas de changement de contrôle d'une société associée.</b> Toute cession faite en violation de ces clauses est nulle. Ces règles ne s'appliquent pas à la SAS ne comprenant qu'un seul associé.",
+   "r": "<b>L'inaliénabilité des actions pour dix ans au plus, l'agrément préalable de toute cession, l'exclusion (obligation pour un associé de céder ses actions) et la clause de changement de contrôle d'une société associée</b> (suspension de ses droits non pécuniaires et exclusion). Toute cession effectuée en violation de ces clauses est nulle. Ces règles ne s'appliquent pas à la SAS ne comprenant qu'un seul associé.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -357,7 +358,7 @@
    "id": "ue2-03-k30",
    "type": "comp",
    "q": "Dans une SAS, selon quelles règles sont adoptées ou modifiées les clauses d'inaliénabilité, de changement de contrôle, d'agrément et d'exclusion ?",
-   "r": "<b>À l'unanimité des associés pour les clauses d'inaliénabilité et de changement de contrôle ; par une décision collective prise dans les conditions et formes prévues par les statuts pour les clauses d'agrément et d'exclusion.</b> Pour ces deux dernières, l'unanimité était exigée avant la loi du 19 juillet 2019.",
+   "r": "<b>À l'unanimité des associés pour les clauses d'inaliénabilité et de changement de contrôle ; par une décision prise collectivement dans les conditions et formes prévues par les statuts pour les clauses d'agrément et d'exclusion.</b> Pour ces deux dernières, l'unanimité était exigée avant la loi du 19 juillet 2019.",
    "base": [
     "Règles essentielles#14",
     "Ce qui a changé récemment#4"
@@ -382,7 +383,7 @@
    "id": "ue2-03-k32",
    "type": "comp",
    "q": "Comment sont contrôlées les conventions entre une SAS et son président, ses dirigeants ou un actionnaire disposant de plus de 10 % des droits de vote ?",
-   "r": "<b>Le commissaire aux comptes ou, à défaut, le président présente aux associés un rapport sur ces conventions, sur lequel ils statuent.</b> Les conventions non approuvées produisent néanmoins leurs effets, l'intéressé et, éventuellement, le président et les autres dirigeants en supportant les conséquences dommageables. Dans la SAS à associé unique, les conventions conclues avec son dirigeant sont seulement mentionnées au registre des décisions.",
+   "r": "<b>Le commissaire aux comptes ou, s'il n'en a pas été désigné, le président présente aux associés un rapport sur ces conventions, sur lequel ils statuent.</b> Les conventions non approuvées produisent néanmoins leurs effets, l'intéressé et, éventuellement, le président et les autres dirigeants en supportant les conséquences dommageables. Dans la SAS à associé unique, il est seulement fait mention au registre des décisions des conventions conclues avec son dirigeant.",
    "base": [
     "Règles essentielles#15"
    ],
@@ -405,8 +406,8 @@
   {
    "id": "ue2-03-k34",
    "type": "comp",
-   "q": "Depuis la loi PACTE, à quelle condition une société anonyme (SA) ou une SAS doit-elle désigner un commissaire aux comptes ?",
-   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret</b> ; une obligation propre vise aussi les sociétés tête d'un groupe et leurs filiales significatives. En dessous des seuils, la désignation pour trois exercices est obligatoire si des associés représentant au moins le tiers du capital la demandent de façon motivée ; ceux représentant le dixième peuvent demander la nomination en justice.",
+   "q": "Depuis la loi PACTE du 22 mai 2019, dans quels cas une société anonyme (SA) ou une SAS doit-elle désigner un commissaire aux comptes ?",
+   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret</b> ; une obligation propre, appréciée au regard de seuils, vise aussi les sociétés tête d'un groupe et leurs filiales significatives. En dessous des seuils, la désignation pour trois exercices est obligatoire si des associés représentant au moins le tiers du capital en font la demande motivée.",
    "base": [
     "Ce qui a changé récemment#5"
    ],

@@ -63,18 +63,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue10-02-k06",
-   "type": "def",
-   "q": "Comment le Code de commerce (art. R. 123-178) définit-il le coût d'acquisition d'un bien ?",
-   "r": "<b>Le prix d'achat augmenté des frais accessoires nécessaires à la mise en état d'utilisation du bien.</b>",
-   "base": [
-    "Définitions#2"
-   ],
-   "src": "C. com., art. R. 123-178 (en vigueur depuis le 27 mars 2007)",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
-   "fiab": "stable"
-  },
-  {
    "id": "ue10-02-k07",
    "type": "def",
    "q": "Selon l'article 213-8 du PCG, de quoi se compose le coût d'acquisition d'une immobilisation acquise à titre onéreux ?",
@@ -125,22 +113,10 @@
    "fiab": "stable"
   },
   {
-   "id": "ue10-02-k11",
-   "type": "def",
-   "q": "Qu'appelle-t-on un « actif éligible » pour l'incorporation des coûts d'emprunt selon le PCG ?",
-   "r": "<b>Un actif exigeant une longue période de préparation ou de construction avant de pouvoir être utilisé ou vendu.</b> Les coûts d'emprunt directement attribuables à l'acquisition ou à la période de construction ou de production d'un tel actif peuvent être incorporés à son coût.",
-   "base": [
-    "Règles essentielles#5"
-   ],
-   "src": "PCG, art. 213-9",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-   "fiab": "stable"
-  },
-  {
    "id": "ue10-02-k12",
    "type": "comp",
    "q": "Quelles méthodes le PCG autorise-t-il pour comptabiliser les coûts d'emprunt d'un actif éligible ?",
-   "r": "<b>Deux méthodes : la comptabilisation en charges ou l'incorporation au coût de l'actif.</b> La méthode retenue s'applique de façon cohérente et permanente à tous les actifs éligibles.",
+   "r": "<b>Deux méthodes : la comptabilisation en charges ou l'incorporation au coût de l'actif.</b> L'actif éligible est celui qui exige une longue période de préparation ou de construction avant de pouvoir être utilisé ou vendu ; la méthode retenue s'applique de façon cohérente et permanente à tous les actifs éligibles.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -226,7 +202,7 @@
    "id": "ue10-02-k19",
    "type": "comp",
    "q": "Selon le PCG, à quelles conditions les frais de développement peuvent-ils être inscrits à l'actif ?",
-   "r": "<b>S'ils se rapportent à des projets nettement individualisés, ayant de sérieuses chances de réussite technique et de rentabilité commerciale</b>, et si l'entité démontre l'ensemble des critères de l'article 212-3 (faisabilité technique, intention et capacité d'achever et d'utiliser ou de vendre, avantages économiques futurs probables, ressources disponibles, évaluation fiable). À défaut, ils sont comptabilisés en charges lorsqu'ils sont encourus.",
+   "r": "<b>S'ils se rapportent à des projets nettement individualisés, ayant de sérieuses chances de réussite technique et de rentabilité commerciale</b>, et si l'entité démontre l'ensemble des critères de l'article 212-3. À défaut, ils sont comptabilisés en charges lorsqu'ils sont encourus.",
    "base": [
     "Règles essentielles#10",
     "Points de vigilance#2"
@@ -346,8 +322,8 @@
   {
    "id": "ue10-02-k29",
    "type": "comp",
-   "q": "Selon le PCG, à quelles conditions et jusqu'à quand le coût de production d'une solution informatique créée en interne est-il inscrit à l'actif ?",
-   "r": "<b>Lorsque les critères cumulatifs de l'article 611-3 sont réunis</b> : faisabilité technique, intention d'achever et d'utiliser la solution, capacité à l'utiliser ou à la commercialiser, avantages économiques futurs probables, évaluation fiable des dépenses attribuables. <b>L'activation cesse lorsque la solution est en état de fonctionner</b> selon l'utilisation prévue par la direction ; les études préliminaires restent en charges.",
+   "q": "Outre la faisabilité technique, quels critères cumulatifs de l'article 611-3 du PCG permettent d'inscrire à l'actif une solution informatique produite en interne ?",
+   "r": "<b>L'intention d'achever et d'utiliser la solution, la capacité à l'utiliser ou à la commercialiser, des avantages économiques futurs probables et la capacité à évaluer de façon fiable les dépenses attribuables.</b> Le coût de production de la solution est alors inscrit à l'actif.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -359,7 +335,7 @@
    "id": "ue10-02-k30",
    "type": "comp",
    "q": "Depuis le règlement ANC n° 2023-05, quelles règles du PCG s'appliquent aux dépenses de création d'un site internet ?",
-   "r": "<b>Celles des « solutions informatiques » (art. 611-1 et suivants)</b>, pour les exercices ouverts à compter du 1er janvier 2024. Les anciens articles 600-1 à 612-4 sur les logiciels et les sites internet sont abrogés, ces notions étant jugées trop limitatives.",
+   "r": "<b>Celles des « solutions informatiques » (art. 611-1 et suivants)</b>, pour les exercices ouverts à compter du 1er janvier 2024 : les études préliminaires restent en charges et l'activation s'arrête lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction. Les anciens articles 600-1 à 612-4 sur les logiciels et les sites internet sont abrogés.",
    "base": [
     "Règles essentielles#14",
     "Ce qui a changé récemment#0"
@@ -427,6 +403,30 @@
    ],
    "src": "BOI-BIC-CHG-20-30-10 ; BOI-BIC-CHG-20-10-20",
    "url": "https://bofip.impots.gouv.fr/bofip/1830-PGP.html/identifiant=BOI-BIC-CHG-20-10-20-20160203",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k36",
+   "type": "comp",
+   "q": "Outre la faisabilité technique, quels critères de l'article 212-3 du PCG l'entité doit-elle démontrer pour inscrire des frais de développement à l'actif ?",
+   "r": "<b>Son intention et sa capacité d'achever et d'utiliser ou de vendre, des avantages économiques futurs probables, des ressources disponibles et une évaluation fiable.</b> Ces critères s'ajoutent à l'exigence de projets nettement individualisés, ayant de sérieuses chances de réussite technique et de rentabilité commerciale.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "PCG, art. 212-3 (règlement ANC n° 2018-01)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k37",
+   "type": "comp",
+   "q": "Sur le plan fiscal, que deviennent les dotations excédentaires constatées en comptabilité lorsque l'entreprise traite son gros entretien selon l'approche par composant ?",
+   "r": "<b>Elles sont réintégrées extra-comptablement</b> : sur le plan fiscal, les dépenses de gros entretien ou de grandes révisions demeurent des charges. À l'inverse, la provision pour gros entretien ou grandes révisions est déductible si elle respecte les conditions de l'article 39, 1-5° du CGI.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "BOI-BIC-CHG-20-20-20 ; BOI-BIC-PROV-30-20-40 ; CGI, art. 39, 1-5°",
+   "url": "https://bofip.impots.gouv.fr/bofip/1831-PGP.html/identifiant=BOI-BIC-CHG-20-20-20-20120912",
    "fiab": "stable"
   }
  ]

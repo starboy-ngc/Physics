@@ -1,6 +1,6 @@
 {
  "id": "ue4-04",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue4-04-k01",
@@ -150,7 +150,7 @@
   {
    "id": "ue4-04-k13",
    "type": "comp",
-   "q": "Quelles opérations d'une société au profit de ses associés sont notamment considérées comme des revenus distribués ?",
+   "q": "Quelles opérations d'une société le Code général des impôts considère-t-il notamment comme des revenus distribués (art. 111) ?",
    "r": "<b>Les avances ou prêts consentis aux associés, les rémunérations et avantages occultes, et la fraction des rémunérations jugée excessive.</b> Chez l'associé personne physique, ces revenus sont imposés comme revenus de capitaux mobiliers.",
    "base": [
     "Définitions#3"
@@ -174,8 +174,8 @@
   {
    "id": "ue4-04-k15",
    "type": "comp",
-   "q": "À quelles conditions les intérêts versés sur les comptes courants d'associés sont-ils déductibles du résultat soumis à l'IS ?",
-   "r": "<b>Le capital doit être entièrement libéré</b> et le taux déductible est limité à la moyenne annuelle des taux effectifs moyens des établissements de crédit pour des prêts à taux variable aux entreprises d'une durée initiale supérieure à deux ans ; l'excédent est réintégré. Pour des avances d'une entreprise liée ou associée, la société peut retenir, si elle le justifie, le taux qu'elle aurait obtenu d'un établissement financier indépendant.",
+   "q": "Hors avances d'une entreprise liée ou associée, à quelles conditions les intérêts des comptes courants d'associés sont-ils déductibles du résultat soumis à l'IS ?",
+   "r": "<b>Le capital doit être entièrement libéré</b>, et les intérêts ne sont déductibles que dans la limite d'un taux égal à la moyenne annuelle des taux effectifs moyens pratiqués par les établissements de crédit pour des prêts à taux variable aux entreprises d'une durée initiale supérieure à deux ans ; l'excédent est réintégré.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -368,7 +368,7 @@
    "id": "ue4-04-k31",
    "type": "comp",
    "q": "Selon quelles modalités une société verse-t-elle l'impôt sur les sociétés qu'elle a elle-même liquidé ?",
-   "r": "<b>Par quatre acomptes</b>, au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre, calculés sur le dernier exercice clos, <b>puis par un solde</b> versé au plus tard le 15 du quatrième mois suivant la clôture (15 mai pour un exercice clos le 31 décembre). Sont dispensées d'acomptes les sociétés nouvelles pour leur premier exercice et celles dont l'IS de référence n'excède pas 3 000 €.",
+   "r": "<b>Par quatre acomptes</b> (15 mars, 15 juin, 15 septembre et 15 décembre), calculés sur le dernier exercice clos (le premier sur l'avant-dernier, puis régularisé), <b>puis par un solde</b> au plus tard le 15 du quatrième mois suivant la clôture (15 mai pour une clôture au 31 décembre). Sont dispensées d'acomptes les sociétés nouvelles pour leur premier exercice et celles dont l'IS de référence n'excède pas 3 000 €.",
    "base": [
     "Règles essentielles#12"
    ],
@@ -404,7 +404,7 @@
    "id": "ue4-04-k34",
    "type": "def",
    "q": "Qu'est-ce que le régime de l'intégration fiscale en matière d'impôt sur les sociétés ?",
-   "r": "<b>Une société soumise à l'IS, non détenue à 95 % au moins par une autre personne morale soumise à l'IS, se constitue seule redevable de l'IS dû sur le résultat d'ensemble du groupe</b> formé avec ses filiales détenues à 95 % au moins, directement ou indirectement, de manière continue ; l'option vaut pour cinq exercices. Chaque société n'impute ses déficits antérieurs à son entrée que sur son propre bénéfice.",
+   "r": "<b>Une société soumise à l'IS, non détenue à 95 % au moins par une autre personne morale soumise à l'IS, peut se constituer seule redevable de l'IS dû sur le résultat d'ensemble du groupe</b> formé avec les sociétés qu'elle détient à 95 % au moins, directement ou indirectement, de manière continue ; l'option vaut cinq exercices. Chaque société n'impute ses déficits antérieurs à son entrée que sur son bénéfice propre.",
    "base": [
     "Règles essentielles#15"
    ],

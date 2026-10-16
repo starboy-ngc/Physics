@@ -1,6 +1,6 @@
 {
  "id": "ue9-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue9-05-k01",
@@ -30,7 +30,7 @@
    "id": "ue9-05-k03",
    "type": "def",
    "q": "Comment le PCG définit-il une immobilisation corporelle ?",
-   "r": "<b>Un actif physique</b> détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours, soit, selon le commentaire de l'ANC, pendant une durée supérieure à 12 mois.",
+   "r": "<b>Un actif physique</b> détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours, c'est-à-dire, selon le commentaire de l'ANC, pendant une durée supérieure à 12 mois.",
    "base": [
     "Définitions#3"
    ],
@@ -53,7 +53,7 @@
   {
    "id": "ue9-05-k05",
    "type": "comp",
-   "q": "Quel dispositif le règlement ANC n° 2023-05 substitue-t-il aux règles du PCG sur les logiciels et les sites internet ?",
+   "q": "Par quel dispositif le règlement ANC n° 2023-05 remplace-t-il les règles sur les logiciels et les sites internet ?",
    "r": "<b>Un dispositif sur les « solutions informatiques »</b> (PCG, art. 611-1 et s.), applicable aux exercices ouverts à compter du 1er janvier 2024 : le compte 205 enregistre désormais les dépenses d'acquisition ou de création de solutions informatiques.",
    "base": [
     "Ce qui a changé récemment#2"
@@ -66,7 +66,7 @@
    "id": "ue9-05-k06",
    "type": "comp",
    "q": "À quelles conditions une immobilisation corporelle ou incorporelle est-elle comptabilisée à l'actif selon le PCG ?",
-   "r": "<b>Deux conditions</b> : il est probable que l'entité bénéficiera des avantages économiques futurs correspondants, et son coût ou sa valeur peut être évalué avec une fiabilité suffisante.",
+   "r": "<b>Lorsqu'il est probable que l'entité bénéficiera des avantages économiques futurs correspondants</b> et que son coût ou sa valeur peut être évalué avec une <b>fiabilité suffisante</b>.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -90,7 +90,7 @@
    "id": "ue9-05-k08",
    "type": "def",
    "q": "De quoi se compose le coût d'acquisition d'une immobilisation corporelle selon le PCG ?",
-   "r": "<b>Le prix d'achat</b>, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, <b>augmenté des coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction (livraison, installation et montage, honoraires d'architecte par exemple).",
+   "r": "<b>Le prix d'achat</b>, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction (livraison, installation et montage, honoraires d'architecte par exemple). L'escompte de règlement obtenu ne passe donc pas en produit.",
    "base": [
     "Règles essentielles#2",
     "Points de vigilance#2"
@@ -102,7 +102,7 @@
   {
    "id": "ue9-05-k09",
    "type": "comp",
-   "q": "Dans les comptes individuels, comment peuvent être comptabilisés les frais d'acquisition d'une immobilisation (droits de mutation, honoraires, commissions, frais d'actes) ?",
+   "q": "Selon le PCG, dans les comptes individuels, comment peuvent être comptabilisés les frais d'acquisition d'une immobilisation (droits de mutation, honoraires, commissions, frais d'actes) ?",
    "r": "<b>Rattachés au coût de l'immobilisation ou comptabilisés en charges</b> ; le rattachement est la méthode de référence. L'option retenue pour les immobilisations corporelles et incorporelles est indépendante de celle retenue pour les titres.",
    "base": [
     "Règles essentielles#3"
@@ -127,7 +127,7 @@
   {
    "id": "ue9-05-k11",
    "type": "def",
-   "q": "De quoi se compose le coût de production d'une immobilisation produite par l'entreprise ?",
+   "q": "Selon le PCG, de quoi se compose le coût de production d'une immobilisation produite par l'entreprise ?",
    "r": "<b>Le coût d'acquisition des matières consommées, les charges directes et une fraction des charges indirectes de production</b>, à l'exclusion de la quote-part de charges correspondant à la sous-activité. Il se détermine selon les mêmes principes que pour une immobilisation acquise.",
    "base": [
     "Règles essentielles#6"
@@ -152,7 +152,7 @@
    "id": "ue9-05-k13",
    "type": "def",
    "q": "Comment le PCG définit-il l'amortissement d'un actif immobilisé ?",
-   "r": "<b>La répartition systématique du montant amortissable d'un actif selon son utilisation.</b> Seul l'actif dont la durée d'utilisation est limitée (critères notamment physiques, techniques, juridiques ou économiques) est amorti ; celui dont la durée d'utilisation n'est pas limitée n'est pas amorti, mais peut être déprécié.",
+   "r": "<b>La répartition systématique du montant amortissable d'un actif selon son utilisation.</b> Un actif immobilisé dont la durée d'utilisation est limitée (critères notamment physiques, techniques, juridiques ou économiques) est amorti ; un actif dont la durée d'utilisation n'est pas limitée n'est pas amorti, mais peut être déprécié.",
    "base": [
     "Définitions#5"
    ],
@@ -273,7 +273,7 @@
    "id": "ue9-05-k23",
    "type": "def",
    "q": "Selon le PCG, que constate la dépréciation d'un élément d'actif ?",
-   "r": "<b>Que sa valeur actuelle est devenue inférieure à sa valeur nette comptable.</b> Celle-ci est alors ramenée à la valeur d'inventaire à la clôture de l'exercice, que la dépréciation soit définitive ou non.",
+   "r": "<b>Que sa valeur actuelle est devenue inférieure à sa valeur nette comptable.</b> La valeur nette comptable est alors ramenée à la valeur d'inventaire à la clôture de l'exercice, que la dépréciation soit définitive ou non.",
    "base": [
     "Définitions#6"
    ],
@@ -284,7 +284,7 @@
   {
    "id": "ue9-05-k24",
    "type": "comp",
-   "q": "Comment traite-t-on la plus-value constatée entre la valeur d'inventaire d'une immobilisation et sa valeur d'entrée ?",
+   "q": "Selon le Code de commerce, comment traite-t-on la plus-value constatée entre la valeur d'inventaire d'une immobilisation et sa valeur d'entrée ?",
    "r": "<b>Elle n'est pas comptabilisée</b> : seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels.",
    "base": [
     "Règles essentielles#14"
@@ -333,7 +333,7 @@
   {
    "id": "ue9-05-k28",
    "type": "comp",
-   "q": "Comment constate-t-on la perte de valeur de titres immobilisés (titres de participation, autres titres immobilisés) ?",
+   "q": "Selon le PCG, comment constate-t-on la perte de valeur de titres immobilisés (titres de participation, autres titres immobilisés) ?",
    "r": "<b>Par une dépréciation</b> (comptes 296 et 297) : les titres ne sont pas amortis. À leur entrée, ils sont évalués selon les règles générales du coût d'acquisition.",
    "base": [
     "Règles essentielles#16"
@@ -345,8 +345,8 @@
   {
    "id": "ue9-05-k29",
    "type": "comp",
-   "q": "Dans quel résultat et par quels comptes enregistre-t-on la cession d'une immobilisation financière ?",
-   "r": "<b>En résultat financier</b> : compte 6671 « Valeurs comptables des immobilisations financières cédées » et compte 7671 « Produits des cessions d'immobilisations financières », et non 657/757.",
+   "q": "Quels comptes de charges et de produits enregistrent la cession d'une immobilisation financière, comme des titres de participation ?",
+   "r": "<b>Le compte 6671</b> « Valeurs comptables des immobilisations financières cédées » <b>et le compte 7671</b> « Produits des cessions d'immobilisations financières », et non 657/757 : cette cession relève du résultat financier.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -364,18 +364,6 @@
     "Règles essentielles#13"
    ],
    "src": "PCG, art. 214-13 ; plan de comptes, comptes 657 et 757",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-05-k31",
-   "type": "comp",
-   "q": "Comment enregistre-t-on la sortie du bien lors de la cession d'une immobilisation corporelle amortie ?",
-   "r": "<b>Débit 28</b> des amortissements cumulés, <b>débit 657</b> « Valeurs comptables des immobilisations incorporelles et corporelles cédées » pour la valeur nette comptable, <b>crédit 2</b> de la valeur brute. Le prix de cession est crédité au compte 757, en contrepartie du compte 462 ou de la trésorerie.",
-   "base": [
-    "Règles essentielles#13"
-   ],
-   "src": "Plan de comptes, comptes 462, 657 et 757 ; règlement ANC n° 2022-06",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },
@@ -406,8 +394,8 @@
   {
    "id": "ue9-05-k34",
    "type": "comp",
-   "q": "Selon l'article 39 duodecies du CGI, comment est qualifiée fiscalement la plus-value de cession d'une immobilisation ?",
-   "r": "<b>À court terme</b> si l'élément a été acquis ou créé depuis moins de deux ans. Pour un élément amortissable détenu depuis au moins deux ans, elle est à court terme à hauteur des amortissements déduits et à long terme au-delà (entreprises relevant de l'impôt sur le revenu). Cette qualification ne modifie pas l'enregistrement comptable en 657 et 757.",
+   "q": "Pour une entreprise relevant de l'impôt sur le revenu, comment l'article 39 duodecies du CGI qualifie-t-il la plus-value de cession d'une immobilisation ?",
+   "r": "<b>À court terme</b> si l'élément a été acquis ou créé depuis moins de deux ans ; pour un élément amortissable détenu depuis au moins deux ans, <b>à court terme à hauteur des amortissements déduits et à long terme au-delà</b>. Cette qualification ne modifie pas l'enregistrement comptable en 657 et 757.",
    "base": [
     "Points de vigilance#5"
    ],
@@ -425,6 +413,18 @@
    ],
    "src": "PCG, art. 213-9",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-05-k36",
+   "type": "comp",
+   "q": "Dans l'amortissement dégressif fiscal, à quel moment l'entreprise peut-elle passer de l'annuité dégressive à une annuité linéaire ?",
+   "r": "<b>Lorsque l'annuité dégressive devient inférieure au quotient de la valeur résiduelle par le nombre d'années d'utilisation restant à courir</b> : l'entreprise peut alors pratiquer cette dernière annuité. L'annuité dégressive s'applique en effet à la valeur résiduelle, c'est-à-dire à la valeur restant à amortir.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "BOI-BIC-AMT-20-20-30",
+   "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
    "fiab": "stable"
   }
  ]

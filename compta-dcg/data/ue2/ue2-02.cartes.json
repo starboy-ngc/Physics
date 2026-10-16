@@ -1,6 +1,6 @@
 {
  "id": "ue2-02",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue2-02-k01",
@@ -30,7 +30,7 @@
   {
    "id": "ue2-02-k03",
    "type": "def",
-   "q": "Comment est fixé le capital d'une SARL et en quels titres est-il divisé ?",
+   "q": "Comment le capital social d'une SARL est-il fixé et divisé ?",
    "r": "<b>Son montant est fixé par les statuts, sans minimum légal</b> ; il est divisé en parts sociales égales. Les titres de la SARL sont des parts sociales et non des actions.",
    "base": [
     "Définitions#2"
@@ -55,7 +55,7 @@
    "id": "ue2-02-k05",
    "type": "comp",
    "q": "Quelles règles encadrent la libération des apports en numéraire dans une SARL ?",
-   "r": "<b>Au moins un cinquième de leur montant à la constitution</b> ; le surplus est libéré en une ou plusieurs fois sur décision du gérant, dans un délai de cinq ans au plus à compter de l'immatriculation. Le capital doit être intégralement libéré avant toute souscription de nouvelles parts à libérer en numéraire.",
+   "r": "<b>Les parts représentant des apports en numéraire doivent être libérées d'au moins un cinquième de leur montant à la constitution</b> ; le surplus est libéré en une ou plusieurs fois sur décision du gérant, dans un délai de cinq ans au plus à compter de l'immatriculation. Le capital doit être intégralement libéré avant toute souscription de nouvelles parts à libérer en numéraire.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -79,7 +79,7 @@
    "id": "ue2-02-k07",
    "type": "comp",
    "q": "À quelles conditions les futurs associés d'une SARL peuvent-ils se dispenser d'un commissaire aux apports pour évaluer les apports en nature ?",
-   "r": "<b>À l'unanimité</b>, si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital. Sinon, les statuts contiennent l'évaluation de chaque apport en nature au vu du rapport d'un commissaire aux apports désigné à l'unanimité des futurs associés ou, à défaut, par décision de justice.",
+   "r": "<b>À l'unanimité</b>, si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital. À défaut de dispense, les statuts contiennent l'évaluation de chaque apport en nature au vu du rapport d'un commissaire aux apports désigné à l'unanimité des futurs associés ou, à défaut, par décision de justice.",
    "base": [
     "Règles essentielles#3",
     "Chiffres et seuils#2"
@@ -103,8 +103,8 @@
   {
    "id": "ue2-02-k09",
    "type": "def",
-   "q": "Qui peut être gérant d'une SARL et par qui est-il nommé ?",
-   "r": "<b>Une ou plusieurs personnes physiques, associées ou non.</b> Le gérant est nommé par les associés dans les statuts ou par un acte postérieur.",
+   "q": "Qui peut être gérant d'une SARL ?",
+   "r": "<b>Une ou plusieurs personnes physiques, associées ou non</b>, nommées par les associés dans les statuts ou par un acte postérieur.",
    "base": [
     "Définitions#3"
    ],
@@ -140,8 +140,8 @@
   {
    "id": "ue2-02-k12",
    "type": "comp",
-   "q": "Par qui et à quelle majorité le gérant d'une SARL peut-il être révoqué ?",
-   "r": "<b>Par décision des associés représentant plus de la moitié des parts sociales</b>, à moins que les statuts ne prévoient une majorité plus forte ; sans juste motif, la révocation peut donner lieu à dommages-intérêts. Le gérant est aussi révocable par les tribunaux pour cause légitime, à la demande de tout associé.",
+   "q": "Comment le gérant d'une SARL peut-il être révoqué ?",
+   "r": "<b>Par décision des associés dans les conditions de majorité de l'article L. 223-29 (plus de la moitié des parts sociales)</b>, à moins que les statuts ne prévoient une majorité plus forte ; décidée sans juste motif, la révocation peut donner lieu à dommages-intérêts. Le gérant est aussi révocable par les tribunaux pour cause légitime, à la demande de tout associé.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -153,7 +153,7 @@
    "id": "ue2-02-k13",
    "type": "comp",
    "q": "Quels gérants de SARL sont affiliés au régime général de la sécurité sociale ?",
-   "r": "<b>Ceux qui ne possèdent pas ensemble plus de la moitié du capital social</b> (gérance minoritaire ou égalitaire, gérant non associé), les parts du conjoint, du partenaire de PACS et des enfants mineurs non émancipés, en toute propriété ou en usufruit, comptant comme celles du gérant. Le gérant majoritaire relève du régime des travailleurs indépendants.",
+   "r": "<b>Ceux qui ne possèdent pas ensemble plus de la moitié du capital social</b> (gérance minoritaire ou égalitaire, gérant non associé), les parts du conjoint, du partenaire de PACS et des enfants mineurs non émancipés, en toute propriété ou en usufruit, comptant comme celles du gérant. En cogérance, la majorité s'apprécie sur les parts de l'ensemble des gérants ; le gérant majoritaire relève du régime des travailleurs indépendants.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -237,7 +237,7 @@
   {
    "id": "ue2-02-k20",
    "type": "comp",
-   "q": "De quels moyens d'information sur la gestion disposent les associés d'une SARL ?",
+   "q": "Quels moyens le Code de commerce donne-t-il aux associés d'une SARL pour interroger le gérant ou faire contrôler une opération de gestion ?",
    "r": "<b>Tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant</b> sur tout fait de nature à compromettre la continuité de l'exploitation. Un ou plusieurs associés représentant au moins le dixième du capital peuvent demander en justice la désignation d'experts chargés d'un rapport sur une ou plusieurs opérations de gestion.",
    "base": [
     "Règles essentielles#14"
@@ -297,7 +297,7 @@
   {
    "id": "ue2-02-k25",
    "type": "def",
-   "q": "Quelles sont les trois catégories de conventions passées avec une SARL que distingue le Code de commerce ?",
+   "q": "Quelles sont les trois catégories de conventions entre une SARL et ses gérants ou associés que distingue le Code de commerce ?",
    "r": "<b>Les conventions réglementées</b> (rapport à l'assemblée, qui statue en principe après leur conclusion), <b>les conventions libres</b> (opérations courantes conclues à des conditions normales) et <b>les conventions interdites</b>, à peine de nullité du contrat.",
    "base": [
     "Définitions#4"
@@ -322,7 +322,7 @@
    "id": "ue2-02-k27",
    "type": "comp",
    "q": "Selon quelle procédure l'assemblée d'une SARL statue-t-elle sur les conventions conclues entre la société et l'un de ses gérants ou associés ?",
-   "r": "<b>Le gérant ou, s'il en existe un, le commissaire aux comptes lui présente un rapport sur ces conventions</b> ; l'assemblée statue, l'intéressé ne prenant pas part au vote et ses parts n'étant pas prises en compte pour le quorum et la majorité. Toutefois, sans commissaire aux comptes, la convention conclue par un gérant non associé est soumise à son approbation préalable.",
+   "r": "<b>Le gérant ou, s'il en existe un, le commissaire aux comptes présente à l'assemblée un rapport sur ces conventions</b>, puis elle statue sans que l'intéressé vote ni que ses parts comptent pour le quorum et la majorité. Sans commissaire aux comptes, la convention conclue par un gérant non associé est soumise à approbation préalable ; dans l'EURL, celle conclue avec l'associé unique est seulement mentionnée au registre des décisions.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -346,9 +346,10 @@
    "id": "ue2-02-k29",
    "type": "comp",
    "q": "Comment les comptes d'une EURL sont-ils approuvés lorsque l'associé unique, personne physique, assume personnellement la gérance ?",
-   "r": "<b>Le dépôt au registre du commerce et des sociétés de l'inventaire et des comptes annuels dûment signés vaut approbation</b>, s'il intervient dans les six mois de la clôture.",
+   "r": "<b>Le dépôt au registre du commerce et des sociétés de l'inventaire et des comptes annuels dûment signés vaut approbation</b>, s'il intervient dans les six mois de la clôture. L'article L. 223-31 ne prévoit que cela : la dispense de rapport de gestion résulte de l'article L. 232-1 et bénéficie, sauf exceptions, aux sociétés commerciales qui sont des micro-entreprises ou des petites entreprises.",
    "base": [
-    "Règles essentielles#16"
+    "Règles essentielles#16",
+    "Points de vigilance#3"
    ],
    "src": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1844-5",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
@@ -370,7 +371,7 @@
    "id": "ue2-02-k31",
    "type": "comp",
    "q": "Comment est imposé le bénéfice d'une EURL selon que son associé unique est une personne physique ou une personne morale ?",
-   "r": "<b>Personne physique : l'associé unique est personnellement soumis à l'impôt sur le revenu</b> sur les bénéfices sociaux, sauf option de la société pour l'impôt sur les sociétés. <b>Personne morale : l'EURL est passible de plein droit de l'impôt sur les sociétés.</b>",
+   "r": "<b>Personne physique : l'associé unique est personnellement soumis à l'impôt sur le revenu</b> sur les bénéfices sociaux, sauf option de la société pour l'impôt sur les sociétés, à laquelle elle peut renoncer jusqu'au cinquième exercice suivant ; sans renonciation dans ce délai, l'option devient irrévocable. <b>Personne morale : l'EURL est passible de plein droit de l'impôt sur les sociétés.</b>",
    "base": [
     "Points de vigilance#2"
    ],

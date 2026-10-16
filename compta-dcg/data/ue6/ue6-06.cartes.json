@@ -1,6 +1,6 @@
 {
  "id": "ue6-06",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue6-06-k01",
@@ -115,8 +115,8 @@
   {
    "id": "ue6-06-k10",
    "type": "comp",
-   "q": "Pourquoi un découvert bancaire permanent est-il un signal d'alerte dans l'analyse de la trésorerie d'une entreprise ?",
-   "r": "<b>Parce qu'il masque un besoin de financement stable.</b> Les concours bancaires courants sont de la trésorerie négative, pas des dettes financières.",
+   "q": "Que masque un découvert bancaire permanent dans le financement d'une entreprise ?",
+   "r": "<b>Un besoin de financement stable.</b> Les concours bancaires courants sont en effet de la trésorerie négative, pas des dettes financières.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -139,7 +139,7 @@
   {
    "id": "ue6-06-k12",
    "type": "comp",
-   "q": "À quelles conditions une banque peut-elle réduire ou interrompre un concours à durée indéterminée autre qu'occasionnel ?",
+   "q": "Selon le Code monétaire et financier, à quelles conditions une banque peut-elle réduire ou interrompre un concours à durée indéterminée autre qu'occasionnel ?",
    "r": "<b>Sur notification écrite et après un préavis fixé lors de l'octroi, qui ne peut être inférieur à soixante jours.</b> Exceptions : comportement gravement répréhensible ou situation irrémédiablement compromise.",
    "base": [
     "Règles essentielles#5",
@@ -213,8 +213,8 @@
   {
    "id": "ue6-06-k18",
    "type": "comp",
-   "q": "Dans quels comptes du PCG 2025 rattache-t-on les intérêts courus sur concours bancaires et sur obligations détenues ?",
-   "r": "<b>Concours bancaires : 5186 pour les intérêts courus à payer, 5187 pour ceux à recevoir.</b> Les intérêts courus sur obligations et bons détenus sont rattachés en 5088.",
+   "q": "Lors de l'achat d'une obligation, de quels éléments se compose le prix payé ?",
+   "r": "<b>Du cours au pied du coupon augmenté du coupon couru.</b> Les intérêts courus sur les obligations et bons détenus sont rattachés au compte 5088.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -334,7 +334,7 @@
   {
    "id": "ue6-06-k28",
    "type": "comp",
-   "q": "Selon le Code de commerce, quel principe détermine le droit de vote attaché aux actions ?",
+   "q": "Selon l'article L. 225-122 du Code de commerce, quel principe détermine le droit de vote attaché aux actions ?",
    "r": "<b>Le droit de vote est proportionnel à la quotité de capital que les actions représentent</b>, et chaque action donne droit à une voix au moins.",
    "base": [
     "Règles essentielles#9"
@@ -347,10 +347,9 @@
    "id": "ue6-06-k29",
    "type": "def",
    "q": "Qu'est-ce qu'une obligation au sens du Code de commerce ?",
-   "r": "<b>Un titre négociable qui confère, dans une même émission, les mêmes droits de créance pour une même valeur nominale.</b> Le coupon est calculé sur le nominal ; le prix payé à l'achat est le cours au pied du coupon augmenté du coupon couru.",
+   "r": "<b>Un titre négociable qui confère, dans une même émission, les mêmes droits de créance pour une même valeur nominale.</b> Le coupon est calculé sur le nominal et le remboursement s'effectue au prix de remboursement.",
    "base": [
-    "Règles essentielles#11",
-    "Règles essentielles#8"
+    "Règles essentielles#11"
    ],
    "src": "C. com., art. L. 228-38",
    "url": null,
@@ -372,7 +371,7 @@
    "id": "ue6-06-k31",
    "type": "def",
    "q": "Qu'est-ce que l'Euribor sur le marché monétaire de la zone euro ?",
-   "r": "<b>Un indice de référence interbancaire, d'une durée de 1 semaine à 12 mois</b>, administré sous le règlement européen sur les indices de référence. Les placements monétaires et les crédits à taux variable y sont indexés.",
+   "r": "<b>Un indice de référence interbancaire, décliné sur des durées de 1 semaine à 12 mois</b>, administré sous le règlement européen sur les indices de référence. Les placements monétaires et les crédits à taux variable y sont indexés.",
    "base": [
     "Règles essentielles#15"
    ],

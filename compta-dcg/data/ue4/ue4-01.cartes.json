@@ -1,6 +1,6 @@
 {
  "id": "ue4-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue4-01-k01",
@@ -54,7 +54,7 @@
    "id": "ue4-01-k05",
    "type": "def",
    "q": "Qu'est-ce que la garantie d'opposabilité de la doctrine administrative prévue par l'article L. 80 A du Livre des procédures fiscales ?",
-   "r": "<b>Aucun rehaussement ne peut être opéré</b> si le différend porte sur l'interprétation d'un texte fiscal par le redevable de bonne foi et que cette interprétation était alors formellement admise par l'administration. Il en va de même lorsque le redevable a appliqué ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations.",
+   "r": "<b>Aucun rehaussement d'impositions antérieures ne peut être opéré</b> si le différend porte sur l'interprétation d'un texte fiscal par le redevable de bonne foi et que cette interprétation était alors formellement admise par l'administration. Il en va de même lorsque le redevable a appliqué un texte selon l'interprétation que l'administration avait fait connaître par ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations.",
    "base": [
     "Définitions#3"
    ],
@@ -65,8 +65,8 @@
   {
    "id": "ue4-01-k06",
    "type": "comp",
-   "q": "Pourquoi la doctrine administrative fiscale ne crée-t-elle pas de droit, selon le Conseil d'État ?",
-   "r": "<b>Parce que l'article L. 80 A du LPF ne confère à l'administration aucun pouvoir réglementaire</b> et ne lui permet pas de déroger à la loi. Seule la dernière interprétation formellement admise peut être invoquée.",
+   "q": "Selon le Conseil d'État, quel pouvoir l'article L. 80 A du LPF confère-t-il à l'administration fiscale lorsqu'elle publie sa doctrine ?",
+   "r": "<b>Aucun pouvoir réglementaire</b> : il ne lui permet pas de déroger à la loi, et la doctrine ne crée pas de droit. Seule la dernière interprétation formellement admise peut être invoquée.",
    "base": [
     "Points de vigilance#0"
    ],
@@ -137,8 +137,8 @@
   {
    "id": "ue4-01-k12",
    "type": "def",
-   "q": "Qu'est-ce que le foyer fiscal soumis à imposition commune à l'impôt sur le revenu ?",
-   "r": "<b>Les personnes mariées et les partenaires liés par un PACS</b>, qui font l'objet d'une imposition commune sur leurs revenus, ceux de leurs enfants et des personnes à charge.",
+   "q": "Selon l'article 6 du CGI, quelles personnes forment le foyer fiscal soumis à imposition commune à l'impôt sur le revenu, et sur quels revenus ?",
+   "r": "<b>Les personnes mariées et les partenaires liés par un PACS</b>, imposés en commun sur leurs revenus, ceux de leurs enfants et ceux des personnes à charge, sauf cas d'imposition distincte (séparation, abandon du domicile conjugal, option l'année du mariage ou du PACS).",
    "base": [
     "Définitions#5"
    ],
@@ -149,7 +149,7 @@
   {
    "id": "ue4-01-k13",
    "type": "comp",
-   "q": "Selon l'article 6, 4 du CGI, dans quels cas des époux font-ils l'objet d'impositions distinctes à l'impôt sur le revenu ?",
+   "q": "Dans quels cas des époux qui vivent séparément, sans être divorcés, sont-ils imposés distinctement à l'impôt sur le revenu ?",
    "r": "<b>S'ils sont séparés de biens et ne vivent pas sous le même toit</b> ; si, en instance de séparation de corps ou de divorce, ils ont été autorisés à avoir des résidences séparées ; ou si, en cas d'abandon du domicile conjugal, chacun dispose de revenus distincts.",
    "base": [
     "Définitions#5"
@@ -221,8 +221,8 @@
   {
    "id": "ue4-01-k19",
    "type": "comp",
-   "q": "Dans quelles conditions une pension alimentaire versée à un enfant majeur est-elle déductible du revenu global ?",
-   "r": "<b>Pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire</b>, dans la limite d'un plafond revalorisé chaque année, et seulement si l'enfant n'est pas rattaché au foyer fiscal. La pension déduite est imposable chez l'enfant.",
+   "q": "Hors plafond, d'après quels éléments s'apprécie le montant déductible d'une pension alimentaire versée à un enfant majeur non rattaché au foyer fiscal ?",
+   "r": "<b>L'état de fortune du débiteur et les besoins du bénéficiaire.</b> La pension déduite est imposable chez l'enfant ; si l'enfant est rattaché au foyer fiscal, aucune déduction n'est possible.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -317,8 +317,8 @@
   {
    "id": "ue4-01-k27",
    "type": "comp",
-   "q": "Comment la réduction d'impôt sur le revenu de 75 % pour dons aux organismes d'aide aux personnes en difficulté s'articule-t-elle avec le taux de 66 % ?",
-   "r": "<b>Le taux de 75 % ne s'applique que dans un plafond spécifique ; la fraction des dons au-delà relève du taux de 66 %.</b> La fraction retenue au taux de 75 % n'est pas prise en compte pour apprécier la limite de 20 % du revenu imposable.",
+   "q": "Comment la réduction d'impôt sur le revenu de 75 % pour les dons aux organismes d'aide aux personnes en difficulté (repas, soins, logement) s'articule-t-elle avec le taux de 66 % ?",
+   "r": "<b>Le taux de 75 % ne s'applique que dans un plafond spécifique ; la fraction des dons au-delà relève du taux de 66 %.</b> La fraction retenue à 75 % n'est pas prise en compte pour apprécier la limite de 20 % du revenu imposable.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -367,8 +367,8 @@
   {
    "id": "ue4-01-k31",
    "type": "comp",
-   "q": "Que se passe-t-il lorsqu'un salarié ne communique pas son taux personnalisé de prélèvement à la source à son employeur ?",
-   "r": "<b>L'employeur applique un taux neutre (grille par défaut)</b>, déterminé uniquement en fonction du montant de la rémunération versée. Cette option ne concerne que la personne qui l'a prise.",
+   "q": "Quel taux de prélèvement à la source l'employeur applique-t-il au salarié qui a choisi de ne pas lui faire connaître son taux personnalisé ?",
+   "r": "<b>Un taux neutre (grille par défaut)</b>, déterminé uniquement en fonction du montant de la rémunération versée. Cette option ne concerne que la personne qui l'a prise.",
    "base": [
     "Règles essentielles#15"
    ],
@@ -392,7 +392,7 @@
    "id": "ue4-01-k33",
    "type": "comp",
    "q": "À quelle condition une prise de position tacite de l'administration sur les points d'un contrôle fiscal lui est-elle opposable par le contribuable ?",
-   "r": "<b>L'administration doit avoir pu se prononcer en connaissance de cause.</b> La garantie vise les points d'une vérification de comptabilité ou d'un examen contradictoire de la situation fiscale personnelle, pour les contrôles dont l'avis est adressé à compter du 1er janvier 2019.",
+   "r": "<b>L'administration doit avoir pu se prononcer en connaissance de cause.</b> La garantie vise les points d'un contrôle tel qu'une vérification de comptabilité ou un examen contradictoire de la situation fiscale personnelle, pour les contrôles dont l'avis est adressé à compter du 1er janvier 2019.",
    "base": [
     "Définitions#3"
    ],

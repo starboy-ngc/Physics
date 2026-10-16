@@ -91,8 +91,8 @@
   {
    "id": "ue2-01-k08",
    "type": "def",
-   "q": "Outre les apports de chaque associé, que doivent déterminer les statuts d'une société ?",
-   "r": "<b>La forme, l'objet, l'appellation, le siège social, le capital social, la durée de la société et les modalités de son fonctionnement.</b> Les statuts doivent être établis par écrit.",
+   "q": "Outre les apports de chaque associé, le capital social, la durée et les modalités de fonctionnement, quelles mentions les statuts d'une société doivent-ils déterminer ?",
+   "r": "<b>La forme, l'objet, l'appellation et le siège social de la société.</b> Les statuts doivent être établis par écrit (art. 1835 du Code civil).",
    "base": [
     "Définitions#5"
    ],
@@ -128,7 +128,7 @@
    "id": "ue2-01-k11",
    "type": "comp",
    "q": "Par quelles voies une SARL peut-elle reprendre les engagements pris pour son compte pendant sa formation ?",
-   "r": "<ul><li><b>l'état des actes</b> présenté aux associés avant la signature des statuts et annexé à ceux-ci : la signature emporte reprise une fois la société immatriculée ;</li><li><b>le mandat</b> donné, dans les statuts ou par acte séparé, pour des engagements déterminés dont il précise les modalités : l'immatriculation en emporte reprise ;</li><li><b>une décision des associés</b> après l'immatriculation, prise, sauf clause contraire, à la majorité.</li></ul>",
+   "r": "<b>Trois voies</b> :<ul><li><b>l'état des actes</b> présenté aux associés avant la signature des statuts et annexé à ceux-ci : la signature emporte reprise une fois la société immatriculée ;</li><li><b>le mandat</b> donné, dans les statuts ou par acte séparé, pour des engagements déterminés dont il précise les modalités : l'immatriculation en emporte reprise ;</li><li><b>une décision des associés</b> après l'immatriculation, prise, sauf clause contraire, à la majorité.</li></ul>",
    "base": [
     "Règles essentielles#1"
    ],
@@ -164,7 +164,7 @@
    "id": "ue2-01-k14",
    "type": "comp",
    "q": "Dans quels cas les statuts d'une société peuvent-ils priver un associé de son droit de vote ?",
-   "r": "<b>Seulement dans les cas prévus par la loi</b> : en dehors de ces cas, les statuts ne peuvent priver un associé de son droit de vote. Tout associé a le droit de participer aux décisions collectives.",
+   "r": "<b>Dans les seuls cas prévus par la loi</b> : en dehors de ces cas, aucune clause statutaire ne peut priver un associé de son droit de vote. Tout associé a le droit de participer aux décisions collectives (art. 1844 du Code civil).",
    "base": [
     "Règles essentielles#3"
    ],
@@ -322,7 +322,7 @@
    "id": "ue2-01-k27",
    "type": "comp",
    "q": "Depuis le 1er octobre 2025, quelles sont les seules causes de nullité d'une société ?",
-   "r": "<b>L'incapacité de tous les fondateurs ou la violation des dispositions fixant un nombre minimal de deux associés</b> (ordonnance n° 2025-229 du 12 mars 2025). Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité.",
+   "r": "<b>L'incapacité de tous les fondateurs ou la violation des dispositions fixant un nombre minimal de deux associés.</b> Sauf si la loi en dispose autrement, la violation des statuts n'est pas une cause de nullité ; une clause statutaire contraire à une disposition impérative du droit des sociétés dont la violation n'est pas sanctionnée par la nullité est réputée non écrite.",
    "base": [
     "Règles essentielles#13",
     "Ce qui a changé récemment#2"
@@ -346,8 +346,8 @@
   {
    "id": "ue2-01-k29",
    "type": "comp",
-   "q": "Depuis le 1er octobre 2025, quel est le délai de prescription des actions en nullité en droit des sociétés ?",
-   "r": "<b>Deux ans à compter du jour où la nullité est encourue</b>, pour la nullité de la société, des apports ou des actes et délibérations postérieurs à sa constitution, sous réserve des règles spéciales (fusion, scission, augmentation de capital). Le délai était de trois ans auparavant.",
+   "q": "Depuis le 1er octobre 2025, comment se prescrivent les actions en nullité d'une société, de ses apports ou de ses actes et délibérations postérieurs à sa constitution ?",
+   "r": "<b>Par deux ans à compter du jour où la nullité est encourue</b>, sous réserve des règles spéciales (fusion, scission, augmentation de capital). Le délai était de trois ans auparavant.",
    "base": [
     "Chiffres et seuils#5"
    ],
@@ -370,8 +370,8 @@
   {
    "id": "ue2-01-k31",
    "type": "comp",
-   "q": "Comment les associés décident-ils de proroger une société, dont la durée ne peut excéder 99 ans ?",
-   "r": "<b>À l'unanimité ou, si les statuts le prévoient, à la majorité prévue pour leur modification.</b> Ils doivent être consultés un an au moins avant l'expiration ; à défaut, le président du tribunal, saisi sur requête dans l'année suivant l'expiration, peut constater leur intention de proroger et autoriser une consultation de régularisation.",
+   "q": "Comment les associés d'une société décident-ils de la proroger avant l'expiration de sa durée ?",
+   "r": "<b>À l'unanimité ou, si les statuts le prévoient, à la majorité prévue pour leur modification</b>, la durée de la société ne pouvant excéder 99 ans. Ils doivent être consultés un an au moins avant l'expiration ; à défaut, le président du tribunal, saisi sur requête dans l'année suivant l'expiration, peut constater leur intention de proroger et autoriser une consultation de régularisation.",
    "base": [
     "Chiffres et seuils#0"
    ],
@@ -407,7 +407,7 @@
    "id": "ue2-01-k34",
    "type": "comp",
    "q": "Quel est l'effet du décès d'un associé dans une société civile, une SNC et une SARL ?",
-   "r": "<b>Il dépend de la forme sociale.</b> La société civile continue avec les héritiers ou légataires, sauf clause statutaire d'agrément ; la SNC prend fin, sauf clause de continuation ; dans la SARL, les parts sont librement transmissibles par succession, mais les statuts peuvent soumettre l'héritier à l'agrément.",
+   "r": "<b>Il dépend de la forme sociale.</b> La société civile continue avec les héritiers ou légataires, sauf clause statutaire d'agrément ; la SNC prend fin, sauf clause de continuation ; dans la SARL, les parts sont librement transmissibles par succession, mais les statuts peuvent soumettre l'héritier à l'agrément. Il faut donc toujours lire les statuts avant de conclure que l'héritier est associé.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -416,15 +416,15 @@
    "fiab": "stable"
   },
   {
-   "id": "ue2-01-k35",
-   "type": "comp",
-   "q": "Depuis la réforme des nullités de 2025, quel est le sort d'une clause statutaire contraire à une disposition impérative du droit des sociétés non sanctionnée par la nullité ?",
-   "r": "<b>Elle est réputée non écrite</b> : la clause disparaît, mais la société n'est pas annulée. Depuis le 1er octobre 2025, la nullité de la société ne peut résulter que de l'incapacité de tous les fondateurs ou de la violation du nombre minimal de deux associés.",
+   "id": "ue2-01-k36",
+   "type": "def",
+   "q": "Outre les apports de chaque associé, la forme, l'objet, l'appellation et le siège social, quelles mentions les statuts d'une société doivent-ils déterminer ?",
+   "r": "<b>Le capital social, la durée de la société et les modalités de son fonctionnement.</b> Établis par écrit, les statuts peuvent aussi préciser une raison d'être depuis la loi n° 2019-486 du 22 mai 2019 (PACTE).",
    "base": [
-    "Règles essentielles#13"
+    "Définitions#5"
    ],
-   "src": "C. civ., art. 1844-10 (ordonnance n° 2025-229 du 12 mars 2025)",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322322",
+   "src": "C. civ., art. 1835",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038589926/",
    "fiab": "stable"
   }
  ]

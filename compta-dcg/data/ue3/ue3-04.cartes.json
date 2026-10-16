@@ -42,22 +42,9 @@
    "id": "ue3-04-k04",
    "type": "def",
    "q": "Qu'est-ce que la rupture conventionnelle d'un contrat de travail à durée indéterminée (CDI) ?",
-   "r": "<b>Le mode de rupture par lequel l'employeur et le salarié conviennent en commun des conditions de la rupture du CDI.</b> Exclusive du licenciement et de la démission, elle ne peut être imposée par l'une ou l'autre des parties.",
+   "r": "<b>Le mode de rupture par lequel l'employeur et le salarié conviennent en commun des conditions de la rupture du CDI.</b> Exclusive du licenciement et de la démission, elle ne peut être imposée par l'une ou l'autre des parties et n'est valable qu'après homologation par l'autorité administrative.",
    "base": [
     "Définitions#2"
-   ],
-   "src": "C. trav., art. L. 1237-11 et L. 1237-14",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue3-04-k05",
-   "type": "comp",
-   "q": "Quelle intervention administrative conditionne la validité de la convention de rupture conventionnelle signée par l'employeur et le salarié ?",
-   "r": "<b>Elle n'est valable qu'après homologation par l'autorité administrative.</b> Le juge judiciaire ne peut pas homologuer lui-même la convention à la place de l'administration.",
-   "base": [
-    "Définitions#2",
-    "Points de vigilance#2"
    ],
    "src": "C. trav., art. L. 1237-11 et L. 1237-14",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
@@ -126,8 +113,8 @@
   {
    "id": "ue3-04-k11",
    "type": "comp",
-   "q": "Outre l'ordre des licenciements, le plan de sauvegarde de l'emploi et le CSP, quelles obligations préalables pèsent sur l'employeur envisageant un licenciement économique ?",
-   "r": "<b>Des efforts de formation et d'adaptation et une recherche de reclassement</b> sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe, ainsi que <b>la consultation du CSE et l'information de l'administration</b>.",
+   "q": "Avant un licenciement pour motif économique, quels efforts l'employeur doit-il accomplir envers le salarié et quelles instances doit-il consulter ou informer ?",
+   "r": "<b>Des efforts de formation et d'adaptation et une recherche de reclassement</b> sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe ; il doit aussi <b>consulter le CSE et informer l'administration</b>.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -222,19 +209,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue3-04-k19",
-   "type": "comp",
-   "q": "Selon la Cour de cassation, quelle prescription s'applique à l'action en paiement de l'indemnité compensatrice de préavis ?",
-   "r": "<b>La prescription triennale</b>, car cette indemnité, due lorsque le préavis n'est pas exécuté du fait de l'employeur, a la nature d'une créance salariale ; le délai de 12 mois applicable à la contestation de la rupture ne s'y applique pas.",
-   "base": [
-    "Chiffres et seuils#7",
-    "Règles essentielles#7"
-   ],
-   "src": "Cass. soc., 12 février 2025, n° 23-18.876, publié au bulletin ; C. trav., art. L. 3245-1",
-   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000051243749",
-   "fiab": "stable"
-  },
-  {
    "id": "ue3-04-k20",
    "type": "comp",
    "q": "À quelles conditions un salarié licencié a-t-il droit à l'indemnité légale de licenciement ?",
@@ -298,7 +272,7 @@
    "id": "ue3-04-k25",
    "type": "def",
    "q": "Qu'est-ce que la mise à la retraite d'un salarié selon le Code du travail ?",
-   "r": "<b>La possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge du taux plein automatique (67 ans)</b>, après l'avoir interrogé par écrit sur son intention de partir ; en cas de refus, la mise à la retraite est impossible pendant l'année qui suit, et ce chaque année jusqu'à ses 69 ans. Cette rupture ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement.",
+   "r": "<b>La possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge du taux plein automatique (67 ans).</b> Elle ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement, alors que le salarié qui part volontairement perçoit l'indemnité de départ à la retraite.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -424,6 +398,30 @@
    ],
    "src": "C. trav., art. L. 1243-1 à L. 1243-5",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029946319",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k36",
+   "type": "comp",
+   "q": "Quelle procédure préalable encadre la mise à la retraite d'un salarié par l'employeur selon le Code du travail ?",
+   "r": "<b>Avant que le salarié atteigne l'âge du taux plein automatique, l'employeur l'interroge par écrit sur son intention de quitter volontairement l'entreprise pour bénéficier d'une pension de vieillesse.</b> En cas de réponse négative ou à défaut d'interrogation, il ne peut pas le mettre à la retraite pendant l'année qui suit ; la même procédure s'applique chaque année jusqu'au 69e anniversaire.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. trav., art. L. 1237-5 (version en vigueur depuis le 26 octobre 2025), L. 1237-7, L. 1237-9 et L. 1237-10 ; CSS, art. L. 351-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052437183",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k37",
+   "type": "comp",
+   "q": "Sauf faute grave, quelle est la durée du préavis légal dû au salarié licencié selon son ancienneté de services continus ?",
+   "r": "<b>Un mois pour une ancienneté comprise entre six mois et moins de deux ans, deux mois à partir de deux ans</b>, sauf dispositions conventionnelles, contractuelles ou usages plus favorables. L'inexécution du préavis du fait de l'employeur ouvre droit à une indemnité compensatrice.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 1234-1 et L. 1234-5",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
    "fiab": "stable"
   }
  ]
