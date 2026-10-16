@@ -4,16 +4,21 @@
 
 ## Méthode
 
-1. **Rédaction depuis la fiche** : les cartes ont été écrites à partir de la fiche documentaire `data/ue4/ue4-03.fiche.json` et d'elle seule. Elles respectent le contrat (section 8) : une question par carte, aucun calcul, aucun chiffre millésimé, et chaque carte s'appuie sur un ou deux items de fiche (`base`) dont elle recopie `src` et `url`.
-2. **Relecture de fidélité** : un premier relecteur a contrôlé les 35 cartes. Il a vérifié que chaque carte dit ce que dit la fiche, sans plus, et qu'elle respecte la forme exigée par le contrat. Il n'a fait aucune recherche : son seul juge était le texte (`t` et `cite`) des items de la fiche.
-3. **Relecture d'exactitude** (la présente) : un second relecteur, indépendant, a vérifié les points suivants :
-   - **Exactitude** : chaque carte est-elle juste au regard du droit en vigueur au 15 octobre 2026 (CGI, BOFiP, PCG modifié par le règlement ANC 2022-06) ? Est-elle fausse, périmée, ou vraie seulement dans un cas particulier qu'elle ne dit pas ?
-   - **Ambiguïté** : la réponse attendue est-elle celle qu'attendrait un correcteur du DCG, et la seule réponse juste possible ?
-   - **Doublons et cartes triviales.**
+1. **Rédaction depuis la fiche** : les cartes ont été écrites à partir de la fiche documentaire `data/ue4/ue4-03.fiche.json`, et d'elle seule. Elles suivent le contrat (section 8) :
+   - une question par carte ;
+   - aucun calcul ni chiffre millésimé ;
+   - chaque carte repose sur un ou deux items de fiche (`base`), dont elle recopie `src` et `url`.
+2. **Relecture de fidélité** : un premier relecteur a contrôlé les 35 cartes. Son seul juge était le texte des items de la fiche. Il a vérifié que chaque carte dit ce que dit la fiche, sans rien y ajouter, et respecte la forme du contrat. Il n'a fait aucune recherche.
+3. **Relecture d'exactitude** (la présente) : un second relecteur, indépendant, a repris les 35 cartes sous quatre angles :
+   - **Exactitude** : la carte est-elle juste au regard du droit en vigueur au 15 octobre 2026 (CGI, BOFiP, PCG modifié par le règlement ANC 2022-06) ? Est-elle fausse, périmée, ou vraie seulement dans un cas particulier qu'elle ne dit pas ?
+   - **Ambiguïté** : la réponse attendue est-elle celle d'un correcteur du DCG, et la seule juste ?
+   - **Doublons et cartes sans intérêt.**
    - **Absence de calcul et de chiffre millésimé.**
-4. **Recherches** : 3 recherches, le maximum permis, limitées à bofip.impots.gouv.fr et legifrance.gouv.fr (détail plus bas).
 
-Validation : `node validate.js data/ue4/ue4-03.cartes.json` renvoie ✓ (35 cartes, dont 6 de définition).
+   Quand une correction ajoute une précision, celle-ci reste dans le vocabulaire de la fiche et, si possible, figure déjà ailleurs dans la fiche.
+4. **Recherches** : une seule, limitée à legifrance.gouv.fr et bofip.impots.gouv.fr (détail plus bas). Les autres points ont été tranchés sans recherche, à partir de la fiche et du texte connu des articles.
+
+Validation : `node validate.js data/ue4/ue4-03.cartes.json` renvoie ✓ (35 cartes, dont 6 de définition). Toutes les questions comptent de 6 à 30 mots et toutes les réponses de 8 à 70 mots.
 
 ## Bilan
 
@@ -22,101 +27,102 @@ Validation : `node validate.js data/ue4/ue4-03.cartes.json` renvoie ✓ (35 cart
 | Cartes au final | 35 (k01 à k35, sans trou) |
 | Définition (`def`) | 6 |
 | Compréhension (`comp`) | 29 |
-| Cartes corrigées par la relecture d'exactitude | 4 (k02, k05, k16, k31) |
+| Cartes corrigées par la relecture de fidélité | 4 (k05, k16, k30, k31) |
+| Cartes corrigées par la relecture d'exactitude | 4 (k05, k16, k29, k31) |
 | Cartes supprimées | 0 |
-| Cartes ajoutées | 0 |
+| Cartes ajoutées | 0 (le jeu est au plafond de 35) |
 
 **Items de la fiche sans carte** :
 
-- **Items millésimés**, qui ne peuvent pas donner de carte :
-  - Définitions#3 (régime simplifié d'imposition, avec les seuils 2025 et 2026-2028) ;
+- **Items millésimés**, exclus par le contrat :
+  - Définitions#3 (RSI, avec les seuils 2025 et 2026-2028) ;
   - Chiffres et seuils#0 (seuils des régimes BIC) et #2 (plus-values professionnelles, avec le taux 2025 des prélèvements sociaux) ;
   - Ce qui a changé récemment#0 (seuils 2026-2028), #1 (loi du 19 novembre 2024 sur les meublés de tourisme), #3 (fonds commerciaux), #4 (LFSS 2026 et plus-values à long terme) et #5 (assiette sociale des indépendants).
-- **Chiffres et seuils#1** (plafonds d'amortissement des véhicules de tourisme) : l'item est stable, mais il ne contient que des montants par tranche d'émissions. Une carte serait du par-cœur sur des chiffres. La règle elle-même est couverte par k13 et k14.
+- **Chiffres et seuils#1** (plafonds d'amortissement des véhicules de tourisme) : l'item est stable, mais il ne contient que des montants par tranche d'émissions. En tirer une carte reviendrait à apprendre des chiffres par cœur. La règle elle-même est couverte par k13 et k14.
 
-Chaque item stable des Définitions, des Règles essentielles (17 sur 17) et des Points de vigilance (6 sur 6) a au moins une carte, de même que le seul item stable de « Ce qui a changé récemment » (#2).
+Chaque item stable des sections suivantes porte au moins une carte :
 
-Le jeu atteint le plafond de 35 cartes fixé par le contrat. Aucun ajout n'était possible sans suppression, et aucune carte n'était assez faible pour céder sa place.
+- Définitions (5 sur 5) ;
+- Règles essentielles (17 sur 17) ;
+- Points de vigilance (6 sur 6) ;
+- Ce qui a changé récemment (son seul item stable, #2).
+
+Points de vigilance#5 (renvoi de l'article 209, I à l'IS) n'est couvert qu'en partie, par k09 (rémunération des dirigeants).
 
 ## Corrections de la première relecture (fidélité)
 
-Le premier relecteur a contrôlé 35 cartes et en a corrigé une.
+Le premier relecteur a contrôlé 35 cartes et en a corrigé 4. Il n'en a supprimé ni ajouté aucune.
 
 | Cible | Problème | Correction |
 |---|---|---|
-| k10 | La réponse rappelait un montant périmé : « l'ancienne limite de 17 500 € ». C'est un chiffre daté (version de l'art. 154 en vigueur de 2016 à 2018), ce qui va contre la règle « aucun chiffre millésimé ». La carte faisait donc mémoriser un montant abrogé. | La phrase devient « L'ancienne limite de montant, qui visait les exploitants non adhérents d'un organisme de gestion agréé, ne figure plus dans le texte en vigueur. » Le sens reste fidèle à Règles essentielles#2, sans le chiffre. Le champ `maj` du fichier passe à 2026-10-16. |
+| k05 | La réponse contenait des précisions absentes de la fiche (Définitions#2) : « 71 % pour la fourniture de logement hors location meublée » et « 50 % pour la location meublée ». Le relecteur y a vu une connaissance extérieure, puisque le rattachement de la location meublée à 50 % ne figure que dans un item millésimé. | Réponse ramenée au texte de la fiche : « 71 % pour les ventes, 50 % pour les prestations de services et 30 % pour les meublés de tourisme non classés. Le bénéfice est égal au chiffre d'affaires diminué de l'abattement, qui ne peut être inférieur à 305 €. » |
+| k16 | La parenthèse « (matériels et outillages industriels notamment) » était une connaissance extérieure. Elle remplaçait la condition de la fiche (Règles essentielles#6), « biens d'équipement normalement utilisés dans les entreprises industrielles », qui avait disparu de la réponse. | Rétablissement de la condition « biens d'équipement normalement utilisés dans les entreprises industrielles, acquis neufs, durée normale d'au moins trois ans, catégories de l'annexe II ». Les exclusions reprennent les termes de Points de vigilance#2 (« véhicules de tourisme, mobilier de bureau notamment »). |
+| k30 | La question contenait une partie de la réponse : elle parlait de « transmission d'une entreprise individuelle », alors que la réponse attendue est « transmission d'une entreprise individuelle ou d'une branche complète d'activité… ». | Nouvelle question : « À quelles conditions l'article 238 quindecies du CGI exonère-t-il les plus-values professionnelles réalisées lors d'une transmission d'activité ? ». Dans la réponse, « lors de » devient « pour » ; le reste, fidèle à Règles essentielles#13, ne change pas. |
+| k31 | Deux ajouts étaient jugés extérieurs à la fiche. La question limitait le champ au « loueur en meublé professionnel », alors que Ce qui a changé récemment#2 parle de « location meublée » au micro-BIC sans cette distinction. La réponse ajoutait « professionnelle » à « plus-value ». | Nouvelle question : « Pour une location meublée relevant du micro-BIC, comment les amortissements sont-ils pris en compte, y compris pour la plus-value professionnelle de cession de l'immeuble ? ». La réponse reprend mot pour mot le texte de l'item. |
 
 ## Corrections de la relecture d'exactitude
 
+Trois de ces corrections (k05, k16, k31) portent sur des cartes que la relecture de fidélité venait de ramener au texte de la fiche. Ce texte reste en retrait du droit en vigueur. Chaque correction rétablit l'exactitude avec le moins d'ajouts possible, dans le vocabulaire de la fiche. L'item en cause est signalé plus bas.
+
 | Cible | Problème | Correction | Source |
 |---|---|---|---|
-| k31 | La carte affirmait, pour tout « loueur en meublé relevant du micro-BIC », que la plus-value de cession de l'immeuble relève du court terme à hauteur des amortissements réputés compris dans l'abattement. Cette règle ne vaut que pour le **loueur professionnel**. Les plus-values du loueur non professionnel (LMNP), cas le plus courant, sont soumises au régime des plus-values des particuliers (CGI, art. 150 U et 150 VH) et non au régime professionnel. La carte faisait donc apprendre une règle fausse pour la plupart des loueurs en meublé. | Le champ de la question est délimité : « Pour un loueur en meublé professionnel relevant du micro-BIC, comment les amortissements sont-ils pris en compte, y compris lors de la cession de l'immeuble ? ». La réponse précise « la plus-value professionnelle ». Le reste est inchangé, et la base reste Ce qui a changé récemment#2. | BOI-BIC-CHAMP-40-20 (version du 14 février 2024), qui réserve la règle au loueur professionnel et renvoie le LMNP aux art. 150 U et 150 VH (recherche n° 2) |
-| k05 | La réponse « 71 % pour les ventes et 50 % pour les prestations de services » omettait la **fourniture de logement**, qui relève de la catégorie à 71 % de l'article 50-0, 1. Un hôtelier au micro-BIC, prestataire de services, en aurait déduit à tort un abattement de 50 %. À l'inverse, la location meublée est exclue de cette catégorie : depuis la loi du 19 novembre 2024, les meublés de tourisme classés et les chambres d'hôtes relèvent de l'abattement de 50 % (fiche, Ce qui a changé récemment#1). Ajouter seulement « fourniture de logement » aurait fait revivre l'ancien régime, où les meublés classés bénéficiaient de 71 %. | « 71 % pour les ventes et la fourniture de logement hors location meublée, 50 % pour les prestations de services et la location meublée, sauf 30 % pour les meublés de tourisme non classés. Chaque abattement ne peut être inférieur à 305 €. » La base reste Définitions#2. Les autres précisions figurent déjà dans la fiche (Définitions#3, Chiffres et seuils#0, Ce qui a changé récemment#1), mais dans des items millésimés, qui ne peuvent pas servir de base. | CGI, art. 50-0, 1 (recherche n° 3 : la catégorie à 71 % vise les entreprises dont le commerce principal est de vendre des marchandises ou de fournir le logement, à l'exclusion de la location de locaux d'habitation meublés) ; fiche, Ce qui a changé récemment#1 |
-| k02 | La seconde phrase, « Pour les prestations de services, le produit n'est imposable que si la créance est acquise et la prestation achevée », était présentée comme absolue. Or les prestations continues (loyers, intérêts) et les prestations discontinues à échéances successives sont rattachées au fur et à mesure de leur exécution, sans attendre leur achèvement (CGI, art. 38, 2 bis, b). | « Pour les prestations de services, le produit n'est **en principe** imposable que si la créance est acquise et la prestation achevée ; les prestations continues sont rattachées au fur et à mesure de leur exécution. » La base Règles essentielles#0 est ajoutée. `src` et `url` sont inchangés : ce sont ceux du premier item de base, Définitions#1. | CGI, art. 38, 2 bis ; BOI-BIC-BASE-20-10 ; fiche, Règles essentielles#0 |
-| k16 | La réponse s'ouvrait sur « Les biens d'équipement normalement utilisés dans les entreprises industrielles ». On pouvait comprendre que le dégressif est réservé aux entreprises industrielles. Or le critère décisif est l'appartenance aux catégories de l'annexe II (art. 22), qui couvrent aussi des biens utilisés hors de l'industrie. Le critère réel n'apparaissait qu'en fin de réponse, parmi les exclusions. | « Les biens d'équipement acquis neufs, dont la durée normale d'utilisation est d'au moins trois ans et qui figurent dans les catégories de l'annexe II (matériels et outillages industriels notamment). Sont donc exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux hors de ces catégories, comme les véhicules de tourisme ou le mobilier de bureau. » Les bases restent Règles essentielles#6 et Points de vigilance#2. | CGI, art. 39 A, 1 ; CGI, ann. II, art. 22 ; fiche, Points de vigilance#2 |
+| k05 | « 71 % pour les ventes, 50 % pour les prestations de services » est incomplet, et faux pour deux cas. La catégorie à 71 % de l'article 50-0, 1 vise aussi la **fourniture de logement** : un hôtelier, prestataire de services au sens courant, en aurait déduit à tort 50 %. À l'inverse, la location meublée est exclue de cette catégorie et relève de 50 %, sauf les meublés de tourisme non classés (30 %). La fiche dit d'ailleurs déjà cette répartition (catégories « ventes, fourniture de logement » et « autres activités » ; meublés classés et chambres d'hôtes à 50 % « comme les autres locations meublées »), mais seulement dans des items millésimés, qui ne peuvent pas servir de base. | « **71 % pour les ventes et la fourniture de logement hors location meublée ; 50 % pour les prestations de services et les autres activités, y compris la location meublée, sauf 30 % pour les meublés de tourisme non classés.** Le bénéfice est égal au chiffre d'affaires diminué de l'abattement, qui ne peut être inférieur à 305 €. » La base reste Définitions#2. | CGI, art. 50-0, 1 (1°, 1° bis et 2°), texte connu, non recherché ici ; fiche, Chiffres et seuils#0, Définitions#3 et Ce qui a changé récemment#1 |
+| k16 | La réponse s'ouvrait sur « les biens d'équipement normalement utilisés dans les entreprises industrielles », présentés comme une condition cumulative. Or le critère décisif est l'appartenance aux catégories de l'annexe II (art. 22), qui comprennent aussi des biens utilisés hors de l'industrie, comme les machines de bureau ou les immeubles et matériels des entreprises hôtelières. Lue telle quelle, la carte réservait le dégressif à l'industrie. | « **Les biens d'équipement acquis neufs, dont la durée normale d'utilisation est d'au moins trois ans et qui figurent dans les catégories de l'annexe II**, pour l'essentiel des biens normalement utilisés dans les entreprises industrielles. » Les exclusions de Points de vigilance#2 suivent sans changement. La formule de la fiche est conservée, mais elle décrit les biens au lieu de poser une condition. Bases inchangées (Règles essentielles#6 et Points de vigilance#2). | CGI, art. 39 A, 1 ; CGI, ann. II, art. 22 (liste des catégories connue, non recherchée ici) ; fiche, Points de vigilance#2 |
+| k29 | À la question « À quelles conditions… », la réponse omettait une condition légale : l'activité doit avoir été exercée **à titre professionnel** pendant au moins cinq ans. Une activité BIC non professionnelle, à laquelle l'exploitant ne participe pas personnellement, ne bénéficie pas de l'exonération de l'article 151 septies. | « **Une activité exercée à titre professionnel pendant au moins cinq ans et des recettes limitées** : … ». Pour rester sous 70 mots, « des recettes sous les limites légales » devient « des recettes limitées ». Le reste ne change pas. Bases inchangées (Règles essentielles#12 et Chiffres et seuils#3). | BOI-BIC-PVMV-40-10-10-20 ; BOI-BA-BASE-20-20-30-20 (version du 23 juillet 2025) (recherche n° 1) |
+| k31 | La question, « Pour une location meublée relevant du micro-BIC, … y compris pour la plus-value professionnelle de cession de l'immeuble ? », laissait entendre que toute location meublée au micro-BIC dégage une plus-value professionnelle. Or le régime des plus-values professionnelles (art. 39 duodecies, source de l'item) ne joue que pour le loueur professionnel. Les plus-values du loueur non professionnel, cas le plus courant, relèvent des plus-values des particuliers (BOI-BIC-CHAMP-40-20). | Nouvelle question : « Au régime micro-BIC, comment les amortissements d'un immeuble donné en location meublée sont-ils pris en compte, y compris **lorsque** sa plus-value de cession relève du régime professionnel ? ». Le « lorsque » rend la condition explicite sans introduire de notion absente de la fiche. La réponse, copiée de l'item, ne change pas. | CGI, art. 39 duodecies (source de l'item) ; BOI-BIC-CHAMP-40-20 |
 
-**Cartes contrôlées et maintenues** :
+**Cartes contrôlées et maintenues** (31 cartes sans changement) :
 
-- **Provision pour licenciement (k22)** : la recherche n° 1 confirme que les provisions pour indemnités de licenciement pour motif économique ne sont pas déductibles (art. 39, 1-5°), que le licenciement soit individuel ou collectif. Celles qui couvrent un licenciement pour un autre motif le sont, dans les conditions de droit commun. La carte est exacte.
-- **Doublons apparents** : k04/k05, k06/k07, k13/k14, k16/k17/k35, k18/k19, k23/k24 et k25/k26 portent sur les mêmes items, mais chacune interroge un angle distinct :
-  - champ du micro-BIC et abattements ;
-  - méthode du 2058-A et exigence de comptabilisation ;
-  - véhicule acquis et véhicule loué ;
-  - biens éligibles au dégressif, comptabilisation du dérogatoire et coefficients ;
-  - règle de l'amortissement minimal et sanction ;
-  - reprise d'une provision déduite et d'une provision réintégrée ;
-  - plus-values et moins-values à court terme.
-- **Chiffres stables** : plusieurs cartes citent des chiffres fixés par la loi ou par la doctrine, sans indexation annuelle. Dans chaque cas, la question porte sur la règle, ce que le contrat (section 8) admet :
-  - k05 : abattements de 71, 50 et 30 % et minimum de 305 € ;
-  - k15 : seuil de 500 € ;
-  - k28 : taux de 12,8 % ;
+- **Rattachement des produits (k02, k03)** : k02 nuance déjà la règle de l'achèvement des prestations par « en principe » et par les prestations continues. Les deux cartes se recoupent sur ce point, mais l'une définit la créance acquise et l'autre classe les produits par exercice : pas de doublon à supprimer.
+- **Véhicules de tourisme (k13, k14)** : les cartes sont exactes. L'exception des véhicules nécessaires à l'activité en raison même de son objet (taxis, auto-écoles, loueurs) n'est pas citée. Il s'agit d'un cas marginal, et k12 enseigne déjà la clause « nécessaires à son activité » de l'article 39, 4.
+- **Provisions (k21, k22)** : les cartes sont exactes. Les provisions pour retraite et celles pour indemnités de licenciement économique ne sont pas déductibles. Celles qui couvrent un licenciement pour un autre motif le sont.
+- **Déficits (k33)** : la carte est exacte, mais elle ne donne pas la durée de report des déficits BIC non professionnels autres que ceux de la location meublée (voir les points de fiche).
+- **Doublons apparents** : plusieurs paires de cartes reposent sur les mêmes items, mais chacune interroge un angle distinct. Aucune fusion n'est nécessaire.
+
+  | Cartes | Angles interrogés |
+  |---|---|
+  | k04 / k05 | champ du micro-BIC ; abattements |
+  | k06 / k07 | méthode du 2058-A ; exigence de comptabilisation |
+  | k13 / k14 | véhicule acquis ; véhicule loué |
+  | k16 / k17 / k35 | biens éligibles au dégressif ; comptabilisation du dérogatoire ; coefficients |
+  | k18 / k19 | règle de l'amortissement minimal ; sanction |
+  | k23 / k24 | reprise d'une provision déduite ; reprise d'une provision réintégrée |
+  | k25 / k26 | plus-values ; moins-values à court terme |
+- **Chiffres stables** : plusieurs cartes citent des chiffres fixés par la loi ou par la doctrine, sans révision annuelle. Dans chaque cas, la question porte sur la règle, ce que le contrat admet. Aucune carte ne cite un seuil révisé tous les trois ans ni le taux des prélèvements sociaux.
+  - k05 : 71, 50 et 30 % ; 305 € ;
+  - k15 : 500 € ;
+  - k28 : 12,8 % ;
   - k29 : seuils de l'article 151 septies ;
   - k30 : seuils de l'article 238 quindecies ;
-  - k34 : fraction de 6,8 points ;
+  - k34 : 6,8 points ;
   - k35 : coefficients du dégressif.
-
-  Aucune carte ne cite le taux des prélèvements sociaux, qui est millésimé.
-- **Rémunération de l'exploitant (k09)** : la carte reste exacte. L'entrepreneur individuel qui a opté pour l'assimilation à une EURL relève de l'IS et sort du champ de la question, qui vise le bénéfice BIC.
-- **Déficits (k33)** : la carte est exacte, mais elle ne précise pas la durée de report des déficits BIC non professionnels autres que ceux de la location meublée. Ce point est signalé par la première relecture.
 
 ## Recherches faites
 
-1. **Provisions pour indemnités de licenciement économique** (domaine bofip.impots.gouv.fr, BOI-BIC-PROV-30-20-10-20).
-   - Confirmé : les provisions pour indemnités de licenciement pour motif économique ne sont pas déductibles (art. 39, 1-5°), que le licenciement soit individuel ou collectif.
-   - L'exclusion vise toutes les indemnités directement liées au licenciement économique, légales comme conventionnelles. Les provisions pour préavis et pour mesures d'accompagnement social restent déductibles selon le droit commun.
-   - Les résultats ne donnaient que des versions de 2012 de la page : le point est confirmé, sous réserve de la version en ligne.
-   - Conséquence : k22 est maintenue.
-2. **Location meublée au micro-BIC : amortissements et plus-value** (domaine bofip.impots.gouv.fr, BOI-BIC-CHAMP-40-20 du 14 février 2024).
-   - Confirmé : l'abattement forfaitaire est réputé tenir compte des amortissements linéaires, et la plus-value est à court terme à hauteur de ces amortissements. Le BOFiP présente cette règle pour le loueur professionnel.
-   - Les plus-values des loueurs qui ne remplissent pas les conditions du loueur professionnel relèvent des articles 150 U et 150 VH (plus-values des particuliers). Elles ne relèvent pas du régime professionnel et n'ouvrent pas droit à l'exonération de l'article 151 septies.
-   - Conséquence : k31 est corrigée.
-3. **CGI, art. 50-0 : catégories et abattements du micro-BIC** (domaine legifrance.gouv.fr).
-   - Confirmé : le texte en vigueur prévoit trois abattements (71 %, 50 % et 30 %) et un minimum de 305 €.
-   - Les versions de 2016 et 2020 définissent la catégorie à 71 % : entreprises dont le commerce principal est de vendre des marchandises, objets, fournitures et denrées, ou de fournir le logement, « à l'exclusion de la location directe ou indirecte de locaux d'habitation meublés ».
-   - L'extrait de la version en vigueur ne montrait pas cette phrase. Le classement des meublés de tourisme classés et des chambres d'hôtes à 50 % repose donc sur la fiche (Ce qui a changé récemment#1, sources BOFiP ACTU-2025-00127 et impots.gouv.fr).
-   - Conséquence : k05 est corrigée.
+1. **CGI, art. 151 septies : condition d'exercice de l'activité** (domaines legifrance.gouv.fr et bofip.impots.gouv.fr).
+   - Confirmé : l'exonération suppose une activité exercée **à titre professionnel** depuis au moins cinq ans. Seules les périodes d'exercice à titre professionnel comptent, et la durée s'apprécie activité par activité (BOI-BIC-PVMV-40-10-10-20 ; BOI-BA-BASE-20-20-30-20, version du 23 juillet 2025).
+   - Confirmé aussi : les recettes s'apprécient sur la moyenne hors taxes des deux années civiles précédant la clôture de l'exercice de réalisation. La condition de cinq ans ne s'applique pas aux plus-values d'expropriation ou d'indemnités d'assurance.
+   - Conséquence : k29 est corrigée.
+
+Aucune autre recherche n'a été faite. Pour k05 (catégories de l'article 50-0) et k16 (catégories de l'annexe II, art. 22), le texte est connu et la fiche elle-même va dans le même sens. Le quota de recherche est partagé : il est resté inutilisé pour ces points.
 
 ## Points à reprendre dans la fiche
 
-Points relevés par la relecture d'exactitude :
-
-- **Ce qui a changé récemment#2 (location meublée et amortissements)** : l'item doit préciser que la règle (plus-value à court terme à hauteur des amortissements réputés compris dans l'abattement) ne vaut que pour le **loueur en meublé professionnel**. Les plus-values du loueur non professionnel relèvent des articles 150 U et 150 VH (BOI-BIC-CHAMP-40-20).
-  - La section pourrait aussi signaler la réforme de la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025). Pour le loueur non professionnel au régime réel, les amortissements déduits sont désormais pris en compte dans le calcul de la plus-value privée, hors résidences de services visées par le texte. Ce point vient de connaissances générales et n'a pas été recherché : article et exceptions à vérifier.
-- **Définitions#2 (micro-BIC)** : l'abattement de 71 % vise les ventes **et la fourniture de logement** (hors location meublée). Celui de 50 % vise les **autres activités**, y compris la location meublée (meublés de tourisme classés, chambres d'hôtes), et pas seulement les prestations de services. Ces précisions ne figurent aujourd'hui que dans des items millésimés (Définitions#3, Chiffres et seuils#0, Ce qui a changé récemment#1). Il faudrait les reprendre dans cet item stable.
-- **Règles essentielles#6 (dégressif)** : la formule « réservé aux biens d'équipement normalement utilisés dans les entreprises industrielles » peut laisser croire à une restriction par secteur. Le critère est l'appartenance aux catégories limitatives de l'article 22 de l'annexe II. De mémoire, ces catégories comprennent aussi des biens utilisés hors de l'industrie, comme les machines de bureau ou les immeubles et matériels des entreprises hôtelières : liste à vérifier sur Légifrance.
-- **Définitions#1 (créance acquise)** : « pour les prestations de services, le produit n'est imposable que si la créance est acquise et la prestation achevée » devrait être nuancé par « en principe ». Les prestations continues et les prestations discontinues à échéances successives sont rattachées au fur et à mesure de leur exécution (Règles essentielles#0).
-
-Points déjà relevés par la première relecture, toujours valables :
-
-- **Définitions#3 (régime simplifié d'imposition)** : l'item mêle une définition stable et des seuils millésimés. Il faudrait le scinder en deux :
-  - un item stable : le RSI s'applique au-delà des seuils du micro-BIC et jusqu'aux limites de l'article 302 septies A bis, révisées tous les trois ans ; au-delà, régime réel normal ;
+- **Définitions#2 (micro-BIC)** : l'abattement de 71 % vise les ventes **et la fourniture de logement**, hors location meublée. Celui de 50 % vise les prestations de services **et les autres activités**, y compris la location meublée (meublés de tourisme classés, chambres d'hôtes). Ces précisions ne figurent aujourd'hui que dans des items millésimés (Définitions#3, Chiffres et seuils#0, Ce qui a changé récemment#1) : il faudrait les reprendre dans cet item stable. La relecture de fidélité a supprimé de la carte ces précisions justes ; si l'item était complété, les deux relectures ne se contrediraient plus.
+- **Règles essentielles#6 (dégressif)** : « réservé aux biens d'équipement normalement utilisés dans les entreprises industrielles » laisse croire à une restriction par secteur. Le critère est l'appartenance aux catégories de l'article 22 de l'annexe II. Ces catégories comprennent aussi, sauf erreur, les machines de bureau et les immeubles et matériels des entreprises hôtelières : liste à vérifier sur Légifrance avant de reformuler l'item.
+- **Règles essentielles#12 et Chiffres et seuils#3 (art. 151 septies)** : il faut ajouter que l'activité doit avoir été exercée **à titre professionnel** pendant au moins cinq ans (BOI-BIC-PVMV-40-10-10-20).
+  - Les deux items ne décrivent pas de la même façon la catégorie à 250 000 € : « vente de marchandises, … ou fourniture de logement » dans l'un, « vente de marchandises » seule dans l'autre. Il faudrait les harmoniser.
+- **Ce qui a changé récemment#2 (location meublée et amortissements)** : ce point a été relevé par les deux relectures. L'item devrait préciser que la règle du court terme, à hauteur des amortissements réputés compris dans l'abattement, ne joue que lorsque la plus-value relève du régime professionnel, c'est-à-dire pour le loueur en meublé professionnel. Les plus-values du loueur non professionnel relèvent des articles 150 U et suivants (BOI-BIC-CHAMP-40-20).
+  - La réforme de la loi de finances pour 2025 pourrait aussi y figurer : pour le loueur non professionnel, les amortissements déduits sont désormais pris en compte dans la plus-value privée. Article et exceptions à vérifier.
+- **Définitions#1 (créance acquise)** : la phrase « pour les prestations de services, le produit n'est imposable que si la créance est acquise et la prestation achevée » devrait être nuancée par « en principe ». Les prestations continues et les prestations discontinues à échéances successives sont rattachées au fur et à mesure de leur exécution (Règles essentielles#0).
+- **Définitions#3 (régime simplifié d'imposition)** : l'item mêle une définition stable et des seuils millésimés. Il faudrait le scinder :
+  - un item stable : le RSI s'applique au-delà des seuils du micro-BIC et jusqu'aux limites de l'article 302 septies A bis, révisées tous les trois ans ; au-delà, c'est le régime réel normal ;
   - les montants, qui figurent déjà dans Chiffres et seuils#0.
-- **Règles essentielles#14 (déficit BIC)** : l'item ne précise pas la durée de report des déficits BIC non professionnels autres que ceux de la location meublée non professionnelle. Il s'agit, semble-t-il, de l'année et des six années suivantes (art. 156, I-1° bis) : à vérifier sur Légifrance.
-- **Points de vigilance#5 (renvoi de l'article 209, I)** : il n'est couvert qu'en partie, par k09, faute de place dans un jeu déjà à 35 cartes.
+- **Règles essentielles#14 (déficit BIC)** : l'item ne donne pas la durée de report des déficits BIC non professionnels autres que ceux de la location meublée non professionnelle. Il s'agit, semble-t-il, de l'année et des six années suivantes (art. 156, I-1° bis) : à vérifier sur Légifrance.
 
 ## Classement des exercices
 
-Classement automatique des exercices QCM, QCM multiples et classements (tri) du chapitre selon leur nature :
+Classement automatique, selon leur nature, des exercices QCM, QCM multiples et classements (tri) du chapitre :
 
 | Nature | Nombre |
 |---|---|

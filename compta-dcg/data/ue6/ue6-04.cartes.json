@@ -54,10 +54,9 @@
    "id": "ue6-04-k05",
    "type": "def",
    "q": "Comment le PCG définit-il le coût d'acquisition d'une immobilisation ?",
-   "r": "<b>Le prix d'achat</b>, après déduction des remises et des taxes récupérables, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner. Il entre, hors taxes, dans l'investissement initial du projet, avec l'augmentation du BFR d'exploitation induite.",
+   "r": "<b>Le prix d'achat</b>, après déduction des remises et des taxes récupérables, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner.",
    "base": [
-    "Définitions#3",
-    "Règles essentielles#0"
+    "Définitions#3"
    ],
    "src": "PCG, art. 213-8",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
@@ -65,7 +64,7 @@
   },
   {
    "id": "ue6-04-k06",
-   "type": "comp",
+   "type": "def",
    "q": "De quoi se compose l'investissement initial d'un projet d'investissement ?",
    "r": "<b>Du coût d'acquisition hors taxes</b> (prix d'achat et coûts directement attribuables) <b>et de l'augmentation du BFR d'exploitation</b> induite par le projet.",
    "base": [
@@ -79,7 +78,7 @@
    "id": "ue6-04-k07",
    "type": "comp",
    "q": "Pourquoi la TVA grevant une immobilisation est-elle en principe exclue de l'investissement initial et des flux d'un projet d'investissement ?",
-   "r": "<b>Parce qu'elle est déductible</b> : ce n'est pas un coût, on raisonne hors taxes. Elle n'affecte que le BFR si le sujet le précise. Une TVA non déductible serait, elle, un coût du projet.",
+   "r": "<b>Parce qu'elle est déductible</b> : ce n'est pas un coût, on raisonne hors taxes. Elle n'affecte que le BFR si le sujet le précise.",
    "base": [
     "Points de vigilance#0",
     "Règles essentielles#0"
@@ -164,7 +163,7 @@
    "id": "ue6-04-k14",
    "type": "comp",
    "q": "Au titre de la valeur résiduelle d'un bien cédé en fin de projet d'investissement, quel flux retient-on ?",
-   "r": "<b>La valeur résiduelle nette d'impôt</b>, car la plus-value de cession est imposable. La cession est enregistrée pour son prix en 757 et la valeur comptable sortie en 657.",
+   "r": "<b>La valeur résiduelle nette d'impôt</b> : la plus-value de cession, égale au prix de cession diminué de la valeur comptable du bien, est imposable.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -211,8 +210,8 @@
   {
    "id": "ue6-04-k18",
    "type": "comp",
-   "q": "En comptabilité, à quoi sert la valeur d'usage du PCG, calculée par les flux nets de trésorerie attendus ?",
-   "r": "<b>Au test de dépréciation des immobilisations.</b> Avec la valeur vénale, elle sert à déterminer la valeur actuelle de l'actif (la plus élevée des deux), que l'on compare à sa valeur nette comptable.",
+   "q": "En comptabilité, à quel test portant sur les immobilisations sert la valeur d'usage définie par le PCG ?",
+   "r": "<b>Au test de dépréciation des immobilisations.</b> Déterminée, dans la généralité des cas, en fonction des flux nets de trésorerie attendus, elle constitue la base comptable de l'évaluation d'un investissement par ses flux.",
    "base": [
     "Points de vigilance#3",
     "Définitions#2"
@@ -249,7 +248,7 @@
    "id": "ue6-04-k21",
    "type": "comp",
    "q": "Entre projets d'investissement exclusifs de même taille et de même durée, lequel retient-on ?",
-   "r": "<b>Celui dont la VAN est la plus élevée.</b> Chaque VAN est calculée au coût du capital.",
+   "r": "<b>Celui dont la VAN est la plus élevée</b>, à condition qu'elle soit positive. Chaque VAN est calculée au coût du capital.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -274,9 +273,10 @@
    "id": "ue6-04-k23",
    "type": "def",
    "q": "Qu'est-ce que le taux de rentabilité interne (TRI) d'un projet d'investissement ?",
-   "r": "<b>Le taux d'actualisation pour lequel la VAN est nulle.</b> Sans calculatrice financière, il s'encadre entre deux taux puis s'estime par interpolation linéaire.",
+   "r": "<b>Le taux d'actualisation pour lequel la VAN est nulle.</b> Un projet est acceptable si son TRI est supérieur au coût du capital. Sans calculatrice financière, le TRI s'encadre entre deux taux puis s'estime par interpolation linéaire.",
    "base": [
-    "Définitions#6"
+    "Définitions#6",
+    "Règles essentielles#5"
    ],
    "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 ; C. mon. fin., art. R. 314-2 (méthode actuarielle)",
    "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
@@ -310,10 +310,9 @@
    "id": "ue6-04-k26",
    "type": "comp",
    "q": "Quelle hypothèse de réinvestissement des flux le TRI d'un projet d'investissement suppose-t-il ?",
-   "r": "<b>Un réinvestissement des flux au TRI lui-même.</b> La VAN globale corrige cette hypothèse en capitalisant les flux intermédiaires à un taux de réinvestissement explicite.",
+   "r": "<b>Un réinvestissement des flux au TRI lui-même.</b> C'est cette hypothèse que la VAN globale corrige.",
    "base": [
-    "Points de vigilance#1",
-    "Règles essentielles#7"
+    "Points de vigilance#1"
    ],
    "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (VAN globale, TRI global)",
    "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -333,9 +332,9 @@
   },
   {
    "id": "ue6-04-k28",
-   "type": "def",
-   "q": "Qu'est-ce que la VAN globale (ou le TRI global) d'un projet d'investissement ?",
-   "r": "<b>Un critère dans lequel les flux intermédiaires sont capitalisés jusqu'à la fin du projet à un taux de réinvestissement explicite.</b> Il sert à départager les projets d'investissement.",
+   "type": "comp",
+   "q": "Dans la VAN globale et le TRI global d'un projet d'investissement, comment les flux intermédiaires sont-ils traités ?",
+   "r": "<b>Ils sont capitalisés à un taux de réinvestissement explicite.</b> Ces deux critères, comme l'annuité équivalente, servent à départager les projets d'investissement.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -359,7 +358,7 @@
    "id": "ue6-04-k30",
    "type": "comp",
    "q": "En présence d'inflation, à quel taux actualise-t-on les flux d'un projet d'investissement selon leur expression ?",
-   "r": "<b>Flux en euros courants au taux nominal, flux en euros constants au taux réel.</b> Les deux approches donnent la même VAN si l'on respecte la relation (1 + nominal) = (1 + réel) × (1 + inflation).",
+   "r": "<b>Flux en euros courants au taux nominal, flux en euros constants au taux réel.</b> Les deux approches donnent la même VAN si le taux nominal, le taux réel et l'inflation respectent la relation multiplicative qui les lie.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -370,24 +369,12 @@
   {
    "id": "ue6-04-k31",
    "type": "comp",
-   "q": "En avenir probabilisable, quels outils le programme de l'UE6 prévoit-il pour prendre en compte le risque d'un projet d'investissement ?",
-   "r": "<b>L'espérance et l'écart-type de la VAN des scénarios</b>, un <b>arbre de décision</b> pour les choix séquentiels et une <b>analyse de sensibilité</b> des hypothèses.",
+   "q": "En avenir probabilisable, quels paramètres statistiques de la VAN des scénarios calcule-t-on pour prendre en compte le risque d'un projet d'investissement ?",
+   "r": "<b>Son espérance et son écart-type.</b> On recourt aussi à un arbre de décision pour les choix séquentiels et à une analyse de sensibilité des hypothèses.",
    "base": [
     "Règles essentielles#9"
    ],
    "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (prise en compte du risque)",
-   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-04-k34",
-   "type": "comp",
-   "q": "Selon le critère du taux de rentabilité interne (TRI), à quelle condition un projet d'investissement est-il acceptable ?",
-   "r": "<b>Si son TRI est supérieur au coût du capital.</b> Cela équivaut à une VAN positive au coût du capital et à un indice de profitabilité supérieur à 1.",
-   "base": [
-    "Règles essentielles#5"
-   ],
-   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (critères de sélection)",
    "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
    "fiab": "stable"
   }

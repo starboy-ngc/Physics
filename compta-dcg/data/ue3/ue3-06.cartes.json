@@ -66,7 +66,7 @@
    "id": "ue3-06-k06",
    "type": "def",
    "q": "Quelle branche du régime général de la sécurité sociale la loi n° 2020-992 du 7 août 2020 a-t-elle créée ?",
-   "r": "<b>La branche autonomie</b>, qui s'ajoute aux quatre autres branches du régime général énumérées à l'article L. 200-2 du Code de la sécurité sociale : maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille.",
+   "r": "<b>La branche autonomie</b>, cinquième branche du régime général énumérée à l'article L. 200-2 du Code de la sécurité sociale, à côté des branches « maladie, maternité, invalidité et décès », « accidents du travail et maladies professionnelles », « vieillesse et veuvage » et « famille ».",
    "base": [
     "Définitions#3"
    ],
@@ -282,7 +282,7 @@
    "id": "ue3-06-k24",
    "type": "comp",
    "q": "Quant au délai de carence et au taux, en quoi les indemnités journalières d'un accident du travail diffèrent-elles de celles d'un arrêt maladie ?",
-   "r": "<b>Elles sont versées sans délai de carence</b> et égales à 60 % du salaire journalier de base pendant les 28 premiers jours, puis à 80 % à partir du 29e jour. En maladie, l'IJ est de 50 % après un délai de carence de trois jours.",
+   "r": "<b>Elles sont versées sans délai de carence</b> et égales à 60 % du salaire journalier de base pendant les 28 premiers jours, puis à 80 % à partir du 29e jour. En maladie, l'IJ est égale à 50 % du salaire journalier de base, après un délai de carence de trois jours.",
    "base": [
     "Règles essentielles#9",
     "Règles essentielles#8"

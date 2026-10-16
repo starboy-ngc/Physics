@@ -199,8 +199,8 @@
   {
    "id": "ue9-07-k18",
    "type": "comp",
-   "q": "Selon le Plan comptable général (PCG), comment les produits et les charges sont-ils classés au compte de résultat ?",
-   "r": "<b>De manière à faire apparaître les différents niveaux de résultat</b> : exploitation, financier et exceptionnel, puis participation des salariés et impôt sur les bénéfices.",
+   "q": "Selon le Plan comptable général (PCG), que doit faire apparaître le classement des produits et des charges au compte de résultat ?",
+   "r": "<b>Les différents niveaux de résultat</b> : exploitation, financier et exceptionnel, puis participation des salariés et impôt sur les bénéfices.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -295,7 +295,7 @@
   {
    "id": "ue9-07-k26",
    "type": "comp",
-   "q": "Hors cas de dispense d'acomptes, selon quel calendrier une société soumise à l'impôt sur les sociétés (IS) paie-t-elle cet impôt ?",
+   "q": "Hors cas de dispense d'acomptes, selon quel calendrier une société soumise à l'impôt sur les sociétés (IS) paie-t-elle l'impôt d'un exercice de douze mois ?",
    "r": "<b>Quatre acomptes</b>, au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre ; puis le <b>solde</b>, au plus tard le 15 du quatrième mois qui suit la clôture, sauf exercice clos le 31 décembre : le 15 mai de l'année suivante.",
    "base": [
     "Règles essentielles#12",
@@ -369,7 +369,7 @@
    "id": "ue9-07-k32",
    "type": "def",
    "q": "Qu'est-ce qu'un dividende fictif au sens du Code de commerce ?",
-   "r": "<b>Un dividende distribué en violation des règles de distribution</b> : dividendes déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables, capitaux propres maintenus au moins au niveau du capital et des réserves non distribuables. Sa répartition par les dirigeants est pénalement sanctionnée.",
+   "r": "<b>Un dividende distribué en violation des règles de distribution</b> : dividendes déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables, capitaux propres maintenus au moins au niveau du capital et des réserves non distribuables. Sa répartition par les dirigeants peut être pénalement sanctionnée.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -392,7 +392,7 @@
   {
    "id": "ue9-07-k34",
    "type": "comp",
-   "q": "Lors de l'affectation du résultat d'une société, comment une perte de l'exercice est-elle traitée ?",
+   "q": "Lors de l'affectation du résultat d'une société sans report à nouveau créditeur, comment une perte de l'exercice est-elle traitée ?",
    "r": "<b>Elle est portée au compte 119 « Report à nouveau (solde débiteur) »</b> ou imputée sur les réserves.",
    "base": [
     "Règles essentielles#15"

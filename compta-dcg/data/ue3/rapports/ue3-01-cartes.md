@@ -6,10 +6,15 @@
 
 1. **Rédaction depuis la fiche.** 35 cartes (k01 à k35) ont été rédigées à partir des items de la fiche, sans calcul ni chiffre millésimé. Chaque carte repose sur un ou deux items (`base`), dont elle reprend `src` et `url`.
 2. **Relecture de fidélité.** Le premier relecteur a contrôlé les 35 cartes au regard de la fiche et en a corrigé 7 (k01, k16, k17, k26, k28, k32, k33). Il n'a fait ni suppression ni ajout.
-3. **Relecture d'exactitude.** Le second relecteur a contrôlé les 35 cartes au regard du droit en vigueur au 15 octobre 2026 : Code du travail, Code de l'organisation judiciaire, Code de la sécurité sociale, Préambule de 1946 et jurisprudence de la Cour de cassation. Il a aussi vérifié que chaque question n'appelle qu'une seule réponse, et il a recherché les doublons. Bilan : 8 cartes corrigées, aucune suppression, aucun ajout.
-4. **Recherches.** Une recherche WebSearch sur legifrance.gouv.fr, sur 3 autorisées, a porté sur l'article L. 8115-1. Deux points ont été vérifiés avec des données du dépôt déjà vérifiées :
-   - `data/FAITS-CONFIRMES.md` : loi n° 2026-403, art. 5, et article R. 1321-2 toujours en vigueur au 14 octobre 2026 (cartes k22 et k23) ;
-   - rapport `data/ue3/rapports/ue3-01.md`, recherche n° 2 : arrêt Cass. soc., 28 mai 2026, n° 24-19.461 et s. (cartes k16 et k17).
+3. **Relecture d'exactitude, en deux passages.** Les deux passages ont contrôlé les 35 cartes au regard du droit en vigueur au 15 octobre 2026 : Code du travail, Code de l'organisation judiciaire, Code de la sécurité sociale, Préambule de 1946 et jurisprudence de la Cour de cassation. Ils ont aussi vérifié que chaque question n'appelle qu'une seule réponse, que les règles à exceptions sont délimitées et que le jeu ne contient ni doublon ni carte triviale.
+   - **Premier passage** : 8 cartes corrigées (k03, k08, k16, k25, k26, k27, k33, k35), aucune suppression, aucun ajout.
+   - **Reprise** (ce passage) : relecture indépendante du fichier issu du premier passage. 5 cartes corrigées (k04, k06, k10, k16, k26), aucune suppression, aucun ajout.
+4. **Recherches.**
+   - Premier passage : 1 recherche WebSearch sur legifrance.gouv.fr (article L. 8115-1), sur 3 autorisées.
+   - Reprise : aucune recherche. Les corrections reposent sur le texte des articles L. 2253-2 et L. 2261-17 du Code du travail et sur la délimitation des questions, sans doute réel sur le fond.
+   - Deux points ont été vérifiés avec des données du dépôt déjà vérifiées :
+     - `data/FAITS-CONFIRMES.md` : loi n° 2026-403, art. 5, et article R. 1321-2 toujours en vigueur au 14 octobre 2026 (cartes k22 et k23) ;
+     - rapport `data/ue3/rapports/ue3-01.md`, recherche n° 2 : arrêt Cass. soc., 28 mai 2026, n° 24-19.461 et s. (cartes k16 et k17).
 
 `node validate.js data/ue3/ue3-01.cartes.json` : ✓ (35 cartes, 9 déf.).
 
@@ -41,22 +46,36 @@ Le résultat transmis par la première relecture est tronqué après k32. Les li
 
 ## Corrections de la relecture d'exactitude
 
+### Reprise : corrections de ce passage
+
+| cible | problème | correction | source |
+|---|---|---|---|
+| k04 | « À quelles conditions un accord collectif de branche est-il valablement conclu ? » appelait d'autres réponses justes : accord écrit, conclusion par les parties de L. 2231-1, formalités de dépôt. Le verso ne traite que des conditions de majorité. | Question : « Quelles conditions de majorité syndicale subordonnent la validité d'une convention ou d'un accord collectif de branche ? ». Réponse inchangée (30 % des suffrages, absence d'opposition majoritaire dans les quinze jours). | C. trav., art. L. 2232-6 et L. 2231-8 |
+| k06 | Le critère « conditions analogues quant aux emplois exercés » ne vaut que pour l'élargissement à un autre secteur professionnel. Pour l'élargissement à un autre secteur territorial, la loi exige des conditions économiques analogues. La définition générale de l'élargissement était donc vraie dans un seul cas. | « quant aux emplois exercés » retiré. La réponse dit « un texte déjà étendu dans un autre secteur présentant des conditions analogues », ce qui vaut pour les deux cas. La correction n'ajoute rien qui ne soit dans la fiche. | C. trav., art. L. 2261-17, 1° et 2° |
+| k10 | Le verrouillage du bloc 2 ne joue qu'à l'égard de la convention d'entreprise conclue postérieurement à la convention de branche. La question visait « l'accord d'entreprise » sans distinction. Un accord d'entreprise antérieur à la clause de verrouillage n'est pas soumis à cette primauté. | Question délimitée : « … à quelle condition la convention de branche prime-t-elle sur un accord d'entreprise conclu après elle ? ». Réponse inchangée. L'item de la fiche est signalé ci-dessous. | C. trav., art. L. 2253-2 (« la convention d'entreprise conclue postérieurement ») |
+| k16 | Doublon partiel : la dernière phrase du verso (APC comportant des dispositions étrangères à ses objets : licenciement sans cause réelle et sérieuse) était la réponse entière de k17. Il s'agit du même traitement que pour k33 et k35. | Question délimitée (« En principe, que se passe-t-il… ? »). Le verso garde le principe légal : deux mois à compter du refus pour engager un licenciement, qui repose sur un motif spécifique constituant une cause réelle et sérieuse. L'exception jurisprudentielle reste dans k17. Base ramenée à Règles essentielles#9 ; `src` et `url` inchangés. | C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026, n° 24-19.461 et s. (k17) |
+| k26 | La question ne nommait pas le régime visé. D'autres amendes administratives du Code du travail relèvent aussi de l'autorité administrative, avec d'autres conditions, par exemple en matière de détachement de salariés. La condition « absence de poursuites pénales » est propre à l'article L. 8115-1. | Question : « Dans le régime de l'article L. 8115-1 du Code du travail, quelle autorité peut sanctionner certains manquements par une amende administrative, et à quelles conditions ? ». Réponse inchangée. | C. trav., art. L. 8115-1 et R. 8115-1 |
+
+Les 30 autres cartes ont été contrôlées sans changement dans ce passage, dont les 8 cartes corrigées au premier passage.
+
+### Premier passage (déjà appliqué au fichier)
+
 | cible | problème | correction | source |
 |---|---|---|---|
 | k03 | L'article L. 2231-1 pose le principe. Dans les entreprises dépourvues de délégué syndical, un accord peut aussi être conclu avec des élus ou des salariés mandatés, ou approuvé par le personnel. Sans délimitation, la question appelait une réponse vraie seulement dans le cas général. | Question : « En principe, qui sont les parties à une convention ou à un accord collectif de travail selon l'article L. 2231-1 du Code du travail ? ». La réponse est inchangée : la fiche ne traite pas des modes dérogatoires. | C. trav., art. L. 2231-1 ; L. 2232-21 et suivants |
 | k08 | La règle de 1988 (« seul le plus favorable est accordé ») était présentée comme valable pour tout concours de conventions. Depuis les ordonnances de 2017, ce sont les trois blocs qui règlent le rapport entre branche et entreprise. Dans le bloc 3, l'accord d'entreprise prévaut, même s'il est moins favorable. | Question : « Selon la jurisprudence de l'assemblée plénière de 1988, comment se règle un concours de conventions collectives applicables à un même salarié ? ». La réponse donne la règle de non-cumul et de comparaison avantage par avantage. Elle ajoute qu'entre branche et entreprise, l'équivalence s'apprécie par ensemble de garanties dans les blocs 1 et 2, et que l'accord d'entreprise prime dans le bloc 3. Base complétée par Règles essentielles#3. | Cass. ass. plén., 18 mars 1988, n° 84-40.083 ; C. trav., art. L. 2253-1 à L. 2253-3 |
-| k16 | Le membre de phrase « le salarié dispose d'un mois pour refuser par écrit » répétait k15. Il ne répondait pas à la question, qui pose déjà le refus écrit. | Membre de phrase retiré. La réponse garde le principe (deux mois pour licencier, motif spécifique constituant une cause réelle et sérieuse) et l'exception jurisprudentielle de 2026. | C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026 |
+| k16 | Le membre de phrase « le salarié dispose d'un mois pour refuser par écrit » répétait k15. Il ne répondait pas à la question, qui pose déjà le refus écrit. | Membre de phrase retiré. La réponse garde le principe (deux mois pour licencier, motif spécifique constituant une cause réelle et sérieuse) et l'exception jurisprudentielle de 2026. La reprise a ensuite laissé cette exception à k17 (voir ci-dessus). | C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026 |
 | k25 | La question « De quels pouvoirs les agents de contrôle disposent-ils dans les établissements ? » était trop ouverte. D'autres réponses justes, absentes du verso, étaient possibles : communication de documents, arrêt temporaire de travaux, mises en demeure. | Question : « Où les agents de contrôle de l'inspection du travail ont-ils un droit d'entrée, et quelle limite s'applique aux locaux habités ? ». Le verso commence par le droit d'entrée et sa limite (accord des occupants). Identité, registres et procès-verbaux restent en précision. | C. trav., art. L. 8113-1 et suivants ; L. 4731-1 |
-| k26 | La liste des manquements était présentée comme complète. Or l'article L. 8115-1 vise aussi l'obligation de décompte de la durée du travail (L. 3171-2), comme l'a confirmé la recherche. La mention du document unique faisait en outre doublon avec k27. | « notamment » ajouté devant la liste des manquements. Le document unique est laissé à k27. Réponse de 67 mots. | C. trav., art. L. 8115-1 (3° : L. 3171-2) ; recherche n° 1 |
+| k26 | La liste des manquements était présentée comme complète. Or l'article L. 8115-1 vise aussi l'obligation de décompte de la durée du travail (L. 3171-2), comme l'a confirmé la recherche. La mention du document unique faisait en outre doublon avec k27. | « notamment » ajouté devant la liste des manquements. Le document unique est laissé à k27. La reprise a ensuite délimité la question (voir ci-dessus). | C. trav., art. L. 8115-1 (3° : L. 3171-2) ; recherche n° 1 |
 | k27 | Même liste présentée comme complète, sans le décompte de la durée du travail. La question nommait « la loi du 25 juin 2026 », dont le numéro et la date ne figuraient que dans un seul résultat (rapport de la fiche, « Points non tranchés »). La date de version du 27 juin 2026 est, elle, confirmée par deux résultats. | Question : « Quel manquement l'amende administrative de l'article L. 8115-1 du Code du travail sanctionne-t-elle aussi depuis le 27 juin 2026 ? ». La réponse précise que l'absence de document unique s'ajoute aux manquements déjà visés, « notamment » ceux qu'elle cite. | C. trav., art. L. 8115-1 (version en vigueur depuis le 27 juin 2026) ; rapport `ue3-01.md` |
 | k33 | Après la première relecture, la réponse reprenait les exceptions, qui sont la réponse entière de k35 : doublon. | Question délimitée (« En principe, quels délais… ? »). Réponse limitée aux deux délais et à leurs points de départ ; les exceptions restent dans k35. Base ramenée à Chiffres et seuils#0. | C. trav., art. L. 1471-1 |
-| k35 | La discrimination figurait parmi les exceptions sans le délai qui s'applique à la place. L'item Chiffres et seuils#2 (5 ans) n'avait aucune carte. | Ajout de « (5 ans à compter de sa révélation, L. 1134-5) ». Base complétée par Chiffres et seuils#2. Réponse de 67 mots. | C. trav., art. L. 1471-1, al. 3, et L. 1134-5 |
-
-Les autres cartes ont été contrôlées sans changement : k01, k02, k04 à k07, k09 à k15, k17 à k24, k28 à k32 et k34.
+| k35 | La discrimination figurait parmi les exceptions sans le délai qui s'applique à la place. L'item Chiffres et seuils#2 (5 ans) n'avait aucune carte. | Ajout de « (5 ans à compter de sa révélation, L. 1134-5) ». Base complétée par Chiffres et seuils#2. | C. trav., art. L. 1471-1, al. 3, et L. 1134-5 |
 
 ## Recherches faites
 
-1 recherche sur les 3 autorisées.
+**Reprise** : aucune recherche. Les cinq corrections portent sur la délimitation des questions ou retirent une précision. Elles n'ajoutent aucun fait absent de la fiche, et le texte des articles en cause (L. 2253-2, L. 2261-17, L. 8115-1) ne laissait pas de doute réel.
+
+**Premier passage** : 1 recherche sur les 3 autorisées.
 
 1. WebSearch, `allowed_domains` : legifrance.gouv.fr, requête « article L. 8115-1 code du travail amende administrative décompte de la durée de travail L. 3171-2 durées maximales repos ».
    - **Confirmé.** La liste des manquements passibles d'une amende administrative comprend les durées maximales du travail (L. 3121-18 à L. 3121-25), les repos et l'obligation de décompte de la durée du travail de l'article L. 3171-2.
@@ -75,6 +94,10 @@ La fiche n'a pas été modifiée.
 2. **Ce qui a changé récemment#4** (ainsi que `src` de Règles essentielles#14 et l'entrée de `textes`). Le numéro et la date de la « loi n° 2026-534 du 25 juin 2026 » ne reposent que sur un seul résultat, comme le signale déjà le rapport de la fiche. Ils sont à reconfirmer.
 3. **Points de vigilance#3.** La règle de 1988 (non-cumul, seul le plus favorable est accordé) est donnée sans limite. Seuls les blocs 1 et 2 sont mentionnés pour l'articulation entre branche et entreprise. Il faut préciser que, dans le bloc 3, l'accord d'entreprise prévaut sur la branche même s'il est moins favorable (L. 2253-3).
 4. **Définitions#1** (complément, pas une erreur). L'item ne donne que le principe de L. 2231-1. Il pourrait signaler les modes de conclusion propres aux entreprises dépourvues de délégué syndical : élus, salariés mandatés, approbation par le personnel (L. 2232-21 et suivants).
+5. **Règles essentielles#2** (bloc 2), nouveau point de la reprise.
+   - L'article L. 2253-2 ne fait primer la branche, lorsqu'elle le stipule, que sur la convention d'entreprise « conclue postérieurement » à la convention de branche. L'item omet cette condition.
+   - Le 3° vise aussi le nombre des délégués syndicaux et la valorisation de leur parcours syndical, en plus de l'effectif à partir duquel ils peuvent être désignés.
+6. **Règles essentielles#4** (élargissement), nouveau point de la reprise. Le critère « conditions analogues quant aux emplois exercés » vaut pour l'élargissement à un autre secteur professionnel (L. 2261-17, 2°). Pour un autre secteur territorial, le texte exige des conditions économiques analogues (1°). L'item présente le premier critère comme général. Ces points sont à confirmer sur la version de L. 2261-17 en vigueur depuis le 1er juin 2021.
 
 ## Classement des exercices
 

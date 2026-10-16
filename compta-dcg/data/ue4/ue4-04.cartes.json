@@ -379,8 +379,8 @@
   {
    "id": "ue4-04-k32",
    "type": "comp",
-   "q": "Selon l'article 515-1 du PCG réécrit par le règlement ANC n° 2026-04, comment l'impôt sur les bénéfices est-il comptabilisé ?",
-   "r": "<b>Dans la rubrique « Impôts sur les bénéfices » de l'exercice au titre duquel l'entreprise en est redevable</b>, au taux en vigueur à la date de clôture, avec les contributions qui s'y rattachent.",
+   "q": "Selon l'article 515-1 du PCG, réécrit par le règlement ANC n° 2026-04, à quel exercice et à quel taux l'impôt sur les bénéfices est-il comptabilisé ?",
+   "r": "<b>À l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture</b>, dans la rubrique « Impôts sur les bénéfices », avec les contributions qui s'y rattachent.",
    "base": [
     "Ce qui a changé récemment#6"
    ],
@@ -404,7 +404,7 @@
    "id": "ue4-04-k34",
    "type": "def",
    "q": "Qu'est-ce que le régime de l'intégration fiscale en matière d'impôt sur les sociétés ?",
-   "r": "<b>Une société soumise à l'IS, non détenue à 95 % au moins par une autre personne morale soumise à l'IS, peut se constituer seule redevable de l'IS dû sur le résultat d'ensemble du groupe</b> formé avec les sociétés qu'elle détient à 95 % au moins, directement ou indirectement, de manière continue ; l'option vaut cinq exercices. Chaque société n'impute ses déficits antérieurs à son entrée que sur son bénéfice propre.",
+   "r": "<b>Le régime optionnel par lequel une société soumise à l'IS se constitue seule redevable de l'IS dû sur le résultat d'ensemble du groupe</b> qu'elle forme avec les sociétés dont elle détient au moins 95 % du capital, directement ou indirectement, de manière continue ; elle-même ne doit pas être détenue à 95 % au moins par une autre personne morale soumise à l'IS. L'option vaut pour cinq exercices.",
    "base": [
     "Règles essentielles#15"
    ],

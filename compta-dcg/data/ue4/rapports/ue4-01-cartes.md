@@ -11,7 +11,7 @@
    - **Ambiguïté** : la réponse attendue est-elle celle qu'attendrait un correcteur du DCG, et la seule réponse juste possible ?
    - **Doublons et cartes triviales.**
    - **Absence de calcul et de chiffre millésimé.**
-4. **Recherches** : 2 recherches sur les 3 permises, limitées à legifrance.gouv.fr, bofip.impots.gouv.fr et service-public.fr (détail plus bas).
+4. **Recherches** : 3 recherches, le maximum permis, limitées à legifrance.gouv.fr, bofip.impots.gouv.fr et service-public.fr (détail plus bas).
 
 Validation : `node validate.js data/ue4/ue4-01.cartes.json` renvoie ✓ (35 cartes, dont 9 de définition).
 
@@ -53,6 +53,8 @@ Le premier relecteur a contrôlé 35 cartes. Le résultat transmis s'interrompt 
 
 | Cible | Problème | Correction | Source |
 |---|---|---|---|
+| k02 | La question « Que doit autoriser, chaque année, la première partie de la loi de finances de l'année ? » admettait une autre réponse juste : la première partie comporte aussi les autorisations relatives aux emprunts et à la trésorerie de l'État (LOLF, art. 34, I). | La question est délimitée aux recettes : « En matière de recettes, que doit autoriser chaque année la première partie de la loi de finances de l'année (LOLF, art. 34) ? ». La référence passe de la réponse à la question. La réponse est inchangée sur le fond. | LOLF, art. 34, I ; fiche Définitions#0 |
+| k07 | La question « Comment l'administration peut-elle écarter la garantie… ? » admettait d'autres réponses : rapporter la doctrine pour l'avenir, ou contester la bonne foi du redevable (LPF, art. L. 80 A, al. 1). Ni l'une ni l'autre n'est la réponse de la fiche. | La question vise la procédure : « Par quelle procédure l'administration peut-elle écarter la garantie de l'article L. 80 A du LPF lorsque la doctrine invoquée par le contribuable ajoute à la loi ? ». La réponse (abus de droit, LPF, art. L. 64) est inchangée. | Fiche Points de vigilance#0 ; CE, Ass., 28 octobre 2020, n° 428048 |
 | k13 | La question (« En dehors de l'option ouverte l'année du mariage ou du PACS… ») admettait encore une autre réponse juste : l'année du divorce, de la séparation ou de la rupture du PACS, où chacun est imposé séparément. La fiche n'en parle pas, mais un étudiant pouvait la donner à bon droit. | La question vise désormais les seules situations de vie séparée en cours de mariage : « Dans quels cas des époux qui vivent séparément, sans être divorcés, sont-ils imposés distinctement à l'impôt sur le revenu ? ». La réponse (les trois cas de Définitions#5) est inchangée. | Fiche Définitions#5 ; CGI, art. 6 |
 | k19 | Après la première relecture, la question « Dans quelles conditions… est-elle déductible ? » appelait une liste complète. La réponse taisait pourtant le plafond légal de déduction, une condition essentielle que la fiche mentionne ailleurs (Chiffres et seuils#3, Points de vigilance#4). La carte laissait ainsi croire qu'il n'y a pas de plafond. | La question est délimitée sans donner de chiffre : « Hors plafond, d'après quels éléments s'apprécie le montant déductible d'une pension alimentaire versée à un enfant majeur non rattaché au foyer fiscal ? ». Réponse : l'état de fortune du débiteur et les besoins du bénéficiaire ; la pension déduite est imposable chez l'enfant ; aucune déduction si l'enfant est rattaché. La base reste Règles essentielles#6. | CGI, art. 156, II-2° ; fiche Règles essentielles#6, Chiffres et seuils#3 |
 | k27 | La phrase ajoutée par la première relecture (« Il vise les organismes qui fournissent gratuitement des repas ou des soins… ou favorisent leur logement ») se lisait comme la liste complète des bénéficiaires du taux de 75 %. Or l'article 200 du CGI vise aussi les organismes qui accompagnent les victimes de violence domestique ou contribuent à leur relogement. | Phrase supprimée. La carte ne porte plus que sur l'articulation des taux : 75 % dans un plafond spécifique, 66 % au-delà, et la fraction à 75 % n'entre pas dans la limite de 20 %. La question garde « (repas, soins, logement) », qui décrit sans prétendre à l'exhaustivité. | CGI, art. 200, 1 ter (recherche n° 2) |
@@ -62,7 +64,7 @@ Le premier relecteur a contrôlé 35 cartes. Le résultat transmis s'interrompt 
 **Cartes contrôlées et maintenues** :
 
 - **Doublons apparents** : k01/k02, k05/k33, k06/k07, k12/k13/k14, k24/k25/k28 et k31/k35 portent sur les mêmes items, mais chaque carte interroge un angle distinct. On trouve ainsi Constitution et LOLF, doctrine publiée et prise de position tacite, portée de la doctrine et abus de droit, composition du foyer, cas d'imposition distincte et option, réduction, crédit et plafonnement, taux neutre et modulation.
-- **Chiffres stables** : k25 (plafonnement global), k26 (66 % et 20 %), k29 (CEHR) et k32 (majoration de 10 % ou 20 %) citent des chiffres fixés par la loi, sans indexation annuelle, et chaque question porte sur la règle. Le contrat (section 8) les admet.
+- **Chiffres stables** : k25 (plafonnement global, confirmé par la recherche n° 3), k26 (66 % et 20 %), k29 (CEHR) et k32 (majoration de 10 % ou 20 %) citent des chiffres fixés par la loi, sans indexation annuelle, et chaque question porte sur la règle. Le contrat (section 8) les admet.
 - **Date d'entrée en vigueur** : k30 cite la date du 1er septembre 2025. C'est une date d'entrée en vigueur, pas un chiffre millésimé.
 - **CSG déductible (k20)** : la fraction de 6,8 points reste exacte après la LFSS 2026, comme l'indique la fiche.
 
@@ -77,6 +79,9 @@ Le premier relecteur a contrôlé 35 cartes. Le résultat transmis s'interrompt 
    - Le texte de l'article 200 mentionne aussi les organismes d'intérêt général qui, à titre principal et gratuitement, accompagnent les victimes de violence domestique ou contribuent à leur relogement.
    - Le BOFiP (BOI-IR-RICI-250-30, version du 6 juillet 2026) applique le 1 ter dans sa rédaction issue de la loi de finances pour 2026.
    - Cette recherche a conduit à corriger k27. L'extrait n'a pas permis de lire le paragraphe en entier : le point est signalé à vérifier.
+3. **CGI, art. 200-0 A : plafonnement global des avantages fiscaux** (domaines legifrance.gouv.fr, bofip.impots.gouv.fr, service-public.fr).
+   - Confirmé : le plafond reste de 10 000 €, porté à 18 000 € avec les réductions pour investissements outre-mer (art. 199 undecies A, B et C), les SOFICA (art. 199 unvicies) et le XII de l'article 199 novovicies. Légifrance donne une version de l'article en vigueur depuis le 21 février 2026, et le BOFiP (BOI-IR-LIQ-20-20-10-10) est à jour au 21 avril 2026.
+   - La loi de finances pour 2026 n'a donc pas changé ces montants. La carte k25 et Règles essentielles#13 restent exactes.
 
 ## Points à reprendre dans la fiche
 

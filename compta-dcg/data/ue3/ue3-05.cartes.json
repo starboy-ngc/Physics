@@ -5,7 +5,7 @@
   {
    "id": "ue3-05-k01",
    "type": "def",
-   "q": "Que recouvrent la liberté syndicale et le principe de participation des travailleurs selon le préambule de la Constitution de 1946 ?",
+   "q": "Que recouvrent la liberté syndicale et le principe de participation des travailleurs selon le Préambule de la Constitution de 1946 ?",
    "r": "<b>Liberté syndicale</b> : tout homme peut défendre ses droits et ses intérêts par l'action syndicale et adhérer au syndicat de son choix (al. 6). <b>Participation</b> : tout travailleur participe, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail ainsi qu'à la gestion des entreprises (al. 8).",
    "base": [
     "Définitions#0"
@@ -189,7 +189,7 @@
    "id": "ue3-05-k17",
    "type": "comp",
    "q": "Comment valider un accord d'entreprise signé par l'employeur et des syndicats ayant recueilli plus de 30 %, sans dépasser 50 %, des suffrages exprimés en faveur des organisations représentatives ?",
-   "r": "<b>Par une consultation des salariés</b>, demandée par une ou plusieurs organisations signataires dans le mois suivant la signature, puis, passé ce délai, par l'employeur, sauf opposition de toutes ces organisations. Si, huit jours après la demande, d'autres signatures n'ont pas permis d'atteindre 50 %, elle est organisée dans les deux mois ; l'accord est valide s'il est approuvé à la majorité des suffrages exprimés, sinon réputé non écrit.",
+   "r": "<b>Par une consultation des salariés</b>, demandée par une ou plusieurs organisations signataires dans le mois suivant la signature ou, passé ce délai, par l'employeur, sauf opposition de toutes ces organisations. Si, huit jours après la demande, d'autres signatures n'ont pas permis d'atteindre 50 %, elle est organisée dans les deux mois ; l'accord est valide s'il est approuvé à la majorité des suffrages exprimés, sinon réputé non écrit.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -408,7 +408,7 @@
    "id": "ue3-05-k38",
    "type": "comp",
    "q": "Quelle formalité, auprès des représentants du personnel, doit précéder l'introduction du règlement intérieur dans l'entreprise ?",
-   "r": "<b>Le règlement intérieur ne peut être introduit qu'après avoir été soumis à l'avis du comité social et économique.</b> Depuis la loi n° 2026-403 du 26 mai 2026, il entre en vigueur un mois après l'accomplissement des formalités de publicité.",
+   "r": "<b>Le règlement intérieur ne peut être introduit qu'après avoir été soumis à l'avis du comité social et économique.</b> Depuis la loi n° 2026-403 du 26 mai 2026, il ne peut entrer en vigueur qu'un mois après l'accomplissement des formalités de publicité.",
    "base": [
     "Points de vigilance#3"
    ],

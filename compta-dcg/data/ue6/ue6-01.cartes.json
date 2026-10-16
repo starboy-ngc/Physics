@@ -153,8 +153,8 @@
   {
    "id": "ue6-01-k13",
    "type": "comp",
-   "q": "Dans les sujets de DCG, quels deux « taux de marge » ne faut-il pas confondre avec le taux de marge de l'Insee ?",
-   "r": "<b>Le taux de marge commerciale</b> (marge commerciale / ventes de marchandises) <b>et le taux de marge brute d'exploitation</b> (EBE / chiffre d'affaires). D'où la règle : toujours préciser le dénominateur d'un « taux de marge ».",
+   "q": "Dans les sujets de DCG, quel rapport définit le taux de marge commerciale, et quel rapport définit le taux de marge brute d'exploitation ?",
+   "r": "<b>Taux de marge commerciale : marge commerciale / ventes de marchandises. Taux de marge brute d'exploitation : EBE / chiffre d'affaires.</b> Le taux de marge de l'Insee rapporte, lui, l'EBE à la valeur ajoutée : toujours préciser le dénominateur.",
    "base": [
     "Définitions#4",
     "Points de vigilance#0"
@@ -166,8 +166,8 @@
   {
    "id": "ue6-01-k14",
    "type": "comp",
-   "q": "Selon l'Insee, à quoi l'excédent brut d'exploitation (EBE) est-il rapporté pour mesurer d'une part le taux de marge, d'autre part la rentabilité économique ?",
-   "r": "<b>À la valeur ajoutée pour le taux de marge ; à la somme des immobilisations brutes corporelles et incorporelles et du besoin en fonds de roulement pour la rentabilité économique.</b> Un taux de marge élevé n'implique pas nécessairement une rentabilité économique forte.",
+   "q": "Selon l'Insee, à quoi rapporte-t-on l'excédent brut d'exploitation (EBE) pour mesurer la rentabilité économique d'une entreprise ?",
+   "r": "<b>À la somme des immobilisations brutes corporelles et incorporelles et du besoin en fonds de roulement.</b> Un taux de marge élevé (EBE / valeur ajoutée) n'implique pas nécessairement une rentabilité économique forte.",
    "base": [
     "Points de vigilance#1",
     "Définitions#4"
@@ -208,7 +208,8 @@
    "q": "Dans quel compte du PCG 2025 enregistre-t-on la quote-part des subventions d'investissement virée au résultat de l'exercice ?",
    "r": "<b>Au compte 747</b>, parmi les produits d'exploitation ; le compte 777 n'existe plus.",
    "base": [
-    "Règles essentielles#6"
+    "Règles essentielles#6",
+    "Ce qui a changé récemment#0"
    ],
    "src": "Plan de comptes PCG 2025, compte 747",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
@@ -220,7 +221,8 @@
    "q": "Qu'est-ce que le résultat exceptionnel d'une entreprise depuis le PCG 2025 ?",
    "r": "<b>Le résultat dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise.</b> Depuis le PCG 2025, il est recentré sur les charges et produits découlant d'un événement majeur et inhabituel et sur les écritures d'origine purement fiscale.",
    "base": [
-    "Définitions#5"
+    "Définitions#5",
+    "Ce qui a changé récemment#0"
    ],
    "src": "C. com., art. R. 123-192 ; PCG, art. 512-4 ; règlement ANC n° 2022-06",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197051/",
@@ -340,9 +342,9 @@
   },
   {
    "id": "ue6-01-k28",
-   "type": "def",
-   "q": "En droit des sociétés, qu'est-ce qu'un dividende ?",
-   "r": "<b>La part du bénéfice distribuable attribuée aux associés par l'assemblée générale</b>, après approbation des comptes.",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quel organe d'une société attribue un dividende aux associés, et à quel moment ?",
+   "r": "<b>L'assemblée générale, après approbation des comptes.</b> Elle peut alors attribuer aux associés une part du bénéfice distribuable sous forme de dividende.",
    "base": [
     "Définitions#7"
    ],
@@ -409,19 +411,6 @@
    ],
    "src": "Insee, documentation méthodologique de l'indice de chiffre d'affaires et de l'indice de volume des ventes dans le commerce",
    "url": null,
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-01-k34",
-   "type": "comp",
-   "q": "Quels sont les trois changements de classement des charges et produits, issus du règlement ANC n° 2022-06, qui modifient les soldes intermédiaires de gestion et la CAF ?",
-   "r": "<b>La nouvelle définition du résultat exceptionnel</b> (événement majeur et inhabituel), <b>le passage en exploitation des cessions d'immobilisations incorporelles et corporelles</b> (657 / 757) <b>et l'enregistrement de la quote-part de subvention en 747</b>. Ils s'appliquent aux exercices ouverts à compter du 1er janvier 2025.",
-   "base": [
-    "Ce qui a changé récemment#0",
-    "Règles essentielles#4"
-   ],
-   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
    "fiab": "stable"
   },
   {

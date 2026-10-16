@@ -5,7 +5,7 @@
   {
    "id": "ue2-04-k01",
    "type": "def",
-   "q": "Quelle qualité et quelle responsabilité à l'égard des dettes sociales ont les associés d'une société en nom collectif (SNC) ?",
+   "q": "Quel statut l'article L. 221-1 du Code de commerce attribue-t-il aux associés d'une société en nom collectif (SNC) ?",
    "r": "<b>Ils ont tous la qualité de commerçant et répondent indéfiniment et solidairement des dettes sociales.</b> Le créancier ne peut poursuivre un associé qu'après avoir vainement mis en demeure la société par acte extrajudiciaire, à l'expiration d'un délai de huit jours que le président du tribunal de commerce, statuant en référé, peut proroger.",
    "base": [
     "Définitions#0",
@@ -68,7 +68,7 @@
    "id": "ue2-04-k06",
    "type": "comp",
    "q": "Quelle conséquence la qualité de commerçant des associés de SNC et des commandités de SCS a-t-elle pour un mineur ?",
-   "r": "<b>Le mineur non émancipé, qui ne peut pas être commerçant, ne peut pas devenir associé de SNC ni commandité</b> ; le mineur émancipé ne peut être commerçant que sur autorisation du juge. Les commanditaires, eux, n'ont pas le statut des associés en nom collectif.",
+   "r": "<b>Le mineur non émancipé, qui ne peut pas être commerçant, ne peut donc pas être associé de SNC ni commandité de SCS</b> ; le mineur émancipé ne peut être commerçant que sur autorisation du juge. Les commanditaires, eux, n'ont pas le statut des associés en nom collectif.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -79,8 +79,8 @@
   {
    "id": "ue2-04-k07",
    "type": "comp",
-   "q": "Quelle différence sépare la SNC de la SARL, de la SA et de la SAS pour les actes du dirigeant dépassant l'objet social ?",
-   "r": "<b>Dans la SNC, comme dans la société civile, le gérant n'engage la société envers les tiers que par les actes entrant dans l'objet social.</b> Dans la SARL, la SA et la SAS, la société est engagée même par ces actes, à moins qu'elle ne prouve que le tiers savait que l'acte dépassait l'objet ou ne pouvait l'ignorer, la seule publication des statuts ne suffisant pas.",
+   "q": "Qu'est-ce qui distingue la SNC de la SARL, de la SA et de la SAS quant aux actes du dirigeant dépassant l'objet social ?",
+   "r": "<b>Dans la SNC, comme dans la société civile, le gérant n'engage la société envers les tiers que par les actes entrant dans l'objet social.</b> Dans la SARL, la SA et la SAS, la société est engagée même par les actes étrangers à l'objet social, sauf si elle prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer, la seule publication des statuts ne suffisant pas.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -116,7 +116,7 @@
    "id": "ue2-04-k10",
    "type": "comp",
    "q": "Quel accord exige la modification des statuts d'une société en commandite simple (SCS) ?",
-   "r": "<b>Le consentement de tous les commandités et la majorité en nombre et en capital des commanditaires.</b> Les parts, elles, ne peuvent en principe être cédées qu'avec le consentement de tous les associés, les statuts pouvant assouplir cette règle pour les parts des commanditaires.",
+   "r": "<b>Le consentement de tous les commandités et la majorité en nombre et en capital des commanditaires.</b> Les parts, elles, ne peuvent en principe être cédées qu'avec le consentement de tous les associés ; les statuts peuvent notamment rendre celles des commanditaires librement cessibles entre associés, ou cessibles à des tiers avec ce même accord.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -213,7 +213,7 @@
   {
    "id": "ue2-04-k18",
    "type": "comp",
-   "q": "En l'absence d'option, comment sont imposés les bénéfices réalisés par une société en nom collectif (SNC) ?",
+   "q": "En l'absence d'option pour l'IS, comment sont imposés les bénéfices d'une société en nom collectif (SNC) dont tous les associés sont des personnes physiques ?",
    "r": "<b>Chaque associé est personnellement soumis à l'impôt sur le revenu pour la part des bénéfices sociaux correspondant à ses droits.</b> La société peut opter pour l'IS et y renoncer jusqu'au cinquième exercice suivant celui au titre duquel l'option a été exercée ; à défaut, l'option devient irrévocable, et une société qui a renoncé ne peut plus opter de nouveau.",
    "base": [
     "Points de vigilance#3"
@@ -358,7 +358,7 @@
   {
    "id": "ue2-04-k30",
    "type": "comp",
-   "q": "À quelles conditions un organisme sans but lucratif, comme une association, est-il exonéré d'IS, de TVA et de CET ?",
+   "q": "À quelles conditions un organisme sans but lucratif, comme une association, échappe-t-il aux impôts commerciaux (IS, TVA et CET) ?",
    "r": "<b>Sa gestion doit être désintéressée et son activité ne pas concurrencer le secteur lucratif</b>, ou s'exercer dans des conditions différentes de celles des entreprises (règle dite des « 4 P » : produit, public, prix, publicité). À défaut, il est soumis aux impôts commerciaux.",
    "base": [
     "Points de vigilance#4"
@@ -395,7 +395,7 @@
    "id": "ue2-04-k33",
    "type": "def",
    "q": "Qu'est-ce qu'une fondation au sens de la loi du 23 juillet 1987 ?",
-   "r": "<b>L'acte par lequel une ou plusieurs personnes physiques ou morales décident l'affectation irrévocable de biens, droits ou ressources à la réalisation d'une œuvre d'intérêt général et à but non lucratif.</b> Lorsque l'acte crée une personne morale, celle-ci n'a la capacité juridique qu'à compter de l'entrée en vigueur du décret en Conseil d'État accordant la reconnaissance d'utilité publique.",
+   "r": "<b>L'acte par lequel une ou plusieurs personnes physiques ou morales décident l'affectation irrévocable de biens, droits ou ressources à la réalisation d'une œuvre d'intérêt général et à but non lucratif.</b> Lorsque l'acte crée une personne morale, celle-ci n'a en principe la capacité juridique qu'à compter de l'entrée en vigueur du décret en Conseil d'État accordant la reconnaissance d'utilité publique.",
    "base": [
     "Définitions#7"
    ],

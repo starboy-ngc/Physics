@@ -4,116 +4,130 @@ Date : 15 octobre 2026.
 
 ## Méthode
 
-1. **Rédaction depuis la fiche.** Les cartes ont été rédigées à partir de la seule fiche documentaire `ue10-06.fiche.json`, selon le contrat (section 8). Chaque carte repose sur un ou deux items de la fiche (`base`), et `src` et `url` sont copiés depuis le premier de ces items.
-2. **Relecture de fidélité.** Une première relecture a vérifié que chaque carte disait la même chose que la fiche : mêmes conditions, mêmes exceptions, même vocabulaire. Elle n'a fait aucune recherche web.
-3. **Relecture d'exactitude.** Une seconde relecture, indépendante, a vérifié quatre points :
-   - l'exactitude en droit et en comptabilité au 15 octobre 2026 (Code de commerce, Code civil, CGI et BOFiP, PCG modifié par les règlements ANC n° 2018-01, 2018-02, 2022-06 et 2024-07) ;
+1. **Rédaction depuis la fiche.** Les cartes ont été rédigées à partir de la seule fiche documentaire `ue10-06.fiche.json`, selon le contrat (section 8). Chaque carte repose sur un ou deux items de la fiche (`base`). `src` et `url` sont copiés depuis le premier de ces items.
+2. **Premier cycle de relecture** (commit 95746d3). Ce cycle comprenait une relecture de fidélité puis une relecture d'exactitude, avec 3 recherches restreintes à anc.gouv.fr. Il a supprimé k25, doublon de k24 : l'identifiant k25 reste vide, sans renumérotation. Il a aussi retouché k03, k13, k16, k17, k20, k21, k24 et k31.
+3. **Relecture de fidélité (reprise).** Une passe interrompue avait réintroduit dans les cartes des éléments que la relecture d'exactitude avait écartés. La nouvelle relecture de fidélité a contrôlé les 34 cartes, corrigé les cartes concernées et ajouté k36. Elle n'a fait aucune recherche web.
+4. **Relecture d'exactitude (reprise).** Une seconde relecture, indépendante, a vérifié quatre points :
+   - l'exactitude en droit et en comptabilité au 15 octobre 2026 : Code de commerce, Code civil, CGI et BOFiP, PCG modifié par les règlements ANC n° 2018-01, 2022-06 et 2024-07 ;
    - l'ambiguïté pédagogique : une autre réponse juste était-elle possible ?
    - les doublons et les cartes sans intérêt ;
    - l'absence de calcul et de chiffre millésimé.
 
-   Elle a fait 3 recherches WebSearch restreintes à anc.gouv.fr (voir « Recherches »).
-4. **Validation.** `node validate.js data/ue10/ue10-06.cartes.json` : ✓ (34 cartes, 6 déf.).
+   Elle a fait une seule recherche, restreinte à legifrance.gouv.fr (voir « Recherches »).
+5. **Validation.** `node validate.js data/ue10/ue10-06.cartes.json` : ✓ (35 cartes, dont 6 déf.).
 
 ## Bilan
 
-- **Nombre de cartes : 34.** Il y en avait 35 au départ. Une carte a été supprimée (k25), sans renumérotation : l'identifiant k25 reste vide.
-- **Répartition : 6 cartes `def` et 28 cartes `comp`.**
+- **Nombre de cartes : 35.** La reprise a ajouté k36. L'identifiant k25 reste vide.
+- **Répartition : 6 cartes `def` et 29 cartes `comp`.**
 - **Couverture de la fiche.**
   - Les 5 items de « Définitions » ont chacun au moins une carte.
-  - 18 des 19 « Règles essentielles » sont dans la base d'au moins une carte. Règles essentielles#2 (augmentation de capital en numéraire dans la SA) n'est la base d'aucune carte, mais tout son contenu est porté par k11 (Chiffres et seuils#0, Points de vigilance#0) et k12 (Points de vigilance#1).
-  - Les 6 « Points de vigilance » sont tous couverts. Points de vigilance#2 l'est désormais par k24, après la fusion de k25.
-  - Dans « Chiffres et seuils », les items #0, #1 et #2 sont couverts (k11, k05, k21).
-  - Dans « Ce qui a changé récemment », les items #0, #1, #3 et #4 sont couverts (k22, k17, k34, k03).
+  - 18 des 19 « Règles essentielles » servent de base à au moins une carte. Règles essentielles#10 (réduction non motivée par des pertes) en fonde trois, qui ne se recouvrent pas :
+    - k19 : qui peut former opposition, et dans quel délai ;
+    - k20 : ce qui distingue cette réduction de la réduction motivée par des pertes ;
+    - k36 : le rachat d'actions en vue de leur annulation.
+  - Les 6 « Points de vigilance » sont tous couverts.
+  - « Chiffres et seuils » : les items #0, #1 et #2 sont couverts (k11, k05, k21).
+  - « Ce qui a changé récemment » : les items #0, #1, #3 et #4 sont couverts (k22, k17, k34, k03).
 - **Items de fiche sans carte :**
-  - Chiffres et seuils#3 (PFU et seuils de dispense, « millésimé 2025 ») ;
-  - Chiffres et seuils#4 (taux limite des intérêts de comptes courants, « millésimé 2026 ») ;
+  - Règles essentielles#2 (augmentation de capital en numéraire dans la SA). Son contenu est entièrement porté par k11 (Chiffres et seuils#0, Points de vigilance#0) et par k12 (Points de vigilance#1).
+  - Chiffres et seuils#3 (PFU et seuils de dispense, « millésimé 2025 »).
+  - Chiffres et seuils#4 (taux limite des intérêts de comptes courants, « millésimé 2026 »).
   - Ce qui a changé récemment#2 (prélèvements sociaux 2026, « millésimé 2026 »).
 
-  Ce sont des items millésimés : le contrat exclut qu'ils donnent une carte.
-- Aucune carte ne demande de calcul ni ne repose sur un chiffre millésimé. Les chiffres présents sont stables et font partie d'une règle : fractions de libération (1/5, 1/2, 1/4), 30 000 € (D. 223-6-1, fixé depuis 2010), 1 % du total du bilan (décret n° 2023-657), 5 % et 10 % de la réserve légale, délais légaux (cinq ans, quatre mois, neuf mois, trois mois). Les dates citées (ordonnance n° 2025-229, loi n° 2023-171, loi n° 2026-103, règlements ANC n° 2018-01 et 2024-07) sont des dates de textes ou d'entrée en vigueur.
+  Les trois derniers sont millésimés : le contrat leur interdit de donner une carte.
+- **Aucune carte ne demande de calcul ni ne repose sur un chiffre millésimé.**
+  - Les chiffres qui figurent sur les cartes sont stables et font partie d'une règle : fractions de libération (1/5, 1/2, 1/4), 30 000 € (D. 223-6-1, inchangé depuis 2010), 1 % du total du bilan (décret n° 2023-657), 5 % et 10 % de la réserve légale, délais légaux.
+  - Les dates citées sont celles de textes ou de leur entrée en vigueur.
 
 ## Corrections de la première relecture (fidélité à la fiche)
 
-Le résultat transmis par la première relecture est tronqué après k16. Les lignes marquées (*) ont été reconstituées d'après l'historique git du fichier (commit 609a3b1 par rapport au commit f3776ee).
+Le résultat transmis par la relecture de fidélité s'arrête au milieu de la ligne k31. Les lignes marquées (*) ont été reconstituées par comparaison du fichier avec le commit 95746d3.
 
 | cible | problème | correction |
 |---|---|---|
-| ue10-06-k03 | La réponse ne faisait que reformuler la question (« distinctes des dettes ») et n'apportait rien de plus que ce qu'elle disait déjà. | Ajout d'un élément porté par « Ce qui a changé récemment#4 » : la version commentée du règlement précise que le compte 109 est débité en contrepartie de la subdivision « capital souscrit non appelé » du compte 101. |
-| ue10-06-k06 | La réponse oubliait que les fondateurs d'une SA peuvent se dispenser de commissaire aux apports (L. 225-8-1, Règles essentielles#5). Cette dispense n'apparaissait sur aucune carte. | Ajout des deux cas de dispense prévus par la fiche : valeurs mobilières ou instruments du marché monétaire évalués au cours moyen pondéré des trois mois précédant l'apport, ou actifs évalués à la juste valeur par un commissaire aux apports dans les six mois. Le premier mot devient « Apprécier » pour rester sous 70 mots. |
-| ue10-06-k11 | La réponse étendait à la SARL la libération de la totalité de la prime d'émission, alors que « Chiffres et seuils#0 » réserve cette règle à la SA. De plus, le délai de cinq ans n'était porté par la base que pour la SARL (Règles essentielles#3). | Nouvelle formulation : « le quart au moins du nominal dans la SA comme dans la SARL et, dans la SA, la totalité de la prime d'émission », avec à la constitution « un cinquième des apports en SARL et la moitié du nominal en SA ». La base devient [Points de vigilance#0, Chiffres et seuils#0], qui porte tous les éléments. `src` et `url` ne changent pas. |
-| ue10-06-k12 | La carte ne couvrait que la SA. La règle propre à la SARL (capital intégralement libéré avant toute souscription de nouvelles parts en numéraire, Règles essentielles#3) n'était plus couverte après la modification de k11. | La question vise désormais la SA ou la SARL (« quelle condition commune subordonne l'émission de titres nouveaux à libérer en numéraire et la déduction fiscale des intérêts… »). La réponse cite les deux formes. La base devient [Points de vigilance#1, Règles essentielles#3]. Le contenu de Règles essentielles#2 reste couvert par Points de vigilance#1 (k12) et Chiffres et seuils#0 (k11). |
-| ue10-06-k14 | La réponse oubliait une règle importante de la base (Règles essentielles#6) qu'aucune autre carte ne couvrait : si l'assemblée réduit l'évaluation, l'approbation expresse des apporteurs est requise, sinon l'augmentation n'est pas réalisée. | Ajout de cette condition et réorganisation : libération intégrale et compte 1043 d'abord, puis désignation du commissaire aux apports et approbation des apporteurs. |
-| ue10-06-k16 | La question laissait croire que les traitements admis dataient du règlement ANC n° 2018-01, alors que ce règlement n'a changé que la qualification (« méthode préférentielle »). | Nouvelle question : « Selon l'article 212-9 du PCG, quels traitements comptables sont admis pour les frais d'augmentation de capital d'une société ? ». La réponse précise : « Depuis le règlement ANC n° 2018-01, l'imputation sur la prime n'est plus qualifiée de « méthode préférentielle » ». |
-| ue10-06-k20 (*) | « Créanciers antérieurs » ne reprenait pas la précision de la fiche (Règles essentielles#10). | « Créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal ». |
-| ue10-06-k22 (*) | La question (« dans le délai de deux exercices ») ne disait pas quels capitaux propres devaient être reconstitués. | « … n'ayant pas reconstitué dans le délai légal ses capitaux propres inférieurs à la moitié du capital ? ». |
-| ue10-06-k25 (*) | La question ne nommait pas la forme sociale. | « … pour doter la réserve légale d'une SARL ou d'une société par actions dont le report à nouveau est débiteur ? ». |
-| ue10-06-k27 (*) | « L'assemblée générale » sans contexte. | « L'assemblée générale d'une société ». |
-| ue10-06-k32 (*) | Question tournée en négatif (« Que ne couvre pas la dispense… ? »). | « Quels prélèvements restent retenus à la source sur les dividendes d'une personne physique dispensée du prélèvement forfaitaire non libératoire ? ». La réponse commence par « Les prélèvements sociaux ». |
-
-L'historique montre aussi une retouche de k15 : la phrase « Les réserves, le report à nouveau ou les primes sont simplement virés au capital (compte 1013) » devient « Comptablement, le compte 106 (ou 104, 110) est débité par le crédit du compte 1013 ». Elle n'apparaît pas dans la partie transmise du résultat. La première relecture n'a fait ni suppression ni ajout. Elle a porté la date `maj` au 2026-10-16.
+| ue10-06-k03 | Une passe interrompue avait réintroduit au verso la date d'application « exercices ouverts à compter du 1er janvier 2026 ». La fiche porte bien cette date, mais la relecture d'exactitude précédente l'a contestée : une recherche sur anc.gouv.fr donne le 1er janvier 2025. La réponse n'en a pas besoin. | Date retirée. Nouveau verso : « Les « autres fonds propres », que le règlement distingue des dettes. Comme les subventions d'investissement et les provisions réglementées, ils sont exclus de la situation nette. » La base reste [Ce qui a changé récemment#4, Définitions#0]. |
+| ue10-06-k06 | Le verso oubliait que les fondateurs se dispensent du commissaire aux apports « sous leur responsabilité ». Il omettait aussi « déjà » (actifs déjà évalués à la juste valeur dans les six mois). À 70 mots, il était à la limite. | Verso réécrit en 68 mots, dans cet ordre : le rôle (apprécier, sous sa responsabilité, la valeur des apports en nature et des avantages particuliers), la désignation (unanimité des fondateurs, à défaut le juge), puis la dispense « sous leur responsabilité » dans les deux cas de L. 225-8-1, avec « déjà évalués ». |
+| ue10-06-k16 | Deux versions de la question posaient problème. Celle de la passe interrompue admettait une autre réponse juste, « en charges », que le verso ne donnait pas en premier. Celle de HEAD (« plutôt que de les comptabiliser en charges ») présentait la comptabilisation directe en charges comme une option, ce que la fiche ne dit pas. | Nouvelle question : « Selon l'article 212-9 du PCG, à quels postes du bilan une société peut-elle inscrire ou imputer ses frais d'augmentation de capital ? ». Elle n'appelle qu'une réponse. Verso : « À l'actif en frais d'établissement, ou par imputation sur les primes d'émission et de fusion ; en cas d'insuffisance de la prime, ils sont comptabilisés en charges », puis le piège de la « méthode préférentielle » (règlement ANC n° 2018-01). |
+| ue10-06-k18 | Aucune carte ne couvrait la règle propre à la SARL de Règles essentielles#9 (réduction autorisée par les associés aux conditions de modification des statuts, L. 223-34). | Phrase ajoutée au verso : « Dans la SARL, elle est autorisée par les associés statuant aux conditions de modification des statuts. » La question (principe d'égalité des actionnaires dans la SA) ne change pas. 43 mots. |
+| ue10-06-k31 | La passe interrompue avait remis l'intitulé « 442 État – impôts et taxes recouvrables sur des tiers ». C'est bien le texte de la fiche, mais la relecture d'exactitude l'a jugé périmé : le compte 442 regroupe aujourd'hui les impôts recouvrés pour le compte de l'État (subdivisions 4421 à 4423). | Intitulé retiré, réponse limitée à ce qui est sûr : « Au crédit du compte 442. » (*) La suite reprend l'item de la fiche : le prélèvement est opéré par l'établissement payeur et versé au Trésor dans les quinze premiers jours du mois qui suit le paiement des revenus ; il est imputable sur l'impôt sur le revenu, l'excédent étant restitué. |
+| ue10-06-k33 (*) | La question ne disait pas qui verse les intérêts. Le verso omettait le contrôle « compte par compte » de Règles essentielles#17. | Question : « À quelles conditions les intérêts versés par une société sur les comptes courants d'associés sont-ils, en principe, fiscalement déductibles ? ». Verso complété par « et le contrôle s'opère compte par compte ». |
+| ue10-06-k35 (*) | La question était mal construite (« quelle condition exige une augmentation… »). Le verso, sur la SARL, s'écartait du texte de la fiche (« l'incorporation est décidée »). | Question : « … à quelle condition une augmentation de capital par majoration du nominal des actions est-elle possible… ? ». Le verso reprend la fiche : « la décision d'incorporer bénéfices ou réserves est prise par les associés représentant au moins la moitié des parts ». |
+| ue10-06-k36 (*, ajoutée) | Aucune carte ne couvrait le rachat d'actions en vue de leur annulation (L. 225-207, Règles essentielles#10). | Carte ajoutée : quelle opération l'assemblée qui décide une réduction non motivée par des pertes peut autoriser le conseil d'administration ou le directoire à réaliser. Réponse : « l'achat d'un nombre déterminé d'actions pour les annuler ». Le verso rappelle aussi le droit d'opposition. |
 
 ## Corrections de la relecture d'exactitude
 
 | cible | problème | correction | source |
 |---|---|---|---|
-| ue10-06-k03 | La question datait l'application du règlement (« exercices ouverts à compter du 1er janvier 2026 »), alors que le résultat de recherche sur anc.gouv.fr indique les exercices ouverts à compter du 1er janvier 2025. « Deviennent une rubrique » exagérait aussi la nouveauté : la rubrique « autres fonds propres » est déjà prévue par l'article R. 123-190 du Code de commerce, et le règlement en « affirme le statut » comme rubrique à part entière. Enfin, la phrase sur le compte 109, ajoutée à la première relecture, était sans rapport avec la question : c'est l'écriture ordinaire de souscription. | Question sans date : « Quelle rubrique du bilan le règlement ANC n° 2024-07 consacre-t-il comme rubrique à part entière, distincte des dettes ? ». Réponse : les « autres fonds propres », distincts des dettes, qui n'entrent pas non plus dans les capitaux propres définis par le PCG et sont exclus de la situation nette. La base devient [Ce qui a changé récemment#4, Définitions#0]. `src` et `url` ne changent pas. | Règlement ANC n° 2024-07 (page ANC, texte publié au JO, version commentée) ; Définitions#0 |
-| ue10-06-k13 | « Quelle procédure une SA peut-elle engager… ? » admettait une autre réponse juste : l'action en paiement de droit commun contre l'actionnaire, que la société conserve à côté de la vente forcée. | La question délimite son champ : « Quelle procédure spécifique le Code de commerce ouvre-t-il à une SA contre l'actionnaire qui ne paie pas les sommes appelées sur ses actions ? ». La réponse est inchangée. | C. com., art. L. 228-27 et L. 228-28 (Règles essentielles#7) |
-| ue10-06-k16 | « Quels traitements comptables sont admis » appelait, chez un correcteur du DCG, trois réponses : charges, frais d'établissement, imputation sur la prime. C'est la solution de l'exercice 12 du chapitre. Or le verso n'en donnait que deux, et les charges seulement « en cas d'insuffisance de la prime ». L'article 212-9 dit que ces frais « peuvent » être inscrits en frais d'établissement ou imputés : ce sont des options, et la comptabilisation en charges reste possible. | La question porte sur les options prévues par le texte : « Selon l'article 212-9 du PCG, quelles options s'offrent à une société pour ses frais d'augmentation de capital, plutôt que de les comptabiliser en charges ? ». Réponse : les inscrire en frais d'établissement ou les imputer sur les primes d'émission et de fusion ; en cas d'insuffisance de la prime, ils sont comptabilisés en charges. Le piège de la « méthode préférentielle » est conservé. | PCG, art. 212-9 (recherche 3) ; règlement ANC n° 2018-01 (Points de vigilance#5, Règles essentielles#18) |
-| ue10-06-k17 | « Trois mois » était présenté comme le délai de toute action en nullité d'une augmentation de capital. Or l'article L. 225-149-4 réserve d'autres cas : la citation de la fiche commence par « dans tous les autres cas ». | Question : « … dans quel délai se prescrit en règle générale… ». Réponse : « Trois mois à compter de la date à laquelle la décision contestée a été prise (C. com., art. L. 225-149-4), sous réserve des cas particuliers que ce texte prévoit ». La phrase sur la prescription de deux ans est inchangée. | C. com., art. L. 225-149-4 ; ordonnance n° 2025-229 (Ce qui a changé récemment#1) |
-| ue10-06-k20 | Doublon partiel avec k19 : les deux cartes donnaient au verso la même liste des titulaires du droit d'opposition (représentant de la masse, créanciers antérieurs au dépôt du procès-verbal). | Le verso de k20 porte sur la distinction et sur l'issue de l'opposition. Seule la réduction non motivée par des pertes ouvre le droit d'opposition, contrairement à la réduction motivée par des pertes (débit 1013, crédit 119). Le juge rejette l'opposition ou ordonne le remboursement ou des garanties. Les titulaires et le délai restent sur k19. | C. com., art. L. 225-205, L. 223-34 (Règles essentielles#10) |
-| ue10-06-k21 | « Dans les quatre mois…, les associés décident s'il y a lieu à dissolution anticipée » n'est exact que dans la SARL (L. 223-42). Dans la SA (L. 225-248), c'est la convocation de l'assemblée générale extraordinaire par le conseil d'administration ou le directoire qui doit intervenir dans les quatre mois. La question visait les deux formes. | Début de la réponse : « Consulter les associés sur une éventuelle dissolution anticipée, dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte », formulation exacte pour les deux formes et reprise de Chiffres et seuils#2 (« consultation des associés dans les 4 mois »). La base devient [Règles essentielles#11, Chiffres et seuils#2]. | C. com., art. L. 225-248 et L. 223-42 |
-| ue10-06-k24 | La carte faisait doublon avec k25 : le verso de k24 (bénéfice « diminué le cas échéant des pertes antérieures », plafond du dixième du capital) contenait déjà toute la réponse de k25. | Fusion : k24 précise « (report à nouveau débiteur) » et ajoute « il faut contrôler le plafond restant avant de doter 5 % en totalité ». La base devient [Règles essentielles#12, Points de vigilance#2]. | C. com., art. L. 232-10 |
-| ue10-06-k25 (supprimée) | Doublon de k24 (voir ci-dessus). | Supprimée. Points de vigilance#2 reste couvert par k24. | C. com., art. L. 232-10 (Points de vigilance#2) |
-| ue10-06-k31 | L'intitulé « 442 État – impôts et taxes recouvrables sur des tiers » est périmé. Dans les plans de comptes 2025 et 2026, le compte 442 regroupe les impôts recouvrés pour le compte de l'État, avec les subdivisions 4421 (prélèvement à la source de l'impôt sur le revenu), 4422 (prélèvements forfaitaires non libératoires) et 4423 (retenues et prélèvements sur les distributions), issues du règlement ANC n° 2018-02. | Intitulé retiré : « Au crédit du compte 442, jusqu'à son versement au Trésor. » La suite est inchangée. Aucune subdivision n'est citée, car la fiche n'en cite pas. | Plan de comptes 2026 et PCG 2025 (recherche 2) ; Règles essentielles#16 |
+| ue10-06-k03 | Le verso « Comme les subventions d'investissement et les provisions réglementées, ils sont exclus de la situation nette » est vrai à la lettre, mais il induit en erreur. Les subventions d'investissement et les provisions réglementées font partie des capitaux propres et sont seulement retranchées pour obtenir la situation nette. Les autres fonds propres, eux, ne font pas partie des capitaux propres : ils forment une rubrique distincte. Le rapprochement peut faire croire le contraire, une confusion classique au DCG. | Verso : « Les « autres fonds propres », que le règlement distingue des dettes. Ils ne font pas non plus partie des capitaux propres tels que le PCG les définit : ils forment une rubrique distincte et sont exclus de la situation nette. » (41 mots). La date d'application reste absente. La base [Ce qui a changé récemment#4, Définitions#0] porte tout le verso : « rubrique à part entière du bilan », définition des capitaux propres qui ne cite pas les autres fonds propres, exclusion de la situation nette. `src` et `url` ne changent pas. | Ce qui a changé récemment#4 ; Définitions#0 ; PCG, classe 1 |
+| ue10-06-k19 | La question vise la SA et la SARL, et le verso donnait pour les deux formes deux éléments propres à la SA (L. 225-205) : le droit d'opposition du représentant de la masse des obligataires, et l'interdiction de commencer les opérations « avant qu'il ait été statué en première instance sur l'opposition ». L'article L. 223-34 (SARL) ne mentionne que les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal. Pour la SARL, il interdit seulement de commencer les opérations pendant le délai d'opposition. | Verso : « Les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal et, dans la SA, le représentant de la masse des obligataires, dans le délai fixé par décret (vingt jours dans la SA, un mois dans la SARL). Les opérations de réduction ne peuvent commencer pendant ce délai ni, dans la SA, avant qu'il ait été statué en première instance sur l'opposition. » (64 mots). La question, la base, `src` et `url` ne changent pas. | C. com., art. L. 223-34, L. 225-205, R. 223-35 et R. 225-152 (recherche 1) ; Règles essentielles#10 |
 
-Les 25 autres cartes ont été jugées exactes au 15 octobre 2026 et sans ambiguïté qui justifie une retouche. Les points vérifiés sont les suivants :
-- définition des capitaux propres et de la situation nette ; comptes 1011, 1012, 1013 et 109 ;
-- libération à la constitution : C. com., art. L. 223-7 et L. 225-3 ;
-- commissaire aux apports :
-  - SARL : L. 223-9 et D. 223-6-1 (30 000 €, moitié du capital, responsabilité de cinq ans à l'égard des tiers) ;
-  - SA : L. 225-8 et L. 225-8-1 ;
-- frais de constitution : charges comme méthode de référence (PCG, art. 212-9, confirmé par la recherche 3) ;
-- prime d'émission et DPS : L. 225-132, L. 225-135 et L. 225-144 ;
-- augmentation de capital :
-  - libération du quart et de la totalité de la prime : L. 225-144 et L. 223-32 ;
-  - libération préalable du capital : L. 225-131 et L. 223-7 ;
-  - apport en nature : L. 225-147 ;
-  - incorporation : L. 225-130 et L. 223-30, avec unanimité pour la majoration du nominal hors incorporation ;
-- actionnaire défaillant : L. 228-27 et L. 228-28 ;
-- réduction du capital : L. 225-204 (égalité des actionnaires), L. 225-205, R. 225-152 (vingt jours) et R. 223-35 (un mois) ;
-- capitaux propres inférieurs à la moitié du capital, réduction au seuil réglementaire (loi n° 2023-171, décret n° 2023-657) ;
-- affectation du résultat :
-  - bénéfice distribuable, dividende fictif, postes de réserve, protection du capital : L. 232-11 et L. 232-12 ;
-  - acomptes : L. 232-12 et R. 232-17 ;
-  - délai de neuf mois : L. 232-13 ;
-- fiscalité :
-  - prélèvement de l'article 117 quater et prélèvements sociaux ;
-  - déduction des intérêts de comptes courants (CGI, art. 39, 1-3°) et extension de l'article 212 par la loi n° 2026-103.
+Les 33 autres cartes ont été jugées exactes au 15 octobre 2026 et sans ambiguïté qui justifie une retouche. Les points suivants ont été contrôlés.
+
+**Ajouts de la reprise**
+- k06 : rôle du commissaire aux apports, désignation à l'unanimité des fondateurs ou par le juge, dispenses de L. 225-8-1.
+- k16 : la question n'appelle qu'une réponse (frais d'établissement ou imputation sur les primes) et le verso ne dit rien de faux sur les charges.
+- k18 : le complément sur la SARL est conforme à L. 223-34, confirmé par la recherche 1.
+- k31 : compte 442 sans intitulé.
+- k33 : conditions de l'article 39, 1-3° du CGI.
+- k35 : L. 225-130 et L. 223-30.
+- k36 : L. 225-207, toujours en vigueur pour la SA. La question délimite son champ.
+
+**Doublons**
+- k19, k20 et k36 portent tous trois sur Règles essentielles#10, mais chacun pose une question distincte : qui s'oppose et dans quel délai, ce qui distingue les deux réductions, le rachat en vue de l'annulation.
+- Il en va de même pour k21 et k22 (première puis seconde étape de la procédure des capitaux propres inférieurs à la moitié du capital), k09 et k10, k26 et k27, et k28 et k29.
+
+**Cartes du cycle précédent, inchangées**
+- Définition des capitaux propres ; comptes 1011, 1012, 1013 et 109.
+- Libération à la constitution : L. 223-7 et L. 225-3.
+- Commissaire aux apports dans la SARL : L. 223-9 et D. 223-6-1.
+- Frais de constitution : PCG, art. 212-9.
+- Prime d'émission et DPS : L. 225-132, L. 225-135 et L. 225-144.
+- Libération lors d'une augmentation de capital : L. 225-131, L. 225-144 et L. 223-32.
+- Apport en nature : L. 225-147.
+- Actionnaire défaillant : L. 228-27 et L. 228-28.
+- Nullité d'une augmentation de capital : L. 225-149-4, délimité à la règle générale.
+- Capitaux propres inférieurs à la moitié du capital : L. 223-42 et L. 225-248, loi n° 2023-171.
+- Distribution : L. 232-10 à L. 232-13 et R. 232-17.
+- Prélèvement de l'article 117 quater et prélèvements sociaux.
+- Loi n° 2026-103 (art. 212 du CGI).
 
 ## Recherches
 
-Trois recherches WebSearch ont été faites, toutes restreintes à `anc.gouv.fr` :
+Une seule recherche WebSearch a été faite, restreinte à `legifrance.gouv.fr` :
 
-1. **« règlement ANC 2024-07 autres fonds propres dettes rubrique bilan ».** Le règlement existe. Il est daté du 6 décembre 2024 et sa version commentée est en ligne. Il affirme le statut de la rubrique « autres fonds propres », déjà prévue par l'article R. 123-190 du Code de commerce, comme rubrique à part entière du passif. Cette rubrique est placée entre les capitaux propres et les provisions. Elle regroupe les fonds non remboursables, les avances conditionnées et les droits du concédant. La date d'application ne concorde pas : le résultat indique les exercices ouverts à compter du 1er janvier 2025, la fiche le 1er janvier 2026. Ce point a conduit à corriger k03. Sources : [page ANC du règlement](https://www.anc.gouv.fr/reglement-anc-ndeg2024-07), [texte publié au JO](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_JO.pdf), [version commentée](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf).
-2. **« plan de comptes 442 … 4422 prélèvements forfaitaires non libératoires ».** Le résultat confirme que, dans les plans de comptes 2025 et 2026, le compte 442 regroupe les impôts recouvrés pour le compte de l'État. Ses subdivisions sont 4421, 4422 (prélèvements forfaitaires non libératoires) et 4423 (retenues et prélèvements sur les distributions), introduites par le règlement ANC n° 2018-02. L'intitulé « État – impôts et taxes recouvrables sur des tiers » est donc périmé, ce qui a conduit à corriger k31. Sources : [plan de comptes 2026](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf), [plan de comptes PCG 2025](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf), [note de présentation du règlement n° 2018-02](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2018/Reglt_2018_02/Reglt_2018_02_Note-de-presentation.pdf).
-3. **« PCG article 212-9 frais d'augmentation de capital … ».** Le résultat confirme la rédaction de la fiche. Les frais d'augmentation de capital peuvent être inscrits en frais d'établissement ou imputés sur les primes d'émission et de fusion ; en cas d'insuffisance, ils sont comptabilisés en charges. Pour les frais de constitution, la méthode de référence est la comptabilisation en charges. L'édition 2014 qualifiait l'imputation sur les primes de « méthode préférentielle », ce que les versions récentes ne font plus. Ce point a conduit à corriger la question de k16. Sources : [PCG au 1er janvier 2025](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf), [recueil au 1er janvier 2026](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf), [règlement ANC n° 2014-03, version initiale](https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2014/Reglt2014-03/Reglt%202014-03_Plan%20comptable%20general.pdf).
+1. **« article L223-34 code de commerce réduction du capital SARL opposition créanciers représentant de la masse ».**
+   - L'article L. 223-34 (SARL) réserve le droit d'opposition aux créanciers dont la créance est antérieure à la date de dépôt au greffe du procès-verbal de délibération. Il ne mentionne pas le représentant de la masse des obligataires, qui figure à l'article L. 225-205 (SA).
+   - En SARL, les opérations de réduction ne peuvent commencer pendant le délai d'opposition. La règle « ni avant qu'il ait été statué en première instance » est propre à la SA.
+   - L'article R. 223-35 fixe le délai d'opposition à un mois en SARL.
+   - Le résultat confirme aussi que la réduction est autorisée par l'assemblée des associés statuant aux conditions de modification des statuts (k18).
 
-Aucune autre recherche n'a été faite. Les autres points (Code de commerce, CGI, ordonnance n° 2025-229, loi n° 2026-103) avaient déjà été établis par recherche lors de la relecture de la fiche (`rapports/ue10-06.md`, 50 recherches du 14 octobre 2026). Ils n'appelaient pas de doute réel. Le seul doute restant porte sur les cas réservés par l'article L. 225-149-4. Il a été neutralisé en délimitant la question de k17 à la règle générale.
+   Ces constats ont conduit à corriger k19. Sources : [C. com., art. L. 223-34](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223287/), [art. R. 223-35](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006260591), [sous-section L. 225-204 à L. 225-205](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178841), [art. R. 225-152](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006261604).
+
+Aucune autre recherche n'a été faite. Les autres points avaient été établis lors de la relecture de la fiche (`rapports/ue10-06.md`) et du premier cycle de relecture des cartes (3 recherches sur anc.gouv.fr). Ils n'appelaient pas de doute réel.
 
 ## Points à reprendre dans la fiche
 
-1. **Ce qui a changé récemment#4, et l'entrée « textes » du PCG.**
-   - Date d'application : la fiche indique le 1er janvier 2026, le résultat de recherche sur anc.gouv.fr le 1er janvier 2025. Il faut vérifier sur le texte publié au JO (REGLT_2024_07_JO.pdf) et sur l'arrêté d'homologation, dont la date (26 décembre 2025 dans la fiche) doit être confirmée.
-   - « Qui deviennent une rubrique à part entière du bilan » : il faudrait écrire que le règlement affirme le statut de la rubrique « autres fonds propres », déjà prévue par l'article R. 123-190, et en préciser la composition (fonds non remboursables, avances conditionnées, droits du concédant).
-2. **Règles essentielles#16.** L'intitulé « 442 État – impôts et taxes recouvrables sur des tiers » est périmé. Le compte 442 regroupe les impôts recouvrés pour le compte de l'État, avec les subdivisions 4421, 4422 (prélèvements forfaitaires non libératoires) et 4423 (retenues et prélèvements sur les distributions), issues du règlement ANC n° 2018-02. Il faut reprendre l'intitulé exact sur le plan de comptes 2026. Hors fiche, le même intitulé périmé figure dans `data/pcg/classe4.json` (compte 442, dont l'explication cite aussi les anciennes subdivisions 4424 et 4425).
-3. **Règles essentielles#11 (et Chiffres et seuils#2).** « Dans les quatre mois…, les associés décident s'il y a lieu à dissolution anticipée » ne vaut que pour la SARL (L. 223-42). Dans la SA (L. 225-248), le conseil d'administration ou le directoire est tenu de convoquer l'AGE dans les quatre mois qui suivent l'approbation des comptes. Il faudrait distinguer les deux formes, citation de L. 225-248 à l'appui.
-4. **Ce qui a changé récemment#1.** La citation de L. 225-149-4 commence par « dans tous les autres cas » : les cas réservés par le texte ne sont pas décrits, ce que `POINTS-OUVERTS.md` signale déjà. Il faudrait les rechercher et les ajouter.
-5. **Règles essentielles#18 et Points de vigilance#5 (précision).** La fiche reproduit fidèlement l'article 212-9, mais elle gagnerait à dire, comme l'exercice 12 du chapitre, que la comptabilisation directe en charges des frais d'augmentation de capital reste possible (« peuvent être inscrits… ou imputés »). Un lecteur pourrait sinon croire que les charges ne sont admises qu'en cas d'insuffisance de la prime.
+Le point 1 est nouveau. Les points 2 à 6, relevés par le premier cycle, restent d'actualité : la fiche n'a pas été modifiée depuis (`maj` du 14 octobre 2026).
+
+1. **Règles essentielles#10.** L'item attribue à la SA et à la SARL un régime d'opposition unique, mais deux éléments ne valent que pour la SA (L. 225-205) :
+   - le droit d'opposition du représentant de la masse des obligataires ;
+   - la règle selon laquelle les opérations ne peuvent commencer « avant qu'il ait été statué en première instance sur cette opposition » (citation de l'item).
+
+   L'article L. 223-34 ne vise que les créanciers antérieurs au dépôt du procès-verbal, et il interdit seulement de commencer les opérations pendant le délai d'opposition. Il faudrait distinguer les deux formes.
+2. **Ce qui a changé récemment#4, et l'entrée « textes » du PCG.**
+   - Date d'application du règlement ANC n° 2024-07 : la fiche indique les exercices ouverts à compter du 1er janvier 2026, une recherche sur anc.gouv.fr le 1er janvier 2025. Il faut vérifier sur le texte publié au JO et sur l'arrêté d'homologation, dont la date (26 décembre 2025 dans la fiche) reste à confirmer.
+   - La formule « qui deviennent une rubrique à part entière » exagère la nouveauté : la rubrique « autres fonds propres » existait déjà (C. com., art. R. 123-190) et le règlement en affirme le statut.
+3. **Définitions#0 (précision).** La phrase « La situation nette exclut les subventions d'investissement, les provisions réglementées et les autres fonds propres » met sur le même plan des éléments des capitaux propres et une rubrique qui n'en fait pas partie. Il faudrait préciser que les autres fonds propres ne font pas partie des capitaux propres.
+4. **Règles essentielles#16.** L'intitulé « 442 État – impôts et taxes recouvrables sur des tiers » est périmé. Le compte 442 regroupe les impôts recouvrés pour le compte de l'État, avec les subdivisions 4421, 4422 (prélèvements forfaitaires non libératoires) et 4423 (retenues et prélèvements sur les distributions). Il faut reprendre l'intitulé exact sur le plan de comptes 2026. Hors fiche, `data/pcg/classe4.json` porte le même intitulé périmé.
+5. **Règles essentielles#11 (et Chiffres et seuils#2).** La phrase « les associés décident s'il y a lieu à dissolution anticipée » ne vaut littéralement que pour la SARL (L. 223-42). Dans la SA (L. 225-248), le conseil d'administration ou le directoire doit convoquer l'AGE dans les quatre mois.
+6. **Ce qui a changé récemment#1, et Règles essentielles#18 avec Points de vigilance#5.**
+   - Ce qui a changé récemment#1 : l'item ne décrit pas les cas que l'article L. 225-149-4 réserve (« dans tous les autres cas »).
+   - Règles essentielles#18 et Points de vigilance#5 : la fiche gagnerait à dire si la comptabilisation directe en charges des frais d'augmentation de capital reste possible. L'exercice 12 du chapitre l'admet.
 
 ## Classement des exercices
 
-Le classement automatique des 19 exercices QCM, QCM multiples et de classement du chapitre donne :
+Le chapitre compte 19 exercices de type QCM, QCM multiple ou classement. Leur classement automatique donne :
 
 | nature | nombre | révisions espacées |
 |---|---|---|
@@ -121,4 +135,6 @@ Le classement automatique des 19 exercices QCM, QCM multiples et de classement d
 | `calcul` | 1 | non |
 | `chiffre` | 0 | — |
 
-Les classeurs n'ont relevé aucun désaccord. Les 18 exercices de nature `notion` entrent dans les révisions espacées, avec les 34 cartes ci-dessus et les comptes du plan comptable. L'exercice de nature `calcul` reste dans le chapitre, mais il n'est pas proposé en révision.
+Les classeurs n'ont relevé aucun désaccord.
+- Les 18 exercices de nature `notion` entrent dans les révisions espacées, avec les 35 cartes ci-dessus et les comptes du plan comptable.
+- L'exercice de nature `calcul` est un QCM. Il reste dans le chapitre, mais il n'est pas proposé en révision.

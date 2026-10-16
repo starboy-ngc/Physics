@@ -5,7 +5,7 @@
   {
    "id": "ue2-05-k01",
    "type": "def",
-   "q": "Par quels deux procédés le capital social d'une société anonyme (SA) peut-il être augmenté ?",
+   "q": "Indépendamment de la nature des apports, par quels deux procédés le capital social d'une société anonyme (SA) peut-il être augmenté ?",
    "r": "<b>Soit par émission d'actions nouvelles, ordinaires ou de préférence, soit par majoration du montant nominal des titres de capital existants.</b> Les titres nouveaux sont libérés notamment en numéraire, y compris par compensation avec des créances liquides et exigibles sur la société, par apport en nature ou par incorporation de réserves, bénéfices ou primes d'émission.",
    "base": [
     "Définitions#0"
@@ -417,8 +417,8 @@
   {
    "id": "ue2-05-k35",
    "type": "comp",
-   "q": "Par quel délai se prescrit l'action en nullité d'une décision d'augmentation de capital d'une société par actions depuis l'ordonnance du 12 mars 2025 ?",
-   "r": "<b>Par trois mois</b> à compter de la date à laquelle la décision contestée a été prise, hors les cas que le texte réserve. Les actions en nullité de la société, d'apport ou de décisions sociales se prescrivent, elles, par deux ans au lieu de trois depuis le 1er octobre 2025.",
+   "q": "Selon l'ordonnance du 12 mars 2025, par quel délai se prescrit, hors cas réservés, l'action en nullité d'une décision d'augmentation de capital d'une société par actions ?",
+   "r": "<b>Par trois mois</b> à compter de la date à laquelle la décision contestée a été prise. Les actions en nullité de la société, d'apport ou de décisions sociales se prescrivent, elles, par deux ans au lieu de trois depuis le 1er octobre 2025.",
    "base": [
     "Ce qui a changé récemment#2"
    ],

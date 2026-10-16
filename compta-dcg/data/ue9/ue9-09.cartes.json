@@ -30,7 +30,7 @@
   {
    "id": "ue9-09-k03",
    "type": "def",
-   "q": "Quelles sont les missions de l'Autorité des normes comptables (ANC), créée par l'ordonnance du 22 janvier 2009 ?",
+   "q": "Quelles sont les principales missions de l'Autorité des normes comptables (ANC), créée par l'ordonnance du 22 janvier 2009 ?",
    "r": "<b>Elle établit, sous forme de règlements, les prescriptions comptables générales et sectorielles.</b> Elle donne un avis sur les projets de textes législatifs ou réglementaires de nature comptable (depuis le 1er janvier 2024, aussi sur ceux imposant la publication d'informations environnementales, sociales et de gouvernance) et participe aux travaux européens et internationaux de normalisation comptable.",
    "base": [
     "Définitions#2",
@@ -93,7 +93,7 @@
    "id": "ue9-09-k08",
    "type": "comp",
    "q": "Selon le Code de commerce, dans quel ordre un commerçant enregistre-t-il les mouvements affectant le patrimoine de son entreprise ?",
-   "r": "<b>Chronologiquement, opération par opération et jour par jour</b>, au livre-journal ou dans ses journaux auxiliaires. Ils sont ensuite portés sur le grand livre et ventilés selon le plan de comptes.",
+   "r": "<b>Chronologiquement, opération par opération et jour par jour</b>, au livre-journal (ou dans les journaux auxiliaires qui le détaillent). Ils sont ensuite portés sur le grand livre et ventilés selon le plan de comptes.",
    "base": [
     "Règles essentielles#0",
     "Règles essentielles#1"
@@ -261,7 +261,7 @@
   {
    "id": "ue9-09-k22",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment le bilan et le compte de résultat d'un commerçant sont-ils structurés ?",
+   "q": "Selon le Code de commerce, que doit faire apparaître distinctement le bilan d'un commerçant, et quels niveaux de résultat son compte de résultat doit-il dégager par différence ?",
    "r": "<b>Le bilan décrit séparément les éléments actifs et passifs et fait apparaître distinctement les capitaux propres.</b> Au compte de résultat, produits et charges sont classés de manière à faire apparaître, par différence, les éléments du résultat courant et le résultat exceptionnel, selon le modèle fixé par règlement de l'ANC.",
    "base": [
     "Règles essentielles#12"
@@ -312,7 +312,7 @@
    "id": "ue9-09-k26",
    "type": "comp",
    "q": "Quelles mesures de publicité allégée le Code de commerce prévoit-il pour les petites et les moyennes entreprises ?",
-   "r": "<b>Les petites entreprises peuvent demander que leur seul compte de résultat ne soit pas rendu public</b> ; les moyennes entreprises peuvent rendre publique une présentation simplifiée de leur bilan et de leur annexe.",
+   "r": "<b>Les petites entreprises peuvent, sauf exceptions, demander que leur seul compte de résultat ne soit pas rendu public</b> ; les moyennes entreprises peuvent rendre publique une présentation simplifiée de leur bilan et de leur annexe.",
    "base": [
     "Règles essentielles#14"
    ],
@@ -335,8 +335,8 @@
   {
    "id": "ue9-09-k28",
    "type": "comp",
-   "q": "Comment s'apprécie la catégorie de micro, petite ou moyenne entreprise au sens du Code de commerce ?",
-   "r": "<b>Au titre du dernier exercice comptable clos et sur une base annuelle.</b> Dépasser ou cesser de dépasser deux des trois seuils n'a d'incidence que si cela se produit pendant deux exercices consécutifs.",
+   "q": "Selon le Code de commerce, à quelle condition le fait de dépasser ou de cesser de dépasser les seuils de micro, petite ou moyenne entreprise a-t-il une incidence ?",
+   "r": "<b>Le franchissement de deux des trois seuils doit se produire pendant deux exercices consécutifs.</b> La catégorie s'apprécie au titre du dernier exercice comptable clos et sur une base annuelle.",
    "base": [
     "Chiffres et seuils#2"
    ],
@@ -417,16 +417,15 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-09-k35",
+   "id": "ue9-09-k36",
    "type": "comp",
-   "q": "Selon l'article L. 233-21 du Code de commerce, à quelles exigences les comptes consolidés obéissent-ils ?",
-   "r": "<b>Aux mêmes exigences d'image fidèle que les comptes annuels</b>, par renvoi aux premier et deuxième alinéas de l'article L. 123-14 du Code de commerce.",
+   "q": "Selon le Code de commerce, dans quel ordre le passif du bilan d'un commerçant présente-t-il ses grandes rubriques ?",
+   "r": "<b>Successivement les capitaux propres, les autres fonds propres, les provisions, les dettes</b>, puis les comptes de régularisation et écarts de conversion.",
    "base": [
-    "Points de vigilance#3",
-    "Règles essentielles#5"
+    "Règles essentielles#12"
    ],
-   "src": "C. com., art. L. 233-21",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229310",
+   "src": "C. com., art. L. 123-13, R. 123-190, R. 123-192 et R. 123-193",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
    "fiab": "stable"
   }
  ]

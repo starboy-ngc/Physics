@@ -5,7 +5,7 @@
   {
    "id": "ue4-02-k01",
    "type": "def",
-   "q": "Quelles rémunérations relèvent de la catégorie des traitements et salaires à l'impôt sur le revenu ?",
+   "q": "Quelles rémunérations relèvent, en principe, de la catégorie des traitements et salaires à l'impôt sur le revenu ?",
    "r": "<b>Les rémunérations perçues en contrepartie d'un travail subordonné</b> : salaire, primes, heures supplémentaires, avantages en nature.",
    "base": [
     "Définitions#0"
@@ -77,8 +77,8 @@
   {
    "id": "ue4-02-k07",
    "type": "comp",
-   "q": "Quelles indemnités de licenciement sont exonérées en totalité d'impôt sur le revenu, quel que soit leur montant ?",
-   "r": "<b>Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi</b> et celles allouées par le juge, notamment pour un licenciement irrégulier ou sans cause réelle et sérieuse.",
+   "q": "Quel est le régime d'impôt sur le revenu des indemnités de licenciement versées dans le cadre d'un plan de sauvegarde de l'emploi ?",
+   "r": "<b>Elles sont exonérées en totalité</b>, sans la limite applicable aux autres indemnités de licenciement. Il en va de même des indemnités allouées par le juge pour un licenciement irrégulier ou sans cause réelle et sérieuse.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -101,8 +101,8 @@
   {
    "id": "ue4-02-k09",
    "type": "comp",
-   "q": "Comment une rente viagère à titre onéreux est-elle imposée à l'impôt sur le revenu ?",
-   "r": "<b>Seule une fraction de la rente est imposable</b>, fixée selon l'âge du crédirentier à la date d'entrée en jouissance, non l'âge atteint l'année d'imposition, puis invariable : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.",
+   "q": "Comment est fixée la fraction imposable d'une rente viagère à titre onéreux à l'impôt sur le revenu ?",
+   "r": "<b>Selon l'âge du crédirentier à la date d'entrée en jouissance de la rente</b>, et non l'âge atteint l'année d'imposition ; elle reste ensuite invariable : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.",
    "base": [
     "Définitions#4",
     "Points de vigilance#4"
@@ -114,7 +114,7 @@
   {
    "id": "ue4-02-k11",
    "type": "def",
-   "q": "Quels revenus regroupe la catégorie des revenus de capitaux mobiliers (RCM) à l'impôt sur le revenu ?",
+   "q": "Quelles sont les deux grandes familles de revenus de capitaux mobiliers (RCM) à l'impôt sur le revenu ?",
    "r": "<b>Les revenus distribués (dividendes)</b> et <b>les produits de placements à revenu fixe (intérêts)</b>.",
    "base": [
     "Définitions#2"
@@ -162,7 +162,7 @@
   {
    "id": "ue4-02-k15",
    "type": "comp",
-   "q": "Quels avantages l'option globale pour le barème progressif procure-t-elle, par rapport au prélèvement forfaitaire unique, dans l'imposition des dividendes ?",
+   "q": "Quels abattement et déductions l'option globale pour le barème progressif ouvre-t-elle, par rapport au prélèvement forfaitaire unique, dans l'imposition des dividendes ?",
    "r": "<b>L'abattement de 40 %</b> sur les dividendes de sociétés ayant leur siège dans l'UE ou dans un État conventionné, <b>la déduction des frais</b> et <b>la déductibilité d'une fraction de la CSG</b>. Sous PFU, le prélèvement porte sur le montant brut des dividendes, sans abattement ni déduction des frais ou de la CSG.",
    "base": [
     "Règles essentielles#5"
@@ -198,7 +198,7 @@
   {
    "id": "ue4-02-k18",
    "type": "comp",
-   "q": "À quelle condition les produits et plus-values d'un plan d'épargne en actions (PEA) sont-ils exonérés d'impôt sur le revenu ?",
+   "q": "En principe, à quelle condition les produits et plus-values d'un plan d'épargne en actions (PEA) sont-ils exonérés d'impôt sur le revenu ?",
    "r": "<b>Aucun retrait ne doit intervenir pendant cinq ans à compter du premier versement.</b> Après cinq ans, le gain net reste soumis aux prélèvements sociaux et un retrait partiel n'entraîne pas la clôture du plan.",
    "base": [
     "Règles essentielles#12"
@@ -308,8 +308,8 @@
   {
    "id": "ue4-02-k27",
    "type": "comp",
-   "q": "Quelles durées le dirigeant de PME partant à la retraite doit-il respecter (détention des titres, fonctions de direction, départ en retraite) pour bénéficier de l'abattement fixe ?",
-   "r": "<b>Titres détenus depuis au moins un an</b> ; fonction de direction exercée de manière continue pendant les cinq années précédant la cession ; droits à la retraite à faire valoir dans les deux années qui précèdent ou suivent la cession. Ce ne sont pas les seules conditions de l'abattement.",
+   "q": "Pour l'abattement fixe du dirigeant de PME partant à la retraite, quelles durées s'appliquent à l'ancienneté des titres cédés, à la fonction de direction et au départ en retraite ?",
+   "r": "<b>Titres cédés détenus depuis au moins un an</b> ; fonction de direction exercée de manière continue pendant les cinq années précédant la cession ; droits à la retraite à faire valoir dans les deux années qui précèdent ou suivent la cession. Ce ne sont pas les seules conditions de l'abattement.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -344,7 +344,7 @@
   {
    "id": "ue4-02-k30",
    "type": "comp",
-   "q": "Quand un titulaire de bénéfices non commerciaux relève-t-il du régime micro-BNC plutôt que de la déclaration contrôlée ?",
+   "q": "Quand un titulaire de bénéfices non commerciaux relève-t-il en principe du régime micro-BNC plutôt que de la déclaration contrôlée ?",
    "r": "<b>Lorsque les recettes de l'année civile précédente ou de l'avant-dernière année n'excèdent pas le seuil de l'article 102 ter du CGI.</b> Au-delà, ou sur option, le bénéfice est déterminé selon la déclaration contrôlée : recettes encaissées moins dépenses payées.",
    "base": [
     "Règles essentielles#14"
@@ -369,7 +369,7 @@
    "id": "ue4-02-k32",
    "type": "comp",
    "q": "Quel régime de plus-value s'applique à la cession de son logement par un loueur en meublé non professionnel ?",
-   "r": "<b>Celui des plus-values immobilières des particuliers</b>, avec, depuis la loi de finances pour 2025, réintégration en principe des amortissements déduits. Les plus-values professionnelles ne concernent que le loueur en meublé professionnel.",
+   "r": "<b>Celui des plus-values immobilières des particuliers.</b> Parmi les loueurs en meublé, seul le loueur professionnel relève des plus-values professionnelles.",
    "base": [
     "Points de vigilance#5",
     "Règles essentielles#13"
@@ -413,6 +413,18 @@
    ],
    "src": "CGI, art. 117 quater, 125 A et 242 quater ; impots.gouv.fr, revenus mobiliers",
    "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k36",
+   "type": "comp",
+   "q": "Pour la plus-value professionnelle d'un loueur en meublé professionnel imposé au micro-BIC, comment les amortissements sont-ils pris en compte ?",
+   "r": "<b>L'abattement forfaitaire du micro-BIC est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Le loueur non professionnel n'est pas concerné : il relève des plus-values immobilières des particuliers.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 50-0, 39 duodecies et 150 U ; BOI-BIC-CHAMP-40-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
    "fiab": "stable"
   }
  ]

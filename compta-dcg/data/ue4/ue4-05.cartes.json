@@ -5,7 +5,7 @@
   {
    "id": "ue4-05-k01",
    "type": "def",
-   "q": "Quelles opérations sont imposables à la TVA par nature selon l'article 256 du CGI ?",
+   "q": "Quelles opérations sont imposables à la TVA par nature ?",
    "r": "<b>Les livraisons de biens et les prestations de services effectuées à titre onéreux par un assujetti agissant en tant que tel.</b>",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue4-05-k02",
    "type": "def",
-   "q": "Qui a la qualité d'assujetti à la TVA au sens de l'article 256 A du CGI ?",
+   "q": "Qui a la qualité d'assujetti à la TVA ?",
    "r": "<b>Toute personne qui effectue de manière indépendante une activité économique</b>, quels que soient son statut juridique, sa situation au regard des autres impôts et la forme ou la nature de son intervention. Les salariés ne sont pas assujettis.",
    "base": [
     "Définitions#1"
@@ -30,7 +30,7 @@
    "id": "ue4-05-k03",
    "type": "def",
    "q": "Quelles opérations sont imposables à la TVA par disposition expresse de la loi, et non par nature ?",
-   "r": "<b>Les livraisons à soi-même de biens ou d'immeubles et les livraisons de terrains à bâtir et d'immeubles neufs</b> (CGI, art. 257). S'y ajoutent les acquisitions intracommunautaires (art. 256 bis) et les importations (art. 291).",
+   "r": "<b>Les livraisons à soi-même de biens ou d'immeubles et les livraisons de terrains à bâtir et d'immeubles neufs.</b> S'y ajoutent les acquisitions intracommunautaires et les importations.",
    "base": [
     "Définitions#2"
    ],
@@ -65,7 +65,7 @@
   {
    "id": "ue4-05-k06",
    "type": "def",
-   "q": "Quels sont les trois régimes de déclaration de la TVA prévus par le CGI ?",
+   "q": "Jusqu'au 31 décembre 2026, quels sont les trois régimes de déclaration de la TVA ?",
    "r": "<b>La franchise en base</b> (aucune TVA facturée ni déduite), <b>le régime simplifié</b> (déclaration annuelle CA12 n° 3517-S et acomptes semestriels, applicable jusqu'au 31 décembre 2026) et <b>le régime réel normal</b> (déclarations CA3 mensuelles ou trimestrielles).",
    "base": [
     "Définitions#4"
@@ -90,7 +90,7 @@
   {
    "id": "ue4-05-k08",
    "type": "comp",
-   "q": "Hors locations d'immeubles et opérations internationales, quelles grandes catégories d'opérations sont exonérées de TVA ?",
+   "q": "Hors locations d'immeubles et opérations internationales, quelles sont les principales catégories d'opérations exonérées de TVA ?",
    "r": "<b>Les soins médicaux et paramédicaux, l'enseignement, les opérations bancaires et financières et les assurances.</b> Une exonération prive en principe du droit à déduction.",
    "base": [
     "Règles essentielles#0"
@@ -103,7 +103,7 @@
    "id": "ue4-05-k09",
    "type": "comp",
    "q": "Comment sont traitées en TVA les locations nues d'immeubles, selon qu'ils sont à usage d'habitation ou à usage professionnel ?",
-   "r": "<b>Les locations nues d'immeubles à usage d'habitation sont exonérées</b>, comme celles de terres agricoles. Les bailleurs de locaux nus à usage professionnel, loués pour les besoins de l'activité d'un preneur assujetti, peuvent opter pour l'imposition à la TVA.",
+   "r": "<b>Les locations nues d'immeubles à usage d'habitation sont exonérées</b>, comme celles de terres agricoles. Les locations nues de locaux professionnels sont aussi exonérées, sauf si le bailleur opte pour l'imposition à la TVA, ce qu'il peut faire lorsque les locaux servent à l'activité d'un preneur assujetti.",
    "base": [
     "Règles essentielles#0",
     "Règles essentielles#1"
@@ -115,7 +115,7 @@
   {
    "id": "ue4-05-k10",
    "type": "comp",
-   "q": "Au regard de la TVA, comment qualifier l'activité d'un médecin ou d'un bailleur de logement nu ?",
+   "q": "Au regard de la TVA, comment qualifier l'activité de soins d'un médecin ou celle d'un bailleur de logement nu ?",
    "r": "<b>Elle est dans le champ de la TVA mais exonérée, donc sans droit à déduction.</b> Seule l'opération imposable, ou exonérée avec maintien du droit à déduction comme l'exportation, ouvre droit à déduction.",
    "base": [
     "Points de vigilance#0"
@@ -140,7 +140,7 @@
    "id": "ue4-05-k12",
    "type": "comp",
    "q": "Quel est le traitement en TVA des exportations vers les pays tiers et des livraisons intracommunautaires de biens ?",
-   "r": "<b>Elles sont exonérées avec maintien du droit à déduction.</b> La livraison intracommunautaire doit être faite à un assujetti identifié dans un autre État membre.",
+   "r": "<b>Elles sont exonérées avec maintien du droit à déduction.</b> Le vendeur ne facture pas de TVA mais conserve le droit de déduire celle qui grève ses achats.",
    "base": [
     "Règles essentielles#3",
     "Points de vigilance#0"
@@ -153,7 +153,7 @@
    "id": "ue4-05-k13",
    "type": "comp",
    "q": "À quelles conditions une livraison intracommunautaire de biens est-elle exonérée de TVA ?",
-   "r": "<b>Le numéro de TVA valide de l'acquéreur, la sortie physique du bien et sa mention dans l'état récapitulatif.</b> L'acquéreur doit être un assujetti identifié dans un autre État membre.",
+   "r": "<b>Le numéro de TVA valide de l'acquéreur, la sortie physique du bien de France vers un autre État membre et la mention de la livraison dans l'état récapitulatif.</b> L'acquéreur doit être un assujetti identifié dans un autre État membre.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -176,7 +176,7 @@
   {
    "id": "ue4-05-k15",
    "type": "comp",
-   "q": "Selon les règles générales de l'article 259 du CGI, où une prestation de services est-elle imposable à la TVA ?",
+   "q": "Selon les règles générales de territorialité, où une prestation de services est-elle imposable à la TVA ?",
    "r": "<b>Entre assujettis (B2B), au lieu du preneur ; pour un preneur non assujetti (B2C), au lieu du prestataire.</b> Le lieu d'imposition dépend donc de la qualité du preneur.",
    "base": [
     "Règles essentielles#5"
@@ -201,7 +201,7 @@
    "id": "ue4-05-k17",
    "type": "comp",
    "q": "Dans quel État les ventes à distance intracommunautaires de biens sont-elles soumises à la TVA ?",
-   "r": "<b>Dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 €.</b> Au-delà, ou sur option, la TVA de l'État de consommation s'applique et est déclarée via le guichet unique (OSS).",
+   "r": "<b>Dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 €.</b> Au-delà, ou sur option, la TVA de l'État de consommation s'applique ; elle peut être déclarée via le guichet unique (OSS).",
    "base": [
     "Règles essentielles#6"
    ],
@@ -213,7 +213,7 @@
    "id": "ue4-05-k18",
    "type": "def",
    "q": "En matière de TVA, qu'est-ce que la base d'imposition d'une opération imposable ?",
-   "r": "<b>Toutes les sommes, valeurs, biens ou services reçus en contrepartie de l'opération</b>, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA.",
+   "r": "<b>Toutes les sommes, valeurs, biens ou services reçus ou à recevoir en contrepartie de l'opération</b>, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -224,8 +224,8 @@
   {
    "id": "ue4-05-k19",
    "type": "comp",
-   "q": "En matière de TVA, quels éléments sont exclus de la base d'imposition d'une opération imposable ?",
-   "r": "<b>Les rabais, remises, ristournes et escomptes accordés directement au client</b>, ainsi que <b>les débours remboursés à l'euro</b>.",
+   "q": "En matière de TVA, quels sont les principaux éléments exclus de la base d'imposition d'une opération imposable ?",
+   "r": "<b>Les rabais, remises, ristournes et escomptes accordés directement au client</b>, ainsi que <b>les débours</b>, c'est-à-dire les dépenses engagées au nom et pour le compte du client et remboursées pour leur montant exact.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -274,8 +274,8 @@
   {
    "id": "ue4-05-k24",
    "type": "def",
-   "q": "Qu'est-ce que le coefficient de déduction de TVA prévu par l'article 206 de l'annexe II au CGI ?",
-   "r": "<b>Le produit des coefficients d'assujettissement, de taxation et d'admission</b>, qui traduisent l'utilisation pour des opérations dans le champ, l'utilisation pour des opérations ouvrant droit à déduction et les exclusions réglementaires. Chaque coefficient est arrondi au centième supérieur.",
+   "q": "En matière de TVA, qu'est-ce que le coefficient de déduction ?",
+   "r": "<b>Le produit des coefficients d'assujettissement, de taxation et d'admission</b>, qui traduisent l'utilisation pour des opérations dans le champ, l'utilisation pour des opérations ouvrant droit à déduction et les exclusions réglementaires. Chacun de ces coefficients, comme leur produit, est arrondi au centième supérieur.",
    "base": [
     "Règles essentielles#10"
    ],
@@ -397,7 +397,7 @@
   {
    "id": "ue4-05-k34",
    "type": "comp",
-   "q": "Outre l'identité des parties, la date, le numéro séquentiel et la dénomination des biens ou services, quelles mentions une facture doit-elle comporter au regard de la TVA ?",
+   "q": "Outre l'identité des parties, la date, le numéro séquentiel et la dénomination des biens ou services, quelles mentions liées à la TVA une facture doit-elle notamment comporter ?",
    "r": "<b>Le numéro de TVA du vendeur, le prix hors taxe, le taux et le montant de TVA par taux</b>, ainsi que les mentions spéciales le cas échéant (« autoliquidation », « TVA non applicable, art. 293 B du CGI »).",
    "base": [
     "Règles essentielles#14"

@@ -29,7 +29,7 @@
   {
    "id": "ue3-03-k03",
    "type": "comp",
-   "q": "Pour fixer le taux de majoration des heures supplémentaires, quel accord prévaut entre l'accord d'entreprise et l'accord de branche ?",
+   "q": "Pour fixer le taux de majoration des heures supplémentaires, comment s'articulent l'accord d'entreprise et l'accord de branche ?",
    "r": "<b>L'accord d'entreprise prévaut, même moins favorable</b>, dans la limite du plancher légal de 10 %, car cette matière ne relève pas des domaines réservés à la branche.",
    "base": [
     "Points de vigilance#2"
@@ -53,7 +53,7 @@
   {
    "id": "ue3-03-k05",
    "type": "comp",
-   "q": "Quels temps de repos et de pause minimaux le Code du travail garantit-il au salarié ?",
+   "q": "En principe, quels temps de repos et de pause minimaux le Code du travail garantit-il au salarié ?",
    "r": "<b>Un repos quotidien de 11 heures consécutives et un repos hebdomadaire de 24 heures consécutives</b>, auxquelles s'ajoutent les heures de repos quotidien ; le repos hebdomadaire est donné le dimanche dans l'intérêt des salariés. Le salarié bénéficie aussi d'une pause de 20 minutes consécutives dès que le temps de travail quotidien atteint 6 heures.",
    "base": [
     "Règles essentielles#1"
@@ -394,8 +394,8 @@
   {
    "id": "ue3-03-k35",
    "type": "comp",
-   "q": "Comment le salarié peut-il prendre le congé supplémentaire de naissance en vigueur depuis le 1er juillet 2026 ?",
-   "r": "<b>Un ou deux mois au choix, fractionnables en deux périodes d'un mois</b>, les parents pouvant le prendre en même temps ou en alternance ; le congé débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant. Le salarié prévient en principe l'employeur au moins un mois avant le début du congé.",
+   "q": "Quelle durée, quel fractionnement et quels délais s'appliquent au congé supplémentaire de naissance du salarié, en vigueur depuis le 1er juillet 2026 ?",
+   "r": "<b>Un ou deux mois au choix, fractionnables en deux périodes d'un mois</b>, les parents pouvant le prendre en même temps ou en alternance. En principe, le congé débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant, et le salarié prévient l'employeur au moins un mois avant son début.",
    "base": [
     "Ce qui a changé récemment#0"
    ],

@@ -225,7 +225,7 @@
    "id": "ue9-06-k19",
    "type": "comp",
    "q": "En matière de TVA, à quel moment un fournisseur peut-il récupérer la TVA collectée sur une créance client douteuse ?",
-   "r": "<b>Lorsque la créance est devenue définitivement irrécouvrable</b>, ce qu'il doit pouvoir démontrer (en cas de liquidation judiciaire, dès la date du jugement qui la prononce), et non au stade de la dépréciation. Celle-ci se calcule pourtant sur le hors taxes : déprécier le TTC est une erreur classique.",
+   "r": "<b>Lorsque la créance est devenue définitivement irrécouvrable</b>, ce qu'il doit pouvoir démontrer, et non au stade de la dépréciation ; en cas de liquidation judiciaire, dès la date du jugement qui la prononce. La dépréciation se calcule pourtant sur le hors taxes : déprécier le TTC est une erreur classique.",
    "base": [
     "Points de vigilance#0",
     "Règles essentielles#11"
@@ -359,7 +359,7 @@
   {
    "id": "ue9-06-k30",
    "type": "comp",
-   "q": "Depuis le PCG 2025, dans quel résultat se classe la dotation à une provision pour un litige courant ?",
+   "q": "Pour les exercices ouverts depuis le 1er janvier 2025, dans quel résultat se classe la dotation à une provision pour un litige courant ?",
    "r": "<b>Dans le résultat d'exploitation (6815 / 7815).</b> Une dotation n'est exceptionnelle (6875 / 7875) que si elle se rattache directement à un événement majeur et inhabituel : le résultat exceptionnel est recentré sur ces événements et sur les écritures d'origine purement fiscale.",
    "base": [
     "Ce qui a changé récemment#1"

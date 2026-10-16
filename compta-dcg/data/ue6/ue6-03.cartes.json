@@ -29,8 +29,8 @@
   {
    "id": "ue6-03-k03",
    "type": "def",
-   "q": "Qu'est-ce que la marge brute d'autofinancement des sociétés intégrées dans le modèle de tableau des flux de trésorerie du règlement ANC n° 2020-01 ?",
-   "r": "<b>Une ligne obtenue à partir du résultat net des sociétés intégrées</b>, corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité (amortissements et provisions, plus-values de cession). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
+   "q": "Dans le modèle de tableau des flux de trésorerie du règlement ANC n° 2020-01 établi à partir du résultat net, qu'est-ce que la marge brute d'autofinancement des sociétés intégrées ?",
+   "r": "<b>Le résultat net des sociétés intégrées corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité</b> (amortissements et provisions, plus-values de cession). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
    "base": [
     "Définitions#2"
    ],
@@ -200,7 +200,7 @@
    "id": "ue6-03-k18",
    "type": "comp",
    "q": "Comment la subvention d'investissement obtenue par l'entreprise apparaît-elle dans le tableau de financement du PCG ?",
-   "r": "<b>Comme une ressource durable (compte 131), dès l'exercice de son octroi, même si elle n'est pas encore encaissée.</b> Il ne faut pas la confondre avec sa quote-part virée au résultat (compte 747), produit calculé sans flux.",
+   "r": "<b>Comme une ressource durable (compte 131).</b> Il ne faut pas la confondre avec sa quote-part virée au résultat (compte 747), produit calculé sans flux.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#6"
@@ -236,8 +236,8 @@
   {
    "id": "ue6-03-k21",
    "type": "comp",
-   "q": "Comment les frais d'émission d'emprunt portés en charges à répartir sont-ils traités dans le tableau de financement du PCG ?",
-   "r": "<b>Ils constituent un emploi stable de l'exercice de leur engagement</b> (compte 481). Leur étalement ultérieur est une dotation, neutralisée dans la CAF.",
+   "q": "Comment les frais d'émission d'emprunt inscrits à l'actif pour être étalés (compte 481) sont-ils traités dans le tableau de financement du PCG ?",
+   "r": "<b>Ils constituent un emploi stable de l'exercice de leur engagement.</b> Leur étalement ultérieur est une dotation, neutralisée dans la CAF.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -260,7 +260,7 @@
   {
    "id": "ue6-03-k23",
    "type": "comp",
-   "q": "Selon le Code de commerce, dans quel délai maximal les dividendes doivent-ils être mis en paiement ?",
+   "q": "Selon le Code de commerce, dans quel délai maximal les dividendes en numéraire doivent-ils être mis en paiement ?",
    "r": "<b>Au plus tard neuf mois après la clôture de l'exercice</b>, sauf prolongation par décision de justice.",
    "base": [
     "Chiffres et seuils#1"

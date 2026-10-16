@@ -54,7 +54,7 @@
    "id": "ue10-03-k05",
    "type": "comp",
    "q": "Quelle simplification le PCG accorde-t-il aux petites entreprises pour le plan d'amortissement de leurs immobilisations non décomposables ?",
-   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Les autres entités retiennent la durée d'utilisation propre à l'entité, qui peut différer de la durée d'usage fiscale ; l'excédent de l'amortissement fiscal sur l'amortissement comptable est alors constaté en amortissements dérogatoires.",
+   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Les autres entités retiennent la durée d'utilisation propre à l'entité, qui peut différer de la durée d'usage fiscale ; l'écart entre amortissement fiscal et amortissement comptable passe alors par les amortissements dérogatoires.",
    "base": [
     "Règles essentielles#2",
     "Points de vigilance#0"
@@ -314,7 +314,7 @@
    "id": "ue10-03-k27",
    "type": "comp",
    "q": "Depuis le règlement ANC n° 2022-06, dans quel résultat classe-t-on les cessions d'immobilisations incorporelles et corporelles ?",
-   "r": "<b>En résultat d'exploitation, et non plus en résultat exceptionnel.</b> Le résultat exceptionnel comprend désormais les produits et charges directement liés à un événement majeur et inhabituel, ainsi que les écritures d'origine purement fiscale comme les amortissements dérogatoires.",
+   "r": "<b>En résultat d'exploitation, et non plus en résultat exceptionnel.</b> Le résultat exceptionnel est désormais réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale, comme les amortissements dérogatoires.",
    "base": [
     "Ce qui a changé récemment#0",
     "Points de vigilance#4"
@@ -362,7 +362,7 @@
   {
    "id": "ue10-03-k31",
    "type": "comp",
-   "q": "Comment le preneur traite-t-il un contrat de crédit-bail dans ses comptes individuels, à la différence des comptes consolidés établis selon le règlement ANC n° 2020-01 ?",
+   "q": "En quoi le traitement d'un contrat de crédit-bail chez le preneur diffère-t-il entre ses comptes individuels et les comptes consolidés établis selon le règlement ANC n° 2020-01 ?",
    "r": "<b>Dans les comptes individuels, il comptabilise en charges les sommes dues au titre de la location ; le bien reste hors bilan jusqu'à la levée de l'option</b> et fait l'objet d'une information en annexe. <b>Dans les comptes consolidés, le contrat est inscrit au bilan (immobilisation et emprunt correspondant) et au compte de résultat (dotation aux amortissements et charge financière).</b>",
    "base": [
     "Points de vigilance#6",

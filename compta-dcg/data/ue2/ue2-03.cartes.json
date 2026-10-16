@@ -18,7 +18,7 @@
    "id": "ue2-03-k02",
    "type": "comp",
    "q": "Qui évalue les apports en nature et les avantages particuliers lors de la constitution d'une société anonyme (SA) ?",
-   "r": "<b>Un ou plusieurs commissaires aux apports</b>, qui les évaluent sous leur responsabilité. Ils sont désignés à l'unanimité des fondateurs ou, à défaut, par décision de justice.",
+   "r": "<b>Un ou plusieurs commissaires aux apports</b>, qui les évaluent sous leur responsabilité. Ils sont désignés à l'unanimité des fondateurs ou, à défaut, par décision de justice. Les apports en industrie, eux, ne peuvent pas être représentés par des actions de SA.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -42,7 +42,7 @@
    "id": "ue2-03-k04",
    "type": "comp",
    "q": "Selon quelles deux formules la direction générale d'une société anonyme (SA) à conseil d'administration peut-elle être assumée ?",
-   "r": "<b>Au choix du conseil d'administration, soit par le président du conseil (PDG), soit par une autre personne physique nommée par le conseil, le directeur général.</b> Celui-ci peut être assisté d'un à cinq directeurs généraux délégués.",
+   "r": "<b>Au choix du conseil d'administration, soit par le président du conseil (PDG), soit par une autre personne physique nommée par le conseil, le directeur général.</b> Dans les deux formules, celui qui assume la direction générale peut être assisté d'un à cinq directeurs généraux délégués.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -77,7 +77,7 @@
   {
    "id": "ue2-03-k07",
    "type": "comp",
-   "q": "Pour quels faits les administrateurs et le directeur général d'une société anonyme (SA) engagent-ils leur responsabilité ?",
+   "q": "Pour quels faits les administrateurs et le directeur général d'une société anonyme (SA) engagent-ils leur responsabilité civile ?",
    "r": "<b>Les infractions aux dispositions législatives ou réglementaires applicables aux SA, les violations des statuts et les fautes commises dans leur gestion</b>, envers la société ou envers les tiers. Aucune décision de l'assemblée générale ne peut éteindre une action en responsabilité contre eux pour faute commise dans l'accomplissement de leur mandat.",
    "base": [
     "Règles essentielles#10"
@@ -101,8 +101,8 @@
   {
    "id": "ue2-03-k09",
    "type": "def",
-   "q": "Qu'est-ce qu'une convention réglementée dans une société anonyme (SA) ?",
-   "r": "<b>Toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote</b> (ou, pour une société actionnaire, la société qui la contrôle). Les conventions portant sur des opérations courantes conclues à des conditions normales en sont exclues.",
+   "q": "Qu'est-ce qu'une convention réglementée dans une société anonyme (SA) à conseil d'administration ?",
+   "r": "<b>Toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote</b> (ou, pour une société actionnaire, la société qui la contrôle). Les conventions portant sur des opérations courantes conclues à des conditions normales en sont notamment exclues.",
    "base": [
     "Définitions#3"
    ],
@@ -125,7 +125,7 @@
   {
    "id": "ue2-03-k11",
    "type": "comp",
-   "q": "Dans une société anonyme (SA), quelles conventions conclues avec une personne visée par le régime des conventions réglementées restent pourtant libres ?",
+   "q": "Dans une société anonyme (SA), quelles conventions conclues avec une personne visée par le régime des conventions réglementées échappent pourtant à ce régime ?",
    "r": "<b>Les conventions portant sur des opérations courantes conclues à des conditions normales</b>, ainsi que celles conclues entre deux sociétés dont l'une détient, directement ou indirectement, la totalité du capital de l'autre.",
    "base": [
     "Définitions#3"
@@ -262,7 +262,7 @@
    "id": "ue2-03-k22",
    "type": "comp",
    "q": "Quelles opérations sur ses titres sont interdites à la société par actions simplifiée (SAS) ?",
-   "r": "<b>L'offre au public de titres financiers et l'admission de ses actions aux négociations sur un marché réglementé.</b> L'article L. 227-2 lui ouvre néanmoins certaines offres, notamment celles réservées à des investisseurs qualifiés ou à un cercle restreint d'investisseurs agissant pour compte propre.",
+   "r": "<b>L'offre au public de titres financiers et l'admission de ses actions aux négociations sur un marché réglementé.</b> L'article L. 227-2 lui ouvre néanmoins certaines offres, notamment celles réservées à des investisseurs qualifiés ou à un cercle restreint d'investisseurs agissant pour compte propre. Ses statuts peuvent en revanche prévoir l'émission d'actions inaliénables résultant d'apports en industrie.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -323,7 +323,7 @@
    "id": "ue2-03-k27",
    "type": "comp",
    "q": "Dans une SAS, quelles décisions touchant au capital, aux comptes ou à leur contrôle relèvent obligatoirement d'une décision collective des associés ?",
-   "r": "<b>L'augmentation, l'amortissement ou la réduction du capital, les décisions relatives aux comptes annuels et aux bénéfices, et la nomination des commissaires aux comptes.</b> Les attributions des assemblées de SA en ces matières sont exercées collectivement par les associés.",
+   "r": "<b>L'augmentation, l'amortissement ou la réduction du capital, les décisions relatives aux comptes annuels et aux bénéfices, et la nomination des commissaires aux comptes.</b> Les attributions des assemblées de SA en ces matières sont exercées collectivement par les associés. Dans la SAS à associé unique, celui-ci approuve les comptes dans les six mois de la clôture, ne peut déléguer ses pouvoirs, et ses décisions sont répertoriées dans un registre.",
    "base": [
     "Règles essentielles#12"
    ],
@@ -371,8 +371,8 @@
   {
    "id": "ue2-03-k31",
    "type": "comp",
-   "q": "Dans une SAS, l'associé dont l'exclusion statutaire dépend d'une décision collective peut-il être privé du droit de voter sur cette décision ?",
-   "r": "<b>Non : il reste en droit de participer à la décision et de voter</b>, car tout associé a le droit de participer aux décisions collectives (C. civ., art. 1844). Une stipulation qui le prive de ce droit de vote est réputée non écrite (Cass. com., 29 mai 2024).",
+   "q": "Dans une SAS, quel est le sort de la stipulation statutaire qui prive de son droit de vote l'associé dont l'exclusion dépend d'une décision collective ?",
+   "r": "<b>Elle est réputée non écrite (Cass. com., 29 mai 2024).</b> L'associé dont l'exclusion est proposée reste en droit de participer à la décision et de voter, car tout associé a le droit de participer aux décisions collectives (C. civ., art. 1844).",
    "base": [
     "Points de vigilance#1"
    ],

@@ -104,23 +104,11 @@
    "q": "Quelles conséquences fiscales emporte l'option d'un entrepreneur individuel relevant d'un régime réel pour l'assimilation de son entreprise à une EURL ou à une EARL ?",
    "r": "<b>Cette option, irrévocable, vaut option pour l'impôt sur les sociétés</b> (CGI, art. 1655 sexies). L'entreprise peut toutefois renoncer à l'option pour l'IS jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée.",
    "base": [
-    "Règles essentielles#3"
+    "Règles essentielles#3",
+    "Ce qui a changé récemment#2"
    ],
    "src": "Loi n° 2022-172 du 14 février 2022 ; loi n° 2021-1900 du 30 décembre 2021, art. 13 ; CGI, art. 1655 sexies ; BOI-BIC-CHAMP-70-10 ; BOI-IS-CHAMP-40",
    "url": "https://bofip.impots.gouv.fr/bofip/3119-PGP.html/identifiant=BOI-BIC-CHAMP-70-10-20221123",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue10-08-k10",
-   "type": "comp",
-   "q": "Depuis la loi n° 2022-172 du 14 février 2022, quel est le sort de l'entreprise individuelle à responsabilité limitée (EIRL) ?",
-   "r": "<b>Elle est mise en extinction : aucune EIRL ne peut être créée depuis le 16 février 2022</b>, les EIRL existantes conservant leur régime. La même loi refond le statut de l'entrepreneur individuel.",
-   "base": [
-    "Ce qui a changé récemment#2",
-    "Règles essentielles#3"
-   ],
-   "src": "Loi n° 2021-1900 du 30 décembre 2021, art. 13 ; loi n° 2022-172 du 14 février 2022 ; BOFiP ACTU-2022-00086",
-   "url": "https://bofip.impots.gouv.fr/bofip/13602-PGP.html/ACTU-2022-00086",
    "fiab": "stable"
   },
   {
@@ -162,7 +150,7 @@
   {
    "id": "ue10-08-k14",
    "type": "comp",
-   "q": "Dans quels cas le contrôle des comptes d'un groupement d'intérêt économique (GIE) est-il confié à un commissaire aux comptes ?",
+   "q": "Dans quels cas le contrôle des comptes d'un groupement d'intérêt économique (GIE) doit-il être exercé par un ou plusieurs commissaires aux comptes ?",
    "r": "<b>Lorsque le groupement émet des obligations ou compte cent salariés ou plus à la clôture d'un exercice.</b> Le ou les commissaires aux comptes sont alors nommés par l'assemblée pour six exercices.",
    "base": [
     "Règles essentielles#7",
@@ -262,7 +250,7 @@
   {
    "id": "ue10-08-k22",
    "type": "comp",
-   "q": "Quelle méthode de consolidation le Code de commerce associe-t-il au contrôle exclusif, au contrôle conjoint et à l'influence notable ?",
+   "q": "Quelles méthodes de consolidation le Code de commerce associe-t-il respectivement au contrôle exclusif, au contrôle conjoint et à l'influence notable ?",
    "r": "<b>Contrôle exclusif : intégration globale ; contrôle conjoint : intégration proportionnelle ; influence notable : mise en équivalence</b> (C. com., art. L. 233-18 ; règlement ANC n° 2020-01).",
    "base": [
     "Règles essentielles#10"
@@ -428,6 +416,18 @@
    ],
    "src": "C. com., art. L. 233-24 ; règlement ANC n° 2020-01",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k37",
+   "type": "comp",
+   "q": "Selon la NEP 500, quelles caractéristiques doivent présenter les éléments probants collectés par le commissaire aux comptes pour fonder son opinion ?",
+   "r": "<b>Ils doivent être suffisants et appropriés</b> : le caractère approprié tient à leur qualité (fiabilité et pertinence), le caractère suffisant à leur quantité. S'il ne peut collecter de tels éléments, le commissaire aux comptes formule une opinion avec réserve ou une impossibilité de certifier.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "NEP 500 révisée (arrêté du 27 juillet 2023)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047931335",
    "fiab": "stable"
   }
  ]

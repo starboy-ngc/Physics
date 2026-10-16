@@ -41,7 +41,7 @@
   {
    "id": "ue9-02-k04",
    "type": "def",
-   "q": "Quels comptes regroupent les classes 1, 2 et 3 du plan de comptes du PCG ?",
+   "q": "Quelles catégories de comptes les classes 1, 2 et 3 du plan de comptes du PCG regroupent-elles ?",
    "r": "<b>Classe 1 : comptes de capitaux</b> (capitaux propres, autres fonds propres, emprunts et dettes assimilées) ; <b>classe 2 : comptes d'immobilisations</b> ; <b>classe 3 : comptes de stocks et en-cours</b>.",
    "base": [
     "Définitions#1"
@@ -53,7 +53,7 @@
   {
    "id": "ue9-02-k05",
    "type": "def",
-   "q": "Quels comptes regroupent les classes 4, 5, 6 et 7 du plan de comptes du PCG ?",
+   "q": "Quelles catégories de comptes les classes 4, 5, 6 et 7 du plan de comptes du PCG regroupent-elles ?",
    "r": "<b>Classe 4 : comptes de tiers</b> ; <b>classe 5 : comptes financiers</b> ; <b>classe 6 : comptes de charges</b> ; <b>classe 7 : comptes de produits</b>.",
    "base": [
     "Définitions#1"
@@ -65,8 +65,8 @@
   {
    "id": "ue9-02-k06",
    "type": "comp",
-   "q": "Comment la classe 6 du PCG répartit-elle les charges d'exploitation normale et courante et les charges financières ?",
-   "r": "Les charges d'exploitation normale et courante aux <b>comptes 60 à 65</b>, les charges financières au <b>compte 66</b> ; la classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les <b>charges par nature</b>.",
+   "q": "Dans la classe 6 du PCG, quelles charges les comptes 60 à 65, d'une part, et le compte 66, d'autre part, enregistrent-ils ?",
+   "r": "<b>Comptes 60 à 65 : les charges d'exploitation normale et courante ; compte 66 : les charges financières.</b> La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les charges par nature.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -77,8 +77,8 @@
   {
    "id": "ue9-02-k07",
    "type": "comp",
-   "q": "Dans la classe 7 du PCG, quels comptes enregistrent les produits d'exploitation normale et courante ?",
-   "r": "<b>Les comptes 70, 71, 72, 74 et 75</b> : ventes (70), production stockée (71), production immobilisée (72), subventions (74) et autres produits de gestion courante (75).",
+   "q": "Selon le PCG, quelle catégorie de produits les comptes 70, 71, 72, 74 et 75 de la classe 7 enregistrent-ils ?",
+   "r": "<b>Les produits d'exploitation normale et courante</b> : ventes (70), production stockée (71), production immobilisée (72), subventions (74) et autres produits de gestion courante (75).",
    "base": [
     "Règles essentielles#8"
    ],
@@ -300,7 +300,7 @@
   {
    "id": "ue9-02-k26",
    "type": "comp",
-   "q": "Selon le Code de commerce, à quelle date les commerçants personnes physiques au réel simplifié ou au régime micro peuvent-ils enregistrer leurs encaissements et paiements ?",
+   "q": "Selon le Code de commerce, quelle date dérogatoire les commerçants personnes physiques au réel simplifié ou au régime micro peuvent-ils retenir pour enregistrer leurs encaissements et paiements ?",
    "r": "À la <b>date de l'opération figurant sur le relevé</b> de leur établissement de crédit, par dérogation à l'enregistrement « opération par opération et jour par jour ».",
    "base": [
     "Règles essentielles#14"

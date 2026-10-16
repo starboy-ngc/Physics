@@ -41,7 +41,7 @@
   {
    "id": "ue3-01-k04",
    "type": "comp",
-   "q": "À quelles conditions un accord collectif de branche est-il valablement conclu ?",
+   "q": "Quelles conditions de majorité syndicale subordonnent la validité d'une convention ou d'un accord collectif de branche ?",
    "r": "<b>La signature</b> d'une ou plusieurs organisations syndicales représentatives ayant recueilli au moins 30 % des suffrages exprimés en faveur d'organisations reconnues représentatives à ce niveau, quel que soit le nombre de votants, et <b>l'absence d'opposition</b> d'organisations représentatives ayant recueilli la majorité de ces suffrages, exprimée dans un délai de quinze jours à compter de la notification.",
    "base": [
     "Règles essentielles#5"
@@ -66,7 +66,7 @@
    "id": "ue3-01-k06",
    "type": "def",
    "q": "Qu'est-ce que l'élargissement d'une convention collective par le ministre chargé du travail ?",
-   "r": "<b>Rendre obligatoire, en cas de carence des organisations (impossibilité persistante de conclure), un texte déjà étendu dans un autre secteur</b> présentant des conditions analogues quant aux emplois exercés, sauf opposition écrite et motivée de la majorité des membres de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle. L'absence d'avenant ou d'annexe pendant cinq ans au moins peut être assimilée à une carence.",
+   "r": "<b>Rendre obligatoire, en cas de carence des organisations (impossibilité persistante de conclure), un texte déjà étendu dans un autre secteur</b> présentant des conditions analogues, sauf opposition écrite et motivée de la majorité des membres de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle. L'absence d'avenant ou d'annexe pendant cinq ans au moins peut être assimilée à une carence.",
    "base": [
     "Règles essentielles#4"
    ],
@@ -114,7 +114,7 @@
   {
    "id": "ue3-01-k10",
    "type": "comp",
-   "q": "Dans les matières du bloc 2 (art. L. 2253-2 du Code du travail), à quelle condition la convention de branche prime-t-elle sur l'accord d'entreprise ?",
+   "q": "Dans les matières du bloc 2 (art. L. 2253-2 du Code du travail), à quelle condition la convention de branche prime-t-elle sur un accord d'entreprise conclu après elle ?",
    "r": "<b>Seulement si elle le stipule expressément</b>, et sauf garanties au moins équivalentes dans l'accord d'entreprise. Ce bloc vise la prévention des effets de l'exposition aux facteurs de risques professionnels, l'insertion professionnelle et le maintien dans l'emploi des travailleurs handicapés, l'effectif à partir duquel les délégués syndicaux peuvent être désignés et les primes pour travaux dangereux ou insalubres.",
    "base": [
     "Règles essentielles#2"
@@ -187,11 +187,10 @@
   {
    "id": "ue3-01-k16",
    "type": "comp",
-   "q": "Que se passe-t-il lorsqu'un salarié refuse par écrit l'application d'un accord de performance collective à son contrat de travail ?",
-   "r": "<b>L'employeur dispose de deux mois à compter du refus pour engager un licenciement</b>, qui repose sur un motif spécifique constituant une cause réelle et sérieuse. Toutefois, si l'accord comporte des dispositions étrangères à ses objets et modifiant le contrat, le licenciement est sans cause réelle et sérieuse.",
+   "q": "En principe, que se passe-t-il lorsqu'un salarié refuse par écrit l'application d'un accord de performance collective à son contrat de travail ?",
+   "r": "<b>L'employeur dispose de deux mois à compter du refus pour engager un licenciement</b>, qui repose sur un motif spécifique constituant une cause réelle et sérieuse.",
    "base": [
-    "Règles essentielles#9",
-    "Ce qui a changé récemment#2"
+    "Règles essentielles#9"
    ],
    "src": "C. trav., art. L. 2254-2",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
@@ -308,7 +307,7 @@
   {
    "id": "ue3-01-k26",
    "type": "comp",
-   "q": "Quelle autorité peut sanctionner par une amende administrative certains manquements au Code du travail, et à quelles conditions ?",
+   "q": "Dans le régime de l'article L. 8115-1 du Code du travail, quelle autorité peut sanctionner certains manquements par une amende administrative, et à quelles conditions ?",
    "r": "<b>Le directeur régional de l'économie, de l'emploi, du travail et des solidarités</b>, sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales : il peut adresser un avertissement ou prononcer une amende, notamment en matière de durées maximales de travail, de repos, de salaire minimum et de salaires minima conventionnels, d'installations sanitaires et d'hébergement. La décision se conteste devant le tribunal administratif.",
    "base": [
     "Règles essentielles#14"

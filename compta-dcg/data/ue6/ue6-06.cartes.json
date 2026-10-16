@@ -334,7 +334,7 @@
   {
    "id": "ue6-06-k28",
    "type": "comp",
-   "q": "Selon l'article L. 225-122 du Code de commerce, quel principe détermine le droit de vote attaché aux actions ?",
+   "q": "Dans une société anonyme, quel principe l'article L. 225-122 du Code de commerce pose-t-il pour le droit de vote attaché aux actions ?",
    "r": "<b>Le droit de vote est proportionnel à la quotité de capital que les actions représentent</b>, et chaque action donne droit à une voix au moins.",
    "base": [
     "Règles essentielles#9"
@@ -359,7 +359,7 @@
    "id": "ue6-06-k30",
    "type": "def",
    "q": "Qu'est-ce que l'€STR sur le marché monétaire de la zone euro ?",
-   "r": "<b>Le taux au jour le jour en euros administré par la Banque centrale européenne.</b> Les placements monétaires et les crédits à taux variable sont indexés sur ce type de taux de référence.",
+   "r": "<b>Le taux au jour le jour en euros administré par la Banque centrale européenne.</b> Avec l'Euribor, c'est un taux de référence auquel sont indexés les placements monétaires et les crédits à taux variable.",
    "base": [
     "Règles essentielles#15"
    ],
@@ -382,8 +382,8 @@
   {
    "id": "ue6-06-k32",
    "type": "comp",
-   "q": "Quel taux a remplacé l'Eonia comme taux de référence au jour le jour de la zone euro ?",
-   "r": "<b>L'€STR, publié par la BCE</b> : depuis le 3 janvier 2022, l'Eonia a disparu et l'€STR est le seul taux de référence au jour le jour de la zone euro. Les OPCVM monétaires s'y comparent.",
+   "q": "Depuis la disparition de l'Eonia, quel est le seul taux de référence au jour le jour de la zone euro ?",
+   "r": "<b>L'€STR, publié par la Banque centrale européenne</b> : l'Eonia a disparu depuis le 3 janvier 2022. Les OPCVM monétaires se comparent à l'€STR.",
    "base": [
     "Ce qui a changé récemment#2"
    ],
@@ -413,6 +413,18 @@
    ],
    "src": "PCG, art. 420-5 ; plan de comptes PCG 2025, comptes 476 et 477",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k35",
+   "type": "comp",
+   "q": "Dans le plan de comptes PCG 2025, à quels comptes rattache-t-on les intérêts courus à payer et à recevoir sur concours bancaires ?",
+   "r": "<b>Au compte 5186 pour les intérêts courus à payer, au compte 5187 pour ceux à recevoir.</b> Les intérêts courus sur les obligations et bons détenus sont, eux, rattachés au compte 5088.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 5088, 5186 et 5187",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   }
  ]

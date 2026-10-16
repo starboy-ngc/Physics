@@ -80,7 +80,7 @@
    "id": "ue9-04-k07",
    "type": "comp",
    "q": "Quelles charges courantes sont exonérées de TVA par l'article 261 C du CGI, si bien qu'aucune TVA déductible n'est enregistrée ?",
-   "r": "<b>Les intérêts et agios (octroi de crédits), les primes d'assurance et les livraisons de timbres-poste à leur valeur officielle.</b> Les frais et commissions bancaires ne supportent la TVA que si l'établissement a opté pour la taxation des opérations qu'il désigne (CGI, art. 260 B).",
+   "r": "<b>Les intérêts et agios (octroi de crédits), les primes d'assurance et les livraisons de timbres-poste à leur valeur officielle.</b> Les frais et commissions bancaires (compte 627) peuvent, eux, supporter la TVA, par exemple lorsque l'établissement a opté pour la taxation des opérations qu'il désigne (CGI, art. 260 B).",
    "base": [
     "Points de vigilance#1",
     "Règles essentielles#2"
@@ -93,9 +93,10 @@
    "id": "ue9-04-k08",
    "type": "comp",
    "q": "Que devient, avec l'ordonnance n° 2025-1247 du 17 décembre 2025, l'article 261 C du CGI, qui exonère de TVA notamment les intérêts et les assurances ?",
-   "r": "<b>Il est abrogé par l'article 9 de l'ordonnance</b>, qui transfère la TVA au livre II du code des impositions sur les biens et services (CIBS). Selon Légifrance, cette abrogation prend effet le 1er janvier 2027 ; l'exonération des opérations d'assurance figure alors aux articles L. 213-129 à L. 213-131 du CIBS.",
+   "r": "<b>Il est abrogé par l'article 9 de l'ordonnance</b>, qui transfère la TVA au livre II du code des impositions sur les biens et services (CIBS). Cette abrogation prend effet le 1er janvier 2027 ; l'exonération des opérations d'assurance figure alors aux articles L. 213-129 à L. 213-131 du CIBS.",
    "base": [
-    "Ce qui a changé récemment#6"
+    "Ce qui a changé récemment#6",
+    "Points de vigilance#1"
    ],
    "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, art. 9 ; CGI, art. 261 C (abrogé) ; CIBS, art. L. 213-129 à L. 213-131",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
@@ -166,8 +167,8 @@
   {
    "id": "ue9-04-k15",
    "type": "def",
-   "q": "Dans le compte 64 « Charges de personnel » du PCG, quels comptes enregistrent les rémunérations, les charges de sécurité sociale et de prévoyance, et les remboursements ?",
-   "r": "<b>641 pour les rémunérations du personnel, 645 pour les charges de sécurité sociale et de prévoyance et 649 pour les remboursements de charges de personnel.</b> Le compte 645 se subdivise par organisme : URSSAF, mutuelles, caisses de retraites, autres organismes sociaux.",
+   "q": "Parmi les charges de personnel (compte 64 du PCG), quels comptes enregistrent les rémunérations du personnel, les charges de sécurité sociale et de prévoyance, et les remboursements de charges ?",
+   "r": "<b>641 pour les rémunérations du personnel, 645 pour les charges de sécurité sociale et de prévoyance et 649 pour les remboursements de charges de personnel.</b> Le compte 645 se subdivise par organisme (URSSAF, mutuelles, caisses de retraites, etc.).",
    "base": [
     "Définitions#3"
    ],
@@ -216,7 +217,7 @@
    "id": "ue9-04-k20",
    "type": "comp",
    "q": "Sur quelle assiette les cotisations de sécurité sociale sont-elles calculées selon l'article L. 242-1 du Code de la sécurité sociale ?",
-   "r": "<b>Sur les revenus d'activité retenus pour l'assiette de la CSG</b> : toutes les sommes, avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail, d'une activité ou de l'exercice d'un mandat ou d'une fonction élective, quelles qu'en soient la dénomination et la qualité de celui qui les attribue. En sont notamment exclus les remboursements de frais professionnels, l'intéressement et la participation.",
+   "r": "<b>Sur les revenus d'activité retenus pour l'assiette de la CSG</b> : toutes les sommes, avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail, d'une activité, d'un mandat ou d'une fonction élective, quelles qu'en soient la dénomination et la qualité de celui qui les attribue. En sont notamment exclus l'intéressement, la participation et, dans les conditions fixées par arrêté, les remboursements de frais professionnels.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -264,10 +265,11 @@
   {
    "id": "ue9-04-k24",
    "type": "comp",
-   "q": "Dans quel compte de charges du PCG enregistre-t-on les cotisations patronales de sécurité sociale et de prévoyance ?",
-   "r": "<b>Au compte 645 « Charges de sécurité sociale et de prévoyance »</b>, en contrepartie des comptes 431 « Sécurité sociale » et 437 « Autres organismes sociaux ».",
+   "q": "Selon le PCG, quelle écriture constate, lors de la paie, les charges patronales de sécurité sociale et de prévoyance ?",
+   "r": "<b>Débit du compte 645 « Charges de sécurité sociale et de prévoyance », crédit des comptes 431 « Sécurité sociale » et 437 « Autres organismes sociaux ».</b> Le compte 431 reçoit les cotisations dues à l'URSSAF, le compte 437 celles de la retraite complémentaire et de la prévoyance.",
    "base": [
-    "Règles essentielles#10"
+    "Règles essentielles#10",
+    "Règles essentielles#9"
    ],
    "src": "Plan de comptes (version au 1er janvier 2026), comptes 431, 437, 641 et 645",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
@@ -277,7 +279,7 @@
    "id": "ue9-04-k25",
    "type": "comp",
    "q": "Pourquoi les cotisations salariales ne s'ajoutent-elles pas à la charge de personnel supportée par l'employeur ?",
-   "r": "<b>Parce qu'elles sont comprises dans le salaire brut</b>, déjà en charge au compte 641. La charge de personnel de la période est la somme des comptes 641 et 645.",
+   "r": "<b>Parce qu'elles sont comprises dans le salaire brut</b>, déjà en charge au compte 641. Pour l'employeur, la paie coûte donc le salaire brut (641) augmenté des charges patronales (645).",
    "base": [
     "Règles essentielles#10"
    ],
@@ -319,19 +321,6 @@
    ],
    "src": "Plan de comptes (version au 1er janvier 2026), comptes 164 et 661",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-04-k30",
-   "type": "comp",
-   "q": "Pour quelle raison rattache-t-on à l'exercice les intérêts courus non échus d'un emprunt bancaire ?",
-   "r": "<b>Parce que le compte de résultat retient les charges de l'exercice indépendamment de leur date de paiement.</b> Depuis 2025, ces intérêts sont inscrits au compte 1648 « Intérêts courus sur emprunts auprès des établissements de crédit » (avant 2025 : 16884, subdivision du compte 1688).",
-   "base": [
-    "Règles essentielles#13",
-    "Ce qui a changé récemment#1"
-   ],
-   "src": "C. com., art. L. 123-13 ; plan de comptes (version au 1er janvier 2026), compte 1648",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
    "fiab": "stable"
   },
   {

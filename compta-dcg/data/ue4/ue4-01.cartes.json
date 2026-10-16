@@ -17,8 +17,8 @@
   {
    "id": "ue4-01-k02",
    "type": "comp",
-   "q": "Que doit autoriser, chaque année, la première partie de la loi de finances de l'année ?",
-   "r": "<b>La perception, pour l'année, des ressources de l'État</b> et des impositions de toute nature affectées à des personnes morales autres que l'État (LOLF, art. 34).",
+   "q": "En matière de recettes, que doit autoriser chaque année la première partie de la loi de finances de l'année (LOLF, art. 34) ?",
+   "r": "<b>La perception, pour l'année, des ressources de l'État</b> et des impositions de toute nature affectées à des personnes morales autres que l'État.",
    "base": [
     "Définitions#0"
    ],
@@ -77,7 +77,7 @@
   {
    "id": "ue4-01-k07",
    "type": "comp",
-   "q": "Comment l'administration peut-elle écarter la garantie de l'article L. 80 A du LPF lorsque la doctrine invoquée ajoute à la loi ?",
+   "q": "Par quelle procédure l'administration peut-elle écarter la garantie de l'article L. 80 A du LPF lorsque la doctrine invoquée par le contribuable ajoute à la loi ?",
    "r": "<b>Par la procédure de l'abus de droit (LPF, art. L. 64)</b>, si elle démontre la finalité abusive de l'opération. À défaut, le contribuable peut se prévaloir de l'interprétation même lorsqu'elle ajoute à la loi.",
    "base": [
     "Points de vigilance#0"

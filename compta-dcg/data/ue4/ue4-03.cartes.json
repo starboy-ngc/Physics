@@ -56,7 +56,7 @@
    "id": "ue4-03-k05",
    "type": "comp",
    "q": "Quels abattements s'appliquent au chiffre d'affaires d'un exploitant relevant du régime micro-BIC pour déterminer son bénéfice ?",
-   "r": "<b>71 % pour les ventes et la fourniture de logement hors location meublée, 50 % pour les prestations de services et la location meublée</b>, sauf 30 % pour les meublés de tourisme non classés. Chaque abattement ne peut être inférieur à 305 €.",
+   "r": "<b>71 % pour les ventes et la fourniture de logement hors location meublée ; 50 % pour les prestations de services et les autres activités, y compris la location meublée, sauf 30 % pour les meublés de tourisme non classés.</b> Le bénéfice est égal au chiffre d'affaires diminué de l'abattement, qui ne peut être inférieur à 305 €.",
    "base": [
     "Définitions#2"
    ],
@@ -190,7 +190,7 @@
    "id": "ue4-03-k16",
    "type": "comp",
    "q": "Quels biens ouvrent droit à l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
-   "r": "<b>Les biens d'équipement acquis neufs, dont la durée normale d'utilisation est d'au moins trois ans et qui figurent dans les catégories de l'annexe II</b> (matériels et outillages industriels notamment). Sont donc exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux hors de ces catégories, comme les véhicules de tourisme ou le mobilier de bureau.",
+   "r": "<b>Les biens d'équipement acquis neufs, dont la durée normale d'utilisation est d'au moins trois ans et qui figurent dans les catégories de l'annexe II</b>, pour l'essentiel des biens normalement utilisés dans les entreprises industrielles. Sont exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux hors de ces catégories (véhicules de tourisme, mobilier de bureau notamment).",
    "base": [
     "Règles essentielles#6",
     "Points de vigilance#2"
@@ -348,7 +348,7 @@
    "id": "ue4-03-k29",
    "type": "comp",
    "q": "À quelles conditions l'article 151 septies du CGI exonère-t-il les plus-values professionnelles des petites entreprises BIC ?",
-   "r": "<b>Une activité exercée pendant au moins cinq ans et des recettes sous les limites légales</b> : exonération totale jusqu'à 250 000 € (vente de marchandises, fourniture de logement) ou 90 000 € (autres activités non agricoles), partielle et dégressive jusqu'à 350 000 € et 126 000 €. Les recettes sont la moyenne hors taxes des exercices clos au cours des deux années civiles précédant la clôture de l'exercice de réalisation.",
+   "r": "<b>Une activité exercée à titre professionnel pendant au moins cinq ans et des recettes limitées</b> : exonération totale jusqu'à 250 000 € (vente de marchandises, fourniture de logement) ou 90 000 € (autres activités non agricoles), partielle et dégressive jusqu'à 350 000 € et 126 000 €. Les recettes sont la moyenne hors taxes des exercices clos au cours des deux années civiles précédant la clôture de l'exercice de réalisation.",
    "base": [
     "Règles essentielles#12",
     "Chiffres et seuils#3"
@@ -360,8 +360,8 @@
   {
    "id": "ue4-03-k30",
    "type": "comp",
-   "q": "À quelles conditions l'article 238 quindecies du CGI exonère-t-il les plus-values de transmission d'une entreprise individuelle ?",
-   "r": "<b>Sur option, lors de la transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins cinq ans</b> : exonération totale si la valeur des éléments transmis n'excède pas 500 000 €, partielle entre 500 000 € et 1 000 000 €. Les plus-values sur biens immobiliers restent imposables et le régime ne se cumule pas avec l'article 151 septies.",
+   "q": "À quelles conditions l'article 238 quindecies du CGI exonère-t-il les plus-values professionnelles réalisées lors d'une transmission d'activité ?",
+   "r": "<b>Sur option, pour la transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins cinq ans</b> : exonération totale si la valeur des éléments transmis n'excède pas 500 000 €, partielle entre 500 000 € et 1 000 000 €. Les plus-values sur biens immobiliers restent imposables et le régime ne se cumule pas avec l'article 151 septies.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -372,8 +372,8 @@
   {
    "id": "ue4-03-k31",
    "type": "comp",
-   "q": "Pour un loueur en meublé professionnel relevant du micro-BIC, comment les amortissements sont-ils pris en compte, y compris lors de la cession de l'immeuble ?",
-   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value professionnelle relève donc du court terme à hauteur de ces amortissements réputés déduits.",
+   "q": "Au régime micro-BIC, comment les amortissements d'un immeuble donné en location meublée sont-ils pris en compte, y compris lorsque sa plus-value de cession relève du régime professionnel ?",
+   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value relève donc du court terme à hauteur de ces amortissements réputés déduits.",
    "base": [
     "Ce qui a changé récemment#2"
    ],

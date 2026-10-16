@@ -114,8 +114,8 @@
   {
    "id": "ue9-08-k10",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, selon quel critère le PCG répartit-il les intérêts courus sur emprunts entre les comptes ?",
-   "r": "<b>Par nature de dette</b> : 1618, 1638, 1648, alors qu'ils figuraient avant 2025 dans des sous-comptes du 1688 (dont 16884 pour les emprunts bancaires). Le compte 1688 ne subsiste que pour les intérêts courus sur autres emprunts et dettes assimilées.",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quels comptes le PCG enregistre-t-il les intérêts courus sur emprunts, auparavant regroupés dans les sous-comptes du 1688 ?",
+   "r": "<b>Dans les comptes 1618, 1638 et 1648, selon la nature de la dette</b> : pour les emprunts bancaires, le 1648 remplace ainsi le 16884. Le compte 1688 ne subsiste que pour les intérêts courus sur autres emprunts et dettes assimilées.",
    "base": [
     "Ce qui a changé récemment#2"
    ],
@@ -127,7 +127,7 @@
    "id": "ue9-08-k11",
    "type": "comp",
    "q": "Pourquoi les intérêts d'escompte facturés par une banque ne supportent-ils en principe pas de TVA, alors qu'une commission bancaire peut en supporter ?",
-   "r": "<b>L'octroi et la négociation de crédits et les opérations concernant les effets de commerce (hors recouvrement de créances) sont exonérés de TVA.</b> Mais un établissement bancaire peut opter pour la taxation des opérations exonérées qu'il désigne : une commission facturée avec TVA relève de cette option.",
+   "r": "<b>L'octroi et la négociation de crédits et les opérations concernant les effets de commerce (hors recouvrement de créances) sont exonérés de TVA.</b> Mais un établissement bancaire peut opter pour la taxation des opérations exonérées qu'il désigne, par exemple ses commissions, qui sont alors facturées avec TVA.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -239,8 +239,8 @@
   {
    "id": "ue9-08-k20",
    "type": "comp",
-   "q": "Quels virements de comptes l'acceptation d'une lettre de change entraîne-t-elle chez le client tiré et chez le fournisseur tireur ?",
-   "r": "<b>Chez le client tiré, la dette passe du 401 au 403 « Fournisseurs – Effets à payer »</b> ; chez le fournisseur tireur, la créance passe du 411 au 413 « Clients – Effets à recevoir ».",
+   "q": "Pour une lettre de change acceptée, quels virements de comptes enregistrent le client tiré et le fournisseur tireur ?",
+   "r": "<b>Chez le client tiré, l'acceptation vire la dette du 401 au 403 « Fournisseurs – Effets à payer »</b> ; chez le fournisseur tireur, la créance passe du 411 au 413 « Clients – Effets à recevoir ».",
    "base": [
     "Règles essentielles#9"
    ],
@@ -326,9 +326,10 @@
    "id": "ue9-08-k27",
    "type": "comp",
    "q": "Selon le PCG, à quel cours convertit-on, en l'absence de couverture de change, le coût d'entrée d'une immobilisation ou d'un stock acquis en monnaie étrangère ?",
-   "r": "<b>Au cours du jour de l'opération.</b> Les créances et dettes en monnaies étrangères, elles, sont converties et comptabilisées en monnaie nationale sur la base du dernier cours du change.",
+   "r": "<b>Au cours du jour de l'opération.</b> Les créances et dettes en monnaies étrangères, elles, sont converties à la date de clôture sur la base du dernier cours du change.",
    "base": [
-    "Règles essentielles#15"
+    "Règles essentielles#15",
+    "Définitions#5"
    ],
    "src": "PCG, art. 420-1 et 420-5",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",

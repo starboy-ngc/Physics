@@ -67,7 +67,7 @@
    "id": "ue6-02-k06",
    "type": "def",
    "q": "Qu'est-ce que la trésorerie nette dans l'analyse du bilan fonctionnel ?",
-   "r": "<b>La trésorerie active, notamment les disponibilités, diminuée de la trésorerie passive</b> : concours bancaires courants et soldes créditeurs de banques (compte 519), auxquels le bilan fonctionnel ajoute les effets escomptés non échus.",
+   "r": "<b>La trésorerie active, notamment les disponibilités, diminuée de la trésorerie passive</b> : concours bancaires courants (compte 519) et soldes créditeurs de banques, auxquels le bilan fonctionnel ajoute les effets escomptés non échus.",
    "base": [
     "Définitions#4",
     "Règles essentielles#4"
@@ -91,7 +91,7 @@
   {
    "id": "ue6-02-k08",
    "type": "comp",
-   "q": "Où le bilan fonctionnel classe-t-il les concours bancaires courants et soldes créditeurs de banques (compte 519) ?",
+   "q": "Où le bilan fonctionnel classe-t-il les concours bancaires courants (compte 519) et les soldes créditeurs de banques ?",
    "r": "<b>En trésorerie passive</b> : ils sont exclus des dettes financières, comme dans la variation « trésorerie » du tableau de financement du PCG.",
    "base": [
     "Règles essentielles#2"
@@ -104,7 +104,7 @@
    "id": "ue6-02-k09",
    "type": "def",
    "q": "Qu'est-ce que le crédit-bail au sens du Code monétaire et financier ?",
-   "r": "<b>Une opération de location</b> de biens d'équipement, de matériel d'outillage ou de biens immobiliers à usage professionnel, qui donne au locataire <b>la possibilité d'acquérir le bien</b> moyennant un prix convenu tenant compte des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
+   "r": "<b>Une opération de location</b> qui donne au locataire <b>la possibilité d'acquérir le bien loué</b> moyennant un prix convenu tenant compte des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
    "base": [
     "Définitions#5"
    ],
@@ -201,7 +201,7 @@
   {
    "id": "ue6-02-k17",
    "type": "comp",
-   "q": "Comment le bilan fonctionnel classe-t-il les intérêts courus non échus sur emprunts et les intérêts courus à payer sur concours bancaires ?",
+   "q": "Comment le bilan fonctionnel classe-t-il les intérêts courus non échus sur emprunts ?",
    "r": "Ils sont <b>retirés des dettes financières</b>, où les range le bilan comptable, et <b>classés en dettes hors exploitation</b>.",
    "base": [
     "Règles essentielles#8"
@@ -226,7 +226,7 @@
   {
    "id": "ue6-02-k21",
    "type": "def",
-   "q": "Comment la Banque de France exprime-t-elle les délais de paiement des clients et des fournisseurs ?",
+   "q": "Selon la Banque de France, en jours de quelles grandeurs exprime-t-on les créances clients et les dettes fournisseurs ?",
    "r": "Les <b>créances clients en jours de chiffre d'affaires</b> et les <b>dettes fournisseurs en jours d'achats et charges externes</b>, ces derniers étant retraités du crédit-bail.",
    "base": [
     "Règles essentielles#9"
@@ -238,8 +238,8 @@
   {
    "id": "ue6-02-k22",
    "type": "comp",
-   "q": "Avant de convertir en jours un ratio de rotation clients ou fournisseurs, que faut-il vérifier sur ses deux termes ?",
-   "r": "<b>Que le numérateur et le dénominateur sont exprimés sur la même base (TTC ou HT).</b> C'est la règle d'homogénéité des ratios de rotation à respecter, à l'examen, avant toute conversion en jours.",
+   "q": "Avant de convertir en jours un ratio de rotation clients ou fournisseurs, que faut-il vérifier quant à la TVA dans son numérateur et son dénominateur ?",
+   "r": "<b>Qu'ils sont exprimés sur la même base, TTC ou HT.</b> C'est la règle d'homogénéité des ratios de rotation, à respecter à l'examen avant toute conversion en jours.",
    "base": [
     "Points de vigilance#2"
    ],

@@ -18,7 +18,7 @@
    "id": "ue10-07-k02",
    "type": "comp",
    "q": "Selon l'article 515-1 du PCG, dans quel exercice et à quel taux comptabilise-t-on l'impôt sur les bénéfices ?",
-   "r": "<b>Dans le compte de résultat de l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture.</b> La règle vaut aussi pour les contributions qui s'y rattachent, présentées dans la rubrique « Impôts sur les bénéfices ».",
+   "r": "<b>Dans le compte de résultat de l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture.</b> La règle vaut aussi pour les contributions qui s'y rattachent ; l'impôt et ces contributions sont comptabilisés dans la rubrique « Impôts sur les bénéfices ».",
    "base": [
     "Définitions#0"
    ],
@@ -127,8 +127,8 @@
   {
    "id": "ue10-07-k11",
    "type": "comp",
-   "q": "Sur quel exercice de référence reposent les quatre acomptes trimestriels d'impôt sur les sociétés ?",
-   "r": "<b>Sur le dernier exercice clos</b> ; le premier acompte repose sur l'avant-dernier exercice clos, puis il est régularisé. Comptablement, chaque acompte est débité au compte 444.",
+   "q": "Sur quel exercice sont calculés les quatre acomptes trimestriels d'impôt sur les sociétés ?",
+   "r": "<b>Sur le dernier exercice clos</b> ; le premier acompte est calculé sur l'avant-dernier exercice clos, puis régularisé. Comptablement, chaque acompte est débité au compte 444.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -165,8 +165,8 @@
   {
    "id": "ue10-07-k14",
    "type": "comp",
-   "q": "Que devient la créance sur le Trésor née d'un report en arrière des déficits (carry-back) ?",
-   "r": "<b>Elle s'impute sur l'IS des cinq exercices suivants ; la fraction non utilisée est remboursée à l'issue de ce délai</b>. Elle est aussi cessible et s'inscrit au débit du compte 444 par le crédit du compte 699.",
+   "q": "Comment l'entreprise utilise-t-elle la créance sur le Trésor née d'un report en arrière des déficits (carry-back) ?",
+   "r": "<b>Elle l'impute sur l'IS des cinq exercices suivants ; la fraction non utilisée est remboursée à l'issue de ce délai.</b> La créance, cessible dans les conditions des articles L. 313-23 et suivants du Code monétaire et financier, est inscrite au débit du compte 444 par le crédit du compte 699.",
    "base": [
     "Règles essentielles#5",
     "Chiffres et seuils#4"
@@ -314,7 +314,7 @@
    "id": "ue10-07-k26",
    "type": "comp",
    "q": "Dans quels comptes du PCG enregistre-t-on les subventions d'exploitation et les subventions d'équilibre ?",
-   "r": "<b>Aux comptes 741 Subventions d'exploitation et 742 Subventions d'équilibre</b>, produits d'exploitation de la classe 74, par le débit du compte 441 État – Subventions et aides à recevoir lorsque l'octroi est acquis.",
+   "r": "<b>Aux comptes 741 Subventions d'exploitation et 742 Subventions d'équilibre</b>, produits d'exploitation du compte 74, par le débit du compte 441 État – Subventions et aides à recevoir lorsque l'octroi est acquis.",
    "base": [
     "Règles essentielles#15"
    ],
@@ -375,7 +375,7 @@
    "id": "ue10-07-k31",
    "type": "comp",
    "q": "Sous le PCG 2025, dans quel résultat classe-t-on un abandon de créance relevant de l'activité normale et courante, selon qu'il est commercial ou financier ?",
-   "r": "<b>Abandon commercial : résultat d'exploitation (classes 65 / 75) ; abandon financier : résultat financier (classes 66 / 76).</b> Ces opérations courantes sont classées selon leur nature, le résultat exceptionnel étant réservé aux produits et charges directement liés à un événement majeur et inhabituel.",
+   "r": "<b>Abandon commercial : résultat d'exploitation (comptes 65 / 75) ; abandon financier : résultat financier (comptes 66 / 76).</b> Ces opérations courantes sont classées selon leur nature, le résultat exceptionnel étant réservé aux produits et charges directement liés à un événement majeur et inhabituel.",
    "base": [
     "Règles essentielles#18"
    ],

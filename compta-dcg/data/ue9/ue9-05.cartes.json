@@ -163,8 +163,8 @@
   {
    "id": "ue9-05-k14",
    "type": "comp",
-   "q": "Selon le PCG, quel mode d'amortissement une entité doit-elle retenir pour une immobilisation ?",
-   "r": "<b>Le mode qui traduit au mieux le rythme de consommation des avantages économiques attendus</b> ; le mode linéaire s'applique à défaut de mode mieux adapté. Le plan, défini à la date d'entrée du bien, est révisé de manière prospective en cas de modification significative de l'utilisation prévue.",
+   "q": "Selon le PCG, quel critère détermine le mode d'amortissement à retenir pour une immobilisation ?",
+   "r": "<b>Le rythme de consommation des avantages économiques attendus</b> : le mode retenu doit le traduire au mieux, le mode linéaire s'appliquant à défaut de mode mieux adapté. Le plan, défini à la date d'entrée du bien, est révisé de manière prospective en cas de modification significative de l'utilisation prévue.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -211,8 +211,8 @@
   {
    "id": "ue9-05-k18",
    "type": "comp",
-   "q": "Que prévoit l'article L. 123-20 du Code de commerce pour les amortissements d'un exercice sans bénéfice suffisant ?",
-   "r": "<b>Les amortissements restent obligatoires</b> : même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. Différer une dotation pour améliorer le résultat est donc irrégulier.",
+   "q": "Une entreprise dont le bénéfice est absent ou insuffisant peut-elle différer la dotation aux amortissements de ses immobilisations pour améliorer son résultat ?",
+   "r": "<b>Non : les amortissements sont obligatoires.</b> Selon l'article L. 123-20 du Code de commerce, même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. Différer une dotation pour améliorer le résultat est donc irrégulier.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -223,7 +223,7 @@
   {
    "id": "ue9-05-k19",
    "type": "comp",
-   "q": "Hormis les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, quels biens d'une entreprise industrielle sont exclus de l'amortissement dégressif fiscal ?",
+   "q": "Hormis les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, quels biens d'équipement sont exclus de l'amortissement dégressif fiscal ?",
    "r": "<b>Les biens acquis d'occasion</b> (déjà usagés lors de leur acquisition), <b>ceux dont la durée normale d'utilisation est inférieure à trois ans</b> et <b>les voitures de tourisme</b> : ils sont amortis en linéaire. Le bien doit en outre figurer sur la liste des biens éligibles de l'annexe II.",
    "base": [
     "Points de vigilance#4",
@@ -248,8 +248,8 @@
   {
    "id": "ue9-05-k21",
    "type": "comp",
-   "q": "Pourquoi l'excédent de l'amortissement dégressif fiscal sur l'amortissement comptable ne modifie-t-il pas la valeur nette comptable du bien ?",
-   "r": "<b>Parce que le dégressif est un régime fiscal</b> : le compte 28 n'enregistre que l'amortissement comptable, fondé sur la durée et le rythme d'utilisation ; l'excédent d'amortissement fiscal passe par le compte 145 (amortissements dérogatoires), au passif.",
+   "q": "Pourquoi le compte 28 n'enregistre-t-il pas la part de l'amortissement dégressif qui excède l'amortissement comptable ?",
+   "r": "<b>Parce que le dégressif est un régime fiscal</b> : le compte 28 n'enregistre que l'amortissement comptable, fondé sur la durée et le rythme d'utilisation. L'excédent d'amortissement fiscal passe par le compte 145 (amortissements dérogatoires), au passif, sans modifier la valeur nette comptable du bien.",
    "base": [
     "Points de vigilance#3"
    ],
@@ -259,37 +259,13 @@
   },
   {
    "id": "ue9-05-k22",
-   "type": "def",
-   "q": "Comment le PCG définit-il la valeur actuelle d'un actif ?",
-   "r": "<b>La plus élevée de la valeur vénale et de la valeur d'usage.</b> Lorsqu'elle devient inférieure à la valeur nette comptable de l'actif, une dépréciation est constatée.",
-   "base": [
-    "Définitions#6"
-   ],
-   "src": "PCG, art. 214-5 et 214-6 ; C. com., art. L. 123-18",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-05-k23",
-   "type": "def",
-   "q": "Selon le PCG, que constate la dépréciation d'un élément d'actif ?",
-   "r": "<b>Que sa valeur actuelle est devenue inférieure à sa valeur nette comptable.</b> La valeur nette comptable est alors ramenée à la valeur d'inventaire à la clôture de l'exercice, que la dépréciation soit définitive ou non.",
-   "base": [
-    "Définitions#6"
-   ],
-   "src": "PCG, art. 214-5 et 214-6 ; C. com., art. L. 123-18",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-05-k24",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment traite-t-on la plus-value constatée entre la valeur d'inventaire d'une immobilisation et sa valeur d'entrée ?",
-   "r": "<b>Elle n'est pas comptabilisée</b> : seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels.",
+   "q": "Selon le PCG, à quelle valeur compare-t-on la valeur nette comptable d'une immobilisation pour savoir s'il faut la déprécier ?",
+   "r": "<b>À sa valeur actuelle, c'est-à-dire la plus élevée de la valeur vénale et de la valeur d'usage.</b> Si elle est devenue inférieure à la valeur nette comptable, une dépréciation est constatée : la valeur nette comptable est ramenée à la valeur d'inventaire à la clôture, que la dépréciation soit définitive ou non.",
    "base": [
-    "Règles essentielles#14"
+    "Définitions#6"
    ],
-   "src": "C. com., art. L. 123-18 et L. 123-21",
+   "src": "PCG, art. 214-5 et 214-6 ; C. com., art. L. 123-18",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
    "fiab": "stable"
   },
@@ -357,7 +333,7 @@
   {
    "id": "ue9-05-k30",
    "type": "comp",
-   "q": "Lors de la cession d'une immobilisation amortissable, jusqu'à quelle date l'amortissement de l'exercice est-il calculé ?",
+   "q": "Lors de la cession d'une immobilisation amortissable, jusqu'à quelle date l'amortissement comptable de l'exercice est-il calculé ?",
    "r": "<b>Jusqu'à la date de cession</b> : une dotation complémentaire est comptabilisée du premier jour de l'exercice à cette date. L'oublier surévalue la valeur nette comptable portée au débit du compte 657 et fausse le résultat de cession (757 − 657).",
    "base": [
     "Points de vigilance#0",
@@ -382,25 +358,13 @@
   {
    "id": "ue9-05-k33",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, comment est comptabilisée l'indemnité d'assurance reçue après un sinistre ?",
+   "q": "Depuis le règlement ANC n° 2022-06, comment est en principe comptabilisée l'indemnité d'assurance reçue après un sinistre ?",
    "r": "<b>En produit, au compte 7587 « Indemnités d'assurance »</b>, les transferts de charges étant supprimés. Même liées à un événement majeur et inhabituel, les indemnités reçues en compensation de charges d'exploitation restent en résultat d'exploitation.",
    "base": [
     "Ce qui a changé récemment#1"
    ],
    "src": "Règlement ANC n° 2022-06 ; PCG, art. 513-5 ; plan de comptes, compte 7587",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-05-k34",
-   "type": "comp",
-   "q": "Pour une entreprise relevant de l'impôt sur le revenu, comment l'article 39 duodecies du CGI qualifie-t-il la plus-value de cession d'une immobilisation ?",
-   "r": "<b>À court terme</b> si l'élément a été acquis ou créé depuis moins de deux ans ; pour un élément amortissable détenu depuis au moins deux ans, <b>à court terme à hauteur des amortissements déduits et à long terme au-delà</b>. Cette qualification ne modifie pas l'enregistrement comptable en 657 et 757.",
-   "base": [
-    "Points de vigilance#5"
-   ],
-   "src": "CGI, art. 39 duodecies",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
    "fiab": "stable"
   },
   {
@@ -419,9 +383,10 @@
    "id": "ue9-05-k36",
    "type": "comp",
    "q": "Dans l'amortissement dégressif fiscal, à quel moment l'entreprise peut-elle passer de l'annuité dégressive à une annuité linéaire ?",
-   "r": "<b>Lorsque l'annuité dégressive devient inférieure au quotient de la valeur résiduelle par le nombre d'années d'utilisation restant à courir</b> : l'entreprise peut alors pratiquer cette dernière annuité. L'annuité dégressive s'applique en effet à la valeur résiduelle, c'est-à-dire à la valeur restant à amortir.",
+   "r": "<b>Lorsque l'annuité dégressive devient inférieure au quotient de la valeur résiduelle par le nombre d'années d'utilisation restant à courir</b> : l'entreprise peut alors pratiquer cette dernière annuité. L'annuité dégressive est en effet calculée sur la valeur résiduelle (valeur restant à amortir), au taux dégressif, c'est-à-dire au taux linéaire multiplié par un coefficient.",
    "base": [
-    "Règles essentielles#11"
+    "Règles essentielles#11",
+    "Règles essentielles#10"
    ],
    "src": "BOI-BIC-AMT-20-20-30",
    "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",

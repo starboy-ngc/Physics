@@ -54,7 +54,7 @@
    "id": "ue10-01-k05",
    "type": "comp",
    "q": "Qui peut certifier les informations en matière de durabilité depuis l'ordonnance n° 2023-1142 transposant la directive CSRD ?",
-   "r": "<b>Les commissaires aux comptes et les organismes tiers indépendants.</b> La même ordonnance fait du H3C la Haute autorité de l'audit et réorganise les règles de désignation, de mandat et de certification des commissaires aux comptes, à compter du 1er janvier 2024.",
+   "r": "<b>Les commissaires aux comptes et les organismes tiers indépendants.</b> La même ordonnance fait du H3C la Haute autorité de l'audit et place, à compter du 1er janvier 2024, les règles de désignation, de mandat et de certification des commissaires aux comptes aux articles L. 821-40 et suivants du Code de commerce.",
    "base": [
     "Ce qui a changé récemment#3"
    ],
@@ -77,8 +77,8 @@
   {
    "id": "ue10-01-k07",
    "type": "comp",
-   "q": "Quand une société par actions simplifiée (SAS) est-elle tenue de désigner au moins un commissaire aux comptes en raison de sa taille ?",
-   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5</b> : total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés. Depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société.",
+   "q": "Hors règles propres aux groupes, quand une société par actions simplifiée (SAS) est-elle tenue de désigner au moins un commissaire aux comptes ?",
+   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5</b> : total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés ; depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société. Sous les seuils, la désignation est aussi obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -90,7 +90,7 @@
    "id": "ue10-01-k08",
    "type": "comp",
    "q": "À partir de quand une SAS qui franchit deux des seuils de désignation du commissaire aux comptes en cours d'exercice doit-elle en désigner un ?",
-   "r": "<b>Pour l'exercice suivant seulement</b> : les seuils s'apprécient à la clôture de l'exercice, et leur franchissement en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes.",
+   "r": "<b>Pour l'exercice suivant, et seulement si deux des seuils sont dépassés à la clôture</b> : les seuils s'apprécient à la clôture de l'exercice, et leur franchissement en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -185,7 +185,7 @@
   {
    "id": "ue10-01-k16",
    "type": "comp",
-   "q": "À quelle valeur un bien est-il enregistré à son entrée dans le patrimoine, selon son mode d'acquisition, d'après le Code de commerce ?",
+   "q": "D'après le Code de commerce, à quelle valeur un bien acquis à titre onéreux, acquis à titre gratuit ou produit est-il enregistré à son entrée dans le patrimoine ?",
    "r": "<b>Bien acquis à titre onéreux : coût d'acquisition ; bien acquis à titre gratuit : valeur vénale ; bien produit : coût de production.</b> La valeur vénale correspond au prix qui aurait été acquitté dans des conditions normales de marché.",
    "base": [
     "Règles essentielles#3",
@@ -246,7 +246,7 @@
   {
    "id": "ue10-01-k21",
    "type": "comp",
-   "q": "Selon le PCG, quelles sont les deux particularités du passage d'une entité à une méthode de référence ?",
+   "q": "Selon le PCG, quelles règles s'appliquent au passage d'une entité à une méthode de référence, quant à sa justification et à sa réversibilité ?",
    "r": "<b>Il n'a pas à être justifié et il est irréversible.</b> Les méthodes de référence sont celles que l'ANC considère comme conduisant à une meilleure information financière.",
    "base": [
     "Règles essentielles#6",
@@ -295,8 +295,8 @@
   {
    "id": "ue10-01-k25",
    "type": "comp",
-   "q": "Selon le PCG, dans les comptes de quel exercice corrige-t-on une erreur, une omission matérielle ou une interprétation erronée ?",
-   "r": "<b>Dans le résultat de l'exercice au cours duquel elle est constatée</b>, sauf si elle corrige une écriture imputée directement sur les capitaux propres ; l'adoption d'une méthode non admise est traitée de même. L'incidence des corrections significatives est présentée sur une ligne séparée du compte de résultat, hors résultat courant, ou, le cas échéant, du report à nouveau.",
+   "q": "Selon le PCG, où comptabilise-t-on la correction d'une erreur, d'une omission matérielle ou d'une interprétation erronée ?",
+   "r": "<b>Dans le résultat de l'exercice au cours duquel elle est constatée</b>, sauf si elle corrige une écriture imputée directement sur les capitaux propres ; l'adoption d'une méthode comptable non admise est traitée de même. L'incidence des corrections significatives est présentée sur une ligne séparée du compte de résultat, hors résultat courant, ou, le cas échéant, du report à nouveau.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -319,8 +319,8 @@
   {
    "id": "ue10-01-k27",
    "type": "comp",
-   "q": "Comment le Code de commerce et le PCG traitent-ils les événements connus entre la date de clôture et l'établissement des comptes annuels ?",
-   "r": "<b>Il est tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur</b>, même s'ils ne sont connus qu'entre la date de clôture et celle de l'établissement des comptes. Les événements de cette période sans lien direct prépondérant avec une situation existant à la clôture font l'objet d'une information dans l'annexe.",
+   "q": "Comment traite-t-on un passif né avant la clôture mais connu avant l'établissement des comptes annuels, et un événement postérieur sans lien avec la situation à la clôture ?",
+   "r": "<b>Le passif est pris en compte</b> dès lors qu'il a pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'il n'est connu qu'entre la date de clôture et celle de l'établissement des comptes. L'événement sans lien direct prépondérant avec une situation existant à la clôture fait l'objet d'une information dans l'annexe.",
    "base": [
     "Règles essentielles#10"
    ],

@@ -79,8 +79,8 @@
   {
    "id": "ue2-06-k07",
    "type": "comp",
-   "q": "Comment se déroule la procédure d'alerte du commissaire aux comptes d'une société anonyme (SA) ?",
-   "r": "<b>Il informe le président du conseil d'administration ou du directoire des faits de nature à compromettre la continuité de l'exploitation.</b> Sans réponse sous quinze jours ou si elle ne l'en assure pas, il invite par écrit, avec copie au président du tribunal, à faire délibérer le conseil ; si la continuité reste compromise, il présente un rapport spécial à l'assemblée générale, puis informe le président du tribunal en cas d'échec.",
+   "q": "Comment se déroule l'alerte du commissaire aux comptes d'une société anonyme (SA) qui relève des faits de nature à compromettre la continuité de l'exploitation ?",
+   "r": "<b>Il en informe le président du conseil d'administration ou du directoire.</b> Sans réponse sous quinze jours ou si elle ne l'assure pas de la continuité, il invite par écrit, avec copie au président du tribunal, à faire délibérer le conseil ; si la continuité reste compromise, il présente un rapport spécial à l'assemblée générale, puis informe le président du tribunal de ses démarches si les décisions prises ne l'assurent pas.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -91,7 +91,7 @@
   {
    "id": "ue2-06-k08",
    "type": "comp",
-   "q": "Que peut faire le président du tribunal de commerce à l'égard des dirigeants d'une société commerciale dont la continuité d'exploitation est compromise ?",
+   "q": "Que peut faire le président du tribunal de commerce à l'égard des dirigeants d'une société commerciale dont les difficultés sont de nature à compromettre la continuité de l'exploitation ?",
    "r": "<b>Il peut les convoquer pour envisager les mesures propres à redresser la situation</b>, lorsqu'il résulte de tout acte, document ou procédure que la société connaît des difficultés de nature à compromettre la continuité de l'exploitation. Ce pouvoir vaut aussi pour un GIE ou une entreprise individuelle commerciale ou artisanale.",
    "base": [
     "Règles essentielles#1"
@@ -153,7 +153,7 @@
    "id": "ue2-06-k13",
    "type": "comp",
    "q": "Pourquoi un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut-il encore demander une conciliation, mais pas une sauvegarde ?",
-   "r": "<b>La conciliation reste ouverte au débiteur qui n'est pas en cessation des paiements depuis plus de quarante-cinq jours, alors que la sauvegarde est réservée au débiteur qui n'est pas en cessation des paiements.</b> Sans conciliation, il doit demander un redressement ou une liquidation judiciaire dans ces quarante-cinq jours ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
+   "r": "<b>La conciliation reste ouverte au débiteur qui n'est pas en cessation des paiements depuis plus de quarante-cinq jours, alors que la sauvegarde est réservée au débiteur qui n'est pas en cessation des paiements.</b> S'il n'a pas demandé de conciliation, il doit demander un redressement ou une liquidation judiciaire dans les quarante-cinq jours qui suivent la cessation des paiements ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#4"
@@ -166,7 +166,7 @@
    "id": "ue2-06-k14",
    "type": "comp",
    "q": "En période suspecte, quel est le sort des paiements de dettes intervenus depuis la date de cessation des paiements ?",
-   "r": "<b>Sont nuls de droit les paiements de dettes non échues et les paiements de dettes échues faits par un mode de paiement non communément admis.</b> Les autres paiements de dettes échues, comme les actes à titre onéreux, peuvent être annulés si ceux qui ont traité avec le débiteur ont eu connaissance de la cessation des paiements.",
+   "r": "<b>Sont nuls de droit les paiements de dettes non échues et les paiements de dettes échues faits par un mode de paiement non communément admis.</b> Les autres paiements de dettes échues et les actes à titre onéreux accomplis à compter de cette date peuvent être annulés si ceux qui ont traité avec le débiteur ont eu connaissance de la cessation des paiements.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -303,7 +303,7 @@
    "id": "ue2-06-k25",
    "type": "def",
    "q": "Qu'est-ce que la responsabilité pénale des personnes morales ?",
-   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants</b>, les collectivités territoriales et leurs groupements seulement pour des activités susceptibles de faire l'objet de conventions de délégation de service public. Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits. L'amende maximale des personnes morales est le quintuple de celle des personnes physiques.",
+   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants</b> ; les collectivités territoriales et leurs groupements, seulement de celles commises dans l'exercice d'activités susceptibles de faire l'objet de conventions de délégation de service public. Elle n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits. Leur amende maximale est le quintuple de celle des personnes physiques.",
    "base": [
     "Définitions#4"
    ],
@@ -327,7 +327,7 @@
    "id": "ue2-06-k27",
    "type": "comp",
    "q": "Sous quelle qualification pénale peut être poursuivi le détournement commis par le gérant d'une SNC ou d'une société civile de droit commun ?",
-   "r": "<b>Comme un abus de confiance</b>, puni des mêmes peines que l'abus de biens sociaux. Le Code de commerce ne réprime en effet l'abus de biens sociaux que dans la SARL, la SA, la SCA et la SAS, y compris à l'égard du dirigeant de fait.",
+   "r": "<b>Comme abus de confiance</b>, infraction punie, comme l'abus de biens sociaux, de cinq ans d'emprisonnement et de 375 000 € d'amende. Les articles du Code de commerce qui répriment l'abus de biens sociaux ne visent que les dirigeants de SARL, de SA, de SCA et de SAS, y compris les dirigeants de fait.",
    "base": [
     "Points de vigilance#0",
     "Règles essentielles#10"

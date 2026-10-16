@@ -5,7 +5,7 @@
   {
    "id": "ue9-03-k01",
    "type": "def",
-   "q": "Quelles opérations sont imposables à la TVA selon l'article 256 du CGI ?",
+   "q": "En règle générale, quelles opérations sont imposables à la TVA ?",
    "r": "<b>Les livraisons de biens et les prestations de services effectuées à titre onéreux</b> par un assujetti agissant en tant que tel.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue9-03-k02",
    "type": "def",
-   "q": "Qu'est-ce qu'un assujetti à la TVA au sens de l'article 256 A du CGI ?",
+   "q": "Qu'est-ce qu'un assujetti à la TVA ?",
    "r": "<b>Une personne qui effectue de manière indépendante une activité économique</b> (activité de producteur, de commerçant ou de prestataire de services), quels que soient son statut juridique, sa situation au regard des autres impôts et la forme ou la nature de son intervention.",
    "base": [
     "Définitions#1"
@@ -117,7 +117,7 @@
   {
    "id": "ue9-03-k10",
    "type": "comp",
-   "q": "Selon le CGI, quelles mentions d'une facture identifient les parties et le document lui-même ?",
+   "q": "Au titre de la réglementation de la TVA, quelles mentions d'une facture identifient les parties et le document lui-même ?",
    "r": "Notamment <b>le nom complet et l'adresse</b> de l'assujetti et de son client, <b>le numéro individuel d'identification à la TVA</b> de l'assujetti, <b>la date d'émission</b> et <b>un numéro unique</b> fondé sur une séquence chronologique et continue.",
    "base": [
     "Règles essentielles#3"
@@ -129,7 +129,7 @@
   {
    "id": "ue9-03-k11",
    "type": "comp",
-   "q": "Selon le CGI, quelles mentions d'une facture portent sur l'opération, son prix et la TVA ?",
+   "q": "Au titre de la réglementation de la TVA, quelles mentions d'une facture portent sur l'opération, son prix et la taxe ?",
    "r": "Notamment <b>la quantité et la dénomination précise</b> des biens ou services, <b>le prix unitaire hors taxes</b>, <b>les réductions de prix</b> acquises et chiffrables lors de l'opération, ainsi que <b>le taux et le montant de la TVA</b>.",
    "base": [
     "Règles essentielles#3"
@@ -141,7 +141,7 @@
   {
    "id": "ue9-03-k12",
    "type": "def",
-   "q": "Qu'est-ce qu'un avoir au regard des règles de facturation du CGI ?",
+   "q": "Qu'est-ce qu'un avoir au regard des règles de facturation de la TVA ?",
    "r": "<b>Une facture rectificative</b> : tout document qui modifie la facture initiale et y fait référence de façon spécifique et non équivoque est assimilé à une facture.",
    "base": [
     "Définitions#4"
@@ -165,7 +165,7 @@
   {
    "id": "ue9-03-k14",
    "type": "comp",
-   "q": "Selon l'article 267 du CGI, comment traite-t-on, dans la base d'imposition à la TVA, les réductions de prix et les frais accessoires ?",
+   "q": "Comment traite-t-on, dans la base d'imposition à la TVA, les réductions de prix consenties aux clients et les frais accessoires ?",
    "r": "<b>Les escomptes de caisse, remises, rabais, ristournes et autres réductions de prix consenties directement aux clients sont exclus de la base</b> ; les frais accessoires facturés au client (transport, emballage, assurance) y sont inclus.",
    "base": [
     "Règles essentielles#5"
@@ -240,7 +240,7 @@
    "id": "ue9-03-k20",
    "type": "comp",
    "q": "Pourquoi est-ce une erreur d'enregistrer une vente de marchandises toutes taxes comprises au compte 707 ?",
-   "r": "<b>Les produits de la classe 7 sont enregistrés hors taxes collectées.</b> La TVA transite par les comptes de tiers 445 « État – Taxes sur le chiffre d'affaires » : elle n'est ni une charge ni un produit pour l'assujetti.",
+   "r": "<b>Les produits de la classe 7 sont enregistrés hors taxes collectées.</b> La TVA collectée transite par les comptes de tiers 445 « État – Taxes sur le chiffre d'affaires » : elle n'est pas un produit pour l'assujetti.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -251,7 +251,7 @@
   {
    "id": "ue9-03-k21",
    "type": "comp",
-   "q": "Comment traite-t-on un escompte de règlement figurant sur une facture de marchandises ou de services ?",
+   "q": "Comment comptabilise-t-on un escompte de règlement figurant sur une facture de marchandises ou de services ?",
    "r": "<b>Il reste une réduction financière</b> : charge financière (665) chez le vendeur qui l'accorde, produit financier (765) chez l'acheteur qui l'obtient, même s'il figure sur la facture. La TVA se calcule sur le prix diminué de l'escompte.",
    "base": [
     "Règles essentielles#8",
@@ -277,7 +277,7 @@
    "id": "ue9-03-k23",
    "type": "comp",
    "q": "Comment traite-t-on un escompte de règlement obtenu sur la facture d'une immobilisation corporelle ?",
-   "r": "<b>Il est déduit du coût d'acquisition</b> de l'immobilisation (pas de compte 765), contrairement à l'escompte obtenu sur un achat de biens ou de services.",
+   "r": "<b>Il est déduit du coût d'acquisition</b> de l'immobilisation : il n'est pas enregistré au compte 765, contrairement à l'escompte obtenu sur un achat de biens ou de services.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#9"

@@ -53,7 +53,7 @@
   {
    "id": "ue4-06-k05",
    "type": "comp",
-   "q": "Quel régime la cotisation foncière des entreprises (CFE) prévoit-elle pour une entreprise nouvellement créée ?",
+   "q": "Comment la cotisation foncière des entreprises (CFE) s'applique-t-elle à une entreprise nouvellement créée ?",
    "r": "<b>Aucune CFE n'est due l'année de la création.</b> La base de la première année d'imposition est ensuite réduite de moitié.",
    "base": [
     "Règles essentielles#0"
@@ -163,7 +163,7 @@
    "id": "ue4-06-k14",
    "type": "comp",
    "q": "Quelle est la situation du conjoint survivant et du partenaire de PACS au regard des droits de mutation par décès ?",
-   "r": "<b>Le conjoint survivant et le partenaire de PACS sont exonérés</b> de droits de mutation par décès.",
+   "r": "<b>Le conjoint survivant et le partenaire de PACS sont exonérés</b> de droits de mutation par décès, alors que chaque enfant et chaque ascendant bénéficie d'un abattement de 100 000 € sur sa part.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -307,7 +307,7 @@
    "id": "ue4-06-k26",
    "type": "comp",
    "q": "Quel effet produit le silence de l'administration pendant soixante jours sur les observations d'une entreprise vérifiée sous les seuils de chiffre d'affaires de l'article L. 57 A du LPF ?",
-   "r": "<b>Les observations du contribuable sont considérées comme acceptées.</b> Pour ces entreprises, l'administration répond aux observations dans les soixante jours ; si elle les rejette, sa réponse est motivée.",
+   "r": "<b>Les observations du contribuable sont considérées comme acceptées.</b> Pour ces entreprises, l'administration doit répondre aux observations dans les soixante jours ; comme dans toute rectification contradictoire, si elle les rejette, sa réponse est motivée.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -391,9 +391,10 @@
    "id": "ue4-06-k33",
    "type": "comp",
    "q": "Dans quel délai doit être présentée une réclamation contre la taxe foncière, la CFE ou un autre impôt direct local ?",
-   "r": "<b>Au plus tard le 31 décembre de l'année suivant la mise en recouvrement</b>, et non de la deuxième année. Le Conseil d'État l'a appliqué à une taxe foncière en 2025.",
+   "r": "<b>Au plus tard le 31 décembre de l'année suivant la mise en recouvrement</b>, et non de la deuxième année comme en droit commun. Ce délai vaut pour les impôts directs locaux et leurs taxes annexes ; le Conseil d'État l'a appliqué à une taxe foncière.",
    "base": [
-    "Points de vigilance#2"
+    "Points de vigilance#2",
+    "Règles essentielles#17"
    ],
    "src": "LPF, art. R*196-2 ; CE, 15 janvier 2025, n° 467615",
    "url": "https://www.legifrance.gouv.fr/juri/id/CETATEXT000050988327",

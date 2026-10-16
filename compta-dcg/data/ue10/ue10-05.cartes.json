@@ -78,8 +78,8 @@
   {
    "id": "ue10-05-k07",
    "type": "comp",
-   "q": "Peut-on retenir, pour le résultat fiscal, une option différente de celle choisie en comptabilité pour les frais d'acquisition des titres ?",
-   "r": "<b>Non : le résultat fiscal suit le choix comptable.</b> Il n'est pas possible d'exercer une option fiscale différente de l'option retenue en matière comptable, laquelle s'exerce par la seule comptabilisation des frais en immobilisation ou en charges.",
+   "q": "Pour les frais d'acquisition des titres, quelle option l'entreprise doit-elle en principe retenir pour déterminer son résultat fiscal ?",
+   "r": "<b>En principe, celle retenue en comptabilité : le résultat fiscal suit le choix comptable.</b> L'option s'exerce par la seule comptabilisation des frais en immobilisation ou en charges ; il n'est pas possible d'exercer une option fiscale différente.",
    "base": [
     "Points de vigilance#0"
    ],
@@ -91,7 +91,7 @@
    "id": "ue10-05-k08",
    "type": "comp",
    "q": "Que fait-on à la clôture lorsque la valeur d'inventaire de titres détenus devient inférieure à leur valeur nette comptable ?",
-   "r": "<b>On ramène la valeur nette comptable à la valeur d'inventaire</b> par une dépréciation, dotée au compte 6866 et reprise au compte 7866 lorsqu'elle devient sans objet. Les éléments d'actif étant évalués séparément, le calcul se fait ligne de titres par ligne de titres.",
+   "r": "<b>En principe, on ramène la valeur nette comptable à la valeur d'inventaire</b> par une dépréciation, dotée au compte 6866 et reprise au compte 7866 lorsqu'elle devient sans objet. Les éléments d'actif étant évalués séparément, le calcul se fait ligne de titres par ligne de titres.",
    "base": [
     "Règles essentielles#2",
     "Règles essentielles#3"
@@ -116,7 +116,7 @@
    "id": "ue10-05-k10",
    "type": "def",
    "q": "Qu'est-ce que la valeur d'utilité retenue pour évaluer les titres de participation à l'inventaire ?",
-   "r": "<b>Ce que l'entité accepterait de décaisser pour obtenir les titres si elle avait à les acquérir</b>, qu'ils soient cotés ou non. Elle s'apprécie d'après la rentabilité et ses perspectives, les capitaux propres, les perspectives de réalisation, la conjoncture économique, les cours moyens de bourse du dernier mois et les motifs de l'acquisition.",
+   "r": "<b>Ce que l'entité accepterait de décaisser pour obtenir les titres si elle avait à les acquérir</b>, qu'ils soient cotés ou non. Pour l'estimer, peuvent notamment être pris en considération la rentabilité et ses perspectives, les capitaux propres, les perspectives de réalisation, la conjoncture économique, les cours moyens de bourse du dernier mois et les motifs de l'acquisition.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -352,7 +352,7 @@
    "id": "ue10-05-k30",
    "type": "comp",
    "q": "Selon le Code de commerce et le PCG, comment les engagements de retraite d'une entreprise sont-ils traduits dans ses comptes annuels ?",
-   "r": "<b>Leur montant est indiqué dans l'annexe</b> ; l'entreprise peut l'inscrire, en tout ou partie, en provision au compte 1521. Le provisionnement de la totalité des engagements est la méthode de référence depuis le règlement ANC n° 2018-01.",
+   "r": "<b>Leur montant est indiqué dans l'annexe</b> ; l'entreprise peut l'inscrire, en tout ou partie, en provision au compte 1521. Le provisionnement de la totalité des engagements est la méthode de référence (appelée « méthode préférentielle » avant le règlement ANC n° 2018-01).",
    "base": [
     "Règles essentielles#15"
    ],
@@ -414,7 +414,7 @@
    "id": "ue10-05-k35",
    "type": "comp",
    "q": "Selon le PCG, dans quel résultat les dotations et reprises de provisions réglementées (compte 14) sont-elles comptabilisées ?",
-   "r": "<b>En résultat exceptionnel</b>, aux comptes 6872 (dotations) et 7872 (reprises), dont 68725 et 78725 pour les amortissements dérogatoires. Ce sont des écritures d'origine purement fiscale, que le PCG classe dans ce résultat.",
+   "r": "<b>En résultat exceptionnel</b> : ce sont des écritures d'origine purement fiscale, que le PCG classe dans ce résultat. Les amortissements dérogatoires, par exemple, sont dotés au compte 68725 et repris au compte 78725.",
    "base": [
     "Points de vigilance#4",
     "Définitions#6"
@@ -426,7 +426,7 @@
   {
    "id": "ue10-05-k36",
    "type": "comp",
-   "q": "Dans des comptes consolidés établis selon les normes IFRS adoptées par l'Union européenne, quelles normes régissent les instruments financiers et les provisions ?",
+   "q": "Dans des comptes consolidés établis selon les normes IFRS adoptées par l'Union européenne, quelle norme régit la comptabilisation et l'évaluation des instruments financiers, et laquelle les provisions ?",
    "r": "<b>IFRS 9 pour les instruments financiers et IAS 37 pour les provisions.</b> Les sociétés qui établissent leurs comptes consolidés selon ces normes internationales sont dispensées des règles françaises de consolidation.",
    "base": [
     "Points de vigilance#6"

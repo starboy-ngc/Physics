@@ -67,7 +67,7 @@
   {
    "id": "ue2-01-k06",
    "type": "def",
-   "q": "Sous quelles formes un associé peut-il s'engager à faire un apport à une société ?",
+   "q": "Selon l'article 1843-3 du Code civil, sous quelles formes un associé peut-il s'engager à faire un apport à la société ?",
    "r": "<b>En nature, en numéraire ou en industrie</b> : chaque associé est débiteur envers la société de tout ce qu'il a promis de lui apporter. Les apports en nature se réalisent par le transfert des droits correspondants et la mise à la disposition effective des biens ; l'apporteur en industrie doit compte à la société de tous les gains réalisés par l'activité faisant l'objet de son apport.",
    "base": [
     "Définitions#3"
@@ -91,8 +91,8 @@
   {
    "id": "ue2-01-k08",
    "type": "def",
-   "q": "Outre les apports de chaque associé, quelles mentions les statuts d'une société doivent-ils déterminer ?",
-   "r": "<b>La forme, l'objet, l'appellation, le siège social, le capital social, la durée de la société et les modalités de son fonctionnement.</b> Les statuts doivent être établis par écrit (art. 1835 du Code civil).",
+   "q": "Selon l'article 1835 du Code civil, quelles mentions les statuts d'une société doivent-ils déterminer, outre les apports de chaque associé ?",
+   "r": "<b>La forme, l'objet, l'appellation, le siège social, le capital social, la durée de la société et les modalités de son fonctionnement.</b> Les statuts doivent en outre être établis par écrit.",
    "base": [
     "Définitions#5"
    ],
@@ -140,7 +140,7 @@
    "id": "ue2-01-k12",
    "type": "comp",
    "q": "Depuis le revirement de la Cour de cassation du 29 novembre 2023, comment établit-on qu'un acte a été conclu pour une société en formation ?",
-   "r": "<b>Le juge apprécie souverainement la commune intention des parties</b>, par un examen de l'ensemble des circonstances intrinsèques et extrinsèques à l'acte, pour savoir si elles entendaient conclure l'acte au nom ou pour le compte de la société en formation, afin que celle-ci puisse ensuite reprendre les engagements souscrits. La mention expresse « au nom » ou « pour le compte » n'est plus exigée.",
+   "r": "<b>Le juge apprécie souverainement la commune intention des parties</b>, par un examen de l'ensemble des circonstances intrinsèques et extrinsèques à l'acte, pour savoir si elles entendaient que l'acte soit conclu au nom ou pour le compte de la société en formation et que celle-ci puisse ensuite reprendre les engagements souscrits. La mention expresse « au nom » ou « pour le compte » n'est plus exigée.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -200,7 +200,7 @@
   {
    "id": "ue2-01-k17",
    "type": "comp",
-   "q": "Quelle sanction encourt l'associé qui n'a pas versé à l'échéance la somme qu'il devait apporter à la société ?",
+   "q": "Selon le Code civil, quelle sanction encourt l'associé qui n'a pas versé à l'échéance la somme qu'il devait apporter à la société ?",
    "r": "<b>Il doit de plein droit les intérêts de cette somme</b> à compter du jour où elle devait être payée, sans mise en demeure, et peut en outre devoir des dommages-intérêts.",
    "base": [
     "Règles essentielles#6"
@@ -260,7 +260,7 @@
   {
    "id": "ue2-01-k22",
    "type": "comp",
-   "q": "Quel est l'effet de la réunion de toutes les parts d'une société en une seule main ?",
+   "q": "Selon l'article 1844-5 du Code civil, quel est l'effet de la réunion de toutes les parts d'une société en une seule main ?",
    "r": "<b>Elle n'entraîne pas la dissolution de plein droit.</b> Tout intéressé peut demander la dissolution si la situation n'a pas été régularisée dans le délai d'un an ; le tribunal peut accorder un délai maximal de six mois pour régulariser. Si l'associé unique est une personne morale, la dissolution entraîne la transmission universelle du patrimoine de la société à cet associé, sans liquidation.",
    "base": [
     "Règles essentielles#10",
@@ -297,8 +297,8 @@
   {
    "id": "ue2-01-k25",
    "type": "comp",
-   "q": "Jusqu'à quand la personnalité morale d'une société dissoute subsiste-t-elle ?",
-   "r": "<b>Pour les besoins de la liquidation, jusqu'à la publication de la clôture de celle-ci.</b> La dissolution n'éteint donc pas immédiatement la société.",
+   "q": "Lorsqu'une société dissoute est mise en liquidation, jusqu'à quand sa personnalité morale subsiste-t-elle ?",
+   "r": "<b>Jusqu'à la publication de la clôture de la liquidation</b> : elle subsiste pour les besoins de celle-ci. La dissolution n'éteint donc pas immédiatement la société.",
    "base": [
     "Points de vigilance#3"
    ],
@@ -418,7 +418,7 @@
   {
    "id": "ue2-01-k35",
    "type": "comp",
-   "q": "Depuis la réforme de 2025, que devient une clause statutaire contraire à une disposition impérative du droit des sociétés dont la violation n'est pas sanctionnée par la nullité ?",
+   "q": "Que devient une clause statutaire contraire à une disposition impérative du droit des sociétés dont la violation n'est pas sanctionnée par la nullité ?",
    "r": "<b>Elle est réputée non écrite</b> : la clause disparaît, mais la société n'est pas annulée. Depuis le 1er octobre 2025, la nullité de la société ne peut résulter que de l'incapacité de tous les fondateurs ou de la violation du nombre minimal de deux associés.",
    "base": [
     "Règles essentielles#13"

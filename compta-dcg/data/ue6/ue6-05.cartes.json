@@ -17,8 +17,8 @@
   {
    "id": "ue6-05-k02",
    "type": "def",
-   "q": "Selon le Code de commerce, de quoi est constitué le bénéfice distribuable d'une société ?",
-   "r": "<b>Du bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire.</b> Dans les SARL et les sociétés par actions, la réserve légale reçoit au moins 5 % du bénéfice, diminué des pertes antérieures, jusqu'à atteindre 10 % du capital social.",
+   "q": "Selon le Code de commerce, de quoi est constitué le bénéfice distribuable d'une SARL ou d'une société par actions ?",
+   "r": "<b>Du bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire.</b> La réserve légale est dotée d'au moins 5 % du bénéfice de l'exercice, diminué des pertes antérieures, jusqu'à ce qu'elle atteigne 10 % du capital social.",
    "base": [
     "Règles essentielles#12",
     "Chiffres et seuils#2"
@@ -31,7 +31,7 @@
    "id": "ue6-05-k03",
    "type": "comp",
    "q": "Comment qualifie-t-on un dividende mis en distribution alors que la société n'a ni bénéfice distribuable ni réserves disponibles ?",
-   "r": "<b>De dividende fictif.</b> C'est aussi le cas d'une distribution qui ramène les capitaux propres sous le montant du capital augmenté des réserves que la loi ou les statuts ne permettent pas de distribuer.",
+   "r": "<b>De dividende fictif.</b> C'est aussi le cas d'une distribution qui ramène les capitaux propres sous le montant du capital augmenté des réserves indisponibles.",
    "base": [
     "Points de vigilance#2"
    ],
@@ -116,7 +116,7 @@
    "id": "ue6-05-k10",
    "type": "comp",
    "q": "Depuis l'ordonnance du 22 décembre 2021, quel statut européen peuvent obtenir les plateformes de financement participatif ?",
-   "r": "<b>Celui de prestataire européen de services de financement participatif, agréé</b> selon le règlement (UE) 2020/1503. Le financement participatif devient ainsi un mode de financement reconnu des PME ; le statut national d'intermédiaire en financement participatif (C. mon. fin., art. L. 548-1) subsiste à côté.",
+   "r": "<b>Celui de prestataire européen de services de financement participatif, agréé</b> selon le règlement (UE) 2020/1503. Le financement participatif devient ainsi un mode de financement reconnu des PME.",
    "base": [
     "Ce qui a changé récemment#4",
     "Définitions#9"
@@ -153,7 +153,7 @@
    "id": "ue6-05-k13",
    "type": "comp",
    "q": "Lors d'une augmentation de capital en numéraire d'une société anonyme, quelles règles de libération s'appliquent aux actions nouvelles et à la prime d'émission ?",
-   "r": "<b>Du quart au moins de leur nominal à la souscription, le surplus dans les cinq ans.</b> La prime d'émission, elle, est intégralement versée à la souscription.",
+   "r": "<b>Les actions nouvelles sont libérées du quart au moins de leur nominal à la souscription, le surplus dans les cinq ans.</b> La prime d'émission, elle, est intégralement versée à la souscription.",
    "base": [
     "Chiffres et seuils#4"
    ],
@@ -165,7 +165,7 @@
    "id": "ue6-05-k14",
    "type": "def",
    "q": "Dans une société anonyme, qu'est-ce que le droit préférentiel de souscription (DPS) attaché aux actions ?",
-   "r": "<b>Un droit de souscription aux augmentations de capital en numéraire, proportionnel au montant des actions détenues.</b> Ce droit est négociable pendant la durée de la souscription.",
+   "r": "<b>Un droit de souscrire par préférence aux augmentations de capital en numéraire, proportionnellement au montant des actions détenues.</b> Ce droit est négociable pendant la durée de la souscription.",
    "base": [
     "Définitions#2"
    ],
@@ -177,7 +177,7 @@
    "id": "ue6-05-k15",
    "type": "comp",
    "q": "Dans une société anonyme, comment le droit préférentiel de souscription des actionnaires peut-il être supprimé ?",
-   "r": "<b>Par décision de l'assemblée générale extraordinaire, sur rapport du conseil d'administration ou du directoire et des commissaires aux comptes.</b> À défaut de suppression, chaque actionnaire exerce ou cède son droit.",
+   "r": "<b>Par décision de l'assemblée générale extraordinaire, sur rapport du conseil d'administration ou du directoire et des commissaires aux comptes.</b> À défaut de suppression, chaque actionnaire peut exercer ou céder son droit.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -201,7 +201,7 @@
    "id": "ue6-05-k17",
    "type": "comp",
    "q": "Selon le plan de comptes PCG 2025, où enregistre-t-on les intérêts courus sur un emprunt auprès des établissements de crédit ?",
-   "r": "<b>Au compte 1648</b> (avant 2025 : 1688), rattaché aux emprunts auprès des établissements de crédit (164). Le PCG 2025 enregistre les intérêts courus par nature d'emprunt : 1638 pour les emprunts obligataires (163).",
+   "r": "<b>Au compte 1648</b> (avant 2025 : 1688), rattaché aux emprunts auprès des établissements de crédit (164). Le PCG 2025 enregistre les intérêts courus par nature d'emprunt : 1618, 1638 ou 1648.",
    "base": [
     "Règles essentielles#4",
     "Ce qui a changé récemment#0"
@@ -226,7 +226,7 @@
    "id": "ue6-05-k19",
    "type": "comp",
    "q": "Quelle formalité précède l'émission d'obligations par une société par actions n'ayant pas établi deux bilans régulièrement approuvés ?",
-   "r": "<b>Une vérification de l'actif et du passif.</b> L'émission elle-même relève du conseil d'administration ou du directoire, sauf si les statuts réservent ce pouvoir à l'assemblée générale ou si celle-ci décide de l'exercer.",
+   "r": "<b>Une vérification de l'actif et du passif.</b> Dans une société anonyme, l'émission elle-même relève en principe du conseil d'administration ou du directoire.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -262,7 +262,7 @@
    "id": "ue6-05-k22",
    "type": "def",
    "q": "Selon le Code monétaire et financier, qu'est-ce qu'une opération de crédit-bail ?",
-   "r": "<b>Une location d'un bien d'équipement ou d'un bien immobilier à usage professionnel, assortie d'une promesse unilatérale de vente</b> permettant au locataire d'acquérir le bien pour un prix convenu tenant compte, au moins pour partie, des loyers versés. Le bien reste la propriété du bailleur.",
+   "r": "<b>Une location d'un bien d'équipement ou d'un bien immobilier à usage professionnel, assortie d'une promesse unilatérale de vente</b> permettant au locataire d'acquérir le bien pour un prix convenu tenant compte des loyers versés. Le bien reste la propriété du bailleur.",
    "base": [
     "Définitions#4"
    ],
@@ -300,7 +300,7 @@
    "id": "ue6-05-k25",
    "type": "comp",
    "q": "Pourquoi, pour une entreprise bénéficiaire soumise à l'IS, le coût d'un emprunt après impôt est-il inférieur à son taux d'intérêt ?",
-   "r": "<b>Parce que les intérêts sont des charges déductibles</b> qui procurent une économie d'impôt : un emprunt à i % coûte i × (1 − t) après impôt, t étant le taux d'IS. Cette économie suppose un résultat imposable suffisant et le respect de l'article 212 bis ; en déficit, coûts avant et après impôt se confondent.",
+   "r": "<b>Parce que les intérêts sont des charges déductibles</b> qui procurent une économie d'impôt : un emprunt à i % coûte i × (1 − t) après impôt, t étant le taux d'IS. Cette économie suppose un résultat imposable suffisant et le respect de l'article 212 bis.",
    "base": [
     "Règles essentielles#6",
     "Points de vigilance#0"
@@ -313,7 +313,7 @@
    "id": "ue6-05-k26",
    "type": "comp",
    "q": "Selon l'article 212 bis du CGI, dans quelle limite les charges financières nettes d'une entreprise sont-elles déductibles ?",
-   "r": "<b>Dans la limite du plus élevé de 3 millions d'euros ou de 30 % de l'EBITDA fiscal</b>, avec des règles particulières pour les entreprises sous-capitalisées. L'économie d'impôt sur les intérêts suppose le respect de cette limite.",
+   "r": "<b>En principe, dans la limite du plus élevé de 3 millions d'euros ou de 30 % de l'EBITDA fiscal</b>, avec des règles particulières pour les entreprises sous-capitalisées. L'économie d'impôt sur les intérêts suppose le respect de cette limite.",
    "base": [
     "Règles essentielles#7",
     "Points de vigilance#0"
@@ -350,7 +350,7 @@
    "id": "ue6-05-k29",
    "type": "comp",
    "q": "À quoi sert le coût moyen pondéré du capital (CMPC) dans l'étude des projets d'investissement ?",
-   "r": "<b>C'est le taux d'actualisation des projets.</b> Il pondère le coût des capitaux propres et le coût de la dette après impôt par leur part dans le financement (CP + D), en principe en valeurs de marché. Avec l'actualisation, c'est un prérequis explicite de la finance du DSCG.",
+   "r": "<b>C'est le taux d'actualisation des projets.</b> Il pondère le coût des capitaux propres et le coût de la dette après impôt par leur poids dans le financement total (CP + D), en principe en valeurs de marché. Avec l'actualisation, c'est un prérequis explicite de la finance du DSCG.",
    "base": [
     "Règles essentielles#14",
     "Points de vigilance#4"
