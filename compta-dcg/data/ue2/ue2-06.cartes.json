@@ -80,7 +80,7 @@
    "id": "ue2-06-k07",
    "type": "comp",
    "q": "Comment se déroule la procédure d'alerte du commissaire aux comptes d'une société anonyme (SA) ?",
-   "r": "<b>Il informe le président du conseil d'administration ou du directoire des faits de nature à compromettre la continuité de l'exploitation.</b> À défaut de réponse sous quinze jours ou si elle ne permet pas d'être assuré de la continuité, il invite par écrit à faire délibérer le conseil, puis présente un rapport spécial à l'assemblée générale ; si les décisions prises n'assurent pas la continuité, il informe le président du tribunal.",
+   "r": "<b>Il informe le président du conseil d'administration ou du directoire des faits de nature à compromettre la continuité de l'exploitation.</b> Sans réponse sous quinze jours ou si elle ne permet pas d'en être assuré, il invite par écrit à faire délibérer le conseil ; si la continuité demeure compromise, il présente un rapport spécial à l'assemblée générale, puis, si les décisions prises ne l'assurent pas, informe le président du tribunal.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -152,8 +152,8 @@
   {
    "id": "ue2-06-k13",
    "type": "comp",
-   "q": "Quelle procédure amiable reste ouverte à un débiteur en cessation des paiements depuis moins de quarante-cinq jours ?",
-   "r": "<b>La conciliation, mais pas la sauvegarde</b>, réservée au débiteur qui n'est pas en cessation des paiements. Sans conciliation, il doit demander l'ouverture d'un redressement ou d'une liquidation judiciaire dans les quarante-cinq jours ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
+   "q": "Entre la conciliation et la sauvegarde, quelle procédure un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut-il encore demander ?",
+   "r": "<b>La conciliation, mais pas la sauvegarde</b>, réservée au débiteur qui n'est pas en cessation des paiements. S'il ne demande pas de conciliation, il doit demander l'ouverture d'un redressement ou d'une liquidation judiciaire dans les quarante-cinq jours qui suivent la cessation des paiements ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#4"
@@ -177,7 +177,7 @@
   {
    "id": "ue2-06-k15",
    "type": "comp",
-   "q": "Hormis certains paiements, quels actes du débiteur sont nuls de droit lorsqu'ils interviennent depuis la date de cessation des paiements ?",
+   "q": "En période suspecte, hormis les paiements, quels actes du débiteur intervenus depuis la date de cessation des paiements sont nuls de droit ?",
    "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés (hypothèque, nantissement, gage) constituées pour des dettes antérieurement contractées.</b> Le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
    "base": [
     "Règles essentielles#5"
@@ -189,8 +189,8 @@
   {
    "id": "ue2-06-k16",
    "type": "comp",
-   "q": "Quels effets le jugement d'ouverture d'une procédure collective produit-il à l'égard des créanciers antérieurs ?",
-   "r": "<b>Il interdit de payer toute créance née antérieurement</b>, sauf paiement par compensation de créances connexes ; il interrompt ou interdit leurs actions en justice tendant au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution.",
+   "q": "Quels effets le jugement d'ouverture d'une procédure collective produit-il sur le paiement et les poursuites des créanciers antérieurs ?",
+   "r": "<b>Il emporte de plein droit interdiction de payer toute créance née antérieurement</b>, sauf paiement par compensation de créances connexes ; il interrompt ou interdit leurs actions en justice tendant au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -201,7 +201,7 @@
   {
    "id": "ue2-06-k17",
    "type": "comp",
-   "q": "Que risque le créancier antérieur qui ne déclare pas sa créance au mandataire judiciaire dans le délai légal ?",
+   "q": "Dans une procédure collective, que risque le créancier antérieur qui ne déclare pas sa créance au mandataire judiciaire dans le délai légal ?",
    "r": "<b>Il n'est pas admis dans les répartitions et les dividendes, sauf relevé de forclusion par le juge-commissaire.</b> Le délai court à compter de la publication du jugement d'ouverture au BODACC : deux mois, augmentés de deux mois pour les créanciers ne demeurant pas en France métropolitaine.",
    "base": [
     "Règles essentielles#7"
@@ -213,7 +213,7 @@
   {
    "id": "ue2-06-k18",
    "type": "comp",
-   "q": "Dans quels cas les parties affectées sont-elles réparties en classes appelées à voter sur le projet de plan ?",
+   "q": "En procédure collective, dans quels cas les parties affectées sont-elles réparties en classes appelées à voter sur le projet de plan ?",
    "r": "<b>Au-delà de seuils fixés par décret, ou à la demande du débiteur.</b> Depuis l'ordonnance du 15 septembre 2021 (procédures ouvertes à compter du 1er octobre 2021), ces classes de parties affectées remplacent les comités de créanciers.",
    "base": [
     "Règles essentielles#7",
@@ -265,7 +265,7 @@
    "id": "ue2-06-k22",
    "type": "comp",
    "q": "Qu'est-ce qui distingue l'action pour insuffisance d'actif de la responsabilité civile ordinaire des dirigeants de SARL ou de SA ?",
-   "r": "<b>Hors procédure collective, les dirigeants répondent, envers la société ou les tiers, des fautes commises dans leur gestion (prescription de trois ans).</b> En liquidation judiciaire d'une personne morale, l'action pour insuffisance d'actif est exercée par le liquidateur ou le ministère public (subsidiairement par la majorité des contrôleurs) et ne peut pas être fondée sur une simple négligence.",
+   "r": "<b>Hors procédure collective, les gérants de SARL et les administrateurs ou le directeur général de SA répondent, envers la société ou les tiers, des fautes commises dans leur gestion (prescription de trois ans).</b> En liquidation judiciaire d'une personne morale, l'action pour insuffisance d'actif est exercée par le liquidateur ou le ministère public (subsidiairement par la majorité des contrôleurs) et ne peut pas être fondée sur une simple négligence.",
    "base": [
     "Points de vigilance#1",
     "Règles essentielles#15"
@@ -277,7 +277,7 @@
   {
    "id": "ue2-06-k23",
    "type": "def",
-   "q": "Qu'est-ce que la faillite personnelle prononcée dans une procédure collective ?",
+   "q": "Qu'est-ce que la faillite personnelle en droit des entreprises en difficulté ?",
    "r": "<b>Une sanction que le tribunal peut prononcer en redressement comme en liquidation judiciaire, qui emporte interdiction de diriger, gérer, administrer ou contrôler toute entreprise ou personne morale.</b> Le tribunal peut prononcer à sa place une interdiction de gérer ; l'une et l'autre durent quinze ans au plus.",
    "base": [
     "Règles essentielles#9",
@@ -303,7 +303,7 @@
    "id": "ue2-06-k25",
    "type": "def",
    "q": "Qu'est-ce que la responsabilité pénale des personnes morales ?",
-   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants.</b> Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits ; le taux maximum de leur amende est le quintuple de celui prévu pour les personnes physiques.",
+   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants</b> ; les collectivités territoriales et leurs groupements ne le sont que pour des activités susceptibles de délégation de service public. Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits ; leur amende maximale est le quintuple de celle des personnes physiques.",
    "base": [
     "Définitions#4"
    ],
@@ -326,7 +326,7 @@
   {
    "id": "ue2-06-k27",
    "type": "comp",
-   "q": "Comment peut être poursuivi le détournement commis par le gérant d'une SNC ou d'une société civile de droit commun ?",
+   "q": "Sous quelle qualification pénale peut être poursuivi le détournement commis par le gérant d'une SNC ou d'une société civile de droit commun ?",
    "r": "<b>Comme un abus de confiance</b>, puni des mêmes peines que l'abus de biens sociaux. Le Code de commerce ne réprime en effet l'abus de biens sociaux que dans la SARL, la SA, la SCA et la SAS, y compris à l'égard du dirigeant de fait.",
    "base": [
     "Points de vigilance#0",
@@ -364,7 +364,7 @@
    "id": "ue2-06-k30",
    "type": "def",
    "q": "Qu'est-ce que le délit de banqueroute en droit des entreprises en difficulté ?",
-   "r": "<b>Un délit commis, en cas d'ouverture d'un redressement ou d'une liquidation judiciaire, notamment par les dirigeants de droit ou de fait d'une personne morale de droit privé.</b> Il vise entre autres le détournement ou la dissimulation d'actif, l'augmentation frauduleuse du passif et la tenue d'une comptabilité fictive, manifestement incomplète ou irrégulière.",
+   "r": "<b>Un délit qui suppose l'ouverture d'un redressement ou d'une liquidation judiciaire et qui vise notamment les dirigeants de droit ou de fait d'une personne morale de droit privé.</b> Il réprime entre autres le détournement ou la dissimulation d'actif, l'augmentation frauduleuse du passif et la tenue d'une comptabilité fictive ou manifestement incomplète ou irrégulière.",
    "base": [
     "Règles essentielles#12"
    ],
@@ -425,7 +425,7 @@
    "id": "ue2-06-k35",
    "type": "comp",
    "q": "Qu'est-ce qui distingue une infraction occulte d'une infraction dissimulée pour la prescription de l'action publique ?",
-   "r": "<b>L'infraction occulte ne peut, en raison de ses éléments constitutifs, être connue ni de la victime ni de l'autorité judiciaire ; l'auteur d'une infraction dissimulée accomplit délibérément une manœuvre caractérisée pour en empêcher la découverte.</b> Dans les deux cas, le délai court du jour où l'infraction est apparue et a pu être constatée.",
+   "r": "<b>L'infraction occulte ne peut, en raison de ses éléments constitutifs, être connue ni de la victime ni de l'autorité judiciaire ; l'auteur d'une infraction dissimulée accomplit délibérément une manœuvre caractérisée pour en empêcher la découverte.</b> Dans les deux cas, le délai court du jour où l'infraction est apparue et a pu être constatée, sans pouvoir excéder douze ans à compter des faits pour un délit.",
    "base": [
     "Chiffres et seuils#5"
    ],

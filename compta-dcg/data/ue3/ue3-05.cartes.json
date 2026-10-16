@@ -16,9 +16,9 @@
   },
   {
    "id": "ue3-05-k02",
-   "type": "def",
-   "q": "Selon quels critères s'apprécie la représentativité d'une organisation syndicale de salariés, en dehors de l'audience, de l'influence et des effectifs ?",
-   "r": "<b>Sept critères cumulatifs</b>, dont le respect des valeurs républicaines, l'indépendance, la transparence financière et une ancienneté minimale de deux ans dans le champ professionnel et géographique couvrant le niveau de négociation (à compter du dépôt légal des statuts).",
+   "type": "comp",
+   "q": "Selon quels critères s'apprécie la représentativité d'une organisation syndicale de salariés ?",
+   "r": "<b>Sept critères cumulatifs</b> : respect des valeurs républicaines, indépendance, transparence financière, ancienneté minimale de deux ans dans le champ professionnel et géographique couvrant le niveau de négociation, audience, influence (prioritairement caractérisée par l'activité et l'expérience), effectifs d'adhérents et cotisations.",
    "base": [
     "Définitions#1"
    ],
@@ -29,20 +29,20 @@
   {
    "id": "ue3-05-k03",
    "type": "comp",
-   "q": "Outre les valeurs républicaines, l'indépendance, la transparence financière et l'ancienneté, quels critères fondent la représentativité d'une organisation syndicale de salariés ?",
-   "r": "<b>L'audience, l'influence et les effectifs d'adhérents et cotisations.</b> L'influence est prioritairement caractérisée par l'activité et l'expérience ; l'audience requise est de 10 % des suffrages exprimés au premier tour des dernières élections des titulaires au CSE dans l'entreprise, 8 % dans la branche et au niveau national et interprofessionnel.",
+   "q": "Quelle audience une organisation syndicale de salariés doit-elle avoir recueillie pour être représentative dans l'entreprise et dans la branche ?",
+   "r": "<b>Dans l'entreprise, au moins 10 % des suffrages exprimés au premier tour des dernières élections des titulaires au CSE</b>, quel que soit le nombre de votants ; 8 % dans la branche et au niveau national et interprofessionnel. Le Conseil constitutionnel a jugé conforme à la Constitution cette représentativité fondée sur l'audience électorale.",
    "base": [
-    "Définitions#1",
-    "Chiffres et seuils#1"
+    "Chiffres et seuils#1",
+    "Points de vigilance#0"
    ],
-   "src": "C. trav., art. L. 2121-1, L. 2122-1, L. 2122-5 et L. 2122-9",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019353505",
+   "src": "C. trav., art. L. 2122-1, L. 2122-5, L. 2122-9 et L. 2143-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035652769",
    "fiab": "stable"
   },
   {
    "id": "ue3-05-k04",
    "type": "comp",
-   "q": "Parmi qui une organisation syndicale représentative désigne-t-elle le délégué syndical d'une entreprise d'au moins cinquante salariés ?",
+   "q": "Parmi quelles personnes une organisation syndicale représentative désigne-t-elle le délégué syndical d'une entreprise d'au moins cinquante salariés ?",
    "r": "<b>Parmi les candidats aux élections du CSE ayant recueilli, à titre personnel et dans leur collège, au moins 10 % des suffrages exprimés au premier tour</b> ; à défaut, parmi ses adhérents ou ses anciens élus. Elle doit y avoir constitué une section syndicale.",
    "base": [
     "Règles essentielles#13"
@@ -79,7 +79,7 @@
    "id": "ue3-05-k07",
    "type": "def",
    "q": "Qu'est-ce que le comité social et économique (CSE) ?",
-   "r": "<b>L'institution représentative unique du personnel</b>, mise en place dans les entreprises d'au moins onze salariés et obligatoire lorsque cet effectif est atteint pendant douze mois consécutifs. Issu des ordonnances du 22 septembre 2017, il a remplacé les délégués du personnel, le comité d'entreprise et le CHSCT.",
+   "r": "<b>L'institution représentative unique</b>, mise en place dans les entreprises d'au moins onze salariés et obligatoire lorsque cet effectif est atteint pendant douze mois consécutifs. Issu des ordonnances du 22 septembre 2017, il a remplacé les délégués du personnel, le comité d'entreprise et le CHSCT.",
    "base": [
     "Définitions#4",
     "Ce qui a changé récemment#0"
@@ -165,7 +165,7 @@
    "id": "ue3-05-k14",
    "type": "comp",
    "q": "Quelle différence de sanction le Code du travail fait-il entre l'entrave à la constitution du CSE et l'entrave à son fonctionnement régulier ?",
-   "r": "<b>L'entrave à la constitution d'un CSE ou à la libre désignation de ses membres</b> est punie d'un an d'emprisonnement et de 7 500 € d'amende ; l'entrave à son fonctionnement régulier n'est punie que d'une amende.",
+   "r": "<b>L'entrave à la constitution d'un CSE ou à la libre désignation de ses membres</b> est punie d'un an d'emprisonnement et de 7 500 € d'amende ; l'entrave à son fonctionnement régulier n'est punie que d'une amende de 7 500 €.",
    "base": [
     "Points de vigilance#5"
    ],
@@ -201,7 +201,7 @@
    "id": "ue3-05-k17",
    "type": "comp",
    "q": "Comment valider un accord d'entreprise signé par l'employeur et des syndicats représentatifs ayant recueilli plus de 30 %, mais pas plus de 50 %, des suffrages ?",
-   "r": "<b>Par une consultation des salariés</b>, demandée par une ou plusieurs organisations signataires dans un délai d'un mois à compter de la signature, puis, au terme de ce délai, par l'employeur en l'absence d'opposition de l'ensemble de ces organisations. Organisée dans les deux mois, elle valide l'accord s'il est approuvé à la majorité des suffrages exprimés ; sinon, il est réputé non écrit.",
+   "r": "<b>Par une consultation des salariés</b>, demandée par une ou plusieurs organisations signataires dans le mois suivant la signature, puis, passé ce délai, par l'employeur, sauf opposition de toutes ces organisations. Si, huit jours après la demande, d'autres signatures n'ont pas permis d'atteindre 50 %, elle est organisée dans les deux mois ; l'accord est valide s'il est approuvé à la majorité des suffrages exprimés, sinon réputé non écrit.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -224,7 +224,7 @@
   {
    "id": "ue3-05-k19",
    "type": "comp",
-   "q": "Comment un employeur dépourvu de délégué syndical peut-il conclure un accord collectif, selon l'effectif de l'entreprise ?",
+   "q": "Comment conclure un accord collectif dans une entreprise dépourvue de délégué syndical, selon son effectif ?",
    "r": "<b>Moins de onze salariés</b> (et onze à vingt sans élu) : projet d'accord ratifié à la majorité des deux tiers du personnel ; <b>de onze à moins de cinquante</b> : négociation avec un salarié mandaté ou des élus du CSE ; <b>à partir de cinquante</b> : avec des élus mandatés, à défaut des élus non mandatés (matières limitées), à défaut un salarié mandaté.",
    "base": [
     "Règles essentielles#2"
@@ -273,7 +273,7 @@
   {
    "id": "ue3-05-k23",
    "type": "comp",
-   "q": "Comment qualifier le licenciement du salarié qui refuse un accord de performance collective (APC) comportant des dispositions étrangères à ses objets légaux ?",
+   "q": "Comment qualifier le licenciement du salarié qui refuse un accord de performance collective (APC) comportant des dispositions étrangères à ses objets légaux et modifiant son contrat ?",
    "r": "<b>Il est sans cause réelle et sérieuse</b> (Cass. soc., 28 mai 2026). Les objets légaux de l'APC sont la durée du travail, la rémunération et la mobilité interne.",
    "base": [
     "Ce qui a changé récemment#5"
@@ -334,7 +334,7 @@
    "id": "ue3-05-k28",
    "type": "comp",
    "q": "Dans quel délai l'action en nullité d'une convention ou d'un accord collectif doit-elle être engagée ?",
-   "r": "<b>Deux mois, à peine d'irrecevabilité</b> ; le juge saisi rend sa décision dans un délai de six mois. Ce délai ne s'applique pas lorsque l'illégalité d'une clause est invoquée par voie d'exception dans un litige individuel.",
+   "r": "<b>Deux mois, à peine d'irrecevabilité</b> ; le juge saisi rend sa décision dans un délai de six mois. Le délai de deux mois ne s'applique pas lorsque l'illégalité d'une clause est invoquée par voie d'exception dans un litige individuel.",
    "base": [
     "Règles essentielles#16",
     "Points de vigilance#1"
@@ -345,9 +345,9 @@
   },
   {
    "id": "ue3-05-k29",
-   "type": "def",
-   "q": "Qu'est-ce que le droit de grève dans l'ordre juridique français ?",
-   "r": "<b>Un droit constitutionnel</b> (préambule de la Constitution de 1946, al. 7), qui s'exerce dans le cadre des lois qui le réglementent.",
+   "type": "comp",
+   "q": "Quelle valeur juridique le droit de grève a-t-il en droit français ?",
+   "r": "<b>Une valeur constitutionnelle</b> (préambule de la Constitution de 1946, al. 7) ; c'est un droit qui s'exerce dans le cadre des lois qui le réglementent.",
    "base": [
     "Définitions#5"
    ],
@@ -402,6 +402,30 @@
    ],
    "src": "Loi n° 2023-1107 du 29 novembre 2023, art. 5 ; C. trav., art. L. 3322-2",
    "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048480574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k34",
+   "type": "comp",
+   "q": "Quelles négociations périodiques s'imposent aux organisations liées par une convention de branche ?",
+   "r": "<b>Au moins une fois tous les quatre ans</b>, sur les salaires, l'égalité professionnelle, les conditions de travail et la gestion prévisionnelle des emplois, l'insertion des travailleurs handicapés et la formation professionnelle ; <b>au moins une fois tous les cinq ans</b>, sur les classifications et l'épargne salariale.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. trav., art. L. 2241-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160734/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k35",
+   "type": "def",
+   "q": "Entre quelles parties une convention ou un accord collectif de travail est-il conclu ?",
+   "r": "<b>D'une part, une ou plusieurs organisations syndicales de salariés représentatives dans son champ d'application</b> ; d'autre part, une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 2221-2 et L. 2231-1",
+   "url": null,
    "fiab": "stable"
   }
  ]

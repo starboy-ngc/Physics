@@ -106,7 +106,7 @@
    "id": "ue9-03-k09",
    "type": "comp",
    "q": "Pour quelles opérations un assujetti à la TVA doit-il s'assurer qu'une facture est émise ?",
-   "r": "<b>Les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
+   "r": "Notamment <b>les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -202,8 +202,8 @@
   {
    "id": "ue9-03-k17",
    "type": "comp",
-   "q": "Chez l'acheteur, comment enregistre-t-on une facture d'achat soumise à la TVA, hors acquisition d'une immobilisation ?",
-   "r": "<b>Débit du compte d'achat (classe 60) pour le montant hors taxes</b>, débit de la TVA déductible au compte 44566 « TVA sur autres biens et services », crédit du fournisseur 401 pour le montant TTC.",
+   "q": "Chez l'acheteur assujetti, comment enregistre-t-on une facture d'achat de marchandises dont la TVA est déductible ?",
+   "r": "<b>Débit du compte d'achat (compte 60) pour le montant hors taxes</b>, débit de la TVA déductible au compte 44566 « TVA sur autres biens et services », crédit du fournisseur 401 pour le montant TTC.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -227,8 +227,8 @@
   {
    "id": "ue9-03-k19",
    "type": "comp",
-   "q": "Comment enregistre-t-on une facture de vente soumise à la TVA ?",
-   "r": "<b>Crédit du compte de produit (classe 70) pour le montant hors taxes collectées</b>, crédit de la TVA collectée au compte 44571, débit du client 411 pour le montant TTC.",
+   "q": "Chez le vendeur, comment enregistre-t-on une facture de vente de marchandises soumise à la TVA ?",
+   "r": "<b>Crédit du compte de produit (compte 70) pour le montant hors taxes collectées</b>, crédit de la TVA collectée au compte 44571, débit du client 411 pour le montant TTC.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -263,9 +263,9 @@
   },
   {
    "id": "ue9-03-k22",
-   "type": "def",
-   "q": "De quoi se compose le coût d'acquisition d'une immobilisation corporelle selon le PCG ?",
-   "r": "<b>Du prix d'achat</b>, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, <b>majoré des coûts directement attribuables</b> à la mise en place et en état de fonctionner de l'actif.",
+   "type": "comp",
+   "q": "Selon le PCG, qu'ajoute-t-on et que retranche-t-on au prix d'achat pour obtenir le coût d'acquisition d'une immobilisation corporelle ?",
+   "r": "<b>On ajoute</b> les droits de douane et taxes non récupérables et, notamment, les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner ; <b>on retranche</b> les remises, rabais commerciaux et escomptes de règlement.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -289,7 +289,7 @@
   {
    "id": "ue9-03-k24",
    "type": "comp",
-   "q": "Dans quels comptes enregistre-t-on les frais de port, à l'achat et à la vente ?",
+   "q": "Quels comptes le plan de comptes du PCG consacre-t-il aux frais de port, à l'achat et à la vente ?",
    "r": "À l'achat : charge <b>6241</b> « Transports sur achats ». À la vente : charge <b>6242</b> « Transports sur ventes » lorsque le vendeur paie le transporteur ; le port refacturé au client est un produit <b>7085</b> « Ports et frais accessoires facturés ».",
    "base": [
     "Règles essentielles#10"
@@ -417,6 +417,18 @@
    ],
    "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-03-k35",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quel délai de paiement maximal deux professionnels peuvent-ils convenir, en règle générale, pour régler une facture ?",
+   "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou, par dérogation, quarante-cinq jours fin de mois si ce délai est expressément stipulé.",
+   "base": [
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 441-10, I et II, et D. 441-5 ; DGCCRF, « Délais de paiement : les règles à connaître »",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038411055",
    "fiab": "stable"
   }
  ]
