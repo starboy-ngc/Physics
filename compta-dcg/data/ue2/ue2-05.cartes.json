@@ -1,6 +1,6 @@
 {
  "id": "ue2-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue2-05-k01",
@@ -55,7 +55,7 @@
    "id": "ue2-05-k05",
    "type": "def",
    "q": "Qu'est-ce que la prime d'émission dans une augmentation de capital d'une société anonyme (SA) ?",
-   "r": "<b>La somme qui majore le montant nominal des titres nouveaux lorsqu'ils ne sont pas émis à ce seul montant.</b> Lors d'une augmentation en numéraire, elle est libérée en totalité dès la souscription et portée au compte 1041 Primes d'émission.",
+   "r": "<b>La somme qui majore le montant nominal des titres nouveaux lorsqu'ils ne sont pas émis à ce seul montant.</b> Lors d'une augmentation de capital en numéraire, elle est libérée en totalité dès la souscription ; elle est portée au compte 1041 Primes d'émission.",
    "base": [
     "Définitions#2"
    ],
@@ -66,7 +66,7 @@
   {
    "id": "ue2-05-k06",
    "type": "comp",
-   "q": "Quelle condition préalable doit être remplie avant une augmentation de capital en numéraire dans une société anonyme (SA) ou une SARL ?",
+   "q": "Quelle condition tenant au capital existant doit être remplie avant une augmentation de capital en numéraire dans une société anonyme (SA) ou une SARL ?",
    "r": "<b>Le capital existant doit être intégralement libéré</b> avant toute émission d'actions nouvelles ou toute souscription de parts sociales nouvelles à libérer en numéraire. Dans la SARL, cette règle est prévue à peine de nullité de l'opération.",
    "base": [
     "Règles essentielles#0",
@@ -116,7 +116,7 @@
    "id": "ue2-05-k10",
    "type": "comp",
    "q": "Quelle limite absolue s'impose à toute réduction de capital d'une société anonyme (SA) ou d'une SARL ?",
-   "r": "<b>Elle ne peut en aucun cas porter atteinte à l'égalité des actionnaires ou des associés.</b> Dans la SA, elle est autorisée ou décidée par l'assemblée générale extraordinaire ; dans la SARL, par l'assemblée des associés statuant dans les conditions exigées pour la modification des statuts.",
+   "r": "<b>Elle ne peut en aucun cas porter atteinte à l'égalité des actionnaires ou des associés.</b> Dans la SA, elle est autorisée ou décidée par l'assemblée générale extraordinaire ; dans la SARL, elle est autorisée par l'assemblée des associés statuant dans les conditions exigées pour la modification des statuts.",
    "base": [
     "Règles essentielles#6",
     "Règles essentielles#8"
@@ -129,7 +129,7 @@
    "id": "ue2-05-k11",
    "type": "comp",
    "q": "Quels créanciers peuvent former opposition à une réduction de capital d'une société anonyme (SA) non motivée par des pertes ?",
-   "r": "<b>Le représentant de la masse des obligataires et les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal de délibération.</b> Les opérations de réduction ne peuvent commencer pendant le délai d'opposition ni, le cas échéant, avant qu'il ait été statué en première instance ; une réduction motivée par des pertes n'ouvre pas ce droit d'opposition.",
+   "r": "<b>Le représentant de la masse des obligataires et les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal de délibération.</b> Les opérations de réduction ne peuvent commencer pendant le délai d'opposition ni, le cas échéant, avant qu'il ait été statué en première instance sur cette opposition ; une réduction motivée par des pertes n'ouvre pas ce droit d'opposition.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -140,8 +140,8 @@
   {
    "id": "ue2-05-k12",
    "type": "comp",
-   "q": "Dans quel cas le gérant d'une SARL peut-il être autorisé à acheter des parts sociales de sa propre société ?",
-   "r": "<b>Lorsque l'assemblée qui a décidé une réduction de capital non motivée par des pertes l'autorise à acheter un nombre déterminé de parts pour les annuler.</b> En dehors de ce cas, l'achat de ses propres parts par la SARL est interdit.",
+   "q": "Dans quel cas l'achat par une SARL de ses propres parts sociales est-il admis ?",
+   "r": "<b>Lorsque l'assemblée qui a décidé une réduction de capital non motivée par des pertes autorise le gérant à acheter un nombre déterminé de parts pour les annuler.</b> En dehors de ce cas, l'achat de ses propres parts par la société est interdit.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -177,7 +177,7 @@
    "id": "ue2-05-k15",
    "type": "comp",
    "q": "Que doivent faire les associés d'une SARL ou d'une SA dont les comptes approuvés font apparaître des capitaux propres inférieurs à la moitié du capital social ?",
-   "r": "<b>Décider, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée</b>, la décision étant publiée. À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital. Règles écartées en sauvegarde ou en redressement judiciaire.",
+   "r": "<b>Décider, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée</b>, décision qui est publiée. Sinon, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital. Ces règles ne s'appliquent pas en sauvegarde ou en redressement judiciaire.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -189,7 +189,7 @@
    "id": "ue2-05-k16",
    "type": "comp",
    "q": "Qu'impose la loi du 9 mars 2023 à une SA ou une SARL dont les capitaux propres n'ont pas été reconstitués dans le délai de deux exercices ?",
-   "r": "<b>Si son capital dépasse un seuil fixé par décret, elle doit le réduire pour le ramener au plus à ce seuil</b>, au plus tard à la clôture du deuxième exercice suivant. Le décret fixe ce seuil à 1 % du total du bilan, avec, dans la SA, le capital minimal comme plancher ; à défaut, la dissolution judiciaire reste encourue.",
+   "r": "<b>Si son capital dépasse un seuil fixé par décret, elle doit le réduire pour le ramener au plus à ce seuil</b>, au plus tard à la clôture du deuxième exercice suivant. Le décret fixe ce seuil à 1 % du total du bilan, avec, dans la SA, le capital minimal comme plancher. Si ces dispositions ne sont pas respectées, la dissolution judiciaire reste encourue.",
    "base": [
     "Ce qui a changé récemment#0"
    ],
@@ -224,8 +224,8 @@
   {
    "id": "ue2-05-k19",
    "type": "comp",
-   "q": "À quelles conditions une société anonyme (SA) peut-elle se transformer en une société d'une autre forme ?",
-   "r": "<b>Elle doit exister depuis deux ans au moins et avoir établi et fait approuver par les actionnaires le bilan de ses deux premiers exercices.</b> La décision est prise sur le rapport des commissaires aux comptes, qui atteste que les capitaux propres sont au moins égaux au capital social.",
+   "q": "Quelles conditions tenant à son ancienneté et à ses comptes une société anonyme (SA) doit-elle remplir pour se transformer en société d'une autre forme ?",
+   "r": "<b>Exister depuis deux ans au moins et avoir établi et fait approuver par les actionnaires le bilan de ses deux premiers exercices</b>, au moment de la transformation. La décision est prise sur le rapport des commissaires aux comptes, qui atteste que les capitaux propres sont au moins égaux au capital social.",
    "base": [
     "Règles essentielles#10",
     "Règles essentielles#11"
@@ -237,7 +237,7 @@
   {
    "id": "ue2-05-k20",
    "type": "comp",
-   "q": "Quelle majorité est requise pour transformer une société en société en nom collectif (SNC) ou en société par actions simplifiée (SAS) ?",
+   "q": "Selon quelle règle de vote est décidée la transformation d'une société en société en nom collectif (SNC) ou en société par actions simplifiée (SAS) ?",
    "r": "<b>L'unanimité des associés.</b> En revanche, la transformation d'une SA en société en commandite est décidée aux conditions de modification des statuts, avec l'accord de tous les associés qui acceptent d'être commandités.",
    "base": [
     "Règles essentielles#10"
@@ -297,7 +297,7 @@
   {
    "id": "ue2-05-k25",
    "type": "comp",
-   "q": "Quelles formalités sont écartées dans une fusion où l'absorbante détient en permanence la totalité des actions de l'absorbée ?",
+   "q": "Quelles formalités sont écartées lorsque l'absorbante détient en permanence la totalité des actions de l'absorbée, du dépôt du projet de fusion au greffe jusqu'à sa réalisation ?",
    "r": "<b>L'approbation de la fusion par les assemblées générales extraordinaires des sociétés participantes, ainsi que les rapports des dirigeants et du commissaire à la fusion.</b> Des actionnaires de l'absorbante réunissant au moins 5 % du capital peuvent toutefois demander en justice la désignation d'un mandataire chargé de convoquer son assemblée.",
    "base": [
     "Règles essentielles#13"
@@ -333,7 +333,7 @@
   {
    "id": "ue2-05-k28",
    "type": "comp",
-   "q": "Quelles causes de fin d'une société, selon l'article 1844-7 du Code civil, tiennent à sa durée, à son objet, à son contrat ou à ses statuts ?",
+   "q": "Hors dissolution anticipée et liquidation judiciaire, quelles causes de fin d'une société l'article 1844-7 du Code civil énumère-t-il ?",
    "r": "<ul><li>L'expiration du temps pour lequel elle a été constituée, sauf prorogation ;</li><li>la réalisation ou l'extinction de son objet ;</li><li>l'annulation du contrat de société ;</li><li>toute autre cause prévue par les statuts.</li></ul>",
    "base": [
     "Règles essentielles#14"
@@ -345,7 +345,7 @@
   {
    "id": "ue2-05-k29",
    "type": "comp",
-   "q": "Quelles causes de fin d'une société prévues par l'article 1844-7 du Code civil résultent d'une dissolution anticipée ou d'un jugement ?",
+   "q": "Selon l'article 1844-7 du Code civil, dans quels cas de dissolution anticipée ou de liquidation judiciaire une société prend-elle fin ?",
    "r": "<ul><li>La dissolution anticipée décidée par les associés ;</li><li>la dissolution anticipée prononcée par le tribunal à la demande d'un associé pour justes motifs, ou dans le cas de réunion de toutes les parts en une seule main ;</li><li>le jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif.</li></ul>",
    "base": [
     "Règles essentielles#14"

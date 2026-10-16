@@ -78,7 +78,7 @@
    "id": "ue6-03-k07",
    "type": "def",
    "q": "Qu'est-ce que la trésorerie au sens du tableau de financement du PCG ?",
-   "r": "<b>Les disponibilités diminuées des concours bancaires courants et soldes créditeurs de banques</b> (compte 519). Sa variation constitue le dernier bloc de la seconde partie du tableau.",
+   "r": "<b>Les disponibilités diminuées des concours bancaires courants (compte 519) et des soldes créditeurs de banques.</b> Sa variation constitue le dernier bloc de la seconde partie du tableau.",
    "base": [
     "Définitions#6"
    ],
@@ -101,22 +101,11 @@
   {
    "id": "ue6-03-k09",
    "type": "def",
-   "q": "Hormis les distributions, la réduction des capitaux propres et les remboursements de dettes financières, quels emplois stables retient le tableau de financement du PCG ?",
-   "r": "<b>Les acquisitions d'éléments de l'actif immobilisé et les charges à répartir sur plusieurs exercices.</b> Ce sont, avec les trois autres, les emplois stables de la première partie.",
+   "q": "Quels sont les emplois stables de la première partie du tableau de financement du plan comptable général (PCG) ?",
+   "r": "<b>Les distributions mises en paiement au cours de l'exercice ; les acquisitions d'éléments de l'actif immobilisé ; les charges à répartir sur plusieurs exercices ; la réduction des capitaux propres ; les remboursements de dettes financières.</b> Trois d'entre eux font pendant aux ressources durables : acquisitions et cessions, réduction et augmentation des capitaux propres, remboursements et augmentation des dettes financières.",
    "base": [
-    "Règles essentielles#1"
-   ],
-   "src": "PCG, chapitre « Tableau de financement », première partie",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-03-k10",
-   "type": "def",
-   "q": "Hormis les acquisitions d'actif immobilisé et les charges à répartir, quels emplois stables retient la première partie du tableau de financement du PCG ?",
-   "r": "<b>Les distributions mises en paiement au cours de l'exercice, la réduction des capitaux propres et les remboursements de dettes financières.</b>",
-   "base": [
-    "Règles essentielles#1"
+    "Règles essentielles#1",
+    "Règles essentielles#0"
    ],
    "src": "PCG, chapitre « Tableau de financement », première partie",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
@@ -173,7 +162,7 @@
   {
    "id": "ue6-03-k15",
    "type": "comp",
-   "q": "Pour quelle valeur une cession d'immobilisation figure-t-elle dans les ressources du tableau de financement du PCG ?",
+   "q": "Pour quelle valeur la cession d'une immobilisation corporelle ou incorporelle figure-t-elle dans les ressources du tableau de financement du PCG ?",
    "r": "<b>Pour son prix de cession (compte 757).</b> La valeur comptable des éléments cédés (compte 657) est neutralisée dans la CAF et ne constitue ni un emploi ni une ressource.",
    "base": [
     "Règles essentielles#5"
@@ -210,8 +199,8 @@
   {
    "id": "ue6-03-k18",
    "type": "comp",
-   "q": "Comment la subvention d'investissement encaissée apparaît-elle dans le tableau de financement du PCG ?",
-   "r": "<b>Comme une ressource durable, l'année de son encaissement (compte 131).</b> Il ne faut pas la confondre avec sa quote-part virée au résultat (compte 747), produit calculé sans flux.",
+   "q": "Comment la subvention d'investissement obtenue par l'entreprise apparaît-elle dans le tableau de financement du PCG ?",
+   "r": "<b>Comme une ressource durable (compte 131), dès l'exercice de son octroi, même si elle n'est pas encore encaissée.</b> Il ne faut pas la confondre avec sa quote-part virée au résultat (compte 747), produit calculé sans flux.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#6"
@@ -236,7 +225,7 @@
    "id": "ue6-03-k20",
    "type": "comp",
    "q": "Quels postes faut-il exclure des dettes financières pour reconstituer les remboursements d'emprunts du tableau de financement ?",
-   "r": "<b>Les concours bancaires courants (compte 519), qui relèvent de la trésorerie, et les intérêts courus (comptes 1648, 1638), qui relèvent du hors exploitation.</b> Remboursements = dettes financières d'ouverture + emprunts nouveaux − dettes financières de clôture.",
+   "r": "<b>Les concours bancaires courants (compte 519), qui relèvent de la trésorerie, et les intérêts courus (par exemple comptes 1648 ou 1638), qui relèvent du hors exploitation.</b> Remboursements = dettes financières d'ouverture + emprunts nouveaux − dettes financières de clôture.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -259,8 +248,8 @@
   {
    "id": "ue6-03-k22",
    "type": "comp",
-   "q": "De quel résultat proviennent les dividendes mis en paiement au cours de l'exercice N dans le tableau de financement ?",
-   "r": "<b>Du résultat N−1 affecté par l'assemblée</b> : résultat N−1 diminué de la variation des réserves et de la variation du report à nouveau.",
+   "q": "Hors acompte sur dividende, de quel résultat proviennent les dividendes mis en paiement au cours de l'exercice N dans le tableau de financement du PCG ?",
+   "r": "<b>Du résultat N−1, affecté par l'assemblée.</b> En l'absence d'autre mouvement sur les réserves et le report à nouveau, ils valent le résultat N−1 diminué de la variation des réserves et de la variation du report à nouveau.",
    "base": [
     "Règles essentielles#10"
    ],
@@ -307,20 +296,8 @@
   {
    "id": "ue6-03-k26",
    "type": "def",
-   "q": "Quelles opérations augmentent les flux de financement du tableau des flux de trésorerie ?",
-   "r": "<b>L'augmentation de capital en numéraire, les subventions d'investissement reçues et les emprunts nouveaux.</b> La variation de trésorerie est la somme des flux d'activité, d'investissement et de financement.",
-   "base": [
-    "Règles essentielles#12"
-   ],
-   "src": "Règlement ANC n° 2020-01, art. 282-43 et 282-44 (modèles de tableau des flux de trésorerie) ; OEC, avis n° 30 (1997)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-03-k27",
-   "type": "def",
-   "q": "Quelles opérations viennent en diminution des flux de financement du tableau des flux de trésorerie ?",
-   "r": "<b>Les dividendes versés et les remboursements d'emprunts</b>, retranchés de l'augmentation de capital en numéraire, des subventions d'investissement reçues et des emprunts nouveaux.",
+   "q": "Quels flux composent les flux de financement du tableau des flux de trésorerie ?",
+   "r": "<b>En plus : l'augmentation de capital en numéraire, les subventions d'investissement reçues et les emprunts nouveaux ; en moins : les dividendes versés et les remboursements d'emprunts.</b> La variation de trésorerie est la somme des flux d'activité, d'investissement et de financement.",
    "base": [
     "Règles essentielles#12"
    ],
@@ -332,7 +309,7 @@
    "id": "ue6-03-k28",
    "type": "comp",
    "q": "Dans quelle catégorie du tableau des flux de trésorerie classe-t-on l'impôt sur les bénéfices et la participation des salariés ?",
-   "r": "<b>Dans les flux liés à l'activité</b> (et dans la CAF), jamais en investissement ni en financement : ce sont des charges du compte de résultat décaissables.",
+   "r": "<b>Dans les flux liés à l'activité</b>, comme dans la CAF qui les déduit : ce sont des charges décaissables du compte de résultat.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -363,19 +340,6 @@
    ],
    "src": "C. com., art. L. 123-13",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-03-k31",
-   "type": "comp",
-   "q": "Pour les comptes consolidés, abordés au DSCG, comment le règlement ANC n° 2020-01 organise-t-il le tableau des flux de trésorerie ?",
-   "r": "<b>En trois fonctions</b>, selon les modèles des art. 282-43 et 282-44, précisés par le règlement ANC n° 2024-05. La logique acquise en DCG sur les comptes sociaux s'y transpose.",
-   "base": [
-    "Points de vigilance#4",
-    "Ce qui a changé récemment#2"
-   ],
-   "src": "Règlement ANC n° 2020-01, art. 282-43 et 282-44 ; règlement ANC n° 2024-05 du 3 octobre 2024",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
    "fiab": "stable"
   },
   {

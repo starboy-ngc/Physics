@@ -67,9 +67,10 @@
    "id": "ue6-02-k06",
    "type": "def",
    "q": "Qu'est-ce que la trésorerie nette dans l'analyse du bilan fonctionnel ?",
-   "r": "<b>Les disponibilités diminuées des concours bancaires courants et soldes créditeurs de banques</b> (compte 519), qui constituent la trésorerie passive.",
+   "r": "<b>La trésorerie active, notamment les disponibilités, diminuée de la trésorerie passive</b> : concours bancaires courants et soldes créditeurs de banques (compte 519), auxquels le bilan fonctionnel ajoute les effets escomptés non échus.",
    "base": [
-    "Définitions#4"
+    "Définitions#4",
+    "Règles essentielles#4"
    ],
    "src": "PCG, chapitre « Tableau de financement », variation « trésorerie » ; plan de comptes PCG 2025, compte 519",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
@@ -103,7 +104,7 @@
    "id": "ue6-02-k09",
    "type": "def",
    "q": "Qu'est-ce que le crédit-bail au sens du Code monétaire et financier ?",
-   "r": "<b>Une opération de location</b> de biens d'équipement, de matériel d'outillage ou de biens immobiliers, qui donne au locataire <b>la possibilité d'acquérir le bien</b> moyennant un prix convenu tenant compte des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
+   "r": "<b>Une opération de location</b> de biens d'équipement, de matériel d'outillage ou de biens immobiliers à usage professionnel, qui donne au locataire <b>la possibilité d'acquérir le bien</b> moyennant un prix convenu tenant compte des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
    "base": [
     "Définitions#5"
    ],
@@ -187,7 +188,7 @@
   {
    "id": "ue6-02-k16",
    "type": "comp",
-   "q": "Dans une SA, quelle fraction minimale des apports en numéraire doit être libérée à la constitution et lors d'une augmentation de capital ?",
+   "q": "Dans une SA, quelle fraction minimale de la valeur nominale des actions de numéraire doit être libérée à la constitution et lors d'une augmentation de capital ?",
    "r": "<b>La moitié au moins</b> à la souscription lors de la constitution, <b>le quart au moins</b> lors d'une augmentation de capital ; le surplus est libéré dans les cinq ans.",
    "base": [
     "Chiffres et seuils#1",
@@ -200,8 +201,8 @@
   {
    "id": "ue6-02-k17",
    "type": "comp",
-   "q": "Comment le bilan fonctionnel classe-t-il les intérêts courus non échus sur emprunts et les intérêts courus sur concours bancaires (5186) ?",
-   "r": "Ils sont <b>retirés des dettes financières et classés en dettes hors exploitation</b>. Depuis le PCG 2025, les intérêts courus sur emprunts sont enregistrés aux comptes 1618, 1638 ou 1648 selon la nature de l'emprunt (avant 2025 : 1688).",
+   "q": "Comment le bilan fonctionnel classe-t-il les intérêts courus non échus sur emprunts et les intérêts courus à payer sur concours bancaires ?",
+   "r": "Ils sont <b>retirés des dettes financières</b>, où les range le bilan comptable, et <b>classés en dettes hors exploitation</b>.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -287,7 +288,7 @@
    "id": "ue6-02-k26",
    "type": "comp",
    "q": "Dans l'analyse de la rentabilité, à quelle condition l'effet de levier de l'endettement est-il favorable ?",
-   "r": "<b>Tant que la rentabilité économique avant impôt (Re) est supérieure au taux de la dette (i).</b> L'écart Re − i, multiplié par le rapport dettes / capitaux propres, s'ajoute alors à Re ; le total, diminué de l'IS au taux normal, donne la rentabilité financière après impôt.",
+   "r": "<b>Tant que la rentabilité économique avant impôt (Re) est supérieure au taux de la dette (i).</b> L'écart Re − i, multiplié par le rapport dettes / capitaux propres, s'ajoute alors à Re ; le total, net de l'impôt sur les sociétés, donne la rentabilité financière après impôt.",
    "base": [
     "Règles essentielles#14"
    ],
@@ -298,8 +299,8 @@
   {
    "id": "ue6-02-k27",
    "type": "comp",
-   "q": "Pourquoi le règlement ANC n° 2022-06 modifie-t-il la lecture du résultat d'exploitation utilisé dans la rentabilité économique ?",
-   "r": "Parce que <b>les cessions d'immobilisations passent en exploitation</b>. Ce règlement modernise les états financiers (bilan, compte de résultat, annexe) pour les exercices ouverts à compter du 1er janvier 2025.",
+   "q": "Dans quel résultat le règlement ANC n° 2022-06 classe-t-il les cessions d'immobilisations incorporelles et corporelles ?",
+   "r": "<b>En résultat d'exploitation</b>, pour les exercices ouverts à compter du 1er janvier 2025 : la lecture du résultat d'exploitation utilisé dans la rentabilité économique en est modifiée. Ce règlement modernise les états financiers (bilan, compte de résultat, annexe).",
    "base": [
     "Ce qui a changé récemment#1"
    ],
@@ -367,19 +368,6 @@
    ],
    "src": "PCG, annexe : état des échéances des créances et des dettes",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue6-02-k33",
-   "type": "comp",
-   "q": "Sur quels postes portent les retraitements automatisés décrits par la Banque de France dans sa note méthodologique « La situation des entreprises » ?",
-   "r": "Sur <b>les dettes financières, les capitaux propres, les produits et charges financiers, la trésorerie active et les participations</b>. Cette procédure automatisée s'applique au niveau de chaque entreprise des groupes à tête française.",
-   "base": [
-    "Règles essentielles#11",
-    "Ce qui a changé récemment#3"
-   ],
-   "src": "Banque de France, « La situation des entreprises », note méthodologique (avril 2025)",
-   "url": null,
    "fiab": "stable"
   }
  ]

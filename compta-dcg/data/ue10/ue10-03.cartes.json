@@ -54,7 +54,7 @@
    "id": "ue10-03-k05",
    "type": "comp",
    "q": "Quelle simplification le PCG accorde-t-il aux petites entreprises pour le plan d'amortissement de leurs immobilisations non décomposables ?",
-   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Seules les petites entreprises peuvent ainsi aligner la durée d'utilisation comptable, propre à l'entité, et la durée d'usage fiscale ; sinon, l'écart entre amortissement fiscal et amortissement comptable passe par les amortissements dérogatoires.",
+   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Les autres entités retiennent la durée d'utilisation propre à l'entité, qui peut différer de la durée d'usage fiscale ; l'excédent de l'amortissement fiscal sur l'amortissement comptable est alors constaté en amortissements dérogatoires.",
    "base": [
     "Règles essentielles#2",
     "Points de vigilance#0"
@@ -66,8 +66,8 @@
   {
    "id": "ue10-03-k06",
    "type": "comp",
-   "q": "Selon l'article 39 A du CGI, à quels biens l'amortissement dégressif fiscal est-il réservé ?",
-   "r": "<b>Aux biens d'équipement acquis ou fabriqués par les entreprises industrielles</b>, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession.",
+   "q": "Selon l'article 39 A du CGI, à quelle catégorie de biens l'amortissement dégressif fiscal est-il réservé ?",
+   "r": "<b>Aux biens d'équipement</b>, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -78,8 +78,8 @@
   {
    "id": "ue10-03-k07",
    "type": "comp",
-   "q": "Outre les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, quels biens d'équipement n'ouvrent pas droit à l'amortissement dégressif fiscal ?",
-   "r": "<b>Les biens d'occasion et les biens dont la durée normale d'utilisation est inférieure à trois ans</b> sont exclus de l'amortissement dégressif.",
+   "q": "Quels biens d'équipement sont exclus de l'amortissement dégressif fiscal en raison de leur état à l'acquisition ou de leur durée normale d'utilisation ?",
+   "r": "<b>Les biens d'occasion et les biens dont la durée normale d'utilisation est inférieure à trois ans</b> n'ouvrent pas droit à l'amortissement dégressif.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -301,7 +301,7 @@
    "id": "ue10-03-k25",
    "type": "comp",
    "q": "Depuis le PCG 2025, quels comptes enregistrent respectivement la valeur nette comptable d'une immobilisation corporelle cédée et son prix de cession ?",
-   "r": "<b>Le compte 657 « Valeurs comptables des immobilisations incorporelles et corporelles cédées », au débit, et le compte 757 « Produits des cessions d'immobilisations incorporelles et corporelles », au crédit</b>, en contrepartie du compte 462 « Créances sur cessions d'immobilisations » ou de la trésorerie. Les sujets antérieurs à 2025 utilisent encore 675/775.",
+   "r": "<b>Le compte 657 « Valeurs comptables des immobilisations incorporelles et corporelles cédées », au débit, et le compte 757 « Produits des cessions d'immobilisations incorporelles et corporelles », au crédit</b>, le prix ayant pour contrepartie le compte 462 « Créances sur cessions d'immobilisations » ou la trésorerie. Les sujets antérieurs à 2025 utilisent encore 675/775.",
    "base": [
     "Règles essentielles#15",
     "Ce qui a changé récemment#1"
@@ -326,8 +326,8 @@
   {
    "id": "ue10-03-k28",
    "type": "comp",
-   "q": "Depuis le PCG 2025, dans quel compte enregistre-t-on les indemnités d'assurance reçues à la suite d'un sinistre ?",
-   "r": "<b>Au compte 7587 « Indemnités d'assurance »</b>, subdivision du compte 758 « Indemnités et autres produits », le règlement ANC n° 2022-06 ayant supprimé les transferts de charges. Les indemnités directement liées à un événement majeur et inhabituel et reçues en compensation de charges d'exploitation restent en résultat d'exploitation.",
+   "q": "Hors événement majeur et inhabituel, dans quel compte du PCG 2025 enregistre-t-on les indemnités d'assurance reçues à la suite d'un sinistre ?",
+   "r": "<b>Au compte 7587 « Indemnités d'assurance »</b>, subdivision du compte 758 « Indemnités et autres produits », le règlement ANC n° 2022-06 ayant supprimé les transferts de charges. Même directement liées à un événement majeur et inhabituel, les indemnités reçues en compensation de charges d'exploitation restent en résultat d'exploitation.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -387,7 +387,7 @@
   {
    "id": "ue10-03-k34",
    "type": "comp",
-   "q": "Sauf application anticipée, quel texte régit la comptabilisation des cessions d'immobilisations des exercices 2025 et 2026, malgré l'adoption du règlement ANC n° 2026-03 ?",
+   "q": "Sauf application anticipée, quel texte régit la comptabilisation des cessions d'immobilisations des exercices ouverts en 2025 et en 2026, malgré l'adoption du règlement ANC n° 2026-03 ?",
    "r": "<b>Le PCG issu du règlement ANC n° 2022-06.</b> Le règlement n° 2026-03, qui consacre une section aux produits des ventes de biens et de services et aux cessions d'immobilisations, s'applique aux exercices ouverts à compter du 1er janvier 2027, une application anticipée étant possible.",
    "base": [
     "Ce qui a changé récemment#2"
@@ -426,7 +426,7 @@
    "id": "ue10-03-k37",
    "type": "comp",
    "q": "Selon le BOFiP, à quelle condition une entreprise qui pratique l'amortissement dégressif fiscal peut-elle passer à l'annuité linéaire ?",
-   "r": "<b>Lorsque l'annuité dégressive devient inférieure à la valeur résiduelle divisée par le nombre d'années restant à courir</b> : l'entreprise peut alors pratiquer cette dernière annuité. L'annuité dégressive s'applique à la valeur résiduelle.",
+   "r": "<b>Lorsque l'annuité dégressive devient inférieure à la valeur résiduelle (valeur restant à amortir) divisée par le nombre d'années restant à courir</b> : l'entreprise peut alors pratiquer cette dernière annuité. L'annuité dégressive s'applique à la valeur résiduelle.",
    "base": [
     "Règles essentielles#4"
    ],

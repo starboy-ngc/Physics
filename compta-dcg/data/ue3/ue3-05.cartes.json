@@ -1,6 +1,6 @@
 {
  "id": "ue3-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue3-05-k01",
@@ -128,8 +128,8 @@
   {
    "id": "ue3-05-k12",
    "type": "comp",
-   "q": "Depuis la loi du 26 mai 2026, comment les salariés d'une entreprise d'au moins cinquante salariés sont-ils associés à un projet de cession de l'entreprise ?",
-   "r": "<b>Par l'information et la consultation du CSE</b>, qui remplacent depuis le 27 juillet 2026 l'information directe des salariés, en cas de projet de cession du fonds de commerce ou de parts ou actions donnant la majorité du capital.",
+   "q": "Depuis la loi du 26 mai 2026, qu'est-ce qui remplace l'information directe des salariés sur un projet de cession d'une entreprise d'au moins cinquante salariés ?",
+   "r": "<b>L'information et la consultation du CSE</b>, depuis le 27 juillet 2026, lorsque le projet porte sur la cession du fonds de commerce ou de parts ou actions donnant la majorité du capital.",
    "base": [
     "Ce qui a changé récemment#4"
    ],
@@ -188,7 +188,7 @@
   {
    "id": "ue3-05-k17",
    "type": "comp",
-   "q": "Comment valider un accord d'entreprise signé par l'employeur et des syndicats représentatifs ayant recueilli plus de 30 %, mais pas plus de 50 %, des suffrages ?",
+   "q": "Comment valider un accord d'entreprise signé par l'employeur et des syndicats ayant recueilli plus de 30 %, sans dépasser 50 %, des suffrages exprimés en faveur des organisations représentatives ?",
    "r": "<b>Par une consultation des salariés</b>, demandée par une ou plusieurs organisations signataires dans le mois suivant la signature, puis, passé ce délai, par l'employeur, sauf opposition de toutes ces organisations. Si, huit jours après la demande, d'autres signatures n'ont pas permis d'atteindre 50 %, elle est organisée dans les deux mois ; l'accord est valide s'il est approuvé à la majorité des suffrages exprimés, sinon réputé non écrit.",
    "base": [
     "Règles essentielles#1"
@@ -213,7 +213,7 @@
    "id": "ue3-05-k19",
    "type": "comp",
    "q": "Comment conclure un accord collectif dans une entreprise dépourvue de délégué syndical, selon son effectif ?",
-   "r": "<b>Moins de onze salariés</b> (et onze à vingt sans élu) : projet d'accord ratifié à la majorité des deux tiers du personnel ; <b>de onze à moins de cinquante</b> : négociation avec un salarié mandaté ou des élus du CSE ; <b>à partir de cinquante</b> : avec des élus mandatés, à défaut des élus non mandatés (matières limitées), à défaut un salarié mandaté.",
+   "r": "<b>Moins de onze salariés</b> (et onze à vingt sans élu) : l'employeur peut proposer un projet d'accord ratifié à la majorité des deux tiers du personnel ; <b>de onze à moins de cinquante</b> : négociation avec un salarié mandaté ou des élus du CSE ; <b>à partir de cinquante</b> : avec des élus mandatés, à défaut des élus non mandatés (matières limitées), à défaut un salarié mandaté.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -224,8 +224,8 @@
   {
    "id": "ue3-05-k20",
    "type": "comp",
-   "q": "Dans quelles matières l'accord d'entreprise prévaut-il sur l'accord de branche ?",
-   "r": "<b>Dans toutes les matières autres que celles des blocs 1 et 2</b>, qu'il soit antérieur ou postérieur. Dans les treize matières du bloc 1, la branche prime sauf garanties au moins équivalentes ; dans les quatre matières du bloc 2, elle prime si elle le stipule expressément.",
+   "q": "Comment s'articulent l'accord de branche et l'accord d'entreprise selon les blocs de matières définis par le Code du travail ?",
+   "r": "<b>Bloc 1 (treize matières)</b> : la branche prime, sauf garanties au moins équivalentes ; <b>bloc 2 (quatre matières)</b> : elle prime si elle le stipule expressément ; <b>toutes les autres matières</b> : l'accord d'entreprise, antérieur ou postérieur, prévaut sur l'accord de branche.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -236,8 +236,8 @@
   {
    "id": "ue3-05-k21",
    "type": "comp",
-   "q": "Sur quels thèmes portent les négociations obligatoires dans une entreprise où sont constituées des sections syndicales d'organisations représentatives ?",
-   "r": "<b>Deux négociations</b> : la rémunération (notamment les salaires effectifs), le temps de travail et le partage de la valeur ajoutée ; l'égalité professionnelle entre les femmes et les hommes et la qualité de vie et des conditions de travail. Elles ont lieu au moins tous les quatre ans, et chaque année à défaut d'accord fixant le calendrier.",
+   "q": "Quelles sont les deux négociations obligatoires communes à toutes les entreprises où sont constituées des sections syndicales d'organisations représentatives ?",
+   "r": "<b>Une négociation sur la rémunération</b> (notamment les salaires effectifs), le temps de travail et le partage de la valeur ajoutée ; <b>une négociation sur l'égalité professionnelle</b> entre les femmes et les hommes et la qualité de vie et des conditions de travail. Elles ont lieu au moins une fois tous les quatre ans, et chaque année à défaut d'accord fixant le calendrier.",
    "base": [
     "Règles essentielles#4"
    ],

@@ -1,6 +1,6 @@
 {
  "id": "ue10-02",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue10-02-k01",
@@ -153,7 +153,7 @@
    "id": "ue10-02-k15",
    "type": "comp",
    "q": "Selon l'approche par composants du PCG, quand un élément d'une immobilisation est-il comptabilisé séparément avec son propre plan d'amortissement ?",
-   "r": "<b>Lorsque, dès l'origine, il a une utilisation différente</b> des autres éléments constitutifs de l'actif. Si les éléments sont exploités de façon indissociable, un plan d'amortissement unique est retenu.",
+   "r": "<b>Lorsque, dès l'origine, un ou plusieurs éléments constitutifs de l'actif ont des utilisations différentes.</b> Si les éléments sont exploités de façon indissociable, un plan d'amortissement unique est retenu.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -177,7 +177,7 @@
    "id": "ue10-02-k17",
    "type": "comp",
    "q": "Selon le PCG, comment sont comptabilisées les dépenses engagées durant la phase de recherche d'un projet ?",
-   "r": "<b>En charges, lorsqu'elles sont encourues</b> ; elles ne peuvent plus être incorporées a posteriori au coût d'une immobilisation incorporelle. Seuls les frais de développement peuvent être inscrits à l'actif, lorsque les conditions de l'article 212-3 sont réunies.",
+   "r": "<b>En charges, lorsqu'elles sont encourues</b> ; elles ne peuvent plus être incorporées <i>a posteriori</i> au coût d'une immobilisation incorporelle. Seuls les frais de développement peuvent être inscrits à l'actif, lorsque les conditions de l'article 212-3 sont réunies.",
    "base": [
     "Définitions#4",
     "Points de vigilance#2"
@@ -262,7 +262,7 @@
   {
    "id": "ue10-02-k24",
    "type": "def",
-   "q": "Selon le Code de commerce, quelles dépenses peuvent figurer à l'actif au poste « frais d'établissement » ?",
+   "q": "Comment l'article R. 123-186 du Code de commerce définit-il les dépenses pouvant figurer à l'actif au poste « frais d'établissement » ?",
    "r": "<b>Les dépenses engagées à l'occasion d'opérations qui conditionnent l'existence ou le développement de l'entreprise</b>, mais dont le montant ne peut être rapporté à des productions de biens et de services déterminées.",
    "base": [
     "Règles essentielles#12"
@@ -275,9 +275,10 @@
    "id": "ue10-02-k25",
    "type": "comp",
    "q": "Selon le PCG, quelle est la méthode de référence pour les frais de constitution, de transformation et de premier établissement ?",
-   "r": "<b>Leur comptabilisation en charges.</b> Ils peuvent toutefois être inscrits à l'actif en frais d'établissement et sont alors amortis selon un plan, dans un délai maximal de cinq ans.",
+   "r": "<b>Leur comptabilisation en charges.</b> Ils peuvent toutefois être inscrits à l'actif en frais d'établissement et sont alors amortis selon un plan, dans un délai maximal de cinq ans ; les frais de constitution d'une société sont en outre amortis avant toute distribution de bénéfices, sous réserve du deuxième alinéa de l'article L. 232-15 du Code de commerce.",
    "base": [
-    "Règles essentielles#16"
+    "Règles essentielles#16",
+    "Règles essentielles#17"
    ],
    "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-186 et R. 123-187 (amortissement selon un plan, en cinq ans au plus)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",

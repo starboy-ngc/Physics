@@ -5,8 +5,8 @@
   {
    "id": "ue10-05-k01",
    "type": "def",
-   "q": "Qu'est-ce qu'une participation au sens du Code de commerce et du Plan comptable général ?",
-   "r": "<b>Des droits dans le capital d'autres personnes morales</b>, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. Ils sont inscrits au compte 261 « Titres de participation ».",
+   "q": "Selon le Code de commerce, qu'est-ce qu'une participation ?",
+   "r": "<b>Des droits dans le capital d'autres personnes morales</b>, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. En comptabilité, ils sont inscrits au compte 261 « Titres de participation ».",
    "base": [
     "Définitions#0"
    ],
@@ -78,8 +78,8 @@
   {
    "id": "ue10-05-k07",
    "type": "comp",
-   "q": "Quel lien existe entre l'option comptable retenue pour les frais d'acquisition des titres et le résultat fiscal ?",
-   "r": "<b>Le résultat fiscal suit le choix comptable</b> : il n'est pas possible d'exercer une option fiscale différente de l'option retenue en matière comptable. L'option s'exerce par la seule comptabilisation des frais en immobilisation ou en charges.",
+   "q": "Peut-on retenir, pour le résultat fiscal, une option différente de celle choisie en comptabilité pour les frais d'acquisition des titres ?",
+   "r": "<b>Non : le résultat fiscal suit le choix comptable.</b> Il n'est pas possible d'exercer une option fiscale différente de l'option retenue en matière comptable, laquelle s'exerce par la seule comptabilisation des frais en immobilisation ou en charges.",
    "base": [
     "Points de vigilance#0"
    ],
@@ -103,11 +103,10 @@
   {
    "id": "ue10-05-k09",
    "type": "comp",
-   "q": "Comment traite-t-on, dans les comptes individuels, une plus-value latente constatée sur des titres à la clôture ?",
-   "r": "<b>Elle n'est pas comptabilisée</b> : seule une valeur d'inventaire inférieure à la valeur nette comptable est constatée, par une dépréciation ; la plus-value entre la valeur d'inventaire et la valeur d'entrée n'est jamais enregistrée en comptes individuels.",
+   "q": "Quel principe le Code de commerce pose-t-il pour une plus-value latente constatée sur des titres à la clôture ?",
+   "r": "<b>Elle n'est pas comptabilisée</b> : l'écart positif entre la valeur d'inventaire et la valeur d'entrée n'est pas enregistré, alors qu'une valeur d'inventaire inférieure à la valeur nette comptable est constatée par une dépréciation.",
    "base": [
-    "Règles essentielles#2",
-    "Points de vigilance#6"
+    "Règles essentielles#2"
    ],
    "src": "C. com., art. L. 123-18 et L. 123-19",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
@@ -154,9 +153,10 @@
    "id": "ue10-05-k13",
    "type": "comp",
    "q": "Selon le Code de commerce, à quelles immobilisations est réservée la tolérance qui permet de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
-   "r": "<b>Aux seules immobilisations non financières.</b> Pour les titres, toute baisse de la valeur d'inventaire au-dessous du coût d'entrée est dépréciée.",
+   "r": "<b>Aux seules immobilisations non financières.</b> Pour les titres, toute baisse de la valeur d'inventaire au-dessous du coût d'entrée est en principe dépréciée.",
    "base": [
-    "Points de vigilance#5"
+    "Points de vigilance#5",
+    "Règles essentielles#4"
    ],
    "src": "C. com., art. R. 123-178, 5°",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
@@ -191,7 +191,7 @@
    "id": "ue10-05-k16",
    "type": "comp",
    "q": "Selon le Code de commerce, comment détermine-t-on le coût d'entrée des titres cédés lorsque des titres de même nature ont été acquis à des prix différents ?",
-   "r": "<b>Comme pour les biens fongibles : au coût moyen pondéré d'acquisition ou selon la méthode « premier entré, premier sorti ».</b> Fiscalement, pour le calcul des plus-values imposables, les cessions de titres du portefeuille sont réputées porter par priorité sur les titres de même nature acquis ou souscrits à la date la plus ancienne.",
+   "r": "<b>Au coût moyen pondéré d'acquisition ou selon la méthode « premier entré, premier sorti »</b>, les deux méthodes que le Code de commerce prévoit pour les biens fongibles.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -290,24 +290,12 @@
    "id": "ue10-05-k24",
    "type": "def",
    "q": "Qu'est-ce qu'une provision au sens du Plan comptable général ?",
-   "r": "<b>Un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b>",
+   "r": "<b>Un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b> C'est ce qui la distingue d'une dette (fournisseurs, emprunts), passif certain dont l'échéance et le montant sont fixés de façon précise.",
    "base": [
-    "Définitions#4"
+    "Définitions#4",
+    "Points de vigilance#2"
    ],
    "src": "PCG, art. 321-1 et s. (provision : art. 321-5 ; passif éventuel : art. 321-6)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue10-05-k25",
-   "type": "comp",
-   "q": "Qu'est-ce qui distingue une dette d'une provision dans le Plan comptable général ?",
-   "r": "<b>La précision de l'échéance et du montant</b> : une dette (fournisseurs, emprunts) est un passif certain dont l'échéance et le montant sont fixés de façon précise ; une provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise.",
-   "base": [
-    "Points de vigilance#2",
-    "Définitions#4"
-   ],
-   "src": "PCG, art. 321-1 et s. ; art. 322-1 et s.",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
    "fiab": "stable"
   },
@@ -327,7 +315,7 @@
    "id": "ue10-05-k27",
    "type": "comp",
    "q": "Selon le Plan comptable général, à quelles conditions une provision doit-elle être comptabilisée à la clôture ?",
-   "r": "<b>Lorsque, à la clôture, l'entité a une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources</b> sans contrepartie au moins équivalente, et que son montant peut être évalué avec une fiabilité suffisante (sinon, simple mention en annexe). Elle est évaluée à la meilleure estimation de la sortie de ressources.",
+   "r": "<b>Lorsque, à la clôture, l'entité a une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources</b> sans contrepartie au moins équivalente, et que son montant peut être évalué avec une fiabilité suffisante. Elle est évaluée à la meilleure estimation de la sortie de ressources.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -376,7 +364,7 @@
    "id": "ue10-05-k31",
    "type": "comp",
    "q": "À quelles conditions une provision est-elle déductible du résultat fiscal selon l'article 39, 1-5° du CGI ?",
-   "r": "<b>Elle doit faire face à des pertes ou charges nettement précisées que des événements en cours rendent probables</b>, et avoir été effectivement constatée dans les écritures de l'exercice. Ne sont pas déductibles les provisions constituées en vue du versement d'allocations en raison du départ à la retraite ou en préretraite.",
+   "r": "<b>Elle doit faire face à des pertes ou charges nettement précisées que des événements en cours rendent probables</b>, et avoir été effectivement constatée dans les écritures de l'exercice. Le texte exclut notamment les provisions constituées en vue du versement d'allocations en raison du départ à la retraite ou en préretraite.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -433,6 +421,18 @@
    ],
    "src": "PCG, plan de comptes 2026, comptes 14, 6872 et 7872 ; PCG, art. 513-5",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k36",
+   "type": "comp",
+   "q": "Dans des comptes consolidés établis selon les normes IFRS adoptées par l'Union européenne, quelles normes régissent les instruments financiers et les provisions ?",
+   "r": "<b>IFRS 9 pour les instruments financiers et IAS 37 pour les provisions.</b> Les sociétés qui établissent leurs comptes consolidés selon ces normes internationales sont dispensées des règles françaises de consolidation.",
+   "base": [
+    "Points de vigilance#6"
+   ],
+   "src": "C. com., art. L. 233-24 ; C. com., art. L. 123-18",
+   "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330",
    "fiab": "stable"
   }
  ]

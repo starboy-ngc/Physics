@@ -105,7 +105,7 @@
   {
    "id": "ue9-03-k09",
    "type": "comp",
-   "q": "Pour quelles opérations un assujetti à la TVA doit-il s'assurer qu'une facture est émise ?",
+   "q": "En règle générale, pour quelles opérations un assujetti à la TVA doit-il s'assurer qu'une facture est émise ?",
    "r": "<b>Les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
    "base": [
     "Règles essentielles#2"
@@ -203,7 +203,7 @@
    "id": "ue9-03-k17",
    "type": "comp",
    "q": "Chez l'acheteur assujetti, comment enregistre-t-on une facture d'achat de marchandises dont la TVA est déductible ?",
-   "r": "<b>Débit du compte d'achat (classe 60) pour le montant hors taxes</b>, débit de la TVA déductible au compte 44566 « TVA sur autres biens et services », crédit du fournisseur 401 pour le montant TTC.",
+   "r": "<b>Débit du compte d'achat 60 pour le montant hors taxes</b>, débit de la TVA déductible au compte 44566 « TVA sur autres biens et services », crédit du fournisseur 401 pour le montant TTC.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -228,7 +228,7 @@
    "id": "ue9-03-k19",
    "type": "comp",
    "q": "Chez le vendeur, comment enregistre-t-on une facture de vente de marchandises soumise à la TVA ?",
-   "r": "<b>Crédit du compte de produit (classe 70) pour le montant hors taxes collectées</b>, crédit de la TVA collectée au compte 44571, débit du client 411 pour le montant TTC.",
+   "r": "<b>Crédit du compte de produit 70 pour le montant hors taxes collectées</b>, crédit de la TVA collectée au compte 44571, débit du client 411 pour le montant TTC.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -264,8 +264,8 @@
   {
    "id": "ue9-03-k22",
    "type": "comp",
-   "q": "Selon le PCG, qu'ajoute-t-on et que retranche-t-on au prix d'achat pour obtenir le coût d'acquisition d'une immobilisation corporelle ?",
-   "r": "<b>On ajoute</b> les droits de douane et taxes non récupérables et les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner ; <b>on retranche</b> les remises, rabais commerciaux et escomptes de règlement.",
+   "q": "Selon le PCG, que comprend le prix d'achat retenu dans le coût d'acquisition d'une immobilisation corporelle, et qu'en déduit-on ?",
+   "r": "<b>Il comprend les droits de douane et taxes non récupérables ; on en déduit les remises, rabais commerciaux et escomptes de règlement.</b> Le coût d'acquisition y ajoute les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -301,7 +301,7 @@
   {
    "id": "ue9-03-k25",
    "type": "def",
-   "q": "Comment le PCG qualifie-t-il un acompte reçu d'un client et un acompte versé à un fournisseur ?",
+   "q": "Pour une commande de marchandises, comment le PCG qualifie-t-il l'acompte reçu d'un client et l'acompte versé à un fournisseur ?",
    "r": "L'acompte reçu est une <b>dette envers le client</b> jusqu'à la facturation (4191 « Clients – Avances et acomptes reçus sur commandes ») ; l'acompte versé est une <b>créance</b> (4091 « Fournisseurs – Avances et acomptes versés sur commandes »).",
    "base": [
     "Définitions#5"
@@ -422,7 +422,7 @@
   {
    "id": "ue9-03-k35",
    "type": "comp",
-   "q": "Selon le Code de commerce, quel délai de paiement maximal les parties peuvent-elles convenir pour régler une facture ?",
+   "q": "Entre professionnels, quel délai de paiement maximal le Code de commerce permet-il en principe de convenir pour régler une facture ?",
    "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou quarante-cinq jours fin de mois si ce délai est expressément stipulé.",
    "base": [
     "Chiffres et seuils#1"

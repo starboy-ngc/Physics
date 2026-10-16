@@ -1,6 +1,6 @@
 {
  "id": "ue3-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue3-03-k01",
@@ -41,7 +41,7 @@
   {
    "id": "ue3-03-k04",
    "type": "comp",
-   "q": "Quelles sont les durées maximales de travail quotidienne et hebdomadaire fixées par le Code du travail ?",
+   "q": "En principe, quelles durées maximales de travail quotidienne et hebdomadaire le Code du travail impose-t-il ?",
    "r": "<b>10 heures par jour</b> (12 heures au plus par accord) <b>et 48 heures au cours d'une même semaine</b>, avec une limite de 44 heures en moyenne sur 12 semaines consécutives (46 heures par accord).",
    "base": [
     "Règles essentielles#1"
@@ -114,7 +114,7 @@
   {
    "id": "ue3-03-k10",
    "type": "comp",
-   "q": "Quelles règles encadrent la période et la durée de prise des congés payés du salarié ?",
+   "q": "Que prévoit le Code du travail sur la période de prise des congés payés et sur leur fractionnement ?",
    "r": "<b>La période de prise comprend dans tous les cas la période du 1er mai au 31 octobre</b> ; le congé pris en une fois ne peut excéder 24 jours ouvrables et une fraction d'au moins 12 jours ouvrables continus est due. À défaut d'accord, la prise hors de cette période ouvre droit à des jours de fractionnement.",
    "base": [
     "Règles essentielles#3"
@@ -163,7 +163,7 @@
    "id": "ue3-03-k14",
    "type": "def",
    "q": "Qu'est-ce que le règlement intérieur d'une entreprise ?",
-   "r": "<b>Un document écrit par lequel l'employeur fixe exclusivement</b> les mesures de santé et de sécurité, les conditions de participation au rétablissement de conditions de travail protectrices et les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions. Obligatoire dans les entreprises d'au moins cinquante salariés, il entre en vigueur un mois après les formalités de publicité.",
+   "r": "<b>Un document écrit par lequel l'employeur fixe exclusivement</b> les mesures de santé et de sécurité, les conditions de participation au rétablissement de conditions de travail protectrices et les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions. Obligatoire dans les entreprises d'au moins cinquante salariés, il ne peut entrer en vigueur qu'un mois au moins après les formalités de publicité.",
    "base": [
     "Règles essentielles#8",
     "Ce qui a changé récemment#3"
@@ -199,7 +199,7 @@
   {
    "id": "ue3-03-k17",
    "type": "comp",
-   "q": "Au-delà de quel délai un fait fautif ne peut-il plus, à lui seul, donner lieu à des poursuites disciplinaires ?",
+   "q": "Au-delà de quel délai un fait fautif du salarié ne peut-il plus, à lui seul, donner lieu à des poursuites disciplinaires ?",
    "r": "<b>Deux mois à compter du jour où l'employeur en a eu connaissance</b>, sauf si des poursuites pénales ont été engagées dans ce délai. Par ailleurs, aucune sanction antérieure de plus de trois ans ne peut être invoquée.",
    "base": [
     "Règles essentielles#9"
@@ -236,7 +236,7 @@
    "id": "ue3-03-k20",
    "type": "comp",
    "q": "Quel est l'effet du silence du salarié auquel l'employeur propose une modification de son contrat pour motif économique ?",
-   "r": "<b>Il est réputé avoir accepté la modification.</b> La proposition, faite par lettre recommandée avec avis de réception, lui laisse un mois à compter de sa réception (quinze jours en redressement ou liquidation judiciaire) pour faire connaître son refus.",
+   "r": "<b>À défaut de réponse dans le délai imparti, il est réputé avoir accepté la modification.</b> Ce délai pour faire connaître son refus est d'un mois à compter de la réception de la proposition, faite par lettre recommandée avec avis de réception (quinze jours en redressement ou liquidation judiciaire).",
    "base": [
     "Règles essentielles#11"
    ],
@@ -247,7 +247,7 @@
   {
    "id": "ue3-03-k22",
    "type": "comp",
-   "q": "Que vaut le licenciement d'un salarié qui refuse des clauses d'un accord de performance collective étrangères à la durée du travail, à la rémunération ou à la mobilité interne ?",
+   "q": "Que vaut le licenciement pour refus de clauses d'un accord de performance collective modifiant le contrat sans porter sur la durée du travail, la rémunération ou la mobilité interne ?",
    "r": "<b>Il est sans cause réelle et sérieuse</b> (Cass. soc., 28 mai 2026) : l'effet substitutif de l'accord ne vaut que pour ses stipulations relatives à la durée du travail, à la rémunération ou à la mobilité interne. En revanche, le licenciement du salarié qui refuse ces stipulations repose sur un motif spécifique qui constitue une cause réelle et sérieuse.",
    "base": [
     "Ce qui a changé récemment#1",
@@ -285,7 +285,7 @@
    "id": "ue3-03-k25",
    "type": "comp",
    "q": "Que doit proposer l'employeur au salarié déclaré inapte à son poste par le médecin du travail ?",
-   "r": "<b>Un autre emploi approprié à ses capacités</b>, au sein de l'entreprise ou des entreprises du groupe, en prenant en compte, après avis du CSE, les conclusions écrites du médecin du travail. Il en est dispensé si l'avis mentionne expressément que tout maintien dans un emploi serait gravement préjudiciable à la santé du salarié ou que son état fait obstacle à tout reclassement.",
+   "r": "<b>Un autre emploi approprié à ses capacités</b>, au sein de l'entreprise ou des entreprises du groupe, en prenant en compte, après avis du CSE lorsqu'il existe, les conclusions écrites du médecin du travail. Il en est dispensé si l'avis mentionne expressément que tout maintien dans un emploi serait gravement préjudiciable à la santé du salarié ou que son état fait obstacle à tout reclassement.",
    "base": [
     "Règles essentielles#14"
    ],
@@ -296,7 +296,7 @@
   {
    "id": "ue3-03-k26",
    "type": "comp",
-   "q": "Quelles indemnités ouvre le licenciement d'un salarié pour inaptitude d'origine professionnelle ?",
+   "q": "En principe, quelles indemnités ouvre le licenciement d'un salarié pour inaptitude d'origine professionnelle ?",
    "r": "<b>Une indemnité compensatrice d'un montant égal à l'indemnité de préavis et une indemnité spéciale de licenciement</b> égale, sauf disposition conventionnelle plus favorable, au double de l'indemnité légale.",
    "base": [
     "Règles essentielles#14"
@@ -309,7 +309,7 @@
    "id": "ue3-03-k27",
    "type": "comp",
    "q": "Après quelles absences le salarié doit-il bénéficier d'une visite de reprise auprès du médecin du travail ?",
-   "r": "<b>Après un congé de maternité, une absence pour maladie professionnelle, une absence d'au moins 30 jours pour accident du travail ou d'au moins 60 jours pour maladie ou accident non professionnel.</b> Depuis le 15 juin 2026, elle n'est pas requise après une visite de préreprise dans les 30 jours précédant la reprise concluant qu'aucun aménagement n'est nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
+   "r": "<b>Congé de maternité, maladie professionnelle, absence d'au moins 30 jours pour accident du travail ou d'au moins 60 jours pour maladie ou accident non professionnel.</b> Pour les arrêts de travail délivrés depuis le 15 juin 2026, elle n'est pas requise si, après une visite de préreprise dans les 30 jours précédant la reprise, le médecin a conclu qu'aucun aménagement n'était nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
    "base": [
     "Règles essentielles#15",
     "Ce qui a changé récemment#2"
@@ -395,7 +395,7 @@
    "id": "ue3-03-k35",
    "type": "comp",
    "q": "Comment le salarié peut-il prendre le congé supplémentaire de naissance en vigueur depuis le 1er juillet 2026 ?",
-   "r": "<b>Un ou deux mois au choix, fractionnables en deux périodes d'un mois</b>, les parents pouvant le prendre en même temps ou en alternance ; le congé débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant. Le salarié prévient l'employeur un mois à l'avance, quinze jours lorsque le congé suit immédiatement le congé de paternité, d'accueil ou d'adoption.",
+   "r": "<b>Un ou deux mois au choix, fractionnables en deux périodes d'un mois</b>, les parents pouvant le prendre en même temps ou en alternance ; le congé débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant. Le salarié prévient en principe l'employeur au moins un mois avant le début du congé.",
    "base": [
     "Ce qui a changé récemment#0"
    ],
@@ -406,7 +406,7 @@
   {
    "id": "ue3-03-k36",
    "type": "comp",
-   "q": "Dans quelles limites les sommes dues au salarié à titre de rémunération peuvent-elles être saisies ou cédées ?",
+   "q": "En principe, dans quelles limites les sommes dues au salarié à titre de rémunération peuvent-elles être saisies ou cédées ?",
    "r": "<b>Seulement dans des proportions et selon des seuils de rémunération fixés par décret en Conseil d'État</b> (barème progressif par tranches). Une somme égale au montant forfaitaire du revenu de solidarité active pour une personne seule est, dans tous les cas, laissée à la disposition du salarié.",
    "base": [
     "Règles essentielles#6"

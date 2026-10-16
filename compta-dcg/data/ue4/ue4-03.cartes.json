@@ -18,9 +18,10 @@
    "id": "ue4-03-k02",
    "type": "def",
    "q": "Qu'est-ce qu'une créance acquise au sens de l'article 38, 2 bis du CGI ?",
-   "r": "<b>Une créance certaine dans son principe et déterminée dans son montant.</b> Pour les prestations de services, le produit n'est imposable que si la créance est acquise et la prestation achevée.",
+   "r": "<b>Une créance certaine dans son principe et déterminée dans son montant.</b> Pour les prestations de services, le produit n'est en principe imposable que si la créance est acquise et la prestation achevée ; les prestations continues sont rattachées au fur et à mesure de leur exécution.",
    "base": [
-    "Définitions#1"
+    "Définitions#1",
+    "Règles essentielles#0"
    ],
    "src": "CGI, art. 38, 2 bis ; BOI-BIC-BASE-20-10",
    "url": "https://bofip.impots.gouv.fr/bofip/6391-PGP.html/identifiant=BOI-BIC-BASE-20-10-20121204",
@@ -55,7 +56,7 @@
    "id": "ue4-03-k05",
    "type": "comp",
    "q": "Quels abattements s'appliquent au chiffre d'affaires d'un exploitant relevant du régime micro-BIC pour déterminer son bénéfice ?",
-   "r": "<b>71 % pour les ventes et 50 % pour les prestations de services</b> (30 % pour les meublés de tourisme non classés), chaque abattement ne pouvant être inférieur à 305 €.",
+   "r": "<b>71 % pour les ventes et la fourniture de logement hors location meublée, 50 % pour les prestations de services et la location meublée</b>, sauf 30 % pour les meublés de tourisme non classés. Chaque abattement ne peut être inférieur à 305 €.",
    "base": [
     "Définitions#2"
    ],
@@ -189,7 +190,7 @@
    "id": "ue4-03-k16",
    "type": "comp",
    "q": "Quels biens ouvrent droit à l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
-   "r": "<b>Les biens d'équipement normalement utilisés dans les entreprises industrielles, acquis neufs et dont la durée normale d'utilisation est d'au moins trois ans.</b> Sont exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux absents des catégories de l'annexe II (véhicules de tourisme, mobilier de bureau notamment).",
+   "r": "<b>Les biens d'équipement acquis neufs, dont la durée normale d'utilisation est d'au moins trois ans et qui figurent dans les catégories de l'annexe II</b> (matériels et outillages industriels notamment). Sont donc exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux hors de ces catégories, comme les véhicules de tourisme ou le mobilier de bureau.",
    "base": [
     "Règles essentielles#6",
     "Points de vigilance#2"
@@ -371,8 +372,8 @@
   {
    "id": "ue4-03-k31",
    "type": "comp",
-   "q": "Comment les amortissements d'un loueur en meublé relevant du micro-BIC sont-ils pris en compte, y compris lors de la cession de l'immeuble ?",
-   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value relève du court terme à hauteur de ces amortissements réputés déduits.",
+   "q": "Pour un loueur en meublé professionnel relevant du micro-BIC, comment les amortissements sont-ils pris en compte, y compris lors de la cession de l'immeuble ?",
+   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value professionnelle relève donc du court terme à hauteur de ces amortissements réputés déduits.",
    "base": [
     "Ce qui a changé récemment#2"
    ],

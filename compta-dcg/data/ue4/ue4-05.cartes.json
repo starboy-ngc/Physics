@@ -1,6 +1,6 @@
 {
  "id": "ue4-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue4-05-k01",
@@ -103,7 +103,7 @@
    "id": "ue4-05-k09",
    "type": "comp",
    "q": "Comment sont traitées en TVA les locations nues d'immeubles, selon qu'ils sont à usage d'habitation ou à usage professionnel ?",
-   "r": "<b>Les locations nues d'immeubles à usage d'habitation (comme celles de terres agricoles) sont exonérées.</b> Les bailleurs de locaux nus à usage professionnel peuvent opter pour l'imposition à la TVA, pour les locaux loués pour les besoins de l'activité d'un preneur assujetti.",
+   "r": "<b>Les locations nues d'immeubles à usage d'habitation sont exonérées</b>, comme celles de terres agricoles. Les bailleurs de locaux nus à usage professionnel, loués pour les besoins de l'activité d'un preneur assujetti, peuvent opter pour l'imposition à la TVA.",
    "base": [
     "Règles essentielles#0",
     "Règles essentielles#1"
@@ -212,7 +212,7 @@
   {
    "id": "ue4-05-k18",
    "type": "def",
-   "q": "Qu'est-ce que la base d'imposition à la TVA selon l'article 266 du CGI ?",
+   "q": "En matière de TVA, qu'est-ce que la base d'imposition d'une opération imposable ?",
    "r": "<b>Toutes les sommes, valeurs, biens ou services reçus en contrepartie de l'opération</b>, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA.",
    "base": [
     "Règles essentielles#7"
@@ -224,7 +224,7 @@
   {
    "id": "ue4-05-k19",
    "type": "comp",
-   "q": "Quels éléments sont exclus de la base d'imposition à la TVA par l'article 267 du CGI ?",
+   "q": "En matière de TVA, quels éléments sont exclus de la base d'imposition d'une opération imposable ?",
    "r": "<b>Les rabais, remises, ristournes et escomptes accordés directement au client</b>, ainsi que <b>les débours remboursés à l'euro</b>.",
    "base": [
     "Règles essentielles#7"
@@ -323,8 +323,8 @@
   {
    "id": "ue4-05-k28",
    "type": "comp",
-   "q": "Dans le bâtiment, qui acquitte la TVA sur les travaux réalisés par un sous-traitant pour un preneur assujetti ?",
-   "r": "<b>Le preneur, par autoliquidation</b> ; le sous-traitant facture hors taxe avec la mention « autoliquidation ». Sont visés les travaux de construction, réparation, nettoyage ou entretien d'immeubles.",
+   "q": "Dans la sous-traitance du bâtiment, comment est acquittée la TVA due sur les travaux réalisés par le sous-traitant ?",
+   "r": "<b>Par autoliquidation</b> : lorsque le preneur est assujetti, c'est lui qui acquitte la taxe, et le sous-traitant facture hors taxe avec la mention « autoliquidation ». Sont visés les travaux de construction, réparation, nettoyage ou entretien d'immeubles.",
    "base": [
     "Règles essentielles#15"
    ],

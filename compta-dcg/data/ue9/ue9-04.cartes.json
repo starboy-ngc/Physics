@@ -43,8 +43,8 @@
   {
    "id": "ue9-04-k04",
    "type": "comp",
-   "q": "Quel compte du PCG sert de passage pour un virement entre deux comptes de trésorerie tenus dans des journaux auxiliaires différents ?",
-   "r": "<b>Le compte 58 « Virements internes ».</b> Pour un virement de la caisse vers la banque : débit 58 / crédit 53 au journal de caisse, puis débit 512 / crédit 58 au journal de banque ; le compte 58 est soldé une fois les deux écritures passées.",
+   "q": "Comment enregistre-t-on un virement de fonds de la caisse vers la banque lorsque chacune est tenue dans son propre journal auxiliaire ?",
+   "r": "<b>En passant par le compte 58 « Virements internes »</b> : débit 58 / crédit 53 au journal de caisse, puis débit 512 / crédit 58 au journal de banque. Le compte 58 est soldé une fois les deux écritures passées.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -92,8 +92,8 @@
   {
    "id": "ue9-04-k08",
    "type": "comp",
-   "q": "Dans quel code l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère-t-elle les dispositions relatives à la taxe sur la valeur ajoutée ?",
-   "r": "<b>Au livre II du code des impositions sur les biens et services (CIBS).</b> Son article 9 abroge l'article 261 C du CGI ; Légifrance fixe au 1er janvier 2027 l'abrogation des dispositions TVA du CGI concernées.",
+   "q": "Que devient, avec l'ordonnance n° 2025-1247 du 17 décembre 2025, l'article 261 C du CGI, qui exonère de TVA notamment les intérêts et les assurances ?",
+   "r": "<b>Il est abrogé par l'article 9 de l'ordonnance</b>, qui transfère la TVA au livre II du code des impositions sur les biens et services (CIBS). Selon Légifrance, cette abrogation prend effet le 1er janvier 2027 ; l'exonération des opérations d'assurance figure alors aux articles L. 213-129 à L. 213-131 du CIBS.",
    "base": [
     "Ce qui a changé récemment#6"
    ],
@@ -140,22 +140,9 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-04-k12",
-   "type": "comp",
-   "q": "Qui est redevable de la cotisation foncière des entreprises (CFE) selon l'article 1447 du CGI ?",
-   "r": "<b>Les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires qui exercent à titre habituel une activité professionnelle non salariée.</b> Elle est due chaque année ; cette rédaction de l'article 1447 est issue de la loi de finances pour 2026.",
-   "base": [
-    "Règles essentielles#5",
-    "Ce qui a changé récemment#5"
-   ],
-   "src": "CGI, art. 1447, I (rédaction issue de la loi n° 2026-103 du 19 février 2026) ; plan de comptes, compte 6351",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-04-k13",
    "type": "comp",
-   "q": "Selon le CGI, qui doit la taxe foncière sur une propriété bâtie ?",
+   "q": "Selon le CGI, qui doit en principe la taxe foncière sur une propriété bâtie ?",
    "r": "<b>Le propriétaire actuel</b> (l'usufruitier en cas d'usufruit), pour l'année entière, d'après les faits existants au 1er janvier de l'année d'imposition. Pour l'entité propriétaire, c'est une charge du compte 63512 « Taxes foncières ».",
    "base": [
     "Règles essentielles#6"
@@ -180,7 +167,7 @@
    "id": "ue9-04-k15",
    "type": "def",
    "q": "Dans le compte 64 « Charges de personnel » du PCG, quels comptes enregistrent les rémunérations, les charges de sécurité sociale et de prévoyance, et les remboursements ?",
-   "r": "<b>641 pour les rémunérations du personnel, 645 pour les charges de sécurité sociale et de prévoyance et 649 pour les remboursements de charges de personnel.</b> Le 645 se subdivise par organisme : 6451 URSSAF, 6452 mutuelles, 6453 caisses de retraites, 6454 Pôle emploi, 6458 autres organismes sociaux.",
+   "r": "<b>641 pour les rémunérations du personnel, 645 pour les charges de sécurité sociale et de prévoyance et 649 pour les remboursements de charges de personnel.</b> Le compte 645 se subdivise par organisme : URSSAF, mutuelles, caisses de retraites, autres organismes sociaux.",
    "base": [
     "Définitions#3"
    ],
@@ -189,22 +176,10 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-04-k16",
-   "type": "comp",
-   "q": "Quel changement d'intitulé le règlement ANC n° 2026-03 apporte-t-il au compte 6454 du PCG ?",
-   "r": "<b>Il remplace « Pôle emploi » par « France Travail »</b> dans l'intitulé du compte 6454. Il s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible : le plan de comptes au 1er janvier 2026 porte encore « Cotisations à Pôle emploi ».",
-   "base": [
-    "Ce qui a changé récemment#2"
-   ],
-   "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 6 ; arrêté du 12 août 2026",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-04-k17",
    "type": "comp",
-   "q": "Pour les exercices ouverts à compter du 1er janvier 2025, dans quel compte du PCG enregistre-t-on les remboursements de charges de personnel ?",
-   "r": "<b>Au compte 649 « Remboursements de charges de personnel ».</b> Le PCG ne prévoit plus la technique du transfert de charges : le règlement ANC n° 2022-06 a retiré les transferts de charges de la liste des produits de l'article 512-1.",
+   "q": "Pour les exercices ouverts depuis le 1er janvier 2025, pourquoi un remboursement de charges de personnel ne passe-t-il plus par un compte de transfert de charges ?",
+   "r": "<b>Parce que le PCG ne prévoit plus la technique du transfert de charges</b> : le règlement ANC n° 2022-06 a retiré les transferts de charges de la liste des produits de l'article 512-1. Le remboursement est enregistré au compte 649 « Remboursements de charges de personnel ».",
    "base": [
     "Ce qui a changé récemment#0"
    ],
@@ -277,7 +252,7 @@
   {
    "id": "ue9-04-k23",
    "type": "comp",
-   "q": "Dans l'écriture de paie, quels comptes du PCG sont crédités pour les retenues sur le salaire brut et les acomptes déjà versés ?",
+   "q": "Dans l'écriture de paie, quels comptes du PCG sont crédités pour les cotisations salariales, le prélèvement à la source et les acomptes déjà versés ?",
    "r": "<b>431 « Sécurité sociale »</b> (cotisations salariales dues à l'URSSAF), <b>437 « Autres organismes sociaux »</b> (retraite complémentaire, prévoyance), <b>4421</b> (prélèvement à la source) et <b>425</b> (acomptes déjà versés).",
    "base": [
     "Règles essentielles#9"
@@ -335,18 +310,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-04-k28",
-   "type": "comp",
-   "q": "Depuis le 1er septembre 2025, quel taux de prélèvement à la source s'applique aux conjoints ou partenaires de PACS soumis à imposition commune ?",
-   "r": "<b>Un taux individualisé, sauf option contraire du contribuable</b> : chaque taux individualisé s'applique aux seuls revenus personnels du conjoint concerné (réforme issue de l'article 19 de la loi de finances pour 2024).",
-   "base": [
-    "Ce qui a changé récemment#4"
-   ],
-   "src": "Loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 19 ; CGI, art. 204 E et 204 M ; BOI-IR-PAS-20-20-20",
-   "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-04-k29",
    "type": "def",
    "q": "De quels éléments se compose l'échéance d'un emprunt auprès d'un établissement de crédit ?",
@@ -362,24 +325,13 @@
    "id": "ue9-04-k30",
    "type": "comp",
    "q": "Pour quelle raison rattache-t-on à l'exercice les intérêts courus non échus d'un emprunt bancaire ?",
-   "r": "<b>Parce que le compte de résultat retient les charges de l'exercice indépendamment de leur date de paiement.</b> Ces intérêts sont inscrits au compte 1648 « Intérêts courus sur emprunts auprès des établissements de crédit ».",
+   "r": "<b>Parce que le compte de résultat retient les charges de l'exercice indépendamment de leur date de paiement.</b> Depuis 2025, ces intérêts sont inscrits au compte 1648 « Intérêts courus sur emprunts auprès des établissements de crédit » (avant 2025 : 16884, subdivision du compte 1688).",
    "base": [
-    "Règles essentielles#13"
+    "Règles essentielles#13",
+    "Ce qui a changé récemment#1"
    ],
    "src": "C. com., art. L. 123-13 ; plan de comptes (version au 1er janvier 2026), compte 1648",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-04-k31",
-   "type": "comp",
-   "q": "Qu'a changé le PCG applicable depuis 2025 dans l'enregistrement des intérêts courus sur emprunts ?",
-   "r": "<b>Ils sont ventilés selon la nature de la dette</b> : 1648 pour les emprunts auprès des établissements de crédit (avant 2025 : 16884, subdivision du compte 1688). Le compte 1688 ne vise plus que les intérêts courus sur autres emprunts et dettes assimilées.",
-   "base": [
-    "Ce qui a changé récemment#1"
-   ],
-   "src": "Règlement ANC n° 2022-06 ; plan de comptes (version au 1er janvier 2026), comptes 1648 et 1688",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -398,7 +350,7 @@
    "id": "ue9-04-k33",
    "type": "comp",
    "q": "Lors d'un rapprochement bancaire, quelles opérations l'entreprise doit-elle enregistrer dans sa comptabilité ?",
-   "r": "<b>Les seules opérations figurant sur le relevé mais absentes de la comptabilité</b> (frais, agios, virements reçus). Elles sont enregistrées sur la base du relevé, qui est la pièce justificative.",
+   "r": "<b>Les opérations figurant sur le relevé mais absentes de la comptabilité</b> (frais, agios, virements reçus). Elles sont enregistrées sur la base du relevé, qui est la pièce justificative.",
    "base": [
     "Règles essentielles#14",
     "Points de vigilance#2"
@@ -417,18 +369,6 @@
    ],
    "src": "C. com., art. R. 123-174 et R. 123-177",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-04-k35",
-   "type": "comp",
-   "q": "Selon le Code de commerce, pendant combien de temps les documents comptables et les pièces justificatives doivent-ils être conservés ?",
-   "r": "<b>Dix ans.</b> Cette durée s'applique notamment aux relevés bancaires, aux factures et aux bulletins de paie, qui sont des pièces justificatives.",
-   "base": [
-    "Chiffres et seuils#2"
-   ],
-   "src": "C. com., art. L. 123-22",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
    "fiab": "stable"
   }
  ]

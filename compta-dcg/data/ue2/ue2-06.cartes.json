@@ -1,12 +1,12 @@
 {
  "id": "ue2-06",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue2-06-k01",
    "type": "def",
    "q": "Qu'est-ce que la cessation des paiements d'un débiteur en droit des entreprises en difficulté ?",
-   "r": "<b>L'impossibilité de faire face au passif exigible avec son actif disponible.</b> Le débiteur qui établit que les réserves de crédit ou les moratoires dont il bénéficie de la part de ses créanciers lui permettent d'y faire face n'est pas en cessation des paiements.",
+   "r": "<b>La situation du débiteur qui est dans l'impossibilité de faire face au passif exigible avec son actif disponible.</b> N'est pas en cessation des paiements le débiteur qui établit que les réserves de crédit ou les moratoires dont il bénéficie de la part de ses créanciers lui permettent d'y faire face.",
    "base": [
     "Définitions#0"
    ],
@@ -80,7 +80,7 @@
    "id": "ue2-06-k07",
    "type": "comp",
    "q": "Comment se déroule la procédure d'alerte du commissaire aux comptes d'une société anonyme (SA) ?",
-   "r": "<b>Il informe le président du conseil d'administration ou du directoire des faits de nature à compromettre la continuité de l'exploitation.</b> Sans réponse sous quinze jours ou si elle ne permet pas d'en être assuré, il invite par écrit à faire délibérer le conseil ; si la continuité demeure compromise, il présente un rapport spécial à l'assemblée générale, puis, si les décisions prises ne l'assurent pas, informe le président du tribunal.",
+   "r": "<b>Il informe le président du conseil d'administration ou du directoire des faits de nature à compromettre la continuité de l'exploitation.</b> Sans réponse sous quinze jours ou si elle ne l'en assure pas, il invite par écrit, avec copie au président du tribunal, à faire délibérer le conseil ; si la continuité reste compromise, il présente un rapport spécial à l'assemblée générale, puis informe le président du tribunal en cas d'échec.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -91,8 +91,8 @@
   {
    "id": "ue2-06-k08",
    "type": "comp",
-   "q": "Quel pouvoir le président du tribunal de commerce détient-il face à une société commerciale dont la continuité d'exploitation est compromise ?",
-   "r": "<b>Il peut convoquer ses dirigeants pour envisager les mesures propres à redresser la situation</b>, lorsqu'il résulte de tout acte, document ou procédure que la société connaît des difficultés de nature à compromettre la continuité de l'exploitation. Ce pouvoir vaut aussi pour un GIE ou une entreprise individuelle commerciale ou artisanale.",
+   "q": "Que peut faire le président du tribunal de commerce à l'égard des dirigeants d'une société commerciale dont la continuité d'exploitation est compromise ?",
+   "r": "<b>Il peut les convoquer pour envisager les mesures propres à redresser la situation</b>, lorsqu'il résulte de tout acte, document ou procédure que la société connaît des difficultés de nature à compromettre la continuité de l'exploitation. Ce pouvoir vaut aussi pour un GIE ou une entreprise individuelle commerciale ou artisanale.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -152,8 +152,8 @@
   {
    "id": "ue2-06-k13",
    "type": "comp",
-   "q": "Entre la conciliation et la sauvegarde, quelle procédure un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut-il encore demander ?",
-   "r": "<b>La conciliation, mais pas la sauvegarde</b>, réservée au débiteur qui n'est pas en cessation des paiements. S'il ne demande pas de conciliation, il doit demander l'ouverture d'un redressement ou d'une liquidation judiciaire dans les quarante-cinq jours qui suivent la cessation des paiements ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
+   "q": "Pourquoi un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut-il encore demander une conciliation, mais pas une sauvegarde ?",
+   "r": "<b>La conciliation reste ouverte au débiteur qui n'est pas en cessation des paiements depuis plus de quarante-cinq jours, alors que la sauvegarde est réservée au débiteur qui n'est pas en cessation des paiements.</b> Sans conciliation, il doit demander un redressement ou une liquidation judiciaire dans ces quarante-cinq jours ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#4"
@@ -190,7 +190,7 @@
    "id": "ue2-06-k16",
    "type": "comp",
    "q": "Quels effets le jugement d'ouverture d'une procédure collective produit-il sur le paiement et les poursuites des créanciers antérieurs ?",
-   "r": "<b>Il emporte de plein droit interdiction de payer toute créance née antérieurement</b>, sauf paiement par compensation de créances connexes ; il interrompt ou interdit leurs actions en justice tendant au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution.",
+   "r": "<b>Il emporte de plein droit interdiction de payer toute créance née antérieurement</b>, sauf paiement par compensation de créances connexes ; il interrompt ou interdit leurs actions en justice tendant à la condamnation du débiteur au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -352,7 +352,7 @@
    "id": "ue2-06-k29",
    "type": "def",
    "q": "En quoi consiste le délit de présentation de comptes infidèles dans une SARL ou une SA ?",
-   "r": "<b>Présenter aux associés (SARL) ou publier ou présenter aux actionnaires (SA) des comptes annuels ne donnant pas une image fidèle du résultat des opérations de l'exercice, de la situation financière et du patrimoine, en vue de dissimuler la véritable situation de la société.</b> Le délit existe même en l'absence de toute distribution.",
+   "r": "<b>Présenter aux associés (SARL) ou publier ou présenter aux actionnaires (SA) des comptes annuels ne donnant pas, pour chaque exercice, une image fidèle du résultat des opérations de l'exercice, de la situation financière et du patrimoine, en vue de dissimuler la véritable situation de la société.</b> Le délit existe même en l'absence de toute distribution.",
    "base": [
     "Règles essentielles#11"
    ],

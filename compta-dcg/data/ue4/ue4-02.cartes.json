@@ -78,7 +78,7 @@
    "id": "ue4-02-k07",
    "type": "comp",
    "q": "Quelles indemnités de licenciement sont exonérées en totalité d'impôt sur le revenu, quel que soit leur montant ?",
-   "r": "<b>Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi</b> et celles allouées par le juge pour un licenciement irrégulier ou sans cause réelle et sérieuse.",
+   "r": "<b>Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi</b> et celles allouées par le juge, notamment pour un licenciement irrégulier ou sans cause réelle et sérieuse.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -102,20 +102,9 @@
    "id": "ue4-02-k09",
    "type": "comp",
    "q": "Comment une rente viagère à titre onéreux est-elle imposée à l'impôt sur le revenu ?",
-   "r": "<b>Seule une fraction de la rente est imposable</b>, fixée une fois pour toutes selon l'âge du crédirentier à l'entrée en jouissance : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.",
+   "r": "<b>Seule une fraction de la rente est imposable</b>, fixée selon l'âge du crédirentier à la date d'entrée en jouissance, non l'âge atteint l'année d'imposition, puis invariable : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.",
    "base": [
-    "Définitions#4"
-   ],
-   "src": "CGI, art. 158, 6",
-   "url": null,
-   "fiab": "stable"
-  },
-  {
-   "id": "ue4-02-k10",
-   "type": "comp",
-   "q": "Quel âge du crédirentier retient-on pour fixer la fraction imposable d'une rente viagère à titre onéreux ?",
-   "r": "<b>Son âge à la date d'entrée en jouissance de la rente</b>, non l'âge atteint l'année d'imposition ; la fraction imposable reste ensuite invariable.",
-   "base": [
+    "Définitions#4",
     "Points de vigilance#4"
    ],
    "src": "CGI, art. 158, 6",
@@ -233,8 +222,8 @@
   {
    "id": "ue4-02-k20",
    "type": "comp",
-   "q": "Comment s'impute un déficit foncier constaté au régime réel d'imposition des revenus fonciers ?",
-   "r": "<b>Hors intérêts d'emprunt, le déficit s'impute sur le revenu global dans la limite de 10 700 € par an</b> ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes. La limite est portée jusqu'à 21 400 € à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D.",
+   "q": "Hors majoration pour travaux de rénovation énergétique, comment s'impute un déficit foncier constaté au régime réel d'imposition des revenus fonciers ?",
+   "r": "<b>Hors intérêts d'emprunt, le déficit s'impute sur le revenu global dans la limite de 10 700 € par an</b> ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -319,8 +308,8 @@
   {
    "id": "ue4-02-k27",
    "type": "comp",
-   "q": "À quelles conditions principales le dirigeant de PME partant à la retraite bénéficie-t-il de l'abattement fixe sur la plus-value de cession de ses titres ?",
-   "r": "<b>Détenir les titres depuis au moins un an</b>, avoir exercé une fonction de direction de manière continue pendant les cinq années précédant la cession et faire valoir ses droits à la retraite dans les deux années qui précèdent ou suivent la cession.",
+   "q": "Quelles durées le dirigeant de PME partant à la retraite doit-il respecter (détention des titres, fonctions de direction, départ en retraite) pour bénéficier de l'abattement fixe ?",
+   "r": "<b>Titres détenus depuis au moins un an</b> ; fonction de direction exercée de manière continue pendant les cinq années précédant la cession ; droits à la retraite à faire valoir dans les deux années qui précèdent ou suivent la cession. Ce ne sont pas les seules conditions de l'abattement.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -380,7 +369,7 @@
    "id": "ue4-02-k32",
    "type": "comp",
    "q": "Quel régime de plus-value s'applique à la cession de son logement par un loueur en meublé non professionnel ?",
-   "r": "<b>Celui des plus-values immobilières des particuliers</b>, avec, depuis la loi de finances pour 2025, réintégration des amortissements déduits. Les plus-values professionnelles ne concernent que le loueur en meublé professionnel.",
+   "r": "<b>Celui des plus-values immobilières des particuliers</b>, avec, depuis la loi de finances pour 2025, réintégration en principe des amortissements déduits. Les plus-values professionnelles ne concernent que le loueur en meublé professionnel.",
    "base": [
     "Points de vigilance#5",
     "Règles essentielles#13"
@@ -393,7 +382,7 @@
    "id": "ue4-02-k33",
    "type": "comp",
    "q": "Comment la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025) modifie-t-elle le calcul de la plus-value immobilière d'un loueur en meublé non professionnel ?",
-   "r": "<b>Le prix d'acquisition retenu est minoré des amortissements admis en déduction pendant la location</b>, pour les cessions réalisées à compter du 15 février 2025, lendemain de la promulgation de la loi.",
+   "r": "<b>En principe, le prix d'acquisition retenu est minoré des amortissements admis en déduction pendant la location</b>, pour les cessions réalisées à compter du 15 février 2025, lendemain de la promulgation de la loi.",
    "base": [
     "Ce qui a changé récemment#4"
    ],

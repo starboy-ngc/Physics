@@ -78,7 +78,7 @@
    "id": "ue3-02-k07",
    "type": "def",
    "q": "Qu'est-ce que la visite d'information et de prévention prévue après l'embauche d'un salarié ?",
-   "r": "<b>Une visite réalisée par un professionnel de santé du service de prévention et de santé au travail</b>, dans un délai qui n'excède pas trois mois à compter de la prise effective du poste. Elle donne lieu à une attestation de suivi et est renouvelée selon une périodicité qui ne peut excéder cinq ans.",
+   "r": "<b>Une visite réalisée par un professionnel de santé du service de prévention et de santé au travail</b>, en principe dans un délai qui n'excède pas trois mois à compter de la prise effective du poste. Elle donne lieu à une attestation de suivi et est renouvelée selon une périodicité qui ne peut excéder cinq ans.",
    "base": [
     "Définitions#3"
    ],
@@ -101,7 +101,7 @@
   {
    "id": "ue3-02-k09",
    "type": "comp",
-   "q": "Quelle est la durée maximale de la période d'essai d'un CDI selon la catégorie du salarié ?",
+   "q": "Hors renouvellement, quelle est la durée maximale de la période d'essai d'un CDI selon la catégorie du salarié ?",
    "r": "<b>2 mois pour les ouvriers et employés, 3 mois pour les agents de maîtrise et techniciens, 4 mois pour les cadres.</b> Elle peut être renouvelée une seule fois, si un accord de branche étendu le prévoit et si le contrat le stipule, dans la limite de 4, 6 et 8 mois renouvellement compris.",
    "base": [
     "Règles essentielles#0"
@@ -113,8 +113,8 @@
   {
    "id": "ue3-02-k10",
    "type": "comp",
-   "q": "En matière de période d'essai, de CDD et de contrat de mission, quels sujets relèvent du bloc 1, où l'accord de branche prévaut sur l'accord d'entreprise ?",
-   "r": "<b>Les conditions et durées de renouvellement de la période d'essai, la durée totale du CDD et du contrat de mission, le nombre maximal de renouvellements et les conditions du délai de carence.</b> L'accord de branche y prévaut sur l'accord d'entreprise, sauf garanties au moins équivalentes.",
+   "q": "En matière de période d'essai et de CDD, quels sujets relèvent du bloc 1, où l'accord de branche prévaut sur l'accord d'entreprise ?",
+   "r": "<b>Les conditions et durées de renouvellement de la période d'essai, la durée totale du CDD (comme celle du contrat de mission), le nombre maximal de renouvellements et les conditions du délai de carence.</b> L'accord de branche y prévaut sur l'accord d'entreprise, sauf garanties au moins équivalentes.",
    "base": [
     "Règles essentielles#1"
    ],
@@ -137,8 +137,8 @@
   {
    "id": "ue3-02-k12",
    "type": "comp",
-   "q": "Quels sont les cas de recours au contrat à durée déterminée (CDD) prévus par le Code du travail ?",
-   "r": "<b>Le remplacement d'un salarié absent ou dont le contrat est suspendu, l'attente de l'entrée en service d'un salarié recruté en CDI, l'accroissement temporaire d'activité, les emplois à caractère saisonnier ou d'usage et le CDD à objet défini.</b> Ces cas de recours sont limitatifs.",
+   "q": "Quels sont les principaux cas de recours au contrat à durée déterminée (CDD) prévus par le Code du travail ?",
+   "r": "<b>Le remplacement d'un salarié absent ou dont le contrat est suspendu, l'attente de l'entrée en service d'un salarié recruté en CDI, l'accroissement temporaire d'activité, les emplois à caractère saisonnier ou d'usage et le CDD à objet défini.</b> Le recours au CDD n'est permis que dans les cas limitativement énumérés par la loi.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -149,7 +149,7 @@
   {
    "id": "ue3-02-k13",
    "type": "comp",
-   "q": "Dans quelles situations le recours à un contrat à durée déterminée (CDD) est-il interdit ?",
+   "q": "Dans quels cas le Code du travail interdit-il expressément de conclure un contrat à durée déterminée (CDD) ?",
    "r": "<b>Pour remplacer un salarié gréviste ou pour des travaux particulièrement dangereux.</b> Il l'est aussi pour un accroissement temporaire d'activité dans les six mois suivant un licenciement économique sur le poste, sauf contrat de trois mois au plus non renouvelable ou commande exceptionnelle à l'exportation.",
    "base": [
     "Règles essentielles#2"
@@ -187,7 +187,7 @@
    "id": "ue3-02-k16",
    "type": "comp",
    "q": "Quelle est la durée minimale de travail d'un salarié à temps partiel à défaut d'accord de branche étendu ?",
-   "r": "<b>24 heures par semaine</b>, sauf demande écrite et motivée du salarié ou s'il s'agit d'un étudiant de moins de 26 ans.",
+   "r": "<b>24 heures par semaine.</b> Une durée inférieure peut notamment être fixée à la demande écrite et motivée du salarié, ou à la demande d'un étudiant de moins de 26 ans.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -199,7 +199,7 @@
    "id": "ue3-02-k17",
    "type": "def",
    "q": "Qu'est-ce que le contrat d'apprentissage au sens du Code du travail ?",
-   "r": "<b>Un contrat de travail de type particulier</b> ouvert aux jeunes de 16 à 29 ans révolus au début de l'apprentissage, avec des dérogations pour les travailleurs handicapés, les créateurs d'entreprise et les sportifs de haut niveau.",
+   "r": "<b>Un contrat de travail de type particulier</b>, ouvert en principe aux jeunes de 16 à 29 ans révolus au début de l'apprentissage. La limite d'âge connaît des dérogations, notamment pour les travailleurs handicapés, les créateurs d'entreprise et les sportifs de haut niveau.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -222,7 +222,7 @@
   {
    "id": "ue3-02-k19",
    "type": "comp",
-   "q": "Dans quel cadre le télétravail est-il mis en place dans une entreprise ?",
+   "q": "Hors circonstances exceptionnelles, dans quel cadre le télétravail est-il mis en place dans une entreprise ?",
    "r": "<b>Par un accord collectif ou, à défaut, une charte élaborée par l'employeur après avis du CSE</b>, s'il existe. En leur absence, par un accord entre l'employeur et le salarié formalisé par tout moyen.",
    "base": [
     "Règles essentielles#8"
@@ -283,8 +283,8 @@
   {
    "id": "ue3-02-k24",
    "type": "comp",
-   "q": "Comment est fixée l'indemnité de fin de contrat due au salarié en CDD ?",
-   "r": "<b>À 10 % de la rémunération totale brute versée au salarié.</b> Un accord de branche étendu ou un accord d'entreprise ou d'établissement peut la limiter à 6 %, en contrepartie notamment d'un accès privilégié à la formation professionnelle.",
+   "q": "Comment le montant de l'indemnité de fin de contrat due au salarié en CDD est-il déterminé ?",
+   "r": "<b>Il est égal à 10 % de la rémunération totale brute versée au salarié.</b> Un accord de branche étendu ou un accord d'entreprise ou d'établissement peut le limiter à 6 %, en contrepartie notamment d'un accès privilégié à la formation professionnelle.",
    "base": [
     "Chiffres et seuils#2"
    ],
@@ -320,7 +320,7 @@
    "id": "ue3-02-k27",
    "type": "comp",
    "q": "Depuis le 1er janvier 2024, quelle conséquence sur l'assurance chômage peut avoir le refus par le salarié d'un CDI proposé à l'issue de son CDD ?",
-   "r": "<b>Après deux refus de CDI au cours des douze mois précédents, l'allocation d'assurance chômage ne peut pas être accordée</b>, si les CDI proposés portaient sur le même emploi ou un emploi similaire, avec une rémunération au moins équivalente, une durée du travail équivalente, la même classification et le même lieu de travail. L'employeur informe France Travail du refus dans le délai d'un mois.",
+   "r": "<b>Après deux refus de CDI au cours des douze mois précédents, l'allocation d'assurance chômage ne peut en principe pas être accordée</b>, si les CDI proposés portaient sur le même emploi ou un emploi similaire, avec une rémunération au moins équivalente, une durée du travail équivalente, la même classification et le même lieu de travail. L'employeur informe France Travail du refus dans le délai d'un mois.",
    "base": [
     "Ce qui a changé récemment#1"
    ],

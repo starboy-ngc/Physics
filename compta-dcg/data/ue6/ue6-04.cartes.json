@@ -41,8 +41,8 @@
   {
    "id": "ue6-04-k04",
    "type": "def",
-   "q": "Selon le Code monétaire et financier, qu'est-ce que le taux effectif global d'un prêt ?",
-   "r": "<b>Un taux calculé actuariellement</b> qui assure, selon la méthode des intérêts composés, l'égalité entre les sommes prêtées et l'ensemble des versements dus par l'emprunteur. C'est la logique du TRI : le taux qui égalise la valeur actuelle des flux et le montant investi.",
+   "q": "Quelle égalité le calcul actuariel du taux effectif global d'un prêt assure-t-il ?",
+   "r": "<b>L'égalité entre les sommes prêtées et l'ensemble des versements dus par l'emprunteur</b>, selon la méthode des intérêts composés. C'est la logique du TRI : le taux qui égalise la valeur actuelle des flux et le montant investi.",
    "base": [
     "Définitions#1"
    ],
@@ -78,8 +78,8 @@
   {
    "id": "ue6-04-k07",
    "type": "comp",
-   "q": "Pourquoi la TVA grevant une immobilisation ne figure-t-elle ni dans l'investissement initial ni dans les flux d'un projet d'investissement ?",
-   "r": "<b>Parce qu'elle est déductible</b> : ce n'est pas un coût, on raisonne hors taxes. Elle n'affecte que le BFR si le sujet le précise.",
+   "q": "Pourquoi la TVA grevant une immobilisation est-elle en principe exclue de l'investissement initial et des flux d'un projet d'investissement ?",
+   "r": "<b>Parce qu'elle est déductible</b> : ce n'est pas un coût, on raisonne hors taxes. Elle n'affecte que le BFR si le sujet le précise. Une TVA non déductible serait, elle, un coût du projet.",
    "base": [
     "Points de vigilance#0",
     "Règles essentielles#0"
@@ -212,9 +212,10 @@
    "id": "ue6-04-k18",
    "type": "comp",
    "q": "En comptabilité, à quoi sert la valeur d'usage du PCG, calculée par les flux nets de trésorerie attendus ?",
-   "r": "<b>Au test de dépréciation des immobilisations.</b> Une VAN négative d'un actif en service signale ainsi une dépréciation possible.",
+   "r": "<b>Au test de dépréciation des immobilisations.</b> Avec la valeur vénale, elle sert à déterminer la valeur actuelle de l'actif (la plus élevée des deux), que l'on compare à sa valeur nette comptable.",
    "base": [
-    "Points de vigilance#3"
+    "Points de vigilance#3",
+    "Définitions#2"
    ],
    "src": "PCG, art. 214-6",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
@@ -322,7 +323,7 @@
    "id": "ue6-04-k27",
    "type": "def",
    "q": "Qu'est-ce que l'annuité équivalente d'un projet d'investissement ?",
-   "r": "<b>La VAN ramenée à une annuité constante sur la durée du projet.</b> Le programme la prévoit pour départager des projets de durées différentes.",
+   "r": "<b>La VAN ramenée à une annuité constante sur la durée du projet.</b> Elle sert à départager des projets de durées différentes.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -334,7 +335,7 @@
    "id": "ue6-04-k28",
    "type": "def",
    "q": "Qu'est-ce que la VAN globale (ou le TRI global) d'un projet d'investissement ?",
-   "r": "<b>Un critère dans lequel les flux intermédiaires sont capitalisés à un taux de réinvestissement explicite.</b> Le programme le prévoit pour départager les projets.",
+   "r": "<b>Un critère dans lequel les flux intermédiaires sont capitalisés jusqu'à la fin du projet à un taux de réinvestissement explicite.</b> Il sert à départager les projets d'investissement.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -345,8 +346,8 @@
   {
    "id": "ue6-04-k29",
    "type": "def",
-   "q": "Comment l'Insee décompose-t-il une évolution en valeur ?",
-   "r": "<b>En une évolution en volume et une évolution des prix</b> : indice de valeur = indice de volume × indice de prix. C'est la relation multiplicative qui lie taux nominal, taux réel et inflation.",
+   "q": "Quelle relation lie le taux nominal, le taux réel et le taux d'inflation ?",
+   "r": "<b>(1 + taux nominal) = (1 + taux réel) × (1 + inflation).</b> C'est la décomposition de l'Insee, où l'indice de valeur est égal à l'indice de volume multiplié par l'indice de prix.",
    "base": [
     "Définitions#8"
    ],

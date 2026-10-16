@@ -103,7 +103,7 @@
   {
    "id": "ue9-06-k09",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment traite-t-on à la clôture la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée ?",
+   "q": "Selon le Code de commerce, comment traite-t-on en principe, à la clôture, la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée ?",
    "r": "<b>Elle n'est pas comptabilisée</b>, car seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels. À l'inverse, une baisse de valeur sous la valeur nette comptable est constatée par une dépréciation.",
    "base": [
     "Règles essentielles#2"
@@ -225,7 +225,7 @@
    "id": "ue9-06-k19",
    "type": "comp",
    "q": "En matière de TVA, à quel moment un fournisseur peut-il récupérer la TVA collectée sur une créance client douteuse ?",
-   "r": "<b>Seulement une fois la créance devenue définitivement irrécouvrable</b>, ce qu'il doit pouvoir démontrer (en cas de liquidation judiciaire, dès la date du jugement qui la prononce). Elle n'est donc pas récupérée au stade de la dépréciation, même si celle-ci se calcule sur le hors taxes : déprécier le TTC est une erreur classique.",
+   "r": "<b>Lorsque la créance est devenue définitivement irrécouvrable</b>, ce qu'il doit pouvoir démontrer (en cas de liquidation judiciaire, dès la date du jugement qui la prononce), et non au stade de la dépréciation. Celle-ci se calcule pourtant sur le hors taxes : déprécier le TTC est une erreur classique.",
    "base": [
     "Points de vigilance#0",
     "Règles essentielles#11"
@@ -251,7 +251,7 @@
    "id": "ue9-06-k21",
    "type": "comp",
    "q": "En matière de TVA, dans quels cas la taxe perçue à l'occasion de ventes ou de services est-elle imputée ou remboursée ?",
-   "r": "<b>Lorsque les opérations sont résiliées ou annulées, ou que les créances sont devenues définitivement irrécouvrables</b> (en cas de liquidation judiciaire, dès la date du jugement qui la prononce). La récupération est subordonnée à la rectification préalable de la facture initiale.",
+   "r": "<b>Lorsque les opérations sont résiliées ou annulées, ou que les créances correspondantes sont devenues définitivement irrécouvrables.</b> La récupération est subordonnée à la rectification préalable de la facture initiale.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -335,7 +335,7 @@
   {
    "id": "ue9-06-k28",
    "type": "comp",
-   "q": "Selon le PCG, comment les provisions sont-elles suivies d'une clôture à l'autre ?",
+   "q": "Selon le PCG, que doit-on faire des provisions déjà constituées à chaque date d'établissement des comptes ?",
    "r": "<b>Elles sont revues à chaque clôture et ajustées à la meilleure estimation</b> : dotation complémentaire si le besoin augmente, reprise s'il diminue ou disparaît. La reprise est un produit de l'exercice (comptes 78).",
    "base": [
     "Règles essentielles#19"
@@ -360,7 +360,7 @@
    "id": "ue9-06-k30",
    "type": "comp",
    "q": "Depuis le PCG 2025, dans quel résultat se classe la dotation à une provision pour un litige courant ?",
-   "r": "<b>Dans le résultat d'exploitation (6815 / 7815).</b> Le résultat exceptionnel ne comprend plus que les produits et charges directement liés à un événement majeur et inhabituel, ainsi que les écritures d'origine purement fiscale.",
+   "r": "<b>Dans le résultat d'exploitation (6815 / 7815).</b> Une dotation n'est exceptionnelle (6875 / 7875) que si elle se rattache directement à un événement majeur et inhabituel : le résultat exceptionnel est recentré sur ces événements et sur les écritures d'origine purement fiscale.",
    "base": [
     "Ce qui a changé récemment#1"
    ],
@@ -371,8 +371,8 @@
   {
    "id": "ue9-06-k31",
    "type": "comp",
-   "q": "Quel est l'effet de l'ordonnance n° 2025-1247 du 17 décembre 2025 sur l'article 272 du CGI relatif à la TVA sur créances irrécouvrables ?",
-   "r": "<b>L'article 272 du CGI est abrogé à compter du 1er janvier 2027</b>, l'ordonnance transférant la TVA dans le code des impositions sur les biens et services. Selon le BOFiP, les références aux anciennes dispositions du CGI s'entendent de celles de ce code qui les reprennent.",
+   "q": "Que devient, à compter du 1er janvier 2027, l'article 272 du CGI relatif à la TVA sur créances irrécouvrables ?",
+   "r": "<b>Il est abrogé</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la TVA dans le code des impositions sur les biens et services. Selon le BOFiP, les références aux anciennes dispositions du CGI s'entendent de celles de ce code qui les reprennent.",
    "base": [
     "Ce qui a changé récemment#4"
    ],
@@ -407,8 +407,8 @@
   {
    "id": "ue9-06-k34",
    "type": "comp",
-   "q": "Selon le PCG, à quelle condition une provision est-elle, en principe, comptabilisée à la clôture de l'exercice ?",
-   "r": "<b>Lorsque l'entité a, à la clôture, une obligation à l'égard d'un tiers</b> dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci.",
+   "q": "Selon le PCG, à quelles conditions une provision est-elle, en principe, comptabilisée à la clôture de l'exercice ?",
+   "r": "<b>L'entité a, à la clôture, une obligation à l'égard d'un tiers</b> dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci ; <b>son montant peut en outre être évalué avec une fiabilité suffisante.</b>",
    "base": [
     "Règles essentielles#15"
    ],

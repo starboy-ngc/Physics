@@ -18,7 +18,7 @@
    "id": "ue9-09-k02",
    "type": "def",
    "q": "Selon l'article L. 123-12 du Code de commerce, de quels documents se composent en principe les comptes annuels d'un commerçant ?",
-   "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable, établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire. Les micro-entreprises sont toutefois dispensées d'annexe, sauf celles qui gèrent des titres de participations et de valeurs mobilières.",
+   "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable, établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire. Les micro-entreprises sont toutefois, sauf exceptions, dispensées d'annexe.",
    "base": [
     "Définitions#1",
     "Règles essentielles#13"
@@ -92,8 +92,8 @@
   {
    "id": "ue9-09-k08",
    "type": "comp",
-   "q": "Selon le Code de commerce, dans quel ordre les mouvements affectant le patrimoine d'un commerçant sont-ils enregistrés au livre-journal ?",
-   "r": "<b>Chronologiquement, opération par opération et jour par jour.</b> Ils sont ensuite portés sur le grand livre et ventilés selon le plan de comptes.",
+   "q": "Selon le Code de commerce, dans quel ordre un commerçant enregistre-t-il les mouvements affectant le patrimoine de son entreprise ?",
+   "r": "<b>Chronologiquement, opération par opération et jour par jour</b>, au livre-journal ou dans ses journaux auxiliaires. Ils sont ensuite portés sur le grand livre et ventilés selon le plan de comptes.",
    "base": [
     "Règles essentielles#0",
     "Règles essentielles#1"
@@ -226,7 +226,7 @@
    "id": "ue9-09-k19",
    "type": "def",
    "q": "Que prévoit le principe d'indépendance des exercices pour le compte de résultat d'un commerçant ?",
-   "r": "<b>Le compte de résultat récapitule les produits et les charges de l'exercice</b>, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. Seul le bénéfice réalisé à la date de clôture peut être inscrit dans les comptes annuels.",
+   "r": "<b>Le compte de résultat récapitule les produits et les charges de l'exercice</b>, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. En principe, seul le bénéfice réalisé à la date de clôture peut être inscrit dans les comptes annuels.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -287,7 +287,7 @@
    "id": "ue9-09-k24",
    "type": "comp",
    "q": "Quelles entreprises le Code de commerce dispense-t-il d'établir une annexe à leurs comptes annuels ?",
-   "r": "<b>Les micro-entreprises</b>, sauf celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières. Les petites entreprises peuvent, elles, adopter une présentation simplifiée de leurs comptes annuels.",
+   "r": "<b>Les micro-entreprises</b>, sauf notamment celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières. Les petites entreprises peuvent, elles, adopter une présentation simplifiée de leurs comptes annuels.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -348,7 +348,7 @@
    "id": "ue9-09-k29",
    "type": "comp",
    "q": "Dans quel délai les SARL et les sociétés par actions déposent-elles leurs comptes annuels au greffe ?",
-   "r": "<b>Dans le mois qui suit leur approbation</b>, ou dans les deux mois lorsque le dépôt est effectué par voie électronique, avec notamment le rapport des commissaires aux comptes. Dans les sociétés par actions, en cas de refus d'approbation, une copie de la délibération est déposée dans le même délai.",
+   "r": "<b>Dans le mois qui suit leur approbation</b>, ou dans les deux mois lorsque le dépôt est effectué par voie électronique. Les comptes annuels sont déposés accompagnés notamment, le cas échéant, du rapport des commissaires aux comptes.",
    "base": [
     "Chiffres et seuils#3"
    ],
@@ -359,7 +359,7 @@
   {
    "id": "ue9-09-k30",
    "type": "comp",
-   "q": "Quels changements le règlement ANC n° 2022-06 apporte-t-il pour les exercices ouverts à compter du 1er janvier 2025 ?",
+   "q": "Quels sont les principaux changements apportés par le règlement ANC n° 2022-06 pour les exercices ouverts à compter du 1er janvier 2025 ?",
    "r": "<ul><li>de nouveaux modèles de comptes annuels ;</li><li>un résultat exceptionnel limité aux événements majeurs et inhabituels ;</li><li>la suppression des transferts de charges ;</li><li>un plan de comptes à l'article 1121-1 du PCG.</li></ul>",
    "base": [
     "Ce qui a changé récemment#0"

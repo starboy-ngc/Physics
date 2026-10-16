@@ -1,6 +1,6 @@
 {
  "id": "ue2-04",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue2-04-k01",
@@ -19,7 +19,7 @@
    "id": "ue2-04-k02",
    "type": "comp",
    "q": "Qui assure la gérance d'une société en nom collectif (SNC) en l'absence de stipulation contraire des statuts ?",
-   "r": "<b>Tous les associés sont gérants.</b> Les statuts peuvent toutefois désigner un ou plusieurs gérants, associés ou non, ou en prévoir la désignation par un acte ultérieur. En cas de pluralité de gérants, chacun détient séparément les pouvoirs ; l'opposition de l'un aux actes d'un autre est sans effet à l'égard des tiers, à moins qu'il ne soit établi qu'ils en ont eu connaissance.",
+   "r": "<b>Tous les associés sont gérants.</b> Les statuts peuvent toutefois désigner un ou plusieurs gérants, associés ou non, ou en prévoir la désignation par un acte ultérieur. Les clauses statutaires limitant les pouvoirs du gérant sont inopposables aux tiers ; l'opposition d'un gérant aux actes d'un autre est sans effet à leur égard, à moins qu'il ne soit établi qu'ils en ont eu connaissance.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -55,7 +55,7 @@
   {
    "id": "ue2-04-k05",
    "type": "comp",
-   "q": "Que signifie, pour le créancier, que les associés d'une société en nom collectif et les commandités d'une SCS sont tenus solidairement ?",
+   "q": "Que signifie, pour le créancier, que les associés d'une société en nom collectif et les commandités d'une société en commandite simple sont tenus solidairement ?",
    "r": "<b>Le créancier peut réclamer la totalité de la dette à un seul d'entre eux</b>, après mise en demeure vaine de la société. À l'inverse, les associés de société civile répondent indéfiniment mais à proportion de leur part dans le capital, après poursuite préalable et vaine de la société.",
    "base": [
     "Points de vigilance#0"
@@ -151,8 +151,8 @@
   {
    "id": "ue2-04-k13",
    "type": "comp",
-   "q": "Sauf disposition statutaire contraire, comment le gérant d'une société civile est-il nommé et révoqué ?",
-   "r": "<b>Par une décision des associés représentant plus de la moitié des parts sociales.</b> Il est aussi révocable par les tribunaux pour cause légitime, à la demande de tout associé ; une révocation sans juste motif peut donner lieu à dommages-intérêts.",
+   "q": "Sauf disposition statutaire contraire, à quelle majorité le gérant d'une société civile est-il nommé et révoqué par les associés ?",
+   "r": "<b>Par une décision des associés représentant plus de la moitié des parts sociales.</b> Le gérant est aussi révocable par les tribunaux pour cause légitime, à la demande de tout associé ; une révocation sans juste motif peut donner lieu à dommages-intérêts. Si la société est dépourvue de gérant depuis plus d'un an, tout intéressé peut demander au tribunal sa dissolution anticipée.",
    "base": [
     "Règles essentielles#7",
     "Chiffres et seuils#1"
@@ -202,7 +202,7 @@
    "id": "ue2-04-k17",
    "type": "comp",
    "q": "Sauf clause contraire, comment se répartissent les bénéfices et les pertes entre les associés d'une société ?",
-   "r": "<b>À proportion de la part de chaque associé dans le capital social.</b> La part de l'associé qui n'a apporté que son industrie est égale à celle de l'associé qui a le moins apporté.",
+   "r": "<b>À proportion de la part de chaque associé dans le capital social.</b> La part de l'associé qui n'a apporté que son industrie est égale à celle de l'associé qui a le moins apporté. Sont toutefois réputées non écrites les clauses attribuant à un associé la totalité du profit ou mettant à sa charge la totalité des pertes, l'excluant totalement du profit ou l'exonérant de la totalité des pertes.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -274,7 +274,7 @@
    "id": "ue2-04-k23",
    "type": "comp",
    "q": "Qui est engagé envers les tiers par les actes passés par un associé d'une société en participation ?",
-   "r": "<b>En principe, chaque associé contracte en son nom personnel et est seul engagé à l'égard des tiers.</b> Mais si les participants agissent en qualité d'associés au vu et au su des tiers, chacun de ceux qui ont agi est tenu des actes accomplis en cette qualité par l'un des autres, avec solidarité si la société est commerciale, sans solidarité sinon.",
+   "r": "<b>En principe, chaque associé contracte en son nom personnel et est seul engagé à l'égard des tiers.</b> Mais si les participants agissent en qualité d'associés au vu et au su des tiers, chacun de ceux qui ont agi est tenu des obligations nées des actes accomplis en cette qualité par l'un des autres, avec solidarité si la société est commerciale, sans solidarité sinon.",
    "base": [
     "Règles essentielles#9"
    ],

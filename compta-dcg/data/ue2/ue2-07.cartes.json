@@ -1,12 +1,12 @@
 {
  "id": "ue2-07",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue2-07-k01",
    "type": "def",
    "q": "Selon le Code de commerce, qui a la qualité de commerçant ?",
-   "r": "<b>Ceux qui exercent des actes de commerce et en font leur profession habituelle.</b> Les actes de commerce sont notamment ceux que l'article L. 110-1 répute tels, comme tout achat de biens meubles pour les revendre.",
+   "r": "<b>Ceux qui exercent des actes de commerce et en font leur profession habituelle.</b> L'article L. 110-1 répute notamment actes de commerce tout achat de biens meubles pour les revendre.",
    "base": [
     "Définitions#0"
    ],
@@ -41,7 +41,7 @@
   {
    "id": "ue2-07-k04",
    "type": "comp",
-   "q": "Quelle est la situation de la personne physique exerçant le commerce sans s'être immatriculée au RCS dans les quinze jours du début de son activité ?",
+   "q": "Au regard de la qualité de commerçant, quelle est la situation d'une personne physique non immatriculée au RCS dans les quinze jours du début de son activité ?",
    "r": "<b>Elle ne peut se prévaloir de la qualité de commerçant jusqu'à son immatriculation</b>, mais ne peut invoquer ce défaut pour se soustraire aux obligations qui y sont attachées. À l'inverse, l'immatriculation fait présumer cette qualité, sauf preuve contraire apportée par les tiers ou les administrations.",
    "base": [
     "Points de vigilance#1"
@@ -78,8 +78,8 @@
   {
    "id": "ue2-07-k07",
    "type": "comp",
-   "q": "Quelles obligations comptables le Code de commerce impose-t-il à toute personne physique ou morale ayant la qualité de commerçant ?",
-   "r": "<b>Enregistrer chronologiquement les mouvements affectant le patrimoine de son entreprise, contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs, et établir des comptes annuels à la clôture de l'exercice.</b> Documents comptables et pièces justificatives sont conservés dix ans.",
+   "q": "Quelles obligations comptables et bancaires le Code de commerce impose-t-il à toute personne physique ou morale ayant la qualité de commerçant ?",
+   "r": "<b>Enregistrer chronologiquement les mouvements affectant le patrimoine de son entreprise, contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs, et établir des comptes annuels à la clôture de l'exercice.</b> Documents comptables et pièces justificatives sont conservés dix ans ; le commerçant doit aussi se faire ouvrir un compte dans un établissement de crédit ou un bureau de chèques postaux.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -115,8 +115,8 @@
   {
    "id": "ue2-07-k10",
    "type": "def",
-   "q": "Outre l'enseigne, le nom commercial, le droit au bail, la clientèle et l'achalandage, quels éléments l'article L. 142-2 du Code de commerce permet-il d'inclure dans le nantissement d'un fonds ?",
-   "r": "<b>Le mobilier commercial et le matériel ou l'outillage servant à l'exploitation, ainsi que les brevets d'invention, les licences, les marques, les dessins et modèles industriels</b> et, généralement, les droits de propriété intellectuelle qui y sont attachés. Cette liste est limitative : les marchandises n'y figurent pas.",
+   "q": "Outre l'enseigne, le nom commercial, le droit au bail, la clientèle et l'achalandage, quels éléments du fonds de commerce peuvent être compris dans son nantissement ?",
+   "r": "<b>Le mobilier commercial, le matériel ou l'outillage servant à l'exploitation, les brevets d'invention, les licences, les marques, les dessins et modèles industriels et, généralement, les droits de propriété intellectuelle qui y sont attachés</b>, s'ils sont désignés de façon expresse et précise dans l'acte constitutif. Cette liste de l'article L. 142-2 est limitative : les marchandises n'y figurent pas.",
    "base": [
     "Définitions#3",
     "Règles essentielles#7"
@@ -167,7 +167,7 @@
    "id": "ue2-07-k14",
    "type": "comp",
    "q": "À compter de quel acte court le délai pendant lequel l'acquéreur d'un fonds de commerce peut être mis en cause pour l'impôt sur le revenu du cédant ?",
-   "r": "<b>De la déclaration de cession prévue au 1 de l'article 201 du CGI</b>, si elle a été déposée dans le délai, et non de la publication de la vente. Le cessionnaire, solidaire du cédant pour l'impôt sur le revenu dû au titre des bénéfices de l'exploitation dans la limite du prix du fonds, ne peut être mis en cause que pendant ce délai.",
+   "r": "<b>De la déclaration de cession prévue au 1 de l'article 201 du CGI</b>, si elle a été déposée dans le délai, non de la publication de la vente. Le cessionnaire, qui peut être tenu solidairement avec le cédant au paiement de l'impôt sur le revenu dû au titre des bénéfices de l'exploitation, dans la limite du prix du fonds, ne peut être mis en cause que pendant ce délai.",
    "base": [
     "Points de vigilance#5"
    ],
@@ -337,7 +337,7 @@
   {
    "id": "ue2-07-k28",
    "type": "comp",
-   "q": "Quand et dans quelles formes le preneur d'un bail commercial peut-il donner congé avant le terme des neuf ans ?",
+   "q": "Quand et dans quelles formes le preneur d'un bail commercial peut-il donner congé avant le terme du bail ?",
    "r": "<b>À l'expiration de chaque période triennale, au moins six mois à l'avance</b>, par lettre recommandée avec demande d'avis de réception ou par acte extrajudiciaire, sauf stipulation contraire admise pour certains baux (baux de plus de neuf ans, locaux monovalents, locaux à usage exclusif de bureaux, locaux de stockage). Le bailleur n'a la même faculté que dans des cas limités, notamment pour construire, reconstruire ou surélever l'immeuble.",
    "base": [
     "Règles essentielles#12"
@@ -387,7 +387,7 @@
    "id": "ue2-07-k32",
    "type": "def",
    "q": "Qu'est-ce que l'indemnité d'éviction en matière de bail commercial ?",
-   "r": "<b>L'indemnité que le bailleur qui refuse le renouvellement doit payer au locataire évincé, égale au préjudice causé par le défaut de renouvellement</b>, sauf exceptions, notamment un motif grave et légitime à l'encontre du locataire sortant. Elle comprend notamment la valeur marchande du fonds, et le locataire ne peut être obligé de quitter les lieux avant de l'avoir reçue.",
+   "r": "<b>L'indemnité que le bailleur qui refuse le renouvellement doit payer au locataire évincé, égale au préjudice causé par le défaut de renouvellement</b>, sauf exceptions, notamment un motif grave et légitime à l'encontre du locataire sortant. Elle comprend notamment la valeur marchande du fonds ; le locataire qui peut y prétendre ne peut être obligé de quitter les lieux avant de l'avoir reçue.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -399,7 +399,7 @@
    "id": "ue2-07-k33",
    "type": "comp",
    "q": "Qu'est-ce qui distingue, dans un bail commercial, l'adjonction d'activités connexes ou complémentaires de la déspécialisation plénière ?",
-   "r": "<b>Pour adjoindre des activités connexes ou complémentaires, il suffit au locataire de faire connaître son intention au bailleur</b>, qui dispose de deux mois pour en contester le caractère connexe ou complémentaire, à peine de déchéance. Exercer des activités différentes de celles prévues au bail (déspécialisation plénière) suppose en revanche qu'il y soit autorisé.",
+   "r": "<b>Pour adjoindre des activités connexes ou complémentaires, il suffit au locataire de faire connaître son intention au bailleur</b> par acte extrajudiciaire ou lettre recommandée avec avis de réception ; le bailleur dispose de deux mois pour en contester le caractère connexe ou complémentaire, à peine de déchéance. Exercer des activités différentes de celles prévues au bail (déspécialisation plénière) suppose en revanche d'y être autorisé.",
    "base": [
     "Règles essentielles#17"
    ],
@@ -411,7 +411,7 @@
    "id": "ue2-07-k34",
    "type": "comp",
    "q": "Depuis la loi du 26 mai 2026, quelles règles encadrent le dépôt de garantie d'un bail commercial ?",
-   "r": "<b>Pour les baux conclus ou renouvelés depuis la promulgation de la loi, il ne peut excéder le loyer d'un trimestre et ne porte pas intérêt</b> ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés. La même loi permet au preneur d'obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer.",
+   "r": "<b>Pour les baux conclus ou renouvelés depuis la promulgation de la loi, il ne peut excéder le loyer d'un trimestre et ne porte pas intérêt</b> ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés. Le preneur de locaux à usage commercial ou artisanal peut aussi obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer.",
    "base": [
     "Ce qui a changé récemment#0"
    ],

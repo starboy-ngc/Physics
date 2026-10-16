@@ -77,8 +77,8 @@
   {
    "id": "ue9-02-k07",
    "type": "comp",
-   "q": "Dans la classe 7 du PCG, quels comptes enregistrent les ventes et la production d'exploitation normale et courante ?",
-   "r": "<b>70 : ventes ; 71 : production stockée ; 72 : production immobilisée.</b> Ces produits d'exploitation normale et courante sont enregistrés hors taxes collectées.",
+   "q": "Dans la classe 7 du PCG, quels comptes enregistrent les produits d'exploitation normale et courante ?",
+   "r": "<b>Les comptes 70, 71, 72, 74 et 75</b> : ventes (70), production stockée (71), production immobilisée (72), subventions (74) et autres produits de gestion courante (75).",
    "base": [
     "Règles essentielles#8"
    ],
@@ -368,30 +368,6 @@
    ],
    "src": "C. com., art. L. 123-23",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-02-k34",
-   "type": "comp",
-   "q": "Dans la classe 7 du PCG, outre les ventes et la production (comptes 70 à 72), quels comptes enregistrent les produits d'exploitation normale et courante ?",
-   "r": "Le compte <b>74</b> pour les <b>subventions</b> et le compte <b>75</b> pour les <b>autres produits de gestion courante</b>.",
-   "base": [
-    "Règles essentielles#8"
-   ],
-   "src": "PCG (version consolidée au 1er janvier 2026), classe 7",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-02-k35",
-   "type": "comp",
-   "q": "Quelle modification le règlement ANC n° 2026-03 apporte-t-il à l'intitulé du compte 6454 du PCG ?",
-   "r": "Il remplace <b>« Pôle emploi » par « France Travail »</b>. La modification s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible : le plan de comptes au 1er janvier 2026 porte encore l'intitulé « Cotisations à Pôle emploi ».",
-   "base": [
-    "Ce qui a changé récemment#3"
-   ],
-   "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 6 ; arrêté du 12 août 2026",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
    "fiab": "stable"
   }
  ]

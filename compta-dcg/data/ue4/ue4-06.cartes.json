@@ -1,6 +1,6 @@
 {
  "id": "ue4-06",
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "cartes": [
   {
    "id": "ue4-06-k01",
@@ -306,8 +306,8 @@
   {
    "id": "ue4-06-k26",
    "type": "comp",
-   "q": "Quel est l'effet du silence gardé soixante jours par l'administration sur les observations d'une entreprise vérifiée sous les seuils de l'article L. 57 A du LPF ?",
-   "r": "<b>Les observations du contribuable sont considérées comme acceptées.</b> Pour ces entreprises, l'administration qui rejette les observations doit répondre, de manière motivée, dans les soixante jours.",
+   "q": "Quel effet produit le silence de l'administration pendant soixante jours sur les observations d'une entreprise vérifiée sous les seuils de chiffre d'affaires de l'article L. 57 A du LPF ?",
+   "r": "<b>Les observations du contribuable sont considérées comme acceptées.</b> Pour ces entreprises, l'administration répond aux observations dans les soixante jours ; si elle les rejette, sa réponse est motivée.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -403,7 +403,7 @@
    "id": "ue4-06-k34",
    "type": "def",
    "q": "Qu'est-ce que le sursis de paiement dont peut bénéficier le contribuable qui conteste une imposition ?",
-   "r": "<b>La faculté de différer le paiement de la partie contestée et des pénalités afférentes</b>, si le contribuable le demande expressément dans sa réclamation en précisant le montant ou les bases du dégrèvement demandé ; au-delà d'un montant fixé par décret, il doit constituer des garanties. L'exigibilité de la créance et la prescription de l'action en recouvrement sont suspendues jusqu'à la décision définitive sur la réclamation.",
+   "r": "<b>La faculté de différer le paiement de la partie contestée et des pénalités afférentes</b>, si le contribuable le demande expressément dans sa réclamation en précisant le montant ou les bases du dégrèvement auquel il estime avoir droit ; au-delà d'un montant fixé par décret, il doit constituer des garanties. L'exigibilité de la créance et la prescription de l'action en recouvrement sont suspendues jusqu'à la décision définitive sur la réclamation.",
    "base": [
     "Règles essentielles#18"
    ],
@@ -414,7 +414,7 @@
   {
    "id": "ue4-06-k35",
    "type": "comp",
-   "q": "Quelle est la durée maximale d'une vérification sur place de comptabilité lorsque le chiffre d'affaires de l'entreprise n'excède pas les limites du régime simplifié d'imposition ?",
+   "q": "Quelle est la durée maximale d'une vérification sur place de comptabilité lorsque le chiffre d'affaires ou les recettes de l'entreprise n'excèdent pas les limites du régime simplifié d'imposition ?",
    "r": "<b>Trois mois</b>, délai porté à six mois en cas de graves irrégularités privant de valeur probante la comptabilité. À distinguer de l'examen contradictoire de la situation fiscale personnelle, qui ne peut en principe excéder un an (deux ans notamment en cas de découverte d'une activité occulte).",
    "base": [
     "Règles essentielles#10"
