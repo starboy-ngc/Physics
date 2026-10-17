@@ -3,7 +3,8 @@
 Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières, une fiche documentaire
 sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
-test quotidien, révisions espacées avec plateau d'avancement par thème, plan comptable général 2025 commenté
+test quotidien, révisions espacées sur 1 436 cartes de notions (définitions et compréhension, sans calcul) avec
+plateau d'avancement par thème, plan comptable général 2025 commenté
 compte par compte (612 comptes), jeu de progression (« l'expédition vers les aurores ») et 69 succès à débloquer (bronze, argent, or) dans six catégories :
 régularité, précision, maîtrise, matières, exploration et expédition.
 
@@ -84,6 +85,12 @@ faits récents confirmés (PASS et SMIC 2026, LFSS 2026, loi n° 2026-403, règl
 - Chaque chapitre a été rédigé puis relu par un relecteur indépendant chargé de chercher l'erreur
   (recalcul de tous les calculs, vérification des écritures, recoupement des chiffres par recherche web),
   qui a corrigé ou supprimé tout point douteux.
+- Cartes de notions (`data/<ue>/<id>.cartes.json`) : rédigées depuis la fiche du chapitre, puis relues deux fois
+  par des relecteurs indépendants (fidélité à la fiche, puis exactitude juridique et comptable avec recherche
+  sur les sites officiels). Un rapport par chapitre : `data/<ue>/rapports/<id>-cartes.md`. Les items de fiche
+  jugés ambigus ou incomplets par ces relecteurs sont listés dans `data/FICHES-A-REPRENDRE.md`.
+- Nature des exercices (`nature` : notion, calcul ou chiffre) : classement par deux agents indépendants ; une
+  question n'entre dans les révisions espacées que si les deux la jugent sans calcul.
 - `validate.js` vérifie la structure (réponses valides, écritures équilibrées, comptes 675/775 bannis…) ;
   `check-accounts.js` croise les comptes utilisés avec le plan commenté.
 - `node build.js` assemble `src/index.html` et les données en `dist/DebitCredit.html`.
