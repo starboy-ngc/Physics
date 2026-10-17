@@ -53,20 +53,8 @@
   {
    "id": "ue3-06-k05",
    "type": "def",
-   "q": "Outre la branche autonomie, quelles sont les quatre branches du régime général de la sécurité sociale énumérées par le Code de la sécurité sociale ?",
-   "r": "<b>Maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille</b> (art. L. 200-2 du Code de la sécurité sociale). La cinquième, la branche autonomie, a été créée par la loi n° 2020-992 du 7 août 2020.",
-   "base": [
-    "Définitions#3"
-   ],
-   "src": "CSS, art. L. 200-1, L. 200-2 et L. 213-1 ; loi n° 2020-992 du 7 août 2020 ; loi n° 2017-1836 du 30 décembre 2017, art. 15",
-   "url": "https://www.securite-sociale.fr/la-secu-cest-quoi/organisation/les-branches",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue3-06-k06",
-   "type": "def",
-   "q": "Quelle branche du régime général de la sécurité sociale la loi n° 2020-992 du 7 août 2020 a-t-elle créée ?",
-   "r": "<b>La branche autonomie</b>, cinquième branche du régime général énumérée à l'article L. 200-2 du Code de la sécurité sociale, à côté des branches « maladie, maternité, invalidité et décès », « accidents du travail et maladies professionnelles », « vieillesse et veuvage » et « famille ».",
+   "q": "Quelles sont les cinq branches du régime général de la sécurité sociale énumérées par le Code de la sécurité sociale ?",
+   "r": "<b>Maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille ; autonomie</b> (art. L. 200-2 du Code de la sécurité sociale). La branche autonomie, la plus récente, a été créée par la loi n° 2020-992 du 7 août 2020.",
    "base": [
     "Définitions#3"
    ],
@@ -89,8 +77,8 @@
   {
    "id": "ue3-06-k08",
    "type": "comp",
-   "q": "De quel régime relèvent les travailleurs indépendants pour leur protection sociale depuis la suppression du régime social des indépendants ?",
-   "r": "<b>Du régime général</b> de la sécurité sociale, le transfert depuis le régime social des indépendants ayant été achevé au 1er janvier 2020.",
+   "q": "Quel régime a repris la protection sociale des travailleurs indépendants qui relevaient du régime social des indépendants (RSI), aujourd'hui supprimé ?",
+   "r": "<b>Le régime général</b> de la sécurité sociale, le transfert depuis le régime social des indépendants ayant été achevé au 1er janvier 2020.",
    "base": [
     "Définitions#3"
    ],
@@ -101,7 +89,7 @@
   {
    "id": "ue3-06-k09",
    "type": "comp",
-   "q": "Quelle juridiction est compétente en première instance pour le contentieux de la sécurité sociale ?",
+   "q": "En principe, quelle juridiction est compétente en première instance pour le contentieux de la sécurité sociale ?",
    "r": "<b>Le tribunal judiciaire spécialement désigné (pôle social)</b>, dont le siège et le ressort sont fixés par décret ; l'appel est porté devant des cours d'appel également désignées. Le tribunal compétent est en principe celui dans le ressort duquel demeure le demandeur.",
    "base": [
     "Règles essentielles#0"
@@ -113,8 +101,8 @@
   {
    "id": "ue3-06-k10",
    "type": "comp",
-   "q": "Quel organe doit être saisi avant tout recours contentieux contre une décision d'un organisme de sécurité sociale ?",
-   "r": "<b>La commission de recours amiable</b>, saisie dans les deux mois de la notification de la décision contestée.",
+   "q": "Avant tout recours contentieux contre une décision de l'URSSAF, quel organe le cotisant doit-il saisir, et dans quel délai ?",
+   "r": "<b>La commission de recours amiable</b> de l'organisme, dans les deux mois de la notification de la décision contestée. Le pôle social du tribunal judiciaire ne peut être saisi qu'après ce recours préalable.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -149,8 +137,8 @@
   {
    "id": "ue3-06-k13",
    "type": "comp",
-   "q": "Sur quelle assiette la CSG et la CRDS sont-elles dues pour les revenus d'activité des salariés ?",
-   "r": "<b>Sur 98,25 % de la rémunération</b> (abattement de 1,75 % pour frais professionnels), l'abattement ne jouant que dans la limite de quatre plafonds de la sécurité sociale, au-delà desquels l'assiette est de 100 %. La contribution patronale à la complémentaire santé d'entreprise y est soumise sans abattement.",
+   "q": "Quelle est l'assiette de la CSG et de la CRDS dues sur le salaire d'un salarié ?",
+   "r": "<b>98,25 % de la rémunération</b> (abattement de 1,75 % pour frais professionnels), l'abattement ne jouant que dans la limite de quatre plafonds de la sécurité sociale, au-delà desquels l'assiette est de 100 %. La contribution patronale à la complémentaire santé d'entreprise est en revanche soumise à la CSG-CRDS sans abattement.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -161,7 +149,7 @@
   {
    "id": "ue3-06-k14",
    "type": "comp",
-   "q": "Quelle est la date limite de versement à l'URSSAF des cotisations déclarées chaque mois par la déclaration sociale nominative (DSN) ?",
+   "q": "Quelle est la date limite du versement mensuel à l'URSSAF des cotisations déclarées par la déclaration sociale nominative (DSN) ?",
    "r": "<b>Le 5 du mois suivant</b> pour les employeurs d'au moins 50 salariés qui paient les salaires au cours du mois, <b>le 15 du mois suivant</b> dans les autres cas. Les cotisations non versées à cette date supportent une majoration de retard de 5 %.",
    "base": [
     "Règles essentielles#5"
@@ -209,8 +197,8 @@
   {
    "id": "ue3-06-k18",
    "type": "def",
-   "q": "Qu'est-ce que le travail dissimulé au sens du Code du travail ?",
-   "r": "<b>La dissimulation d'activité ou d'emploi salarié</b>, notamment par l'absence de déclaration préalable à l'embauche ou de bulletin de paie, ou par la mention d'un nombre d'heures inférieur à celui réellement accompli.",
+   "q": "Quelles sont les deux formes de travail dissimulé définies par le Code du travail ?",
+   "r": "<b>La dissimulation d'activité et la dissimulation d'emploi salarié.</b> La seconde recouvre notamment l'absence de déclaration préalable à l'embauche ou de bulletin de paie, ou la mention d'un nombre d'heures inférieur à celui réellement accompli.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -257,7 +245,7 @@
   {
    "id": "ue3-06-k22",
    "type": "def",
-   "q": "Comment se définit le salaire journalier de base servant aux indemnités journalières maladie du salarié ?",
+   "q": "Comment se définit le salaire journalier de base servant aux indemnités journalières maladie d'un salarié mensualisé ?",
    "r": "<b>La somme des trois derniers salaires bruts divisée par 91,25</b>, ces salaires étant retenus dans la limite de 1,4 SMIC mensuel pour les arrêts débutant depuis le 1er avril 2025. L'IJ maladie est égale à 50 % de ce salaire.",
    "base": [
     "Règles essentielles#8"
@@ -308,7 +296,7 @@
    "id": "ue3-06-k26",
    "type": "comp",
    "q": "Quels travailleurs peuvent bénéficier de l'allocation d'aide au retour à l'emploi de l'assurance chômage ?",
-   "r": "<b>Les travailleurs involontairement privés d'emploi</b> (licenciement, rupture conventionnelle, fin de CDD, démission considérée comme légitime), aptes au travail et à la recherche d'un emploi, justifiant de six mois d'affiliation au cours des 24 derniers mois (36 mois pour les salariés les plus âgés).",
+   "r": "<b>Les travailleurs involontairement privés d'emploi</b> (licenciement, rupture conventionnelle, fin de CDD, démission considérée comme légitime), aptes au travail et à la recherche d'un emploi, qui justifient d'une durée minimale d'affiliation fixée par le règlement d'assurance chômage.",
    "base": [
     "Règles essentielles#10"
    ],
@@ -403,7 +391,7 @@
   {
    "id": "ue3-06-k34",
    "type": "comp",
-   "q": "Quelle est la durée maximale d'un contrôle URSSAF pour les entreprises de moins de vingt salariés et les travailleurs indépendants ?",
+   "q": "En principe, quelle est la durée maximale d'un contrôle URSSAF pour les entreprises de moins de vingt salariés et les travailleurs indépendants ?",
    "r": "<b>Trois mois</b> entre le début effectif du contrôle et l'envoi de la lettre d'observations, durée prorogeable une fois.",
    "base": [
     "Règles essentielles#6"
@@ -417,6 +405,18 @@
    "type": "comp",
    "q": "Quelle condition d'activité préalable ouvre droit aux indemnités journalières maladie d'un salarié, pour un arrêt de travail de six mois au plus ?",
    "r": "<b>Avoir travaillé au moins 150 heures au cours des trois mois précédents, ou avoir cotisé sur 1 015 fois le SMIC horaire au cours des six mois précédents.</b> Ces conditions sont renforcées au-delà de six mois d'arrêt.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4 ; décret n° 2025-160 du 20 février 2025",
+   "url": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres-maladie-maternite-paternite/indemnites-journalieres-pour-maladie/arret-maladie-salarie",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-06-k36",
+   "type": "comp",
+   "q": "Quel plafond limite le nombre d'indemnités journalières maladie qu'un salarié peut percevoir sur plusieurs années ?",
+   "r": "<b>Au plus 360 indemnités journalières sur trois années consécutives.</b> Les arrêts liés à une affection de longue durée ne sont pas soumis à ce plafond.",
    "base": [
     "Règles essentielles#8"
    ],

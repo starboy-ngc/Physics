@@ -29,8 +29,8 @@
   {
    "id": "ue10-08-k03",
    "type": "comp",
-   "q": "Dans les comptes d'une association, quelle ressource est inscrite en fonds propres avec ou sans droit de reprise plutôt qu'en fonds dédiés ?",
-   "r": "<b>La ressource destinée à renforcer les fonds propres à raison d'une stipulation du tiers financeur.</b> En revanche, la partie des ressources dédiées par des tiers financeurs non utilisée à la clôture conformément à l'engagement pris est inscrite en fonds dédiés.",
+   "q": "Selon le règlement ANC n° 2018-06, quelle ressource reçue d'un tiers financeur une association inscrit-elle en fonds propres, et non en fonds dédiés ?",
+   "r": "<b>Celle qui est destinée à renforcer ses fonds propres à raison d'une stipulation du tiers financeur</b> ; elle est comptabilisée en fonds propres avec ou sans droit de reprise. En revanche, la partie des ressources dédiées non utilisée à la clôture conformément à l'engagement pris est inscrite en fonds dédiés.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -226,7 +226,7 @@
    "id": "ue10-08-k20",
    "type": "comp",
    "q": "Dans quels cas une société contrôlée par une entreprise qui l'inclut dans ses comptes consolidés publiés ne bénéficie-t-elle pas de l'exemption de consolidation ?",
-   "r": "<b>En cas d'opposition d'actionnaires ou d'associés représentant au moins le dixième de son capital</b>, ou si elle a émis des titres admis aux négociations sur un marché réglementé.",
+   "r": "<b>Notamment lorsque des actionnaires ou associés représentant au moins le dixième de son capital s'opposent à l'exemption</b>, ou lorsqu'elle a émis des titres admis aux négociations sur un marché réglementé.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -238,7 +238,7 @@
    "id": "ue10-08-k21",
    "type": "comp",
    "q": "Quel ensemble de sociétés le Code de commerce exempte-t-il d'établir des comptes consolidés en raison de sa taille ?",
-   "r": "<b>L'ensemble qui ne constitue pas un grand groupe au sens de l'article L. 230-2</b> (dépassement d'au moins deux des trois critères : total du bilan, chiffre d'affaires net, nombre moyen de salariés), lorsqu'aucune de ses sociétés n'est une entité d'intérêt public de l'article L. 123-16-2. Cette référence aux grands groupes s'applique depuis le 1er janvier 2025.",
+   "r": "<b>L'ensemble qui ne constitue pas un grand groupe au sens de l'article L. 230-2</b> (dépassement d'au moins deux des trois critères : total du bilan, chiffre d'affaires net, nombre moyen de salariés), lorsqu'aucune de ses sociétés ne relève des catégories de l'article L. 123-16-2 (entités d'intérêt public). Cette référence aux grands groupes s'applique depuis le 1er janvier 2025.",
    "base": [
     "Règles essentielles#9",
     "Ce qui a changé récemment#1"
@@ -276,7 +276,7 @@
    "id": "ue10-08-k24",
    "type": "def",
    "q": "Qu'est-ce que le pourcentage d'intérêt utilisé dans les comptes consolidés selon le règlement ANC n° 2020-01 ?",
-   "r": "<b>La part du capital revenant au groupe, produit des pourcentages de capital le long de chaque chaîne.</b> En intégration globale, il répartit capitaux propres et résultat entre les intérêts de l'entité consolidante et ceux des autres actionnaires ou associés, dits « intérêts minoritaires » ; la méthode, elle, dépend du pourcentage de contrôle.",
+   "r": "<b>La part du capital revenant au groupe : produit des pourcentages de capital le long de chaque chaîne de participations, les chaînes s'additionnant.</b> En intégration globale, il répartit capitaux propres et résultat entre les intérêts de l'entité consolidante et ceux des autres actionnaires ou associés, dits « intérêts minoritaires » ; la méthode, elle, dépend du pourcentage de contrôle.",
    "base": [
     "Définitions#4",
     "Points de vigilance#0"
@@ -372,8 +372,8 @@
   {
    "id": "ue10-08-k33",
    "type": "comp",
-   "q": "Qu'a changé l'ordonnance n° 2023-1142 du 6 décembre 2023 pour le commissariat aux comptes à compter du 1er janvier 2024 ?",
-   "r": "<b>Elle recodifie le titre II du livre VIII du Code de commerce</b> : la certification relève désormais des articles L. 821-53 à L. 821-56 (ex-L. 823-9) et l'ancien article L. 823-12 est abrogé. Le Haut conseil du commissariat aux comptes devient la Haute autorité de l'audit (H2A), dont les missions s'étendent à la supervision de la certification des informations en matière de durabilité.",
+   "q": "Quels changements de codification et d'autorité de supervision du commissariat aux comptes l'ordonnance n° 2023-1142 du 6 décembre 2023 a-t-elle opérés ?",
+   "r": "<b>Elle recodifie, à compter du 1er janvier 2024, le titre II du livre VIII du Code de commerce</b> : la certification relève désormais des articles L. 821-53 à L. 821-56 (ex-L. 823-9) et l'ancien article L. 823-12 est abrogé. Le Haut conseil du commissariat aux comptes devient la Haute autorité de l'audit (H2A), dont les missions s'étendent à la supervision de la certification des informations en matière de durabilité.",
    "base": [
     "Ce qui a changé récemment#0",
     "Points de vigilance#5"
@@ -398,7 +398,7 @@
    "id": "ue10-08-k35",
    "type": "comp",
    "q": "Que prévoit la règle fiscale d'intangibilité du bilan d'ouverture posée par l'article 38, 4 bis du CGI ?",
-   "r": "<b>L'actif net du bilan d'ouverture du premier exercice non prescrit ne peut être corrigé des omissions ou erreurs entraînant sa sous-estimation ou sa surestimation.</b> Sont exclues les erreurs intervenues plus de sept ans avant l'ouverture de cet exercice, les amortissements excessifs au regard des usages déduits au cours d'exercices prescrits et la déduction en charges de dépenses qui auraient dû être immobilisées.",
+   "r": "<b>L'actif net du bilan d'ouverture du premier exercice non prescrit ne peut être corrigé des omissions ou erreurs entraînant sa sous-estimation ou sa surestimation.</b> La règle ne s'applique pas (la correction reste possible) aux erreurs intervenues plus de sept ans avant l'ouverture de cet exercice, aux amortissements excessifs au regard des usages déduits au cours d'exercices prescrits ni aux dépenses déduites en charges qui auraient dû être immobilisées.",
    "base": [
     "Règles essentielles#19"
    ],

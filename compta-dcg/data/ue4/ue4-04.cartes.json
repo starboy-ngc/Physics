@@ -42,7 +42,7 @@
    "id": "ue4-04-k04",
    "type": "comp",
    "q": "Outre les SNC, à qui s'applique le régime fiscal des sociétés de personnes, sauf option pour l'impôt sur les sociétés ?",
-   "r": "<b>Aux commandités des sociétés en commandite simple, aux sociétés civiles non soumises à l'IS, aux EURL dont l'associé unique est une personne physique et aux sociétés en participation.</b>",
+   "r": "<b>Notamment aux commandités des sociétés en commandite simple, aux sociétés civiles non soumises à l'IS, aux EURL dont l'associé unique est une personne physique et aux sociétés en participation.</b>",
    "base": [
     "Définitions#1"
    ],
@@ -151,7 +151,7 @@
    "id": "ue4-04-k13",
    "type": "comp",
    "q": "Quelles opérations d'une société le Code général des impôts considère-t-il notamment comme des revenus distribués (art. 111) ?",
-   "r": "<b>Les avances ou prêts consentis aux associés, les rémunérations et avantages occultes, et la fraction des rémunérations jugée excessive.</b> Chez l'associé personne physique, ces revenus sont imposés comme revenus de capitaux mobiliers.",
+   "r": "<b>Les avances ou prêts consentis aux associés (sauf preuve contraire), les rémunérations et avantages occultes, et la fraction des rémunérations jugée excessive.</b> Chez l'associé personne physique, ces revenus sont imposés comme revenus de capitaux mobiliers.",
    "base": [
     "Définitions#3"
    ],
@@ -212,7 +212,7 @@
    "id": "ue4-04-k18",
    "type": "comp",
    "q": "À quelles conditions une provision est-elle déductible du résultat imposable d'une entreprise ?",
-   "r": "<b>Elle doit être constituée en vue de faire face à des pertes ou charges nettement précisées que des événements en cours rendent probables, et effectivement constatée dans les écritures de l'exercice.</b> Ne sont notamment pas déductibles les provisions pour allocations de départ à la retraite ou préretraite et pour indemnités de licenciement économique.",
+   "r": "<b>Elle doit être constituée en vue de faire face à des pertes ou charges nettement précisées, elles-mêmes déductibles, que des événements en cours rendent probables, et effectivement constatée dans les écritures de l'exercice.</b> Ne sont notamment pas déductibles les provisions pour allocations de départ à la retraite ou préretraite et pour indemnités de licenciement économique.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -236,9 +236,10 @@
    "id": "ue4-04-k20",
    "type": "comp",
    "q": "Comment est imposée la plus-value de cession d'un élément d'actif, hors titres de participation, réalisée par une société soumise à l'IS ?",
-   "r": "<b>Elle est comprise dans le résultat de l'exercice et taxée au taux normal</b> : sauf cas particuliers, le régime du long terme ne s'applique plus aux sociétés à l'IS, et l'étalement sur trois exercices de la plus-value nette à court terme ne leur est pas ouvert.",
+   "r": "<b>Elle est comprise dans le résultat de l'exercice et imposée aux taux de droit commun de l'IS</b> (taux normal ou, dans sa limite, taux réduit des PME) : sauf cas particuliers, le régime du long terme ne s'applique plus aux sociétés à l'IS, et l'étalement sur trois exercices de la plus-value nette à court terme ne leur est pas ouvert.",
    "base": [
-    "Points de vigilance#1"
+    "Points de vigilance#1",
+    "Chiffres et seuils#0"
    ],
    "src": "CGI, art. 39 quaterdecies, 1 et 219, I-a quater",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046860376",
@@ -356,7 +357,7 @@
    "id": "ue4-04-k30",
    "type": "comp",
    "q": "Que fait naître, pour une société soumise à l'IS, l'option pour le report en arrière d'un déficit ?",
-   "r": "<b>Une créance égale à l'IS acquitté sur le bénéfice ainsi absorbé</b>, utilisable pour payer l'IS des exercices clos au cours des cinq années suivantes et remboursée au terme de ce délai ; le remboursement est anticipé en cas de conciliation, de sauvegarde, de redressement ou de liquidation judiciaires.",
+   "r": "<b>Une créance sur le Trésor, correspondant à l'excédent d'impôt antérieurement versé et évaluée aux taux de l'IS de l'exercice déficitaire</b> ; elle est utilisable pour payer l'IS des exercices clos au cours des cinq années suivantes et remboursée au terme de ce délai, ou par anticipation, sur demande, en cas de conciliation, de sauvegarde, de redressement ou de liquidation judiciaires.",
    "base": [
     "Règles essentielles#11"
    ],

@@ -152,8 +152,8 @@
   {
    "id": "ue2-06-k13",
    "type": "comp",
-   "q": "Pourquoi un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut-il encore demander une conciliation, mais pas une sauvegarde ?",
-   "r": "<b>La conciliation reste ouverte au débiteur qui n'est pas en cessation des paiements depuis plus de quarante-cinq jours, alors que la sauvegarde est réservée au débiteur qui n'est pas en cessation des paiements.</b> S'il n'a pas demandé de conciliation, il doit demander un redressement ou une liquidation judiciaire dans les quarante-cinq jours qui suivent la cessation des paiements ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
+   "q": "Pourquoi un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut-il encore demander une conciliation, mais pas une sauvegarde de droit commun ?",
+   "r": "<b>La conciliation reste ouverte au débiteur qui n'est pas en cessation des paiements depuis plus de quarante-cinq jours, alors que la sauvegarde de droit commun est réservée au débiteur qui n'est pas en cessation des paiements.</b> Sans demande de conciliation, il doit demander un redressement ou une liquidation judiciaire dans les quarante-cinq jours suivant la cessation des paiements ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#4"
@@ -178,7 +178,7 @@
    "id": "ue2-06-k15",
    "type": "comp",
    "q": "En période suspecte, hormis les paiements, quels actes du débiteur intervenus depuis la date de cessation des paiements sont nuls de droit ?",
-   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés (hypothèque, nantissement, gage) constituées pour des dettes antérieurement contractées.</b> Le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
+   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés réelles conventionnelles (hypothèque, nantissement, gage) constituées pour des dettes antérieurement contractées.</b> Le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -213,7 +213,7 @@
   {
    "id": "ue2-06-k18",
    "type": "comp",
-   "q": "En procédure collective, dans quels cas les parties affectées sont-elles réparties en classes appelées à voter sur le projet de plan ?",
+   "q": "Dans une sauvegarde de droit commun ou un redressement judiciaire, dans quels cas les parties affectées sont-elles réparties en classes appelées à voter sur le projet de plan ?",
    "r": "<b>Au-delà de seuils fixés par décret, ou à la demande du débiteur.</b> Depuis l'ordonnance du 15 septembre 2021 (procédures ouvertes à compter du 1er octobre 2021), ces classes de parties affectées remplacent les comités de créanciers.",
    "base": [
     "Règles essentielles#7",
@@ -291,7 +291,7 @@
    "id": "ue2-06-k24",
    "type": "comp",
    "q": "Depuis la loi du 14 février 2022, sur quel patrimoine portent les procédures du livre VI du Code de commerce visant un entrepreneur individuel ?",
-   "r": "<b>Sur son seul patrimoine professionnel.</b> Depuis le 15 mai 2022, les procédures du livre VI ouvertes à l'égard d'un entrepreneur individuel ne portent que sur ce patrimoine (titre VIII bis du livre VI).",
+   "r": "<b>En principe, sur son seul patrimoine professionnel.</b> Cette règle, issue de la loi en faveur de l'activité professionnelle indépendante, s'applique depuis le 15 mai 2022 (titre VIII bis du livre VI du Code de commerce).",
    "base": [
     "Ce qui a changé récemment#1"
    ],
@@ -327,7 +327,7 @@
    "id": "ue2-06-k27",
    "type": "comp",
    "q": "Sous quelle qualification pénale peut être poursuivi le détournement commis par le gérant d'une SNC ou d'une société civile de droit commun ?",
-   "r": "<b>Comme abus de confiance</b>, infraction punie, comme l'abus de biens sociaux, de cinq ans d'emprisonnement et de 375 000 € d'amende. Les articles du Code de commerce qui répriment l'abus de biens sociaux ne visent que les dirigeants de SARL, de SA, de SCA et de SAS, y compris les dirigeants de fait.",
+   "r": "<b>Comme abus de confiance</b>, infraction punie, comme l'abus de biens sociaux, de cinq ans d'emprisonnement et de 375 000 € d'amende. Les articles du Code de commerce qui répriment l'abus de biens sociaux visent les dirigeants, de droit ou de fait, de SARL, de SA, de SCA et de SAS, non ceux de SNC ou de société civile.",
    "base": [
     "Points de vigilance#0",
     "Règles essentielles#10"
@@ -339,8 +339,8 @@
   {
    "id": "ue2-06-k28",
    "type": "def",
-   "q": "Qu'est-ce qu'un dividende fictif au sens du droit pénal des sociétés ?",
-   "r": "<b>Tout dividende distribué en violation des règles de l'article L. 232-12 du Code de commerce.</b> Est puni le fait, pour les dirigeants, d'en opérer la répartition entre les associés en l'absence d'inventaire ou au moyen d'inventaires frauduleux.",
+   "q": "En quoi consiste le délit de répartition de dividendes fictifs reproché aux dirigeants d'une SARL ou d'une SA ?",
+   "r": "<b>Le fait, pour les dirigeants, d'opérer entre les associés la répartition de dividendes fictifs, en l'absence d'inventaire ou au moyen d'inventaires frauduleux.</b> Est fictif tout dividende distribué en violation des règles de l'article L. 232-12 du Code de commerce.",
    "base": [
     "Règles essentielles#11"
    ],

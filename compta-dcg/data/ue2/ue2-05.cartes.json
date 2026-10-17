@@ -18,7 +18,7 @@
    "id": "ue2-05-k02",
    "type": "comp",
    "q": "Quelle différence y a-t-il entre délégation de compétence et délégation de pouvoir consenties par l'assemblée générale extraordinaire d'une SA pour augmenter le capital ?",
-   "r": "<b>La délégation de compétence permet au conseil d'administration ou au directoire de décider lui-même l'augmentation ; la délégation de pouvoir ne lui confie que la fixation de ses modalités.</b> En cas de délégation de compétence, l'assemblée générale extraordinaire, seule compétente pour décider l'augmentation, fixe la durée de la délégation, 26 mois au plus, et le plafond global de l'augmentation.",
+   "r": "<b>La délégation de compétence permet au conseil d'administration ou au directoire de décider lui-même l'augmentation ; la délégation de pouvoir ne lui confie que la fixation de ses modalités.</b> En cas de délégation de compétence, l'assemblée générale extraordinaire, seule compétente en principe pour décider l'augmentation, fixe la durée de la délégation, 26 mois au plus, et le plafond global de l'augmentation.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -115,7 +115,7 @@
   {
    "id": "ue2-05-k10",
    "type": "comp",
-   "q": "Quelle limite absolue s'impose à toute réduction de capital d'une société anonyme (SA) ou d'une SARL ?",
+   "q": "Quelle limite, tenant aux droits des associés entre eux, s'impose dans tous les cas à une réduction de capital d'une société anonyme (SA) ou d'une SARL ?",
    "r": "<b>Elle ne peut en aucun cas porter atteinte à l'égalité des actionnaires ou des associés.</b> Dans la SA, elle est autorisée ou décidée par l'assemblée générale extraordinaire ; dans la SARL, elle est autorisée par l'assemblée des associés statuant dans les conditions exigées pour la modification des statuts.",
    "base": [
     "Règles essentielles#6",
@@ -176,7 +176,7 @@
   {
    "id": "ue2-05-k15",
    "type": "comp",
-   "q": "Que doivent faire les associés d'une SARL ou d'une SA dont les comptes approuvés font apparaître des capitaux propres inférieurs à la moitié du capital social ?",
+   "q": "Que doivent faire les associés d'une SARL dont les comptes approuvés font apparaître des capitaux propres inférieurs à la moitié du capital social ?",
    "r": "<b>Décider, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée</b>, décision qui est publiée. Sinon, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital. Ces règles ne s'appliquent pas en sauvegarde ou en redressement judiciaire.",
    "base": [
     "Règles essentielles#9"
@@ -273,7 +273,7 @@
   {
    "id": "ue2-05-k23",
    "type": "comp",
-   "q": "Quelles sont les étapes principales de la procédure de fusion de sociétés commerciales prévue par le Code de commerce ?",
+   "q": "Quelles sont les étapes principales de la procédure de fusion de sociétés anonymes (SA) prévue par le Code de commerce ?",
    "r": "<ul><li><b>Projet de fusion arrêté par les organes de direction</b>, déposé au greffe et publié ;</li><li>rapport d'un ou plusieurs commissaires à la fusion désignés en justice, sauf décision unanime des associés de toutes les sociétés participantes de ne pas en désigner ;</li><li>approbation par l'assemblée générale extraordinaire de chaque société participante.</li></ul>",
    "base": [
     "Règles essentielles#12"
@@ -346,7 +346,7 @@
    "id": "ue2-05-k29",
    "type": "comp",
    "q": "Selon l'article 1844-7 du Code civil, dans quels cas de dissolution anticipée ou de liquidation judiciaire une société prend-elle fin ?",
-   "r": "<ul><li>La dissolution anticipée décidée par les associés ;</li><li>la dissolution anticipée prononcée par le tribunal à la demande d'un associé pour justes motifs, ou dans le cas de réunion de toutes les parts en une seule main ;</li><li>le jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif.</li></ul>",
+   "r": "<ul><li>La dissolution anticipée décidée par les associés ;</li><li>la dissolution anticipée prononcée par le tribunal à la demande d'un associé pour justes motifs ;</li><li>la dissolution anticipée prononcée par le tribunal en cas de réunion de toutes les parts en une seule main ;</li><li>le jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif.</li></ul>",
    "base": [
     "Règles essentielles#14"
    ],
@@ -406,7 +406,7 @@
    "id": "ue2-05-k34",
    "type": "comp",
    "q": "Que doit faire le commissaire aux comptes d'une SA qui relève des faits de nature à compromettre la continuité de l'exploitation ?",
-   "r": "<ul><li><b>Informer le président du conseil d'administration ou du directoire</b> ;</li><li>à défaut de réponse sous quinze jours, ou si elle ne permet pas d'être assuré de la continuité, inviter le conseil ou le directoire à délibérer ;</li><li>si la continuité demeure compromise, établir un rapport spécial présenté à l'assemblée générale, puis informer le président du tribunal si les décisions prises sont insuffisantes.</li></ul>",
+   "r": "<ul><li><b>Informer le président du conseil d'administration ou du directoire</b> ;</li><li>à défaut de réponse sous quinze jours, ou si elle ne permet pas d'être assuré de la continuité, inviter le président du conseil d'administration ou le directoire à faire délibérer le conseil d'administration ou de surveillance ;</li><li>si la continuité demeure compromise, établir un rapport spécial présenté à l'assemblée générale, puis informer le président du tribunal si les décisions prises sont insuffisantes.</li></ul>",
    "base": [
     "Règles essentielles#18"
    ],
