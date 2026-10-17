@@ -214,7 +214,7 @@
    "id": "ue10-02-k21",
    "type": "comp",
    "q": "En quoi les normes IFRS (IAS 23, IAS 38) diffèrent-elles du PCG pour les coûts d'emprunt et les frais de développement ?",
-   "r": "<b>En IFRS, l'incorporation des coûts d'emprunt pour les actifs qualifiés et l'activation des frais de développement remplissant les critères sont obligatoires</b>, alors que le PCG laisse une option. En comptes individuels français, seul le PCG s'applique.",
+   "r": "<b>En IFRS, l'incorporation des coûts d'emprunt pour les actifs qualifiés et l'activation des frais de développement remplissant les critères sont obligatoires</b>, alors que le PCG laisse une option. En comptes individuels français, c'est le PCG, et non les IFRS, qui s'applique.",
    "base": [
     "Points de vigilance#9"
    ],
@@ -261,8 +261,8 @@
   {
    "id": "ue10-02-k25",
    "type": "comp",
-   "q": "Selon le PCG, quelle est la méthode de référence pour les frais de constitution, de transformation et de premier établissement ?",
-   "r": "<b>Leur comptabilisation en charges.</b> Ils peuvent toutefois être inscrits à l'actif en frais d'établissement et sont alors amortis selon un plan, dans un délai maximal de cinq ans ; les frais de constitution d'une société sont en outre amortis avant toute distribution de bénéfices, sous réserve du deuxième alinéa de l'article L. 232-15 du Code de commerce.",
+   "q": "Selon le PCG et le Code de commerce, comment sont amortis les frais de constitution, de transformation et de premier établissement inscrits à l'actif ?",
+   "r": "<b>Selon un plan, dans un délai maximal de cinq ans.</b> Les frais de constitution d'une société sont en outre amortis avant toute distribution de bénéfices, sous réserve du deuxième alinéa de l'article L. 232-15 du Code de commerce. Leur inscription à l'actif n'est qu'une faculté : la comptabilisation en charges est la méthode de référence.",
    "base": [
     "Règles essentielles#16",
     "Règles essentielles#17"
@@ -299,7 +299,7 @@
    "id": "ue10-02-k28",
    "type": "def",
    "q": "Qu'est-ce qu'une « solution informatique » au sens du Plan comptable général (PCG) ?",
-   "r": "<b>Un ensemble organisé de fonctionnalités logicielles destiné à répondre aux besoins des utilisateurs</b> (notamment stocker, manipuler, sécuriser ou transmettre des données). Porteuse d'avantages économiques futurs et utilisée au-delà d'un exercice, elle constitue une immobilisation incorporelle.",
+   "r": "<b>Un ensemble organisé de fonctionnalités logicielles destiné à répondre aux besoins des utilisateurs</b> (notamment stocker, manipuler, sécuriser ou transmettre des données). Porteuse d'avantages économiques futurs pour l'entité et utilisée au-delà d'un exercice, elle constitue une immobilisation incorporelle.",
    "base": [
     "Définitions#3"
    ],
@@ -310,8 +310,8 @@
   {
    "id": "ue10-02-k29",
    "type": "comp",
-   "q": "Outre la faisabilité technique, quels critères cumulatifs de l'article 611-3 du PCG permettent d'inscrire à l'actif une solution informatique produite en interne ?",
-   "r": "<b>L'intention d'achever et d'utiliser la solution, la capacité à l'utiliser ou à la commercialiser, des avantages économiques futurs probables et la capacité à évaluer de façon fiable les dépenses attribuables.</b> Le coût de production de la solution est alors inscrit à l'actif.",
+   "q": "Selon le PCG, quels critères doivent être réunis pour inscrire à l'actif le coût de production d'une solution informatique créée en interne ?",
+   "r": "<b>L'ensemble des critères cumulatifs de l'article 611-3</b>, parmi lesquels la faisabilité technique, l'intention d'achever et d'utiliser la solution, la capacité à l'utiliser ou à la commercialiser, des avantages économiques futurs probables et la capacité à évaluer de façon fiable les dépenses attribuables.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -409,8 +409,8 @@
   {
    "id": "ue10-02-k37",
    "type": "comp",
-   "q": "Sur le plan fiscal, que deviennent les dotations excédentaires constatées en comptabilité lorsque l'entreprise traite son gros entretien selon l'approche par composant ?",
-   "r": "<b>Elles sont réintégrées extra-comptablement</b> : sur le plan fiscal, les dépenses de gros entretien ou de grandes révisions demeurent des charges. À l'inverse, la provision pour gros entretien ou grandes révisions est déductible si elle respecte les conditions de l'article 39, 1-5° du CGI.",
+   "q": "Sur le plan fiscal, comment sont traitées les dépenses de gros entretien ou de grandes révisions lorsque l'entreprise retient en comptabilité l'approche par composant ?",
+   "r": "<b>Elles demeurent des charges</b> et n'entrent pas dans le champ de l'article 15 bis de l'annexe II au CGI : les dotations excédentaires constatées en comptabilité sont réintégrées extra-comptablement. À l'inverse, la provision pour gros entretien ou grandes révisions est déductible si elle respecte les conditions de l'article 39, 1-5° du CGI.",
    "base": [
     "Points de vigilance#4"
    ],

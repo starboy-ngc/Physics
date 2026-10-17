@@ -201,7 +201,7 @@
   {
    "id": "ue2-06-k17",
    "type": "comp",
-   "q": "Dans une procédure collective, que risque le créancier antérieur qui ne déclare pas sa créance au mandataire judiciaire dans le délai légal ?",
+   "q": "Dans une procédure collective, que risque le créancier antérieur qui ne déclare pas sa créance dans le délai légal ?",
    "r": "<b>Il n'est pas admis dans les répartitions et les dividendes, sauf relevé de forclusion par le juge-commissaire.</b> Le délai court à compter de la publication du jugement d'ouverture au BODACC : deux mois, augmentés de deux mois pour les créanciers ne demeurant pas en France métropolitaine.",
    "base": [
     "Règles essentielles#7"
@@ -239,7 +239,7 @@
    "id": "ue2-06-k20",
    "type": "comp",
    "q": "Quel effet le jugement de liquidation judiciaire produit-il sur les pouvoirs du débiteur ?",
-   "r": "<b>Il emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens.</b> Ses droits et actions sont exercés par le liquidateur, qui procède aux opérations de liquidation et à la vérification des créances.",
+   "r": "<b>Il emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens.</b> Ses droits et actions concernant son patrimoine sont exercés par le liquidateur, qui procède aux opérations de liquidation et à la vérification des créances.",
    "base": [
     "Règles essentielles#6",
     "Règles essentielles#8"

@@ -42,8 +42,8 @@
   {
    "id": "ue3-05-k04",
    "type": "comp",
-   "q": "Parmi quelles personnes une organisation syndicale représentative désigne-t-elle le délégué syndical d'une entreprise d'au moins cinquante salariés ?",
-   "r": "<b>Parmi les candidats aux élections du CSE ayant recueilli, à titre personnel et dans leur collège, au moins 10 % des suffrages exprimés au premier tour</b> ; à défaut, parmi ses adhérents ou ses anciens élus. Elle doit y avoir constitué une section syndicale.",
+   "q": "En principe, parmi quelles personnes une organisation syndicale représentative désigne-t-elle le délégué syndical d'une entreprise d'au moins cinquante salariés ?",
+   "r": "<b>Parmi les candidats aux élections du CSE ayant recueilli, à titre personnel et dans leur collège, au moins 10 % des suffrages exprimés au premier tour.</b> Elle doit y avoir constitué une section syndicale. À défaut seulement, d'autres désignations sont possibles, notamment parmi ses adhérents ou ses anciens élus.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -54,7 +54,7 @@
   {
    "id": "ue3-05-k05",
    "type": "comp",
-   "q": "Comment un syndicat représentatif peut-il disposer d'un délégué syndical dans un établissement de moins de cinquante salariés ?",
+   "q": "Quelle possibilité le Code du travail donne-t-il aux syndicats représentatifs pour disposer d'un délégué syndical dans un établissement de moins de cinquante salariés ?",
    "r": "<b>En désignant un membre de la délégation du personnel au CSE comme délégué syndical</b>, pour la durée de son mandat. Le seuil de cinquante salariés n'interdit donc pas toute présence syndicale.",
    "base": [
     "Points de vigilance#2"
@@ -67,7 +67,7 @@
    "id": "ue3-05-k06",
    "type": "def",
    "q": "Qu'est-ce que le représentant de la section syndicale dans une entreprise ?",
-   "r": "<b>Le représentant que peut désigner une organisation syndicale non représentative</b> au titre de sa section syndicale ; il ne peut pas négocier d'accords collectifs.",
+   "r": "<b>Le représentant que peut désigner une organisation syndicale non représentative</b> au titre de sa section syndicale ; en principe, il ne peut pas négocier d'accords collectifs.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -104,8 +104,8 @@
   {
    "id": "ue3-05-k09",
    "type": "comp",
-   "q": "Quelles sont les attributions du comité social et économique (CSE) dans les entreprises de onze à quarante-neuf salariés ?",
-   "r": "<b>Il présente les réclamations individuelles et collectives</b> et contribue à la santé et à la sécurité.",
+   "q": "Quelles sont les principales attributions du comité social et économique (CSE) dans les entreprises de onze à quarante-neuf salariés ?",
+   "r": "<b>Il présente à l'employeur les réclamations individuelles ou collectives des salariés</b> et contribue à promouvoir la santé et la sécurité au travail.",
    "base": [
     "Règles essentielles#11"
    ],
@@ -225,7 +225,7 @@
    "id": "ue3-05-k20",
    "type": "comp",
    "q": "Comment s'articulent l'accord de branche et l'accord d'entreprise selon les blocs de matières définis par le Code du travail ?",
-   "r": "<b>Bloc 1 (treize matières)</b> : la branche prime, sauf garanties au moins équivalentes ; <b>bloc 2 (quatre matières)</b> : elle prime si elle le stipule expressément ; <b>toutes les autres matières</b> : l'accord d'entreprise, antérieur ou postérieur, prévaut sur l'accord de branche.",
+   "r": "<b>Bloc 1 (treize matières)</b> : la branche prime ; <b>bloc 2 (quatre matières)</b> : elle prime si elle le stipule expressément ; dans ces deux blocs, sauf garanties au moins équivalentes de l'accord d'entreprise. <b>Toutes les autres matières</b> : l'accord d'entreprise, antérieur ou postérieur, prévaut sur l'accord de branche.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -273,7 +273,7 @@
   {
    "id": "ue3-05-k24",
    "type": "comp",
-   "q": "Que devient un accord collectif à durée indéterminée après sa dénonciation par ses signataires ?",
+   "q": "Que devient un accord collectif à durée indéterminée dénoncé par la totalité des signataires employeurs ou des signataires salariés ?",
    "r": "<b>Il continue de produire effet jusqu'à l'entrée en vigueur de l'accord de substitution</b> ou, à défaut, pendant un an à compter de l'expiration du préavis (trois mois à défaut de stipulation). Les salariés conservent ensuite une rémunération au moins égale à celle perçue au cours des douze derniers mois.",
    "base": [
     "Règles essentielles#7"
@@ -286,7 +286,7 @@
    "id": "ue3-05-k25",
    "type": "def",
    "q": "Qu'est-ce que la mise en cause d'un accord collectif ?",
-   "r": "<b>L'effet sur l'accord d'une fusion, d'une cession, d'une scission ou d'un changement d'activité</b> : il continue de produire effet dans les mêmes conditions (survie d'un an après le préavis de trois mois, maintien de la rémunération), sauf accord de substitution ou de transition conclu avec le nouvel employeur.",
+   "r": "<b>La remise en cause de son application dans une entreprise, en raison notamment d'une fusion, d'une cession, d'une scission ou d'un changement d'activité.</b> L'accord continue alors de produire effet dans les mêmes conditions (survie d'un an après le préavis de trois mois, maintien de la rémunération), sauf accord de substitution ou de transition conclu avec le nouvel employeur.",
    "base": [
     "Règles essentielles#8"
    ],
@@ -360,7 +360,7 @@
    "id": "ue3-05-k33",
    "type": "comp",
    "q": "Quelles entreprises doivent, à titre expérimental, mettre en place un dispositif de partage de la valeur selon la loi du 29 novembre 2023 ?",
-   "r": "<b>Les entreprises d'au moins onze salariés non tenues à la participation</b> ayant réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires (exercices ouverts à compter du 1er janvier 2025, pendant cinq ans). Dispositifs : participation, intéressement, abondement d'un plan d'épargne salariale ou prime de partage de la valeur.",
+   "r": "<b>Les entreprises d'au moins onze salariés non tenues à la participation</b> ayant réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires, pour les exercices ouverts à compter du 1er janvier 2025. Dispositifs : participation, intéressement, abondement d'un plan d'épargne salariale ou prime de partage de la valeur.",
    "base": [
     "Ce qui a changé récemment#2"
    ],
@@ -393,22 +393,10 @@
    "fiab": "stable"
   },
   {
-   "id": "ue3-05-k37",
-   "type": "comp",
-   "q": "Outre les salaires et l'égalité professionnelle, sur quels thèmes les organisations liées par une convention de branche négocient-elles au moins tous les quatre ans ?",
-   "r": "<b>Sur les conditions de travail et la gestion prévisionnelle des emplois, l'insertion des travailleurs handicapés et la formation professionnelle.</b> Les classifications et l'épargne salariale sont, elles, négociées au moins une fois tous les cinq ans.",
-   "base": [
-    "Règles essentielles#6"
-   ],
-   "src": "C. trav., art. L. 2241-1",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160734/",
-   "fiab": "stable"
-  },
-  {
    "id": "ue3-05-k38",
    "type": "comp",
    "q": "Quelle formalité, auprès des représentants du personnel, doit précéder l'introduction du règlement intérieur dans l'entreprise ?",
-   "r": "<b>Le règlement intérieur ne peut être introduit qu'après avoir été soumis à l'avis du comité social et économique.</b> Depuis la loi n° 2026-403 du 26 mai 2026, il ne peut entrer en vigueur qu'un mois après l'accomplissement des formalités de publicité.",
+   "r": "<b>Le règlement intérieur ne peut être introduit qu'après avoir été soumis à l'avis du comité social et économique.</b> Il ne peut entrer en vigueur qu'un mois au moins après l'accomplissement des formalités de publicité (art. L. 1321-4, dans sa rédaction issue de la loi n° 2026-403 du 26 mai 2026).",
    "base": [
     "Points de vigilance#3"
    ],
@@ -420,12 +408,24 @@
    "id": "ue3-05-k39",
    "type": "comp",
    "q": "Comment la preuve se répartit-elle entre le salarié et l'employeur dans un litige relatif à un harcèlement ou à une discrimination ?",
-   "r": "<b>Le salarié présente des éléments de fait laissant supposer un harcèlement ou une discrimination ; l'employeur prouve que sa décision est justifiée par des éléments objectifs étrangers à tout harcèlement ou à toute discrimination.</b> Toute rupture ou mesure prise en méconnaissance de ces interdictions est nulle.",
+   "r": "<b>Le salarié présente des éléments de fait laissant supposer un harcèlement ou une discrimination ; l'employeur doit alors prouver que sa décision est justifiée par des éléments objectifs étrangers à tout harcèlement ou à toute discrimination</b> et, pour le harcèlement, que les agissements n'en sont pas constitutifs. Toute rupture ou mesure prise en méconnaissance de ces interdictions est nulle.",
    "base": [
     "Points de vigilance#4"
    ],
    "src": "C. trav., art. L. 1152-1 à L. 1152-4, L. 1153-1 à L. 1153-5, L. 1154-1, L. 1132-1 et L. 1134-1",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160706/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k40",
+   "type": "comp",
+   "q": "Quelles organisations syndicales sont habilitées à engager la procédure de révision d'un accord d'entreprise ?",
+   "r": "<b>Jusqu'à la fin du cycle électoral au cours duquel l'accord a été conclu, les organisations représentatives signataires ou adhérentes</b> ; après, toutes les organisations représentatives dans l'entreprise.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 2261-7-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160736/",
    "fiab": "stable"
   }
  ]

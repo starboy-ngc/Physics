@@ -54,7 +54,7 @@
    "id": "ue10-03-k05",
    "type": "comp",
    "q": "Quelle simplification le PCG accorde-t-il aux petites entreprises pour le plan d'amortissement de leurs immobilisations non décomposables ?",
-   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Les autres entités retiennent la durée d'utilisation propre à l'entité, qui peut différer de la durée d'usage fiscale ; l'écart entre amortissement fiscal et amortissement comptable passe alors par les amortissements dérogatoires.",
+   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Les autres entités retiennent la durée d'utilisation propre à l'entité, qui peut différer de la durée d'usage fiscale ; l'écart passe alors par les amortissements dérogatoires lorsque l'amortissement fiscal excède l'amortissement comptable.",
    "base": [
     "Règles essentielles#2",
     "Points de vigilance#0"
@@ -90,8 +90,8 @@
   {
    "id": "ue10-03-k08",
    "type": "comp",
-   "q": "En quoi le point de départ de l'amortissement dégressif fiscal diffère-t-il de celui de l'amortissement linéaire ?",
-   "r": "<b>La première annuité dégressive court du premier jour du mois d'acquisition (prorata en mois), alors que l'amortissement linéaire part en principe de la mise en service.</b> Une mise en service postérieure à l'acquisition crée donc un écart entre les deux plans. Pour un bien acheté, la date d'acquisition est celle de l'accord sur la chose et le prix.",
+   "q": "Pour un bien acquis, en quoi le point de départ de l'amortissement dégressif fiscal diffère-t-il de celui de l'amortissement linéaire ?",
+   "r": "<b>La première annuité dégressive court du premier jour du mois d'acquisition (prorata en mois), alors que l'amortissement linéaire part en principe de la mise en service.</b> Une mise en service postérieure à l'acquisition crée un écart entre les deux plans. Pour un bien acheté, la date d'acquisition est en principe celle de l'accord sur la chose et le prix, même si la livraison et le paiement interviennent plus tard.",
    "base": [
     "Points de vigilance#1",
     "Règles essentielles#4"

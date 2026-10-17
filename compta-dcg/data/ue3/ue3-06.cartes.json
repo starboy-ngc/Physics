@@ -41,7 +41,7 @@
   {
    "id": "ue3-06-k04",
    "type": "def",
-   "q": "Qu'est-ce qu'une loi de financement de la sécurité sociale (LFSS) selon la Constitution de 1958 ?",
+   "q": "Qu'est-ce que la loi de financement de la sécurité sociale (LFSS) de l'année ?",
    "r": "<b>La loi qui détermine chaque année les conditions générales de l'équilibre financier de la sécurité sociale</b> et fixe ses objectifs de dépenses.",
    "base": [
     "Définitions#2"
@@ -150,7 +150,7 @@
    "id": "ue3-06-k14",
    "type": "comp",
    "q": "Quelle est la date limite du versement mensuel à l'URSSAF des cotisations déclarées par la déclaration sociale nominative (DSN) ?",
-   "r": "<b>Le 5 du mois suivant</b> pour les employeurs d'au moins 50 salariés qui paient les salaires au cours du mois, <b>le 15 du mois suivant</b> dans les autres cas. Les cotisations non versées à cette date supportent une majoration de retard de 5 %.",
+   "r": "<b>Le 5 du mois suivant</b> pour les employeurs d'au moins 50 salariés qui paient les salaires au cours du mois, <b>le 15 du mois suivant</b> dans les autres cas. Les cotisations non versées à cette date supportent notamment une majoration de retard de 5 %.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -198,7 +198,7 @@
    "id": "ue3-06-k18",
    "type": "def",
    "q": "Quelles sont les deux formes de travail dissimulé définies par le Code du travail ?",
-   "r": "<b>La dissimulation d'activité et la dissimulation d'emploi salarié.</b> La seconde recouvre notamment l'absence de déclaration préalable à l'embauche ou de bulletin de paie, ou la mention d'un nombre d'heures inférieur à celui réellement accompli.",
+   "r": "<b>La dissimulation d'activité et la dissimulation d'emploi salarié.</b> La seconde suppose un manquement intentionnel de l'employeur, notamment l'absence de déclaration préalable à l'embauche ou de bulletin de paie, ou la mention d'un nombre d'heures inférieur à celui réellement accompli.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -209,7 +209,7 @@
   {
    "id": "ue3-06-k19",
    "type": "comp",
-   "q": "Quelles conséquences la constatation d'un travail dissimulé entraîne-t-elle sur les cotisations sociales de l'employeur ?",
+   "q": "En principe, quelles conséquences la constatation d'un travail dissimulé entraîne-t-elle sur les cotisations sociales de l'employeur ?",
    "r": "<b>Le redressement est majoré de 25 %</b> (40 % en cas de circonstances aggravantes), les réductions et exonérations de cotisations sont annulées et la prescription est portée à cinq ans.",
    "base": [
     "Règles essentielles#7"
@@ -222,7 +222,7 @@
    "id": "ue3-06-k20",
    "type": "comp",
    "q": "En cas de travail dissimulé, à quelle indemnité a droit le salarié dont la relation de travail est rompue ?",
-   "r": "<b>À une indemnité forfaitaire de six mois de salaire.</b> Sur le plan pénal, la personne physique encourt trois ans d'emprisonnement et 45 000 € d'amende.",
+   "r": "<b>À une indemnité forfaitaire de six mois de salaire.</b> Sur le plan pénal, la personne physique encourt, hors circonstances aggravantes, trois ans d'emprisonnement et 45 000 € d'amende.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -233,7 +233,7 @@
   {
    "id": "ue3-06-k21",
    "type": "comp",
-   "q": "À partir de quand les indemnités journalières maladie du salarié en arrêt de travail sont-elles versées ?",
+   "q": "En principe, à partir de quand les indemnités journalières maladie du salarié en arrêt de travail sont-elles versées ?",
    "r": "<b>À partir du quatrième jour d'arrêt</b>, après un délai de carence de trois jours. Ce délai ne s'applique pas aux AT/MP et, pour les arrêts liés à une affection de longue durée, ne joue que pour le premier arrêt sur une période de trois ans.",
    "base": [
     "Règles essentielles#8"
@@ -295,7 +295,7 @@
   {
    "id": "ue3-06-k26",
    "type": "comp",
-   "q": "Quels travailleurs peuvent bénéficier de l'allocation d'aide au retour à l'emploi de l'assurance chômage ?",
+   "q": "En principe, quels travailleurs peuvent bénéficier de l'allocation d'aide au retour à l'emploi de l'assurance chômage ?",
    "r": "<b>Les travailleurs involontairement privés d'emploi</b> (licenciement, rupture conventionnelle, fin de CDD, démission considérée comme légitime), aptes au travail et à la recherche d'un emploi, qui justifient d'une durée minimale d'affiliation fixée par le règlement d'assurance chômage.",
    "base": [
     "Règles essentielles#10"
@@ -416,7 +416,7 @@
    "id": "ue3-06-k36",
    "type": "comp",
    "q": "Quel plafond limite le nombre d'indemnités journalières maladie qu'un salarié peut percevoir sur plusieurs années ?",
-   "r": "<b>Au plus 360 indemnités journalières sur trois années consécutives.</b> Les arrêts liés à une affection de longue durée ne sont pas soumis à ce plafond.",
+   "r": "<b>Au plus 360 indemnités journalières sur trois années consécutives.</b> Ce plafond ne s'applique pas aux arrêts liés à une affection de longue durée, soumis à une durée maximale d'indemnisation propre.",
    "base": [
     "Règles essentielles#8"
    ],

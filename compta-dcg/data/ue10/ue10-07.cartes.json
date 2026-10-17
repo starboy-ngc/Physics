@@ -153,7 +153,7 @@
    "id": "ue10-07-k13",
    "type": "def",
    "q": "En quoi consiste l'option pour le report en arrière des déficits (carry-back) en matière d'impôt sur les sociétés ?",
-   "r": "<b>Le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent</b>, dans la limite de la fraction non distribuée de ce bénéfice et de 1 000 000 €. Il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur le bénéfice d'imputation.",
+   "r": "<b>Le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent (bénéfice d'imputation), dans la limite de 1 000 000 €.</b> Il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur ce bénéfice d'imputation.",
    "base": [
     "Règles essentielles#5",
     "Chiffres et seuils#4"
@@ -165,7 +165,7 @@
   {
    "id": "ue10-07-k14",
    "type": "comp",
-   "q": "Comment l'entreprise utilise-t-elle la créance sur le Trésor née d'un report en arrière des déficits (carry-back) ?",
+   "q": "En principe, comment l'entreprise utilise-t-elle la créance sur le Trésor née d'un report en arrière des déficits (carry-back) ?",
    "r": "<b>Elle l'impute sur l'IS des cinq exercices suivants ; la fraction non utilisée est remboursée à l'issue de ce délai.</b> La créance, cessible dans les conditions des articles L. 313-23 et suivants du Code monétaire et financier, est inscrite au débit du compte 444 par le crédit du compte 699.",
    "base": [
     "Règles essentielles#5",
@@ -398,7 +398,7 @@
    "id": "ue10-07-k34",
    "type": "comp",
    "q": "Dans quels cas une société soumise à l'impôt sur les sociétés est-elle dispensée de verser des acomptes ?",
-   "r": "<b>Lorsque l'IS correspondant au bénéfice de référence n'excède pas 3 000 €, et pour le premier exercice d'activité.</b> Dans les autres cas, quatre acomptes trimestriels sont dus, le solde étant versé au plus tard le 15 du quatrième mois suivant la clôture.",
+   "r": "<b>Lorsque l'IS correspondant au bénéfice de référence n'excède pas 3 000 €, et pour le premier exercice d'activité.</b> Sinon, quatre acomptes trimestriels sont dus. Dans tous les cas, l'impôt restant dû est versé au plus tard le 15 du quatrième mois suivant la clôture.",
    "base": [
     "Règles essentielles#2",
     "Chiffres et seuils#2"

@@ -79,7 +79,7 @@
   {
    "id": "ue2-07-k07",
    "type": "comp",
-   "q": "Quelles obligations comptables et bancaires le Code de commerce impose-t-il à toute personne physique ou morale ayant la qualité de commerçant ?",
+   "q": "En principe, quelles obligations comptables et bancaires le Code de commerce impose-t-il à toute personne physique ou morale ayant la qualité de commerçant ?",
    "r": "<b>Enregistrer chronologiquement les mouvements affectant le patrimoine de son entreprise, contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs, et établir des comptes annuels à la clôture de l'exercice.</b> Documents comptables et pièces justificatives sont conservés dix ans ; le commerçant doit aussi se faire ouvrir un compte dans un établissement de crédit ou un bureau de chèques postaux.",
    "base": [
     "Règles essentielles#2"
@@ -104,7 +104,7 @@
   {
    "id": "ue2-07-k09",
    "type": "comp",
-   "q": "Quelle compétence la loi du 20 novembre 2023 confie-t-elle aux tribunaux des activités économiques expérimentés depuis le 1er janvier 2025 ?",
+   "q": "Quelle compétence la loi du 20 novembre 2023 confie-t-elle aux tribunaux des activités économiques mis en place à titre expérimental depuis le 1er janvier 2025 ?",
    "r": "<b>Les procédures amiables et collectives, quel que soit le statut du débiteur</b>, sauf exceptions légales. L'expérimentation dure quatre ans dans douze tribunaux de commerce désignés par l'arrêté du 5 juillet 2024.",
    "base": [
     "Ce qui a changé récemment#1"
@@ -116,8 +116,8 @@
   {
    "id": "ue2-07-k10",
    "type": "def",
-   "q": "Outre l'enseigne, le nom commercial, le droit au bail, la clientèle et l'achalandage, quels éléments du fonds de commerce peuvent être compris dans son nantissement ?",
-   "r": "<b>Le mobilier commercial, le matériel ou l'outillage servant à l'exploitation, les brevets d'invention, les licences, les marques, les dessins et modèles industriels et, généralement, les droits de propriété intellectuelle qui y sont attachés</b>, s'ils sont désignés de façon expresse et précise dans l'acte constitutif. Cette liste de l'article L. 142-2 est limitative : les marchandises n'y figurent pas.",
+   "q": "Quels éléments du fonds de commerce son nantissement comprend-il, selon que l'acte constitutif les désigne ou non de façon expresse et précise ?",
+   "r": "<b>À défaut de désignation, seulement l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage.</b> S'ils sont désignés, s'y ajoutent le mobilier commercial, le matériel ou l'outillage, les brevets d'invention, les licences, les marques, les dessins et modèles industriels et les autres droits de propriété intellectuelle attachés au fonds. Cette liste de l'article L. 142-2 est limitative : les marchandises n'y figurent pas.",
    "base": [
     "Définitions#3",
     "Règles essentielles#7"
@@ -177,18 +177,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue2-07-k15",
-   "type": "comp",
-   "q": "À défaut de désignation expresse et précise dans l'acte, quels éléments le nantissement d'un fonds de commerce comprend-il ?",
-   "r": "<b>Seulement l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage.</b> Les autres éléments de la liste limitative de l'article L. 142-2 n'y sont compris que s'ils sont désignés de façon expresse et précise dans l'acte constitutif.",
-   "base": [
-    "Règles essentielles#7"
-   ],
-   "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
-   "fiab": "stable"
-  },
-  {
    "id": "ue2-07-k16",
    "type": "comp",
    "q": "Quelle sanction frappe le nantissement d'un fonds de commerce dont l'inscription n'est pas prise dans les trente jours de l'acte constitutif ?",
@@ -215,7 +203,7 @@
   {
    "id": "ue2-07-k18",
    "type": "comp",
-   "q": "Jusqu'à quand le loueur d'un fonds de commerce en location-gérance est-il solidairement responsable des dettes du locataire-gérant ?",
+   "q": "Selon le Code de commerce, jusqu'à quand le loueur d'un fonds de commerce en location-gérance est-il solidairement responsable des dettes d'exploitation du locataire-gérant ?",
    "r": "<b>Jusqu'à la publication du contrat</b>, publié dans la quinzaine de sa date, pour les dettes contractées par le locataire-gérant à l'occasion de l'exploitation du fonds ; la prolongation de six mois a été supprimée par la loi du 9 décembre 2016. La fin de la location-gérance rend immédiatement exigibles les dettes afférentes à l'exploitation contractées par le locataire-gérant pendant la gérance.",
    "base": [
     "Règles essentielles#8",
@@ -301,7 +289,7 @@
   {
    "id": "ue2-07-k25",
    "type": "comp",
-   "q": "Par quel moyen un entrepreneur individuel peut-il écarter la séparation de ses patrimoines personnel et professionnel au profit d'un créancier ?",
+   "q": "Par quel acte unilatéral un entrepreneur individuel peut-il écarter, au profit d'un créancier, la séparation de ses patrimoines personnel et professionnel ?",
    "r": "<b>Par une renonciation, sur demande écrite du créancier, pour un engagement spécifique dont il doit rappeler le terme et le montant.</b> Il ne peut pas, en revanche, se porter caution en garantie d'une dette dont il est débiteur principal.",
    "base": [
     "Points de vigilance#4"
@@ -374,7 +362,7 @@
   {
    "id": "ue2-07-k31",
    "type": "comp",
-   "q": "Comment le loyer d'un bail commercial renouvelé est-il plafonné ?",
+   "q": "En principe, comment le loyer d'un bail commercial renouvelé est-il plafonné ?",
    "r": "<b>Sa variation ne peut excéder celle de l'ILC ou de l'ILAT depuis la fixation initiale du loyer du bail expiré</b>, si la durée de ce bail n'est pas supérieure à neuf ans, sauf modification notable des caractéristiques du local, de la destination des lieux, des obligations des parties ou des facteurs locaux de commercialité. Le plafonnement cesse lorsque, par tacite prolongation, la durée du bail excède douze ans.",
    "base": [
     "Règles essentielles#15",
@@ -411,8 +399,8 @@
   {
    "id": "ue2-07-k34",
    "type": "comp",
-   "q": "Depuis la loi du 26 mai 2026, quelles règles encadrent le dépôt de garantie d'un bail commercial ?",
-   "r": "<b>Pour les baux conclus ou renouvelés depuis la promulgation de la loi, il ne peut excéder le loyer d'un trimestre et ne porte pas intérêt</b> ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés. Le preneur de locaux à usage commercial ou artisanal peut aussi obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer.",
+   "q": "Qu'a changé la loi du 26 mai 2026 pour le dépôt de garantie et le paiement du loyer du preneur d'un local à usage commercial ou artisanal ?",
+   "r": "<b>Pour les baux conclus ou renouvelés depuis sa promulgation, le dépôt de garantie ne peut excéder le loyer d'un trimestre et ne porte pas intérêt</b> ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés. Le preneur peut aussi obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer, y compris dans les baux en cours.",
    "base": [
     "Ce qui a changé récemment#0"
    ],
@@ -430,6 +418,18 @@
    ],
    "src": "C. com., art. L. 210-1 et L. 210-6",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k36",
+   "type": "comp",
+   "q": "Qui peut invoquer le droit au renouvellement d'un bail commercial ?",
+   "r": "<b>Seul le propriétaire du fonds qui est exploité dans les lieux.</b> Si le bailleur refuse le renouvellement, il doit en principe payer à ce locataire évincé une indemnité d'éviction égale au préjudice causé par le défaut de renouvellement.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 145-8, L. 145-14, L. 145-17 et L. 145-28",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006221741",
    "fiab": "stable"
   }
  ]

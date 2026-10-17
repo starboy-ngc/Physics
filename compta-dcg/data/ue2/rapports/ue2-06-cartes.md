@@ -6,8 +6,8 @@
 
 1. **Rédaction depuis la fiche.** 35 cartes (k01 à k35) ont été rédigées à partir des items de la fiche, sans calcul ni chiffre millésimé. Chaque carte repose sur un ou deux items (`base`), dont elle reprend `src` et `url`.
 2. **Relecture de fidélité.** Deux passes successives ont confronté les 35 cartes au texte de leurs items de base, sans recherche web (la consigne de ces passes l'excluait). La première a corrigé 6 cartes (k01, k07, k08, k13, k16, k29). La seconde a corrigé 4 cartes (k08, k13, k25, k27) et vérifié 2 corrections reprises d'une passe interrompue (k07, k14). Aucune suppression ni aucun ajout.
-3. **Relecture d'exactitude.** Le second relecteur a contrôlé les 35 cartes au regard du droit en vigueur au 16 octobre 2026 : Code de commerce (livre VI, droit pénal des sociétés, commissariat aux comptes réorganisé par l'ordonnance n° 2023-1142), Code civil, Code pénal, Code de procédure pénale. Il a aussi vérifié que chaque question n'appelle qu'une seule réponse et il a recherché les doublons. Bilan : 6 cartes corrigées (k13, k15, k18, k24, k27, k28), aucune suppression et aucun ajout.
-4. **Recherches.** 3 recherches WebSearch sur les 3 autorisées, toutes limitées à legifrance.gouv.fr : sauvegarde accélérée et cessation des paiements (C. com., art. L. 628-1), sûretés nulles en période suspecte (art. L. 632-1), réunion des patrimoines de l'entrepreneur individuel (art. L. 621-2).
+3. **Relecture d'exactitude.** Le second relecteur a contrôlé les 35 cartes au regard du droit en vigueur au 16 octobre 2026 : Code de commerce (livre VI, droit pénal des sociétés, commissariat aux comptes réorganisé par l'ordonnance n° 2023-1142), Code civil, Code pénal, Code de procédure pénale. Il a aussi vérifié que chaque question n'appelle qu'une seule réponse, celle qu'attendrait un correcteur du DCG, et il a recherché les doublons et les cartes sans intérêt. Cette relecture s'est faite en deux temps. Une première passe, interrompue avant son compte rendu, a corrigé 6 cartes (k13, k15, k18, k24, k27, k28). La reprise a relu ces 6 corrections, qu'elle a gardées, puis les 29 autres cartes, et elle en a corrigé 2 de plus (k17, k20). Bilan : 8 cartes corrigées, aucune suppression et aucun ajout.
+4. **Recherches.** 3 recherches WebSearch sur les 3 autorisées, toutes faites lors de la première passe et limitées à legifrance.gouv.fr : sauvegarde accélérée et cessation des paiements (C. com., art. L. 628-1), sûretés nulles en période suspecte (art. L. 632-1), réunion des patrimoines de l'entrepreneur individuel (art. L. 621-2). La reprise n'en a fait aucune : ses deux corrections reposent sur la lettre d'articles stables (art. L. 641-3 et L. 641-9).
 
 `node validate.js data/ue2/ue2-06.cartes.json` : ✓ (35 cartes, 15 déf.).
 
@@ -25,7 +25,7 @@
   - l'ouverture du redressement sur assignation d'un créancier ou requête du ministère public et le report de la date de cessation des paiements (Règles essentielles#4) ;
   - les conditions de la liquidation judiciaire simplifiée et les trois cas de clôture (Règles essentielles#6).
 
-  En ajouter une carte imposerait une suppression : le jeu est au plafond de 35, et aucune carte n'est fausse ni en doublon.
+  En ajouter une carte imposerait une suppression : le jeu est au plafond de 35, et aucune carte n'est fausse, sans intérêt ni en doublon.
 
 ## Corrections des relectures de fidélité
 
@@ -54,19 +54,25 @@
 | k24 | « Sur son seul patrimoine professionnel », sans réserve, est trop absolu. L'article L. 621-2 permet de réunir à la procédure les autres patrimoines du débiteur en cas de confusion, de manquement grave aux règles de séparation ou de fraude. La seconde phrase répétait en outre la première. | « <b>En principe</b>, sur son seul patrimoine professionnel. Cette règle, issue de la loi en faveur de l'activité professionnelle indépendante, s'applique depuis le 15 mai 2022 (titre VIII bis du livre VI du Code de commerce). » Aucune règle nouvelle au verso. | Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 621-2 et L. 526-22 ; recherche n° 3 (Ce qui a changé récemment#1) |
 | k27 | « Ne visent que les dirigeants de SARL, de SA, de SCA et de SAS » était plus fort que la fiche (qui dit « visent ») et inexact à la lettre : les dispositions pénales de la SA s'appliquent aussi à la société européenne. | « Les articles du Code de commerce qui répriment l'abus de biens sociaux visent les dirigeants, de droit ou de fait, de SARL, de SA, de SCA et de SAS, non ceux de SNC ou de société civile. » Première phrase inchangée. | C. com., art. L. 241-3, L. 242-6, L. 243-1, L. 244-1 et L. 244-5 (Points de vigilance#0, Règles essentielles#10) |
 | k28 | « Qu'est-ce qu'un dividende fictif ? » appelait pour toute réponse un renvoi à l'article L. 232-12. Un correcteur du DCG attendrait la substance (dividende sans bénéfice distribuable…), que la fiche ne donne pas : la réponse attendue n'était pas celle de l'examen. | Question : « En quoi consiste le délit de répartition de dividendes fictifs reproché aux dirigeants d'une SARL ou d'une SA ? ». Réponse : la répartition entre les associés, par les dirigeants, de dividendes fictifs en l'absence d'inventaire ou au moyen d'inventaires frauduleux ; est fictif tout dividende distribué en violation de L. 232-12. Type `def` conservé. | C. com., art. L. 232-12, L. 241-3, 2° et L. 242-6, 1° (Règles essentielles#11) |
+| k17 (reprise) | La question (« que risque le créancier antérieur qui ne déclare pas sa créance au mandataire judiciaire », posée « dans une procédure collective ») supposait que la déclaration se fait toujours entre les mains du mandataire judiciaire. En liquidation judiciaire, les créanciers déclarent leurs créances au liquidateur. | Mention « au mandataire judiciaire » retirée de la question : « Dans une procédure collective, que risque le créancier antérieur qui ne déclare pas sa créance dans le délai légal ? ». La réponse (pas d'admission aux répartitions et aux dividendes sauf relevé de forclusion, délai courant de la publication au BODACC) vaut pour les trois procédures et ne change pas. | C. com., art. L. 622-24, L. 622-26 et L. 641-3 (Règles essentielles#7) |
+| k20 (reprise) | « Ses droits et actions sont exercés par le liquidateur » était trop large. Le dessaisissement ne porte que sur les droits et actions du débiteur concernant son patrimoine ; le débiteur garde l'exercice de ses droits propres (droits attachés à sa personne, recours contre le jugement de liquidation). | « Ses droits et actions concernant son patrimoine sont exercés par le liquidateur, qui procède aux opérations de liquidation et à la vérification des créances. » Le reste de la carte est inchangé. | C. com., art. L. 641-9, I (Règles essentielles#6) |
 
-Les 29 autres cartes ont été contrôlées sans changement : k01 à k12, k14, k16, k17, k19 à k23, k25, k26 et k29 à k35. En particulier :
+Les 6 premières lignes viennent de la première passe ; la reprise les a relues et gardées. Les lignes marquées « reprise » sont les corrections de la reprise.
+
+Les 27 autres cartes ont été contrôlées sans changement : k01 à k12, k14, k16, k19, k21 à k23, k25, k26 et k29 à k35. En particulier :
 - **k07** (alerte du commissaire aux comptes dans la SA) suit l'article L. 234-1 dans ses quatre phases.
 - **k09** reprend exactement les deux voies de l'article L. 611-8 (constatation par le président, homologation par le tribunal et ses trois conditions).
-- **k10** (privilège de « new money ») est juste dans les termes de la fiche. Il ne mentionne pas l'exclusion des apports consentis par les associés lors d'une augmentation de capital, que la fiche ne donne pas.
-- **k14** et **k15** ne font pas doublon : la première porte sur les paiements, la seconde sur les autres actes nuls de droit.
-- **k21** : la liste des exceptions à l'absence de reprise des poursuites est introduite par « notamment » ; l'approximation « créance née d'une infraction dont le débiteur a été reconnu coupable » (le texte dit « condamnation pénale du débiteur ») reste juste.
-- **k33** et **k34** sont à jour de l'ordonnance n° 2023-1142 (révélation des faits délictueux, entrave, article L. 821-6, 3°).
+- **k10** (privilège de « new money ») est juste dans les termes de la fiche. Il ne mentionne pas l'exclusion des apports consentis par les associés lors d'une augmentation de capital, que la fiche ne donne pas ; la question, qui porte sur les « créanciers », ne l'appelle pas.
+- **k11** reprend les conditions de l'article L. 628-1 telles que la fiche les donne : conciliation en cours, projet de plan susceptible d'un soutien suffisamment large, comptes certifiés ou établis par un expert-comptable.
+- **k14** et **k15** ne font pas doublon : la première porte sur les paiements, la seconde sur les autres actes nuls de droit. De même, **k02** et **k13** se recoupent sur la condition d'ouverture de la sauvegarde, mais k13 l'oppose à celle de la conciliation et ajoute l'obligation de demander un redressement ou une liquidation.
+- **k19** (juge-commissaire et mandataire judiciaire) : le mandataire judiciaire n'est désigné qu'en sauvegarde et en redressement, le liquidateur tenant ce rôle en liquidation. La question porte sur le rôle du mandataire lui-même et n'appelle qu'une réponse : elle est gardée.
+- **k21** : la liste des exceptions à l'absence de reprise des poursuites est introduite par « notamment » ; « créance née d'une infraction dont le débiteur a été reconnu coupable » rend fidèlement l'exception pénale du I de l'article L. 643-11.
+- **k33** (révélation des faits délictueux, `comp`) et **k34** (délit d'entrave, `def`) sont à jour de l'ordonnance n° 2023-1142 (article L. 821-6, 3°, pour l'entrave).
 - **k35** reprend exactement l'article 9-1 du Code de procédure pénale (infraction occulte, infraction dissimulée, plafond de douze ans pour les délits).
 
 ## Recherches faites
 
-3 recherches sur les 3 autorisées, toutes avec `allowed_domains` : legifrance.gouv.fr.
+3 recherches sur les 3 autorisées, toutes avec `allowed_domains` : legifrance.gouv.fr, toutes faites lors de la première passe de la relecture d'exactitude. La reprise n'en a fait aucune.
 
 1. Requête « article L628-1 code de commerce sauvegarde accélérée cessation des paiements ne fait pas obstacle quarante-cinq jours conciliation ».
    - **Confirmé.** La cessation des paiements ne fait pas obstacle à l'ouverture d'une sauvegarde accélérée si elle ne précédait pas depuis plus de quarante-cinq jours la demande d'ouverture de la conciliation (art. L. 628-1). Le ministère public peut demander qu'il soit mis fin à la procédure si ce délai était dépassé (art. L. 628-5).
@@ -82,7 +88,7 @@ Les 29 autres cartes ont été contrôlées sans changement : k01 à k12, k14, k
    - Effet : k24 dit « en principe » ; Ce qui a changé récemment#1 à reprendre.
    - Sources : https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178127 ; https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168684/2022-05-15 ; https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536
 
-Aucune recherche n'a été faite pour k27 et k28. Ces corrections reposent sur des règles stables (C. com., art. L. 244-5 ; art. L. 232-12 et L. 241-3) et se bornent à retirer une restriction trop forte ou à recentrer la question sur ce que la fiche dit.
+Aucune recherche n'a été faite pour k17, k20, k27 et k28. Ces corrections reposent sur la lettre d'articles stables (C. com., art. L. 641-3 et L. 641-9 ; art. L. 244-5 ; art. L. 232-12 et L. 241-3) et se bornent à retirer une restriction ou une prémisse trop large, ou à recentrer la question sur ce que la fiche dit.
 
 ## Points à reprendre dans la fiche
 
@@ -91,6 +97,8 @@ La fiche n'a pas été modifiée.
 1. **Points de vigilance#2** (cessation des paiements récente). « Pas une sauvegarde, réservée au débiteur qui n'est pas en cessation des paiements » vaut pour la sauvegarde de droit commun (art. L. 620-1). La sauvegarde accélérée peut être ouverte au débiteur en cessation des paiements si cette situation ne précédait pas de plus de quarante-cinq jours la demande de conciliation (art. L. 628-1 ; art. L. 628-5 pour le contrôle du ministère public). L'item devrait le préciser ; Règles essentielles#3 pourrait le mentionner à propos de la sauvegarde accélérée.
 2. **Règles essentielles#5** (nullités de la période suspecte). « Les sûretés (hypothèque, nantissement, gage) » reprend l'ancienne rédaction du 6° du I de l'article L. 632-1. La rédaction en vigueur vise les sûretés réelles conventionnelles et les droits de rétention conventionnels constitués pour dettes antérieurement contractées. Elle excepte la sûreté qui remplace une sûreté antérieure d'une nature et d'une assiette au moins équivalentes, ainsi que la cession de créances professionnelles faite en exécution d'un contrat-cadre antérieur à la cessation des paiements.
 3. **Ce qui a changé récemment#1** (entrepreneur individuel). « Ne portent que sur son patrimoine professionnel » énonce le principe. L'article L. 621-2 permet de réunir à la procédure les autres patrimoines du débiteur en cas de confusion, de manquement grave aux règles de séparation ou de fraude. Il faut ajouter « en principe » et, si possible, cette exception après lecture de la rédaction consolidée de l'article.
+4. **Règles essentielles#6** (liquidation judiciaire). « Ses droits et actions étant exercés par le liquidateur » est trop large : l'article L. 641-9, I, vise les droits et actions du débiteur « concernant son patrimoine », le débiteur gardant l'exercice de ses droits propres. Ajouter « concernant son patrimoine ».
+5. **Règles essentielles#7** (situation des créanciers antérieurs), précision facultative. « Les créanciers déclarent leurs créances au mandataire judiciaire » vaut en sauvegarde et en redressement ; en liquidation judiciaire, ils les déclarent au liquidateur (art. L. 641-3).
 
 ## Classement des exercices
 

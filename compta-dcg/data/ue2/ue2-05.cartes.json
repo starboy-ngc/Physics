@@ -91,7 +91,7 @@
   {
    "id": "ue2-05-k08",
    "type": "comp",
-   "q": "Comment est décidée une augmentation de capital par incorporation de réserves, bénéfices ou primes dans une SA, puis dans une SARL ?",
+   "q": "Quelles conditions de vote s'appliquent à la décision d'augmenter le capital par incorporation de réserves ou de bénéfices dans une SA, puis dans une SARL ?",
    "r": "<b>Dans la SA, l'assemblée générale statue, par dérogation à l'article L. 225-96, aux conditions de quorum et de majorité des assemblées ordinaires.</b> Dans la SARL, la décision d'incorporer des bénéfices ou des réserves est prise par les associés représentant au moins la moitié des parts sociales.",
    "base": [
     "Règles essentielles#4"
@@ -224,7 +224,7 @@
   {
    "id": "ue2-05-k19",
    "type": "comp",
-   "q": "Quelles conditions tenant à son ancienneté et à ses comptes une société anonyme (SA) doit-elle remplir pour se transformer en société d'une autre forme ?",
+   "q": "Hors transformation en société en nom collectif (SNC), quelles conditions tenant à son ancienneté et à ses comptes une société anonyme (SA) doit-elle remplir pour changer de forme ?",
    "r": "<b>Exister depuis deux ans au moins et avoir établi et fait approuver par les actionnaires le bilan de ses deux premiers exercices</b>, au moment de la transformation. La décision est prise sur le rapport des commissaires aux comptes, qui atteste que les capitaux propres sont au moins égaux au capital social.",
    "base": [
     "Règles essentielles#10",
@@ -262,7 +262,7 @@
    "id": "ue2-05-k22",
    "type": "comp",
    "q": "Comment sont rémunérés les associés des sociétés qui transmettent leur patrimoine lors d'une fusion ou d'une scission ?",
-   "r": "<b>Par des parts ou des actions des sociétés bénéficiaires</b> et, éventuellement, par une soulte en espèces dont le montant ne peut dépasser 10 % de la valeur nominale des parts ou des actions attribuées.",
+   "r": "<b>En principe, par des parts ou des actions des sociétés bénéficiaires</b> et, éventuellement, par une soulte en espèces dont le montant ne peut dépasser 10 % de la valeur nominale des parts ou des actions attribuées.",
    "base": [
     "Définitions#3"
    ],

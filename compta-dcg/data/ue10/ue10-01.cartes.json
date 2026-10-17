@@ -41,8 +41,8 @@
   {
    "id": "ue10-01-k04",
    "type": "def",
-   "q": "Qu'est-ce que la Haute autorité de l'audit (H2A) issue de l'ordonnance n° 2023-1142 du 6 décembre 2023 ?",
-   "r": "<b>Le nouveau nom du Haut Conseil du commissariat aux comptes (H3C)</b>, retenu compte tenu de l'extension de ses missions à la supervision des auditeurs des informations en matière de durabilité. Elle succède au H3C dans ses droits et obligations depuis le 1er janvier 2024.",
+   "q": "De quelle autorité la Haute autorité de l'audit (H2A) est-elle le nouveau nom depuis l'ordonnance n° 2023-1142 du 6 décembre 2023 ?",
+   "r": "<b>Du Haut Conseil du commissariat aux comptes (H3C)</b>, renommé compte tenu de l'extension de ses missions à la supervision des auditeurs des informations en matière de durabilité. La H2A succède au H3C dans ses droits et obligations depuis le 1er janvier 2024.",
    "base": [
     "Définitions#3"
    ],
@@ -78,7 +78,7 @@
    "id": "ue10-01-k07",
    "type": "comp",
    "q": "Hors règles propres aux groupes, quand une société par actions simplifiée (SAS) est-elle tenue de désigner au moins un commissaire aux comptes ?",
-   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5</b> : total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés ; depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société. Sous les seuils, la désignation est aussi obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée.",
+   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5</b> : total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés. Sous les seuils, la désignation est aussi obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée.",
    "base": [
     "Règles essentielles#13"
    ],

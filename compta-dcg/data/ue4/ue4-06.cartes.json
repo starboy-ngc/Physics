@@ -42,7 +42,7 @@
    "id": "ue4-06-k04",
    "type": "comp",
    "q": "Quelle est la base d'imposition de la cotisation foncière des entreprises (CFE) ?",
-   "r": "<b>La valeur locative des biens passibles de taxe foncière</b> dont le redevable a disposé pour son activité pendant la période de référence, c'est-à-dire l'avant-dernière année.",
+   "r": "<b>La valeur locative des biens passibles de taxe foncière</b> dont le redevable a disposé pour son activité pendant la période de référence, c'est-à-dire l'avant-dernière année précédant celle de l'imposition.",
    "base": [
     "Règles essentielles#0"
    ],
@@ -53,24 +53,12 @@
   {
    "id": "ue4-06-k05",
    "type": "comp",
-   "q": "Comment la cotisation foncière des entreprises (CFE) s'applique-t-elle à une entreprise nouvellement créée ?",
+   "q": "Comment la cotisation foncière des entreprises (CFE) s'applique-t-elle à une entreprise l'année de sa création et l'année suivante ?",
    "r": "<b>Aucune CFE n'est due l'année de la création.</b> La base de la première année d'imposition est ensuite réduite de moitié.",
    "base": [
     "Règles essentielles#0"
    ],
    "src": "CGI, art. 1447, I, 1467, 1467 A et 1478, II",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue4-06-k06",
-   "type": "comp",
-   "q": "Quelle modification la loi de finances pour 2026 a-t-elle apportée à la liste des redevables de la CFE (CGI, art. 1447, I) ?",
-   "r": "<b>Le texte vise désormais les « entités » non dotées de la personnalité morale</b>, aux côtés des personnes physiques ou morales et des fiduciaires, alors que la rédaction antérieure visait les « sociétés » non dotées de la personnalité morale. Cette rédaction s'applique depuis le 21 février 2026.",
-   "base": [
-    "Ce qui a changé récemment#2"
-   ],
-   "src": "CGI, art. 1447, I (loi n° 2026-103 du 19 février 2026, art. 55)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
    "fiab": "stable"
   },
@@ -102,7 +90,7 @@
    "id": "ue4-06-k09",
    "type": "comp",
    "q": "Quelle est l'assiette de la taxe sur les salaires due par un employeur ?",
-   "r": "<b>La fraction des rémunérations correspondant au rapport entre le chiffre d'affaires non soumis à la TVA et le chiffre d'affaires total.</b> Un barème progressif s'applique ensuite par salarié.",
+   "r": "<b>Les rémunérations versées, pour la fraction correspondant au rapport entre le chiffre d'affaires non soumis à la TVA et le chiffre d'affaires total</b>, soit leur totalité pour un employeur qui n'est pas du tout soumis à la TVA. Un barème progressif s'applique ensuite par salarié.",
    "base": [
     "Règles essentielles#4"
    ],
@@ -113,7 +101,7 @@
   {
    "id": "ue4-06-k10",
    "type": "comp",
-   "q": "Quelles conditions un employeur doit-il remplir pour être dispensé de la taxe sur les salaires ?",
+   "q": "Au regard de la TVA, à quelles conditions un employeur est-il dispensé de la taxe sur les salaires ?",
    "r": "<b>Être assujetti à la TVA l'année du versement des rémunérations et l'avoir été sur 90 % au moins de son chiffre d'affaires l'année précédente.</b> Une seule de ces deux conditions ne suffit pas.",
    "base": [
     "Points de vigilance#4",
@@ -270,8 +258,8 @@
   {
    "id": "ue4-06-k23",
    "type": "comp",
-   "q": "Jusqu'à quand s'exerce le droit de reprise de l'administration pour l'impôt sur le revenu, l'impôt sur les sociétés et la TVA ?",
-   "r": "<b>IR et IS : jusqu'à la fin de la troisième année qui suit celle au titre de laquelle l'imposition est due</b> (dixième année en cas d'activité occulte). TVA : jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible.",
+   "q": "En règle générale, jusqu'à quand s'exerce le droit de reprise de l'administration pour l'impôt sur le revenu, l'impôt sur les sociétés et la TVA ?",
+   "r": "<b>IR et IS : jusqu'à la fin de la troisième année qui suit celle au titre de laquelle l'imposition est due</b> (dixième année, notamment, en cas d'activité occulte). TVA : jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -283,7 +271,7 @@
    "id": "ue4-06-k24",
    "type": "comp",
    "q": "Quand une activité est-elle réputée occulte pour l'application du délai de reprise de dix ans ?",
-   "r": "<b>Lorsque les déclarations n'ont pas été déposées dans le délai légal et que l'activité n'a pas été portée à la connaissance d'un organisme compétent</b>, ou lorsqu'il s'agit d'une activité illicite. Le délai de dix ans ne vise que les catégories de revenus que le contribuable n'a fait figurer dans aucune déclaration.",
+   "r": "<b>Lorsque le contribuable n'a pas déposé ses déclarations dans le délai légal et, soit n'a pas porté son activité à la connaissance d'un organisme compétent, soit s'est livré à une activité illicite.</b> Le délai de dix ans ne vise que les catégories de revenus que le contribuable n'a fait figurer dans aucune déclaration.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -378,7 +366,7 @@
   {
    "id": "ue4-06-k32",
    "type": "comp",
-   "q": "Dans quel délai de droit commun doit être présentée la réclamation préalable qui ouvre tout contentieux fiscal ?",
+   "q": "Dans quel délai de droit commun le contribuable doit-il présenter la réclamation préalable par laquelle il conteste une imposition ?",
    "r": "<b>Au plus tard le 31 décembre de la deuxième année suivant</b> la mise en recouvrement du rôle ou la notification de l'avis de mise en recouvrement, le versement de l'impôt contesté ou la réalisation de l'événement qui la motive. Elle est présentée au service des impôts.",
    "base": [
     "Règles essentielles#17"
@@ -422,6 +410,19 @@
    ],
    "src": "LPF, art. L. 12 et L. 52 ; BOI-CF-PGR-20-30",
    "url": "https://bofip.impots.gouv.fr/bofip/243-PGP.html/identifiant=BOI-CF-PGR-20-30-20171220",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k36",
+   "type": "comp",
+   "q": "Comment la majoration pour défaut ou retard de déclaration prévue par l'article 1728 du CGI est-elle graduée ?",
+   "r": "<b>10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure ; 40 % au-delà ; 80 % en cas de découverte d'une activité occulte.</b> Pour la déclaration d'impôt sur le revenu, le taux applicable est celui de l'article 1758 A : 10 %, porté à 20 % en cas de dépôt dans les trente jours d'une mise en demeure.",
+   "base": [
+    "Règles essentielles#14",
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 1728, 1 et 1729 ; BOI-CF-INF-20-10-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
    "fiab": "stable"
   }
  ]

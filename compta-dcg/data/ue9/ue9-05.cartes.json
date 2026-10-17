@@ -90,7 +90,7 @@
    "id": "ue9-05-k08",
    "type": "def",
    "q": "De quoi se compose le coût d'acquisition d'une immobilisation corporelle selon le PCG ?",
-   "r": "<b>Le prix d'achat</b>, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction (livraison, installation et montage, honoraires d'architecte par exemple). L'escompte de règlement obtenu ne passe donc pas en produit.",
+   "r": "<b>Le prix d'achat</b>, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, <b>augmenté notamment de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction (livraison, installation et montage, honoraires d'architecte par exemple). L'escompte de règlement obtenu ne passe donc pas en produit.",
    "base": [
     "Règles essentielles#2",
     "Points de vigilance#2"
@@ -309,10 +309,11 @@
   {
    "id": "ue9-05-k28",
    "type": "comp",
-   "q": "Selon le PCG, comment constate-t-on la perte de valeur de titres immobilisés (titres de participation, autres titres immobilisés) ?",
-   "r": "<b>Par une dépréciation</b> (comptes 296 et 297) : les titres ne sont pas amortis. À leur entrée, ils sont évalués selon les règles générales du coût d'acquisition.",
+   "q": "Selon le PCG, en quoi le traitement à l'inventaire des titres de participation et autres titres immobilisés diffère-t-il de celui d'une immobilisation corporelle amortissable ?",
+   "r": "<b>Les titres ne sont pas amortis</b> : leur perte de valeur n'est constatée que par une dépréciation (comptes 296 et 297), alors que l'immobilisation corporelle amortissable fait l'objet, chaque exercice, d'une dotation aux amortissements (débit 6811, crédit 28).",
    "base": [
-    "Règles essentielles#16"
+    "Règles essentielles#16",
+    "Règles essentielles#9"
    ],
    "src": "PCG, art. 221-1 ; plan de comptes, comptes 26, 27, 29, 6671 et 7671",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
@@ -346,7 +347,7 @@
   {
    "id": "ue9-05-k32",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quel résultat figure la cession d'une immobilisation corporelle ou incorporelle ?",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quel résultat figure en principe la cession d'une immobilisation corporelle ou incorporelle ?",
    "r": "<b>Dans le résultat d'exploitation</b>, avec les comptes 657 et 757 ; les anciens comptes exceptionnels 675 et 775 ne figurent plus au plan de comptes. Le résultat exceptionnel est réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale.",
    "base": [
     "Ce qui a changé récemment#0"

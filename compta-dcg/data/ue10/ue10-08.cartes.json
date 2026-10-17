@@ -6,7 +6,7 @@
    "id": "ue10-08-k01",
    "type": "def",
    "q": "Comment le règlement ANC n° 2018-06 définit-il les fonds propres sans droit de reprise et avec droit de reprise d'une association ou d'une fondation ?",
-   "r": "<b>Les premiers correspondent à la mise à disposition définitive d'un bien ou de numéraire au profit de l'entité ; les seconds à sa mise à disposition conditionnelle</b>, le bien étant repris par l'apporteur lorsque survient l'événement prévu (par exemple la cessation de l'activité concernée ou la dissolution de l'entité).",
+   "r": "<b>Les premiers correspondent à la mise à disposition définitive d'un bien ou de numéraire au profit de l'entité ; les seconds à sa mise à disposition conditionnelle</b>, le bien étant repris par l'apporteur lorsque la condition n'est plus remplie par le bénéficiaire (par exemple en cas de cessation de l'activité concernée ou de dissolution de l'entité).",
    "base": [
     "Définitions#0"
    ],
@@ -200,7 +200,7 @@
   {
    "id": "ue10-08-k18",
    "type": "comp",
-   "q": "Pour qualifier le contrôle exclusif en consolidation, quelle est la portée de la détention de la majorité des droits de vote ?",
+   "q": "Selon le règlement ANC n° 2020-01, quelle est la portée de la détention de la majorité des droits de vote pour qualifier le contrôle exclusif ?",
    "r": "<b>Elle fait seulement présumer le contrôle exclusif</b> : la présomption peut être réfutée en cas de conditions particulières prévues dans un pacte d'actionnaires. Inversement, le contrôle exclusif peut exister sans majorité, par la désignation pendant deux exercices de la majorité des organes (présumée au-delà de 40 % des droits de vote sans associé plus important) ou en vertu d'un contrat ou de clauses statutaires.",
    "base": [
     "Points de vigilance#1"
@@ -301,7 +301,7 @@
    "id": "ue10-08-k26",
    "type": "comp",
    "q": "Selon la NEP 700, qu'est-ce qui distingue la certification avec réserve, le refus de certifier et l'impossibilité de certifier ?",
-   "r": "<b>Réserve : désaccord ou limitation dont les effets sont clairement circonscrits ; refus : désaccord dont les effets ne peuvent être circonscrits ; impossibilité : limitations trop étendues ou multiples incertitudes.</b> Le commissaire aux comptes en précise les motifs dans la partie de son rapport relative au fondement de l'opinion.",
+   "r": "<b>Réserve : désaccord ou limitation dont les effets sont clairement circonscrits ; refus : désaccord dont les effets ne peuvent être circonscrits ; impossibilité : limitation dont les effets ne peuvent être circonscrits, ou multiples incertitudes.</b> Le commissaire aux comptes en précise les motifs dans la partie de son rapport relative au fondement de l'opinion.",
    "base": [
     "Règles essentielles#13"
    ],
@@ -409,8 +409,8 @@
   {
    "id": "ue10-08-k36",
    "type": "comp",
-   "q": "Quels référentiels comptables une société peut-elle appliquer pour établir ses comptes consolidés selon l'article L. 233-24 du Code de commerce ?",
-   "r": "<b>Les normes comptables internationales (IFRS) adoptées par règlement de la Commission européenne</b> (règlement (CE) n° 1606/2002), qui la dispensent des règles des articles L. 233-17-2 à L. 233-23 et L. 233-25 ; à défaut, <b>le règlement ANC n° 2020-01</b>.",
+   "q": "Selon l'article L. 233-24 du Code de commerce, quel référentiel comptable dispense une société de certaines règles de consolidation de ce code ?",
+   "r": "<b>Les normes comptables internationales (IFRS) adoptées par règlement de la Commission européenne</b> (règlement (CE) n° 1606/2002) : la société qui les applique est dispensée des règles des articles L. 233-17-2 à L. 233-23 et L. 233-25. À défaut, ses comptes consolidés sont établis selon le <b>règlement ANC n° 2020-01</b>.",
    "base": [
     "Règles essentielles#11"
    ],
