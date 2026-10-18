@@ -1,74 +1,102 @@
 <title>Débit Crédit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Réviser le DCG matière par matière, avec tests quotidiens, plan comptable commenté et révisions espacées.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout : un livre-journal (marge rouge, lignes réglées), onglets d'intercalaires, et un ciel d'expédition pour la progression. */
+/* Layout : une appli de révision. En-tête collant avec cinq rubriques (barre du bas sur téléphone), une carte « séance du jour »
+   en tête d'accueil, et une couleur par matière (UE9, UE10, UE2, UE3, UE4, UE6, plan comptable) toujours accompagnée de son code. */
 :root {
-  --paper: #f5f7f1; --card: #ffffff; --ink: #1c2630; --muted: #5d6a74;
-  --rule: #cfd8cb; --rule-soft: #e4eae0; --margin: #b4302c;
-  --accent: #1f5f8b; --accent-soft: #e3eef6;
-  --ok: #2d7a4f; --ok-soft: #e2f1e7; --bad: #b4302c; --bad-soft: #f8e4e2; --warn: #9a6a12; --warn-soft: #f6ecd4;
+  --paper: #f3f5f9; --card: #ffffff; --ink: #161f2e; --muted: #5a6476;
+  --rule: #dde2eb; --rule-soft: #ecf0f5; --margin: #d93b3b;
+  --accent: #2456d6; --accent-soft: #e7edfc; --accent-ink: #ffffff;
+  --ok: #1f8a4c; --ok-soft: #e3f4ea; --bad: #c93636; --bad-soft: #fbe7e6; --warn: #8f6200; --warn-soft: #fbf0d6;
   --bronze: #9a5b2e; --silver: #5f6b78; --gold: #9a7410;
   --st1: #86b6ef; --st1-ink: #0b0b0b; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #1c5cab; --st3-ink: #ffffff; --st4: #0d366b; --st4-ink: #ffffff; --viz1: #2a78d6;
   --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
-  --display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
-  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --c-UE9: #2a78d6; --c-UE10: #eb6834; --c-UE2: #1baf7a; --c-UE3: #eda100; --c-UE4: #e87ba4; --c-UE6: #008300; --c-PCG: #6250d6;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 6px 18px rgba(16, 24, 40, 0.06);
+  --bar-bg: rgba(255, 255, 255, 0.92);
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
-    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
+    --paper: #0e131b; --card: #161d28; --ink: #e8ecf3; --muted: #9aa5b8; --rule: #283245; --rule-soft: #1d2533; --margin: #ef6262;
+    --accent: #7da2ff; --accent-soft: #1c2a4a; --accent-ink: #0b1020; --ok: #5fcf8c; --ok-soft: #16301f; --bad: #f07a72; --bad-soft: #3a1f1e; --warn: #e6b84f; --warn-soft: #3a2f17;
+    --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
+    --c-UE9: #3987e5; --c-UE10: #d95926; --c-UE2: #199e70; --c-UE3: #c98500; --c-UE4: #d55181; --c-UE6: #2f9a2f; --c-PCG: #9085e9;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.25); --bar-bg: rgba(22, 29, 40, 0.94);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
-  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
+  --paper: #0e131b; --card: #161d28; --ink: #e8ecf3; --muted: #9aa5b8; --rule: #283245; --rule-soft: #1d2533; --margin: #ef6262;
+  --accent: #7da2ff; --accent-soft: #1c2a4a; --accent-ink: #0b1020; --ok: #5fcf8c; --ok-soft: #16301f; --bad: #f07a72; --bad-soft: #3a1f1e; --warn: #e6b84f; --warn-soft: #3a2f17;
+  --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
+  --c-UE9: #3987e5; --c-UE10: #d95926; --c-UE2: #199e70; --c-UE3: #c98500; --c-UE4: #d55181; --c-UE6: #2f9a2f; --c-PCG: #9085e9;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.25); --bar-bg: rgba(22, 29, 40, 0.94);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
-.wrap { max-width: 960px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 60px; }
-header.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
-.brand { font-family: var(--display); font-weight: 600; font-size: 1.65rem; letter-spacing: -0.01em; margin: 0; text-wrap: balance; cursor: pointer; }
-.brand span { color: var(--margin); }
-.tagline { color: var(--muted); font-size: 0.92rem; margin: 0; }
-.rank { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: right; }
-.rank b { color: var(--ink); font-weight: 500; }
-nav.tabs { display: flex; gap: 2px; margin-top: 12px; border-bottom: 1px solid var(--rule); overflow-x: auto; scrollbar-width: none; }
-nav.tabs button { background: none; border: 1px solid transparent; border-bottom: none; color: var(--muted); font: 500 0.92rem var(--body); padding: 8px 12px; cursor: pointer; border-radius: 6px 6px 0 0; white-space: nowrap; }
-nav.tabs button[aria-selected="true"] { color: var(--ink); background: var(--card); border-color: var(--rule); position: relative; top: 1px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; display: flex; align-items: center; gap: 10px 18px; padding-block: 12px; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.brand { display: flex; align-items: center; gap: 9px; font-family: var(--display); font-weight: 800; font-size: 1.32rem; letter-spacing: -0.02em; margin: 0; cursor: pointer; white-space: nowrap; }
+.brand .mark { display: inline-grid; grid-template-columns: 9px 9px; gap: 3px; align-items: end; height: 22px; }
+.brand .mark i { display: block; border-radius: 3px; }
+.brand .mark i:first-child { height: 22px; background: var(--c-UE9); }
+.brand .mark i:last-child { height: 14px; background: var(--c-UE10); }
+.brand .dot { color: var(--margin); }
+.tagline { display: none; }
+.rank { margin-left: auto; display: flex; align-items: center; gap: 8px; font: 600 0.82rem var(--body); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px 5px 6px; white-space: nowrap; }
+.rank .lvl { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 700 0.75rem var(--mono); }
+.rank .xp { font: 500 0.78rem var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+nav.tabs { display: flex; gap: 4px; }
+nav.tabs button { position: relative; display: flex; align-items: center; gap: 7px; background: none; border: none; color: var(--muted); font: 600 0.93rem var(--body); padding: 8px 12px; cursor: pointer; border-radius: 999px; white-space: nowrap; }
+nav.tabs button svg { width: 19px; height: 19px; flex: none; }
+nav.tabs button:hover { color: var(--ink); background: var(--rule-soft); }
+nav.tabs button[aria-selected="true"] { color: var(--accent); background: var(--accent-soft); }
+@media (max-width: 760px) {
+  header.top { padding-block: 10px; }
+  nav.tabs { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; justify-content: space-around; gap: 0; background: var(--bar-bg); backdrop-filter: blur(10px); border-top: 1px solid var(--rule); padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); }
+  nav.tabs button { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 2px; font-size: 0.7rem; padding: 6px 2px; border-radius: 12px; }
+  nav.tabs button svg { width: 22px; height: 22px; }
+  nav.tabs .badge { position: absolute; top: 1px; left: calc(50% + 6px); margin: 0; }
+  .wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .rank .xp { display: none; }
+}
 button:focus-visible, select:focus-visible, input:focus-visible, .row:focus-visible, .acct:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.badge { display: inline-block; min-width: 1.4em; padding: 0 6px; border-radius: 999px; background: var(--margin); color: #fff; font: 500 0.72rem var(--mono); margin-left: 5px; vertical-align: 1px; }
-.badge.zero { background: var(--rule); color: var(--muted); }
-main { margin-top: 18px; }
-h2 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; margin: 0 0 8px; text-wrap: balance; }
-h3 { font-family: var(--display); font-weight: 600; font-size: 1.1rem; margin: 22px 0 6px; text-wrap: balance; }
+.badge { display: inline-block; min-width: 1.5em; text-align: center; padding: 0 5px; border-radius: 999px; background: var(--margin); color: var(--card); font: 600 0.68rem/1.5 var(--mono); margin-left: 2px; }
+.badge.zero { display: none; }
+main { margin-top: 20px; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 8px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; margin: 26px 0 8px; text-wrap: balance; }
 p { margin: 0 0 10px; max-width: 70ch; }
 .muted { color: var(--muted); }
 .small { font-size: 0.86rem; }
 .eyebrow { font: 500 0.74rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 14px 0 18px; }
-.tile { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 13px; }
-.tile .big { font: 500 1.5rem var(--mono); font-variant-numeric: tabular-nums; }
+.tile { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 12px 14px; }
+.tile .big { font: 700 1.55rem var(--display); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .tile .lab { color: var(--muted); font-size: 0.83rem; }
-.cta { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--margin); border-radius: 8px; padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.cta .t { font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
-.ledger { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
-.row { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px 12px 0; border-top: 1px solid var(--rule-soft); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-bottom: 0; color: inherit; font: inherit; }
+.cta { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; box-shadow: var(--shadow); padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.cta .t { font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.ledger { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+.row { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 12px 16px 12px 4px; border-top: 1px solid var(--rule-soft); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-bottom: 0; color: inherit; font: inherit; }
 .row:first-child { border-top: none; }
-.row:hover { background: var(--accent-soft); }
-.row .num { font: 500 0.88rem var(--mono); color: var(--margin); text-align: center; border-right: 1px solid var(--margin); align-self: stretch; display: flex; align-items: center; justify-content: center; }
+.row:hover { background: var(--rule-soft); }
+.row .num { font: 700 0.95rem var(--display); color: var(--c, var(--accent)); text-align: center; align-self: center; justify-self: center; width: 34px; height: 34px; border-radius: 10px; background: color-mix(in srgb, var(--c, var(--accent)) 14%, var(--card)); display: flex; align-items: center; justify-content: center; }
 .row .ttl { font-weight: 600; }
 .row .sub { color: var(--muted); font-size: 0.86rem; }
 .row .right { text-align: right; min-width: 110px; }
-.bar { height: 6px; background: var(--rule-soft); border-radius: 3px; overflow: hidden; margin-top: 4px; }
-.bar i { display: block; height: 100%; background: var(--accent); }
-.bar.full i { background: var(--ok); }
+.bar { height: 8px; background: var(--rule-soft); border-radius: 999px; overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: var(--c, var(--accent)); border-radius: 999px; }
+.bar.full i { background: var(--c, var(--ok)); }
 .pill { display: inline-block; font: 500 0.7rem var(--mono); letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; background: var(--rule-soft); color: var(--muted); white-space: nowrap; }
 .pill.next { background: var(--accent-soft); color: var(--accent); }
 .pill.done { background: var(--ok-soft); color: var(--ok); }
@@ -77,12 +105,14 @@ p { margin: 0 0 10px; max-width: 70ch; }
 .pill.new { background: var(--accent-soft); color: var(--accent); }
 .pill.del { background: var(--bad-soft); color: var(--bad); }
 .ues { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
-.ue { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; cursor: pointer; text-align: left; color: inherit; font: inherit; display: grid; gap: 4px; }
-.ue:hover { border-color: var(--accent); }
-.ue .code { font: 500 0.74rem var(--mono); letter-spacing: 0.08em; color: var(--margin); }
-.ue .nom { font-family: var(--display); font-weight: 600; font-size: 1.12rem; }
+.ue { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 16px 18px; cursor: pointer; text-align: left; color: inherit; font: inherit; display: grid; gap: 6px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.ue:hover { border-color: var(--c, var(--accent)); }
+.ue .code { justify-self: start; font: 700 0.78rem var(--mono); letter-spacing: 0.04em; color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--card)); border-radius: 8px; padding: 3px 8px; }
+.ue .nom { font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; }
 .ue .intro { color: var(--muted); font-size: 0.86rem; }
-.lesson { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.lesson { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 22px clamp(16px, 4vw, 34px); font-size: 1.04rem; line-height: 1.68; }
+.lesson h3 { font-size: 1.22rem; margin-top: 30px; }
+.lesson h3:first-child { margin-top: 0; }
 .lesson p, .lesson ul, .lesson ol { max-width: 70ch; }
 .lesson ul, .lesson ol { margin: 0 0 10px; padding-left: 20px; }
 .lesson li { margin-bottom: 4px; }
@@ -90,10 +120,10 @@ p { margin: 0 0 10px; max-width: 70ch; }
 .lesson th, .lesson td { border: 1px solid var(--rule); padding: 5px 8px; text-align: left; vertical-align: top; }
 .lesson th { background: var(--rule-soft); font-weight: 600; }
 .twrap-l { overflow-x: auto; }
-.note { border-left: 3px solid var(--margin); padding: 6px 12px; background: var(--paper); margin: 10px 0; max-width: 70ch; border-radius: 0 6px 6px 0; }
-.note b { color: var(--margin); }
+.note { border-left: 4px solid var(--c, var(--accent)); padding: 10px 14px; background: color-mix(in srgb, var(--c, var(--accent)) 9%, var(--card)); margin: 14px 0; max-width: 70ch; border-radius: 0 12px 12px 0; }
+.note b { color: var(--ink); }
 code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--rule-soft); padding: 0 4px; border-radius: 3px; }
-.fiche { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.fiche { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 20px clamp(16px, 4vw, 30px); }
 .fiche .fhead { border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 4px; }
 .fiche ol.fl { padding-left: 22px; margin: 0 0 8px; max-width: 76ch; }
 .fiche li.fi { margin-bottom: 12px; }
@@ -102,17 +132,21 @@ code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--ru
 .fiche .fsrc a { color: var(--accent); }
 .fiche table.plan td.n { width: auto; white-space: normal; }
 .linkbtn { background: none; border: none; padding: 0; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }
-.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
-.crumb .seg button, .seg button { background: var(--card); border: none; color: var(--muted); font: 500 0.88rem var(--body); padding: 7px 16px; cursor: pointer; border-right: 1px solid var(--rule); }
-.crumb .seg button:last-child, .seg button:last-child { border-right: none; }
-.crumb .seg button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+.seg { display: inline-flex; gap: 4px; padding: 4px; background: var(--rule-soft); border-radius: 999px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.crumb .seg button, .seg button { background: none; border: none; color: var(--muted); font: 600 0.9rem var(--body); padding: 7px 15px; cursor: pointer; border-radius: 999px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+.seg button .n { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--rule); color: var(--ink); font: 700 0.72rem var(--mono); }
+.crumb .seg button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
+.seg button[aria-pressed="true"] .n { background: var(--c, var(--accent)); color: var(--card); }
+.subnav { margin-bottom: 18px; }
 .sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
 .sources li { margin-bottom: 3px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
-button.btn { font: 500 0.95rem var(--body); padding: 9px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+button.btn { font: 600 0.95rem var(--body); padding: 10px 18px; border-radius: 12px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+button.btn:hover:not(:disabled) { filter: brightness(1.06); }
+button.btn.big { font-size: 1.05rem; padding: 13px 22px; border-radius: 14px; }
 button.btn.ghost { background: transparent; color: var(--accent); }
 button.btn.quiet { background: transparent; color: var(--muted); border-color: var(--rule); }
-button.btn.red { background: var(--margin); border-color: var(--margin); }
+button.btn.red { background: var(--accent); border-color: var(--accent); }
 button.btn:disabled { opacity: 0.5; cursor: default; }
 .crumb { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
 .crumb button { background: none; border: none; color: var(--accent); cursor: pointer; font: inherit; padding: 0; }
@@ -135,11 +169,11 @@ tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
 .palette { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
 .chip { font: 0.82rem var(--body); border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 3px 10px; color: var(--ink); }
 .chip b { font-family: var(--mono); font-weight: 500; color: var(--accent); margin-right: 4px; }
-.exo { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.exo { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 20px clamp(16px, 3.5vw, 26px); box-shadow: var(--shadow); }
 .exo .meta { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; margin-bottom: 8px; }
-.exo .q { font-size: 1.05rem; font-weight: 500; max-width: 72ch; margin-bottom: 12px; white-space: pre-line; }
+.exo .q { font-size: 1.12rem; font-weight: 600; max-width: 72ch; margin-bottom: 12px; white-space: pre-line; }
 .opts { display: grid; gap: 8px; }
-.opt { text-align: left; font: inherit; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: 10px 12px; cursor: pointer; display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: start; }
+.opt { text-align: left; font: inherit; background: var(--card); border: 1.5px solid var(--rule); color: var(--ink); border-radius: 12px; padding: 10px 12px; cursor: pointer; display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: start; }
 .opt .k { font-family: var(--mono); color: var(--muted); }
 .opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
 .opt.right { border-color: var(--ok); background: var(--ok-soft); }
@@ -154,7 +188,7 @@ tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
 .tri-row select { font: inherit; color: inherit; background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: 6px; }
 .tri-row.right { border-color: var(--ok); }
 .tri-row.wrong { border-color: var(--bad); }
-.feedback { margin-top: 14px; padding: 12px 14px; border-radius: 6px; border: 1px solid; max-width: 72ch; }
+.feedback { margin-top: 14px; padding: 12px 16px; border-radius: 12px; border: 1px solid; max-width: 72ch; }
 .feedback.ok { border-color: var(--ok); background: var(--ok-soft); }
 .feedback.bad { border-color: var(--bad); background: var(--bad-soft); }
 .feedback p:last-child { margin-bottom: 0; }
@@ -182,12 +216,12 @@ tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
 .hist { display: flex; gap: 3px; align-items: flex-end; height: 70px; margin: 8px 0 4px; }
 .hist i { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-width: 4px; opacity: 0.85; }
 .hist i.none { background: var(--rule-soft); }
-details.save { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+details.save { margin-top: 36px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--rule); padding-top: 14px; }
 details.save summary { cursor: pointer; }
 details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono); margin-top: 8px; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 8px; }
-.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 90vw; }
+.toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); z-index: 45; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 90vw; }
 .toast.show { opacity: 1; }
-.xp-pop { position: fixed; right: 16px; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: #fff; font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
+.xp-pop { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(96px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: var(--card); font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
 .xp-pop.show { opacity: 1; transform: translateY(0); }
 .ladder { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; margin: 10px 0 4px; max-width: 640px; }
 .ladder span { text-align: center; font: 500 0.74rem var(--mono); padding: 6px 2px; border-radius: 4px; }
@@ -204,14 +238,67 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .cell.b3, .ladder .b3, .pill.b3 { background: var(--st3); color: var(--st3-ink); }
 .cell.b4, .ladder .b4, .pill.b4 { background: var(--st4); color: var(--st4-ink); }
 .cell.empty { opacity: 0.38; }
-.flash .verso { margin-top: 4px; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; max-width: 72ch; }
+.hero { background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(18px, 4vw, 28px); box-shadow: var(--shadow); display: grid; gap: 16px; position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px; background: linear-gradient(90deg, var(--c-UE9), var(--c-UE10), var(--c-UE2), var(--c-UE3), var(--c-UE4), var(--c-UE6), var(--c-PCG)); }
+.hero h2 { font-size: clamp(1.6rem, 4.5vw, 2.1rem); margin: 2px 0 4px; }
+.hero .lead { color: var(--muted); margin: 0; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.steps li { display: grid; grid-template-columns: 38px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: var(--rule-soft); }
+.steps .k { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; font: 700 1rem var(--display); background: var(--card); color: var(--muted); border: 1px solid var(--rule); }
+.steps li.cur { background: var(--accent-soft); }
+.steps li.cur .k { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.steps li.done .k { background: var(--ok); color: var(--card); border-color: var(--ok); }
+.steps b { display: block; font-weight: 700; }
+.steps .d { color: var(--muted); font-size: 0.88rem; }
+.steps .st { font: 600 0.78rem var(--body); color: var(--muted); white-space: nowrap; }
+.steps li.done .st { color: var(--ok); }
+.hero .go { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 16px 0 4px; }
+#host .exo { border-top: 4px solid var(--c, var(--rule)); }
+@media (max-width: 560px) { .seg .lg { display: none; } .seg button { padding: 7px 11px; } .stat { padding: 10px 11px; } .stat .v { font-size: 1.3rem; } .stat .l { font-size: 0.76rem; } }
+.stat { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 12px 14px; display: grid; gap: 2px; }
+.stat .v { font: 800 1.6rem var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat .v small { font: 600 0.9rem var(--body); color: var(--muted); }
+.stat .l { color: var(--muted); font-size: 0.84rem; }
+.ueprog { display: grid; gap: 8px; }
+.ueprog button { display: grid; grid-template-columns: 58px 1fr minmax(90px, 30%) 44px; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 14px; cursor: pointer; text-align: left; color: inherit; font: inherit; }
+.ueprog button:hover { border-color: var(--c); }
+.ueprog .code { font: 700 0.8rem var(--mono); color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--card)); border-radius: 8px; padding: 4px 0; text-align: center; }
+.ueprog .nm { font-weight: 600; min-width: 0; }
+.ueprog .nm small { display: block; color: var(--muted); font-weight: 400; font-size: 0.8rem; }
+.ueprog .bar { margin: 0; }
+.ueprog .pc { font: 500 0.85rem var(--mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.next-chap { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; background: color-mix(in srgb, var(--c) 9%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--rule)); border-radius: 16px; padding: 14px 16px; cursor: pointer; width: 100%; text-align: left; color: inherit; font: inherit; }
+.next-chap .code { font: 700 0.8rem var(--mono); color: var(--card); background: var(--c); border-radius: 10px; padding: 8px 10px; }
+.next-chap .go { color: var(--accent); font-weight: 700; white-space: nowrap; }
+.chead { border-radius: 20px; padding: clamp(16px, 4vw, 24px); background: color-mix(in srgb, var(--c) 11%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 30%, var(--rule)); display: grid; gap: 8px; margin-bottom: 16px; }
+.chead .eyebrow { color: var(--ink); }
+.chead .eyebrow b { color: var(--card); background: var(--c); border-radius: 6px; padding: 1px 7px; margin-right: 6px; letter-spacing: 0.02em; }
+.chead h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); }
+.chead p { margin: 0; color: var(--muted); }
+.chead .kp { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.86rem; color: var(--muted); }
+.chead .kp b { color: var(--ink); }
+.ref-note { font-size: 0.86rem; color: var(--muted); margin: 10px 0 0; }
+.fiche details.fref { border: 1px solid var(--rule); border-radius: 12px; padding: 10px 14px; margin: 10px 0; background: var(--paper); }
+.fiche details.fref summary { cursor: pointer; font-weight: 600; }
+.howto { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 16px; margin: 14px 0; }
+.howto summary { cursor: pointer; font-weight: 600; }
+@media (max-width: 560px) {
+  .ueprog button { grid-template-columns: 52px 1fr 40px; }
+  .ueprog .bar { grid-column: 2 / 4; grid-row: 2; }
+  .steps li { grid-template-columns: 34px 1fr; }
+  .steps .st { grid-column: 2; }
+  .next-chap { grid-template-columns: auto 1fr; }
+  .next-chap .go { grid-column: 2; }
+}
+.flash .verso { margin-top: 4px; padding: 14px 16px; border-left: 4px solid var(--c, var(--accent)); background: color-mix(in srgb, var(--c, var(--accent)) 9%, var(--card)); border-radius: 0 12px 12px 0; max-width: 72ch; }
 .flash .verso p { margin: 8px 0 0; }
 .flash .verso .src, .deck .src { font-size: 0.82rem; color: var(--muted); margin-top: 8px; }
 .flash .verso .src a, .deck .src a { color: var(--accent); }
 .flash .keys { margin: 10px 0 0; }
 @media (pointer: coarse) { .flash .keys .kb { display: none; } }
 .deck { display: grid; gap: 6px; margin-top: 10px; }
-.deck details { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 14px; }
+.deck details { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 16px; }
 .deck summary { cursor: pointer; display: flex; gap: 6px 10px; align-items: baseline; flex-wrap: wrap; }
 .deck .kq { flex: 1; min-width: 200px; font-weight: 500; }
 .deck .kr { margin-top: 8px; max-width: 72ch; }
@@ -220,9 +307,10 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); margin: 4px 0 10px; }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 5px; }
 .themes { display: grid; gap: 10px; }
-.theme { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.theme { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 14px 16px; display: grid; gap: 10px; }
 .theme .th { display: flex; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; align-items: baseline; }
-.theme .th .ttl { font-weight: 600; }
+.theme .th .ttl { font-weight: 700; }
+.dotc { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-right: 7px; vertical-align: 1px; }
 .kpis { display: flex; gap: 4px 14px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
 .kpis b { color: var(--ink); font-weight: 600; }
 .theme details summary { cursor: pointer; font-size: 0.84rem; color: var(--accent); }
@@ -233,7 +321,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .move .ladder span { padding: 3px 2px; font-size: 0.66rem; }
 .move .ladder span.off { background: var(--rule-soft); color: var(--muted); opacity: 0.6; }
 .move .ladder span.cur { outline: 2px solid var(--ink); outline-offset: -2px; }
-.chart { position: relative; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 10px 4px; }
+.chart { position: relative; background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 10px 10px 4px; }
 .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
 .chart .grid line { stroke: var(--rule-soft); stroke-width: 1; }
 .chart .axis line { stroke: var(--rule); stroke-width: 1; }
@@ -256,7 +344,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .setting select { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 8px; }
 @media (max-width: 480px) { .plat .cell .l { font-size: 0.6rem; } .plat .cell .v { font-size: 0.92rem; } }
 .sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
-.succ { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; background: var(--card); display: grid; grid-template-columns: 42px 1fr; gap: 3px 10px; align-content: start; }
+.succ { border: 1px solid var(--rule); border-radius: 14px; padding: 12px 14px; background: var(--card); display: grid; grid-template-columns: 42px 1fr; gap: 3px 10px; align-content: start; }
 .succ .ic { font-size: 1.6rem; line-height: 1.1; grid-row: span 4; text-align: center; }
 .succ.locked .ic { filter: grayscale(1); opacity: 0.45; }
 .succ.locked b { color: var(--muted); }
@@ -269,7 +357,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .tier.bronze { color: var(--bronze); } .tier.argent { color: var(--silver); } .tier.or { color: var(--gold); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
 .chips button { font: 500 0.84rem var(--body); border: 1px solid var(--rule); background: var(--card); color: var(--muted); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
-.chips button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.chips button[aria-pressed="true"] { border-color: var(--c, var(--accent)); color: var(--ink); background: color-mix(in srgb, var(--c, var(--accent)) 14%, var(--card)); }
 .succ-pop { position: fixed; left: 50%; top: calc(16px + env(safe-area-inset-top, 0px)); transform: translate(-50%, -12px); background: var(--card); color: var(--ink); border: 1px solid var(--gold); border-radius: 10px; padding: 10px 16px; display: flex; gap: 12px; align-items: center; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none; z-index: 50; max-width: 92vw; width: max-content; }
 .succ-pop.show { opacity: 1; transform: translate(-50%, 0); }
 .succ-pop .ic { font-size: 1.9rem; }
@@ -285,22 +373,17 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 
 <div class="wrap">
   <header class="top">
-    <div>
-      <h1 class="brand" id="brand">Débit <span>·</span> Crédit</h1>
-      <p class="tagline">Réviser le DCG pour aborder le DSCG : six matières, des fiches sourcées sur les textes officiels, un test chaque jour, le plan comptable expliqué.</p>
-    </div>
+    <h1 class="brand" id="brand"><span class="mark" aria-hidden="true"><i></i><i></i></span>Débit <span class="dot">·</span> Crédit</h1>
+    <p class="tagline">Réviser le DCG pour aborder le DSCG.</p>
+    <nav class="tabs" role="tablist" aria-label="Rubriques">
+      <button role="tab" data-tab="accueil" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Aujourd'hui</span></button>
+      <button role="tab" data-tab="revisions" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="2.5"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/></svg><span>Réviser</span><span class="badge zero" id="dueBadge">0</span></button>
+      <button role="tab" data-tab="matieres" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20v3H6.5"/></svg><span>Cours</span></button>
+      <button role="tab" data-tab="pcg" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M12 3v18M3 9h18M3 15h18"/></svg><span>Comptes</span></button>
+      <button role="tab" data-tab="expedition" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 20 7-12 4 6 3-4 6 10z"/><path d="M14 4h4l-1.5 2L18 8h-4z"/></svg><span>Progrès</span><span class="badge zero" id="succBadge">0</span></button>
+    </nav>
     <div class="rank" id="rankBox"></div>
   </header>
-  <nav class="tabs" role="tablist">
-    <button role="tab" data-tab="accueil" aria-selected="true">Aujourd'hui</button>
-    <button role="tab" data-tab="matieres" aria-selected="false">Matières</button>
-    <button role="tab" data-tab="fiches" aria-selected="false">Fiches</button>
-    <button role="tab" data-tab="test" aria-selected="false">Test du jour</button>
-    <button role="tab" data-tab="revisions" aria-selected="false">Révisions <span class="badge zero" id="dueBadge">0</span></button>
-    <button role="tab" data-tab="pcg" aria-selected="false">Plan comptable</button>
-    <button role="tab" data-tab="expedition" aria-selected="false">Expédition</button>
-    <button role="tab" data-tab="succes" aria-selected="false">Succès <span class="badge zero" id="succBadge">0</span></button>
-  </nav>
   <main id="main"></main>
   <details class="save">
     <summary>Sauvegarde, transfert et informations</summary>
@@ -355,6 +438,8 @@ SRS_ORDER.PCG.forEach(id => { SRS[id] = { kind: "compte", th: "PCG", chap: "pcg-
 const SRS_IDS = Object.keys(SRS);
 const THEMES = [...DATA.ues.map(u => ({ code: u.code, nom: u.nom })), ...(SRS_ORDER.PCG.length ? [{ code: "PCG", nom: "Plan comptable" }] : [])];
 const srsCount = kind => SRS_IDS.filter(id => SRS[id].kind === kind).length;
+// Couleur d'identité d'une matière (toujours affichée avec son code).
+const ucol = code => `--c:var(--c-${code})`;
 
 // ---------- Utilitaires ----------
 const fmt = n => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n);
@@ -427,7 +512,7 @@ function moveNote(host, mv) {
 function addXp(n) { state.xp = (state.xp || 0) + n; const p = document.getElementById("xpPop"); p.textContent = `+${n} XP`; p.classList.add("show"); clearTimeout(addXp.h); addXp.h = setTimeout(() => p.classList.remove("show"), 1200); }
 const RANKS = [[0, "Mousse"], [400, "Matelot"], [1200, "Timonier"], [2500, "Second"], [4500, "Capitaine"], [7500, "Navigateur des aurores"], [12000, "Gardien du phare"]];
 function rank() { let r = RANKS[0], next = null; for (let i = 0; i < RANKS.length; i++) { if (state.xp >= RANKS[i][0]) { r = RANKS[i]; next = RANKS[i + 1] || null; } } return { name: r[1], from: r[0], next }; }
-function renderRank() { const r = rank(); document.getElementById("rankBox").innerHTML = `<b>${esc(r.name)}</b><br>${fmt(state.xp)} XP${r.next ? ` · ${fmt(r.next[0] - state.xp)} avant ${esc(r.next[1])}` : ""}`; }
+function renderRank() { const r = rank(); const i = RANKS.findIndex(x => x[1] === r.name) + 1; const box = document.getElementById("rankBox"); box.title = r.next ? `${fmt(r.next[0] - state.xp)} XP avant le grade « ${r.next[1]} »` : "Grade maximal"; box.innerHTML = `<span class="lvl">${i}</span><span>${esc(r.name)}</span><span class="xp">${fmt(state.xp)} XP</span>`; }
 function chapMastery(ch) { if (!ch.exercices.length) return 0; return ch.exercices.reduce((a, e) => a + Math.min(card(e.id).s, ACQUIS), 0) / (ch.exercices.length * ACQUIS); }
 function ueChaps(code) { return CHAPS.filter(c => c.ue === code); }
 function ueMastery(code) { const cs = ueChaps(code); const n = cs.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return cs.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
@@ -548,7 +633,10 @@ function renderExercise(ex, host, onDone, meta) {
 // ---------- Carte recto/verso (auto-évaluée, comme dans Anki) ----------
 function itemObj(id) { return EXO[id] || CARTE[id] || (COMPTE[id] ? { id } : null); }
 function itemLabel(o) { const it = SRS[o.id]; if (it && it.kind === "compte") return `Plan comptable · classe ${o.id[4]}`; const ch = CHAP_BY[(EXO[o.id] || CARTE[o.id] || {}).chap]; return ch ? `${ch.ue} · ${ch.title}` : ""; }
-function renderItem(o, host, onDone, meta) { return CARTE[o.id] || COMPTE[o.id] ? renderFlash(o, host, onDone, meta) : renderExercise(o, host, onDone, meta); }
+function renderItem(o, host, onDone, meta) {
+  const th = (SRS[o.id] || {}).th || (CHAP_BY[o.chap] || {}).ue; if (th) host.style.setProperty("--c", `var(--c-${th})`);
+  return CARTE[o.id] || COMPTE[o.id] ? renderFlash(o, host, onDone, meta) : renderExercise(o, host, onDone, meta);
+}
 function renderFlash(o, host, onDone, meta) {
   host.innerHTML = "";
   const k = CARTE[o.id], a = COMPTE[o.id];
@@ -715,7 +803,7 @@ function showNextSucc() {
   p.classList.add("show");
   setTimeout(() => { p.classList.remove("show"); setTimeout(() => { showNextSucc.busy = false; showNextSucc(); }, 350); }, 3400);
 }
-function updateSuccBadge() { const b = document.getElementById("succBadge"); if (!b) return; const u = state.stats.unseen || 0; b.textContent = u ? "+" + u : String(Object.keys(state.succes).length); b.classList.toggle("zero", !u); }
+function updateSuccBadge() { const b = document.getElementById("succBadge"); if (!b) return; const u = state.stats.unseen || 0; b.textContent = u ? "+" + u : "0"; b.classList.toggle("zero", !u); }
 function succCard(x) {
   const got = state.succes[x.id]; const cur = Math.min(x.prog(), x.target); const pct = Math.round(cur / x.target * 100);
   return `<div class="succ ${got ? "unlocked" : "locked"} ${x.tier}"><span class="ic" aria-hidden="true">${x.ic}</span><b>${esc(x.nom)}</b><span class="d">${esc(x.desc)}</span><span class="meta"><span class="tier ${x.tier}">${x.tier}</span>${got ? `obtenu le ${new Date(got).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}` : `${fmt(cur)} / ${fmt(x.target)}`}<span>+${TIER_XP[x.tier]} XP</span></span>${got ? "" : `<div class="bar"><i style="width:${pct}%"></i></div>`}</div>`;
@@ -727,39 +815,57 @@ const main = document.getElementById("main");
 let view = { tab: "accueil" };
 const chapLabel = ex => { const ch = CHAP_BY[ex.chap]; return `${ch.ue} · ${ch.title}`; };
 
+function seance() {
+  const due = dueFor("Tous").length, nouv = Math.min(newLeftToday(), newPool("Tous").length);
+  const plan = state.daily[todayKey()]; const nAns = plan ? Object.keys(plan.answers || {}).length : 0;
+  return { due, nouv, notions: due + nouv, testDone: !!(plan && plan.done), nAns, plan };
+}
 function renderAccueil() {
-  const today = todayKey(); const plan = state.daily[today];
-  const due = dueList().length; const nc = nextChapter(); const todayN = state.days[today] || 0;
-  const hist = dailyHistory(30);
+  const S = seance(); const nc = nextChapter(); const hist = dailyHistory(30); const st = streak();
+  const s1 = S.notions ? "cur" : "done", s2 = S.testDone ? "done" : s1 === "done" ? "cur" : "todo";
+  const mins = Math.max(1, Math.round(Math.min(S.notions, 70) * 0.4)) + (S.testDone ? 0 : 20);
+  const dateTxt = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+  const btn = S.notions ? `<button class="btn big" id="goSeance">${S.nAns ? "Reprendre" : "Commencer"} la séance</button>`
+    : !S.testDone ? `<button class="btn big" id="goTest">${S.nAns ? "Reprendre le test du jour" : "Passer au test du jour"}</button>`
+    : `<span class="pill done">Séance du jour terminée</span><button class="btn ghost" id="goMore">Réviser d'autres notions</button>`;
+  const mem = acquiredCount();
   main.innerHTML = `
-<div class="cta"><div><div class="t">${plan && plan.done ? `Test du jour terminé : ${plan.score} / ${plan.ids.length}` : plan ? "Test du jour en cours" : "Le test du jour vous attend"}</div><div class="muted small">20 questions tirées de vos matières, les plus fragiles en priorité. Un par jour, environ 20 minutes.</div></div><button class="btn ${plan && plan.done ? "ghost" : "red"}" id="goTest">${plan && plan.done ? "Revoir le test" : plan ? "Reprendre" : "Commencer"}</button></div>
-<div class="board">
-  <div class="tile"><div class="big">${Math.round(globalMastery() * 100)}<span class="muted" style="font-size:1rem"> %</span></div><div class="lab">du parcours acquis · ${exMastered()} / ${Object.keys(EXO).length} exercices maîtrisés</div></div>
-  <div class="tile"><div class="big">${due}</div><div class="lab">révision${due > 1 ? "s" : ""} à faire</div></div>
-  <div class="tile"><div class="big">${streak()}</div><div class="lab">jour${streak() > 1 ? "s" : ""} d'affilée · ${todayN} réponse${todayN > 1 ? "s" : ""} aujourd'hui</div></div>
+<section class="hero" aria-labelledby="hTitle">
+  <div><div class="eyebrow">${esc(dateTxt)}${st ? ` · série de ${st} jour${st > 1 ? "s" : ""}` : ""}</div><h2 id="hTitle">Ma séance du jour</h2><p class="lead">${S.notions || !S.testDone ? `Environ ${mins} minutes : d'abord les notions à revoir, puis le test du jour.` : "Tout est fait pour aujourd'hui. Revenez demain pour la suite."}</p></div>
+  <ol class="steps">
+    <li class="${s1}"><span class="k">${s1 === "done" ? "✓" : "1"}</span><div><b>Notions à revoir</b><span class="d">${S.notions ? `${S.due} à revoir · ${S.nouv} nouvelle${S.nouv > 1 ? "s" : ""} · définitions et compréhension, sans calcul` : "Toutes les notions prévues aujourd'hui sont revues."}</span></div><span class="st">${s1 === "done" ? "fait" : `${S.notions} notion${S.notions > 1 ? "s" : ""}`}</span></li>
+    <li class="${s2}"><span class="k">${s2 === "done" ? "✓" : "2"}</span><div><b>Test du jour</b><span class="d">${S.testDone ? `Score : ${S.plan.score} / ${S.plan.ids.length}` : `20 questions de vos matières, calculs compris${S.nAns ? ` · ${S.nAns} / 20 répondues` : ""}`}</span></div><span class="st">${S.testDone ? "fait" : "≈ 20 min"}</span></li>
+  </ol>
+  <div class="go">${btn}</div>
+</section>
+<div class="stats">
+  <div class="stat" title="Notions arrivées à l'étape « 10 jours » ou au-delà, sur ${fmt(SRS_IDS.length)}"><span class="v">${fmt(mem)}</span><span class="l">notions mémorisées</span></div>
+  <div class="stat" title="Part des exercices des 42 chapitres acquis"><span class="v">${Math.round(globalMastery() * 100)}<small> %</small></span><span class="l">exercices acquis</span></div>
+  <div class="stat" title="${state.days[todayKey()] || 0} réponse(s) aujourd'hui"><span class="v">${st}</span><span class="l">jour${st > 1 ? "s" : ""} d'affilée</span></div>
 </div>
-<div class="cta"><div><div class="t">Révisions espacées : ${dueFor("Tous").length} notion${dueFor("Tous").length > 1 ? "s" : ""} à revoir</div><div class="muted small">Plus ${Math.min(newLeftToday(), newPool("Tous").length)} nouvelle${Math.min(newLeftToday(), newPool("Tous").length) > 1 ? "s" : ""} aujourd'hui. Définitions et compréhension, sans calcul : demain, 2, 5, 10, 20, 30 jours, puis chaque mois.</div></div><button class="btn" id="goRev">Réviser</button></div>
-<h3 style="margin-top:4px">Plateau d'avancement des notions</h3>
+${nc ? `<h3>Reprendre le cours</h3><button class="next-chap" id="goNext" style="${ucol(nc.ue)}"><span class="code">${esc(nc.ue)}</span><span><b>${esc(nc.title)}</b><br><span class="muted small">Chapitre ${nc.ordre} · ${esc(UE_BY[nc.ue].nom)}</span></span><span class="go">Ouvrir →</span></button>` : ""}
+<h3>Plateau des notions</h3>
 ${plateauHTML(SRS_IDS)}
 <div class="legend" style="margin-top:6px">${BANDS.map((b, i) => `<span><i style="background:var(${i === 0 ? "--rule-soft" : `--st${i}`})"></i>${esc(b.nom)}</span>`).join("")}</div>
+<h3>Par matière</h3>
+<div class="ueprog">${UES.map(u => { const m = ueMastery(u.code); const ids = SRS_IDS.filter(id => SRS[id].th === u.code); const mm = ids.length ? memorized(ids) / ids.length : 0; return `<button data-ue="${u.code}" style="${ucol(u.code)}"><span class="code">${esc(u.code)}</span><span class="nm">${esc(u.nom)}<small>Notions mémorisées : ${Math.round(mm * 100)} %</small></span><div class="bar" title="Exercices acquis"><i style="width:${Math.round(m * 100)}%"></i></div><span class="pc">${Math.round(m * 100)} %</span></button>`; }).join("")}</div>
+<p class="muted small" style="margin-top:6px">La barre et le pourcentage indiquent la part des exercices acquis dans la matière.</p>
 <h3>Prochains succès</h3>
 <div class="sgrid">${nextSucces(3).map(succCard).join("")}</div>
 <div class="actions" style="margin-top:8px"><button class="btn quiet" id="goSucc">Tous les succès (${Object.keys(state.succes).length} / ${SUCCES.length})</button></div>
-<h3>Trente derniers jours</h3>
+<h3>Tests du jour, 30 derniers jours</h3>
 <div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div>
-<p class="muted small">Chaque barre est le score d'un test du jour. Les barres grises sont les jours sans test.</p>
-<h3>Par matière</h3>
-<div class="ledger">${UES.map((u, i) => { const m = ueMastery(u.code); const n = ueChaps(u.code).length; return `<button class="row" data-ue="${u.code}"><span class="num">${esc(u.code.replace("UE", ""))}</span><span><span class="ttl">${esc(u.nom)}</span><br><span class="sub">${n} chapitre${n > 1 ? "s" : ""} · ${ueChaps(u.code).reduce((a, c) => a + c.exercices.length, 0)} exercices</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
-${nc ? `<div class="actions"><button class="btn ghost" id="goNext">Chapitre conseillé : ${esc(nc.ue)} · ${esc(nc.title)}</button></div>` : ""}`;
-  main.querySelector("#goTest").onclick = () => go({ tab: "test" });
+<p class="muted small">Chaque barre est le score d'un test du jour. Les barres grises sont les jours sans test.</p>`;
+  const b1 = main.querySelector("#goSeance"); if (b1) b1.onclick = () => startSession("Tous", { chain: true });
+  const b2 = main.querySelector("#goTest"); if (b2) b2.onclick = () => go({ tab: "test" });
+  const b3 = main.querySelector("#goMore"); if (b3) b3.onclick = () => go({ tab: "revisions" });
   main.querySelector("#goSucc").onclick = () => go({ tab: "succes" });
-  main.querySelector("#goRev").onclick = () => go({ tab: "revisions" });
-  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  main.querySelectorAll(".ueprog button").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
   if (nc) main.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
 }
 
 function renderMatieres() {
-  main.innerHTML = `<h2>Matières</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre comporte une fiche documentaire sourcée sur les textes officiels, un cours et des exercices.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
+  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
   main.querySelectorAll(".ue").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
 }
 
@@ -787,9 +893,11 @@ function renderFiches() {
   draw("");
 }
 function renderUe(code) {
-  const u = UE_BY[code]; const cs = ueChaps(code); const nc = cs.find(c => chapMastery(c) < 0.999);
-  main.innerHTML = `<div class="crumb"><button id="back">← Matières</button></div><h2>${esc(u.code)} · ${esc(u.nom)}</h2><p class="muted">${esc(u.intro)} <span class="small">(${esc(u.programme)})</span></p>
-<div class="ledger">${cs.map(c => { const m = chapMastery(c); const started = chapStarted(c); const pill = m >= 0.999 ? '<span class="pill done">acquis</span>' : (nc && nc.id === c.id ? '<span class="pill next">conseillé</span>' : started ? '<span class="pill prog">en cours</span>' : '<span class="pill">à venir</span>'); return `<button class="row" data-c="${c.id}"><span class="num">${c.ordre}</span><span><span class="ttl">${esc(c.title)}</span><br><span class="sub">${esc(c.resume)}</span></span><span class="right">${pill}<div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted" style="font-size:.78rem">${c.exercices.length} exercices · ${esc(c.duree)}</span></span></button>`; }).join("")}${cs.length ? "" : '<div style="padding:14px 16px" class="muted">Chapitres en cours de rédaction.</div>'}</div>`;
+  const u = UE_BY[code]; const cs = ueChaps(code); const nc = cs.find(c => chapMastery(c) < 0.999); const mu = ueMastery(code);
+  const ids = SRS_IDS.filter(id => SRS[id].th === code);
+  main.innerHTML = `<div class="crumb"><button id="back">← Toutes les matières</button></div>
+<div class="chead" style="${ucol(code)}"><div class="eyebrow"><b>${esc(u.code)}</b>${cs.length} chapitres</div><h2>${esc(u.nom)}</h2><p>${esc(u.intro)}</p><div class="kp"><span><b>${Math.round(mu * 100)} %</b> des exercices acquis</span><span><b>${fmt(memorized(ids))}</b> / ${fmt(ids.length)} notions mémorisées</span><span>${esc(u.programme)}</span></div></div>
+<div class="ledger" style="${ucol(code)}">${cs.map(c => { const m = chapMastery(c); const started = chapStarted(c); const pill = m >= 0.999 ? '<span class="pill done">acquis</span>' : (nc && nc.id === c.id ? '<span class="pill next">conseillé</span>' : started ? '<span class="pill prog">en cours</span>' : '<span class="pill">à venir</span>'); return `<button class="row" data-c="${c.id}"><span class="num">${c.ordre}</span><span><span class="ttl">${esc(c.title)}</span><br><span class="sub">${esc(c.resume)}</span></span><span class="right">${pill}<div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted" style="font-size:.78rem">${c.exercices.length} exercices · ${esc(c.duree)}</span></span></button>`; }).join("")}${cs.length ? "" : '<div style="padding:14px 16px" class="muted">Chapitres en cours de rédaction.</div>'}</div>`;
   main.querySelector("#back").onclick = () => go({ tab: "matieres" });
   main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
 }
@@ -807,17 +915,18 @@ function ficheHTML(f) {
   const item = it => `<li class="fi"><div>${sanitize(it.t)}</div>${it.cite ? `<blockquote>${esc(it.cite)}</blockquote>` : ""}<div class="fsrc">Source : ${esc(it.src)} · <a href="${esc(srcLink(it.src, it.url))}" target="_blank" rel="noopener">${it.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a>${tag(it)}</div></li>`;
   const pr = f.programme || {};
   return `<div class="fiche"><div class="fhead"><span class="eyebrow">Fiche documentaire · à jour au ${fmtDate(f.maj)}</span><p class="small muted" style="margin:4px 0 0">Chaque énoncé renvoie à un texte officiel (Légifrance, BOFiP, ANC, URSSAF, service-public, programme du diplôme). Les liens ouvrent la source dans un nouvel onglet.</p></div>
-<h3>Programme officiel</h3><p class="small muted">${esc(pr.ref || "")}${pr.url ? ` · <a href="${esc(pr.url)}" target="_blank" rel="noopener">consulter</a>` : ""}</p><ul>${(pr.points || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-<h3>Textes de référence</h3><div class="twrap"><table class="plan"><tbody>${(f.textes || []).map(t => `<tr><td class="n">${esc(t.ref)}</td><td>${esc(t.objet)}${t.version ? `<br><span class="muted small">${esc(t.version)}</span>` : ""}</td><td class="s"><a href="${esc(srcLink(t.ref, t.url))}" target="_blank" rel="noopener">${t.url ? "texte" : "rechercher"}</a></td></tr>`).join("")}</tbody></table></div>
+<details class="fref"><summary>Programme officiel couvert (${(pr.points || []).length} points)</summary><p class="small muted">${esc(pr.ref || "")}${pr.url ? ` · <a href="${esc(pr.url)}" target="_blank" rel="noopener">consulter</a>` : ""}</p><ul>${(pr.points || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>
+<details class="fref"><summary>Textes de référence (${(f.textes || []).length})</summary><div class="twrap"><table class="plan"><tbody>${(f.textes || []).map(t => `<tr><td class="n">${esc(t.ref)}</td><td>${esc(t.objet)}${t.version ? `<br><span class="muted small">${esc(t.version)}</span>` : ""}</td><td class="s"><a href="${esc(srcLink(t.ref, t.url))}" target="_blank" rel="noopener">${t.url ? "texte" : "rechercher"}</a></td></tr>`).join("")}</tbody></table></div></details>
 ${(f.sections || []).map(s => `<h3>${esc(s.h)}</h3><ol class="fl">${(s.items || []).map(item).join("")}</ol>`).join("")}</div>`;
 }
 function renderChap(id, startAt) {
   const c = CHAP_BY[id]; const u = UE_BY[c.ue]; const cs = ueChaps(c.ue); const idx = cs.indexOf(c);
-  main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} ${esc(u.nom)}</button><span class="muted">Chapitre ${idx + 1} / ${cs.length}</span></div><h2>${esc(c.title)}</h2><p class="muted">${esc(c.resume)}</p><div id="stage"></div>`;
+  const chIds = SRS_IDS.filter(id => SRS[id].chap === c.id); const nNotions = chIds.length; const exOk = c.exercices.filter(e => card(e.id).s >= ACQUIS).length;
+  main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} · ${esc(u.nom)}</button></div>
+<div class="chead" style="${ucol(c.ue)}"><div class="eyebrow"><b>${esc(u.code)}</b>Chapitre ${idx + 1} sur ${cs.length} · ${esc(c.duree)}</div><h2>${esc(c.title)}</h2><p>${esc(c.resume)}</p><div class="kp"><span><b>${fmt(memorized(chIds))}</b> / ${fmt(nNotions)} notions mémorisées</span><span><b>${exOk}</b> / ${c.exercices.length} exercices acquis</span></div></div><div id="stage" style="${ucol(c.ue)}"></div>`;
   main.querySelector("#back").onclick = () => go({ tab: "ue", code: c.ue });
   const stage = main.querySelector("#stage");
-  const nNotions = SRS_IDS.filter(id => SRS[id].chap === c.id).length;
-  const seg = mode => c.fiche ? `<div class="crumb"><span class="seg"><button data-m="fiche" aria-pressed="${mode === "fiche"}">Fiche</button><button data-m="lesson" aria-pressed="${mode === "lesson"}">Cours</button>${nNotions ? `<button data-m="cartes" aria-pressed="${mode === "cartes"}">Notions</button>` : ""}<button data-m="ex" aria-pressed="${mode === "ex"}">Exercices</button></span></div>` : "";
+  const seg = mode => `<div class="crumb"><span class="seg" role="group" aria-label="Étapes du chapitre"><button data-m="lesson" aria-pressed="${mode === "lesson"}"><span class="n">1</span>Cours</button>${nNotions ? `<button data-m="cartes" aria-pressed="${mode === "cartes"}"><span class="n">2</span>Notions</button>` : ""}<button data-m="ex" aria-pressed="${mode === "ex"}"><span class="n">${nNotions ? 3 : 2}</span>Exercices</button>${c.fiche ? `<button data-m="fiche" aria-pressed="${mode === "fiche"}">Fiche<span class="lg"> officielle</span></button>` : ""}</span></div>`;
   const bindSeg = () => stage.querySelectorAll(".seg button").forEach(b => b.onclick = () => ({ fiche: showFiche, lesson: showLesson, cartes: showCartes, ex: showExercises })[b.dataset.m]());
   const stepPill = id => { const k = state.cards[id]; if (!k || !k.n) return `<span class="pill">nouvelle</span>`; const st = Math.min(k.s || 0, MAX_STEP); return `<span class="pill b${bandOf(st)}">${esc(STEPS[st].nom)}</span>`; };
   const showCartes = () => {
@@ -825,20 +934,23 @@ function renderChap(id, startAt) {
     stage.innerHTML = seg("cartes") + `<p class="muted">Les notions du chapitre entrent dans les révisions espacées (demain, 2, 5, 10, 20, 30 jours, puis chaque mois) : ${ks.length} carte${ks.length > 1 ? "s" : ""} de définition et de compréhension tirée${ks.length > 1 ? "s" : ""} de la fiche documentaire, et ${qs.length} QCM de compréhension sans calcul. Les calculs et les écritures restent dans les exercices.</p>
 ${plateauHTML(SRS_IDS.filter(id => SRS[id].chap === c.id))}
 <div class="actions" style="margin-top:10px"><button class="btn" id="revChap" ${due + fresh ? "" : "disabled"}>Réviser les notions du chapitre (${due} à revoir · ${Math.min(fresh, 30)} nouvelle${Math.min(fresh, 30) > 1 ? "s" : ""})</button></div>
-${ks.length ? `<h3>Cartes de notions</h3><div class="deck">${ks.map(k => `<details><summary><span class="tag">${k.type === "def" ? "Définition" : "Compréhension"}</span><span class="kq">${esc(k.q)}</span>${stepPill(k.id)}</summary><div class="kr">${sanitize(k.r)}</div><div class="src fsrc">Source : ${esc(k.src)} · <a href="${esc(srcLink(k.src, k.url))}" target="_blank" rel="noopener">${k.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a></div></details>`).join("")}</div>` : ""}`;
+${ks.length ? `<h3>Cartes de notions</h3><div class="deck">${ks.map(k => `<details><summary><span class="tag">${k.type === "def" ? "Définition" : "Compréhension"}</span><span class="kq">${esc(k.q)}</span>${stepPill(k.id)}</summary><div class="kr">${sanitize(k.r)}</div><div class="src fsrc">Source : ${esc(k.src)} · <a href="${esc(srcLink(k.src, k.url))}" target="_blank" rel="noopener">${k.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a></div></details>`).join("")}</div>` : ""}
+<div class="actions"><button class="btn ghost" id="toEx">Étape suivante : les exercices (${c.exercices.length})</button></div>`;
     bindSeg(); const rb = stage.querySelector("#revChap"); if (rb) rb.onclick = () => startSession(c.id);
+    stage.querySelector("#toEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
   };
   const showFiche = () => {
     state.read[c.id] = true; state.fiches[c.id] = 1; save();
-    stage.innerHTML = seg("fiche") + ficheHTML(c.fiche) + `<div class="actions"><button class="btn ghost" id="toLesson">Lire le cours</button><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
+    stage.innerHTML = seg("fiche") + `<p class="ref-note">La fiche officielle rassemble, item par item, les textes qui fondent le cours (Légifrance, BOFiP, ANC, URSSAF…). Consultez-la quand un point du cours ou d'une carte vous fait douter.</p>` + ficheHTML(c.fiche) + `<div class="actions"><button class="btn ghost" id="toLesson">Lire le cours</button><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
     bindSeg(); stage.querySelector("#toLesson").onclick = showLesson; stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
   };
   const showLesson = () => {
     state.read[c.id] = true; save();
     stage.innerHTML = seg("lesson") + `<div class="lesson">${c.lecon.map(s => `${s.h ? `<h3>${esc(s.h)}</h3>` : ""}<div class="twrap-l">${sanitize(s.html)}</div>${s.entry ? journalHTML(s.entry, s.lib) : ""}`).join("")}
 ${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.sources.map(s => `<li>${esc(s.ref)}${s.note ? ` — ${esc(s.note)}` : ""}</li>`).join("")}</ul></div>` : ""}</div>
-<div class="actions"><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
+<div class="actions">${nNotions ? `<button class="btn" id="toCartes">Étape suivante : les notions (${nNotions})</button>` : ""}<button class="btn ${nNotions ? "ghost" : ""}" id="startEx">${nNotions ? "Aller directement aux exercices" : `Passer aux exercices (${c.exercices.length})`}</button></div>`;
     bindSeg(); stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
+    const tc = stage.querySelector("#toCartes"); if (tc) tc.onclick = () => { showCartes(); window.scrollTo({ top: 0 }); };
   };
   const showExercises = () => {
     stage.innerHTML = seg("ex") + `<div class="crumb"><span class="progress" id="prog"></span><button id="toLesson">Revoir le cours</button></div><div id="host"></div>`;
@@ -854,7 +966,7 @@ ${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.so
       host.querySelector("#toUe").onclick = () => go({ tab: "ue", code: c.ue });
     }, prog);
   };
-  if (startAt === "exercises") showExercises(); else if (startAt === "cartes" && nNotions) showCartes(); else if (c.fiche) showFiche(); else showLesson();
+  if (startAt === "exercises") showExercises(); else if (startAt === "cartes" && nNotions) showCartes(); else if (startAt === "fiche" && c.fiche) showFiche(); else showLesson();
 }
 
 function renderTest() {
@@ -955,7 +1067,7 @@ function themeRow(t) {
   const mem = memorized(ids); const nNew = Math.min(newLeftToday(), newPool(t.code).length);
   const subs = t.code === "PCG" ? CLASSES.map(([n, nom]) => ({ id: "pcg-c" + n, nom: `Classe ${n} · ${nom}` })) : ueChaps(t.code).map(c => ({ id: c.id, nom: `${c.ordre}. ${c.title}` }));
   const mix = t.code === "PCG" ? `${ids.length} comptes` : `${ids.filter(id => SRS[id].kind === "carte").length} cartes · ${ids.filter(id => SRS[id].kind === "exo").length} QCM`;
-  return `<div class="theme"><div class="th"><span><span class="ttl">${esc(t.code === "PCG" ? "" : t.code + " · ")}${esc(t.nom)}</span> <span class="muted small">${mix}</span></span><span class="kpis"><span><b>${ids.length ? Math.round(mem / ids.length * 100) : 0} %</b> mémorisé</span><span>réussite 30 j : <b>${pct(r30.r)}</b></span><span><b>${due}</b> à réviser</span></span></div>
+  return `<div class="theme" style="${ucol(t.code)}"><div class="th"><span><span class="dotc"></span><span class="ttl">${esc(t.code === "PCG" ? "" : t.code + " · ")}${esc(t.nom)}</span> <span class="muted small">${mix}</span></span><span class="kpis"><span><b>${ids.length ? Math.round(mem / ids.length * 100) : 0} %</b> mémorisé</span><span>réussite 30 j : <b>${pct(r30.r)}</b></span><span><b>${due}</b> à réviser</span></span></div>
 ${plateauHTML(ids)}
 <div class="actions" style="margin-top:2px"><button class="btn ghost" data-start="${t.code}" ${due + nNew ? "" : "disabled"}>Réviser ce thème (${due} + ${nNew} nouvelle${nNew > 1 ? "s" : ""})</button></div>
 <details><summary>Détail par ${t.code === "PCG" ? "classe" : "chapitre"}</summary><div class="chaps">${subs.map(x => { const sid = ids.filter(id => SRS[id].chap === x.id); if (!sid.length) return ""; const d = dueFor(x.id).length; return `<div><div class="ct"><span>${esc(x.nom)}</span><span class="muted">${d} à réviser · <button class="linkbtn" data-start="${x.id}">réviser</button></span></div>${plateauHTML(sid, true)}</div>`; }).join("")}</div></details></div>`;
@@ -968,13 +1080,11 @@ function renderRevisions() {
   const fc = forecast(14), l30 = last30();
   const nextDue = Object.keys(state.cards).filter(id => SRS[id] && state.cards[id].n > 0 && state.cards[id].due > Date.now()).map(id => state.cards[id]).sort((a, b) => a.due - b.due)[0];
   main.innerHTML = `<h2>Révisions espacées</h2>
-<p class="muted">Les révisions espacées ne portent que sur les définitions et la compréhension : cartes recto/verso tirées des fiches officielles, QCM de compréhension sans calcul et comptes du plan comptable. Les calculs et les écritures se travaillent dans les chapitres et le test du jour.</p>
-<p class="mix">${fmt(srsCount("carte"))} cartes de notions · ${fmt(srsCount("exo"))} QCM de compréhension · ${fmt(srsCount("compte"))} comptes</p>
-<p class="muted">Chaque notion avance sur une échelle. Bonne réponse : une marche vers la droite. Erreur : une marche vers la gauche, et la notion revient selon cette marche. Une notion jamais vue entre à « 2 jours » si elle est réussie, à « demain » sinon.</p>
-${ladderHTML(MAX_STEP)}
-<div class="filters" style="margin-top:12px"><div class="chips" role="group" aria-label="Thème">${["Tous", ...THEMES.map(t => t.code)].map(c => `<button data-th="${c}" aria-pressed="${c === revTheme}">${c === "Tous" ? "Tous les thèmes" : c === "PCG" ? "Plan comptable" : c}</button>`).join("")}</div>
-<label class="setting" for="npd">Nouvelles questions par jour <select id="npd">${[0, 5, 10, 15, 20, 30].map(v => `<option value="${v}" ${v === state.newPerDay ? "selected" : ""}>${v}</option>`).join("")}</select></label></div>
+<p class="mix">Définitions et compréhension, sans calcul : ${fmt(srsCount("carte"))} cartes de notions · ${fmt(srsCount("exo"))} QCM de compréhension · ${fmt(srsCount("compte"))} comptes.</p>
+<div class="filters" style="margin-top:12px"><div class="chips" role="group" aria-label="Thème">${["Tous", ...THEMES.map(t => t.code)].map(c => `<button data-th="${c}" aria-pressed="${c === revTheme}" ${c === "Tous" ? "" : `style="${ucol(c)}"`}>${c === "Tous" ? "Tous les thèmes" : c === "PCG" ? "Plan comptable" : c}</button>`).join("")}</div>
+<label class="setting" for="npd">Nouvelles notions par jour <select id="npd">${[0, 5, 10, 15, 20, 30].map(v => `<option value="${v}" ${v === state.newPerDay ? "selected" : ""}>${v}</option>`).join("")}</select></label></div>
 <div class="cta"><div><div class="t">${dueTh + newTh ? `${dueTh} à réviser · ${newTh} nouvelle${newTh > 1 ? "s" : ""}` : "Tout est à jour"}</div><div class="muted small">${revTheme === "Tous" ? "Tous les thèmes, en alternance" : esc(thNom(revTheme))}. ${dueTh + newTh ? "Les notions dues passent en premier, les plus anciennes d'abord." : nextDue ? `Prochaine révision ${fmtDue(nextDue.due)}.` : "Commencez par quelques nouvelles notions."}</div></div><button class="btn red" id="startRev" ${dueTh + newTh ? "" : "disabled"}>Commencer</button></div>
+<details class="howto"><summary>Comment fonctionne l'échelle de rappel ?</summary><p class="muted">Chaque notion avance sur une échelle. Bonne réponse : une marche vers la droite. Erreur : une marche vers la gauche, et la notion revient selon cette marche. Une notion jamais vue entre à « 2 jours » si elle est réussie, à « demain » sinon. Une bonne réponse donnée avant la date prévue ne fait pas monter la notion. Les calculs et les écritures se travaillent dans les chapitres et le test du jour.</p>${ladderHTML(MAX_STEP)}</details>
 <div class="board">
   <div class="tile"><div class="big">${dueAll}</div><div class="lab">notions à réviser aujourd'hui (tous thèmes)</div></div>
   <div class="tile"><div class="big">${today.n}</div><div class="lab">notions révisées aujourd'hui · ${pct(today.n ? today.ok / today.n : null)} sues</div></div>
@@ -996,15 +1106,16 @@ ${ladderHTML(MAX_STEP)}
   main.querySelector("#startRev").onclick = () => startSession(revTheme);
   main.querySelectorAll("[data-start]").forEach(b => b.onclick = () => { const t = b.dataset.start; if (THEMES.some(x => x.code === t)) revTheme = t; startSession(t); });
 }
-function startSession(th) {
+function startSession(th, opts) {
   // Une séance lancée depuis un chapitre peut introduire jusqu'à 30 nouvelles notions de ce chapitre.
   const chapSess = !!CHAP_BY[th];
   const due = dueFor(th); const fresh = newPool(th).slice(0, chapSess ? Math.max(newLeftToday(), 30) : newLeftToday());
   const queue = [...due.slice(0, 60), ...fresh].map(itemObj).filter(Boolean);
   if (!queue.length) { renderRevisions(); return; }
   const moves = { up: 0, down: 0, stay: 0, nouv: 0 };
-  const back = () => chapSess ? go({ tab: "chap", id: th, start: "cartes" }) : renderRevisions();
-  main.innerHTML = `<div class="crumb"><button id="back">← ${chapSess ? "Notions du chapitre" : "Tableau des révisions"}</button><span class="progress" id="prog"></span></div><h2>Séance de révision</h2><p class="muted small">${due.length} notion${due.length > 1 ? "s" : ""} due${due.length > 1 ? "s" : ""}${due.length > 60 ? " (60 premières dans cette séance)" : ""} et ${fresh.length} nouvelle${fresh.length > 1 ? "s" : ""}. ${esc(thNom(th))}.</p><div id="host"></div>`;
+  const fromHome = !!(opts && opts.chain);
+  const back = () => chapSess ? go({ tab: "chap", id: th, start: "cartes" }) : fromHome ? go({ tab: "accueil" }) : renderRevisions();
+  main.innerHTML = `<div class="crumb"><button id="back">← ${chapSess ? "Notions du chapitre" : fromHome ? "Accueil" : "Tableau des révisions"}</button><span class="progress" id="prog"></span></div><h2>Séance de révision</h2><p class="muted small">${due.length} notion${due.length > 1 ? "s" : ""} due${due.length > 1 ? "s" : ""}${due.length > 60 ? " (60 premières dans cette séance)" : ""} et ${fresh.length} nouvelle${fresh.length > 1 ? "s" : ""}. ${esc(thNom(th))}.</p><div id="host"></div>`;
   main.querySelector("#back").onclick = back;
   const host = main.querySelector("#host");
   runSeries(host, queue, itemLabel, (ex, ok) => {
@@ -1014,8 +1125,9 @@ function startSession(th) {
     moveNote(host, mv);
   }, score => {
     main.querySelector("#prog").textContent = "Terminé";
-    host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Séance terminée : ${score} sur ${queue.length} du premier coup</h3><p>${moves.up} notion${moves.up > 1 ? "s ont" : " a"} monté d'une marche, ${moves.down} ${moves.down > 1 ? "sont redescendues" : "est redescendue"}, ${moves.nouv} nouvelle${moves.nouv > 1 ? "s" : ""} ${moves.nouv > 1 ? "sont entrées" : "est entrée"} sur l'échelle.</p>${plateauHTML(SRS_IDS.filter(id => inTheme(id, th)))}<div class="actions"><button class="btn" id="toR">${chapSess ? "Revenir aux notions du chapitre" : "Voir le tableau des révisions"}</button><button class="btn quiet" id="toA">Retour à l'accueil</button></div></div>`;
-    host.querySelector("#toR").onclick = back; host.querySelector("#toA").onclick = () => go({ tab: "accueil" });
+    host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Séance terminée : ${score} sur ${queue.length} du premier coup</h3><p>${moves.up} notion${moves.up > 1 ? "s ont" : " a"} monté d'une marche, ${moves.down} ${moves.down > 1 ? "sont redescendues" : "est redescendue"}, ${moves.nouv} nouvelle${moves.nouv > 1 ? "s" : ""} ${moves.nouv > 1 ? "sont entrées" : "est entrée"} sur l'échelle.</p>${plateauHTML(SRS_IDS.filter(id => inTheme(id, th)))}<div class="actions">${opts && opts.chain && !seance().testDone ? `<button class="btn big" id="toT">Continuer : test du jour</button>` : ""}<button class="btn ${opts && opts.chain && !seance().testDone ? "ghost" : ""}" id="toR">${chapSess ? "Revenir aux notions du chapitre" : "Voir le tableau des révisions"}</button><button class="btn quiet" id="toA">Retour à l'accueil</button></div></div>`;
+    host.querySelector("#toR").onclick = chapSess ? back : () => go({ tab: "revisions" }); host.querySelector("#toA").onclick = () => go({ tab: "accueil" });
+    const tt = host.querySelector("#toT"); if (tt) tt.onclick = () => go({ tab: "test" });
   }, main.querySelector("#prog"));
 }
 
@@ -1104,12 +1216,23 @@ function drawSky(cv) {
 }
 
 // ---------- Navigation ----------
+// Cinq rubriques ; certaines regroupent deux pages, reliées par une sous-navigation.
+const GROUP = { accueil: "accueil", revisions: "revisions", test: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", expedition: "expedition", succes: "expedition" };
+const SUBNAV = { revisions: [["revisions", "Révisions espacées"], ["test", "Test du jour"]], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], expedition: [["expedition", "Expédition"], ["succes", "Succès"]] };
+function addSubnav(tab) {
+  const items = SUBNAV[GROUP[tab]]; if (!items || !items.some(x => x[0] === tab)) return;
+  const d = document.createElement("div"); d.className = "subnav";
+  d.innerHTML = `<span class="seg" role="group" aria-label="Sous-rubriques">${items.map(([t, l]) => `<button data-sub="${t}" aria-pressed="${t === tab}">${l}</button>`).join("")}</span>`;
+  d.querySelectorAll("button").forEach(b => b.onclick = () => go({ tab: b.dataset.sub }));
+  main.prepend(d);
+}
 function go(v) {
   cancelAnimationFrame(skyAnim);
   view = v;
-  const tab = { ue: "matieres", chap: "matieres" }[v.tab] || v.tab;
+  const tab = GROUP[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
   ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition, succes: renderSucces })[v.tab]();
+  addSubnav(v.tab);
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
   updateBadge(); renderRank(); window.scrollTo({ top: 0 });
 }
