@@ -1,12 +1,14 @@
-# Débit Crédit — réviser le DCG pour aborder le DSCG
+# Objectif DSCG — réviser le DCG pour viser le DSCG
 
 Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières, une fiche documentaire
 sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
 test quotidien, révisions espacées sur 1 436 cartes de notions (définitions et compréhension, sans calcul) avec
 plateau d'avancement par thème, plan comptable général 2025 commenté
-compte par compte (612 comptes), jeu de progression (« l'expédition vers les aurores ») et 69 succès à débloquer (bronze, argent, or) dans six catégories :
-régularité, précision, maîtrise, matières, exploration et expédition.
+compte par compte (612 comptes), un observatoire à remplir (chaque chapitre acquis révèle une cible des catalogues Messier et NGC, l'XP fait passer de
+l'œil nu au télescope James-Webb puis à l'ELT) et 131 succès à débloquer (bronze, argent, or) dans six catégories :
+régularité, précision, maîtrise, matières, exploration et observatoire. Chaque matière a la couleur d'une bande du
+spectre électromagnétique (radio, micro-ondes, infrarouge, visible, ultraviolet, X, gamma).
 
 ## Utiliser
 

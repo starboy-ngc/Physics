@@ -1,8 +1,8 @@
-<title>Débit Crédit</title>
+<title>Objectif DSCG</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Réviser le DCG matière par matière, avec tests quotidiens, plan comptable commenté et révisions espacées.">
+<meta name="description" content="Réviser le DCG pour viser le DSCG : cours, fiches officielles, révisions espacées, test du jour et un observatoire à remplir.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout : une appli de révision. En-tête collant avec cinq rubriques (barre du bas sur téléphone), une carte « séance du jour »
    en tête d'accueil, et une couleur par matière (UE9, UE10, UE2, UE3, UE4, UE6, plan comptable) toujours accompagnée de son code. */
@@ -14,10 +14,14 @@
   --bronze: #9a5b2e; --silver: #5f6b78; --gold: #9a7410;
   --st1: #86b6ef; --st1-ink: #0b0b0b; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #1c5cab; --st3-ink: #ffffff; --st4: #0d366b; --st4-ink: #ffffff; --viz1: #2a78d6;
   --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
-  --c-UE9: #2a78d6; --c-UE10: #eb6834; --c-UE2: #1baf7a; --c-UE3: #eda100; --c-UE4: #e87ba4; --c-UE6: #008300; --c-PCG: #6250d6;
+  /* Bandes du spectre électromagnétique : UE9 visible, UE10 ultraviolet, UE2 radio, UE3 infrarouge, UE4 rayons X, UE6 rayons gamma,
+     plan comptable micro-ondes (le fond diffus cosmologique). Ordre des matières validé pour le daltonisme ; --o-* = texte posé sur la couleur. */
+  --c-UE9: #1f7a3a; --c-UE10: #2196d6; --c-UE2: #a8231b; --c-UE3: #d6a200; --c-UE4: #4434c2; --c-UE6: #c63aa9; --c-PCG: #e35d1a;
+  --o-UE9: #ffffff; --o-UE10: #ffffff; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #1c0d00;
+  --night1: #050816; --night2: #101a3c; --night-ink: #eef2ff; --night-muted: #aab5d6; --night-line: rgba(170, 181, 214, 0.22);
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 6px 18px rgba(16, 24, 40, 0.06);
   --bar-bg: rgba(255, 255, 255, 0.92);
-  --display: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --display: "Sora", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --body: "Figtree", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
@@ -26,7 +30,8 @@
     --paper: #0e131b; --card: #161d28; --ink: #e8ecf3; --muted: #9aa5b8; --rule: #283245; --rule-soft: #1d2533; --margin: #ef6262;
     --accent: #7da2ff; --accent-soft: #1c2a4a; --accent-ink: #0b1020; --ok: #5fcf8c; --ok-soft: #16301f; --bad: #f07a72; --bad-soft: #3a1f1e; --warn: #e6b84f; --warn-soft: #3a2f17;
     --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
-    --c-UE9: #3987e5; --c-UE10: #d95926; --c-UE2: #199e70; --c-UE3: #c98500; --c-UE4: #d55181; --c-UE6: #2f9a2f; --c-PCG: #9085e9;
+    --c-UE9: #2b9149; --c-UE10: #3b8fe0; --c-UE2: #c7372f; --c-UE3: #b58f12; --c-UE4: #6f5ee8; --c-UE6: #c74fb4; --c-PCG: #dc7426;
+    --o-UE9: #ffffff; --o-UE10: #0b1020; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #1c0d00;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.25); --bar-bg: rgba(22, 29, 40, 0.94);
     color-scheme: dark;
   }
@@ -35,7 +40,8 @@
   --paper: #0e131b; --card: #161d28; --ink: #e8ecf3; --muted: #9aa5b8; --rule: #283245; --rule-soft: #1d2533; --margin: #ef6262;
   --accent: #7da2ff; --accent-soft: #1c2a4a; --accent-ink: #0b1020; --ok: #5fcf8c; --ok-soft: #16301f; --bad: #f07a72; --bad-soft: #3a1f1e; --warn: #e6b84f; --warn-soft: #3a2f17;
   --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
-  --c-UE9: #3987e5; --c-UE10: #d95926; --c-UE2: #199e70; --c-UE3: #c98500; --c-UE4: #d55181; --c-UE6: #2f9a2f; --c-PCG: #9085e9;
+  --c-UE9: #2b9149; --c-UE10: #3b8fe0; --c-UE2: #c7372f; --c-UE3: #b58f12; --c-UE4: #6f5ee8; --c-UE6: #c74fb4; --c-PCG: #dc7426;
+  --o-UE9: #ffffff; --o-UE10: #0b1020; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #1c0d00;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.25); --bar-bg: rgba(22, 29, 40, 0.94);
   color-scheme: dark;
 }
@@ -46,11 +52,10 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
 header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; display: flex; align-items: center; gap: 10px 18px; padding-block: 12px; background: var(--paper); border-bottom: 1px solid var(--rule); }
 .brand { display: flex; align-items: center; gap: 9px; font-family: var(--display); font-weight: 800; font-size: 1.32rem; letter-spacing: -0.02em; margin: 0; cursor: pointer; white-space: nowrap; }
-.brand .mark { display: inline-grid; grid-template-columns: 9px 9px; gap: 3px; align-items: end; height: 22px; }
-.brand .mark i { display: block; border-radius: 3px; }
-.brand .mark i:first-child { height: 22px; background: var(--c-UE9); }
-.brand .mark i:last-child { height: 14px; background: var(--c-UE10); }
-.brand .dot { color: var(--margin); }
+.reticle { position: relative; width: 26px; height: 26px; border-radius: 50%; flex: none; background: conic-gradient(from 200deg, var(--c-UE2), var(--c-PCG), var(--c-UE3), var(--c-UE9), var(--c-UE10), var(--c-UE4), var(--c-UE6), var(--c-UE2)); }
+.reticle::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--paper); }
+.reticle::after { content: ""; position: absolute; inset: 0; background: linear-gradient(var(--ink), var(--ink)) center / 2px 100% no-repeat, linear-gradient(var(--ink), var(--ink)) center / 100% 2px no-repeat; -webkit-mask: radial-gradient(circle, transparent 2.5px, #000 3px, #000 8px, transparent 8.5px); mask: radial-gradient(circle, transparent 2.5px, #000 3px, #000 8px, transparent 8.5px); }
+.brand .dscg { background: linear-gradient(90deg, var(--c-UE2), var(--c-PCG) 22%, var(--c-UE3) 38%, var(--c-UE9) 55%, var(--c-UE10) 70%, var(--c-UE4) 85%, var(--c-UE6)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .tagline { display: none; }
 .rank { margin-left: auto; display: flex; align-items: center; gap: 8px; font: 600 0.82rem var(--body); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px 5px 6px; white-space: nowrap; }
 .rank .lvl { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 700 0.75rem var(--mono); }
@@ -58,6 +63,7 @@ header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; 
 nav.tabs { display: flex; gap: 4px; }
 nav.tabs button { position: relative; display: flex; align-items: center; gap: 7px; background: none; border: none; color: var(--muted); font: 600 0.93rem var(--body); padding: 8px 12px; cursor: pointer; border-radius: 999px; white-space: nowrap; }
 nav.tabs button svg { width: 19px; height: 19px; flex: none; }
+nav.tabs .sm-l { display: none; }
 nav.tabs button:hover { color: var(--ink); background: var(--rule-soft); }
 nav.tabs button[aria-selected="true"] { color: var(--accent); background: var(--accent-soft); }
 @media (max-width: 760px) {
@@ -65,6 +71,7 @@ nav.tabs button[aria-selected="true"] { color: var(--accent); background: var(--
   nav.tabs { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; justify-content: space-around; gap: 0; background: var(--bar-bg); backdrop-filter: blur(10px); border-top: 1px solid var(--rule); padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); }
   nav.tabs button { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 2px; font-size: 0.7rem; padding: 6px 2px; border-radius: 12px; }
   nav.tabs button svg { width: 22px; height: 22px; }
+  nav.tabs .lg-l { display: none; } nav.tabs .sm-l { display: inline; }
   nav.tabs .badge { position: absolute; top: 1px; left: calc(50% + 6px); margin: 0; }
   .wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
   .rank .xp { display: none; }
@@ -107,7 +114,9 @@ p { margin: 0 0 10px; max-width: 70ch; }
 .ues { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
 .ue { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 16px 18px; cursor: pointer; text-align: left; color: inherit; font: inherit; display: grid; gap: 6px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
 .ue:hover { border-color: var(--c, var(--accent)); }
-.ue .code { justify-self: start; font: 700 0.78rem var(--mono); letter-spacing: 0.04em; color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--card)); border-radius: 8px; padding: 3px 8px; }
+.ue .code { justify-self: start; font: 700 0.78rem var(--mono); letter-spacing: 0.04em; color: var(--o); background: var(--c); border-radius: 8px; padding: 3px 8px; }
+.ue .band { font: 500 0.74rem var(--mono); color: var(--muted); letter-spacing: 0.03em; }
+.ue .top { display: flex; align-items: center; gap: 8px; }
 .ue .nom { font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; }
 .ue .intro { color: var(--muted); font-size: 0.86rem; }
 .lesson { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 22px clamp(16px, 4vw, 34px); font-size: 1.04rem; line-height: 1.68; }
@@ -136,7 +145,7 @@ code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--ru
 .crumb .seg button, .seg button { background: none; border: none; color: var(--muted); font: 600 0.9rem var(--body); padding: 7px 15px; cursor: pointer; border-radius: 999px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
 .seg button .n { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--rule); color: var(--ink); font: 700 0.72rem var(--mono); }
 .crumb .seg button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
-.seg button[aria-pressed="true"] .n { background: var(--c, var(--accent)); color: var(--card); }
+.seg button[aria-pressed="true"] .n { background: var(--c, var(--accent)); color: var(--o, var(--accent-ink)); }
 .subnav { margin-bottom: 18px; }
 .sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
 .sources li { margin-bottom: 3px; }
@@ -238,10 +247,23 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .cell.b3, .ladder .b3, .pill.b3 { background: var(--st3); color: var(--st3-ink); }
 .cell.b4, .ladder .b4, .pill.b4 { background: var(--st4); color: var(--st4-ink); }
 .cell.empty { opacity: 0.38; }
-.hero { background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(18px, 4vw, 28px); box-shadow: var(--shadow); display: grid; gap: 16px; position: relative; overflow: hidden; }
-.hero::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px; background: linear-gradient(90deg, var(--c-UE9), var(--c-UE10), var(--c-UE2), var(--c-UE3), var(--c-UE4), var(--c-UE6), var(--c-PCG)); }
-.hero h2 { font-size: clamp(1.6rem, 4.5vw, 2.1rem); margin: 2px 0 4px; }
-.hero .lead { color: var(--muted); margin: 0; }
+.hero { color: var(--night-ink); border-radius: 24px; padding: clamp(20px, 4.5vw, 32px); box-shadow: var(--shadow); display: grid; gap: 18px; position: relative; overflow: hidden; isolation: isolate;
+  background: radial-gradient(1.5px 1.5px at 78% 9%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 86% 26%, #dfe6ff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 94% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 90% 44%, #cfd8ff 50%, transparent 51%), radial-gradient(1.6px 1.6px at 97% 33%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 82% 4%, #e8ecff 50%, transparent 51%), radial-gradient(1px 1px at 70% 5%, #fff 50%, transparent 51%), radial-gradient(1.3px 1.3px at 98% 58%, #dfe6ff 50%, transparent 51%), radial-gradient(1px 1px at 62% 3%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 93% 72%, #cfd8ff 50%, transparent 51%),
+    radial-gradient(60% 80% at 88% 0%, rgba(68, 52, 194, 0.55), transparent 70%), radial-gradient(50% 70% at 0% 100%, rgba(198, 58, 169, 0.35), transparent 70%), linear-gradient(160deg, var(--night2), var(--night1)); }
+.hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 5px; background: linear-gradient(90deg, var(--c-UE2), var(--c-PCG), var(--c-UE3), var(--c-UE9), var(--c-UE10), var(--c-UE4), var(--c-UE6)); }
+.hero h2 { font-size: clamp(1.7rem, 4.8vw, 2.3rem); margin: 2px 0 4px; color: var(--night-ink); }
+.hero .eyebrow { color: var(--night-muted); }
+.hero .lead { color: var(--night-muted); margin: 0; }
+.hero .steps li { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--night-line); }
+.hero .steps li.cur { background: rgba(125, 162, 255, 0.18); border-color: rgba(125, 162, 255, 0.5); }
+.hero .steps .k { background: transparent; color: var(--night-ink); border-color: var(--night-line); }
+.hero .steps li.cur .k { background: #7da2ff; color: #0b1020; border-color: #7da2ff; }
+.hero .steps li.done .k { background: #5fcf8c; color: #08130c; border-color: #5fcf8c; }
+.hero .steps .d, .hero .steps .st { color: var(--night-muted); }
+.hero .steps li.done .st { color: #5fcf8c; }
+.hero button.btn { background: #eef2ff; border-color: #eef2ff; color: #0b1020; }
+.hero button.btn.ghost { background: transparent; color: #eef2ff; border-color: var(--night-line); }
+.hero .pill.done { background: rgba(95, 207, 140, 0.18); color: #8fe3b1; }
 .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .steps li { display: grid; grid-template-columns: 38px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: var(--rule-soft); }
 .steps .k { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; font: 700 1rem var(--display); background: var(--card); color: var(--muted); border: 1px solid var(--rule); }
@@ -253,9 +275,9 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .steps .st { font: 600 0.78rem var(--body); color: var(--muted); white-space: nowrap; }
 .steps li.done .st { color: var(--ok); }
 .hero .go { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 16px 0 4px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 16px 0 4px; }
 #host .exo { border-top: 4px solid var(--c, var(--rule)); }
-@media (max-width: 560px) { .seg .lg { display: none; } .seg button { padding: 7px 11px; } .stat { padding: 10px 11px; } .stat .v { font-size: 1.3rem; } .stat .l { font-size: 0.76rem; } }
+@media (max-width: 560px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .seg .lg { display: none; } .seg button { padding: 7px 11px; } .stat { padding: 10px 11px; } .stat .v { font-size: 1.3rem; } .stat .l { font-size: 0.76rem; } }
 .stat { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 12px 14px; display: grid; gap: 2px; }
 .stat .v { font: 800 1.6rem var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
 .stat .v small { font: 600 0.9rem var(--body); color: var(--muted); }
@@ -263,17 +285,20 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .ueprog { display: grid; gap: 8px; }
 .ueprog button { display: grid; grid-template-columns: 58px 1fr minmax(90px, 30%) 44px; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 14px; cursor: pointer; text-align: left; color: inherit; font: inherit; }
 .ueprog button:hover { border-color: var(--c); }
-.ueprog .code { font: 700 0.8rem var(--mono); color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--card)); border-radius: 8px; padding: 4px 0; text-align: center; }
+.ueprog .code { font: 700 0.8rem var(--mono); color: var(--o); background: var(--c); border-radius: 8px; padding: 4px 0; text-align: center; }
 .ueprog .nm { font-weight: 600; min-width: 0; }
 .ueprog .nm small { display: block; color: var(--muted); font-weight: 400; font-size: 0.8rem; }
 .ueprog .bar { margin: 0; }
 .ueprog .pc { font: 500 0.85rem var(--mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
 .next-chap { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; background: color-mix(in srgb, var(--c) 9%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--rule)); border-radius: 16px; padding: 14px 16px; cursor: pointer; width: 100%; text-align: left; color: inherit; font: inherit; }
-.next-chap .code { font: 700 0.8rem var(--mono); color: var(--card); background: var(--c); border-radius: 10px; padding: 8px 10px; }
+.next-chap .code { font: 700 0.8rem var(--mono); color: var(--o); background: var(--c); border-radius: 10px; padding: 8px 10px; }
 .next-chap .go { color: var(--accent); font-weight: 700; white-space: nowrap; }
 .chead { border-radius: 20px; padding: clamp(16px, 4vw, 24px); background: color-mix(in srgb, var(--c) 11%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 30%, var(--rule)); display: grid; gap: 8px; margin-bottom: 16px; }
 .chead .eyebrow { color: var(--ink); }
-.chead .eyebrow b { color: var(--card); background: var(--c); border-radius: 6px; padding: 1px 7px; margin-right: 6px; letter-spacing: 0.02em; }
+.chead .eyebrow b { color: var(--o); background: var(--c); border-radius: 6px; padding: 1px 7px; margin-right: 6px; letter-spacing: 0.02em; }
+.cible { display: inline-flex; align-items: center; gap: 8px; font-size: 0.86rem; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 12px 4px 6px; justify-self: start; }
+.cible .reti { width: 18px; height: 18px; flex: none; color: var(--c); }
+.cible .des { font: 600 0.8rem var(--mono); }
 .chead h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); }
 .chead p { margin: 0; color: var(--muted); }
 .chead .kp { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.86rem; color: var(--muted); }
@@ -281,6 +306,34 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .ref-note { font-size: 0.86rem; color: var(--muted); margin: 10px 0 0; }
 .fiche details.fref { border: 1px solid var(--rule); border-radius: 12px; padding: 10px 14px; margin: 10px 0; background: var(--paper); }
 .fiche details.fref summary { cursor: pointer; font-weight: 600; }
+.obs-sky { position: relative; border-radius: 22px; overflow: hidden; background: var(--night1); border: 1px solid var(--night-line); }
+.obs-sky canvas { display: block; width: 100%; height: auto; }
+.obs-sky .cap { padding: 10px 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--night-muted); font: 500 0.76rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; pointer-events: none; }
+.instr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 14px; margin: 16px 0; }
+.instr .now { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.instr .now b { font: 700 1.35rem var(--display); letter-spacing: -0.01em; }
+.instr .now .ap { font: 500 0.85rem var(--mono); color: var(--muted); }
+.instr ol { list-style: none; margin: 0; padding: 10px; background: var(--card); border: 1px solid var(--rule); border-radius: 18px; display: grid; gap: 2px; }
+.instr li { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 10px; font-size: 0.9rem; color: var(--muted); }
+.instr li .i { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--rule); justify-self: center; }
+.instr li.got { color: var(--ink); }
+.instr li.got .i { background: var(--accent); border-color: var(--accent); }
+.instr li.cur { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+.instr li .x { font: 500 0.78rem var(--mono); font-variant-numeric: tabular-nums; }
+.spectre { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; margin: 8px 0 4px; }
+.spectre div { border-radius: 10px; padding: 8px 8px 7px; background: var(--c); color: var(--o); display: grid; gap: 1px; min-width: 0; }
+.spectre b { font: 700 0.82rem var(--body); overflow-wrap: anywhere; }
+.spectre span { font: 500 0.7rem var(--mono); opacity: 0.9; }
+.cat { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
+.obj { display: grid; gap: 3px; text-align: left; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 11px 13px; cursor: pointer; color: inherit; font: inherit; }
+.obj:hover { border-color: var(--c); }
+.obj .des { font: 700 1.05rem var(--mono); color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.obj .nm { font-weight: 600; }
+.obj .ty { font-size: 0.8rem; color: var(--muted); }
+.obj .ch { font-size: 0.8rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 5px; margin-top: 3px; }
+.obj.seen { border-color: color-mix(in srgb, var(--c) 45%, var(--rule)); background: color-mix(in srgb, var(--c) 7%, var(--card)); }
+.obj .pill.seen { background: var(--c); color: var(--o); }
+@media (max-width: 700px) { .instr { grid-template-columns: 1fr; } .spectre { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .howto { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 16px; margin: 14px 0; }
 .howto summary { cursor: pointer; font-weight: 600; }
 @media (max-width: 560px) {
@@ -373,14 +426,14 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 
 <div class="wrap">
   <header class="top">
-    <h1 class="brand" id="brand"><span class="mark" aria-hidden="true"><i></i><i></i></span>Débit <span class="dot">·</span> Crédit</h1>
+    <h1 class="brand" id="brand"><span class="reticle" aria-hidden="true"></span>Objectif <span class="dscg">DSCG</span></h1>
     <p class="tagline">Réviser le DCG pour aborder le DSCG.</p>
     <nav class="tabs" role="tablist" aria-label="Rubriques">
       <button role="tab" data-tab="accueil" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Aujourd'hui</span></button>
       <button role="tab" data-tab="revisions" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="2.5"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/></svg><span>Réviser</span><span class="badge zero" id="dueBadge">0</span></button>
       <button role="tab" data-tab="matieres" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20v3H6.5"/></svg><span>Cours</span></button>
       <button role="tab" data-tab="pcg" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M12 3v18M3 9h18M3 15h18"/></svg><span>Comptes</span></button>
-      <button role="tab" data-tab="expedition" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 20 7-12 4 6 3-4 6 10z"/><path d="M14 4h4l-1.5 2L18 8h-4z"/></svg><span>Progrès</span><span class="badge zero" id="succBadge">0</span></button>
+      <button role="tab" data-tab="observatoire" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 15 13-7 2 4-13 7z"/><path d="m11 14-2 7M12 14l3 7"/><path d="M17 8l1.5-1"/><circle cx="20.5" cy="4.5" r="1"/></svg><span class="lg-l">Observatoire</span><span class="sm-l">Ciel</span><span class="badge zero" id="succBadge">0</span></button>
     </nav>
     <div class="rank" id="rankBox"></div>
   </header>
@@ -439,7 +492,7 @@ const SRS_IDS = Object.keys(SRS);
 const THEMES = [...DATA.ues.map(u => ({ code: u.code, nom: u.nom })), ...(SRS_ORDER.PCG.length ? [{ code: "PCG", nom: "Plan comptable" }] : [])];
 const srsCount = kind => SRS_IDS.filter(id => SRS[id].kind === kind).length;
 // Couleur d'identité d'une matière (toujours affichée avec son code).
-const ucol = code => `--c:var(--c-${code})`;
+const ucol = code => `--c:var(--c-${code});--o:var(--o-${code})`;
 
 // ---------- Utilitaires ----------
 const fmt = n => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n);
@@ -469,7 +522,7 @@ const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "E
 const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
 function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
 function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0 } });
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
 function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
@@ -494,6 +547,7 @@ function record(id, ok, mode) {
   if (it) { h.r = h.r || [0, 0]; h.r[0]++; if (ok) h.r[1]++; h.ru = h.ru || {}; const hr = h.ru[it.th] || (h.ru[it.th] = [0, 0]); hr[0]++; if (ok) hr[1]++; }
   if (ok) { state.stats.run++; state.stats.best = Math.max(state.stats.best, state.stats.run); } else state.stats.run = 0;
   if (mode === "revision") state.stats.revs++;
+  const hr = new Date().getHours(); if (hr < 7) state.stats.early++; if (hr >= 22) state.stats.late++;
   if (ok) addXp(ex ? (mode === "revision" ? 5 : 10) * (ex.niveau || 1) : 5);
   save(); updateBadge(); renderRank();
   return { srs: !!it, from, to: c.s, moved, due: c.due, ok, isNew: !seen };
@@ -510,9 +564,10 @@ function moveNote(host, mv) {
   const div = document.createElement("div"); div.className = "move"; div.innerHTML = `<div>${esc(t)}</div>${ladderHTML(mv.to)}`; fb.appendChild(div);
 }
 function addXp(n) { state.xp = (state.xp || 0) + n; const p = document.getElementById("xpPop"); p.textContent = `+${n} XP`; p.classList.add("show"); clearTimeout(addXp.h); addXp.h = setTimeout(() => p.classList.remove("show"), 1200); }
-const RANKS = [[0, "Mousse"], [400, "Matelot"], [1200, "Timonier"], [2500, "Second"], [4500, "Capitaine"], [7500, "Navigateur des aurores"], [12000, "Gardien du phare"]];
+// Grades = instruments, de l'œil nu au plus grand télescope en construction. [XP, nom, ouverture, nom court]
+const RANKS = [[0, "Œil nu", "pupille d'environ 7 mm", "Œil nu"], [400, "Jumelles 10 × 50", "deux objectifs de 50 mm", "Jumelles"], [1200, "Lunette de 80 mm", "objectif de 80 mm", "Lunette"], [2500, "Télescope de Newton de 200 mm", "miroir de 200 mm", "Newton"], [4500, "Dobson de 400 mm", "miroir de 400 mm", "Dobson"], [7500, "Télescope d'un mètre du Pic du Midi", "miroir de 1,06 m", "Pic du Midi"], [12000, "Télescope spatial Hubble", "miroir de 2,4 m", "Hubble"], [18000, "Very Large Telescope (VLT)", "quatre miroirs de 8,2 m", "VLT"], [26000, "Télescope spatial James-Webb", "miroir de 6,5 m, en infrarouge", "JWST"], [36000, "Extremely Large Telescope (ELT)", "miroir de 39 m, en construction au Chili", "ELT"]];
 function rank() { let r = RANKS[0], next = null; for (let i = 0; i < RANKS.length; i++) { if (state.xp >= RANKS[i][0]) { r = RANKS[i]; next = RANKS[i + 1] || null; } } return { name: r[1], from: r[0], next }; }
-function renderRank() { const r = rank(); const i = RANKS.findIndex(x => x[1] === r.name) + 1; const box = document.getElementById("rankBox"); box.title = r.next ? `${fmt(r.next[0] - state.xp)} XP avant le grade « ${r.next[1]} »` : "Grade maximal"; box.innerHTML = `<span class="lvl">${i}</span><span>${esc(r.name)}</span><span class="xp">${fmt(state.xp)} XP</span>`; }
+function renderRank() { const r = rank(); const i = RANKS.findIndex(x => x[1] === r.name); const box = document.getElementById("rankBox"); box.title = `${r.name}${r.next ? ` · ${fmt(r.next[0] - state.xp)} XP avant : ${r.next[1]}` : " · instrument maximal"}`; box.innerHTML = `<span class="lvl">${i + 1}</span><span>${esc(RANKS[i][3])}</span><span class="xp">${fmt(state.xp)} XP</span>`; box.onclick = () => go({ tab: "observatoire" }); box.style.cursor = "pointer"; }
 function chapMastery(ch) { if (!ch.exercices.length) return 0; return ch.exercices.reduce((a, e) => a + Math.min(card(e.id).s, ACQUIS), 0) / (ch.exercices.length * ACQUIS); }
 function ueChaps(code) { return CHAPS.filter(c => c.ue === code); }
 function ueMastery(code) { const cs = ueChaps(code); const n = cs.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return cs.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
@@ -634,7 +689,7 @@ function renderExercise(ex, host, onDone, meta) {
 function itemObj(id) { return EXO[id] || CARTE[id] || (COMPTE[id] ? { id } : null); }
 function itemLabel(o) { const it = SRS[o.id]; if (it && it.kind === "compte") return `Plan comptable · classe ${o.id[4]}`; const ch = CHAP_BY[(EXO[o.id] || CARTE[o.id] || {}).chap]; return ch ? `${ch.ue} · ${ch.title}` : ""; }
 function renderItem(o, host, onDone, meta) {
-  const th = (SRS[o.id] || {}).th || (CHAP_BY[o.chap] || {}).ue; if (th) host.style.setProperty("--c", `var(--c-${th})`);
+  const th = (SRS[o.id] || {}).th || (CHAP_BY[o.chap] || {}).ue; if (th) { host.style.setProperty("--c", `var(--c-${th})`); host.style.setProperty("--o", `var(--o-${th})`); }
   return CARTE[o.id] || COMPTE[o.id] ? renderFlash(o, host, onDone, meta) : renderExercise(o, host, onDone, meta);
 }
 function renderFlash(o, host, onDone, meta) {
@@ -711,76 +766,137 @@ function dailyHistory(days) { const out = []; const d = new Date(); for (let i =
 
 // ---------- Succès ----------
 const TIER_XP = { bronze: 20, argent: 50, or: 100 };
-const SUCC_CATS = ["Régularité", "Précision", "Maîtrise", "Matières", "Exploration", "Expédition"];
+const SUCC_CATS = ["Régularité", "Précision", "Maîtrise", "Matières", "Exploration", "Observatoire"];
 function okBy(types) { let n = 0; for (const id in state.cards) { const e = EXO[id]; if (e && types.includes(e.type)) n += state.cards[id].ok || 0; } return n; }
+function okIn(ids) { let n = 0; for (const id of ids) n += (state.cards[id] && state.cards[id].ok) || 0; return n; }
 function totalOk() { let n = 0; for (const id in state.cards) n += state.cards[id].ok || 0; return n; }
 function answered() { let n = 0; for (const id in state.cards) n += state.cards[id].n || 0; return n; }
 const testsDone = () => Object.values(state.daily).filter(p => p.done).length;
 const perfects = () => Object.values(state.daily).filter(p => p.done && p.score === p.ids.length).length;
 const campsLit = () => CHAPS.filter(c => chapMastery(c) >= 0.999).length;
 const uesStarted = () => UES.filter(u => ueChaps(u.code).some(c => chapMastery(c) >= 0.999)).length;
+const daysStudied = () => Object.keys(state.days).length;
+const bestDay = () => Math.max(0, ...Object.values(state.days));
+// Un samedi et le dimanche qui suit, tous deux travaillés.
+const weekends = () => Object.keys(state.days).filter(k => { const d = new Date(k + "T12:00:00"); if (d.getDay() !== 6) return false; d.setDate(d.getDate() + 1); return !!state.days[`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`]; }).length;
+const ueNotionsPct = code => { const ids = SRS_IDS.filter(id => SRS[id].th === code); return ids.length ? Math.floor(memorized(ids) / ids.length * 100) : 0; };
 const S = (id, cat, tier, ic, nom, desc, prog, target) => ({ id, cat, tier, ic, nom, desc, prog, target });
 const UE_SUCC = { UE9: ["📒", "Maître des comptes"], UE10: ["🏛", "Expert en évaluation"], UE2: ["⚖", "Juriste d'affaires"], UE3: ["🤝", "Spécialiste du droit social"], UE4: ["🧾", "Fiscaliste"], UE6: ["📈", "Directeur financier"] };
 const SUCCES = [
-  S("premier-pas", "Régularité", "bronze", "👣", "Premier pas", "Répondre à un premier exercice", answered, 1),
+  // Régularité
+  S("premier-pas", "Régularité", "bronze", "✨", "Première lumière", "Répondre à une première question, comme un télescope qui capte sa première lumière", answered, 1),
   S("rituel", "Régularité", "bronze", "☀", "Rituel", "Terminer un test du jour", testsDone, 1),
   S("tests-10", "Régularité", "argent", "📅", "Dix rendez-vous", "Terminer 10 tests du jour", testsDone, 10),
+  S("tests-25", "Régularité", "argent", "📆", "Vingt-cinq rendez-vous", "Terminer 25 tests du jour", testsDone, 25),
   S("tests-50", "Régularité", "or", "🗓", "Cinquante rendez-vous", "Terminer 50 tests du jour", testsDone, 50),
   S("tests-100", "Régularité", "or", "🏅", "Centurion", "Terminer 100 tests du jour", testsDone, 100),
-  S("serie-3", "Régularité", "bronze", "🔥", "Trois jours", "Travailler 3 jours d'affilée", streak, 3),
+  S("tests-200", "Régularité", "or", "🛰", "Mission longue durée", "Terminer 200 tests du jour", testsDone, 200),
+  S("tests-365", "Régularité", "or", "🌍", "Une révolution", "Terminer 365 tests du jour, le temps d'un tour de la Terre autour du Soleil", testsDone, 365),
+  S("serie-3", "Régularité", "bronze", "🔥", "Trois nuits", "Travailler 3 jours d'affilée", streak, 3),
   S("serie-7", "Régularité", "bronze", "🔥", "Une semaine", "Travailler 7 jours d'affilée", streak, 7),
   S("serie-14", "Régularité", "argent", "🔥", "Deux semaines", "Travailler 14 jours d'affilée", streak, 14),
-  S("serie-30", "Régularité", "argent", "🏔", "Un mois", "Travailler 30 jours d'affilée", streak, 30),
-  S("serie-60", "Régularité", "or", "🌋", "Deux mois", "Travailler 60 jours d'affilée", streak, 60),
-  S("serie-100", "Régularité", "or", "🌌", "Cent jours", "Travailler 100 jours d'affilée", streak, 100),
+  S("serie-30", "Régularité", "argent", "🌙", "Une lunaison", "Travailler 30 jours d'affilée, le temps d'un cycle de la Lune", streak, 30),
+  S("serie-60", "Régularité", "or", "🌗", "Deux lunaisons", "Travailler 60 jours d'affilée", streak, 60),
+  S("serie-100", "Régularité", "or", "🌌", "Cent nuits", "Travailler 100 jours d'affilée", streak, 100),
+  S("serie-200", "Régularité", "or", "🔭", "Veille permanente", "Travailler 200 jours d'affilée", streak, 200),
+  S("serie-365", "Régularité", "or", "🪐", "Année d'observation", "Travailler 365 jours d'affilée", streak, 365),
+  S("jours-50", "Régularité", "argent", "🗒", "Carnet d'observation", "Travailler 50 jours au total", daysStudied, 50),
+  S("jours-150", "Régularité", "or", "📔", "Journal de bord", "Travailler 150 jours au total", daysStudied, 150),
   S("revs-50", "Régularité", "bronze", "🔁", "Mémoire courte", "Faire 50 révisions", () => state.stats.revs, 50),
   S("revs-250", "Régularité", "argent", "🔁", "Mémoire longue", "Faire 250 révisions", () => state.stats.revs, 250),
   S("revs-1000", "Régularité", "or", "🧠", "Mémoire d'éléphant", "Faire 1 000 révisions", () => state.stats.revs, 1000),
+  S("revs-2500", "Régularité", "or", "💫", "Mémoire stellaire", "Faire 2 500 révisions", () => state.stats.revs, 2500),
+  S("revs-5000", "Régularité", "or", "🌠", "Mémoire galactique", "Faire 5 000 révisions", () => state.stats.revs, 5000),
+  S("seances-10", "Régularité", "bronze", "⏱", "Dix séances", "Terminer 10 séances de révision", () => state.stats.sessions, 10),
+  S("seances-50", "Régularité", "argent", "⏱", "Cinquante séances", "Terminer 50 séances de révision", () => state.stats.sessions, 50),
+  S("seances-200", "Régularité", "or", "⏳", "Deux cents séances", "Terminer 200 séances de révision", () => state.stats.sessions, 200),
+  S("nuit-50", "Régularité", "argent", "🌃", "Belle nuit", "Répondre à 50 questions dans la même journée", bestDay, 50),
+  S("marathon-messier", "Régularité", "or", "🏃", "Marathon Messier", "Répondre à 110 questions dans la même journée, autant que d'objets au catalogue de Messier", bestDay, 110),
+  S("aube", "Régularité", "bronze", "🌅", "Aube astronomique", "Répondre à une question avant 7 heures du matin", () => state.stats.early, 1),
+  S("nuit-noire", "Régularité", "bronze", "🌑", "Nuit noire", "Répondre à une question après 22 heures", () => state.stats.late, 1),
+  S("week-end", "Régularité", "bronze", "🏕", "Week-end d'observation", "Travailler un samedi et le dimanche qui suit", weekends, 1),
+  S("week-ends-10", "Régularité", "argent", "🏕", "Dix week-ends d'observation", "Travailler le samedi et le dimanche, dix week-ends", weekends, 10),
+  // Précision
   S("premiere-ligne", "Précision", "bronze", "✎", "Première ligne", "Une réponse juste du premier coup", totalOk, 1),
   S("justes-100", "Précision", "bronze", "✔", "Cent bonnes réponses", "100 réponses justes du premier coup", totalOk, 100),
   S("justes-500", "Précision", "argent", "✔", "Cinq cents bonnes réponses", "500 réponses justes du premier coup", totalOk, 500),
   S("justes-1500", "Précision", "or", "💎", "Infaillible", "1 500 réponses justes du premier coup", totalOk, 1500),
+  S("justes-3000", "Précision", "or", "💎", "Optique parfaite", "3 000 réponses justes du premier coup", totalOk, 3000),
+  S("justes-5000", "Précision", "or", "🔬", "Résolution maximale", "5 000 réponses justes du premier coup", totalOk, 5000),
   S("lancee-10", "Précision", "bronze", "🎯", "Sur sa lancée", "10 bonnes réponses d'affilée", () => state.stats.best, 10),
   S("lancee-25", "Précision", "argent", "🎯", "Dans le mille", "25 bonnes réponses d'affilée", () => state.stats.best, 25),
   S("lancee-50", "Précision", "or", "🏹", "Imbattable", "50 bonnes réponses d'affilée", () => state.stats.best, 50),
+  S("lancee-100", "Précision", "or", "☄", "Comète", "100 bonnes réponses d'affilée", () => state.stats.best, 100),
   S("sans-faute", "Précision", "argent", "★", "Sans faute", "Un test du jour à 20 sur 20", perfects, 1),
   S("sans-faute-5", "Précision", "or", "🌟", "Cinq sans-faute", "Cinq tests du jour à 20 sur 20", perfects, 5),
+  S("sans-faute-10", "Précision", "or", "🌟", "Dix sans-faute", "Dix tests du jour à 20 sur 20", perfects, 10),
+  S("seance-parfaite", "Précision", "argent", "🎯", "Mise au point parfaite", "Une séance de révision d'au moins 10 notions sans aucune erreur", () => state.stats.perfect, 1),
+  S("seances-parfaites-10", "Précision", "or", "🎯", "Optique adaptative", "Dix séances de révision d'au moins 10 notions sans erreur", () => state.stats.perfect, 10),
   S("partie-double", "Précision", "bronze", "⚖", "Partie double", "Une écriture au journal juste du premier coup", () => okBy(["ecriture"]), 1),
   S("teneur-livres", "Précision", "argent", "📓", "Teneur de livres", "25 écritures justes du premier coup", () => okBy(["ecriture"]), 25),
   S("grand-livre", "Précision", "or", "📚", "Grand livre", "100 écritures justes du premier coup", () => okBy(["ecriture"]), 100),
   S("calculateur", "Précision", "argent", "🧮", "Calculateur", "50 calculs justes du premier coup", () => okBy(["calc"]), 50),
+  S("calculateur-150", "Précision", "or", "🧮", "Calculateur de trajectoires", "150 calculs justes du premier coup", () => okBy(["calc"]), 150),
   S("oeil-exerce", "Précision", "argent", "🔍", "Œil exercé", "50 QCM à réponses multiples justes", () => okBy(["multi"]), 50),
+  S("oeil-exerce-150", "Précision", "or", "🔍", "Œil de lynx", "150 QCM à réponses multiples justes", () => okBy(["multi"]), 150),
+  S("cartes-sues-100", "Précision", "bronze", "📇", "Cent cartes sues", "Répondre « Je savais » à 100 cartes de notions", () => okIn(Object.keys(CARTE)), 100),
+  S("cartes-sues-500", "Précision", "argent", "📇", "Cinq cents cartes sues", "Répondre « Je savais » à 500 cartes de notions", () => okIn(Object.keys(CARTE)), 500),
+  S("cartes-sues-2000", "Précision", "or", "🗂", "Deux mille cartes sues", "Répondre « Je savais » à 2 000 cartes de notions", () => okIn(Object.keys(CARTE)), 2000),
+  // Maîtrise
   S("notions-10", "Maîtrise", "bronze", "🌱", "Dix notions", "10 notions mémorisées (étape « 10 jours » atteinte)", acquiredCount, 10),
   S("notions-50", "Maîtrise", "bronze", "🌿", "Cinquante notions", "50 notions mémorisées", acquiredCount, 50),
   S("notions-100", "Maîtrise", "argent", "🌳", "Cent notions", "100 notions mémorisées", acquiredCount, 100),
+  S("catalogue-messier", "Maîtrise", "argent", "🔭", "Catalogue de Messier", "110 notions mémorisées, autant que d'objets au catalogue de Messier", acquiredCount, 110),
   S("notions-250", "Maîtrise", "argent", "🌲", "Deux cent cinquante notions", "250 notions mémorisées", acquiredCount, 250),
   S("notions-500", "Maîtrise", "or", "🏞", "Cinq cents notions", "500 notions mémorisées", acquiredCount, 500),
   S("notions-1000", "Maîtrise", "or", "🗺", "Mille notions", "1 000 notions mémorisées", acquiredCount, 1000),
+  S("notions-1500", "Maîtrise", "or", "🌌", "Mille cinq cents notions", "1 500 notions mémorisées", acquiredCount, 1500),
+  S("notions-2000", "Maîtrise", "or", "🌌", "Deux mille notions", "2 000 notions mémorisées", acquiredCount, 2000),
+  S("notions-toutes", "Maîtrise", "or", "🪐", "New General Catalogue", "Toutes les notions mémorisées", acquiredCount, SRS_IDS.length),
   S("ancrage", "Maîtrise", "argent", "⚓", "Ancrage", "10 notions arrivées à l'étape « chaque mois »", () => memorized(SRS_IDS, MAX_STEP), 10),
   S("memoire-acier", "Maîtrise", "or", "🛡", "Mémoire d'acier", "100 notions arrivées à l'étape « chaque mois »", () => memorized(SRS_IDS, MAX_STEP), 100),
+  S("ancrees-500", "Maîtrise", "or", "🛡", "Orbite stable", "500 notions arrivées à l'étape « chaque mois »", () => memorized(SRS_IDS, MAX_STEP), 500),
   S("lexique", "Maîtrise", "argent", "📇", "Lexique", "100 cartes de notions mémorisées", () => memorized(Object.keys(CARTE)), 100),
+  S("lexique-500", "Maîtrise", "or", "📖", "Encyclopédie", "500 cartes de notions mémorisées", () => memorized(Object.keys(CARTE)), 500),
+  S("lexique-1000", "Maîtrise", "or", "📚", "Bibliothèque d'Alexandrie", "1 000 cartes de notions mémorisées", () => memorized(Object.keys(CARTE)), 1000),
   S("comptes-tete", "Maîtrise", "argent", "🔢", "Comptes en tête", "50 comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), 50),
   S("pcg-coeur", "Maîtrise", "or", "📘", "Le plan par cœur", "300 comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), 300),
+  S("pcg-entier", "Maîtrise", "or", "📗", "Fond diffus cosmologique", "Tous les comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), Object.keys(COMPTE).length),
   S("chapitre-fini", "Maîtrise", "bronze", "📖", "Chapitre bouclé", "Terminer la série d'exercices d'un chapitre", () => Object.keys(state.done).length, 1),
-  S("premier-camp", "Maîtrise", "argent", "⛺", "Premier camp", "Un chapitre entièrement acquis", campsLit, 1),
-  S("dix-camps", "Maîtrise", "or", "🏕", "Dix camps", "Dix chapitres entièrement acquis", campsLit, 10),
-  S("tous-camps", "Maîtrise", "or", "🗻", "Toutes les étapes", "Les 42 chapitres entièrement acquis", campsLit, CHAPS.length),
-  ...UES.map(u => S("ue-" + u.code.toLowerCase(), "Matières", "or", (UE_SUCC[u.code] || ["🎓"])[0], (UE_SUCC[u.code] || ["", u.nom])[1], `${u.code} ${u.nom} entièrement acquise (en %)`, () => Math.floor(ueMastery(u.code) * 100), 100)),
-  S("polyvalent", "Matières", "argent", "🧭", "Polyvalent", "Au moins un chapitre acquis dans chacune des six matières", uesStarted, UES.length),
+  S("chapitres-10", "Maîtrise", "argent", "📚", "Dix chapitres bouclés", "Terminer la série d'exercices de 10 chapitres", () => Object.keys(state.done).length, 10),
+  S("chapitres-tous", "Maîtrise", "or", "🏛", "Programme bouclé", "Terminer la série d'exercices des 42 chapitres", () => Object.keys(state.done).length, CHAPS.length),
+  // Matières
+  ...UES.map(u => S("ue-" + u.code.toLowerCase(), "Matières", "or", (UE_SUCC[u.code] || ["🎓"])[0], (UE_SUCC[u.code] || ["", u.nom])[1], `${u.code} ${u.nom} : tous les exercices acquis (en %)`, () => Math.floor(ueMastery(u.code) * 100), 100)),
+  ...UES.map(u => S("notions-moitie-" + u.code.toLowerCase(), "Matières", "argent", "🌓", `${u.code} à moitié en mémoire`, `${u.code} ${u.nom} : la moitié des notions mémorisées (en %)`, () => ueNotionsPct(u.code), 50)),
+  ...UES.map(u => S("notions-" + u.code.toLowerCase(), "Matières", "or", "🌕", `${u.code} en pleine lumière`, `${u.code} ${u.nom} : toutes les notions mémorisées (en %)`, () => ueNotionsPct(u.code), 100)),
+  S("polyvalent", "Matières", "argent", "🧭", "Toutes les bandes du spectre", "Au moins un chapitre acquis dans chacune des six matières", uesStarted, UES.length),
   S("expert", "Matières", "or", "🎓", "Prêt pour le DSCG", "Les six matières entièrement acquises", () => UES.filter(u => ueMastery(u.code) >= 0.999).length, UES.length),
+  // Exploration
   S("premier-dossier", "Exploration", "bronze", "🗂", "Premier dossier", "Lire une fiche documentaire", () => Object.keys(state.fiches).length, 1),
   S("dix-dossiers", "Exploration", "argent", "🗃", "Dix dossiers", "Lire 10 fiches documentaires", () => Object.keys(state.fiches).length, 10),
   S("bibliothecaire", "Exploration", "or", "🏛", "Bibliothécaire", "Lire les 42 fiches documentaires", () => Object.keys(state.fiches).length, CHAPS.length),
+  S("cours-10", "Exploration", "bronze", "📖", "Dix cours ouverts", "Ouvrir le cours de 10 chapitres", () => Object.keys(state.read).length, 10),
+  S("cours-tous", "Exploration", "argent", "📚", "Tous les cours ouverts", "Ouvrir le cours des 42 chapitres", () => Object.keys(state.read).length, CHAPS.length),
   S("a-la-source", "Exploration", "bronze", "🔗", "À la source", "Ouvrir un texte officiel depuis une fiche", () => state.stats.src, 1),
   S("documentaliste", "Exploration", "argent", "📜", "Documentaliste", "Ouvrir 25 textes officiels", () => state.stats.src, 25),
+  S("archiviste", "Exploration", "or", "🗄", "Archiviste", "Ouvrir 100 textes officiels", () => state.stats.src, 100),
   S("fouille", "Exploration", "bronze", "🔎", "Fouille", "Faire une recherche dans les fiches", () => state.stats.search, 1),
+  S("fouilles-25", "Exploration", "argent", "🔎", "Grand relevé", "Faire 25 recherches dans les fiches", () => state.stats.search, 25),
   S("comptes-50", "Exploration", "bronze", "🔢", "Plan comptable", "Consulter 50 comptes", () => Object.keys(state.seen).length, 50),
   S("comptes-200", "Exploration", "argent", "🔢", "Nomenclature", "Consulter 200 comptes", () => Object.keys(state.seen).length, 200),
   S("comptes-tous", "Exploration", "or", "🧾", "Tout le PCG", "Consulter tous les comptes du plan", () => Object.keys(state.seen).length, PCG.length),
-  ...RANKS.slice(1).map(([xp, nom], i) => S("grade-" + (i + 1), "Expédition", i < 2 ? "bronze" : i < 4 ? "argent" : "or", ["⚓", "🧭", "⛵", "🎖", "✦", "🗼"][i] || "⚓", nom, `Atteindre le grade de ${nom} (${fmt(xp)} XP)`, () => state.xp || 0, xp)),
-  S("aurore-25", "Expédition", "argent", "🌄", "Premières lueurs", "Un quart du parcours acquis (en %)", () => Math.floor(globalMastery() * 100), 25),
-  S("aurore-50", "Expédition", "or", "🌌", "Aurore", "La moitié du parcours acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
-  S("aurore-100", "Expédition", "or", "🌠", "Les aurores boréales", "Tout le parcours acquis (en %)", () => Math.floor(globalMastery() * 100), 100),
+  // Observatoire
+  ...RANKS.slice(1).map(([xp, nom], i) => S("grade-" + (i + 1), "Observatoire", i < 2 ? "bronze" : i < 5 ? "argent" : "or", ["👀", "🔭", "🔭", "🔭", "⛰", "🛰", "🏔", "🛰", "🌌"][i] || "🔭", nom, `Obtenir l'instrument : ${nom} (${fmt(xp)} XP)`, () => state.xp || 0, xp)),
+  S("premier-camp", "Observatoire", "argent", "🔭", "Premier objet observé", "Un chapitre entièrement acquis : sa cible apparaît dans le ciel", campsLit, 1),
+  S("objets-5", "Observatoire", "argent", "✨", "Cinq objets", "Observer 5 cibles du ciel profond", campsLit, 5),
+  S("dix-camps", "Observatoire", "or", "🌌", "Dix objets", "Observer 10 cibles du ciel profond", campsLit, 10),
+  S("objets-25", "Observatoire", "or", "🌌", "Vingt-cinq objets", "Observer 25 cibles du ciel profond", campsLit, 25),
+  S("tous-camps", "Observatoire", "or", "🗺", "Catalogue complet", "Observer les 42 cibles", campsLit, CHAPS.length),
+  S("jwst", "Observatoire", "or", "🛰", "Premières images", "Observer les six cibles du James-Webb (tous les chapitres de l'UE3 acquis)", () => ueChaps("UE3").filter(c => chapMastery(c) >= 0.999).length, ueChaps("UE3").length),
+  S("aurore-25", "Observatoire", "argent", "🌄", "Un quart du ciel", "Un quart du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 25),
+  S("aurore-50", "Observatoire", "or", "🌗", "La moitié du ciel", "La moitié du parcours d'exercices acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
+  S("ciel-75", "Observatoire", "or", "🌖", "Trois quarts du ciel", "Les trois quarts du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 75),
+  S("aurore-100", "Observatoire", "or", "🌕", "Le ciel entier", "Tout le parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 100),
 ];
 const SUCC_BY = Object.fromEntries(SUCCES.map(x => [x.id, x]));
 const succQueue = [];
@@ -842,8 +958,9 @@ function renderAccueil() {
   <div class="stat" title="Notions arrivées à l'étape « 10 jours » ou au-delà, sur ${fmt(SRS_IDS.length)}"><span class="v">${fmt(mem)}</span><span class="l">notions mémorisées</span></div>
   <div class="stat" title="Part des exercices des 42 chapitres acquis"><span class="v">${Math.round(globalMastery() * 100)}<small> %</small></span><span class="l">exercices acquis</span></div>
   <div class="stat" title="${state.days[todayKey()] || 0} réponse(s) aujourd'hui"><span class="v">${st}</span><span class="l">jour${st > 1 ? "s" : ""} d'affilée</span></div>
+  <div class="stat" title="Chapitres entièrement acquis"><span class="v">${observed()}<small> / ${CHAPS.length}</small></span><span class="l">objets observés</span></div>
 </div>
-${nc ? `<h3>Reprendre le cours</h3><button class="next-chap" id="goNext" style="${ucol(nc.ue)}"><span class="code">${esc(nc.ue)}</span><span><b>${esc(nc.title)}</b><br><span class="muted small">Chapitre ${nc.ordre} · ${esc(UE_BY[nc.ue].nom)}</span></span><span class="go">Ouvrir →</span></button>` : ""}
+${nc ? `<h3>Reprendre le cours</h3><button class="next-chap" id="goNext" style="${ucol(nc.ue)}"><span class="code">${esc(nc.ue)}</span><span><b>${esc(nc.title)}</b><br><span class="muted small">Chapitre ${nc.ordre} · ${esc(UE_BY[nc.ue].nom)}${CIBLE[nc.id] ? ` · cible ${esc(CIBLE[nc.id].des)}, ${esc(CIBLE[nc.id].nom)}` : ""}</span></span><span class="go">Ouvrir →</span></button>` : ""}
 <h3>Plateau des notions</h3>
 ${plateauHTML(SRS_IDS)}
 <div class="legend" style="margin-top:6px">${BANDS.map((b, i) => `<span><i style="background:var(${i === 0 ? "--rule-soft" : `--st${i}`})"></i>${esc(b.nom)}</span>`).join("")}</div>
@@ -865,7 +982,7 @@ ${plateauHTML(SRS_IDS)}
 }
 
 function renderMatieres() {
-  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
+  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
   main.querySelectorAll(".ue").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
 }
 
@@ -923,7 +1040,7 @@ function renderChap(id, startAt) {
   const c = CHAP_BY[id]; const u = UE_BY[c.ue]; const cs = ueChaps(c.ue); const idx = cs.indexOf(c);
   const chIds = SRS_IDS.filter(id => SRS[id].chap === c.id); const nNotions = chIds.length; const exOk = c.exercices.filter(e => card(e.id).s >= ACQUIS).length;
   main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} · ${esc(u.nom)}</button></div>
-<div class="chead" style="${ucol(c.ue)}"><div class="eyebrow"><b>${esc(u.code)}</b>Chapitre ${idx + 1} sur ${cs.length} · ${esc(c.duree)}</div><h2>${esc(c.title)}</h2><p>${esc(c.resume)}</p><div class="kp"><span><b>${fmt(memorized(chIds))}</b> / ${fmt(nNotions)} notions mémorisées</span><span><b>${exOk}</b> / ${c.exercices.length} exercices acquis</span></div></div><div id="stage" style="${ucol(c.ue)}"></div>`;
+<div class="chead" style="${ucol(c.ue)}"><div class="eyebrow"><b>${esc(u.code)}</b>Chapitre ${idx + 1} sur ${cs.length} · ${esc(c.duree)}</div><h2>${esc(c.title)}</h2><p>${esc(c.resume)}</p><div class="kp"><span><b>${fmt(memorized(chIds))}</b> / ${fmt(nNotions)} notions mémorisées</span><span><b>${exOk}</b> / ${c.exercices.length} exercices acquis</span></div>${CIBLE[c.id] ? `<span class="cible" title="Acquérez le chapitre pour observer cette cible dans l'Observatoire">${RETI}<span class="des">${esc(CIBLE[c.id].des)}</span>${esc(CIBLE[c.id].nom)}${chapMastery(c) >= 0.999 ? " · observé" : ""}</span>` : ""}</div><div id="stage" style="${ucol(c.ue)}"></div>`;
   main.querySelector("#back").onclick = () => go({ tab: "ue", code: c.ue });
   const stage = main.querySelector("#stage");
   const seg = mode => `<div class="crumb"><span class="seg" role="group" aria-label="Étapes du chapitre"><button data-m="lesson" aria-pressed="${mode === "lesson"}"><span class="n">1</span>Cours</button>${nNotions ? `<button data-m="cartes" aria-pressed="${mode === "cartes"}"><span class="n">2</span>Notions</button>` : ""}<button data-m="ex" aria-pressed="${mode === "ex"}"><span class="n">${nNotions ? 3 : 2}</span>Exercices</button>${c.fiche ? `<button data-m="fiche" aria-pressed="${mode === "fiche"}">Fiche<span class="lg"> officielle</span></button>` : ""}</span></div>`;
@@ -1124,6 +1241,7 @@ function startSession(th, opts) {
     else if (mv.to > mv.from) moves.up++; else if (mv.to < mv.from) moves.down++; else moves.stay++;
     moveNote(host, mv);
   }, score => {
+    state.stats.sessions++; if (queue.length >= 10 && score === queue.length) state.stats.perfect++; save();
     main.querySelector("#prog").textContent = "Terminé";
     host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Séance terminée : ${score} sur ${queue.length} du premier coup</h3><p>${moves.up} notion${moves.up > 1 ? "s ont" : " a"} monté d'une marche, ${moves.down} ${moves.down > 1 ? "sont redescendues" : "est redescendue"}, ${moves.nouv} nouvelle${moves.nouv > 1 ? "s" : ""} ${moves.nouv > 1 ? "sont entrées" : "est entrée"} sur l'échelle.</p>${plateauHTML(SRS_IDS.filter(id => inTheme(id, th)))}<div class="actions">${opts && opts.chain && !seance().testDone ? `<button class="btn big" id="toT">Continuer : test du jour</button>` : ""}<button class="btn ${opts && opts.chain && !seance().testDone ? "ghost" : ""}" id="toR">${chapSess ? "Revenir aux notions du chapitre" : "Voir le tableau des révisions"}</button><button class="btn quiet" id="toA">Retour à l'accueil</button></div></div>`;
     host.querySelector("#toR").onclick = chapSess ? back : () => go({ tab: "revisions" }); host.querySelector("#toA").onclick = () => go({ tab: "accueil" });
@@ -1165,7 +1283,7 @@ function renderSucces() {
   const xpS = got.reduce((a, x) => a + TIER_XP[x.tier], 0);
   const byTier = t => got.filter(x => x.tier === t).length;
   const nx = nextSucces(1)[0];
-  main.innerHTML = `<h2>Succès</h2><p class="muted">${SUCCES.length} succès en six catégories. Chacun se débloque automatiquement et rapporte de l'XP : 20 pour le bronze, 50 pour l'argent, 100 pour l'or.</p>
+  main.innerHTML = `<h2>Succès</h2><p class="muted">${SUCCES.length} succès en six catégories, de la régularité à l'observatoire. Chacun se débloque automatiquement et rapporte de l'XP : 20 pour le bronze, 50 pour l'argent, 100 pour l'or.</p>
 <div class="board"><div class="tile"><div class="big">${got.length}<span class="muted" style="font-size:1rem"> / ${SUCCES.length}</span></div><div class="lab">succès débloqués</div></div><div class="tile"><div class="big">${byTier("or")} · ${byTier("argent")} · ${byTier("bronze")}</div><div class="lab">or · argent · bronze</div></div><div class="tile"><div class="big">${fmt(xpS)}</div><div class="lab">XP gagnés grâce aux succès</div></div></div>
 ${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.toLowerCase())} (${fmt(Math.min(nx.prog(), nx.target))} / ${fmt(nx.target)}).</p>` : ""}
 <div class="chips" role="group" aria-label="Catégories">${["Tous", ...SUCC_CATS].map(c => { const list = c === "Tous" ? SUCCES : SUCCES.filter(x => x.cat === c); return `<button data-c="${c}" aria-pressed="${c === succFilter}">${c} <span class="mono">${list.filter(x => state.succes[x.id]).length}/${list.length}</span></button>`; }).join("")}</div>
@@ -1179,37 +1297,81 @@ ${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.t
   draw();
 }
 
-// ---------- Expédition ----------
-const ETAPES = [["UE9", "Les fjords"], ["UE10", "La vallée"], ["UE2", "Les plateaux"], ["UE3", "Les glaciers"], ["UE4", "Les volcans"], ["UE6", "Le cap des aurores"]];
-function renderExpedition() {
-  const r = rank(); const g = globalMastery();
-  main.innerHTML = `<h2>L'expédition vers les aurores</h2><p class="muted">Chaque chapitre acquis allume un camp sur la route. Plus vous avancez, plus le ciel s'illumine. Le test du jour entretient la lanterne : une série de jours d'affilée la garde allumée.</p>
-<div class="sky"><canvas id="skyC" width="960" height="420" aria-label="Carte de l'expédition"></canvas><div class="legend">Aurore à ${Math.round(g * 100)} % · lanterne ${streak() > 0 ? "allumée depuis " + streak() + " jour" + (streak() > 1 ? "s" : "") : "éteinte"}</div></div>
-<div class="board"><div class="tile"><div class="big">${esc(r.name)}</div><div class="lab">${fmt(state.xp)} XP${r.next ? ` · prochain grade « ${esc(r.next[1])} » à ${fmt(r.next[0])} XP` : " · grade maximal"}</div></div><div class="tile"><div class="big">${CHAPS.filter(c => chapMastery(c) >= 0.999).length}<span class="muted" style="font-size:1rem"> / ${CHAPS.length}</span></div><div class="lab">camps allumés</div></div><div class="tile"><div class="big">${Object.keys(state.succes).length}<span class="muted" style="font-size:1rem"> / ${SUCCES.length}</span></div><div class="lab">succès</div></div></div>
-<h3>Étapes</h3><div class="ledger">${ETAPES.map(([code, nom], i) => { const u = UE_BY[code]; if (!u) return ""; const m = ueMastery(code); return `<button class="row" data-ue="${code}"><span class="num">${i + 1}</span><span><span class="ttl">${esc(nom)}</span><br><span class="sub">${esc(u.nom)} · ${ueChaps(code).filter(c => chapMastery(c) >= 0.999).length}/${ueChaps(code).length} camps</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
+// ---------- Observatoire ----------
+// Chaque matière est observée dans une bande du spectre ; chaque chapitre acquis permet d'observer une cible des catalogues Messier et NGC.
+const BANDES = { UE2: ["Radio", "plus de 1 m"], PCG: ["Micro-ondes", "1 mm à 1 m"], UE3: ["Infrarouge", "700 nm à 1 mm"], UE9: ["Visible", "400 à 700 nm"], UE10: ["Ultraviolet", "10 à 400 nm"], UE4: ["Rayons X", "0,01 à 10 nm"], UE6: ["Rayons gamma", "moins de 0,01 nm"] };
+const SPECTRE = ["UE2", "PCG", "UE3", "UE9", "UE10", "UE4", "UE6"];
+const TYPE_OBJ = { neb: "nébuleuse diffuse", pla: "nébuleuse planétaire", gal: "galaxie", glo: "amas globulaire", ouv: "amas ouvert", snr: "rémanent de supernova", ref: "nébuleuse par réflexion", nua: "nuage stellaire" };
+const CIBLES_UE = {
+  UE9: [["M42", "Grande nébuleuse d'Orion", "neb", "Orion"], ["M45", "Les Pléiades", "ouv", "Taureau"], ["M31", "Galaxie d'Andromède", "gal", "Andromède"], ["M13", "Grand amas d'Hercule", "glo", "Hercule"], ["M57", "Nébuleuse de l'Anneau", "pla", "Lyre"], ["M27", "Nébuleuse de l'Haltère", "pla", "Petit Renard"], ["M44", "Amas de la Ruche", "ouv", "Cancer"], ["M8", "Nébuleuse de la Lagune", "neb", "Sagittaire"], ["M51", "Galaxie du Tourbillon", "gal", "Chiens de chasse"]],
+  UE10: [["M33", "Galaxie du Triangle", "gal", "Triangle"], ["M81", "Galaxie de Bode", "gal", "Grande Ourse"], ["M101", "Galaxie du Moulinet", "gal", "Grande Ourse"], ["M104", "Galaxie du Sombrero", "gal", "Vierge"], ["M63", "Galaxie du Tournesol", "gal", "Chiens de chasse"], ["M64", "Galaxie de l'Œil noir", "gal", "Chevelure de Bérénice"], ["M83", "Galaxie du Moulinet austral", "gal", "Hydre"], ["M106", "Galaxie spirale M106", "gal", "Chiens de chasse"]],
+  UE2: [["M1", "Nébuleuse du Crabe", "snr", "Taureau"], ["M87", "Virgo A, au trou noir imagé en 2019", "gal", "Vierge"], ["M82", "Galaxie du Cigare", "gal", "Grande Ourse"], ["M77", "Galaxie de Seyfert M77", "gal", "Baleine"], ["M84", "Radiogalaxie M84", "gal", "Vierge"], ["M17", "Nébuleuse Oméga", "neb", "Sagittaire"], ["M20", "Nébuleuse Trifide", "neb", "Sagittaire"]],
+  UE3: [["M16", "Piliers de la création (nébuleuse de l'Aigle)", "neb", "Serpent"], ["NGC 3132", "Nébuleuse de l'Anneau austral", "pla", "Voiles"], ["NGC 3324", "Falaises cosmiques de la Carène", "neb", "Carène"], ["NGC 7319", "Quintette de Stephan", "gal", "Pégase"], ["NGC 2070", "Nébuleuse de la Tarentule", "neb", "Dorade"], ["NGC 628", "Galaxie fantôme (M74)", "gal", "Poissons"]],
+  UE4: [["M3", "Amas globulaire M3", "glo", "Chiens de chasse"], ["M4", "Amas globulaire M4", "glo", "Scorpion"], ["M5", "Amas globulaire M5", "glo", "Serpent"], ["M15", "Amas globulaire M15", "glo", "Pégase"], ["M22", "Amas globulaire M22", "glo", "Sagittaire"], ["M92", "Amas globulaire M92", "glo", "Hercule"]],
+  UE6: [["M97", "Nébuleuse du Hibou", "pla", "Grande Ourse"], ["M76", "Petite Haltère", "pla", "Persée"], ["M78", "Nébuleuse M78", "ref", "Orion"], ["M43", "Nébuleuse de De Mairan", "neb", "Orion"], ["M24", "Nuage stellaire du Sagittaire", "nua", "Sagittaire"], ["M11", "Amas du Canard sauvage", "ouv", "Écu de Sobieski"]],
+};
+const CIBLE = {};
+UES.forEach(u => ueChaps(u.code).forEach((c, i) => { const t = (CIBLES_UE[u.code] || [])[i]; if (t) CIBLE[c.id] = { des: t[0], nom: t[1], type: t[2], cons: t[3] }; }));
+const observed = () => CHAPS.filter(c => chapMastery(c) >= 0.999).length;
+const RETI = `<svg class="reti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 1v6M12 17v6M1 12h6M17 12h6"/></svg>`;
+function renderObservatoire() {
+  const r = rank(); const i = RANKS.findIndex(x => x[1] === r.name); const nObs = observed();
+  const nextC = nextChapter(); const pc = r.next ? Math.round((state.xp - r.from) / (r.next[0] - r.from) * 100) : 100;
+  main.innerHTML = `<h2>Observatoire</h2>
+<p class="muted">Chaque chapitre acquis vous permet d'observer une cible du ciel profond, tirée des catalogues Messier et NGC, dont plusieurs objets des premières images du télescope spatial James-Webb. Chaque matière est observée dans sa bande du spectre électromagnétique. Votre XP fait progresser votre instrument, de l'œil nu jusqu'au plus grand télescope en construction.</p>
+<div class="obs-sky"><canvas id="skyC" width="1040" height="520" role="img" aria-label="Carte du ciel : ${nObs} objets observés sur ${CHAPS.length}"></canvas><div class="cap"><span>${nObs} / ${CHAPS.length} objets observés</span><span>${nextC && CIBLE[nextC.id] ? `Prochaine cible : ${esc(CIBLE[nextC.id].des)}` : "Catalogue complet"}</span></div></div>
+<div class="instr">
+  <div class="now"><span class="eyebrow">Votre instrument</span><b>${esc(r.name)}</b><span class="ap">${esc(RANKS[i][2])}</span><div class="bar"><i style="width:${pc}%"></i></div><span class="muted small">${fmt(state.xp)} XP${r.next ? ` · ${fmt(r.next[0] - state.xp)} XP avant : ${esc(r.next[1])}` : " · instrument maximal"}</span></div>
+  <ol aria-label="Instruments">${RANKS.map((x, k) => `<li class="${k < i ? "got" : k === i ? "got cur" : ""}"><span class="i"></span><span>${esc(x[1])}</span><span class="x">${fmt(x[0])} XP</span></li>`).join("")}</ol>
+</div>
+<h3>Le spectre des matières</h3>
+<div class="spectre">${SPECTRE.map(code => `<div style="${ucol(code)}"><b>${esc(BANDES[code][0])}</b><span>${code === "PCG" ? "Plan comptable" : code}</span><span>${esc(BANDES[code][1])}</span></div>`).join("")}</div>
+<p class="muted small">Des grandes longueurs d'onde (radio) aux plus courtes (gamma). Le plan comptable est le fond diffus cosmologique de la comptabilité : il se voit en micro-ondes, partout. Longueurs d'onde indicatives.</p>
+${UES.map(u => `<h3><span class="dotc" style="${ucol(u.code)}"></span>${esc(u.code)} · ${esc(u.nom)} <span class="muted small">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></h3><div class="cat" style="${ucol(u.code)}">${ueChaps(u.code).map(c => { const t = CIBLE[c.id]; if (!t) return ""; const m = chapMastery(c); const st = m >= 0.999 ? "seen" : chapStarted(c) ? "prog" : ""; return `<button class="obj ${st}" data-c="${c.id}"><span class="des">${esc(t.des)}${st === "seen" ? '<span class="pill seen">observé</span>' : st === "prog" ? `<span class="pill prog">${Math.round(m * 100)} %</span>` : '<span class="pill">à observer</span>'}</span><span class="nm">${esc(t.nom)}</span><span class="ty">${esc(TYPE_OBJ[t.type])} · ${esc(t.cons)}</span><span class="ch">Chapitre ${c.ordre} · ${esc(c.title)}</span></button>`; }).join("")}</div>`).join("")}
 <h3>Derniers succès</h3>${(() => { const last = SUCCES.filter(x => state.succes[x.id]).sort((a, b) => state.succes[b.id] - state.succes[a.id]).slice(0, 4); return last.length ? `<div class="sgrid">${last.map(succCard).join("")}</div>` : `<p class="muted">Aucun succès pour l'instant. Le premier se débloque dès la première réponse.</p>`; })()}
 <div class="actions"><button class="btn ghost" id="toSucc">Voir les ${SUCCES.length} succès</button></div>
-<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
+<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision, 5 par carte sue), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
   main.querySelector("#toSucc").onclick = () => go({ tab: "succes" });
-  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
-  drawSky(main.querySelector("#skyC"));
+  main.querySelectorAll(".obj").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
+  drawCiel(main.querySelector("#skyC"));
 }
 let skyAnim = 0;
-function drawSky(cv) {
+// Carte du ciel : étoiles et Voie lactée, puis les 42 cibles regroupées par matière, en couleur une fois observées.
+function drawCiel(cv) {
   cancelAnimationFrame(skyAnim);
-  const ctx = cv.getContext("2d"); const W = cv.width, H = cv.height; const g = globalMastery(); const lit = streak() > 0;
+  const box = cv.parentElement.clientWidth || 960; const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const W = Math.round(box), H = Math.round(box < 640 ? box * 1.25 : box * 0.5);
+  cv.width = W * dpr; cv.height = H * dpr; cv.style.height = H + "px"; const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
+  const narrow = W < 640; const K = Math.min(W, H) / 520;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const camps = []; let x = 70; const stepX = (W - 140) / Math.max(1, CHAPS.length - 1);
-  CHAPS.forEach((c, i) => { const y = H - 70 - Math.sin(i / CHAPS.length * Math.PI) * 140 - (i % 3) * 14; camps.push({ x, y, m: chapMastery(c), started: chapStarted(c), ue: c.ue }); x += stepX; });
+  const css = getComputedStyle(document.documentElement); const col = code => css.getPropertyValue(`--c-${code}`).trim() || "#7da2ff";
+  const rs = mulberry(42);
+  const stars = Array.from({ length: 260 }, () => { const band = rs() < 0.45; const tt = rs(); const x = band ? tt * W : rs() * W; const y = band ? H * 0.82 - tt * H * 0.6 + (rs() - 0.5) * 120 : rs() * H; return { x, y, r: rs() < 0.08 ? 1.6 : 0.5 + rs() * 0.9, a: 0.35 + rs() * 0.65, ph: rs() * 6.28 }; });
+  const bg = document.createElement("canvas"); bg.width = W * dpr; bg.height = H * dpr; const b = bg.getContext("2d"); b.scale(dpr, dpr);
+  const gr = b.createLinearGradient(0, 0, W, H); gr.addColorStop(0, "#0b1430"); gr.addColorStop(1, "#04060f"); b.fillStyle = gr; b.fillRect(0, 0, W, H);
+  for (let k = 0; k < 90; k++) { const tt = rs(); const x = tt * W, y = H * 0.82 - tt * H * 0.6 + (rs() - 0.5) * 90; const g = b.createRadialGradient(x, y, 0, x, y, 40 + rs() * 70); g.addColorStop(0, `rgba(170,180,230,${0.035 + rs() * 0.04})`); g.addColorStop(1, "rgba(170,180,230,0)"); b.fillStyle = g; b.beginPath(); b.arc(x, y, 110, 0, 7); b.fill(); }
+  const groups = UES.map((u, gi) => { const t = (gi + 0.5) / UES.length; return narrow ? { code: u.code, cx: W * (gi % 2 ? 0.7 : 0.3), cy: H * (0.88 - t * 0.78) } : { code: u.code, cx: 80 + t * (W - 160), cy: H * 0.8 - t * H * 0.58 + (gi % 2 ? 46 : -34) * K }; });
+  const objs = [];
+  groups.forEach(g => { const cs = ueChaps(g.code); cs.forEach((c, k) => { const ang = -Math.PI / 2 + k / cs.length * Math.PI * 2 + (g.code.length % 7); const rad = (narrow ? 34 : 46 + (k % 2) * 22) * (narrow ? 1 : K); objs.push({ c, t: CIBLE[c.id], x: g.cx + Math.cos(ang) * rad * (narrow ? 1.5 : 1.25), y: g.cy + Math.sin(ang) * rad * (narrow ? 0.95 : 0.85), col: col(g.code), m: chapMastery(c), st: chapStarted(c), code: g.code }); }); });
+  const nc = nextChapter();
+  const shape = (o, alpha) => {
+    const { x, y } = o; ctx.save(); ctx.globalAlpha = alpha; const c = o.col; const ty = o.t ? o.t.type : "neb";
+    if (ty === "gal") { ctx.translate(x, y); ctx.rotate(((x * 7) % 3) - 1.2); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 16); g.addColorStop(0, "#ffffff"); g.addColorStop(0.25, c); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.scale(1, 0.42); ctx.beginPath(); ctx.arc(0, 0, 16, 0, 7); ctx.fill(); }
+    else if (ty === "pla") { ctx.strokeStyle = c; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(x, y, 7, 0, 7); ctx.stroke(); ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x, y, 1.4, 0, 7); ctx.fill(); }
+    else if (ty === "glo") { const g = ctx.createRadialGradient(x, y, 0, x, y, 11); g.addColorStop(0, "#fff"); g.addColorStop(0.35, c); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 11, 0, 7); ctx.fill(); }
+    else if (ty === "ouv" || ty === "nua") { const r2 = mulberry(Math.round(x * 13 + y)); ctx.fillStyle = c; for (let k = 0; k < (ty === "nua" ? 22 : 9); k++) { ctx.beginPath(); ctx.arc(x + (r2() - 0.5) * 22, y + (r2() - 0.5) * 18, 1 + r2() * 1.4, 0, 7); ctx.fill(); } ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x, y, 1.6, 0, 7); ctx.fill(); }
+    else { for (let k = 0; k < 3; k++) { const ox = [0, 6, -5][k], oy = [0, -4, 5][k]; const g = ctx.createRadialGradient(x + ox, y + oy, 0, x + ox, y + oy, 13); g.addColorStop(0, c); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x + ox, y + oy, 13, 0, 7); ctx.fill(); } }
+    ctx.restore();
+  };
   const frame = t => {
-    const sky = ctx.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, "#070d1f"); sky.addColorStop(1, "#1a2f56"); ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
-    const rs = mulberry(7); for (let i = 0; i < 120; i++) { const sx = rs() * W, sy = rs() * H * 0.7, a = 0.3 + rs() * 0.7; ctx.fillStyle = `rgba(255,255,255,${a * (0.6 + 0.4 * Math.sin(t / 900 + i))})`; ctx.fillRect(sx, sy, 1.5, 1.5); }
-    if (g > 0.01) { const bands = [["57,229,140", 0.0], ["43,212,212", 0.35], ["122,92,255", 0.7]]; bands.forEach(([col, ph], bi) => { for (let k = 0; k < 40; k++) { const bx = k / 40 * W; const wave = Math.sin(bx / 90 + t / 1600 + ph * 6) * 22 + Math.sin(bx / 37 - t / 2300) * 10; const top = 30 + bi * 26 + wave; const h = 60 + 140 * g + Math.sin(bx / 50 + t / 1900) * 20; const gr = ctx.createLinearGradient(0, top, 0, top + h); gr.addColorStop(0, `rgba(${col},0)`); gr.addColorStop(0.3, `rgba(${col},${0.12 + 0.5 * g})`); gr.addColorStop(1, `rgba(${col},0)`); ctx.fillStyle = gr; ctx.fillRect(bx, top, W / 40 + 1, h); } }); }
-    ctx.fillStyle = "#0b1326"; ctx.beginPath(); ctx.moveTo(0, H); for (let i = 0; i <= 24; i++) { const mx = i / 24 * W; ctx.lineTo(mx, H - 60 - Math.abs(Math.sin(i * 1.7)) * 120 - Math.abs(Math.cos(i * 0.9)) * 40); } ctx.lineTo(W, H); ctx.fill();
-    ctx.strokeStyle = "rgba(223,231,243,0.35)"; ctx.setLineDash([4, 6]); ctx.lineWidth = 1.5; ctx.beginPath(); camps.forEach((c, i) => i ? ctx.lineTo(c.x, c.y) : ctx.moveTo(c.x, c.y)); ctx.stroke(); ctx.setLineDash([]);
-    camps.forEach(c => { const on = c.m >= 0.999; const r = on ? 6 : 4; if (on || c.started) { const glow = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, on ? 22 : 12); glow.addColorStop(0, on ? "rgba(255,214,120,0.9)" : "rgba(255,214,120,0.35)"); glow.addColorStop(1, "rgba(255,214,120,0)"); ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(c.x, c.y, on ? 22 : 12, 0, 7); ctx.fill(); } ctx.fillStyle = on ? "#ffd678" : c.started ? "#c9a85a" : "#4b5a73"; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 7); ctx.fill(); });
-    const lx = 40, ly = H - 36; ctx.fillStyle = lit ? "#ffd678" : "#3a4559"; ctx.fillRect(lx - 4, ly - 14, 8, 14); if (lit) { const gl = ctx.createRadialGradient(lx, ly - 8, 0, lx, ly - 8, 30 + Math.sin(t / 300) * 3); gl.addColorStop(0, "rgba(255,214,120,0.8)"); gl.addColorStop(1, "rgba(255,214,120,0)"); ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(lx, ly - 8, 34, 0, 7); ctx.fill(); }
-    ctx.fillStyle = "#dfe7f3"; ctx.font = "500 12px IBM Plex Mono, monospace"; ctx.fillText("Cassegrain", lx + 14, ly - 4); ctx.textAlign = "right"; ctx.fillText("Les aurores", W - 20, 24); ctx.textAlign = "left";
+    ctx.drawImage(bg, 0, 0);
+    stars.forEach(s => { ctx.fillStyle = `rgba(235,240,255,${s.a * (reduce ? 1 : 0.7 + 0.3 * Math.sin(t / 700 + s.ph))})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill(); });
+    groups.forEach(g => { const os = objs.filter(o => o.code === g.code); ctx.strokeStyle = "rgba(170,181,214,0.16)"; ctx.setLineDash([3, 5]); ctx.lineWidth = 1; ctx.beginPath(); os.forEach((o, k) => k ? ctx.lineTo(o.x, o.y) : ctx.moveTo(o.x, o.y)); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = "rgba(220,228,255,0.75)"; ctx.font = "600 13px Sora, Segoe UI, sans-serif"; ctx.textAlign = "center"; ctx.fillText(`${g.code} · ${BANDES[g.code][0]}`, g.cx, g.cy - (narrow ? 50 : 96 * K)); });
+    objs.forEach(o => { const seen = o.m >= 0.999; if (seen) shape(o, 1); else if (o.st) shape(o, 0.35); else { ctx.strokeStyle = "rgba(170,181,214,0.35)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(o.x, o.y, 4, 0, 7); ctx.stroke(); }
+      if (seen || o.st) { ctx.fillStyle = seen ? "rgba(238,242,255,0.95)" : "rgba(170,181,214,0.7)"; ctx.font = "500 11px IBM Plex Mono, monospace"; ctx.textAlign = "center"; ctx.fillText(o.t ? o.t.des : "", o.x, o.y + 26); } });
+    const tgt = nc && objs.find(o => o.c.id === nc.id);
+    if (tgt) { const rr = 17 + (reduce ? 0 : Math.sin(t / 400) * 2); ctx.strokeStyle = "#eef2ff"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(tgt.x, tgt.y, rr, 0, 7); ctx.stroke(); [[0, -1], [0, 1], [-1, 0], [1, 0]].forEach(([dx, dy]) => { ctx.beginPath(); ctx.moveTo(tgt.x + dx * (rr - 6), tgt.y + dy * (rr - 6)); ctx.lineTo(tgt.x + dx * (rr + 7), tgt.y + dy * (rr + 7)); ctx.stroke(); }); ctx.fillStyle = "#eef2ff"; ctx.font = "600 12px IBM Plex Mono, monospace"; ctx.textAlign = "center"; ctx.fillText(tgt.t ? tgt.t.des : "", tgt.x, tgt.y - rr - 10); }
+    ctx.textAlign = "left";
     if (!reduce) skyAnim = requestAnimationFrame(frame);
   };
   frame(0);
@@ -1217,8 +1379,8 @@ function drawSky(cv) {
 
 // ---------- Navigation ----------
 // Cinq rubriques ; certaines regroupent deux pages, reliées par une sous-navigation.
-const GROUP = { accueil: "accueil", revisions: "revisions", test: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", expedition: "expedition", succes: "expedition" };
-const SUBNAV = { revisions: [["revisions", "Révisions espacées"], ["test", "Test du jour"]], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], expedition: [["expedition", "Expédition"], ["succes", "Succès"]] };
+const GROUP = { accueil: "accueil", revisions: "revisions", test: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", observatoire: "observatoire", succes: "observatoire" };
+const SUBNAV = { revisions: [["revisions", "Révisions espacées"], ["test", "Test du jour"]], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], observatoire: [["observatoire", "Observatoire"], ["succes", "Succès"]] };
 function addSubnav(tab) {
   const items = SUBNAV[GROUP[tab]]; if (!items || !items.some(x => x[0] === tab)) return;
   const d = document.createElement("div"); d.className = "subnav";
@@ -1231,7 +1393,7 @@ function go(v) {
   view = v;
   const tab = GROUP[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition, succes: renderSucces })[v.tab]();
+  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, observatoire: renderObservatoire, expedition: renderObservatoire, succes: renderSucces })[v.tab]();
   addSubnav(v.tab);
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
   updateBadge(); renderRank(); window.scrollTo({ top: 0 });
@@ -1255,7 +1417,8 @@ updateSuccBadge();
 document.addEventListener("click", e => { const a = e.target.closest && e.target.closest(".fsrc a, .fiche table a, .fiche .small a"); if (a) { state.stats.src++; save(); } });
 (function boot() {
   const h = (location.hash || "").slice(1);
-  if (["matieres", "fiches", "test", "revisions", "pcg", "expedition", "succes"].includes(h)) go({ tab: h });
+  if (h === "expedition") go({ tab: "observatoire" });
+  else if (["matieres", "fiches", "test", "revisions", "pcg", "observatoire", "succes"].includes(h)) go({ tab: h });
   else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
   else if (CHAP_BY[h]) go({ tab: "chap", id: h });
   else go({ tab: "accueil" });
