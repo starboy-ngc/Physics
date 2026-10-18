@@ -1,6 +1,6 @@
 {
  "id": "ue10-02",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -187,7 +187,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Alignement fiscal de l'option</b> : l'option relative aux frais d'acquisition est exercée par la simple comptabilisation des frais en immobilisation ou en charges ; il n'est pas possible d'exercer une option fiscale différente de l'option comptable, et l'option est irrévocable et s'applique à toutes les immobilisations corporelles et incorporelles acquises.",
+     "t": "<b>Alignement fiscal de l'option</b> : l'option relative aux frais d'acquisition est exercée par la simple comptabilisation des frais en immobilisation ou en charges ; il n'est pas possible d'exercer une option fiscale différente de l'option comptable. L'option est irrévocable et s'applique à toutes les immobilisations corporelles et incorporelles acquises ; l'administration admet toutefois qu'elle soit révisée lorsque, comptablement, un tel changement est autorisé.",
      "cite": "« Il n'est pas possible d'exercer une option fiscale différente de l'option retenue en matière comptable. »",
      "src": "BOI-BIC-CHG-20-20-10",
      "url": "https://bofip.impots.gouv.fr/bofip/1846-PGP.html/identifiant=BOI-BIC-CHG-20-20-10-20190109",
@@ -234,7 +234,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Solutions informatiques créées</b> : le coût de production d'une solution produite en interne est inscrit à l'actif lorsque les critères cumulatifs de l'article 611-3 sont réunis (faisabilité technique, intention d'achever et d'utiliser la solution, capacité à l'utiliser ou à la commercialiser, avantages économiques futurs probables, capacité à évaluer de façon fiable les dépenses attribuables) ; les coûts des études préliminaires ne peuvent pas être inscrits à l'actif et sont comptabilisés en charges quelle que soit leur nature. L'activation des coûts cesse lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction.",
+     "t": "<b>Solutions informatiques créées</b> : le coût de production d'une solution produite en interne est inscrit à l'actif lorsque les critères cumulatifs de l'article 611-3 sont réunis (faisabilité technique, intention de l'achever et de l'utiliser ou de la commercialiser, capacité à l'utiliser ou à la commercialiser, avantages économiques futurs probables, disponibilité des ressources appropriées pour l'achever et, le cas échéant, la commercialiser, capacité à évaluer de façon fiable les dépenses attribuables) ; les coûts des études préliminaires ne peuvent pas être inscrits à l'actif et sont comptabilisés en charges quelle que soit leur nature. L'activation des coûts cesse lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction.",
      "src": "PCG, art. 611-3 et 611-4 (règlement ANC n° 2023-05)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
@@ -328,7 +328,8 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "L'option sur les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes) est <b>globale et irrévocable</b> pour toutes les immobilisations corporelles et incorporelles ; une option distincte s'applique aux titres immobilisés et aux titres de placement. Les honoraires directement liés à la mise en état d'utilisation du bien restent dans le coût d'acquisition et n'entrent pas dans l'option.",
+     "t": "L'option sur les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes) est <b>globale et irrévocable</b> pour toutes les immobilisations corporelles et incorporelles, l'administration admettant toutefois sa révision lorsque, comptablement, un tel changement est autorisé ; une option distincte s'applique aux titres immobilisés et aux titres de placement. Les honoraires directement liés à la mise en état d'utilisation du bien restent dans le coût d'acquisition et n'entrent pas dans l'option.",
+     "cite": "« Elle est irrévocable. Toutefois, il sera admis que cette option puisse être révisée, lorsque comptablement, un tel changement est autorisé »",
      "src": "BOI-BIC-CHG-20-20-10 ; PCG, art. 213-8",
      "url": "https://bofip.impots.gouv.fr/bofip/1846-PGP.html/identifiant=BOI-BIC-CHG-20-20-10-20190109",
      "fiab": "stable"
@@ -384,7 +385,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Lien DSCG</b> : en IFRS (IAS 16, IAS 38, IAS 23), l'incorporation des coûts d'emprunt est obligatoire pour les actifs qualifiés et l'activation des frais de développement remplissant les critères est obligatoire, alors que le PCG laisse une option ; en comptes individuels français, seul le PCG s'applique.",
+     "t": "<b>Lien DSCG</b> : en IFRS (IAS 16, IAS 38, IAS 23), l'incorporation des coûts d'emprunt est obligatoire pour les actifs qualifiés et l'activation des frais de développement remplissant les critères est obligatoire, alors que le PCG laisse une option ; en comptes individuels, ce sont les règles françaises (Code de commerce et PCG) qui s'appliquent, et non les IFRS.",
      "src": "PCG, art. 212-3 et 213-9 (options) ; IAS 23 et IAS 38 ; C. com., art. L. 233-24 (dispense des règles françaises pour les comptes consolidés établis selon les normes internationales adoptées par l'Union européenne, règlement (CE) n° 1606/2002)",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
      "fiab": "stable"

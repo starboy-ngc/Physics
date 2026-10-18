@@ -1,6 +1,6 @@
 {
  "id": "ue10-04",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -101,6 +101,12 @@
    "objet": "Normes comptables internationales réservées aux comptes consolidés",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
    "version": "en vigueur"
+  },
+  {
+   "ref": "BOFiP, BOI-BIC-CHG-50-70",
+   "objet": "Pertes résultant d'une modification des taux de change : écarts de conversion des créances et dettes en monnaies étrangères pris en compte pour la détermination du résultat imposable (déduction extra-comptable de l'écart porté au compte 476) ; provisions pour pertes de change non admises en déduction",
+   "url": "https://bofip.impots.gouv.fr/bofip/1413-PGP.html/identifiant=BOI-BIC-CHG-50-70-20120912",
+   "version": "publication du 12 septembre 2012"
   }
  ],
  "sections": [
@@ -261,7 +267,8 @@
      "t": "<b>Fiscalité des écarts de conversion</b> : les écarts de conversion des créances et dettes libellées en monnaies étrangères, déterminés à la clôture en fonction du dernier cours de change, sont pris en compte pour la détermination du résultat imposable de l'exercice (déduction des pertes latentes 476, réintégration des gains latents 477) ; corrélativement, la provision pour pertes de change, qui couvre une perte déjà déduite, est réintégrée.",
      "src": "CGI, art. 38, 4 ; BOI-BIC-CHG-50-70",
      "url": "https://bofip.impots.gouv.fr/bofip/1413-PGP.html/identifiant=BOI-BIC-CHG-50-70-20120912",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« les provisions qui seraient constituées au plan comptable en vue de couvrir des pertes éventuelles de change ne peuvent être admises en déduction pour la détermination du résultat fiscal »"
     }
    ]
   },
@@ -287,8 +294,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Cours de conversion</b> : cours du jour de l'opération pour le coût d'entrée des actifs acquis en devises ; dernier cours du change pour les créances et dettes, l'écart avec la valeur d'entrée allant en 476 ou 477 ; dernier cours de change au comptant pour les liquidités en devises existant à la clôture.",
-     "src": "PCG, art. 420-1, 420-5 et 420-7",
+     "t": "<b>Cours de conversion</b> : cours du jour de l'opération pour le coût d'entrée des actifs acquis en devises, hors opérations couvertes, qui relèvent de la comptabilité de couverture (art. 628-1 et suivants) ; dernier cours du change pour les créances et dettes, l'écart avec la valeur d'entrée allant en 476 ou 477 ; dernier cours de change au comptant pour les liquidités en devises existant à la clôture.",
+     "src": "PCG, art. 420-1, 420-5, 420-7 et 628-1 et suivants",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     }
@@ -343,7 +350,7 @@
     {
      "t": "À l'avancement, le produit comptabilisé au titre de l'exercice est la différence entre le chiffre d'affaires cumulé à l'avancement et le chiffre d'affaires déjà constaté les exercices précédents ; à l'achèvement, la perte à terminaison est couverte d'abord par la dépréciation des en-cours à hauteur des coûts engagés, le complément étant provisionné.",
      "src": "PCG, art. 622-1 et suivants ; C. com., art. L. 123-18 (dépréciation)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -353,13 +360,13 @@
      "fiab": "stable"
     },
     {
-     "t": "Lorsqu'une créance ou une dette en devises est couverte (par exemple par une vente ou un achat à terme de devises), les effets de la couverture sont reconnus de manière symétrique à ceux de l'élément couvert ; les différences de conversion compensées par la couverture sont isolées dans les sous-comptes 4768 et 4778 « Différences compensées par couverture de change », et une perte latente qualifiée d'instrument de couverture ne donne lieu à aucune provision. La comptabilisation des instruments financiers à terme et des opérations de couverture relève du règlement ANC n° 2015-05.",
+     "t": "Lorsqu'une créance ou une dette en devises est couverte (par exemple par une vente ou un achat à terme de devises), les effets de la couverture sont reconnus de manière symétrique à ceux de l'élément couvert ; les différences de conversion compensées par la couverture sont isolées dans les sous-comptes 4768 et 4778 « Différences compensées par couverture de change », et une opération en devise en perte latente qualifiée d'instrument de couverture (art. 628-7) ne donne lieu à aucune provision. La comptabilisation des instruments financiers à terme et des opérations de couverture relève du règlement ANC n° 2015-05.",
      "src": "PCG, art. 420-6 et 628-11 ; plan de comptes 2026, comptes 4768 et 4778 ; règlement ANC n° 2015-05",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Lien DSCG</b> : en comptes consolidés IFRS, les stocks relèvent d'IAS 2, les contrats de construction d'IFRS 15 (reconnaissance du revenu à l'avancement lorsque les critères sont remplis) et les devises d'IAS 21 ; en comptes individuels, seul le PCG s'applique, l'article L. 233-24 ne visant que les comptes consolidés.",
+     "t": "<b>Lien DSCG</b> : en comptes consolidés IFRS, les stocks relèvent d'IAS 2, les contrats de construction d'IFRS 15 (reconnaissance du revenu à l'avancement lorsque les critères sont remplis) et les devises d'IAS 21 ; en comptes individuels, ce sont les règles françaises (Code de commerce et PCG) qui s'appliquent, et non les IFRS, l'article L. 233-24 ne visant que les comptes consolidés.",
      "src": "C. com., art. L. 233-24",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
      "fiab": "stable"

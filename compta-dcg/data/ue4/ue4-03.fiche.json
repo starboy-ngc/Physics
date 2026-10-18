@@ -1,6 +1,6 @@
 {
  "id": "ue4-03",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -116,25 +116,24 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Créance acquise</b> : une créance est acquise lorsqu'elle est certaine dans son principe et déterminée dans son montant ; pour les prestations de services, le produit n'est imposable que si la créance est acquise et la prestation achevée.",
+     "t": "<b>Créance acquise</b> : une créance est acquise lorsqu'elle est certaine dans son principe et déterminée dans son montant ; pour les prestations de services, le produit n'est en principe imposable que si la créance est acquise et la prestation achevée, les prestations continues et les prestations discontinues à échéances successives étant rattachées au fur et à mesure de leur exécution.",
      "cite": "« La prise en compte de ces produits implique donc la réunion de deux conditions. »",
      "src": "CGI, art. 38, 2 bis ; BOI-BIC-BASE-20-10",
      "url": "https://bofip.impots.gouv.fr/bofip/6391-PGP.html/identifiant=BOI-BIC-BASE-20-10-20121204",
      "fiab": "stable"
     },
     {
-     "t": "<b>Micro-BIC</b> : régime applicable lorsque le chiffre d'affaires hors taxes de l'année civile précédente ou de l'avant-dernière année n'excède pas les seuils de l'article 50-0 (il n'est donc perdu qu'après deux années consécutives de dépassement). Le bénéfice est égal au chiffre d'affaires diminué d'un abattement de 71 % pour les ventes et de 50 % pour les prestations de services (30 % pour les meublés de tourisme non classés), chaque abattement ne pouvant être inférieur à 305 €. Les seuils sont actualisés tous les trois ans, sauf celui des meublés de tourisme non classés.",
+     "t": "<b>Micro-BIC</b> : régime applicable lorsque le chiffre d'affaires hors taxes de l'année civile précédente ou de l'avant-dernière année n'excède pas les seuils de l'article 50-0 (il n'est donc perdu qu'après deux années consécutives de dépassement). Le bénéfice est égal au chiffre d'affaires diminué d'un abattement de 71 % pour les ventes et la fourniture de logement hors location meublée, et de 50 % pour les prestations de services et les autres activités, y compris la location meublée (meublés de tourisme classés et chambres d'hôtes compris), sauf 30 % pour les meublés de tourisme non classés, chaque abattement ne pouvant être inférieur à 305 €. Les seuils sont actualisés tous les trois ans, sauf celui des meublés de tourisme non classés.",
      "cite": "« les seuils mentionnés au présent 1, à l'exception du seuil prévu au 1° bis, sont actualisés tous les trois ans »",
      "src": "CGI, art. 50-0, 1",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006199553/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime simplifié d'imposition (RSI)</b> : il s'applique aux entreprises qui dépassent les seuils du micro-BIC sans excéder les limites de l'article 302 septies A bis, révisées tous les trois ans. En 2025, chiffre d'affaires hors taxes compris entre 188 700 € et 840 000 € (ventes, fourniture de logement) ou entre 77 700 € et 254 000 € (autres activités) ; pour 2026 à 2028, entre 203 100 € et 945 000 € ou entre 83 600 € et 286 000 €. Au-delà, régime réel normal.",
-     "cite": "« le chiffre d'affaires hors taxe est compris entre 188 700 € et 840 000 € pour la vente et entre 77 700 € et 254 000 € pour les services »",
-     "src": "CGI, art. 302 septies A bis ; impots.gouv.fr, imposition des résultats (2025) ; BOI-BAREME-000044 (19 août 2026)",
+     "t": "<b>Régime simplifié d'imposition (RSI)</b> : il s'applique aux entreprises qui dépassent les seuils du micro-BIC sans excéder les limites de l'article 302 septies A bis, révisées tous les trois ans. Au-delà de ces limites, l'entreprise relève du régime réel normal.",
+     "src": "CGI, art. 302 septies A bis ; impots.gouv.fr, imposition des résultats",
      "url": "https://www.impots.gouv.fr/professionnel/imposition-des-resultats",
-     "fiab": "millésimé 2026"
+     "fiab": "stable"
     },
     {
      "t": "<b>Plus-value à court terme / à long terme</b> : relèvent du court terme les plus-values sur éléments acquis ou créés depuis moins de deux ans et, pour les éléments amortissables détenus depuis deux ans ou plus, la fraction correspondant aux amortissements déduits ; le surplus est à long terme. Les moins-values sur biens amortissables sont toujours à court terme.",
@@ -195,7 +194,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amortissement dégressif</b> : réservé aux biens d'équipement normalement utilisés dans les entreprises industrielles, acquis neufs et dont la durée normale d'utilisation est d'au moins trois ans. Le taux dégressif s'obtient en multipliant le taux linéaire par un coefficient de 1,25 (durée normale d'utilisation de trois ou quatre ans), 1,75 (cinq ou six ans) ou 2,25 (plus de six ans) ; exemple officiel : durée de cinq ans, taux linéaire 20 %, taux dégressif 20 × 1,75 = 35 %.",
+     "t": "<b>Amortissement dégressif</b> : réservé aux biens d'équipement qui figurent dans les catégories de l'article 22 de l'annexe II (pour l'essentiel, des biens normalement utilisés dans les entreprises industrielles), acquis neufs et dont la durée normale d'utilisation est d'au moins trois ans. Le taux dégressif s'obtient en multipliant le taux linéaire par un coefficient de 1,25 (durée normale d'utilisation de trois ou quatre ans), 1,75 (cinq ou six ans) ou 2,25 (plus de six ans) ; exemple officiel : durée de cinq ans, taux linéaire 20 %, taux dégressif 20 × 1,75 = 35 %.",
      "cite": "« a. 1,25 lorsque la durée normale d'utilisation est de trois ou quatre ans ; b. 1,75 lorsque cette durée normale est de cinq ou six ans ; c. 2,25 lorsque cette durée normale est supérieure à six ans. »",
      "src": "CGI, art. 39 A, 1 ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-30",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
@@ -237,7 +236,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Exonération des petites entreprises (art. 151 septies)</b> : l'activité doit avoir été exercée pendant au moins cinq ans ; les recettes s'apprécient comme la moyenne des recettes hors taxes des exercices clos au cours des deux années civiles précédant la clôture de l'exercice de réalisation des plus-values. Exonération totale jusqu'à 250 000 € (entreprises dont l'activité principale est la vente de marchandises, de denrées à emporter ou à consommer sur place, ou la fourniture de logement) ou 90 000 € (autres activités non agricoles, BNC), partielle et dégressive jusqu'à 350 000 € et 126 000 €.",
+     "t": "<b>Exonération des petites entreprises (art. 151 septies)</b> : l'activité doit avoir été exercée à titre professionnel pendant au moins cinq ans ; les recettes s'apprécient comme la moyenne des recettes hors taxes des exercices clos au cours des deux années civiles précédant la clôture de l'exercice de réalisation des plus-values. Exonération totale jusqu'à 250 000 € (entreprises dont l'activité principale est la vente de marchandises, de denrées à emporter ou à consommer sur place, ou la fourniture de logement) ou 90 000 € (autres activités non agricoles, BNC), partielle et dégressive jusqu'à 350 000 € et 126 000 €.",
      "src": "CGI, art. 151 septies ; impots.gouv.fr",
      "url": "https://www.impots.gouv.fr/professionnel/questions/comment-beneficier-de-lexoneration-des-plus-values-reservees-aux-petites",
      "fiab": "stable"
@@ -291,7 +290,7 @@
      "fiab": "millésimé 2025"
     },
     {
-     "t": "<b>Article 151 septies</b> : exonération totale jusqu'à <span class=\"mono\">250 000 €</span> de recettes (vente de marchandises) ou <span class=\"mono\">90 000 €</span> (autres activités non agricoles, BNC), dégressive jusqu'à <span class=\"mono\">350 000 €</span> et <span class=\"mono\">126 000 €</span> ; activité exercée depuis au moins <span class=\"mono\">5 ans</span>.",
+     "t": "<b>Article 151 septies</b> : exonération totale jusqu'à <span class=\"mono\">250 000 €</span> de recettes (vente de marchandises, de denrées à emporter ou à consommer sur place, ou fourniture de logement) ou <span class=\"mono\">90 000 €</span> (autres activités non agricoles, BNC), dégressive jusqu'à <span class=\"mono\">350 000 €</span> et <span class=\"mono\">126 000 €</span> ; activité exercée à titre professionnel depuis au moins <span class=\"mono\">5 ans</span>.",
      "src": "CGI, art. 151 septies, II ; impots.gouv.fr",
      "url": "https://www.impots.gouv.fr/professionnel/questions/comment-beneficier-de-lexoneration-des-plus-values-reservees-aux-petites",
      "fiab": "stable"
@@ -322,7 +321,7 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Location meublée et amortissements</b> : au micro-BIC, l'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire ; lors de la cession de l'immeuble, la plus-value relève du court terme à hauteur de ces amortissements réputés déduits (BOFiP du 14 février 2024).",
+     "t": "<b>Location meublée et amortissements</b> : au micro-BIC, l'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire ; lorsque la cession de l'immeuble dégage une plus-value relevant du régime des plus-values professionnelles (art. 39 duodecies), cette plus-value relève du court terme à hauteur de ces amortissements réputés déduits (BOFiP du 14 février 2024).",
      "src": "CGI, art. 39 duodecies ; BOI-BIC-CHAMP-40-20",
      "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
      "fiab": "stable"

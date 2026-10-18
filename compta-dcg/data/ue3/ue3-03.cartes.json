@@ -1,6 +1,6 @@
 {
  "id": "ue3-03",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue3-03-k01",
@@ -285,12 +285,12 @@
    "id": "ue3-03-k25",
    "type": "comp",
    "q": "Que doit proposer l'employeur au salarié déclaré inapte à son poste par le médecin du travail ?",
-   "r": "<b>Un autre emploi approprié à ses capacités</b>, au sein de l'entreprise ou des entreprises du groupe, en prenant en compte, après avis du CSE lorsqu'il existe, les conclusions écrites du médecin du travail. Il en est dispensé si l'avis mentionne expressément que tout maintien dans un emploi serait gravement préjudiciable à la santé du salarié ou que son état fait obstacle à tout reclassement.",
+   "r": "<b>Un autre emploi approprié à ses capacités</b>, au sein de l'entreprise ou des entreprises du groupe situées sur le territoire national, en prenant en compte, après avis du CSE lorsqu'il existe, les conclusions écrites du médecin du travail. Il en est dispensé si l'avis mentionne expressément que tout maintien dans un emploi serait gravement préjudiciable à la santé du salarié ou que son état fait obstacle à tout reclassement.",
    "base": [
     "Règles essentielles#14"
    ],
    "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-11, L. 1226-12 et L. 1226-14",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177855/",
    "fiab": "stable"
   },
   {
@@ -302,7 +302,7 @@
     "Règles essentielles#14"
    ],
    "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-11, L. 1226-12 et L. 1226-14",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177855/",
    "fiab": "stable"
   },
   {
@@ -399,7 +399,7 @@
    "base": [
     "Ce qui a changé récemment#0"
    ],
-   "src": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 (loi n° 2025-1403 du 30 décembre 2025) ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026",
+   "src": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 (loi n° 2025-1403 du 30 décembre 2025) et D. 1225-11-4 (décret n° 2026-419 du 30 mai 2026) ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000053271681/",
    "fiab": "stable"
   },

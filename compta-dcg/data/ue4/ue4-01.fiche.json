@@ -1,6 +1,6 @@
 {
  "id": "ue4-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -129,7 +129,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Doctrine administrative opposable</b> : aucun rehaussement d'impositions antérieures ne peut être opéré si le différend porte sur l'interprétation du texte fiscal par le redevable de bonne foi et que cette interprétation avait été, à l'époque, formellement admise par l'administration. Lorsque le redevable a appliqué un texte fiscal selon l'interprétation que l'administration avait fait connaître par ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations, elle ne peut poursuivre aucun rehaussement en soutenant une interprétation différente. Il en est de même lorsque l'administration a pris position sur les points d'un contrôle (vérification de comptabilité, examen contradictoire de la situation fiscale personnelle), y compris tacitement, à condition qu'elle ait pu se prononcer en connaissance de cause (contrôles dont l'avis est adressé à compter du 1er janvier 2019).",
+     "t": "<b>Doctrine administrative opposable</b> : aucun rehaussement d'impositions antérieures ne peut être opéré si le différend porte sur l'interprétation du texte fiscal par le redevable de bonne foi et que cette interprétation avait été, à l'époque, formellement admise par l'administration. Lorsque le redevable a appliqué un texte fiscal selon l'interprétation que l'administration avait fait connaître par ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations, elle ne peut poursuivre aucun rehaussement en soutenant une interprétation différente. Il en est de même lorsque l'administration a pris position sur les points d'un contrôle (examen ou vérification de comptabilité, examen contradictoire de la situation fiscale personnelle), y compris tacitement par une absence de rectification, à condition qu'elle ait pu se prononcer en connaissance de cause (contrôles dont l'avis est adressé à compter du 1er janvier 2019).",
      "src": "LPF, art. L. 80 A",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
      "fiab": "stable"
@@ -142,8 +142,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Foyer fiscal</b> : les personnes mariées et les partenaires liés par un PACS font l'objet d'une imposition commune sur leurs revenus, ceux de leurs enfants et des personnes à charge. Les époux sont toutefois imposés distinctement s'ils sont séparés de biens et ne vivent pas sous le même toit, si, en instance de séparation de corps ou de divorce, ils ont été autorisés à avoir des résidences séparées, ou si, en cas d'abandon du domicile conjugal, chacun dispose de revenus distincts. L'année du mariage ou du PACS, les époux ou partenaires peuvent opter pour l'imposition distincte des revenus dont chacun a personnellement disposé.",
-     "src": "CGI, art. 6, 1, 4 et 5",
+     "t": "<b>Foyer fiscal</b> : les personnes mariées et les partenaires liés par un PACS font l'objet d'une imposition commune sur leurs revenus, ceux de leurs enfants et des personnes à charge. Les époux sont toutefois imposés distinctement s'ils sont séparés de biens et ne vivent pas sous le même toit, si, en instance de séparation de corps ou de divorce, ils ont été autorisés à avoir des résidences séparées, ou si, en cas d'abandon du domicile conjugal, chacun dispose de revenus distincts. L'année du mariage ou du PACS, les époux ou partenaires peuvent opter pour l'imposition distincte des revenus dont chacun a personnellement disposé. L'année où survient l'un de ces cas de séparation, le divorce ou la dissolution du PACS, chacun est personnellement imposable pour les revenus dont il a disposé pendant cette année et pour la quote-part des revenus communs lui revenant.",
+     "cite": "« Chacun des époux, partenaires, anciens époux ou anciens partenaires liés par un pacte civil de solidarité est personnellement imposable pour les revenus dont il a disposé pendant l'année de la réalisation de l'une des conditions du 4, du divorce ou de la dissolution du pacte, ainsi que pour la quote-part des revenus communs lui revenant. »",
+     "src": "CGI, art. 6, 1, 4, 5 et 6",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
      "fiab": "stable"
     }
@@ -172,13 +173,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Rattachement des enfants majeurs</b> : l'option pour le rattachement au foyer dont l'enfant faisait partie avant sa majorité est ouverte aux enfants âgés de moins de 21 ans, ou de moins de 25 ans s'ils justifient de la poursuite de leurs études. Un enfant marié ou pacsé peut demander le rattachement de son ménage dès lors que l'un des époux ou partenaires remplit ces conditions. La faculté de se rattacher à l'un ou à l'autre des parents ne peut pas être exercée au titre de l'année où l'enfant atteint sa majorité.",
+     "t": "<b>Rattachement des enfants majeurs</b> : l'option pour le rattachement au foyer dont l'enfant faisait partie avant sa majorité est ouverte aux enfants âgés de moins de 21 ans, ou de moins de 25 ans s'ils justifient de la poursuite de leurs études. Un enfant marié ou pacsé peut demander le rattachement de son ménage dès lors que l'un des époux ou partenaires remplit ces conditions. Lorsque les parents sont imposés séparément, le rattachement peut être demandé à l'un ou à l'autre, au titre des années qui suivent celle au cours de laquelle l'enfant atteint sa majorité : ce choix entre les parents n'est pas ouvert l'année de la majorité.",
+     "cite": "« Conformément au 3 de l'article 6 du CGI, le rattachement peut être demandé, au titre des années qui suivent celle au cours de laquelle l'enfant atteint sa majorité, à l'un ou à l'autre des parents lorsque ceux-ci sont imposés séparément. »",
      "src": "CGI, art. 6, 3 ; BOI-IR-CHAMP-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/1908-PGP.html/identifiant%3DBOI-IR-CHAMP-20-20-20200206",
      "fiab": "stable"
     },
     {
-     "t": "<b>Déficits catégoriels</b> : le déficit constaté dans une catégorie de revenus s'impute sur le revenu global de la même année ; l'excédent se reporte sur le revenu global des années suivantes jusqu'à la sixième année inclusivement. Ce principe connaît des exceptions énumérées au I de l'article 156 (déficits d'activités non professionnelles, déficits fonciers au-delà de la limite légale, déficits agricoles au-delà d'un seuil de revenus) ; les déficits de revenus de capitaux mobiliers ne s'imputent que sur les revenus de même nature des six années suivantes.",
+     "t": "<b>Déficits catégoriels</b> : le déficit constaté dans une catégorie de revenus s'impute sur le revenu global de la même année ; l'excédent se reporte sur le revenu global des années suivantes jusqu'à la sixième année inclusivement. Ce principe connaît des exceptions énumérées au I de l'article 156, notamment les déficits d'activités non professionnelles, les déficits fonciers au-delà de la limite légale et les déficits agricoles au-delà d'un seuil de revenus ; les déficits de revenus de capitaux mobiliers ne s'imputent que sur les revenus de même nature des six années suivantes.",
      "cite": "« l'excédent du déficit est reporté successivement sur le revenu global des années suivantes jusqu'à la sixième année inclusivement »",
      "src": "CGI, art. 156, I",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054373682",
@@ -192,7 +194,7 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Pension alimentaire versée à un enfant majeur</b> : déductible du revenu global pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire. Aucune déduction n'est possible si l'enfant est rattaché au foyer fiscal ; la pension déduite est imposable chez l'enfant.",
+     "t": "<b>Pension alimentaire versée à un enfant majeur</b> : déductible du revenu global pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire, dans la limite, par enfant majeur, du montant fixé pour l'abattement prévu par l'article 196 B, qui évolue chaque année. Aucune déduction n'est possible si l'enfant est rattaché au foyer fiscal ; la pension déduite est imposable chez l'enfant.",
      "src": "CGI, art. 156, II-2°",
      "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-deduire-laide-que-japporte-mes-enfants-majeurs",
      "fiab": "stable"
@@ -210,20 +212,19 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Mécanique de calcul</b> : le barème s'applique au revenu net imposable divisé par le nombre de parts ; l'impôt obtenu est multiplié par le nombre de parts. La réduction d'impôt résultant des majorations de quotient familial est plafonnée : <span class=\"mono\">1 807 €</span> par demi-part (la moitié par quart de part) pour l'impôt 2026 sur les revenus 2025.",
+     "t": "<b>Mécanique de calcul</b> : le barème s'applique au revenu net imposable divisé par le nombre de parts ; l'impôt obtenu est multiplié par le nombre de parts. La réduction d'impôt résultant des majorations de quotient familial est plafonnée par demi-part (la moitié de ce plafond par quart de part) ; le montant du plafond évolue chaque année avec les limites des tranches du barème.",
      "src": "CGI, art. 197, I-1 et I-2 ; BOI-IR-LIQ-20-10 et BOI-IR-LIQ-20-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/2494-PGP.html/identifiant=BOI-IR-LIQ-20-20-20-20260407",
-     "fiab": "millésimé 2026"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Décote</b> : accordée aux contribuables dont l'impôt brut est inférieur à un seuil ; elle est égale à une somme forfaitaire diminuée de <span class=\"mono\">45,25 %</span> de l'impôt brut. Exemple officiel (couple, impôt brut 2 250 €) : décote = 1 483 − 2 250 × 45,25 % = 465 €, impôt après décote 1 785 €.",
-     "cite": "« La décote est égale à 1 483 – (2 250 × 45,25 %) = 1 483 – 1 018 = 465 €. Votre impôt après décote s'élève à 2 250 € – 465 € = 1 785 €. »",
+     "t": "<b>Décote</b> : accordée aux contribuables dont l'impôt brut est inférieur à un seuil, différent selon que l'imposition est individuelle ou commune ; elle est égale à la différence entre une somme forfaitaire et une fraction de l'impôt brut, de sorte que son montant diminue quand l'impôt brut augmente. Les montants et le pourcentage sont fixés par la loi (voir « Chiffres et seuils »).",
      "src": "CGI, art. 197, I-4-a ; economie.gouv.fr",
      "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/pouvez-vous-beneficier-de-la-decote-de-limpot-sur-le-revenu",
-     "fiab": "millésimé 2026"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Réduction d'impôt pour dons</b> : 66 % des versements aux organismes d'intérêt général, dans la limite de 20 % du revenu imposable ; l'excédent est reporté sur les cinq années suivantes. Les dons aux organismes qui fournissent gratuitement des repas ou des soins aux personnes en difficulté ou favorisent leur logement ouvrent droit à 75 % dans un plafond spécifique, la fraction au-delà relevant du taux de 66 % ; la fraction retenue au taux de 75 % n'est pas prise en compte pour apprécier la limite de 20 %.",
+     "t": "<b>Réduction d'impôt pour dons</b> : 66 % des versements aux organismes d'intérêt général, dans la limite de 20 % du revenu imposable ; l'excédent est reporté sur les cinq années suivantes. Les dons aux organismes qui fournissent gratuitement des repas ou des soins aux personnes en difficulté ou favorisent leur logement, ainsi qu'aux organismes d'intérêt général qui, à titre principal et gratuitement, accompagnent les victimes de violence domestique ou contribuent à favoriser leur relogement, ouvrent droit à 75 % dans un plafond spécifique, la fraction au-delà relevant du taux de 66 % ; la fraction retenue au taux de 75 % n'est pas prise en compte pour apprécier la limite de 20 %.",
      "src": "CGI, art. 200, 1 et 1 ter",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191957/",
      "fiab": "stable"
@@ -273,9 +274,9 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Décote 2026 (revenus 2025)</b> : somme forfaitaire de <span class=\"mono\">897 €</span> (imposition individuelle) ou <span class=\"mono\">1 483 €</span> (imposition commune), diminuée de 45,25 % de l'impôt brut ; elle s'applique si l'impôt brut est inférieur à <span class=\"mono\">1 982 €</span> (personne seule) ou <span class=\"mono\">3 277 €</span> (couple).",
+     "t": "<b>Décote 2026 (revenus 2025)</b> : somme forfaitaire de <span class=\"mono\">897 €</span> (imposition individuelle) ou <span class=\"mono\">1 483 €</span> (imposition commune), diminuée de 45,25 % de l'impôt brut ; elle s'applique si l'impôt brut est inférieur à <span class=\"mono\">1 982 €</span> (personne seule) ou <span class=\"mono\">3 277 €</span> (couple). Exemple officiel (couple, impôt brut 2 250 €) : décote = 1 483 − 2 250 × 45,25 % = 465 €, impôt après décote 1 785 €.",
      "cite": "« cette décote est accordée aux contribuables dont la cotisation d'impôt brut est inférieure à 1 982 € pour les contribuables célibataires, divorcés ou veufs et à 3 277 € »",
-     "src": "CGI, art. 197, I-4-a ; BOI-IR-LIQ-20-20-30",
+     "src": "CGI, art. 197, I-4-a ; BOI-IR-LIQ-20-20-30 ; economie.gouv.fr (exemple)",
      "url": "https://bofip.impots.gouv.fr/bofip/2495-PGP.html/identifiant=BOI-IR-LIQ-20-20-30-20260407",
      "fiab": "millésimé 2026"
     },
@@ -351,19 +352,20 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>La doctrine ne crée pas de droit</b> : l'article L. 80 A ne confère à l'administration aucun pouvoir réglementaire et ne lui permet pas de déroger à la loi ; seule la dernière interprétation formellement admise peut être invoquée. Le contribuable peut se prévaloir de cette interprétation même lorsqu'elle ajoute à la loi, mais l'administration peut écarter la garantie par la procédure de l'abus de droit (LPF, art. L. 64) si elle démontre la finalité abusive de l'opération.",
+     "t": "<b>La doctrine ne crée pas de droit</b> : l'article L. 80 A ne confère à l'administration aucun pouvoir réglementaire et ne lui permet pas de déroger à la loi : il institue seulement une garantie au profit du contribuable de bonne foi. Celui-ci peut opposer à l'administration la dernière interprétation formellement admise, même lorsqu'elle ajoute à la loi ; l'administration peut écarter la garantie par la procédure de l'abus de droit (LPF, art. L. 64) si elle démontre la finalité abusive de l'opération.",
      "src": "CE, Section, 8 mars 2013, n° 353782 ; CE, Assemblée, 28 octobre 2020, n° 428048",
      "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
      "fiab": "stable"
     },
     {
-     "t": "<b>Conventions fiscales</b> : les critères de l'article 4 B s'appliquent sous réserve des conventions internationales ; un résident d'un autre État au sens d'une convention ne peut pas être regardé comme domicilié en France pour le droit interne, même si l'article 4 B le désigne comme tel.",
+     "t": "<b>Conventions fiscales</b> : les critères de l'article 4 B s'appliquent sous réserve des conventions internationales, qui l'emportent sur le droit interne. Une personne domiciliée en France au sens de l'article 4 B mais résidente de l'autre État au sens d'une convention est regardée comme résidente de cet État pour l'application de la convention, qui peut retirer à la France le droit d'imposer certains revenus. En cas de double résidence, la convention départage, dans l'ordre : foyer d'habitation permanent, centre des intérêts vitaux, séjour habituel, nationalité.",
      "src": "BOI-INT-DG-20-10-10",
      "url": "https://bofip.impots.gouv.fr/bofip/2427-PGP.html/identifiant=BOI-INT-DG-20-10-10-20120912",
      "fiab": "stable"
     },
     {
-     "t": "<b>Piège du rattachement</b> : l'enfant majeur rattaché n'ouvre pas droit à une majoration du quotient familial lorsqu'il est marié ou chargé de famille (abattement sur le revenu) et ses revenus de l'année entière sont inclus dans ceux du foyer ; aucune pension alimentaire ne peut alors être déduite pour lui.",
+     "t": "<b>Piège du rattachement</b> : le rattachement oblige le contribuable à inclure dans son revenu imposable les revenus perçus par l'enfant pendant l'année entière, et aucune pension alimentaire ne peut alors être déduite pour lui. Lorsque l'enfant majeur rattaché est marié ou chargé de famille, l'avantage ne prend pas la forme d'une majoration du quotient familial mais d'un abattement sur le revenu (CGI, art. 196 B).",
+     "cite": "« Le rattachement entraîne pour le contribuable l'obligation d'inclure dans son revenu imposable les revenus perçus par l'enfant pendant l'année entière. »",
      "src": "CGI, art. 6, 3 et 196 B ; BOI-IR-CHAMP-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/1908-PGP.html/identifiant%3DBOI-IR-CHAMP-20-20-20200206",
      "fiab": "stable"

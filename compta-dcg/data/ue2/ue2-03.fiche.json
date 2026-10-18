@@ -1,6 +1,6 @@
 {
  "id": "ue2-03",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE2 Droit des sociétés et des groupements d'affaires), BO ESR n° 26 du 27 juin 2019, applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -81,7 +81,7 @@
   },
   {
    "ref": "Ordonnance n° 2025-229 du 12 mars 2025 ; C. civ., art. 1844-10 ; C. com., art. L. 227-20-1",
-   "objet": "Réforme des nullités : la violation des statuts ne constitue pas une cause de nullité, sauf si la loi en dispose autrement ; nullité prévue par les statuts dans la SAS",
+   "objet": "Réforme des nullités : la violation des statuts ne constitue pas une cause de nullité, sauf si la loi en dispose autrement ; nullité prévue par les statuts dans la SAS ; suppression de la nullité textuelle de L. 227-9 (art. 42)",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
    "version": "applicable depuis le 1er octobre 2025 (art. 70)"
   },
@@ -127,8 +127,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Conventions réglementées de la SA</b> : toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote (ou, pour une société actionnaire, la société qui la contrôle), ainsi que les conventions auxquelles l'une de ces personnes est indirectement intéressée et celles conclues avec une entreprise dont le directeur général, un directeur général délégué ou un administrateur de la société est propriétaire, associé indéfiniment responsable, gérant, administrateur, membre du conseil de surveillance ou, de façon générale, dirigeant. Sont exclues les conventions portant sur des opérations courantes conclues à des conditions normales et celles conclues entre deux sociétés dont l'une détient, directement ou indirectement, la totalité du capital de l'autre.",
-     "src": "C. com., art. L. 225-38 et L. 225-39",
+     "t": "<b>Conventions réglementées de la SA à conseil d'administration</b> : toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote (ou, pour une société actionnaire, la société qui la contrôle), ainsi que les conventions auxquelles l'une de ces personnes est indirectement intéressée et celles conclues avec une entreprise dont le directeur général, un directeur général délégué ou un administrateur de la société est propriétaire, associé indéfiniment responsable, gérant, administrateur, membre du conseil de surveillance ou, de façon générale, dirigeant. Sont exclues les conventions portant sur des opérations courantes conclues à des conditions normales et celles conclues entre deux sociétés dont l'une détient, directement ou indirectement, la totalité du capital de l'autre. La SA à directoire et conseil de surveillance relève de dispositions propres (L. 225-86 et suivants).",
+     "src": "C. com., art. L. 225-38 et L. 225-39 ; L. 225-86",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
      "fiab": "stable"
     },
@@ -157,7 +157,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Direction générale</b> : assumée, au choix du conseil d'administration, soit par le président du conseil (PDG), soit par une autre personne physique nommée par le conseil, le directeur général, qui peut être assisté d'un à cinq directeurs généraux délégués. Le DG est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, dans la limite de l'objet social et sous réserve des pouvoirs que la loi attribue aux assemblées et au conseil ; il engage la société même par les actes qui ne relèvent pas de l'objet social, sauf si elle prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer. Il est révocable à tout moment par le conseil ; la révocation sans juste motif peut donner lieu à dommages-intérêts, sauf lorsque le DG assume les fonctions de président du conseil.",
+     "t": "<b>Direction générale</b> : assumée, au choix du conseil d'administration, soit par le président du conseil (PDG), soit par une autre personne physique nommée par le conseil, le directeur général ; dans les deux cas, celui qui assume la direction générale peut être assisté d'un à cinq directeurs généraux délégués. Le DG est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, dans la limite de l'objet social et sous réserve des pouvoirs que la loi attribue aux assemblées et au conseil ; il engage la société même par les actes qui ne relèvent pas de l'objet social, sauf si elle prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer. Il est révocable à tout moment par le conseil ; la révocation sans juste motif peut donner lieu à dommages-intérêts, sauf lorsque le DG assume les fonctions de président du conseil.",
      "src": "C. com., art. L. 225-51-1, L. 225-53, L. 225-55 et L. 225-56",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
      "fiab": "stable"
@@ -219,8 +219,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>SAS : décisions collectives obligatoires</b> : les statuts déterminent les décisions qui doivent être prises collectivement, mais les attributions des assemblées de SA en matière d'augmentation, d'amortissement ou de réduction du capital, de fusion, de scission, de dissolution, de transformation, de nomination des commissaires aux comptes, de comptes annuels et de bénéfices sont exercées collectivement par les associés. Dans la SAS à associé unique, celui-ci approuve les comptes dans les six mois de la clôture, ne peut déléguer ses pouvoirs, et ses décisions sont répertoriées dans un registre. Les décisions prises en violation de ces règles peuvent être annulées à la demande de tout intéressé.",
-     "src": "C. com., art. L. 227-9",
+     "t": "<b>SAS : décisions collectives obligatoires</b> : les statuts déterminent les décisions qui doivent être prises collectivement, mais les attributions des assemblées de SA en matière d'augmentation, d'amortissement ou de réduction du capital, de fusion, de scission, de dissolution, de transformation, de nomination des commissaires aux comptes, de comptes annuels et de bénéfices sont exercées collectivement par les associés. Dans la SAS à associé unique, celui-ci approuve les comptes dans les six mois de la clôture, ne peut déléguer ses pouvoirs, et ses décisions sont répertoriées dans un registre. Le quatrième alinéa de l'article, qui permettait d'annuler à la demande de tout intéressé les décisions prises en violation de ces règles, a été supprimé par l'ordonnance n° 2025-229 du 12 mars 2025 (art. 42) à compter du 1er octobre 2025.",
+     "src": "C. com., art. L. 227-9 ; ordonnance n° 2025-229 du 12 mars 2025, art. 42 et 70",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
      "fiab": "stable"
     },
@@ -279,11 +279,11 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>0,1 %</b> : droit d'enregistrement sur les cessions d'actions ; <b>3 %</b> pour les cessions de parts sociales des sociétés dont le capital n'est pas divisé en actions, après un abattement sur la valeur de chaque part égal au rapport entre 23 000 € et le nombre total de parts sociales ; <b>5 %</b> pour les cessions de participations dans des personnes morales à prépondérance immobilière, même lorsqu'il s'agit d'actions.",
+     "t": "<b>Droits d'enregistrement en 2026</b> : <b>0,1 %</b> sur les cessions d'actions ; <b>3 %</b> pour les cessions de parts sociales des sociétés dont le capital n'est pas divisé en actions, après un abattement sur la valeur de chaque part égal au rapport entre 23 000 € et le nombre total de parts sociales ; <b>5 %</b> pour les cessions de participations dans des personnes morales à prépondérance immobilière, même lorsqu'il s'agit d'actions.",
      "cite": "« il est appliqué sur la valeur de chaque part sociale un abattement égal au rapport entre la somme de 23 000 € et le nombre total de parts sociales de la société »",
      "src": "CGI, art. 726, I (version en vigueur depuis le 1er janvier 2024)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
-     "fiab": "stable"
+     "fiab": "millésimé 2026"
     },
     {
      "t": "<b>5 % du capital</b> pour demander une expertise de gestion dans la SA ; <b>plus de 10 % des droits de vote</b> pour qu'un actionnaire relève de la procédure des conventions réglementées ; <b>deux ans</b> au moins d'inscription nominative pour le droit de vote double.",
@@ -297,9 +297,9 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> (réforme des nullités en droit des sociétés) : selon le nouvel alinéa de l'article 1844-10 du Code civil, sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. Pour la SAS, le nouvel article L. 227-20-1 permet aux statuts de prévoir la nullité des décisions prises en violation des règles qu'ils fixent. Applicable depuis le 1er octobre 2025.",
+     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> (réforme des nullités en droit des sociétés) : selon le nouvel alinéa de l'article 1844-10 du Code civil, sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. Pour la SAS, le nouvel article L. 227-20-1 permet aux statuts de prévoir la nullité des décisions prises en violation des règles qu'ils fixent. Elle supprime en outre (art. 42) la nullité que l'article L. 227-9 attachait aux décisions prises en violation des règles de décision collective obligatoire de la SAS. Applicable depuis le 1er octobre 2025.",
      "cite": "« Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. »",
-     "src": "Ordonnance n° 2025-229 du 12 mars 2025, art. 43 et 70 ; C. civ., art. 1844-10 ; C. com., art. L. 227-20-1",
+     "src": "Ordonnance n° 2025-229 du 12 mars 2025, art. 42, 43 et 70 ; C. civ., art. 1844-10 ; C. com., art. L. 227-9 et L. 227-20-1",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
      "fiab": "stable"
     },
@@ -346,7 +346,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Droit de vote dans la SAS</b> : tout associé a le droit de participer aux décisions collectives (C. civ., art. 1844). Les statuts d'une SAS peuvent prévoir qu'un associé est tenu de céder ses actions (L. 227-16), mais lorsque cette cession dépend d'une décision collective, l'associé dont l'exclusion est proposée reste en droit de participer à la décision et de voter. Une stipulation qui le prive de ce droit de vote est réputée non écrite (Cass. com., 29 mai 2024).",
+     "t": "<b>Droit de vote dans la SAS</b> : tout associé a le droit de participer aux décisions collectives (C. civ., art. 1844). Les statuts d'une SAS peuvent prévoir qu'un associé est tenu de céder ses actions (L. 227-16), mais lorsque cette cession dépend d'une décision collective, l'associé dont l'exclusion est proposée reste en droit de participer à la décision et de voter (Cass. com., 23 octobre 2007, n° 06-16.537). Une stipulation qui le prive de ce droit de vote est réputée non écrite (Cass. com., 29 mai 2024, n° 22-13.158).",
      "src": "C. civ., art. 1844, al. 1er ; C. com., art. L. 227-16 ; Cass. com., 23 octobre 2007, n° 06-16.537 ; Cass. com., 29 mai 2024, n° 22-13.158",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000017919115/",
      "fiab": "stable"

@@ -1,6 +1,6 @@
 {
  "id": "ue10-05",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026 ; intitulés « Cadre conceptuel », « Rattachement des charges et des produits au résultat de l'exercice » et « Comptabilisation des capitaux permanents » repris du programme de l'UE 10 publié au BO n° 13 du 27 mars 2014",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -135,7 +135,7 @@
      "t": "<b>Dette, provision, passif éventuel</b> : une dette est un passif certain dont l'échéance et le montant sont fixés de façon précise ; une provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise ; un passif éventuel, notamment une obligation potentielle de l'entité à l'égard d'un tiers née d'événements dont l'existence reste incertaine, n'est pas comptabilisé au bilan mais mentionné en annexe.",
      "cite": "« Une provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise. »",
      "src": "PCG, art. 321-1 et s. (provision : art. 321-5 ; passif éventuel : art. 321-6)",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -180,13 +180,13 @@
      "t": "<b>Valeur d'inventaire des titres</b> : les titres de participation, cotés ou non, sont évalués à leur valeur d'utilité, c'est-à-dire ce que l'entité accepterait de décaisser pour les obtenir si elle avait à les acquérir (rentabilité et perspectives de rentabilité, capitaux propres, perspectives de réalisation, conjoncture économique, cours moyens de bourse du dernier mois, motifs de l'acquisition) ; les autres titres immobilisés (hors TIAP) sont évalués, s'ils sont cotés, au cours moyen du dernier mois et, s'ils ne le sont pas, à leur valeur probable de négociation ; les titres de placement suivent les mêmes règles. La dépréciation est dotée au compte 6866 et reprise au compte 7866 lorsqu'elle devient sans objet.",
      "cite": "« L'évaluation des titres de placement est effectuée dans les mêmes conditions que celles prévues aux articles 221-1, 221-2, 221-6 et 221-7 pour les titres immobilisés. »",
      "src": "PCG, art. 221-3, 221-6 et 222-1 ; plan de comptes 2026, comptes 6866 et 7866",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
      "t": "<b>Baisse anormale et momentanée</b> : pour les titres cotés autres que les titres de participation et les TIAP, l'entité n'est pas obligée, en cas de baisse anormale et momentanée des cours, de constituer à la clôture une dépréciation à concurrence des plus-values latentes normales constatées sur d'autres titres ; la règle vaut pour les titres de placement par le renvoi de l'article 222-1. Hors ce cas, l'évaluation séparée des éléments d'actif interdit toute compensation entre lignes de titres.",
      "src": "PCG, art. 221-7 et 222-1 ; C. com., art. L. 123-19",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -202,7 +202,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Titres de même nature acquis à des prix différents</b> : comme les biens fongibles, ils sont évalués soit au coût moyen pondéré d'acquisition, soit selon la méthode « premier entré, premier sorti », ce qui détermine le coût d'entrée des titres cédés. Pour le calcul des plus-values imposables, les cessions de titres du portefeuille sont réputées porter par priorité sur les titres de même nature acquis ou souscrits à la date la plus ancienne.",
+     "t": "<b>Titres de même nature acquis à des prix différents</b> : comme les biens fongibles, ils sont évalués soit au coût moyen pondéré d'acquisition, soit selon la méthode « premier entré, premier sorti », ce qui détermine le coût d'entrée des titres cédés. Pour l'application du régime fiscal des plus-values à court et à long terme (CGI, art. 39 duodecies), les cessions de titres du portefeuille sont réputées porter par priorité sur les titres de même nature acquis ou souscrits à la date la plus ancienne.",
      "src": "C. com., art. L. 123-18 ; CGI, art. 39 duodecies, 6",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
      "fiab": "stable"
@@ -217,13 +217,13 @@
      "t": "<b>Dividendes</b> : le dividende est déterminé par l'assemblée générale de la société émettrice, après approbation des comptes annuels et constatation de l'existence de sommes distribuables. Pour la société détentrice, il constitue un produit financier : 761 « Produits de participations », 762 « Produits des autres immobilisations financières » ou 764 « Revenus des valeurs mobilières de placement ».",
      "cite": "« Après approbation des comptes annuels et constatation de l'existence de sommes distribuables, l'assemblée générale détermine la part attribuée aux associés sous forme de dividendes. »",
      "src": "C. com., art. L. 232-12 ; PCG, plan de comptes 2026, comptes 761, 762 et 764",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031",
      "fiab": "stable"
     },
     {
      "t": "<b>Emprunt obligataire</b> : à l'émission, le compte 163 « Autres emprunts obligataires » est crédité du prix de remboursement total, la trésorerie débitée du prix d'émission encaissé et la différence portée au débit du compte 169 « Primes de remboursement des emprunts » ; la prime est amortie sur la durée de l'emprunt, au prorata des intérêts courus ou par fractions égales, par le débit du compte 6861.",
      "src": "PCG, art. 212-10 ; plan de comptes 2026, comptes 163, 169 et 6861",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
      "cite": "« Le montant des primes de remboursement d'emprunt est amorti systématiquement sur la durée de l'emprunt soit au prorata des intérêts courus, soit par fractions égales. »"
     },
@@ -231,11 +231,11 @@
      "t": "<b>Frais d'émission des emprunts</b> : ils sont soit comptabilisés en charges, soit répartis sur la durée de l'emprunt d'une manière appropriée aux modalités de remboursement, une répartition linéaire étant admise lorsque les résultats obtenus ne sont pas sensiblement différents. Étalés, ils sont inscrits au compte 481 « Frais d'émission des emprunts » et amortis par le compte 6862 « Dotations aux amortissements des frais d'émission des emprunts », charge financière. Avant 2025, ils transitaient par le compte 4816 et la dotation 6812, avec un transfert de charges.",
      "cite": "« Les frais d'émission d'emprunt peuvent être répartis sur la durée de l'emprunt d'une manière appropriée aux modalités de remboursement de l'emprunt. »",
      "src": "PCG, art. 212-11 ; plan de comptes 2026, comptes 481 et 6862 ; règlement ANC n° 2022-06",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Intérêts courus sur emprunts</b> (PCG 2025) : ils sont rattachés à la clôture par nature d'emprunt : 1618 emprunts obligataires convertibles, 1638 autres emprunts obligataires, 1648 emprunts auprès des établissements de crédit (anciens 16881, 16883 et 16884) ; le compte 1688 ne vise plus que les autres emprunts et dettes assimilées (168).",
+     "t": "<b>Intérêts courus sur emprunts</b> (PCG 2025) : ils sont rattachés à la clôture par nature d'emprunt : 1618 emprunts obligataires convertibles (ancien 16881), 1638 autres emprunts obligataires (ancien 16883), 1648 emprunts auprès des établissements de crédit (ancien 16884) ; le compte 1688 ne vise plus que les autres emprunts et dettes assimilées (168).",
      "src": "PCG, plan de comptes 2026, comptes 1618, 1638, 1648 et 1688 ; règlement ANC n° 2022-06",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
@@ -243,7 +243,7 @@
     {
      "t": "<b>Comptabilisation d'une provision</b> : une provision est comptabilisée lorsque, à la clôture, l'entité a une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources sans contrepartie au moins équivalente ; elle est évaluée à la meilleure estimation de la sortie de ressources. Un passif dont le montant ne peut être évalué avec une fiabilité suffisante n'est pas comptabilisé : il est mentionné en annexe.",
      "src": "PCG, art. 321-1, 322-1 et s. ; art. 323-2 (meilleure estimation)",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -287,7 +287,7 @@
     {
      "t": "<b>Valeur d'inventaire des titres cotés autres que les titres de participation et les TIAP</b> (titres immobilisés et valeurs mobilières de placement) : cours moyen du <span class=\"mono\">dernier mois</span> de l'exercice (et non cours du jour de clôture).",
      "src": "PCG, art. 221-6 et 222-1",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -338,7 +338,7 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "Ne pas appliquer aux titres l'option exercée pour les immobilisations corporelles et incorporelles : les deux options sur les frais d'acquisition sont indépendantes et chacune vaut pour l'ensemble de sa catégorie. L'option s'exerce par la seule comptabilisation des frais en immobilisation ou en charges, et le résultat fiscal suit le choix comptable.",
+     "t": "Ne pas appliquer aux titres l'option exercée pour les immobilisations corporelles et incorporelles : les deux options sur les frais d'acquisition sont indépendantes et chacune vaut pour l'ensemble de sa catégorie. L'option s'exerce par la seule comptabilisation des frais en immobilisation ou en charges, et il n'est pas possible d'exercer une option fiscale différente de l'option retenue en comptabilité.",
      "cite": "« Il n'est pas possible d'exercer une option fiscale différente de l'option retenue en matière comptable. »",
      "src": "PCG, art. 213-8 et 221-1 ; BOI-BIC-CHG-20-20-10",
      "url": "https://bofip.impots.gouv.fr/bofip/1846-PGP.html/identifiant=BOI-BIC-CHG-20-20-10-20190109",
@@ -348,14 +348,14 @@
      "t": "La prime de remboursement est amortie systématiquement sur la durée de l'emprunt, au prorata des intérêts courus ou par fractions égales ; en cas de remboursement partiel ou anticipé, la prime afférente à la fraction remboursée est toujours amortie. Le compte 163 est crédité du prix de remboursement, ni du nominal ni du prix d'émission.",
      "cite": "« Toutefois, les primes afférentes à la fraction d'emprunt remboursée sont toujours amorties. »",
      "src": "PCG, art. 212-10 ; plan de comptes 2026, comptes 163, 169 et 6861",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
      "t": "Ne pas confondre dette et provision : une dette (fournisseurs, emprunts) a une échéance et un montant fixés de façon précise, une provision non. Un passif éventuel n'est jamais comptabilisé au bilan : il est mentionné en annexe ; il en va de même d'un passif dont le montant ne peut être évalué avec une fiabilité suffisante.",
      "cite": "« Une dette est un passif certain dont l'échéance et le montant sont fixés de façon précise. »",
      "src": "PCG, art. 321-1 et s. ; art. 322-1 et s.",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -365,20 +365,20 @@
      "fiab": "stable"
     },
     {
-     "t": "Les provisions réglementées (14) figurent dans les capitaux propres et ne couvrent aucune obligation envers un tiers : elles sont dotées et reprises en résultat exceptionnel (6872 et 7872, dont 68725 et 78725 pour les amortissements dérogatoires) afin de bénéficier d'un avantage fiscal subordonné à leur comptabilisation.",
-     "src": "PCG, plan de comptes 2026, comptes 14, 6872 et 7872 ; PCG, art. 513-5",
+     "t": "Les provisions réglementées (14) figurent dans les capitaux propres et ne couvrent aucune obligation envers un tiers : elles sont dotées et reprises en résultat exceptionnel (6872 et 7872 pour les immobilisations, dont 68725 et 78725 pour les amortissements dérogatoires ; 6873 et 7873 pour les stocks ; 6874 et 7874 pour les autres provisions réglementées) afin de bénéficier d'un avantage fiscal subordonné à leur comptabilisation.",
+     "src": "PCG, plan de comptes 2026, comptes 14, 6872 à 6874 et 7872 à 7874 ; PCG, art. 513-5 (repris à l'art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable"
     },
     {
-     "t": "La tolérance qui permet de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ne vaut que pour les immobilisations non financières : pour les titres, toute baisse de la valeur d'inventaire au-dessous du coût d'entrée est dépréciée.",
+     "t": "La tolérance qui permet de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ne vaut que pour les immobilisations non financières : pour les titres, dès que la valeur d'inventaire devient inférieure à la valeur nette comptable, celle-ci est en principe ramenée à la valeur d'inventaire par une dépréciation, même si l'écart n'est pas notable.",
      "cite": "« La valeur d'inventaire est égale à la valeur actuelle ; toutefois, lorsque la valeur d'inventaire d'une immobilisation non financière n'est pas jugée notablement inférieure à sa valeur comptable nette, celle-ci est retenue comme valeur d'inventaire. »",
      "src": "C. com., art. R. 123-178, 5°",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
      "fiab": "stable"
     },
     {
-     "t": "<b>Lien DSCG</b> : en comptes consolidés, les sociétés qui appliquent les normes comptables internationales adoptées par l'Union européenne sont dispensées des règles françaises de consolidation ; les instruments financiers y relèvent d'IFRS 9 et les provisions d'IAS 37. En comptes individuels, les plus-values latentes sur titres ne sont jamais comptabilisées.",
+     "t": "<b>Lien DSCG</b> : en comptes consolidés, les sociétés qui appliquent les normes comptables internationales adoptées par l'Union européenne sont dispensées des règles françaises de consolidation ; les instruments financiers y relèvent d'IFRS 9 et les provisions d'IAS 37. En comptes individuels, la plus-value constatée entre la valeur d'inventaire des titres et leur valeur d'entrée n'est en principe pas comptabilisée (C. com., art. L. 123-18).",
      "src": "C. com., art. L. 233-24 ; C. com., art. L. 123-18",
      "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330",
      "fiab": "stable"

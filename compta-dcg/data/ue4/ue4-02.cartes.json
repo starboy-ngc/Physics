@@ -1,6 +1,6 @@
 {
  "id": "ue4-02",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue4-02-k01",
@@ -10,7 +10,7 @@
    "base": [
     "Définitions#0"
    ],
-   "src": "CGI, art. 79, 82 et 83 ; impots.gouv.fr, salaires et assimilés",
+   "src": "CGI, art. 79, 80 ter, 82 et 83 ; BOI-ANNX-000067 ; impots.gouv.fr, salaires et assimilés",
    "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
    "fiab": "stable"
   },
@@ -22,7 +22,7 @@
    "base": [
     "Définitions#0"
    ],
-   "src": "CGI, art. 79, 82 et 83 ; impots.gouv.fr, salaires et assimilés",
+   "src": "CGI, art. 79, 80 ter, 82 et 83 ; BOI-ANNX-000067 ; impots.gouv.fr, salaires et assimilés",
    "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
    "fiab": "stable"
   },
@@ -71,7 +71,7 @@
     "Règles essentielles#2"
    ],
    "src": "CGI, art. 80 duodecies, 1 ; BOI-RSA-CHAMP-20-40-10-30",
-   "url": null,
+   "url": "https://bofip.impots.gouv.fr/bofip/4935-PGP.html/identifiant=BOI-RSA-CHAMP-20-40-10-30-20250429",
    "fiab": "stable"
   },
   {
@@ -83,7 +83,7 @@
     "Règles essentielles#2"
    ],
    "src": "CGI, art. 80 duodecies, 1 ; BOI-RSA-CHAMP-20-40-10-30",
-   "url": null,
+   "url": "https://bofip.impots.gouv.fr/bofip/4935-PGP.html/identifiant=BOI-RSA-CHAMP-20-40-10-30-20250429",
    "fiab": "stable"
   },
   {
@@ -235,7 +235,7 @@
    "id": "ue4-02-k21",
    "type": "comp",
    "q": "Dans quel ordre impute-t-on les intérêts d'emprunt et les autres charges pour déterminer le déficit foncier imputable sur le revenu global ?",
-   "r": "<b>D'abord les intérêts d'emprunt sur les loyers</b>, puis les autres charges, qui créent le déficit imputable dans la limite de 10 700 €. La fraction du déficit provenant des intérêts n'est jamais imputable sur le revenu global.",
+   "r": "<b>D'abord les intérêts d'emprunt sur les loyers</b>, puis les autres charges, qui créent le déficit imputable dans la limite de 10 700 €, hors majoration temporaire pour travaux de rénovation énergétique. La fraction du déficit provenant des intérêts n'est jamais imputable sur le revenu global.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -252,7 +252,7 @@
     "Points de vigilance#2",
     "Règles essentielles#8"
    ],
-   "src": "CGI, art. 150 VC ; BOI-RFPI-PVI-20-20",
+   "src": "CGI, art. 150 VC, I ; BOI-RFPI-PVI-20-20",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197216",
    "fiab": "stable"
   },
@@ -321,7 +321,7 @@
    "id": "ue4-02-k28",
    "type": "def",
    "q": "Comment est déterminé le bénéfice imposable d'un titulaire de bénéfices non commerciaux soumis au régime micro-BNC ?",
-   "r": "<b>Il est égal aux recettes brutes diminuées d'un abattement forfaitaire de 34 %.</b>",
+   "r": "<b>Il est égal aux recettes brutes diminuées d'un abattement forfaitaire de 34 %</b>, qui ne peut être inférieur à 305 €.",
    "base": [
     "Définitions#5"
    ],

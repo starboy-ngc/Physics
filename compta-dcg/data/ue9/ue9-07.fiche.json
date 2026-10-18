@@ -1,6 +1,6 @@
 {
  "id": "ue9-07",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -121,7 +121,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Produit à recevoir</b> : produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture : factures à établir <code>4181</code>, produits à recevoir de l'État <code>4482</code> « État – Produits à recevoir » (subdivision du compte 448), des organismes sociaux <code>439</code> « Organismes sociaux – Produits à recevoir », produits à recevoir divers <code>467</code>.",
+     "t": "<b>Produit à recevoir</b> : produit acquis à l'exercice mais non encore comptabilisé à la clôture, faute d'avoir établi la facture (livraison effectuée, prestation exécutée : factures à établir <code>4181</code>) ou reçu la pièce justificative : produits à recevoir de l'État <code>4482</code> « État – Produits à recevoir » (subdivision du compte 448), des organismes sociaux <code>439</code> « Organismes sociaux – Produits à recevoir », produits à recevoir divers <code>467</code>.",
      "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448, 4482, 439 et 467",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
@@ -195,7 +195,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Seuls les bénéfices réalisés à la clôture sont inscrits dans les comptes annuels ; un produit à recevoir suppose un produit <b>acquis</b> à la clôture (livraison faite, prestation exécutée).",
+     "t": "En principe, seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels ; un produit à recevoir suppose un produit <b>acquis</b> à la clôture (livraison faite, prestation exécutée). Par exception, peut être inscrit, après inventaire, le bénéfice réalisé sur une opération partiellement exécutée et acceptée par le cocontractant, lorsque sa réalisation est certaine et qu'il est possible, au moyen de documents comptables prévisionnels, d'évaluer avec une sécurité suffisante le bénéfice global de l'opération (al. 2).",
      "src": "C. com., art. L. 123-21",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
      "fiab": "stable",
@@ -228,7 +228,7 @@
      "cite": "« Le taux d'impôt à appliquer est celui en vigueur à la date de clôture. »"
     },
     {
-     "t": "<b>Paiement de l'IS</b> : quatre acomptes, au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre, calculés sur le bénéfice du dernier exercice clos (le premier acompte sur l'avant-dernier exercice clos, puis régularisé) ; le <b>solde</b> est versé au plus tard le 15 du quatrième mois qui suit la clôture (le 15 mai de l'année suivante pour un exercice clos le 31 décembre).",
+     "t": "<b>Paiement de l'IS</b> : pour un exercice de douze mois, quatre acomptes, au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre, calculés en principe sur le bénéfice du dernier exercice clos (le premier acompte sur l'avant-dernier exercice clos, puis régularisé) ; le <b>solde</b> est versé au plus tard le 15 du quatrième mois qui suit la clôture ; par dérogation, il est versé au plus tard le 15 mai de l'année suivante lorsque l'exercice est clos le 31 décembre.",
      "src": "CGI, art. 1668, 1 et 2 ; BOI-IS-DECLA-20-10 ; BOI-IS-DECLA-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
      "fiab": "stable"
@@ -248,13 +248,13 @@
      "cite": "« Le bénéfice distribuable est constitué par le bénéfice de l'exercice, diminué des pertes antérieures, ainsi que des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire. »"
     },
     {
-     "t": "<b>Écriture d'affectation</b> : débit <code>120</code> ; crédit <code>1061</code> (réserve légale), <code>1063</code> (réserves statutaires ou contractuelles), <code>1068</code> (autres réserves), <code>457</code> « Associés – Dividendes à payer », <code>110</code> « Report à nouveau (solde créditeur) » ; une perte est portée en <code>119</code> « Report à nouveau (solde débiteur) » ou imputée sur les réserves.",
-     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457",
+     "t": "<b>Écriture d'affectation</b> : débit <code>120</code> ; crédit <code>1061</code> (réserve légale), <code>1063</code> (réserves statutaires ou contractuelles), <code>1068</code> (autres réserves), <code>457</code> « Associés – Dividendes à payer », <code>110</code> « Report à nouveau (solde créditeur) » ; le cas échéant, le bénéfice apure le report à nouveau débiteur (crédit <code>119</code> « Report à nouveau (solde débiteur) »), le bénéfice distribuable étant diminué des pertes antérieures. Une perte est portée en <code>119</code>, imputée sur le report à nouveau créditeur (débit <code>110</code>) ou sur les réserves.",
+     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457 ; C. com., art. L. 232-11",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "Hors le cas de réduction du capital, aucune distribution ne peut être faite lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au capital augmenté des réserves non distribuables. Les dividendes sont déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables ; tout dividende distribué en violation de ces règles est un <b>dividende fictif</b>, dont la répartition par les dirigeants est pénalement sanctionnée.",
+     "t": "Hors le cas de réduction du capital, aucune distribution ne peut être faite lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au capital augmenté des réserves non distribuables. Les dividendes sont déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables ; tout dividende distribué en violation de ces règles est un <b>dividende fictif</b>. Sa répartition entre les associés par les dirigeants est un délit lorsqu'elle est opérée en l'absence d'inventaire ou au moyen d'inventaires frauduleux.",
      "src": "C. com., art. L. 232-11 et L. 232-12 ; L. 241-3, 2° (SARL) et L. 242-6, 1° (SA)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
      "fiab": "stable",
@@ -306,7 +306,7 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Règlement ANC n° 2022-06</b> (homologué par arrêté du 26 décembre 2023), applicable aux exercices ouverts à compter du 1er janvier 2025 : nouveaux modèles de bilan et de compte de résultat ; le résultat exceptionnel ne comprend plus que les produits et charges directement liés à un événement majeur et inhabituel, les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) restant en <code>687</code> / <code>787</code>.",
+     "t": "<b>Règlement ANC n° 2022-06</b> (homologué par arrêté du 26 décembre 2023), applicable aux exercices ouverts à compter du 1er janvier 2025 : nouveaux modèles de bilan et de compte de résultat ; le résultat exceptionnel est recentré sur les produits et charges directement liés à un événement majeur et inhabituel. L'article 513-5 y range aussi les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées : <code>687</code> / <code>787</code>), l'incidence des changements de méthodes comptabilisée en résultat pour des raisons fiscales et les corrections d'erreurs, sauf celles qui corrigent une écriture imputée directement sur les capitaux propres.",
      "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes 2026, comptes 687 et 787",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
@@ -325,7 +325,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2026-04</b> du 4 mai 2026, homologué par arrêté du 12 août 2026 (JO du 3 septembre 2026) : il réécrit l'article 515-1 du PCG sur la comptabilisation de l'impôt sur les bénéfices et des contributions qui s'y rattachent (contribution exceptionnelle des grandes entreprises, contribution sociale sur les bénéfices) ; le taux appliqué reste celui en vigueur à la date de clôture.",
+     "t": "<b>Règlement ANC n° 2026-04</b> du 4 mai 2026, homologué par arrêté du 12 août 2026 (JO du 3 septembre 2026) : il réécrit l'article 515-1 du PCG sur la comptabilisation de l'impôt sur les bénéfices et des contributions qui s'y rattachent (contribution exceptionnelle des grandes entreprises, contribution sociale sur les bénéfices) ; le taux appliqué reste celui en vigueur à la date de clôture. Le règlement entre en vigueur le lendemain de sa publication au Journal officiel et s'applique aux exercices en cours à cette date.",
      "src": "Règlement ANC n° 2026-04 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04 (JORFTEXT000054791025)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/REGLT_2026_04_JO-SITE.pdf",
      "fiab": "millésimé 2026"

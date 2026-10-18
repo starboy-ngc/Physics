@@ -1,6 +1,6 @@
 {
  "id": "ue2-01",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue2-01-k01",
@@ -24,7 +24,7 @@
     "Définitions#1",
     "Ce qui a changé récemment#0"
    ],
-   "src": "C. com., art. L. 526-22",
+   "src": "C. com., art. L. 526-22 ; LPF, art. L. 273 B ; CSS, art. L. 133-4-7",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
    "fiab": "stable"
   },
@@ -32,11 +32,11 @@
    "id": "ue2-01-k03",
    "type": "comp",
    "q": "Sur quel patrimoine les créanciers professionnels d'un entrepreneur individuel peuvent-ils agir ?",
-   "r": "<b>En principe, sur le seul patrimoine professionnel</b>, sauf sûreté conventionnelle ou renonciation. Cette règle découle de la séparation des patrimoines professionnel et personnel instaurée par la loi du 14 février 2022.",
+   "r": "<b>En principe, sur le seul patrimoine professionnel</b>, sauf sûreté conventionnelle ou renonciation. Par exception, l'administration fiscale et les organismes de recouvrement des cotisations sociales peuvent agir sur les deux patrimoines, notamment en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales ou sociales.",
    "base": [
     "Définitions#1"
    ],
-   "src": "C. com., art. L. 526-22",
+   "src": "C. com., art. L. 526-22 ; LPF, art. L. 273 B ; CSS, art. L. 133-4-7",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
    "fiab": "stable"
   },
@@ -60,7 +60,7 @@
    "base": [
     "Définitions#2"
    ],
-   "src": "C. civ., art. 1842 ; C. com., art. L. 210-6",
+   "src": "C. civ., art. 1842 et 1871 ; C. com., art. L. 210-6",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049876831",
    "fiab": "stable"
   },
@@ -205,7 +205,7 @@
    "base": [
     "Règles essentielles#6"
    ],
-   "src": "C. civ., art. 1843-3, al. 4",
+   "src": "C. civ., art. 1843-3",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444153/",
    "fiab": "stable"
   },
@@ -241,7 +241,7 @@
    "base": [
     "Règles essentielles#9"
    ],
-   "src": "C. com., art. L. 223-22",
+   "src": "C. com., art. L. 223-22 ; Cass. com., 20 mai 2003, n° 99-17.092",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
    "fiab": "stable"
   },
@@ -266,7 +266,7 @@
     "Règles essentielles#10",
     "Chiffres et seuils#2"
    ],
-   "src": "C. civ., art. 1844-5",
+   "src": "C. civ., art. 1844-5 ; C. com., art. L. 223-4 et L. 227-4",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444165",
    "fiab": "stable"
   },
@@ -387,7 +387,7 @@
    "base": [
     "Points de vigilance#0"
    ],
-   "src": "Cass. com., 9 mars 1993, n° 91-14.685 (Flandin)",
+   "src": "Cass. com., 9 mars 1993, n° 91-14.685 (Flandin) ; Cass. com., 31 mars 2009, n° 08-11.860",
    "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007030292/",
    "fiab": "stable"
   },

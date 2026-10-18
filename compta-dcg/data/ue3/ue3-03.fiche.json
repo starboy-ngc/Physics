@@ -1,6 +1,6 @@
 {
  "id": "ue3-03",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 3 Droit social, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026. Intitulés repris des extraits officiels disponibles ; le détail des savoirs associés figure dans l'annexe 1 de chaque arrêté.",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -79,10 +79,10 @@
    "version": "en vigueur (congé de paternité : loi n° 2020-1576 du 14 décembre 2020)"
   },
   {
-   "ref": "C. trav., art. L. 1225-46-2 à L. 1225-46-7",
+   "ref": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 ; D. 1225-11-4",
    "objet": "Congé supplémentaire de naissance",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000053271681/",
-   "version": "en vigueur depuis le 1er juillet 2026 (loi n° 2025-1403 du 30 décembre 2025 ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026)"
+   "version": "en vigueur depuis le 1er juillet 2026 (loi n° 2025-1403 du 30 décembre 2025 ; D. 1225-11-4 : décret n° 2026-419 du 30 mai 2026 ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026)"
   },
   {
    "ref": "C. trav., art. L. 1152-1 à L. 1155-2",
@@ -180,7 +180,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Saisie des rémunérations</b> : les sommes dues à titre de rémunération ne sont saisissables ou cessibles que dans des proportions et selon des seuils de rémunération fixés par décret en Conseil d'État (barème progressif par tranches) ; une somme égale au montant forfaitaire du revenu de solidarité active pour une personne seule est, dans tous les cas, laissée à la disposition du salarié.",
+     "t": "<b>Saisie des rémunérations</b> : sous réserve des dispositions relatives aux pensions alimentaires, les sommes dues à titre de rémunération ne sont saisissables ou cessibles que dans des proportions et selon des seuils de rémunération, affectés d'un correctif pour toute personne à charge, fixés par décret en Conseil d'État (barème progressif par tranches). Le prélèvement direct des pensions alimentaires peut, lui, être poursuivi sur l'intégralité de la rémunération. Dans tous les cas, une somme égale au montant forfaitaire du revenu de solidarité active pour une personne seule est laissée à la disposition du salarié.",
      "src": "C. trav., art. L. 3252-2 et L. 3252-5 ; R. 3252-2 et R. 3252-5",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
      "fiab": "stable"
@@ -230,13 +230,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Inaptitude et reclassement</b> : l'employeur propose au salarié déclaré inapte un autre emploi approprié à ses capacités, au sein de l'entreprise ou des entreprises du groupe, en prenant en compte, après avis du CSE, les conclusions écrites du médecin du travail ; il en est dispensé si l'avis mentionne expressément que tout maintien du salarié dans un emploi serait gravement préjudiciable à sa santé ou que son état de santé fait obstacle à tout reclassement. Faute de reclassement ou de licenciement dans le délai d'un mois suivant l'examen médical de reprise, l'employeur verse le salaire correspondant à l'emploi occupé avant la suspension. En cas d'inaptitude d'origine professionnelle, le licenciement ouvre droit à une indemnité compensatrice d'un montant égal à l'indemnité de préavis et à une indemnité spéciale de licenciement égale, sauf disposition conventionnelle plus favorable, au double de l'indemnité légale.",
+     "t": "<b>Inaptitude et reclassement</b> : l'employeur propose au salarié déclaré inapte un autre emploi approprié à ses capacités, au sein de l'entreprise ou des entreprises du groupe situées sur le territoire national, en prenant en compte, après avis du CSE lorsqu'il existe, les conclusions écrites du médecin du travail ; il en est dispensé si l'avis mentionne expressément que tout maintien du salarié dans un emploi serait gravement préjudiciable à sa santé ou que son état de santé fait obstacle à tout reclassement. Faute de reclassement ou de licenciement dans le délai d'un mois suivant l'examen médical de reprise, l'employeur verse le salaire correspondant à l'emploi occupé avant la suspension. En cas d'inaptitude d'origine professionnelle, le licenciement ouvre droit à une indemnité compensatrice d'un montant égal à l'indemnité de préavis et à une indemnité spéciale de licenciement égale, sauf disposition conventionnelle plus favorable, au double de l'indemnité légale ; ces indemnités ne sont toutefois pas dues par l'employeur qui établit que le refus par le salarié du reclassement qui lui est proposé est abusif.",
+     "cite": "« Toutefois, ces indemnités ne sont pas dues par l'employeur qui établit que le refus par le salarié du reclassement qui lui est proposé est abusif. »",
      "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-11, L. 1226-12 et L. 1226-14",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177855/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Visite de reprise</b> : examen par le médecin du travail après un congé de maternité, une absence pour maladie professionnelle, une absence d'au moins 30 jours pour accident du travail ou d'au moins 60 jours pour maladie ou accident non professionnel ; dès qu'il connaît la date de fin de l'arrêt, l'employeur saisit le service de prévention et de santé au travail, qui organise l'examen le jour de la reprise effective et au plus tard dans les huit jours qui suivent. Depuis le 15 juin 2026, la visite de reprise n'est pas requise lorsque le travailleur a bénéficié d'une visite de préreprise dans les 30 jours précédant la reprise et que le médecin du travail a conclu qu'aucun aménagement n'était nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
+     "t": "<b>Visite de reprise</b> : examen par le médecin du travail après un congé de maternité, une absence pour maladie professionnelle, une absence d'au moins 30 jours pour accident du travail ou d'au moins 60 jours pour maladie ou accident non professionnel ; dès qu'il connaît la date de fin de l'arrêt, l'employeur saisit le service de prévention et de santé au travail, qui organise l'examen le jour de la reprise effective et au plus tard dans les huit jours qui suivent. Pour les arrêts de travail délivrés à compter du 15 juin 2026, la visite de reprise n'est pas requise lorsque le travailleur a bénéficié d'une visite de préreprise dans les 30 jours précédant la reprise effective et que le médecin du travail a conclu qu'aucune mesure d'aménagement, d'adaptation ou de transformation du poste, ni aucun aménagement du temps de travail, n'était nécessaire, sauf demande du médecin du travail, de l'employeur ou du travailleur.",
      "src": "C. trav., art. R. 4624-31 à R. 4624-33 (décret n° 2022-372 du 16 mars 2022 ; décret n° 2026-503 du 12 juin 2026)",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000045369250/",
      "fiab": "stable"
@@ -300,26 +301,26 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Congé supplémentaire de naissance (en vigueur depuis le 1er juillet 2026)</b> : institué par la loi de financement de la sécurité sociale pour 2026, il permet au salarié de prendre, au choix, un ou deux mois de congé, fractionnables en deux périodes d'un mois, les parents pouvant le prendre en même temps ou en alternance ; il débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant (pour les enfants nés entre le 1er janvier et le 30 juin 2026, ce délai court à compter du 1er juillet 2026). Le salarié prévient l'employeur un mois à l'avance, quinze jours lorsque le congé suit immédiatement le congé de paternité, d'accueil ou d'adoption.",
-     "src": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 (loi n° 2025-1403 du 30 décembre 2025) ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026",
+     "t": "<b>Congé supplémentaire de naissance (en vigueur depuis le 1er juillet 2026)</b> : institué par la loi de financement de la sécurité sociale pour 2026, il permet au salarié de prendre, au choix, un ou deux mois de congé, fractionnables en deux périodes d'un mois, les parents pouvant le prendre en même temps ou en alternance ; il débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant (pour les enfants nés entre le 1er janvier et le 30 juin 2026, ce délai court à compter du 1er juillet 2026). Le salarié informe l'employeur de la durée et de la date de début du congé, et de son éventuel fractionnement, au moins un mois avant le début du congé ; ce délai est ramené à quinze jours lorsque le congé suit immédiatement le congé de paternité et d'accueil de l'enfant ou le congé d'adoption et débute dans le mois suivant la naissance ou l'arrivée de l'enfant.",
+     "src": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 (loi n° 2025-1403 du 30 décembre 2025) et D. 1225-11-4 (décret n° 2026-419 du 30 mai 2026) ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000053271681/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Accord de performance collective (Cass. soc., 28 mai 2026)</b> : l'effet substitutif de l'APC ne vaut que pour ses stipulations relatives à la durée du travail, à la rémunération ou à la mobilité interne ; des clauses étrangères à ces objets (obligation de résidence, non-concurrence, licenciement en cas de perte d'habilitation) ne peuvent fonder le licenciement du salarié qui les refuse.",
+     "t": "<b>Accord de performance collective (Cass. soc., 28 mai 2026)</b> : l'effet substitutif de l'APC ne vaut que pour ses stipulations relatives à la durée du travail, à la rémunération ou à la mobilité interne ; le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord comportant des clauses étrangères à ces objets et modifiant ce contrat (obligation de résidence, non-concurrence, licenciement en cas de perte d'habilitation) est sans cause réelle et sérieuse.",
      "cite": "« le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord de performance collective comportant des dispositions étrangères à ces objets et modifiant son contrat de travail, est sans cause réelle et sérieuse »",
      "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin ; C. trav., art. L. 2254-2",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
      "fiab": "stable"
     },
     {
-     "t": "<b>Visites de préreprise et de reprise</b> : le décret n° 2022-372 du 16 mars 2022 a réservé la visite de reprise après maladie ou accident non professionnel aux absences d'au moins 60 jours (30 jours pour un accident du travail) et ouvert la visite de préreprise aux arrêts de plus de 30 jours. Le décret n° 2026-503 du 12 juin 2026 (en vigueur le 15 juin 2026) dispense de visite de reprise le travailleur ayant bénéficié d'une visite de préreprise dans les 30 jours précédant la reprise lorsque le médecin du travail a conclu qu'aucun aménagement n'était nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
-     "src": "C. trav., art. R. 4624-29 à R. 4624-31",
+     "t": "<b>Visites de préreprise et de reprise</b> : le décret n° 2022-372 du 16 mars 2022 a réservé la visite de reprise après maladie ou accident non professionnel aux absences d'au moins 60 jours (30 jours pour un accident du travail) et ouvert la visite de préreprise aux arrêts de plus de 30 jours. Le décret n° 2026-503 du 12 juin 2026, publié au Journal officiel du 14 juin 2026 et applicable aux arrêts de travail délivrés à compter du lendemain de sa publication (15 juin 2026), dispense de visite de reprise le travailleur ayant bénéficié d'une visite de préreprise dans les 30 jours précédant la reprise effective lorsque le médecin du travail a conclu qu'aucune mesure d'aménagement, d'adaptation ou de transformation du poste, ni aucun aménagement du temps de travail, n'était nécessaire, sauf demande du médecin du travail, de l'employeur ou du travailleur.",
+     "src": "C. trav., art. R. 4624-29 à R. 4624-31 ; décret n° 2022-372 du 16 mars 2022 ; décret n° 2026-503 du 12 juin 2026",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000045369248/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement intérieur (loi n° 2026-403 du 26 mai 2026, art. 5)</b> : depuis le 28 mai 2026, l'article L. 1321-4 ne vise plus les formalités de dépôt ; le règlement intérieur, qui fixe l'échelle des sanctions, entre en vigueur un mois après les formalités de publicité, le dépôt au greffe du conseil de prud'hommes restant prévu par l'article R. 1321-2.",
+     "t": "<b>Règlement intérieur (loi n° 2026-403 du 26 mai 2026, art. 5)</b> : depuis le 28 mai 2026, l'article L. 1321-4 ne vise plus les formalités de dépôt ; le règlement intérieur, qui fixe l'échelle des sanctions, entre en vigueur à la date qu'il indique, laquelle doit être postérieure d'un mois à l'accomplissement des formalités de publicité, le dépôt au greffe du conseil de prud'hommes restant prévu par l'article R. 1321-2.",
      "cite": "« Cette date doit être postérieure d'un mois à l'accomplissement des formalités de publicité. »",
      "src": "Loi n° 2026-403 du 26 mai 2026, art. 5 ; C. trav., art. L. 1321-4 et R. 1321-2",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054131386",

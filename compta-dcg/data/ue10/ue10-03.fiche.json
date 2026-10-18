@@ -1,6 +1,6 @@
 {
  "id": "ue10-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026 ; intitulés « Cadre conceptuel » et « Rattachement des charges et des produits au résultat de l'exercice » repris du programme de l'UE 10 publié au BO n° 13 du 27 mars 2014",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -43,7 +43,7 @@
   },
   {
    "ref": "CGI, art. 39 A ; CGI, ann. II, art. 22",
-   "objet": "Amortissement dégressif : champ, coefficients, biens exclus",
+   "objet": "Amortissement dégressif : champ, biens éligibles, coefficients, biens exclus",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
    "version": "en vigueur"
   },
@@ -72,8 +72,8 @@
    "version": "BOFiP du 5 août 2026"
   },
   {
-   "ref": "BOI-BIC-AMT-20-20-20 et BOI-BIC-AMT-20-20-30",
-   "objet": "Amortissement dégressif : biens concernés, point de départ, taux, passage au linéaire",
+   "ref": "BOI-BIC-AMT-20-20-10, BOI-BIC-AMT-20-20-20 et BOI-BIC-AMT-20-20-30",
+   "objet": "Amortissement dégressif : entreprises et biens concernés, point de départ, taux, passage au linéaire",
    "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
    "version": "BOFiP du 12 septembre 2012"
   },
@@ -162,14 +162,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amortissement dégressif</b> (fiscal) : réservé aux biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués par les entreprises industrielles ; les taux dégressifs s'obtiennent en multipliant les taux linéaires par un coefficient fonction de la durée normale d'utilisation.",
+     "t": "<b>Amortissement dégressif</b> (fiscal) : réservé aux biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués par les entreprises industrielles ; les taux dégressifs s'obtiennent en multipliant les taux linéaires par un coefficient fonction de la durée normale d'utilisation. Selon la doctrine administrative, le régime est ouvert aux entreprises passibles de l'impôt sur les sociétés, quelle que soit la nature de leur activité, et aux entreprises imposées à l'impôt sur le revenu dans la catégorie des BIC ; les entreprises commerciales qui possèdent des immobilisations identiques à celles des entreprises industrielles y sont admises dans les mêmes conditions. Les biens éligibles, énumérés à l'article 22 de l'annexe II, comprennent notamment les matériels et outillages utilisés pour des opérations industrielles de fabrication, de transformation ou de transport et les matériels de manutention.",
      "cite": "« L'amortissement des biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués à compter du 1er janvier 1960 par les entreprises industrielles »",
-     "src": "CGI, art. 39 A",
+     "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-10",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
      "fiab": "stable"
     },
     {
-     "t": "<b>Calcul du dégressif</b> : la première annuité se rattache à l'exercice d'acquisition et est ajustée en fonction de la durée courue du premier jour du mois de l'acquisition à la clôture ; l'annuité s'applique à la valeur résiduelle, et lorsque l'annuité dégressive devient inférieure à la valeur résiduelle divisée par le nombre d'années restant à courir, l'entreprise peut pratiquer cette dernière annuité (passage au linéaire).",
+     "t": "<b>Calcul du dégressif</b> : la première annuité se rattache à l'exercice d'acquisition ou de construction et est ajustée en fonction de la durée courue du premier jour du mois de l'acquisition ou de la construction à la clôture. L'annuité s'applique à la valeur résiduelle, entendue ici comme la valeur restant à amortir (et non comme la valeur résiduelle déduite du montant amortissable en comptabilité) ; lorsque l'annuité dégressive devient inférieure à la valeur résiduelle divisée par le nombre d'années restant à courir, l'entreprise peut pratiquer cette dernière annuité (passage au linéaire).",
      "src": "BOI-BIC-AMT-20-20-30",
      "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
      "fiab": "stable"
@@ -310,9 +310,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : modifie divers règlements de l'ANC en coordination avec le règlement n° 2022-06, pour les exercices ouverts à compter du 1er janvier 2025. Dans le plan de comptes du PCG, le compte 757 enregistre les produits des cessions d'immobilisations incorporelles et corporelles et les gains de change sur créances et dettes commerciales relèvent du compte 756 ; les sujets antérieurs à 2025 utilisent encore 675/775.",
+     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : modifie divers règlements de l'ANC en coordination avec le règlement n° 2022-06, pour les exercices ouverts à compter du 1er janvier 2025. Les comptes de cession relèvent, eux, du plan de comptes du PCG issu du règlement n° 2022-06 : le compte 757 enregistre les produits des cessions d'immobilisations incorporelles et corporelles ; dans le plan de comptes 2026, les gains de change sur créances et dettes commerciales relèvent du compte 756. Les sujets antérieurs à 2025 utilisent encore 675/775.",
      "cite": "« Le présent règlement s'applique aux comptes afférents aux exercices ouverts à compter du 1er janvier 2025. »",
-     "src": "Règlement ANC n° 2023-03 ; PCG, plan de comptes 2026",
+     "src": "Règlement ANC n° 2023-03 ; règlement ANC n° 2022-06 ; PCG, plan de comptes 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
      "fiab": "stable"
     },
@@ -342,14 +342,14 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "La <b>durée d'utilisation</b> comptable (propre à l'entité) diffère de la <b>durée d'usage</b> fiscale : l'écart entre amortissement fiscal et amortissement comptable passe par les amortissements dérogatoires ; seules les petites entreprises peuvent aligner les deux durées.",
+     "t": "La <b>durée d'utilisation</b> comptable (propre à l'entité) se distingue de la <b>durée d'usage</b> fiscale : l'excédent de l'amortissement fiscal sur l'amortissement comptable est constaté en amortissements dérogatoires ; seules les petites entreprises peuvent, par mesure de simplification, retenir la durée d'usage au lieu de la durée d'utilisation pour le plan d'amortissement de leurs immobilisations non décomposables.",
      "src": "PCG, art. 214-13 ; CGI, art. 39 B",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Point de départ</b> : la première annuité dégressive court du premier jour du mois d'acquisition (prorata en mois), alors que l'amortissement linéaire part en principe de la mise en service ; une mise en service postérieure à l'acquisition crée un écart entre les deux plans. Pour un bien acheté, la date d'acquisition est celle de l'accord sur la chose et le prix, même si la livraison et le paiement interviennent plus tard.",
-     "src": "BOI-BIC-AMT-20-20-30",
+     "t": "<b>Point de départ</b> : la première annuité dégressive court du premier jour du mois d'acquisition ou de construction du bien (prorata en mois), alors que l'amortissement linéaire part en principe de la mise en service ; une mise en service postérieure à l'acquisition crée un écart entre les deux plans. Pour un bien acheté, la date d'acquisition est en principe celle de l'accord sur la chose et le prix, même si la livraison et le paiement interviennent plus tard : le transfert de propriété s'opère lors de la conclusion du contrat, mais peut être différé par la volonté des parties, la nature des choses ou l'effet de la loi.",
+     "src": "BOI-BIC-AMT-20-20-30 ; C. civ., art. 1196",
      "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
      "fiab": "stable"
     },

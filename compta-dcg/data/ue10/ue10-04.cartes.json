@@ -1,6 +1,6 @@
 {
  "id": "ue10-04",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue10-04-k01",
@@ -255,7 +255,7 @@
     "Règles essentielles#11"
    ],
    "src": "PCG, art. 622-1 et suivants ; C. com., art. L. 123-18 (dépréciation)",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -399,7 +399,7 @@
    "id": "ue10-04-k33",
    "type": "comp",
    "q": "Quel référentiel régit les stocks, les contrats à long terme et les opérations en devises dans les comptes individuels ?",
-   "r": "<b>Le PCG, et non les normes IFRS</b> : l'article L. 233-24 du Code de commerce ne vise que les comptes consolidés. En comptes consolidés IFRS, ces opérations relèvent d'IAS 2 (stocks), d'IFRS 15 (contrats de construction) et d'IAS 21 (devises).",
+   "r": "<b>Les règles françaises (Code de commerce et PCG), et non les normes IFRS</b> : l'article L. 233-24 du Code de commerce ne vise que les comptes consolidés. En comptes consolidés IFRS, ces opérations relèvent d'IAS 2 (stocks), d'IFRS 15 (contrats de construction) et d'IAS 21 (devises).",
    "base": [
     "Points de vigilance#5"
    ],

@@ -1,6 +1,6 @@
 {
  "id": "ue9-07",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-07-k01",
@@ -42,7 +42,7 @@
    "id": "ue9-07-k04",
    "type": "def",
    "q": "Qu'est-ce qu'un produit à recevoir à la clôture de l'exercice ?",
-   "r": "<b>Un produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture.</b> Comptes : 4181 factures à établir, 4482 État, 439 organismes sociaux, 467 produits à recevoir divers.",
+   "r": "<b>Un produit acquis à l'exercice mais non encore comptabilisé à la clôture, faute d'avoir établi la facture ou reçu la pièce justificative.</b> Comptes : 4181 factures à établir (livraison effectuée, prestation exécutée), 4482 État, 439 organismes sociaux, 467 produits à recevoir divers.",
    "base": [
     "Définitions#2"
    ],
@@ -385,7 +385,7 @@
    "base": [
     "Règles essentielles#15"
    ],
-   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457",
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457 ; C. com., art. L. 232-11",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },
@@ -397,7 +397,7 @@
    "base": [
     "Règles essentielles#15"
    ],
-   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457",
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457 ; C. com., art. L. 232-11",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },

@@ -1,6 +1,6 @@
 {
  "id": "ue9-06",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-06-k01",
@@ -11,7 +11,7 @@
     "Définitions#0"
    ],
    "src": "PCG, art. 211-7",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -205,7 +205,7 @@
    "base": [
     "Règles essentielles#8"
    ],
-   "src": "PCG, art. 214-6 et règles d'évaluation des stocks à la clôture ; BOI-BIC-PDSTK-20-20-10-20",
+   "src": "PCG, art. 214-6 ; BOI-BIC-PDSTK-20-20-10-20",
    "url": "https://bofip.impots.gouv.fr/bofip/1491-PGP.html/identifiant=BOI-BIC-PDSTK-20-20-10-20-20130923",
    "fiab": "stable"
   },
@@ -213,11 +213,11 @@
    "id": "ue9-06-k18",
    "type": "comp",
    "q": "Selon le plan de comptes du PCG, comment traite-t-on une créance client devenue douteuse ?",
-   "r": "<b>Elle est virée du compte 411 au compte 416 « Clients douteux ou litigieux » pour son montant TTC.</b> La dépréciation (68174 / 491) porte sur la perte probable, mesurée hors taxes, puisque la TVA collectée sur une créance devenue irrécouvrable est récupérable.",
+   "r": "<b>Elle est virée du compte 411 au compte 416 « Clients douteux ou litigieux » pour son montant TTC.</b> La dépréciation (68174 / 491) porte sur la perte probable, mesurée hors taxes : la TVA déjà exigible est récupérable si la créance devient irrécouvrable, et celle d'une prestation de services sans option pour les débits n'est exigible qu'à l'encaissement.",
    "base": [
     "Règles essentielles#9"
    ],
-   "src": "Plan de comptes 2026, comptes 416, 491 et 68174 ; PCG, art. 214-5 ; CGI, art. 272",
+   "src": "Plan de comptes 2026, comptes 416, 491 et 68174 ; PCG, art. 214-5 ; CGI, art. 269, 2-a et 2-c, et 272",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },
@@ -230,7 +230,7 @@
     "Points de vigilance#0",
     "Règles essentielles#11"
    ],
-   "src": "Plan de comptes 2026, comptes 416 et 491 ; CGI, art. 272 ; BOI-TVA-DED-40-10-20",
+   "src": "Plan de comptes 2026, comptes 416 et 491 ; CGI, art. 269, 2-c, et 272 ; BOI-TVA-DED-40-10-20",
    "url": "https://bofip.impots.gouv.fr/bofip/1100-PGP.html/identifiant=BOI-TVA-DED-40-10-20-20170405",
    "fiab": "stable"
   },
@@ -280,7 +280,7 @@
     "Règles essentielles#13"
    ],
    "src": "PCG, art. 221-3, 221-6 et 222-1",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -304,7 +304,7 @@
     "Règles essentielles#15"
    ],
    "src": "PCG, art. 322-1, 322-2 et 322-4 ; règlement ANC n° 2022-06 (informations en annexe)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -341,7 +341,7 @@
     "Règles essentielles#19"
    ],
    "src": "PCG, art. 323-10 et 512-1",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -352,8 +352,8 @@
    "base": [
     "Règles essentielles#18"
    ],
-   "src": "PCG, art. 323-2 et 323-3 et règles de comptabilisation des passifs (titre III) ; ANC, note sur les liens entre états financiers et durabilité (février 2025)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/4_Durabilit%C3%A9/Ressources%20P%C3%A9dagogiques/Liens-entre-les-etats-financiers-et-de-durabilite-sur-le-climat---Contribution-de-l-ANC-a-la-reflexion---202502.pdf",
+   "src": "PCG, art. 323-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -376,7 +376,7 @@
    "base": [
     "Ce qui a changé récemment#4"
    ],
-   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; CGI, art. 272 ; BOI-RES-TVA-000253",
+   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; ordonnance n° 2026-671 du 27 juillet 2026 et rapport au Président de la République ; CGI, art. 272 ; BOI-RES-TVA-000253",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
    "fiab": "stable"
   },
@@ -389,7 +389,7 @@
     "Points de vigilance#1"
    ],
    "src": "PCG, art. 214-5, 321-1 et 321-5 ; plan de comptes 2026",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -413,7 +413,7 @@
     "Règles essentielles#15"
    ],
    "src": "PCG, art. 322-1, 322-2 et 322-4 ; règlement ANC n° 2022-06 (informations en annexe)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {

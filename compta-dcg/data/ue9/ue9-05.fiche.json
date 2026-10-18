@@ -1,6 +1,6 @@
 {
  "id": "ue9-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -132,7 +132,8 @@
      "t": "<b>Immobilisation corporelle</b> : actif physique détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours. Selon le commentaire de l'ANC, cette utilisation au-delà de l'exercice en cours s'entend d'une utilisation d'une durée supérieure à 12 mois.",
      "src": "PCG, art. 211-6 et commentaire de l'ANC (recueil des normes comptables françaises au 1er janvier 2026)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/Recueil-PCG-Janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« de l'article 211-6 doivent être interprétées comme une utilisation d'une durée supérieure à 12 mois »"
     },
     {
      "t": "<b>Participations</b> (titres de participation, compte <code>261</code>) : droits dans le capital d'autres personnes morales, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. Les titres représentant une fraction du capital supérieure à 10 % sont présumés être des participations.",
@@ -175,7 +176,7 @@
      "cite": "« les biens acquis à titre onéreux sont enregistrés à leur coût d'acquisition, les biens acquis à titre gratuit à leur valeur vénale et les biens produits à leur coût de production. »"
     },
     {
-     "t": "<b>Coût d'acquisition</b> d'une immobilisation corporelle : prix d'achat, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, augmenté de tous les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction (livraison, installation et montage, honoraires d'architecte par exemple).",
+     "t": "<b>Coût d'acquisition</b> d'une immobilisation corporelle : prix d'achat, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, augmenté de tous les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction (livraison, installation et montage, honoraires d'architecte par exemple). S'y ajoute l'<b>estimation initiale des coûts de démantèlement</b>, d'enlèvement et de restauration du site sur lequel l'immobilisation est située, en contrepartie de l'obligation encourue.",
      "src": "PCG, art. 213-8 ; C. com., art. R. 123-178",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
@@ -229,8 +230,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amortissement dégressif</b> (fiscal) : il vise les biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués par les entreprises industrielles et figurant sur la liste de l'annexe II ; les biens déjà usagés lors de leur acquisition et ceux dont la durée normale d'utilisation est inférieure à trois ans en sont exclus, de même que les voitures de tourisme. Le taux dégressif est le taux linéaire multiplié par un coefficient.",
-     "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-20-10 et BOI-BIC-AMT-20-20-20-30",
+     "t": "<b>Amortissement dégressif</b> (fiscal) : il vise les biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués par les entreprises industrielles et figurant sur la liste de l'annexe II ; les biens déjà usagés lors de leur acquisition et ceux dont la durée normale d'utilisation est inférieure à trois ans en sont exclus, de même que les voitures de tourisme. L'administration admet que les entreprises commerciales en bénéficient pour des immobilisations identiques à celles des entreprises industrielles. Le taux dégressif est le taux linéaire multiplié par un coefficient.",
+     "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-10, BOI-BIC-AMT-20-20-20-10 et BOI-BIC-AMT-20-20-20-30",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
      "fiab": "stable",
      "cite": "« L'amortissement des biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués à compter du 1er janvier 1960 par les entreprises industrielles »"
@@ -318,7 +319,7 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Règlement ANC n° 2022-06</b> (homologué par arrêté du 26 décembre 2023, exercices ouverts à compter du 1er janvier 2025) : la cession d'une immobilisation incorporelle ou corporelle relève du <b>résultat d'exploitation</b> (comptes <code>657</code> et <code>757</code>) et les anciens comptes exceptionnels 675 et 775 ne figurent plus au plan de comptes. Le résultat exceptionnel est réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale.",
+     "t": "<b>Règlement ANC n° 2022-06</b> (homologué par arrêté du 26 décembre 2023, exercices ouverts à compter du 1er janvier 2025) : la cession d'une immobilisation incorporelle ou corporelle relève en principe du <b>résultat d'exploitation</b> (comptes <code>657</code> et <code>757</code>) et les anciens comptes exceptionnels 675 et 775 ne figurent plus au plan de comptes. Le résultat exceptionnel est réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale.",
      "src": "Règlement ANC n° 2022-06 ; PCG, art. 513-5 ; plan de comptes, comptes 657 et 757",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
@@ -346,8 +347,8 @@
      "cite": "« Prorogation du dispositif temporaire de déductibilité de l’amortissement constaté au titre des fonds commerciaux »"
     },
     {
-     "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b>, relatif à la comptabilisation des produits des ventes (homologué par arrêté du 12 août 2026, exercices ouverts à compter du 1er janvier 2027) : la définition du résultat exceptionnel issue du règlement n° 2022-06 (événement majeur et inhabituel) est reprise à l'article 531-5 du PCG.",
-     "src": "Règlement ANC n° 2026-03 ; arrêté du 12 août 2026",
+     "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b>, relatif à la comptabilisation des produits des ventes (homologué par arrêté du 12 août 2026, exercices ouverts à compter du 1er janvier 2027) : la définition du résultat exceptionnel issue du règlement n° 2022-06 (événement majeur et inhabituel), qui figure à l'article 513-5 du PCG au 1er janvier 2026, est reprise par ce règlement à l'article 531-5.",
+     "src": "Règlement ANC n° 2026-03 ; arrêté du 12 août 2026 ; PCG, art. 513-5 et 531-5",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
      "fiab": "stable"
     }
@@ -389,7 +390,7 @@
      "cite": "« Sont exclus du bénéfice de l'amortissement dégressif les biens qui étaient déjà usagés au moment de leur acquisition par l'entreprise ainsi que ceux dont la durée normale d'utilisation est inférieure à trois ans. »"
     },
     {
-     "t": "Lien UE4 et DSCG : fiscalement, la plus-value de cession d'un élément acquis ou créé depuis moins de deux ans est à court terme ; pour un élément amortissable détenu depuis au moins deux ans, elle est à court terme à hauteur des amortissements déduits et à long terme au-delà (entreprises relevant de l'impôt sur le revenu). Cette qualification ne modifie pas l'enregistrement comptable en 657 et 757.",
+     "t": "Lien UE4 et DSCG : fiscalement, pour les entreprises relevant de l'impôt sur le revenu, la plus-value de cession d'un élément acquis ou créé depuis moins de deux ans est à court terme ; pour un élément amortissable détenu depuis au moins deux ans, elle est à court terme à hauteur des amortissements déduits et à long terme au-delà. Cette qualification ne modifie pas l'enregistrement comptable en 657 et 757.",
      "src": "CGI, art. 39 duodecies",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
      "fiab": "stable",

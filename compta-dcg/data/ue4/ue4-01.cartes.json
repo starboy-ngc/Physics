@@ -1,6 +1,6 @@
 {
  "id": "ue4-01",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue4-01-k01",
@@ -114,7 +114,7 @@
    "id": "ue4-01-k10",
    "type": "comp",
    "q": "Comment une convention fiscale internationale peut-elle écarter le domicile fiscal en France résultant de l'article 4 B du CGI ?",
-   "r": "<b>Les critères de l'article 4 B s'appliquent sous réserve des conventions internationales</b> : un résident d'un autre État au sens d'une convention ne peut pas être regardé comme domicilié en France pour le droit interne, même si l'article 4 B le désigne comme tel.",
+   "r": "<b>Les critères de l'article 4 B s'appliquent sous réserve des conventions internationales, qui l'emportent sur le droit interne</b> : une personne domiciliée en France au sens de l'article 4 B mais résidente de l'autre État au sens de la convention est regardée comme résidente de cet État pour l'application de la convention, qui peut retirer à la France le droit d'imposer certains revenus.",
    "base": [
     "Points de vigilance#1"
    ],
@@ -138,11 +138,11 @@
    "id": "ue4-01-k12",
    "type": "def",
    "q": "Selon l'article 6 du CGI, quelles personnes forment le foyer fiscal soumis à imposition commune à l'impôt sur le revenu, et sur quels revenus ?",
-   "r": "<b>Les personnes mariées et les partenaires liés par un PACS</b>, imposés en commun sur leurs revenus, ceux de leurs enfants et ceux des personnes à charge, sauf cas d'imposition distincte (séparation, abandon du domicile conjugal, option l'année du mariage ou du PACS).",
+   "r": "<b>Les personnes mariées et les partenaires liés par un PACS</b>, imposés en commun sur leurs revenus, ceux de leurs enfants et ceux des personnes à charge, sauf cas d'imposition distincte (séparation, abandon du domicile conjugal, année du divorce ou de la dissolution du PACS, option l'année du mariage ou du PACS).",
    "base": [
     "Définitions#5"
    ],
-   "src": "CGI, art. 6, 1, 4 et 5",
+   "src": "CGI, art. 6, 1, 4, 5 et 6",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
    "fiab": "stable"
   },
@@ -154,7 +154,7 @@
    "base": [
     "Définitions#5"
    ],
-   "src": "CGI, art. 6, 1, 4 et 5",
+   "src": "CGI, art. 6, 1, 4, 5 et 6",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
    "fiab": "stable"
   },
@@ -166,7 +166,7 @@
    "base": [
     "Définitions#5"
    ],
-   "src": "CGI, art. 6, 1, 4 et 5",
+   "src": "CGI, art. 6, 1, 4, 5 et 6",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
    "fiab": "stable"
   },
@@ -392,7 +392,7 @@
    "id": "ue4-01-k33",
    "type": "comp",
    "q": "À quelle condition une prise de position tacite de l'administration sur les points d'un contrôle fiscal lui est-elle opposable par le contribuable ?",
-   "r": "<b>L'administration doit avoir pu se prononcer en connaissance de cause.</b> La garantie vise les points d'un contrôle tel qu'une vérification de comptabilité ou un examen contradictoire de la situation fiscale personnelle, pour les contrôles dont l'avis est adressé à compter du 1er janvier 2019.",
+   "r": "<b>L'administration doit avoir pu se prononcer en connaissance de cause.</b> La garantie vise les points d'un contrôle tel qu'un examen ou une vérification de comptabilité ou un examen contradictoire de la situation fiscale personnelle, pour les contrôles dont l'avis est adressé à compter du 1er janvier 2019.",
    "base": [
     "Définitions#3"
    ],

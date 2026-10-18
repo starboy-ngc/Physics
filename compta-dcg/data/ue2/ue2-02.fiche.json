@@ -1,6 +1,6 @@
 {
  "id": "ue2-02",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE2 Droit des sociétés et des groupements d'affaires), BO ESR n° 26 du 27 juin 2019, applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -135,7 +135,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Conventions avec la société</b> : trois catégories. Réglementées (rapport à l'assemblée, qui statue en principe après leur conclusion, L. 223-19), libres (opérations courantes conclues à des conditions normales, L. 223-20), interdites à peine de nullité du contrat (emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée, L. 223-21).",
+     "t": "<b>Conventions avec la société</b> : trois catégories. Réglementées (rapport à l'assemblée, qui statue en principe après leur conclusion, L. 223-19), libres (opérations courantes conclues à des conditions normales, L. 223-20), interdites à peine de nullité du contrat (emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée, L. 223-21). Toutefois, si la société exploite un établissement financier, cette interdiction ne s'applique pas aux opérations courantes de ce commerce conclues à des conditions normales.",
      "src": "C. com., art. L. 223-19 à L. 223-21",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
      "fiab": "stable"
@@ -178,9 +178,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Révocation du gérant</b> : par décision des associés dans les conditions de majorité de l'article L. 223-29 (plus de la moitié des parts sociales), à moins que les statuts ne prévoient une majorité plus forte ; décidée sans juste motif, elle peut donner lieu à dommages-intérêts. Le gérant est en outre révocable par les tribunaux pour cause légitime, à la demande de tout associé.",
-     "src": "C. com., art. L. 223-25",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "t": "<b>Révocation du gérant</b> : par décision des associés dans les conditions de l'article L. 223-29, c'est-à-dire à la majorité des décisions ordinaires (plus de la moitié des parts sociales en première consultation ; à défaut, et sauf stipulation contraire des statuts, majorité des votes émis en seconde consultation), à moins que les statuts ne prévoient une majorité plus forte ; décidée sans juste motif, elle peut donner lieu à dommages-intérêts. Le gérant est en outre révocable par les tribunaux pour cause légitime, à la demande de tout associé.",
+     "cite": "« Le gérant peut être révoqué par décision des associés dans les conditions de l'article L. 223-29, à moins que les statuts prévoient une majorité plus forte. »",
+     "src": "C. com., art. L. 223-25 et L. 223-29",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223152",
      "fiab": "stable"
     },
     {
@@ -190,21 +191,21 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Décisions extraordinaires</b> (modification des statuts) : dans les SARL constituées après la publication de la loi n° 2005-882 du 2 août 2005, quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis majorité des deux tiers des parts détenues par les associés présents ou représentés ; les statuts peuvent prévoir des quorums ou une majorité plus élevés, sans pouvoir exiger l'unanimité. Dans les SARL constituées antérieurement, majorité des trois quarts des parts sociales, sans quorum, sauf si les associés ont décidé à l'unanimité d'appliquer le nouveau régime.",
+     "t": "<b>Décisions extraordinaires</b> (modification des statuts) : dans les SARL constituées après la publication de la loi n° 2005-882 du 2 août 2005, quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis majorité des deux tiers des parts détenues par les associés présents ou représentés ; les statuts peuvent prévoir des quorums ou une majorité plus élevés, sans pouvoir exiger l'unanimité. Dans les SARL constituées antérieurement, majorité des trois quarts des parts sociales, sans quorum, sauf si les associés ont décidé à l'unanimité d'appliquer le nouveau régime. Par dérogation à ces règles de majorité, la décision d'augmenter le capital par incorporation de bénéfices ou de réserves est prise par les associés représentant au moins la moitié des parts sociales.",
      "src": "C. com., art. L. 223-30",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
      "fiab": "stable"
     },
     {
-     "t": "<b>Unanimité</b> : exigée pour changer la nationalité de la société, pour toute augmentation des engagements des associés et pour la transformation en société en nom collectif, en commandite simple ou par actions, ou en société par actions simplifiée. Par dérogation, l'incorporation de bénéfices ou de réserves au capital est décidée par les associés représentant au moins la moitié des parts sociales.",
+     "t": "<b>Unanimité</b> : exigée pour changer la nationalité de la société, pour toute augmentation des engagements des associés et pour la transformation en société en nom collectif, en commandite simple ou par actions, ou en société par actions simplifiée.",
      "src": "C. com., art. L. 223-30, L. 223-43 et L. 227-3",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
      "fiab": "stable"
     },
     {
-     "t": "<b>Cession à un tiers</b> : les parts ne peuvent être cédées à des tiers qu'avec le consentement de la majorité des associés représentant au moins la moitié des parts sociales, sauf majorité statutaire plus forte ; sans décision dans les trois mois de la dernière notification du projet, le consentement est réputé acquis. En cas de refus, les associés doivent, dans les trois mois (délai prorogeable en justice de six mois au plus), acquérir ou faire acquérir les parts à un prix fixé selon l'article 1843-4 du Code civil, sauf renonciation du cédant ; la société peut aussi, avec le consentement du cédant, les racheter en réduisant son capital. À défaut, le cédant peut réaliser la cession initialement prévue ; toute clause contraire à ces règles est réputée non écrite.",
+     "t": "<b>Cession à un tiers</b> : les parts ne peuvent être cédées à des tiers qu'avec le consentement de la majorité des associés représentant au moins la moitié des parts sociales, sauf majorité statutaire plus forte ; sans décision dans les trois mois de la dernière notification du projet, le consentement est réputé acquis. En cas de refus, les associés doivent, dans les trois mois (délai prorogeable en justice de six mois au plus), acquérir ou faire acquérir les parts à un prix fixé selon l'article 1843-4 du Code civil, sauf renonciation du cédant ; la société peut aussi, avec le consentement du cédant, les racheter en réduisant son capital. À défaut, le cédant peut réaliser la cession initialement prévue. Sauf succession, liquidation de communauté de biens entre époux ou donation au profit d'un conjoint, d'un ascendant ou d'un descendant, le cédant qui ne détient pas ses parts depuis au moins deux ans ne peut se prévaloir ni de l'obligation d'acquisition par les associés ni de la faculté de réaliser la cession initialement prévue ; toute clause contraire à ces règles est réputée non écrite.",
      "src": "C. com., art. L. 223-14",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223059",
      "fiab": "stable"
     },
     {
@@ -227,7 +228,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Comptes annuels et mode de décision</b> : le rapport de gestion, l'inventaire et les comptes annuels établis par les gérants sont soumis à l'approbation des associés dans les six mois de la clôture de l'exercice, sauf prolongation de ce délai par décision de justice ; les comptes sont déposés au greffe dans le mois suivant leur approbation, délai porté à deux mois en cas de dépôt par voie électronique. Les décisions sont prises en assemblée, mais les statuts peuvent stipuler que toutes les décisions ou certaines d'entre elles, y compris l'approbation des comptes, sont prises par consultation écrite des associés, y compris par voie électronique.",
+     "t": "<b>Comptes annuels et mode de décision</b> : le rapport de gestion, l'inventaire et les comptes annuels établis par les gérants sont soumis à l'approbation des associés dans les six mois de la clôture de l'exercice, sauf prolongation de ce délai par décision de justice ; les comptes sont déposés au greffe dans le mois suivant leur approbation, délai porté à deux mois en cas de dépôt par voie électronique. Les décisions sont prises en assemblée, mais les statuts peuvent stipuler que toutes les décisions ou certaines d'entre elles, y compris l'approbation des comptes, sont prises par consultation écrite des associés, y compris par voie électronique, ou résultent du consentement de tous les associés exprimé dans un acte.",
      "src": "C. com., art. L. 223-26, L. 223-27 (loi n° 2024-537 du 13 juin 2024, art. 18) et L. 232-22",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049720548",
      "fiab": "stable"
@@ -239,8 +240,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Commissaire aux comptes</b> : la SARL doit en désigner au moins un lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; sa nomination peut aussi être demandée en justice par un ou plusieurs associés représentant au moins le dixième du capital. Il est nommé pour six exercices ; lorsqu'il est désigné de manière volontaire, la société peut limiter son mandat à trois exercices.",
-     "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46",
+     "t": "<b>Commissaire aux comptes</b> : la SARL doit en désigner au moins un lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; sa nomination peut aussi être demandée en justice par un ou plusieurs associés représentant au moins le dixième du capital. Il est nommé pour six exercices ; lorsqu'il est désigné de manière volontaire, la société peut limiter son mandat à trois exercices. Elle peut aussi y être tenue au titre d'un groupe, lorsqu'elle contrôle une ou plusieurs sociétés au sens de l'article L. 233-3 et que l'ensemble qu'elle forme avec elles dépasse, chiffres additionnés, les seuils fixés par décret pour deux des trois critères.",
+     "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46 ; contrôle légal des groupes : art. L. 821-40 et suivants (anciennement L. 823-1 et suivants)",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
      "fiab": "stable"
     },
@@ -275,7 +276,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Majorités</b> : plus de la moitié des parts sociales (décision ordinaire, première consultation) ; deux tiers des parts des associés présents ou représentés, avec quorum d'un quart puis d'un cinquième (décision extraordinaire, SARL constituées après la publication de la loi du 2 août 2005) ; trois quarts des parts sociales (SARL constituées antérieurement) ; majorité des associés représentant au moins la moitié des parts (agrément d'un tiers), trois mois de silence valant agrément.",
+     "t": "<b>Majorités</b> : plus de la moitié des parts sociales (décision ordinaire, première consultation), puis majorité des votes émis en seconde consultation, sauf stipulation contraire des statuts ; deux tiers des parts des associés présents ou représentés, avec quorum d'un quart puis d'un cinquième (décision extraordinaire, SARL constituées après la publication de la loi du 2 août 2005) ; trois quarts des parts sociales (SARL constituées antérieurement) ; majorité des associés représentant au moins la moitié des parts (agrément d'un tiers), trois mois de silence valant agrément.",
      "src": "C. com., art. L. 223-14, L. 223-29 et L. 223-30",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
      "fiab": "stable"
@@ -325,7 +326,7 @@
      "fiab": "millésimé 2024"
     },
     {
-     "t": "<b>Loi n° 2024-537 du 13 juin 2024</b> visant à accroître le financement des entreprises et l'attractivité de la France (art. 18) : à l'article L. 223-27, les mots « qu'à l'exception de celles prévues au premier alinéa de l'article L. 223-26 » sont remplacés par « que ». Depuis le 14 septembre 2024, les statuts peuvent donc prévoir que l'approbation annuelle des comptes, comme les autres décisions, est prise par consultation écrite des associés, y compris par voie électronique. Les manuels antérieurs enseignent encore que l'approbation des comptes exige une assemblée.",
+     "t": "<b>Loi n° 2024-537 du 13 juin 2024</b> visant à accroître le financement des entreprises et l'attractivité de la France (art. 18) : à l'article L. 223-27, les mots « qu'à l'exception de celles prévues au premier alinéa de l'article L. 223-26 » sont remplacés par « que ». Depuis le 14 septembre 2024, les statuts peuvent donc prévoir que l'approbation annuelle des comptes, comme les autres décisions, est prise par consultation écrite des associés, y compris par voie électronique, ou résulte du consentement de tous les associés exprimé dans un acte. Les manuels antérieurs enseignent encore que l'approbation des comptes exige une assemblée.",
      "src": "Loi n° 2024-537 du 13 juin 2024, art. 18, II, 2° ; C. com., art. L. 223-27 (version en vigueur depuis le 14 septembre 2024)",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000049707655",
      "fiab": "stable"
@@ -338,8 +339,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> : l'entrepreneur individuel est titulaire de deux patrimoines distincts, professionnel et personnel ; il peut en outre opter pour l'assimilation à une EURL et ainsi pour l'impôt sur les sociétés, sans créer de société.",
-     "src": "C. com., art. L. 526-22 ; CGI, art. 1655 sexies",
+     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> : l'entrepreneur individuel est titulaire de deux patrimoines distincts, professionnel et personnel. L'option pour l'assimilation à une EURL, et ainsi pour l'impôt sur les sociétés, sans création de société, résulte, elle, de la loi n° 2021-1900 du 30 décembre 2021 de finances pour 2022 (art. 13) ; elle est ouverte à l'entrepreneur individuel soumis à un régime réel d'imposition, le micro-entrepreneur devant d'abord opter pour un tel régime.",
+     "src": "C. com., art. L. 526-22 (loi n° 2022-172 du 14 février 2022) ; CGI, art. 1655 sexies (loi n° 2021-1900 du 30 décembre 2021, art. 13) ; BOI-BIC-CHAMP-70-10",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
      "fiab": "stable"
     }

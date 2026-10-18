@@ -1,6 +1,6 @@
 {
  "id": "ue4-05",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue4-05-k01",
@@ -279,7 +279,7 @@
    "base": [
     "Règles essentielles#10"
    ],
-   "src": "CGI, ann. II, art. 206, I à IV",
+   "src": "CGI, ann. II, art. 206, I à V",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
    "fiab": "stable"
   },

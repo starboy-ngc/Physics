@@ -1,6 +1,6 @@
 {
  "id": "ue2-02",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue2-02-k01",
@@ -146,8 +146,8 @@
     "Règles essentielles#5",
     "Règles essentielles#6"
    ],
-   "src": "C. com., art. L. 223-25",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "src": "C. com., art. L. 223-25 et L. 223-29",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223152",
    "fiab": "stable"
   },
   {
@@ -243,7 +243,7 @@
    "base": [
     "Règles essentielles#15"
    ],
-   "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46",
+   "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46 ; contrôle légal des groupes : art. L. 821-40 et suivants (anciennement L. 823-1 et suivants)",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
    "fiab": "stable"
   },
@@ -256,7 +256,7 @@
     "Règles essentielles#9"
    ],
    "src": "C. com., art. L. 223-14",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223059",
    "fiab": "stable"
   },
   {
@@ -268,7 +268,7 @@
     "Règles essentielles#9"
    ],
    "src": "C. com., art. L. 223-14",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223059",
    "fiab": "stable"
   },
   {
@@ -372,11 +372,11 @@
    "id": "ue2-02-k32",
    "type": "comp",
    "q": "Comment un entrepreneur individuel peut-il relever de l'impôt sur les sociétés sans créer de société ?",
-   "r": "<b>En optant pour l'assimilation à une EURL</b>, et ainsi pour l'impôt sur les sociétés. Depuis la loi du 14 février 2022, l'entrepreneur individuel est par ailleurs titulaire de deux patrimoines distincts, professionnel et personnel.",
+   "r": "<b>En optant pour l'assimilation à une EURL</b>, et ainsi pour l'impôt sur les sociétés, s'il est soumis à un régime réel d'imposition. Depuis la loi du 14 février 2022, l'entrepreneur individuel est par ailleurs titulaire de deux patrimoines distincts, professionnel et personnel.",
    "base": [
     "Ce qui a changé récemment#5"
    ],
-   "src": "C. com., art. L. 526-22 ; CGI, art. 1655 sexies",
+   "src": "C. com., art. L. 526-22 (loi n° 2022-172 du 14 février 2022) ; CGI, art. 1655 sexies (loi n° 2021-1900 du 30 décembre 2021, art. 13) ; BOI-BIC-CHAMP-70-10",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
    "fiab": "stable"
   },

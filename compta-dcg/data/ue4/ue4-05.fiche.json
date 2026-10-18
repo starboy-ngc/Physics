@@ -1,6 +1,6 @@
 {
  "id": "ue4-05",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -138,7 +138,7 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "<b>Exonérations</b> : soins médicaux et paramédicaux, enseignement, locations nues d'immeubles à usage d'habitation ou de terres agricoles, opérations bancaires et financières, assurances ; une exonération prive en principe du droit à déduction.",
+     "t": "<b>Exonérations</b> : soins médicaux et paramédicaux, enseignement, locations de terres agricoles et locations nues de locaux, à usage d'habitation comme à usage professionnel (pour ces derniers, sauf option du bailleur pour l'imposition), opérations bancaires et financières, assurances ; une exonération prive en principe du droit à déduction.",
      "src": "CGI, art. 261, 261 C, 261 D et 271",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
      "fiab": "stable"
@@ -157,7 +157,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Exportations et livraisons intracommunautaires</b> : les exportations vers les pays tiers et les livraisons intracommunautaires à un assujetti identifié dans un autre État membre sont exonérées avec maintien du droit à déduction ; l'exonération intracommunautaire exige le numéro de TVA valide de l'acquéreur, la sortie physique du bien et sa mention dans l'état récapitulatif.",
+     "t": "<b>Exportations et livraisons intracommunautaires</b> : les exportations vers les pays tiers et les livraisons intracommunautaires à un assujetti identifié dans un autre État membre sont exonérées avec maintien du droit à déduction ; l'exonération intracommunautaire exige le numéro de TVA valide de l'acquéreur, la sortie physique du bien de France vers un autre État membre et la mention de la livraison dans l'état récapitulatif.",
      "src": "CGI, art. 262, I et 262 ter, I",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764907",
      "fiab": "stable"
@@ -176,13 +176,13 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Ventes à distance intracommunautaires</b> : taxées dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 € ; au-delà (ou sur option), TVA de l'État de consommation déclarée via le guichet unique (OSS).",
+     "t": "<b>Ventes à distance intracommunautaires</b> : taxées dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 € ; au-delà (ou sur option), TVA de l'État de consommation, qui peut être déclarée via le guichet unique (OSS).",
      "src": "CGI, art. 258 A, 259 D et 298 sexdecies G",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835152",
      "fiab": "stable"
     },
     {
-     "t": "<b>Base d'imposition</b> : toutes les sommes, valeurs, biens ou services reçus en contrepartie, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA ; sont exclus les rabais, remises, ristournes et escomptes accordés directement au client et les débours remboursés à l'euro.",
+     "t": "<b>Base d'imposition</b> : toutes les sommes, valeurs, biens ou services reçus ou à recevoir en contrepartie, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA ; sont exclus les rabais, remises, ristournes et escomptes accordés directement au client et les débours, c'est-à-dire les dépenses engagées au nom et pour le compte du client et remboursées pour leur montant exact.",
      "cite": "« Ne sont pas à comprendre dans la base d'imposition : 1° Les escomptes de caisse, remises, rabais, ristournes et autres réductions de prix consenties directement aux clients »",
      "src": "CGI, art. 266, 1-a et 267",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042910064",
@@ -202,9 +202,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Coefficient de déduction</b> : produit du coefficient d'assujettissement (utilisation pour des opérations dans le champ), du coefficient de taxation (utilisation pour des opérations ouvrant droit à déduction) et du coefficient d'admission (exclusions réglementaires) ; chaque coefficient est arrondi au centième supérieur.",
+     "t": "<b>Coefficient de déduction</b> : produit du coefficient d'assujettissement (utilisation pour des opérations dans le champ), du coefficient de taxation (utilisation pour des opérations ouvrant droit à déduction) et du coefficient d'admission (exclusions réglementaires) ; chacun de ces trois coefficients, comme leur produit, est arrondi au centième supérieur.",
      "cite": "« le coefficient de déduction mentionné à l'article 205 est égal au produit des coefficients d'assujettissement, de taxation et d'admission »",
-     "src": "CGI, ann. II, art. 206, I à IV",
+     "src": "CGI, ann. II, art. 206, I à V",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
      "fiab": "stable"
     },
@@ -319,7 +319,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère les dispositions législatives relatives à la TVA du CGI vers le livre II du code des impositions sur les biens et services (CIBS). L'entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au 1er janvier 2027 par l'ordonnance n° 2026-671 du 27 juillet 2026 (art. 17) : jusqu'au 31 décembre 2026, les articles du CGI cités dans cette fiche restent applicables. Le rapport au Président de la République annonce des mesures échelonnées jusqu'au 1er juillet 2030, dont la suppression du régime simplifié de déclaration et de paiement de la TVA.",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère les dispositions législatives relatives à la TVA du CGI vers le livre II du code des impositions sur les biens et services (CIBS). L'entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au 1er janvier 2027 par l'ordonnance n° 2026-671 du 27 juillet 2026 (art. 17) : jusqu'au 31 décembre 2026, les articles du CGI cités dans cette fiche restent applicables. Le rapport au Président de la République annonce des mesures échelonnées jusqu'au 1er juillet 2030 ; la suppression du régime simplifié de déclaration et de paiement de la TVA, qui en fait partie, prend effet dès le 1er janvier 2027, date fixée par la loi de finances pour 2025 (art. 38, VI).",
      "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, et rapport au Président de la République ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17 ; BOFiP, ACTU-2026-00126",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054497326",
      "fiab": "stable"
@@ -336,7 +336,7 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Hors champ, exonéré, imposable</b> : seule l'opération imposable (ou exonérée avec maintien du droit à déduction, comme l'exportation) ouvre droit à déduction ; un médecin ou un bailleur de logement nu est dans le champ mais exonéré, sans droit à déduction.",
+     "t": "<b>Hors champ, exonéré, imposable</b> : seule l'opération imposable (ou exonérée avec maintien du droit à déduction, comme l'exportation) ouvre droit à déduction ; un médecin, pour les soins qu'il dispense, ou un bailleur de logement nu est dans le champ mais exonéré, sans droit à déduction.",
      "src": "CGI, art. 256, 261 et 271",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835114",
      "fiab": "stable"
@@ -369,7 +369,7 @@
     },
     {
      "t": "<b>Session 2027 et références</b> : à compter du 1er janvier 2027, le régime simplifié de TVA disparaît et les articles du CGI relatifs à la TVA sont abrogés au profit du code des impositions sur les biens et services (date reportée du 1er septembre 2026 au 1er janvier 2027) ; les opérations de 2027 relèvent, hors franchise, du régime réel normal (CA3), sous réserve de la mesure transitoire prévue pour les exercices qui ne coïncident pas avec l'année civile.",
-     "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; ordonnance n° 2025-1247 du 17 décembre 2025 ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17 ; loi n° 2025-127 du 14 février 2025, art. 38",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
     }

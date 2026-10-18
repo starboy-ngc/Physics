@@ -178,7 +178,7 @@
    "id": "ue2-06-k15",
    "type": "comp",
    "q": "En période suspecte, hormis les paiements, quels actes du débiteur intervenus depuis la date de cessation des paiements sont nuls de droit ?",
-   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés réelles conventionnelles ou droits de rétention conventionnels constitués pour des dettes antérieurement contractées,</b> sauf s'ils remplacent une sûreté antérieure de nature et d'assiette au moins équivalentes. Le tribunal peut aussi annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
+   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés réelles conventionnelles ou droits de rétention conventionnels constitués pour dettes antérieurement contractées,</b> sauf exceptions, dont le remplacement d'une sûreté antérieure de nature et d'assiette au moins équivalentes. Le tribunal peut annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
    "base": [
     "Règles essentielles#5"
    ],
@@ -239,7 +239,7 @@
    "id": "ue2-06-k20",
    "type": "comp",
    "q": "Quel effet le jugement de liquidation judiciaire produit-il sur les pouvoirs du débiteur ?",
-   "r": "<b>Il emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens.</b> Ses droits et actions concernant son patrimoine sont exercés par le liquidateur, qui procède aux opérations de liquidation et à la vérification des créances.",
+   "r": "<b>Il emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens.</b> Ses droits et actions concernant son patrimoine sont exercés par le liquidateur, qui procède aux opérations de liquidation et à la vérification des créances ; le débiteur exerce les droits et actions qui ne sont pas compris dans la mission du liquidateur.",
    "base": [
     "Règles essentielles#6",
     "Règles essentielles#8"
@@ -291,7 +291,7 @@
    "id": "ue2-06-k24",
    "type": "comp",
    "q": "Depuis la loi du 14 février 2022, sur quel patrimoine portent les procédures du livre VI du Code de commerce visant un entrepreneur individuel ?",
-   "r": "<b>En principe, sur son seul patrimoine professionnel.</b> Cette règle, issue de la loi en faveur de l'activité professionnelle indépendante, s'applique depuis le 15 mai 2022 (titre VIII bis du livre VI du Code de commerce).",
+   "r": "<b>En principe, sur son seul patrimoine professionnel.</b> Cette règle, issue de la loi en faveur de l'activité professionnelle indépendante, s'applique depuis le 15 mai 2022 (titre VIII bis du livre VI du Code de commerce). D'autres patrimoines du débiteur peuvent toutefois être réunis au patrimoine visé par la procédure, notamment en cas de confusion avec celui-ci.",
    "base": [
     "Ce qui a changé récemment#1"
    ],

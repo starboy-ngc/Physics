@@ -1,6 +1,6 @@
 {
  "id": "ue2-01",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE2 Droit des sociétés et des groupements d'affaires), applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -110,22 +110,22 @@
    "h": "Définitions",
    "items": [
     {
-     "t": "<b>Société</b> : contrat par lequel deux ou plusieurs personnes affectent à une entreprise commune des biens ou leur industrie pour partager le bénéfice ou profiter de l'économie qui en résulte. Elle peut aussi être instituée par la volonté d'une seule personne dans les cas prévus par la loi (EURL, SASU), et les associés s'engagent à contribuer aux pertes.",
+     "t": "<b>Société</b> : contrat par lequel deux ou plusieurs personnes affectent à une entreprise commune des biens ou leur industrie en vue de partager le bénéfice ou de profiter de l'économie qui pourra en résulter. Elle peut aussi être instituée par la volonté d'une seule personne dans les cas prévus par la loi (EURL, SASU), et les associés s'engagent à contribuer aux pertes.",
      "cite": "« La société est instituée par deux ou plusieurs personnes qui conviennent par un contrat d'affecter à une entreprise commune des biens ou leur industrie en vue de partager le bénéfice ou de profiter de l'économie qui pourra en résulter. »",
      "src": "C. civ., art. 1832",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444041/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Entrepreneur individuel</b> : une seule personne juridique, mais deux patrimoines depuis la loi du 14 février 2022. Le patrimoine professionnel réunit les biens, droits, obligations et sûretés utiles à l'activité indépendante ; tout le reste forme le patrimoine personnel. Les créanciers professionnels ne peuvent agir que sur le patrimoine professionnel, sauf sûreté conventionnelle ou renonciation.",
+     "t": "<b>Entrepreneur individuel</b> : une seule personne juridique, mais deux patrimoines depuis la loi du 14 février 2022. Le patrimoine professionnel réunit les biens, droits, obligations et sûretés utiles à l'activité indépendante ; tout le reste forme le patrimoine personnel. En principe, les créanciers professionnels ne peuvent agir que sur le patrimoine professionnel, sauf sûreté conventionnelle ou renonciation. Par exception, l'impôt sur le revenu et les prélèvements sociaux (sauf option pour l'impôt sur les sociétés) ainsi que la taxe foncière des immeubles utiles à l'activité peuvent être recouvrés sur les deux patrimoines ; l'administration fiscale et les organismes de recouvrement des cotisations sociales peuvent aussi agir sur les deux en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales ou sociales.",
      "cite": "« Les biens, droits, obligations et sûretés dont il est titulaire et qui sont utiles à son activité ou à ses activités professionnelles indépendantes constituent le patrimoine professionnel de l'entrepreneur individuel. »",
-     "src": "C. com., art. L. 526-22",
+     "src": "C. com., art. L. 526-22 ; LPF, art. L. 273 B ; CSS, art. L. 133-4-7",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
      "fiab": "stable"
     },
     {
-     "t": "<b>Personnalité morale</b> : les sociétés autres que les sociétés en participation (et que les sociétés de libre partenariat spéciales du code monétaire et financier) en jouissent à compter de leur immatriculation ; les sociétés commerciales, à dater de leur immatriculation au registre du commerce et des sociétés. Jusqu'à l'immatriculation, les rapports entre associés sont régis par le contrat de société et par les principes généraux du droit applicable aux contrats et obligations.",
-     "src": "C. civ., art. 1842 ; C. com., art. L. 210-6",
+     "t": "<b>Personnalité morale</b> : les sociétés autres que les sociétés en participation (et que les sociétés de libre partenariat spéciales du code monétaire et financier) en jouissent à compter de leur immatriculation ; les sociétés commerciales, à dater de leur immatriculation au registre du commerce et des sociétés. Jusqu'à l'immatriculation, les rapports entre associés sont régis par le contrat de société et par les principes généraux du droit applicable aux contrats et obligations. La société en participation, que les associés sont convenus de ne pas immatriculer, n'est pas une personne morale et n'est pas soumise à publicité.",
+     "src": "C. civ., art. 1842 et 1871 ; C. com., art. L. 210-6",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049876831",
      "fiab": "stable"
     },
@@ -192,7 +192,7 @@
     },
     {
      "t": "<b>Retard de libération</b> : l'associé qui devait apporter une somme et ne l'a pas fait à l'échéance doit de plein droit les intérêts de cette somme à compter du jour où elle devait être payée, sans mise en demeure, et peut en outre devoir des dommages-intérêts.",
-     "src": "C. civ., art. 1843-3, al. 4",
+     "src": "C. civ., art. 1843-3",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444153/",
      "fiab": "stable"
     },
@@ -209,15 +209,15 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Responsabilité civile des dirigeants</b> : les gérants de SARL répondent, individuellement ou solidairement, envers la société ou les tiers, des infractions aux lois et règlements, des violations des statuts et des fautes de gestion. Toute clause subordonnant l'action sociale à l'avis préalable de l'assemblée est réputée non écrite.",
+     "t": "<b>Responsabilité civile des dirigeants</b> : les gérants de SARL répondent, individuellement ou solidairement, envers la société ou les tiers, des infractions aux lois et règlements, des violations des statuts et des fautes de gestion. Toute clause subordonnant l'action sociale à l'avis préalable de l'assemblée est réputée non écrite. Envers les tiers, la responsabilité personnelle d'un dirigeant ne peut être retenue que s'il a commis une faute séparable de ses fonctions, c'est-à-dire une faute intentionnelle d'une particulière gravité, incompatible avec l'exercice normal des fonctions sociales.",
      "cite": "« Les gérants sont responsables, individuellement ou solidairement, selon le cas, envers la société ou envers les tiers […] »",
-     "src": "C. com., art. L. 223-22",
+     "src": "C. com., art. L. 223-22 ; Cass. com., 20 mai 2003, n° 99-17.092",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
      "fiab": "stable"
     },
     {
-     "t": "<b>Réunion de toutes les parts en une seule main</b> : elle n'entraîne pas la dissolution de plein droit ; tout intéressé peut demander la dissolution si la situation n'a pas été régularisée dans le délai d'un an. Lorsque l'associé unique est une personne morale, la dissolution entraîne la transmission universelle du patrimoine de la société à cet associé, sans liquidation ; les créanciers peuvent faire opposition dans les trente jours de la publication de la dissolution.",
-     "src": "C. civ., art. 1844-5",
+     "t": "<b>Réunion de toutes les parts en une seule main</b> : elle n'entraîne pas la dissolution de plein droit ; tout intéressé peut demander la dissolution si la situation n'a pas été régularisée dans le délai d'un an. Ces dispositions relatives à la dissolution judiciaire ne sont pas applicables à la SARL ni à la SAS, qui admettent l'associé unique (EURL, SASU). Lorsque l'associé unique est une personne morale, la dissolution entraîne la transmission universelle du patrimoine de la société à cet associé, sans liquidation ; les créanciers peuvent faire opposition dans les trente jours de la publication de la dissolution.",
+     "src": "C. civ., art. 1844-5 ; C. com., art. L. 223-4 et L. 227-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444165",
      "fiab": "stable"
     },
@@ -252,7 +252,7 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Durée maximale</b> : la durée de la société ne peut excéder 99 ans. La prorogation est décidée à l'unanimité des associés ou, si les statuts le prévoient, à la majorité prévue pour leur modification ; un an au moins avant la date d'expiration, les associés doivent être consultés sur la prorogation. Si la consultation n'a pas eu lieu, le président du tribunal, saisi sur requête dans l'année suivant la date d'expiration, peut constater l'intention des associés de proroger et autoriser une consultation de régularisation dans un délai de trois mois.",
+     "t": "<b>Durée maximale</b> : la durée de la société ne peut excéder 99 ans. Selon l'article 1844-6 du Code civil, la prorogation est décidée à l'unanimité des associés ou, si les statuts le prévoient, à la majorité prévue pour leur modification ; un an au moins avant la date d'expiration, les associés doivent être consultés sur la prorogation. Si la consultation n'a pas eu lieu, le président du tribunal, saisi sur requête dans l'année suivant la date d'expiration, peut constater l'intention des associés de proroger et autoriser une consultation de régularisation dans un délai de trois mois.",
      "cite": "« La durée de la société ne peut excéder quatre-vingt-dix-neuf ans. »",
      "src": "C. civ., art. 1838 et 1844-6",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444089",
@@ -265,8 +265,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Un an</b> pour régulariser la réunion de toutes les parts en une seule main avant que tout intéressé puisse demander la dissolution ; le tribunal peut accorder un délai maximal de six mois pour régulariser.",
-     "src": "C. civ., art. 1844-5",
+     "t": "<b>Un an</b> pour régulariser la réunion de toutes les parts en une seule main avant que tout intéressé puisse demander la dissolution ; le tribunal peut accorder un délai maximal de six mois pour régulariser. Ce délai ne concerne ni la SARL ni la SAS, auxquelles les dispositions de l'article 1844-5 relatives à la dissolution judiciaire ne sont pas applicables.",
+     "src": "C. civ., art. 1844-5 ; C. com., art. L. 223-4 et L. 227-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444165",
      "fiab": "stable"
     },
@@ -277,10 +277,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Droit de partage</b> : les partages de biens meubles et immeubles entre copropriétaires, cohéritiers et coassociés sont soumis à un droit d'enregistrement de 2,50 %, liquidé sur l'actif net partagé. Lors de la liquidation d'une société qui compte plusieurs associés, il porte donc sur l'actif net social partagé (remboursement des apports et boni), et non sur le seul boni.",
+     "t": "<b>Droit de partage</b> : en 2026, les partages de biens meubles et immeubles entre copropriétaires, cohéritiers et coassociés sont soumis à un droit d'enregistrement de 2,50 % (art. 746 du CGI, version en vigueur depuis le 1er janvier 2021), liquidé sur l'actif net partagé. Lors de la liquidation d'une société qui compte plusieurs associés, il porte donc sur l'actif net social partagé (remboursement des apports et boni), et non sur le seul boni.",
      "src": "CGI, art. 746 et 747 ; BOI-ENR-AVS-30-20-10",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041470472",
-     "fiab": "stable",
+     "fiab": "millésimé 2026",
      "cite": "« Les partages de biens meubles et immeubles entre copropriétaires, cohéritiers et coassociés, à quelque titre que ce soit, pourvu qu'il en soit justifié, sont assujettis à un droit d'enregistrement ou à une taxe de publicité foncière de 2,50 %. »"
     },
     {
@@ -331,8 +331,8 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Abus de minorité</b> : il suppose que l'attitude du minoritaire soit contraire à l'intérêt général de la société et vise à favoriser son propre intérêt ; le caractère systématique du blocage ne suffit pas. Le juge ne peut pas se substituer aux organes sociaux compétents : il peut désigner un mandataire chargé de représenter les minoritaires défaillants à une nouvelle assemblée et de voter en leur nom dans le sens des décisions conformes à l'intérêt social, sans porter atteinte à leurs intérêts légitimes.",
-     "src": "Cass. com., 9 mars 1993, n° 91-14.685 (Flandin)",
+     "t": "<b>Abus de minorité</b> : il suppose que l'attitude du minoritaire soit contraire à l'intérêt général de la société, en ce qu'elle interdit la réalisation d'une opération essentielle pour celle-ci, et qu'elle soit adoptée dans l'unique dessein de favoriser ses propres intérêts au détriment de l'ensemble des autres associés. Le seul fait que le minoritaire bloque une décision nécessaire par son absence et son silence systématiques ne suffit pas. Le juge ne peut pas se substituer aux organes sociaux compétents : il peut désigner un mandataire chargé de représenter les minoritaires défaillants à une nouvelle assemblée et de voter en leur nom dans le sens des décisions conformes à l'intérêt social, sans porter atteinte à leurs intérêts légitimes.",
+     "src": "Cass. com., 9 mars 1993, n° 91-14.685 (Flandin) ; Cass. com., 31 mars 2009, n° 08-11.860",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007030292/",
      "fiab": "stable"
     },

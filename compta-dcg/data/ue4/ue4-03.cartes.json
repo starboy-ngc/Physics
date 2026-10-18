@@ -1,6 +1,6 @@
 {
  "id": "ue4-03",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue4-03-k01",
@@ -373,7 +373,7 @@
    "id": "ue4-03-k31",
    "type": "comp",
    "q": "Au régime micro-BIC, comment les amortissements d'un immeuble donné en location meublée sont-ils pris en compte, y compris lorsque sa plus-value de cession relève du régime professionnel ?",
-   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value relève donc du court terme à hauteur de ces amortissements réputés déduits.",
+   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value professionnelle relève donc du court terme à hauteur de ces amortissements réputés déduits.",
    "base": [
     "Ce qui a changé récemment#2"
    ],

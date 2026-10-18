@@ -1,6 +1,6 @@
 {
  "id": "ue2-04",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue2-04-k01",
@@ -358,7 +358,7 @@
   {
    "id": "ue2-04-k30",
    "type": "comp",
-   "q": "À quelles conditions un organisme sans but lucratif, comme une association, échappe-t-il aux impôts commerciaux (IS, TVA et CET) ?",
+   "q": "À quelles conditions un organisme sans but lucratif, comme une association, échappe-t-il aux impôts commerciaux (IS de droit commun, TVA et CET) ?",
    "r": "<b>Sa gestion doit être désintéressée et son activité ne pas concurrencer le secteur lucratif</b>, ou s'exercer dans des conditions différentes de celles des entreprises (règle dite des « 4 P » : produit, public, prix, publicité). À défaut, il est soumis aux impôts commerciaux.",
    "base": [
     "Points de vigilance#4"

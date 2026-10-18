@@ -1,6 +1,6 @@
 {
  "id": "ue10-08",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue10-08-k01",
@@ -226,7 +226,7 @@
    "id": "ue10-08-k20",
    "type": "comp",
    "q": "Dans quels cas une société contrôlée par une entreprise qui l'inclut dans ses comptes consolidés publiés ne bénéficie-t-elle pas de l'exemption de consolidation ?",
-   "r": "<b>Notamment lorsque des actionnaires ou associés représentant au moins le dixième de son capital s'opposent à l'exemption</b>, ou lorsqu'elle a émis des titres admis aux négociations sur un marché réglementé.",
+   "r": "<b>Notamment lorsque des actionnaires ou associés représentant au moins le dixième de son capital s'opposent à l'exemption</b>, ou lorsqu'elle a émis des valeurs mobilières admises aux négociations sur un marché réglementé ou des titres de créances négociables.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -414,7 +414,7 @@
    "base": [
     "Règles essentielles#11"
    ],
-   "src": "C. com., art. L. 233-24 ; règlement ANC n° 2020-01",
+   "src": "C. com., art. L. 233-24 ; règlement (CE) n° 1606/2002, art. 4 et 5 ; règlement ANC n° 2020-01",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
    "fiab": "stable"
   },

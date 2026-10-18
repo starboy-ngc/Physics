@@ -1,6 +1,6 @@
 {
  "id": "ue10-02",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue10-02-k01",
@@ -91,7 +91,7 @@
    "id": "ue10-02-k09",
    "type": "comp",
    "q": "Sur le plan fiscal, comment s'exerce l'option relative aux frais d'acquisition des immobilisations corporelles et incorporelles ?",
-   "r": "<b>Par la simple comptabilisation des frais en immobilisation ou en charges</b> : aucune option fiscale différente de l'option comptable n'est possible. L'option est irrévocable et s'applique à toutes les immobilisations corporelles et incorporelles acquises.",
+   "r": "<b>Par la simple comptabilisation des frais en immobilisation ou en charges</b> : aucune option fiscale différente de l'option comptable n'est possible. L'option est irrévocable, sauf révision admise lorsque, comptablement, un tel changement est autorisé, et s'applique à toutes les immobilisations corporelles et incorporelles acquises.",
    "base": [
     "Règles essentielles#6",
     "Points de vigilance#0"
@@ -104,7 +104,7 @@
    "id": "ue10-02-k10",
    "type": "comp",
    "q": "Quel traitement reçoivent les honoraires directement liés à la mise en état d'utilisation d'une immobilisation, au regard de l'option sur les frais d'acquisition ?",
-   "r": "<b>Ils restent dans le coût d'acquisition</b> et n'entrent pas dans l'option sur les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes), qui est globale et irrévocable pour toutes les immobilisations corporelles et incorporelles.",
+   "r": "<b>Ils restent dans le coût d'acquisition</b> et n'entrent pas dans l'option sur les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes), qui est globale et en principe irrévocable pour toutes les immobilisations corporelles et incorporelles.",
    "base": [
     "Points de vigilance#0"
    ],
@@ -214,7 +214,7 @@
    "id": "ue10-02-k21",
    "type": "comp",
    "q": "En quoi les normes IFRS (IAS 23, IAS 38) diffèrent-elles du PCG pour les coûts d'emprunt et les frais de développement ?",
-   "r": "<b>En IFRS, l'incorporation des coûts d'emprunt pour les actifs qualifiés et l'activation des frais de développement remplissant les critères sont obligatoires</b>, alors que le PCG laisse une option. En comptes individuels français, c'est le PCG, et non les IFRS, qui s'applique.",
+   "r": "<b>En IFRS, l'incorporation des coûts d'emprunt pour les actifs qualifiés et l'activation des frais de développement remplissant les critères sont obligatoires</b>, alors que le PCG laisse une option. En comptes individuels, ce sont les règles françaises (Code de commerce et PCG), et non les IFRS, qui s'appliquent.",
    "base": [
     "Points de vigilance#9"
    ],
@@ -311,7 +311,7 @@
    "id": "ue10-02-k29",
    "type": "comp",
    "q": "Selon le PCG, quels critères doivent être réunis pour inscrire à l'actif le coût de production d'une solution informatique créée en interne ?",
-   "r": "<b>L'ensemble des critères cumulatifs de l'article 611-3</b>, parmi lesquels la faisabilité technique, l'intention d'achever et d'utiliser la solution, la capacité à l'utiliser ou à la commercialiser, des avantages économiques futurs probables et la capacité à évaluer de façon fiable les dépenses attribuables.",
+   "r": "<b>Les critères cumulatifs de l'article 611-3</b> : la faisabilité technique, l'intention de l'achever et de l'utiliser ou de la commercialiser, la capacité à l'utiliser ou à la commercialiser, des avantages économiques futurs probables, la disponibilité des ressources appropriées pour l'achever et, le cas échéant, la commercialiser, et la capacité à évaluer de façon fiable les dépenses attribuables.",
    "base": [
     "Règles essentielles#13"
    ],

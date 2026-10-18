@@ -416,7 +416,7 @@
    "id": "ue4-06-k36",
    "type": "comp",
    "q": "Comment la majoration pour défaut ou retard de déclaration prévue par l'article 1728 du CGI est-elle graduée ?",
-   "r": "<b>10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure ; 40 % au-delà ; 80 % en cas de découverte d'une activité occulte.</b> Pour la déclaration d'impôt sur le revenu, le taux applicable est celui de l'article 1758 A : 10 %, porté à 20 % en cas de dépôt dans les trente jours d'une mise en demeure.",
+   "r": "<b>10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure ; 40 % au-delà ; 80 % en cas de découverte d'une activité occulte.</b> Pour la déclaration d'impôt sur le revenu, la majoration de l'article 1758 A (10 %, portée à 20 % en cas de dépôt dans les trente jours d'une mise en demeure) est exclusive de ce taux de 10 %.",
    "base": [
     "Règles essentielles#14",
     "Règles essentielles#13"
