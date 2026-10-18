@@ -148,6 +148,8 @@ code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--ru
 .crumb .seg button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
 .seg button[aria-pressed="true"] .n { background: var(--c, var(--accent)); color: var(--o, var(--accent-ink)); }
 .subnav { margin-bottom: 18px; }
+[hidden] { display: none !important; }
+@media (max-width: 480px) { .subnav .wide { display: none; } .subnav .seg button { padding: 7px 12px; } }
 .sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
 .sources li { margin-bottom: 3px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
@@ -346,6 +348,28 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .plan-card .verdict { font-size: 0.92rem; }
 .plan-card .verdict.ok { color: var(--ok); } .plan-card .verdict.late { color: var(--bad); }
 .plan-card form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+/* Annales */
+.ann-ue { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 14px 16px 6px; margin-top: 14px; border-top: 4px solid var(--c); }
+.ann-ue h3 { margin: 0; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.ann-ue h3 .code { font: 700 0.78rem var(--mono); color: var(--o); background: var(--c); border-radius: 8px; padding: 3px 8px; }
+.ann-ue .ep { margin: 4px 0 8px; }
+.ann-row { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule-soft); }
+.ann-row .ses { font: 700 1.05rem var(--display); font-variant-numeric: tabular-nums; }
+.ann-row .lk { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.9rem; min-width: 0; }
+.ann-row .lk .muted { font-size: 0.82rem; }
+.ann-row .act { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+.ann-row .note { font: 700 0.95rem var(--mono); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .ann-row { grid-template-columns: 3.4rem minmax(0, 1fr); } .ann-row .act { grid-column: 1 / -1; justify-content: flex-start; } }
+.compo-run { background: var(--card); border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 20px; padding: 18px clamp(16px, 4vw, 26px); display: grid; gap: 12px; }
+.clock { display: grid; justify-items: center; gap: 2px; padding: 14px 0 6px; }
+.clock .t { font: 600 clamp(2.6rem, 11vw, 4.4rem) var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1; }
+.clock .t.over { color: var(--bad); }
+.clock .bar { width: min(420px, 100%); height: 6px; border-radius: 999px; background: var(--rule-soft); overflow: hidden; margin-top: 10px; }
+.clock .bar i { display: block; height: 100%; background: var(--c); border-radius: 999px; }
+.compo-run ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+.compo-run form { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.compo-run input[type=number] { width: 6.5em; font: 600 1rem var(--mono); padding: 8px 10px; border-radius: 10px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.compo-banner { display: flex; gap: 10px 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: color-mix(in srgb, var(--c) 10%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--rule)); border-radius: 14px; padding: 10px 14px; margin: 10px 0; }
 .plan-card input[type="date"] { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 7px 10px; }
 @media (max-width: 560px) { .plan-card .grid { grid-template-columns: 1fr 1fr; } }
 .heat { position: relative; overflow-x: auto; padding-bottom: 4px; }
@@ -530,6 +554,15 @@ const THEMES = [...DATA.ues.map(u => ({ code: u.code, nom: u.nom })), ...(SRS_OR
 const srsCount = kind => SRS_IDS.filter(id => SRS[id].kind === kind).length;
 // Couleur d'identité d'une matière (toujours affichée avec son code).
 const ucol = code => `--c:var(--c-${code});--o:var(--o-${code})`;
+// Annales officielles : une épreuve par matière (durée, coefficient, source) et ses sessions (page du CRCF, rapport du jury).
+const ANN = DATA.annales || { epreuves: {}, index: [] };
+const ANN_UES = UES.filter(u => ANN.epreuves[u.code] && ANN.epreuves[u.code].sessions.length);
+const ANN_KEYS = ANN_UES.flatMap(u => ANN.epreuves[u.code].sessions.map(x => `${u.code}-${x.session}`));
+const annEssais = k => k ? ((state.annales[k] && state.annales[k].essais) || []) : Object.values(state.annales).flatMap(a => a.essais || []);
+const annBest = k => { const e = annEssais(k); return e.length ? Math.max(...e.map(x => x.note)) : null; };
+const annCount = () => ANN_KEYS.filter(k => annEssais(k).length).length;
+const annBestAll = () => { const e = annEssais(); return e.length ? Math.max(...e.map(x => x.note)) : 0; };
+const annDoneUe = code => ANN_KEYS.filter(k => k.startsWith(code + "-") && annEssais(k).length).length;
 
 // ---------- Utilitaires ----------
 const fmt = n => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n);
@@ -559,7 +592,7 @@ const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "E
 const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
 function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
 function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
 function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
@@ -803,7 +836,7 @@ function dailyHistory(days) { const out = []; const d = new Date(); for (let i =
 
 // ---------- Succès ----------
 const TIER_XP = { bronze: 20, argent: 50, or: 100 };
-const SUCC_CATS = ["Régularité", "Précision", "Maîtrise", "Matières", "Exploration", "Observatoire"];
+const SUCC_CATS = ["Régularité", "Précision", "Maîtrise", "Matières", "Exploration", "Observatoire", "Annales"];
 function okBy(types) { let n = 0; for (const id in state.cards) { const e = EXO[id]; if (e && types.includes(e.type)) n += state.cards[id].ok || 0; } return n; }
 function okIn(ids) { let n = 0; for (const id of ids) n += (state.cards[id] && state.cards[id].ok) || 0; return n; }
 function totalOk() { let n = 0; for (const id in state.cards) n += state.cards[id].ok || 0; return n; }
@@ -906,8 +939,8 @@ const SUCCES = [
   ...UES.map(u => S("ue-" + u.code.toLowerCase(), "Matières", "or", (UE_SUCC[u.code] || ["🎓"])[0], (UE_SUCC[u.code] || ["", u.nom])[1], `${u.code} ${u.nom} : tous les exercices acquis (en %)`, () => Math.floor(ueMastery(u.code) * 100), 100)),
   ...UES.map(u => S("notions-moitie-" + u.code.toLowerCase(), "Matières", "argent", "🌓", `${u.code} à moitié en mémoire`, `${u.code} ${u.nom} : la moitié des notions mémorisées (en %)`, () => ueNotionsPct(u.code), 50)),
   ...UES.map(u => S("notions-" + u.code.toLowerCase(), "Matières", "or", "🌕", `${u.code} en pleine lumière`, `${u.code} ${u.nom} : toutes les notions mémorisées (en %)`, () => ueNotionsPct(u.code), 100)),
-  S("polyvalent", "Matières", "argent", "🧭", "Toutes les bandes du spectre", "Au moins un chapitre acquis dans chacune des six matières", uesStarted, UES.length),
-  S("expert", "Matières", "or", "🎓", "Prêt pour le DSCG", "Les six matières entièrement acquises", () => UES.filter(u => ueMastery(u.code) >= 0.999).length, UES.length),
+  S("polyvalent", "Matières", "argent", "🧭", "Toutes les bandes du spectre", "Au moins un chapitre acquis dans chacune des matières", uesStarted, UES.length),
+  S("expert", "Matières", "or", "🎓", "Prêt pour le DSCG", "Toutes les matières entièrement acquises", () => UES.filter(u => ueMastery(u.code) >= 0.999).length, UES.length),
   // Exploration
   S("premier-dossier", "Exploration", "bronze", "🗂", "Premier dossier", "Lire une fiche documentaire", () => Object.keys(state.fiches).length, 1),
   S("dix-dossiers", "Exploration", "argent", "🗃", "Dix dossiers", "Lire 10 fiches documentaires", () => Object.keys(state.fiches).length, 10),
@@ -934,6 +967,18 @@ const SUCCES = [
   S("aurore-50", "Observatoire", "or", "🌗", "La moitié du ciel", "La moitié du parcours d'exercices acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
   S("ciel-75", "Observatoire", "or", "🌖", "Trois quarts du ciel", "Les trois quarts du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 75),
   S("aurore-100", "Observatoire", "or", "🌕", "Le ciel entier", "Tout le parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 100),
+  // Annales
+  ...(ANN_KEYS.length ? [
+    S("annale-1", "Annales", "bronze", "📝", "Première nuit d'observation", "Composer une annale officielle en temps réel et se noter", annCount, 1),
+    S("annale-temps", "Annales", "argent", "⏱", "Dans la fenêtre d'observation", "Rendre une composition dans la durée officielle de l'épreuve", () => annEssais().filter(e => e.temps).length, 1),
+    S("annale-10", "Annales", "bronze", "🌅", "Au-dessus de l'horizon", "Obtenir au moins 10/20 à une annale", annBestAll, 10),
+    S("annale-14", "Annales", "argent", "🌠", "Belle nuit", "Obtenir au moins 14/20 à une annale", annBestAll, 14),
+    S("annale-16", "Annales", "or", "💎", "Seeing d'exception", "Obtenir au moins 16/20 à une annale", annBestAll, 16),
+    S("annale-5", "Annales", "argent", "🗒", "Campagne d'observation", "Composer 5 annales différentes", annCount, 5),
+    S("annale-serie", "Annales", "or", "📚", "Série complète", "Composer toutes les sessions d'une même matière", () => Math.max(0, ...ANN_UES.map(u => annDoneUe(u.code) / ANN.epreuves[u.code].sessions.length)) >= 1 ? 1 : 0, 1),
+    S("annale-spectre", "Annales", "or", "🌈", "Tout le spectre en conditions réelles", "Composer au moins une annale dans chaque matière", () => ANN_UES.filter(u => annDoneUe(u.code)).length, ANN_UES.length),
+    S("annale-15", "Annales", "or", "🏛", "Programme d'observation", "Composer 15 annales différentes", annCount, Math.min(15, ANN_KEYS.length)),
+  ] : []),
 ];
 const SUCC_BY = Object.fromEntries(SUCCES.map(x => [x.id, x]));
 const succQueue = [];
@@ -1041,10 +1086,10 @@ function renderAccueil() {
   </ol>
   <div class="go">${btn}</div>
 </section>
-${planHTML()}
+${compoBanner()}${planHTML()}
 <div class="stats">
   <div class="stat" title="Notions arrivées à l'étape « 10 jours » ou au-delà, sur ${fmt(SRS_IDS.length)}"><span class="v">${fmt(mem)}</span><span class="l">notions mémorisées</span></div>
-  <div class="stat" title="Part des exercices des 42 chapitres acquis"><span class="v">${Math.round(globalMastery() * 100)}<small> %</small></span><span class="l">exercices acquis</span></div>
+  <div class="stat" title="Part des exercices des ${CHAPS.length} chapitres acquis"><span class="v">${Math.round(globalMastery() * 100)}<small> %</small></span><span class="l">exercices acquis</span></div>
   <div class="stat" title="${state.days[todayKey()] || 0} réponse(s) aujourd'hui"><span class="v">${st}</span><span class="l">jour${st > 1 ? "s" : ""} d'affilée</span></div>
   <div class="stat" title="Chapitres entièrement acquis"><span class="v">${observed()}<small> / ${CHAPS.length}</small></span><span class="l">objets observés</span></div>
 </div>
@@ -1372,7 +1417,7 @@ function renderSucces() {
   const xpS = got.reduce((a, x) => a + TIER_XP[x.tier], 0);
   const byTier = t => got.filter(x => x.tier === t).length;
   const nx = nextSucces(1)[0];
-  main.innerHTML = `<h2>Succès</h2><p class="muted">${SUCCES.length} succès en six catégories, de la régularité à l'observatoire. Chacun se débloque automatiquement et rapporte de l'XP : 20 pour le bronze, 50 pour l'argent, 100 pour l'or.</p>
+  main.innerHTML = `<h2>Succès</h2><p class="muted">${SUCCES.length} succès en ${SUCC_CATS.length === 7 ? "sept" : "six"} catégories, de la régularité aux annales. Chacun se débloque automatiquement et rapporte de l'XP : 20 pour le bronze, 50 pour l'argent, 100 pour l'or.</p>
 <div class="board"><div class="tile"><div class="big">${got.length}<span class="muted" style="font-size:1rem"> / ${SUCCES.length}</span></div><div class="lab">succès débloqués</div></div><div class="tile"><div class="big">${byTier("or")} · ${byTier("argent")} · ${byTier("bronze")}</div><div class="lab">or · argent · bronze</div></div><div class="tile"><div class="big">${fmt(xpS)}</div><div class="lab">XP gagnés grâce aux succès</div></div></div>
 ${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.toLowerCase())} (${fmt(Math.min(nx.prog(), nx.target))} / ${fmt(nx.target)}).</p>` : ""}
 <div class="chips" role="group" aria-label="Catégories">${["Tous", ...SUCC_CATS].map(c => { const list = c === "Tous" ? SUCCES : SUCCES.filter(x => x.cat === c); return `<button data-c="${c}" aria-pressed="${c === succFilter}">${c} <span class="mono">${list.filter(x => state.succes[x.id]).length}/${list.length}</span></button>`; }).join("")}</div>
@@ -1420,7 +1465,7 @@ function renderObservatoire() {
 ${UES.map(u => `<h3><span class="dotc" style="${ucol(u.code)}"></span>${esc(u.code)} · ${esc(u.nom)} <span class="muted small">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></h3><div class="cat" style="${ucol(u.code)}">${ueChaps(u.code).map(c => { const t = CIBLE[c.id]; if (!t) return ""; const m = chapMastery(c); const st = m >= 0.999 ? "seen" : chapStarted(c) ? "prog" : ""; return `<button class="obj ${st}" data-c="${c.id}"><span class="des">${esc(t.des)}${st === "seen" ? '<span class="pill seen">observé</span>' : st === "prog" ? `<span class="pill prog">${Math.round(m * 100)} %</span>` : '<span class="pill">à observer</span>'}</span><span class="nm">${esc(t.nom)}</span><span class="ty">${esc(TYPE_OBJ[t.type])} · ${esc(t.cons)}</span><span class="ch">Chapitre ${c.ordre} · ${esc(c.title)}</span></button>`; }).join("")}</div>`).join("")}
 <h3>Derniers succès</h3>${(() => { const last = SUCCES.filter(x => state.succes[x.id]).sort((a, b) => state.succes[b.id] - state.succes[a.id]).slice(0, 4); return last.length ? `<div class="sgrid">${last.map(succCard).join("")}</div>` : `<p class="muted">Aucun succès pour l'instant. Le premier se débloque dès la première réponse.</p>`; })()}
 <div class="actions"><button class="btn ghost" id="toSucc">Voir les ${SUCCES.length} succès</button></div>
-<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision, 5 par carte sue), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
+<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision, 5 par carte sue), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute${ANN_KEYS.length ? ", 150 par annale composée (50 quand on la recompose)" : ""}, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
   main.querySelector("#toSucc").onclick = () => go({ tab: "succes" });
   main.querySelectorAll(".obj").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
   drawCiel(main.querySelector("#skyC"));
@@ -1467,10 +1512,85 @@ function drawCiel(cv) {
   frame(0);
 }
 
+// ---------- Annales ----------
+// Sujets et corrigés officiels (CRCF), rapports du jury (SIEC). Composition chronométrée sur la durée officielle,
+// puis note sur 20 attribuée par le candidat avec le corrigé. Les essais sont gardés dans state.annales[« UE1-2025 »].
+let compoTick = 0;
+const annSplit = k => { const i = k.lastIndexOf("-"); const ue = k.slice(0, i), ses = +k.slice(i + 1); const ep = ANN.epreuves[ue]; return { ue, ses, ep, s: ep && ep.sessions.find(x => x.session === ses) }; };
+const hms = sec => { const a = Math.abs(Math.round(sec)); return `${Math.floor(a / 3600)}:${String(Math.floor(a % 3600 / 60)).padStart(2, "0")}:${String(a % 60).padStart(2, "0")}`; };
+const dureeTxt = min => min % 60 ? `${Math.floor(min / 60)} h ${min % 60}` : `${min / 60} heure${min >= 120 ? "s" : ""}`;
+const note20 = n => fmt(n).replace(".", ",") + "/20";
+const ext = (url, txt) => url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${txt} ↗</a>` : "";
+function compoElapsed(c) { return ((c.pause || Date.now()) - c.debut - (c.pauses || 0)) / 1000; }
+function renderAnnales() {
+  const ess = annEssais(); const notes = ANN_KEYS.map(annBest).filter(n => n != null);
+  const moy = notes.length ? notes.reduce((a, b) => a + b, 0) / notes.length : null;
+  main.innerHTML = `<h2>Annales officielles</h2>
+<p class="muted">Les sujets du DCG des cinq dernières sessions, avec les éléments de corrigé publiés par le CRCF (centre de ressources comptabilité et finance du réseau de l'Éducation nationale) et les rapports du jury du SIEC, le service qui organise l'examen. Composez sur papier dans la durée officielle, puis corrigez-vous et notez-vous sur 20.</p>
+${compoBanner()}
+<div class="board"><div class="tile"><div class="big">${annCount()}<span class="muted" style="font-size:1rem"> / ${ANN_KEYS.length}</span></div><div class="lab">annales composées</div></div><div class="tile"><div class="big">${moy == null ? "–" : note20(Math.round(moy * 4) / 4)}</div><div class="lab">moyenne de vos meilleures notes</div></div><div class="tile"><div class="big">${ess.length ? note20(annBestAll()) : "–"}</div><div class="lab">meilleure note</div></div></div>
+${ANN_UES.map(u => { const ep = ANN.epreuves[u.code]; return `<section class="ann-ue" style="${ucol(u.code)}" aria-labelledby="ah-${u.code}"><h3 id="ah-${u.code}"><span class="code">${esc(u.code)}</span>${esc(ep.intitule || u.nom)}</h3>
+<p class="ep small muted">Épreuve écrite de ${dureeTxt(ep.duree_min)}${ep.coefficient ? `, coefficient ${esc(ep.coefficient)}` : ""}. ${esc(ep.nature || "")} ${ext(ep.url, "Source : " + esc(ep.source_court || "texte officiel"))}</p>
+${ep.sessions.slice().sort((a, b) => b.session - a.session).map(x => { const k = `${u.code}-${x.session}`; const b = annBest(k); const n = annEssais(k).length; return `<div class="ann-row"><span class="ses">${x.session}</span><span class="lk">${ext(x.page, "Sujet et corrigé (CRCF)")}${ext(x.rapport, "Rapport du jury (SIEC)")}${x.info ? `<span class="muted">${esc(x.info)}</span>` : ""}</span><span class="act">${b != null ? `<span class="note" title="${n} essai${n > 1 ? "s" : ""}">${note20(b)}</span>` : `<span class="pill">à composer</span>`}<button class="btn ${b != null ? "quiet" : "ghost"}" data-k="${k}">${b != null ? "Recomposer" : "Composer"}</button></span></div>`; }).join("")}</section>`; }).join("")}
+<p class="muted small" style="margin-top:16px">${esc(ANN.avertissement || "")} ${(ANN.index || []).map(i => ext(i.url, esc(i.titre))).join(" · ")}</p>`;
+  main.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => go({ tab: "annales", k: b.dataset.k }));
+}
+// Bandeau « composition en cours » (accueil et annales) ; le bouton est relié par un écouteur global.
+function compoBanner() {
+  const c = state.compo && annSplit(state.compo.k); if (!c || !c.s) return "";
+  return `<div class="compo-banner" style="${ucol(c.ue)}"><span><b>Composition en cours</b> · ${esc(c.ue)} session ${c.ses} · ${hms(compoElapsed(state.compo)).replace(/:\d\d$/, "").replace(":", " h ")} écoulées${state.compo.pause ? " (en pause)" : ""}</span><button class="btn" data-resume="1">Reprendre</button></div>`;
+}
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-resume]"); if (b && state.compo) go({ tab: "annales", k: state.compo.k }); });
+function renderCompo(k) {
+  const { ue, ses, ep, s } = annSplit(k); if (!s) { renderAnnales(); return; }
+  if (state.compo && state.compo.k !== k) { const o = annSplit(state.compo.k); main.innerHTML = `<h2>Une composition est déjà en cours</h2><p>${esc(o.ue)} session ${o.ses} : terminez-la ou abandonnez-la avant d'en commencer une autre.</p><div class="actions"><button class="btn" id="go1">Reprendre ${esc(o.ue)} ${o.ses}</button><button class="btn quiet" id="back">Retour aux annales</button></div>`; main.querySelector("#go1").onclick = () => go({ tab: "annales", k: state.compo.k }); main.querySelector("#back").onclick = () => go({ tab: "annales" }); return; }
+  const D = ep.duree_min * 60; const essais = annEssais(k);
+  main.innerHTML = `<div class="crumb"><button id="back">← Annales</button></div>
+<div class="compo-run" style="${ucol(ue)}"><div><h2 style="margin:0">${esc(ue)} · session ${ses}</h2><p class="muted" style="margin:4px 0 0">${esc(ep.intitule || UE_BY[ue].nom)} · durée officielle : ${dureeTxt(ep.duree_min)}</p></div>
+<div class="clock" aria-live="off"><span class="t" id="clk">${hms(D)}</span><span class="small muted" id="clkL">temps restant</span><span class="bar"><i id="clkB" style="width:0%"></i></span></div>
+<div class="actions" style="justify-content:center;margin-top:0" id="ctl"></div>
+<form id="noteForm" hidden><label for="noteIn"><b>Votre note</b>, après correction avec le corrigé et le rapport du jury :</label><input id="noteIn" type="number" inputmode="decimal" min="0" max="20" step="0.25" required> <span>/ 20</span><button class="btn" type="submit">Enregistrer</button></form>
+<ol class="small"><li>Ouvrez le sujet sur la page du CRCF : ${ext(s.page, "sujets et corrigés de la session " + ses)}. Lisez les consignes en tête du sujet (documents et matériel autorisés).</li><li>Lancez le chronomètre et composez sur papier, sans regarder le corrigé.</li><li>À la fin du temps, posez le stylo. Cliquez sur « J'ai terminé » : le temps passé est enregistré.</li><li>Corrigez-vous avec le corrigé ${s.rapport ? `et le ${ext(s.rapport, "rapport du jury")}` : ""}, puis entrez votre note sur 20.</li></ol>
+${s.remarque ? `<p class="small muted" style="margin:0">${esc(s.remarque)}</p>` : ""}
+${essais.length ? `<p class="small" style="margin:0"><b>Vos essais :</b> ${essais.map(e => `${note20(e.note)} le ${new Date(e.date + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }).replace(/^1 /, "1er ")} (${hms(e.sec).replace(/:\d\d$/, "").replace(":", " h ")}${e.temps ? "" : ", hors délai"})`).join(" · ")}</p>` : ""}</div>`;
+  main.querySelector("#back").onclick = () => go({ tab: "annales" });
+  const clk = main.querySelector("#clk"), lab = main.querySelector("#clkL"), bar = main.querySelector("#clkB"), ctl = main.querySelector("#ctl"), form = main.querySelector("#noteForm");
+  let lock = null;
+  const wake = on => { try { if (on && navigator.wakeLock && !lock) navigator.wakeLock.request("screen").then(l => { lock = l; }).catch(() => { }); else if (!on && lock) { lock.release().catch(() => { }); lock = null; } } catch (e) { } };
+  const tick = () => {
+    const c = state.compo; const el = c && c.k === k ? compoElapsed(c) : 0; const rest = D - el;
+    clk.textContent = (rest < 0 ? "+" : "") + hms(rest); clk.classList.toggle("over", rest < 0);
+    lab.textContent = !c ? "durée de l'épreuve" : rest < 0 ? "temps écoulé : dépassement" : c.pause ? "en pause" : "temps restant";
+    bar.style.width = Math.min(100, el / D * 100) + "%";
+    if (c && rest < 0 && !c.alerte) { c.alerte = 1; persist(); toast("Temps écoulé : posez le stylo."); }
+  };
+  const draw = () => {
+    const c = state.compo && state.compo.k === k ? state.compo : null;
+    ctl.innerHTML = !c ? `<button class="btn big" id="start">Lancer le chronomètre</button>` : `${c.fin ? "" : `<button class="btn quiet" id="pause">${c.pause ? "Reprendre" : "Pause"}</button><button class="btn" id="end">J'ai terminé</button>`}<button class="btn quiet" id="quit">Abandonner</button>`;
+    form.hidden = !(c && c.fin);
+    const b = id => ctl.querySelector(id);
+    if (b("#start")) b("#start").onclick = () => { state.compo = { k, debut: Date.now(), pauses: 0, pause: null }; persist(); wake(true); draw(); };
+    if (b("#pause")) b("#pause").onclick = () => { if (c.pause) { c.pauses += Date.now() - c.pause; c.pause = null; wake(true); } else { c.pause = Date.now(); wake(false); } persist(); draw(); };
+    if (b("#end")) b("#end").onclick = () => { if (!c.pause) c.pause = Date.now(); c.fin = 1; persist(); wake(false); draw(); form.querySelector("input").focus(); };
+    if (b("#quit")) b("#quit").onclick = e => { if (!e.target.dataset.arm) { e.target.dataset.arm = 1; e.target.textContent = "Confirmer l'abandon"; return; } state.compo = null; persist(); wake(false); draw(); };
+    tick();
+  };
+  form.onsubmit = e => {
+    e.preventDefault(); const n = parseNum(form.querySelector("input").value);
+    if (!(n >= 0 && n <= 20)) { toast("Entrez une note entre 0 et 20."); return; }
+    const c = state.compo; const sec = Math.round(compoElapsed(c));
+    const a = state.annales[k] || (state.annales[k] = { essais: [] });
+    const first = !a.essais.length; a.essais.push({ date: todayKey(), note: Math.round(n * 4) / 4, sec, temps: sec <= D });
+    state.compo = null; addXp(first ? 150 : 50); save(); toast(`Note enregistrée : ${note20(Math.round(n * 4) / 4)}.`); go({ tab: "annales" });
+  };
+  draw();
+  compoTick = setInterval(() => { if (!document.body.contains(clk)) { clearInterval(compoTick); wake(false); return; } tick(); }, 1000);
+}
+
 // ---------- Navigation ----------
 // Cinq rubriques ; certaines regroupent deux pages, reliées par une sous-navigation.
-const GROUP = { accueil: "accueil", revisions: "revisions", test: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", observatoire: "observatoire", succes: "observatoire" };
-const SUBNAV = { revisions: [["revisions", "Révisions espacées"], ["test", "Test du jour"]], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], observatoire: [["observatoire", "Observatoire"], ["succes", "Succès"]] };
+const GROUP = { accueil: "accueil", revisions: "revisions", test: "revisions", annales: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", observatoire: "observatoire", succes: "observatoire" };
+const SUBNAV = { revisions: [["revisions", "Révisions<span class=\"wide\"> espacées</span>"], ["test", "Test du jour"], ...(ANN_KEYS.length ? [["annales", "Annales"]] : [])], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], observatoire: [["observatoire", "Observatoire"], ["succes", "Succès"]] };
 function addSubnav(tab) {
   const items = SUBNAV[GROUP[tab]]; if (!items || !items.some(x => x[0] === tab)) return;
   const d = document.createElement("div"); d.className = "subnav";
@@ -1479,11 +1599,11 @@ function addSubnav(tab) {
   main.prepend(d);
 }
 function go(v) {
-  cancelAnimationFrame(skyAnim);
+  cancelAnimationFrame(skyAnim); clearInterval(compoTick);
   view = v;
   const tab = GROUP[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, observatoire: renderObservatoire, expedition: renderObservatoire, succes: renderSucces })[v.tab]();
+  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, annales: () => v.k ? renderCompo(v.k) : renderAnnales(), revisions: renderRevisions, pcg: renderPcg, observatoire: renderObservatoire, expedition: renderObservatoire, succes: renderSucces })[v.tab]();
   addSubnav(v.tab);
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
   updateBadge(); renderRank(); window.scrollTo({ top: 0 });
@@ -1508,7 +1628,7 @@ document.addEventListener("click", e => { const a = e.target.closest && e.target
 (function boot() {
   const h = (location.hash || "").slice(1);
   if (h === "expedition") go({ tab: "observatoire" });
-  else if (["matieres", "fiches", "test", "revisions", "pcg", "observatoire", "succes"].includes(h)) go({ tab: h });
+  else if (["matieres", "fiches", "test", "revisions", "pcg", "observatoire", "succes"].includes(h) || (h === "annales" && ANN_KEYS.length)) go({ tab: h });
   else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
   else if (CHAP_BY[h]) go({ tab: "chap", id: h });
   else go({ tab: "accueil" });

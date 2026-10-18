@@ -34,8 +34,12 @@ for (const f of fs.readdirSync(path.join(ROOT, "data/pcg")).filter(x => x.endsWi
 }
 pcg.sort((a, b) => a.num.localeCompare(b.num));
 const seen = new Set(); const pcgU = pcg.filter(a => !seen.has(a.num) && seen.add(a.num));
-const ues = plan.ues.filter(u => chapitres.some(c => c.ue === u.code) || !lenient);
-const data = { ues, chapitres, pcg: pcgU, build: { date: new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) } };
+// Une matière sans chapitre validé n'est pas publiée (UE en cours de rédaction).
+const ues = plan.ues.filter(u => chapitres.some(c => c.ue === u.code));
+const annF = path.join(ROOT, "data/annales.json");
+const annales = fs.existsSync(annF) ? JSON.parse(fs.readFileSync(annF, "utf8")) : null;
+if (annales) for (const code of Object.keys(annales.epreuves)) if (!ues.some(u => u.code === code)) delete annales.epreuves[code];
+const data = { ues, chapitres, pcg: pcgU, annales, build: { date: new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) } };
 const tpl = fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8");
 const json = JSON.stringify(data).replace(/<\/script/gi, "<\\/script");
 const out = tpl.replace("/*__DATA__*/null", json);
@@ -44,5 +48,6 @@ fs.writeFileSync(path.join(ROOT, "dist/DebitCredit.html"), out);
 const nEx = chapitres.reduce((a, c) => a + c.exercices.length, 0);
 const nCartes = chapitres.reduce((a, c) => a + (c.cartes || []).length, 0);
 const nNotion = chapitres.reduce((a, c) => a + c.exercices.filter(e => e.nature === "notion").length, 0);
-console.log(`dist/DebitCredit.html : ${chapitres.length} chapitres (${chapitres.filter(c => c.fiche).length} fiches), ${nEx} exercices dont ${nNotion} de notion, ${nCartes} cartes, ${pcgU.length} comptes, ${(out.length / 1024).toFixed(0)} Ko`);
+const nAnn = annales ? Object.values(annales.epreuves).reduce((a, e) => a + e.sessions.length, 0) : 0;
+console.log(`dist/DebitCredit.html : ${chapitres.length} chapitres (${chapitres.filter(c => c.fiche).length} fiches), ${nEx} exercices dont ${nNotion} de notion, ${nCartes} cartes, ${pcgU.length} comptes, ${nAnn} annales, ${(out.length / 1024).toFixed(0)} Ko`);
 if (skipped.length) console.log("Ignorés : " + skipped.join(", "));

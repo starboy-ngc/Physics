@@ -799,7 +799,7 @@
      }
     ]
    ],
-   "why": "La dette envers les associés (457) est soldée pour le brut. Les prélèvements (30 % × 60 000 = 18 000) sont dus au Trésor pour le compte des associés : 442 État – impôts et taxes recouvrables sur des tiers. Le net, 42 000, sort de la banque. Ce n'est pas l'impôt de la société (695/444) ni une charge d'intérêts (6611).",
+   "why": "La dette envers les associés (457) est soldée pour le brut. Les prélèvements (30 % × 60 000 = 18 000) sont dus au Trésor pour le compte des associés : 442 Contributions, impôts et taxes recouvrés pour le compte de l'État. Le net, 42 000, sort de la banque. Ce n'est pas l'impôt de la société (695/444) ni une charge d'intérêts (6611).",
    "src": "CGI art. 117 quater ; PCG, titre IX (compte 442)",
    "fiab": "millésimé 2025",
    "niveau": 2

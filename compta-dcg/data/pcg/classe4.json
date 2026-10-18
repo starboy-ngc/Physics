@@ -445,11 +445,11 @@
   },
   {
    "num": "442",
-   "label": "État – Impôts et taxes recouvrables sur des tiers",
+   "label": "Contributions, impôts et taxes recouvrés pour le compte de l'État",
    "sens": "C",
-   "explication": "Le compte 442 enregistre les impôts que l'entreprise retient à la source pour le compte de l'État sur des sommes versées à des tiers : prélèvement à la source de l'impôt sur le revenu des salariés (4421), retenues à la source sur dividendes ou revenus versés à des non-résidents (4424 obligataires, 4425 associés). Il est crédité lors de la retenue et débité lors du reversement au Trésor. Il figure au passif dans les dettes fiscales.",
+   "explication": "Le compte 442 enregistre les impôts, contributions et taxes que l'entité retient sur des sommes qu'elle verse à des tiers, pour le compte de l'État, avant de les reverser au Trésor. Le plan de comptes le subdivise en 4421 Prélèvements à la source (impôt sur le revenu), 4422 Prélèvements forfaitaires non libératoires et 4423 Retenues et prélèvements sur les distributions (règlement ANC n° 2018-02, intitulés repris dans les plans de comptes 2025 et 2026 publiés par l'ANC). Il est crédité lors de la retenue et débité lors du reversement. Il figure au passif dans les dettes fiscales.",
    "exemple": "Prélèvement à la source retenu sur les salaires 4 500 € : 641 D (inclus dans le brut) / 421 C (net diminué) / 4421 C 4 500 ; reversement : 4421 D 4 500 / 512 C 4 500.",
-   "piege": "Le prélèvement à la source n'est ni une charge ni un produit pour l'entreprise : simple collecte pour l'État.",
+   "piege": "Le prélèvement à la source n'est ni une charge ni un produit pour l'entreprise : simple collecte pour l'État. Ancien intitulé, encore cité dans certains manuels : « État – Impôts et taxes recouvrables sur des tiers » ; depuis le règlement ANC n° 2018-02, le plan de comptes ne comporte plus que les subdivisions 4421, 4422 et 4423.",
    "pcg2025": null
   },
   {
