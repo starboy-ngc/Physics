@@ -18,7 +18,7 @@
    "id": "ue6-03-k02",
    "type": "def",
    "q": "Qu'est-ce que le tableau des flux de trésorerie utilisé en analyse financière ?",
-   "r": "<b>Un tableau qui classe les flux de l'exercice en flux liés à l'activité, aux opérations d'investissement et aux opérations de financement</b>, dont la somme explique la variation de la trésorerie. Classement des deux modèles prévus par le règlement ANC n° 2020-01 pour les comptes consolidés, il est préconisé par l'OEC pour les comptes sociaux.",
+   "r": "<b>Un tableau qui classe les flux de l'exercice en flux liés à l'activité, aux opérations d'investissement et aux opérations de financement</b>, dont la somme explique la variation de la trésorerie. C'est le classement des deux modèles prévus par le règlement ANC n° 2020-01 pour les comptes consolidés ; l'OEC le préconise pour les comptes sociaux.",
    "base": [
     "Définitions#1"
    ],
@@ -30,7 +30,7 @@
    "id": "ue6-03-k03",
    "type": "def",
    "q": "Dans le modèle de tableau des flux de trésorerie du règlement ANC n° 2020-01 établi à partir du résultat net, qu'est-ce que la marge brute d'autofinancement des sociétés intégrées ?",
-   "r": "<b>Le résultat net des sociétés intégrées corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité</b> (amortissements et provisions, plus-values de cession). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
+   "r": "<b>Le résultat net des sociétés intégrées corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité</b> (amortissements et provisions, plus-values de cession nettes d'impôt). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
    "base": [
     "Définitions#2"
    ],

@@ -194,7 +194,7 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Pension alimentaire versée à un enfant majeur</b> : déductible du revenu global pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire, dans la limite, par enfant majeur, du montant fixé pour l'abattement prévu par l'article 196 B, qui évolue chaque année. Aucune déduction n'est possible si l'enfant est rattaché au foyer fiscal ; la pension déduite est imposable chez l'enfant.",
+     "t": "<b>Pension alimentaire versée à un enfant majeur</b> : déductible du revenu global pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire, dans la limite, par enfant majeur, du montant fixé pour l'abattement prévu par l'article 196 B (montant de l'année : voir « Chiffres et seuils »). Aucune déduction n'est possible si l'enfant est rattaché au foyer fiscal ; la pension déduite est imposable chez l'enfant.",
      "src": "CGI, art. 156, II-2°",
      "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-deduire-laide-que-japporte-mes-enfants-majeurs",
      "fiab": "stable"
@@ -212,7 +212,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Mécanique de calcul</b> : le barème s'applique au revenu net imposable divisé par le nombre de parts ; l'impôt obtenu est multiplié par le nombre de parts. La réduction d'impôt résultant des majorations de quotient familial est plafonnée par demi-part (la moitié de ce plafond par quart de part) ; le montant du plafond évolue chaque année avec les limites des tranches du barème.",
+     "t": "<b>Mécanique de calcul</b> : le barème s'applique au revenu net imposable divisé par le nombre de parts ; l'impôt obtenu est multiplié par le nombre de parts. La réduction d'impôt résultant des majorations de quotient familial est plafonnée par demi-part (la moitié de ce plafond par quart de part) ; le montant de ce plafond est fixé par la loi de finances et suit l'indexation des limites des tranches du barème (voir « Ce qui a changé récemment »).",
      "src": "CGI, art. 197, I-1 et I-2 ; BOI-IR-LIQ-20-10 et BOI-IR-LIQ-20-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/2494-PGP.html/identifiant=BOI-IR-LIQ-20-20-20-20260407",
      "fiab": "stable"
@@ -352,13 +352,13 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>La doctrine ne crée pas de droit</b> : l'article L. 80 A ne confère à l'administration aucun pouvoir réglementaire et ne lui permet pas de déroger à la loi : il institue seulement une garantie au profit du contribuable de bonne foi. Celui-ci peut opposer à l'administration la dernière interprétation formellement admise, même lorsqu'elle ajoute à la loi ; l'administration peut écarter la garantie par la procédure de l'abus de droit (LPF, art. L. 64) si elle démontre la finalité abusive de l'opération.",
+     "t": "<b>La doctrine ne crée pas de droit</b> : l'article L. 80 A ne confère à l'administration aucun pouvoir réglementaire et ne lui permet pas de déroger à la loi : il institue seulement une garantie au profit du contribuable de bonne foi. Celui-ci peut opposer à l'administration la dernière interprétation formellement admise, et elle seule, même lorsqu'elle ajoute à la loi ; l'administration peut écarter la garantie par la procédure de l'abus de droit (LPF, art. L. 64) si elle démontre la finalité abusive de l'opération.",
      "src": "CE, Section, 8 mars 2013, n° 353782 ; CE, Assemblée, 28 octobre 2020, n° 428048",
      "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
      "fiab": "stable"
     },
     {
-     "t": "<b>Conventions fiscales</b> : les critères de l'article 4 B s'appliquent sous réserve des conventions internationales, qui l'emportent sur le droit interne. Une personne domiciliée en France au sens de l'article 4 B mais résidente de l'autre État au sens d'une convention est regardée comme résidente de cet État pour l'application de la convention, qui peut retirer à la France le droit d'imposer certains revenus. En cas de double résidence, la convention départage, dans l'ordre : foyer d'habitation permanent, centre des intérêts vitaux, séjour habituel, nationalité.",
+     "t": "<b>Conventions fiscales</b> : les critères de l'article 4 B s'appliquent sous réserve des conventions internationales, qui l'emportent sur le droit interne. Une personne domiciliée en France au sens de l'article 4 B mais résidente de l'autre État au sens d'une convention est regardée comme résidente de cet État pour l'application de la convention, qui peut retirer à la France le droit d'imposer certains revenus. En cas de double résidence, les conventions départagent en règle générale, dans l'ordre : foyer d'habitation permanent, centre des intérêts vitaux, séjour habituel, nationalité.",
      "src": "BOI-INT-DG-20-10-10",
      "url": "https://bofip.impots.gouv.fr/bofip/2427-PGP.html/identifiant=BOI-INT-DG-20-10-10-20120912",
      "fiab": "stable"

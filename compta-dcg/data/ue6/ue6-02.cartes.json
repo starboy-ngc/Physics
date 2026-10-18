@@ -72,7 +72,7 @@
     "Définitions#4",
     "Règles essentielles#4"
    ],
-   "src": "PCG, chapitre « Tableau de financement », variation « trésorerie » ; plan de comptes PCG 2025, compte 519",
+   "src": "PCG, chapitre « Tableau de financement », variation « trésorerie » ; plan de comptes PCG 2025, compte 519 ; PCG, annexe : engagements financiers donnés (effets escomptés non échus)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -104,7 +104,7 @@
    "id": "ue6-02-k09",
    "type": "def",
    "q": "Qu'est-ce que le crédit-bail au sens du Code monétaire et financier ?",
-   "r": "<b>Une opération de location</b> qui donne au locataire <b>la possibilité d'acquérir le bien loué</b> moyennant un prix convenu tenant compte, au moins pour partie, des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
+   "r": "<b>Une opération de location</b> de biens d'équipement ou de matériel d'outillage qui donne au locataire <b>la possibilité d'acquérir le bien loué</b> moyennant un prix convenu tenant compte, au moins pour partie, des loyers versés. Pour un bien immobilier à usage professionnel, le locataire peut en devenir propriétaire au plus tard à l'expiration du bail. Le bien n'est pas à l'actif du locataire.",
    "base": [
     "Définitions#5"
    ],
