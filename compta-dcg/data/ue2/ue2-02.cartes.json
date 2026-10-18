@@ -189,7 +189,7 @@
   {
    "id": "ue2-02-k16",
    "type": "comp",
-   "q": "Quels quorum et majorité s'appliquent aux modifications des statuts d'une SARL, selon qu'elle a été constituée avant ou après la publication de la loi du 2 août 2005 ?",
+   "q": "Hors incorporation de bénéfices ou de réserves, quels quorum et majorité s'appliquent aux modifications des statuts d'une SARL constituée avant ou après la loi du 2 août 2005 ?",
    "r": "<b>Après : quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis deux tiers des parts des associés présents ou représentés</b>, les statuts pouvant prévoir des quorums ou une majorité plus élevés, sans exiger l'unanimité. <b>Avant : trois quarts des parts sociales, sans quorum</b>, sauf décision unanime des associés d'appliquer le nouveau régime.",
    "base": [
     "Règles essentielles#7"
@@ -262,7 +262,7 @@
   {
    "id": "ue2-02-k23",
    "type": "comp",
-   "q": "Que se passe-t-il lorsque les associés d'une SARL refusent de consentir à la cession de parts sociales à un tiers ?",
+   "q": "Que se passe-t-il lorsque les associés d'une SARL refusent de consentir à la cession à un tiers de parts détenues depuis au moins deux ans ?",
    "r": "<b>En principe, les associés doivent, dans les trois mois, acquérir ou faire acquérir les parts</b> (délai prorogeable en justice de six mois au plus) à un prix fixé selon l'article 1843-4 du Code civil, sauf renonciation du cédant ; la société peut aussi, avec le consentement du cédant, les racheter en réduisant son capital. À défaut, le cédant peut réaliser la cession initialement prévue.",
    "base": [
     "Règles essentielles#9"
@@ -299,7 +299,7 @@
    "id": "ue2-02-k26",
    "type": "comp",
    "q": "Quelles conventions sont interdites à peine de nullité du contrat dans une SARL ?",
-   "r": "<b>Les emprunts, découverts, cautions ou avals consentis par la société</b> aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée.",
+   "r": "<b>Les emprunts, découverts, cautions ou avals consentis par la société</b> aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée. Si la société exploite un établissement financier, l'interdiction ne s'applique pas aux opérations courantes de ce commerce conclues à des conditions normales.",
    "base": [
     "Définitions#4"
    ],
