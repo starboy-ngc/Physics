@@ -1,13 +1,14 @@
 # Objectif DSCG — réviser le DCG pour viser le DSCG
 
-Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières, une fiche documentaire
-sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
+Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières complètes et des pages de
+rappels pour l'UE1, une fiche documentaire sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
 test quotidien, révisions espacées sur 1 436 cartes de notions (définitions et compréhension, sans calcul) avec
 plateau d'avancement par thème, plan comptable général 2025 commenté
-compte par compte (612 comptes), un observatoire à remplir (chaque chapitre acquis révèle une cible des catalogues Messier et NGC, l'XP fait passer de
-l'œil nu au télescope James-Webb puis à l'ELT) et 131 succès à débloquer (bronze, argent, or) dans six catégories :
-régularité, précision, maîtrise, matières, exploration et observatoire. Chaque matière a la couleur d'une bande du
+compte par compte (612 comptes), les annales officielles des cinq dernières sessions et les sujets zéro du programme
+2027 en composition chronométrée, un observatoire à remplir (chaque chapitre acquis révèle une cible des catalogues Messier et NGC, l'XP fait passer de
+l'œil nu au télescope James-Webb puis à l'ELT) et __NSUCC__ succès à débloquer (bronze, argent, or) dans sept catégories :
+régularité, précision, maîtrise, matières, exploration, observatoire et annales. Chaque matière a la couleur d'une bande du
 spectre électromagnétique (radio, micro-ondes, infrarouge, visible, ultraviolet, X, gamma).
 
 ## Utiliser
@@ -25,9 +26,27 @@ aucun serveur. La progression est gardée dans le navigateur ; un code de sauveg
 | UE3 Droit social | 6 | 171 |
 | UE4 Droit fiscal | 6 | 176 |
 | UE6 Finance d'entreprise | 6 | 157 |
+| UE1 Fondamentaux du droit | 7 pages de rappels | — |
 
 Référentiel : PCG 2025 (règlement ANC n° 2022-06), droit et fiscalité 2025-2026. Les chiffres qui changent
 chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé et signalés « chiffres 2025 ».
+
+## UE1 : pages de rappels
+
+L'UE1 Fondamentaux du droit se révise par des **rappels courts**, sans exercices ni cartes : une page par chapitre
+(8 à 14 rappels, 650 mots au plus), dans l'onglet Cours. Chaque rappel est tiré d'un item de la fiche documentaire
+du chapitre (`data/ue1/<id>.fiche.json`, vérifiée sur les textes officiels) et renvoie à son texte (Code civil,
+Code de procédure civile, Code de commerce, Constitution, jurisprudence de la Cour de cassation). Format :
+`data/CONTRAT.md`, section 9 ; fichiers `data/ue1/<id>.rappel.json`. Programme : annexe 1 de l'arrêté du
+4 août 2025 (session 2027).
+
+## Annales
+
+Réviser › Annales : pour chaque matière, les sujets des sessions 2022 à 2026 (pages du CRCF, qui publie sujets et
+éléments de corrigé), les rapports du jury du SIEC (2022 à 2025) et le sujet zéro du programme 2027 avec son corrigé
+(guide pédagogique du ministère, juillet 2026). Le mode composition lance un chronomètre sur la durée officielle
+(3 heures), avec pause ; la note sur 20 que l'on s'attribue avec le corrigé est enregistrée. Les sujets s'ouvrent
+en ligne. Sources du catalogue : `data/ANNALES.md`.
 
 ## Révisions espacées
 
@@ -82,7 +101,7 @@ faits récents confirmés (PASS et SMIC 2026, LFSS 2026, loi n° 2026-403, règl
 ## Méthode de production et de vérification
 
 - `data/CONTRAT.md` : format JSON, règles de qualité, changements PCG 2025 confirmés.
-- `data/plan.json` : les 42 chapitres et leur contenu attendu.
+- `data/plan.json` : les 42 chapitres, les 7 chapitres de rappels de l'UE1 et leur contenu attendu.
 - `data/<ue>/*.json` : un fichier par chapitre ; `data/pcg/*.json` : le plan comptable commenté.
 - Chaque chapitre a été rédigé puis relu par un relecteur indépendant chargé de chercher l'erreur
   (recalcul de tous les calculs, vérification des écritures, recoupement des chiffres par recherche web),
@@ -91,6 +110,10 @@ faits récents confirmés (PASS et SMIC 2026, LFSS 2026, loi n° 2026-403, règl
   par des relecteurs indépendants (fidélité à la fiche, puis exactitude juridique et comptable avec recherche
   sur les sites officiels). Un rapport par chapitre : `data/<ue>/rapports/<id>-cartes.md`. Les items de fiche
   jugés ambigus ou incomplets par ces relecteurs sont listés dans `data/FICHES-A-REPRENDRE.md`.
+- UE1 : fiches rédigées avec recherches restreintes aux sites officiels, relues, puis contre-vérifiées item par item
+  (passe dédiée avec recherches) ; rappels rédigés depuis ces fiches, puis relus deux fois (fidélité à la fiche,
+  puis exactitude juridique). Les items restés non vérifiés ne donnent pas de rappel. Rapports :
+  `data/ue1/rapports/<id>.md`.
 - Nature des exercices (`nature` : notion, calcul ou chiffre) : classement par deux agents indépendants ; une
   question n'entre dans les révisions espacées que si les deux la jugent sans calcul.
 - `validate.js` vérifie la structure (réponses valides, écritures équilibrées, comptes 675/775 bannis…) ;

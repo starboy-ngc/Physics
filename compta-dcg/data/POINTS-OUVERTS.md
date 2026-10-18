@@ -300,3 +300,89 @@ Ces points n'ont pas pu être confirmés par une source officielle restituée pa
 - **Taxe sur les salaires 2025.** La page economie.gouv.fr indique une tranche « jusqu'à 18 258 € » et la passe précédente 18 259 € (BOFiP). Le chapitre garde 18 259 € (limites 2025 rappelées et exercice 8) ; le résultat de l'exercice 8 (2 760 €) est le même avec l'une ou l'autre limite.
 - **Abattement des associations (taxe sur les salaires) 2026.** Non recherché ; la leçon garde le montant 2025, présenté comme tel.
 
+
+## UE1 Fondamentaux du droit (fiches contre-vérifiées le 18 octobre 2026)
+
+Items des fiches UE1 dont la vérification n'a pas restitué le texte officiel mot pour mot (fond parfois confirmé). Aucun ne sert de base à une page de rappels : le rédacteur et les relecteurs des rappels les ont écartés.
+
+### ue1-01
+
+- Définitions#3 et Vigilance#1 : TFUE, art. 288 (repose sur la recherche 15 de la rédaction, eur-lex)
+- Définitions#5 : Constitution, art. 61-1 (recherche 12 de la rédaction)
+- Règles#6 et Chiffres#3 : Constitution, art. 37, al. 2 (recherche 7 de la rédaction)
+- Règles#10 : Jacques Vabre (recherche 9 de la rédaction)
+- Règles#11 : Nicolo (recherche 10 de la rédaction)
+- Règles#13 et Chiffres#1 : Constitution, art. 61 (recherche 13 de la rédaction)
+- Changements#1, Changements#2 et programme.points : arrêté du 4 août 2025 et guide pédagogique de juillet 2026 (recherches 1 à 3 de la rédaction ; URL du guide ajoutée par la relecture)
+- Règles#14 : « ou constitue le fondement des poursuites » et « dans les motifs et le dispositif » (art. 23-2) non restitués mot pour mot
+- Règles#9 : ordre « pour chaque accord ou traité » non restitué mot pour mot (fond confirmé)
+- Règles#4 : formule exacte de l'art. 5 non restituée (fond confirmé)
+- Règles#8 : fin de la compétence administrative après ratification (CE, 13 juin 2018) non restituée
+- Vigilance#5 : bonnes mœurs « désuètes » selon le rapport au Président, non restitué
+- Changements#0 : date du Congrès (4 mars 2024) non restituée
+
+### ue1-02
+
+- Définitions#4 (CPC, art. 1442)
+- Règles essentielles#0 (CPC, art. 32 et 122)
+- Règles essentielles#1 (CPC, art. 123 et 125, exception ajoutée par la relecture)
+- Règles essentielles#3 (COJ, art. L. 213-4-2 à L. 213-4-7, « aux fins d'habitation » ajouté par la relecture)
+- Chiffres et seuils#2 (décret n° 80-533, 1 500 €)
+- Ce qui a changé récemment#0 (fusion TI-TGI, décret n° 2019-966, « chambre de proximité » de l'art. L. 212-8 ; seul le passage de 4 000 € à 5 000 € est confirmé)
+- Points de vigilance#2 (Cass. 1re civ., 5 septembre 2018, n° 17-13.837)
+- Points de vigilance#3 (Cass. 1re civ., 10 juin 2015, n° 14-15.608)
+- Points de vigilance#5 (C. civ., art. 1359, al. 2, ajouté par la relecture)
+- programme.points[2] (conditions de l'action en justice, attribuées par un résultat à l'annexe de 2019)
+
+### ue1-03
+
+- 1) Capacité : les libellés du programme 2025 sont confirmés mot pour mot (« Analyser la capacité d'une personne à accomplir un acte juridique dans une situation donnée », capacité de jouissance et d'exercice, actes d'administration, conservatoires et de disposition, tutelle et curatelle, sanctions), mais leur point de rattachement (2.1 ou autre) n'a pas été restitué. 2) Point 2.3 : son contenu n'est connu qu'en paraphrase, d'où la mention « objet ». 3) Décret du 16 août 1901 : il prévoit l'insertion d'un extrait de la déclaration au Journal officiel, mais le numéro de l'article n'a pas été restitué. La fiche cite son chapitre Ier. D'après un résultat Légifrance, la phrase sur l'insertion au JO a disparu de l'art. 5 de la loi de 1901 depuis l'ordonnance n° 2015-904. 4) Art. 413-8 (mineur émancipé commerçant) : non recherché, l'item s'en tient à l'art. 413-6. 5) La contradiction sur le point 2.2 relevée par le rédacteur sort du périmètre de cette fiche et n'a pas été traitée. Suppressions : les trois items sur l'absence et la disparition (art. 88, 112, 122, 128), exclues par le programme 2025 (« La disparition ou l'absence des personnes physiques sont exclues »), ainsi que le texte correspondant. Erreurs de fond corrigées : jurisprudence mal attribuée (Cass. 3e civ., 16 février 2022, citée pour l'extinction de l'usufruit), arrêt introuvable (Cass. 1re civ., 8 février 2017), définition tronquée de l'acte de disposition, et exceptions omises (art. 1196 mise en demeure, art. 1253 réserve agricole L. 311-1-1, art. 1844 dérogation statutaire, art. 618 abus de jouissance, publicité des associations). Fichiers : /home/user/Physics/compta-dcg/data/ue1/ue1-03.fiche.json et /home/user/Physics/compta-dcg/data/ue1/rapports/ue1-03.md (section « Relecture »).
+
+### ue1-04
+
+- Règles#1 (L. 123-33, guichet unique) : repris de la passe ue2-07
+- Règles#2 (L. 526-22, al. 3, créanciers professionnels) : alinéa non restitué dans cette passe
+- Règles#7 (L. 526-27, transfert universel)
+- Règles#9 et #10 (C. civ., art. 214, 215, 223)
+- Règles#13 et #14, Points de vigilance#2 et #3 (C. civ., art. 1413 à 1415, 1421, 1424) : recherches du rédacteur seulement
+- Règles#17 (art. 515-4) : condition du montant cumulé des emprunts non restituée pour le PACS ; « aux conditions fixées par l'article » maintenu
+- Changé#1 (extinction de l'EIRL, loi n° 2022-172, art. 6 ; décret n° 2022-709)
+- Points de vigilance#5 (guide pédagogique DSCG 2026)
+- Art. 1397 : homologation « du tribunal du domicile des époux » dans la version en vigueur (résultat ambigu ; l'énoncé dit « du tribunal »)
+- Art. 1404, al. 1 (biens à caractère personnel) non restitué mot pour mot ; art. 515-5-1 non restitué ; décret n° 2022-725 non recherché ; termes exacts des points du programme 2025
+
+### ue1-05
+
+- Définitions#0 : lettre de l'art. 1101 non restituée dans cette passe
+- Ce qui a changé récemment#0 : ordonnance n° 2016-131, art. 9, al. 2 (« y compris pour leurs effets légaux et pour les dispositions d'ordre public ») et Cass. 3e civ., 4 octobre 2018, n° 17-24.287
+- Ce qui a changé récemment#3 : portée de Cass. com., 26 janvier 2022, n° 20-16.782
+- Points de vigilance#3 : formule « la résolution est privée de tout effet » (Cass. com., 1er juin 2022, n° 20-21.551)
+- Règles essentielles#3 : lettre de l'art. 1112 (seul son caractère interprétatif est confirmé)
+- Règles essentielles#17 : lettre des art. 1219 et 1221
+- Règles essentielles#10 : art. 1137, al. 3 confirmé seulement indirectement, pas de cite
+- Formulations du rapport au Président pour les art. 1101 et 1170
+- Lacunes de la rédaction : obligations de moyens et de résultat, art. 2061, CPC art. 48, art. 2367, art. 1220, art. 1231-6 et 1344
+
+### ue1-06
+
+- Définitions#0, 2e phrase (art. 1582, al. 2)
+- Définitions#5 (art. 1589)
+- Règles#0 (art. 1583)
+- Règles#3 (art. 1603, 1604 et 1625)
+- Règles#7 (art. 1165)
+- Chiffres#3, dernière phrase (art. 1589-1)
+- Chiffres#4 (art. 1590, arrhes)
+- Ce qui a changé récemment#0 (ordonnance n° 2016-131)
+- Ce qui a changé récemment#1 (loi n° 2018-287, art. 16, I, repris de ue1-05)
+
+### ue1-07
+
+- Règles essentielles#3 Chronopost (Cass. com., 22 octobre 1996, n° 93-18.632)
+- Règles essentielles#11 Abus de fonctions (Cass. ass. plén., 19 mai 1988)
+- Règles essentielles#13 Infraction intentionnelle du préposé (Cass. ass. plén., 14 décembre 2001)
+- Chiffres et seuils#0 Place dans le programme 2025 (150 h, blocs 35/55/60 h, 15 h) et libellés de programme.points
+- Chiffres et seuils#1 Gage des créanciers personnels limité au bénéfice du dernier exercice clos (L. 526-22)
+- Chiffres et seuils#3 Prescription de cinq ans (art. 2224) : cite repris d'un résultat d'un autre agent
+- Points de vigilance#4 Cass. civ. 1re, 14 mai 2009 et arrêt de 2001
+- Ce qui a changé récemment#1 : précision « même si la résidence de l'enfant a été fixée chez un seul d'entre eux », qui va au-delà du cite
+- Restitutions mot pour mot manquantes : numérotation « al. 5 » de l'art. 1242 (version du 25 juin 2025), texte de l'art. 1241 (contenu confirmé), attendu Faurecia (principe confirmé)
