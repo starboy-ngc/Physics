@@ -1,0 +1,375 @@
+{
+ "id": "ue1-06",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Programme 2025 : « 3.2 Accompagner le client dans ses contrats courants » (15 heures)",
+   "Programme 2025, sous-partie 3.2 (objet du point, termes exacts non restitués) : caractéristiques, conditions de validité et effets des contrats de vente, des contrats d'entreprise et des contrats de consommation ; notions de consommateur, de professionnel et de non-professionnel ; clauses abusives, droit de rétractation et pratiques commerciales trompeuses",
+   "Programme 2025 (objet du point, termes exacts et sous-partie de rattachement non restitués) : justifier le choix d'une sûreté et ses principaux effets dans une situation donnée",
+   "Programme 2025 (objet du point, termes exacts non restitués) : conditions de validité et principaux effets de certaines sûretés contractuelles, à savoir l'hypothèque, le gage, le nantissement et le cautionnement ; les sûretés non contractuelles ne sont pas étudiées"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. civ., art. 1582 à 1593",
+   "objet": "Nature et forme de la vente : définition, formation par l'accord sur la chose et le prix, promesse de vente, arrhes, prix",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136377",
+   "version": "en vigueur (art. 1590 et 1591 depuis le 21 mars 1804 ; art. 1589 depuis le 30 juillet 1930)"
+  },
+  {
+   "ref": "C. civ., art. 1196",
+   "objet": "Effet translatif du contrat : transfert de propriété à la conclusion et transfert des risques",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041294/",
+   "version": "en vigueur (rédaction issue de l'ordonnance n° 2016-131 du 10 février 2016)"
+  },
+  {
+   "ref": "C. civ., art. 1165 et 1171",
+   "objet": "Prix dans les contrats de prestation de service ; clause abusive dans le contrat d'adhésion",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032008690",
+   "version": "en vigueur (rédaction issue de la loi n° 2018-287 du 20 avril 2018)"
+  },
+  {
+   "ref": "C. civ., art. 1602 à 1649",
+   "objet": "Obligations du vendeur : délivrance et garantie (éviction, défauts cachés)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136381/",
+   "version": "en vigueur (art. 1648 dans sa version issue de la loi du 25 mars 2009)"
+  },
+  {
+   "ref": "C. civ., art. 1641 à 1649",
+   "objet": "Garantie des défauts de la chose vendue (vices cachés) : définition, vendeur de mauvaise foi, délai de deux ans",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006165624",
+   "version": "en vigueur (art. 1641 inchangé depuis 1804 ; art. 1648 dans sa version issue de la loi du 25 mars 2009)"
+  },
+  {
+   "ref": "C. civ., art. 1710 et 1787 à 1799-1",
+   "objet": "Louage d'ouvrage (contrat d'entreprise) : définition, fourniture de la matière, risques",
+   "url": null,
+   "version": "en vigueur (art. 1710 depuis le 21 mars 1804)"
+  },
+  {
+   "ref": "C. consom., article liminaire",
+   "objet": "Définitions du consommateur, du non-professionnel et du professionnel",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049464063",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. consom., art. L. 212-1",
+   "objet": "Clauses abusives dans les contrats entre professionnels et consommateurs ; liste de clauses présumées abusives",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032890812",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. consom., art. L. 217-3 à L. 217-20",
+   "objet": "Garantie légale de conformité pour les biens : délai de deux ans, présomption d'antériorité du défaut",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221271/",
+   "version": "en vigueur (rédaction issue de l'ordonnance n° 2021-1247 du 29 septembre 2021)"
+  },
+  {
+   "ref": "C. consom., art. L. 221-18 à L. 221-28",
+   "objet": "Droit de rétractation dans les contrats conclus à distance et hors établissement : délai, exercice, remboursement, exceptions",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
+   "version": "en vigueur (art. L. 221-28 dans sa version en vigueur depuis le 28 mai 2022)"
+  },
+  {
+   "ref": "C. com., art. L. 142-1 à L. 142-5",
+   "objet": "Nantissement du fonds de commerce : éléments compris, absence d'attribution en paiement, inscription dans les trente jours",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
+   "version": "en vigueur (L. 142-1 et L. 142-2 modifiés par l'ordonnance n° 2021-1192 du 15 septembre 2021, L. 142-2 dans sa version en vigueur depuis le 1er janvier 2023 ; délai de trente jours de L. 142-4 issu de la loi n° 2015-990 du 6 août 2015)"
+  },
+  {
+   "ref": "C. com., art. L. 110-1",
+   "objet": "Actes de commerce, dont les cautionnements de dettes commerciales (11°)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133171/",
+   "version": "en vigueur (modifié par l'ordonnance n° 2021-1192 du 15 septembre 2021, applicable depuis le 1er janvier 2022)"
+  },
+  {
+   "ref": "C. com., art. L. 632-1",
+   "objet": "Nullités de droit de la période suspecte, dont les sûretés réelles conventionnelles constituées pour des dettes antérieures (I, 6°)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146112/",
+   "version": "en vigueur (I, 6° dans sa version en vigueur depuis le 15 mai 2022)"
+  },
+  {
+   "ref": "Ordonnance n° 2016-131 du 10 février 2016",
+   "objet": "Réforme du droit des contrats, du régime général et de la preuve des obligations (art. 1165, 1171 et 1196 du Code civil)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004939",
+   "version": "en vigueur depuis le 1er octobre 2016 ; dispositions codifiées dans le Code civil"
+  },
+  {
+   "ref": "Ordonnance n° 2021-1247 du 29 septembre 2021",
+   "objet": "Garantie légale de conformité pour les biens, les contenus numériques et les services numériques",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044125847",
+   "version": "texte publié au Journal officiel ; dispositions codifiées aux art. L. 217-1 et s. du Code de la consommation"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Vente</b> : convention par laquelle l'un s'oblige à livrer une chose, et l'autre à la payer. Elle peut être faite par acte authentique ou sous seing privé.",
+     "cite": "« La vente est une convention par laquelle l'un s'oblige à livrer une chose, et l'autre à la payer. »",
+     "src": "C. civ., art. 1582",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441291",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrat d'entreprise (louage d'ouvrage)</b> : contrat par lequel l'une des parties s'engage à faire quelque chose pour l'autre, moyennant un prix convenu entre elles. Lorsqu'on charge quelqu'un de faire un ouvrage, on peut convenir qu'il fournira seulement son travail ou son industrie, ou bien qu'il fournira aussi la matière.",
+     "cite": "« Le louage d'ouvrage est un contrat par lequel l'une des parties s'engage à faire quelque chose pour l'autre, moyennant un prix convenu entre elles. »",
+     "src": "C. civ., art. 1710 et 1787",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006442681/1804-03-17",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Consommateur, non-professionnel, professionnel</b> : pour l'application du Code de la consommation, le consommateur est toute personne physique qui agit à des fins qui n'entrent pas dans le cadre de son activité commerciale, industrielle, artisanale, libérale ou agricole ; le non-professionnel est toute personne morale qui n'agit pas à des fins professionnelles ; le professionnel est toute personne physique ou morale, publique ou privée, qui agit dans le cadre de son activité, y compris lorsqu'elle agit pour le compte d'un autre professionnel.",
+     "cite": "« 2° Non-professionnel : toute personne morale qui n'agit pas à des fins professionnelles […] »",
+     "src": "C. consom., article liminaire",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049464063",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause abusive dans un contrat d'adhésion</b> (droit commun) : dans un contrat d'adhésion, toute clause non négociable, déterminée à l'avance par l'une des parties, qui crée un déséquilibre significatif entre les droits et obligations des parties au contrat est réputée non écrite. L'appréciation du déséquilibre significatif ne porte ni sur l'objet principal du contrat ni sur l'adéquation du prix à la prestation. Le contrat d'adhésion est celui qui comporte un ensemble de clauses non négociables, déterminées à l'avance par l'une des parties ; depuis un arrêt du 13 mai 2026, l'article 1171 ne s'applique pas, en principe, aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services (voir « Ce qui a changé récemment »).",
+     "cite": "« Dans un contrat d'adhésion, toute clause non négociable, déterminée à l'avance par l'une des parties, qui crée un déséquilibre significatif entre les droits et obligations des parties au contrat est réputée non écrite. »",
+     "src": "C. civ., art. 1110 et 1171 ; Cass. com., 13 mai 2026, n° 24-17.137",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829836",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause abusive en droit de la consommation</b> : dans les contrats conclus entre professionnels et consommateurs, est abusive la clause qui a pour objet ou pour effet de créer, au détriment du consommateur, un déséquilibre significatif entre les droits et obligations des parties au contrat.",
+     "cite": "« Dans les contrats conclus entre professionnels et consommateurs, sont abusives les clauses qui ont pour objet ou pour effet de créer, au détriment du consommateur, un déséquilibre significatif entre les droits et obligations des parties au contrat. »",
+     "src": "C. consom., art. L. 212-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032890812",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Promesse de vente</b> : la promesse de vente vaut vente lorsque les deux parties se sont accordées sur la chose et sur le prix.",
+     "src": "C. civ., art. 1589",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441324",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Vice caché</b> : défaut caché de la chose vendue qui la rend impropre à l'usage auquel on la destine, ou qui diminue tellement cet usage que l'acheteur ne l'aurait pas acquise, ou en aurait donné un moindre prix. Le vendeur en doit la garantie.",
+     "cite": "« Le vendeur est tenu de la garantie à raison des défauts cachés de la chose vendue qui la rendent impropre à l'usage auquel on la destine […] »",
+     "src": "C. civ., art. 1641",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441924",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Formation de la vente</b> : la vente est parfaite entre les parties, et la propriété est acquise à l'acheteur à l'égard du vendeur, dès qu'on est convenu de la chose et du prix, quoique la chose n'ait pas encore été livrée ni le prix payé. Ni la livraison ni le paiement ne conditionnent donc la formation de la vente.",
+     "src": "C. civ., art. 1583",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136377",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prix</b> : le prix de la vente doit en principe être déterminé et désigné par les parties. Avec la chose, il forme l'objet de l'accord qui rend la vente parfaite.",
+     "src": "C. civ., art. 1591 et 1583",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136377",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Transfert de propriété et des risques</b> : dans les contrats ayant pour objet l'aliénation de la propriété, le transfert s'opère lors de la conclusion du contrat. Il peut être différé par la volonté des parties, la nature des choses ou l'effet de la loi. Le transfert de propriété emporte transfert des risques de la chose.",
+     "cite": "« Ce transfert peut être différé par la volonté des parties, la nature des choses ou par l'effet de la loi. Le transfert de propriété emporte transfert des risques de la chose. »",
+     "src": "C. civ., art. 1196",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041294/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Obligations du vendeur</b> : il a deux obligations principales, délivrer et garantir la chose qu'il vend. La délivrance est le transport de la chose vendue en la puissance et possession de l'acheteur. La garantie a deux objets : la possession paisible de la chose vendue (garantie d'éviction) et les défauts cachés de cette chose ou vices rédhibitoires.",
+     "src": "C. civ., art. 1603, 1604 et 1625",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136381/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Vendeur qui connaissait le vice</b> : il est tenu, outre la restitution du prix qu'il a reçu, de tous les dommages et intérêts envers l'acheteur.",
+     "cite": "« Si le vendeur connaissait les vices de la chose, il est tenu, outre la restitution du prix qu'il en a reçu, de tous les dommages et intérêts envers l'acheteur. »",
+     "src": "C. civ., art. 1645",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441972",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Vendeur professionnel</b> : la Cour de cassation tire de l'article 1645 une présomption irréfragable de connaissance du vice par le vendeur professionnel, qui l'oblige à réparer l'intégralité des dommages qui en sont la conséquence. Tenu de connaître les vices, il ne peut en principe pas se prévaloir d'une clause limitative ou exclusive de la garantie des vices cachés.",
+     "cite": "« Il résulte de ce texte une présomption irréfragable de connaissance par le vendeur professionnel du vice de la chose vendue, qui l'oblige à réparer l'intégralité de tous les dommages qui en sont la conséquence. »",
+     "src": "Cass. com., 19 mai 2021, n° 19-18.230 ; Cass. 3e civ., 15 juin 2022, n° 21-21.143 (inédit) ; C. civ., art. 1645",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000043566067",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Risques dans le contrat d'entreprise</b> : lorsque l'entrepreneur fournit la matière et que la chose vient à périr avant d'être livrée, la perte est pour lui, à moins que le maître de l'ouvrage ne fût en demeure de recevoir la chose. Lorsqu'il ne fournit que son travail ou son industrie, il n'est tenu que de sa faute.",
+     "src": "C. civ., art. 1788 et 1789",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prix dans les contrats de prestation de service</b> : à défaut d'accord des parties avant leur exécution, le prix peut être fixé par le créancier, à charge pour lui d'en motiver le montant en cas de contestation. En cas d'abus, le juge peut être saisi d'une demande de dommages et intérêts et, le cas échéant, de résolution du contrat.",
+     "src": "C. civ., art. 1165",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829839",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Appréciation du caractère abusif</b> (consommation) : elle ne porte ni sur la définition de l'objet principal du contrat ni sur l'adéquation du prix ou de la rémunération, pour autant que les clauses soient rédigées de façon claire et compréhensible. Un décret établit une liste de clauses présumées abusives : en cas de litige, le professionnel doit prouver le caractère non abusif de la clause litigieuse.",
+     "src": "C. consom., art. L. 212-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032890812",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Garantie légale de conformité</b> : le vendeur répond des défauts de conformité existant au moment de la délivrance du bien qui apparaissent dans un délai de deux ans à compter de celle-ci. Ce régime du Code de la consommation a été réécrit par l'ordonnance n° 2021-1247 du 29 septembre 2021 relative à la garantie légale de conformité pour les biens, les contenus numériques et les services numériques.",
+     "cite": "« Il répond des défauts de conformité existant au moment de la délivrance du bien au sens de l'article L. 216-1, qui apparaissent dans un délai de deux ans à compter de celle-ci. »",
+     "src": "C. consom., art. L. 217-3 ; ordonnance n° 2021-1247 du 29 septembre 2021",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044142579",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Présomption d'antériorité du défaut</b> : les défauts de conformité qui apparaissent dans un délai de vingt-quatre mois à compter de la délivrance du bien sont, sauf preuve contraire, présumés exister au moment de la délivrance ; pour les biens d'occasion, ce délai est de douze mois. Le vendeur peut écarter cette présomption si elle est incompatible avec la nature du bien ou du défaut invoqué.",
+     "src": "C. consom., art. L. 217-7",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000044130262/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Droit de rétractation</b> (contrat conclu à distance ou hors établissement) : le consommateur dispose d'un délai de quatorze jours pour exercer son droit de rétractation, sans avoir à motiver sa décision. Le délai court à compter de la conclusion du contrat pour les prestations de services, et de la réception du bien pour les ventes de biens.",
+     "src": "C. consom., art. L. 221-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226842/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Exercice de la rétractation</b> : avant l'expiration du délai, le consommateur informe le professionnel de sa décision au moyen du formulaire type de rétractation ou de toute autre déclaration dénuée d'ambiguïté exprimant sa volonté de se rétracter.",
+     "src": "C. consom., art. L. 221-21 (section 6 : art. L. 221-18 à L. 221-28)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Remboursement après rétractation</b> : le professionnel rembourse les sommes versées, frais de livraison compris, dans les quatorze jours à compter de la date à laquelle il est informé de la décision de rétractation. Pour une vente de biens, il peut en principe différer le remboursement jusqu'à la récupération des biens ou jusqu'à la preuve de leur expédition. Il utilise le même moyen de paiement que pour la transaction initiale, sauf accord exprès du consommateur, et ne rembourse pas le surcoût d'un mode de livraison plus coûteux que le mode standard expressément choisi par le consommateur.",
+     "src": "C. consom., art. L. 221-24",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226828",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Exceptions au droit de rétractation</b> : il ne peut notamment pas être exercé pour les services pleinement exécutés avant la fin du délai, dans les conditions d'accord exprès prévues par le texte, pour les biens confectionnés selon les spécifications du consommateur ou nettement personnalisés, pour les biens susceptibles de se détériorer ou de se périmer rapidement, et pour certains contenus numériques dont l'exécution a commencé avec l'accord exprès du consommateur.",
+     "src": "C. consom., art. L. 221-28 (version en vigueur depuis le 28 mai 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Nantissement du fonds de commerce</b> : il ne donne pas au créancier le droit de se faire attribuer le fonds en paiement. À défaut de désignation expresse et précise dans l'acte qui le constitue, il ne comprend que l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. L'inscription doit être prise, à peine de nullité du nantissement, dans les trente jours suivant la date de l'acte constitutif.",
+     "cite": "« L'inscription doit être prise, à peine de nullité du nantissement, dans les trente jours suivant la date de l'acte constitutif. »",
+     "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>14 jours</b> pour se rétracter d'un contrat conclu à distance ou hors établissement ; <b>14 jours</b> pour que le professionnel rembourse, à compter du moment où il est informé de la rétractation ; délai de rétractation prolongé de <b>12 mois</b> au plus lorsque les informations relatives au droit de rétractation n'ont pas été fournies au consommateur.",
+     "src": "C. consom., art. L. 221-18, L. 221-20 et L. 221-24",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>2 ans</b> de garantie légale de conformité à compter de la délivrance ; présomption d'antériorité du défaut pendant <b>24 mois</b> pour un bien neuf et <b>12 mois</b> pour un bien d'occasion.",
+     "src": "C. consom., art. L. 217-3 et L. 217-7",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221271/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>2 ans à compter de la découverte du vice</b> pour agir en garantie des vices cachés : le point de départ n'est ni la vente ni la livraison.",
+     "cite": "« L'action résultant des vices rédhibitoires doit être intentée par l'acquéreur dans un délai de deux ans à compter de la découverte du vice. »",
+     "src": "C. civ., art. 1648, al. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020466328",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>10 jours</b> : une promesse unilatérale de vente immobilière doit être constatée par un acte authentique ou par un acte sous seing privé enregistré dans un délai de dix jours. Par ailleurs, est nul tout engagement unilatéral d'acquisition immobilière pour lequel un versement est exigé ou reçu.",
+     "src": "C. civ., art. 1589-2 et 1589-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441326",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Arrhes : perte ou restitution du double</b>. Si la promesse de vendre a été faite avec des arrhes, chacun des contractants peut s'en départir : celui qui les a versées en les perdant, celui qui les a reçues en restituant le double.",
+     "src": "C. civ., art. 1590",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441327",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Ordonnance n° 2016-131 du 10 février 2016</b> portant réforme du droit des contrats, du régime général et de la preuve des obligations, en vigueur depuis le 1er octobre 2016 : l'article 1196 énonce le transfert de propriété lors de la conclusion du contrat et le transfert corrélatif des risques ; l'ordonnance a aussi introduit la fixation du prix par le créancier dans les contrats de prestation de service (art. 1165) et la clause abusive dans le contrat d'adhésion (art. 1171), deux articles modifiés ensuite par la loi n° 2018-287 du 20 avril 2018.",
+     "src": "Ordonnance n° 2016-131 du 10 février 2016 ; C. civ., art. 1165, 1171 et 1196",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004939",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2018-287 du 20 avril 2018</b> : elle a modifié les articles 1165 et 1171 du Code civil. La rédaction actuelle de l'article 1171, qui vise la clause non négociable déterminée à l'avance par l'une des parties, s'applique aux actes juridiques conclus ou établis à compter du 1er octobre 2018 ; la modification de l'article 1165 a un caractère interprétatif.",
+     "src": "Loi n° 2018-287 du 20 avril 2018, art. 16, I ; C. civ., art. 1165 et 1171",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036825602/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2021-1247 du 29 septembre 2021</b> relative à la garantie légale de conformité pour les biens, les contenus numériques et les services numériques : elle a réécrit les articles L. 217-1 et suivants du Code de la consommation et porté de six à douze mois la présomption d'antériorité du défaut pour les biens d'occasion.",
+     "src": "Ordonnance n° 2021-1247 du 29 septembre 2021 ; C. consom., art. L. 217-7",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044125847",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2021-1192 du 15 septembre 2021</b> (réforme du droit des sûretés) : depuis le 1er janvier 2022, les cautionnements de dettes commerciales sont des actes de commerce entre toutes personnes. L'ordonnance a aussi modifié les articles L. 142-1 et L. 142-2 relatifs au nantissement du fonds de commerce (L. 142-2 dans sa version en vigueur depuis le 1er janvier 2023).",
+     "src": "Ordonnance n° 2021-1192 du 15 septembre 2021 ; C. com., art. L. 110-1, 11°, L. 142-1 et L. 142-2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133171/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cass. com., 13 mai 2026, n° 24-17.137</b> (publié au bulletin) : s'appuyant sur les travaux parlementaires, la Cour juge que l'article 1171 du Code civil ne s'applique pas aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services, sauf si l'application de l'article L. 442-1 du Code de commerce à ces contrats est exclue par une autre disposition.",
+     "cite": "« L'article 1171 du code civil, interprété à la lumière de ces travaux, ne s'applique donc pas aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services, excepté si l'application de l'article L. 442-1 du code de commerce à ces contrats est exclue par une autre disposition. »",
+     "src": "Cass. com., 13 mai 2026, n° 24-17.137 ; C. civ., art. 1171 ; C. com., art. L. 442-1",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167043",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Honoraires de l'expert-comptable</b> : la Cour de cassation a jugé que l'article 1165 du Code civil n'est pas applicable, conformément à l'article 1105, alinéa 3, à une prestation de service fournie par un expert-comptable.",
+     "cite": "« les dispositions de l'article 1165 du code civil ne sont, conformément à l'article 1105, alinéa 3, du même code, pas applicables à une prestation de service fournie par un expert-comptable »",
+     "src": "Cass. com., 20 septembre 2023, n° 21-25.386 ; C. civ., art. 1105 et 1165",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000048104612?init=true&page=1&query=21-25.386&searchField=ALL&tab_selection=all",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Promesse unilatérale ou synallagmatique</b> : la règle « la promesse de vente vaut vente » suppose l'accord des deux parties sur la chose et sur le prix. Une promesse unilatérale de vente, sans engagement corrélatif d'acheter, ne peut pas être assimilée à une promesse synallagmatique.",
+     "src": "C. civ., art. 1589 ; Cass. com., 25 avril 1989, n° 87-17.281",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007022561/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Qualifier avant de répartir les risques</b> : dans la vente, le transfert de propriété, et avec lui celui des risques, a lieu en principe dès la conclusion du contrat ; dans le contrat d'entreprise où l'entrepreneur fournit la matière, la perte de la chose avant livraison est pour l'entrepreneur, sauf mise en demeure du maître de recevoir la chose. La qualification du contrat change donc la personne qui supporte la perte.",
+     "src": "C. civ., art. 1196 et 1788",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041294/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sûreté prise pour une dette ancienne</b> : si le débiteur est ensuite placé en redressement judiciaire, sont nuls de droit, lorsqu'ils sont intervenus depuis la date de cessation des paiements, les sûretés réelles conventionnelles ou droits de rétention conventionnels constitués sur ses biens ou droits pour des dettes antérieurement contractées, sauf s'ils remplacent une sûreté antérieure d'une nature et d'une assiette au moins équivalentes et sauf cession de créance prévue à l'article L. 313-23 du Code monétaire et financier faite en exécution d'un contrat-cadre conclu avant la cessation des paiements. L'efficacité d'une sûreté dépend donc aussi de sa date de constitution (lien avec l'UE2, entreprises en difficulté).",
+     "src": "C. com., art. L. 632-1, I, 6° (version en vigueur depuis le 15 mai 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146112/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sujet d'examen</b> : le guide pédagogique du DCG 2026 illustre la sous-partie « Accompagner le client dans ses contrats courants » par un sujet sur le délai de rétractation dans les ventes à distance. Il faut en maîtriser le régime : quatorze jours sans motif, point de départ à la réception du bien, prolongation de douze mois au plus à défaut d'information, remboursement dans les quatorze jours.",
+     "src": "Guide pédagogique DCG 2026 ; C. consom., art. L. 221-18, L. 221-20 et L. 221-24",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "fiab": "millésimé 2026"
+    }
+   ]
+  }
+ ]
+}

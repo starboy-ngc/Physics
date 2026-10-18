@@ -1,0 +1,390 @@
+{
+ "id": "ue1-02",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 1 Fondamentaux du droit, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "« 1.2 Déterminer le mode de résolution adapté à un litige » (20 heures)",
+   "« Déterminer la juridiction compétente dans un litige de droit privé » (selon le guide pédagogique de juillet 2026 : Tribunal des conflits non étudié ; voies de recours limitées à l'appel et au pourvoi en cassation)",
+   "Action en justice : conditions de recevabilité (intérêt à agir, qualité pour agir, capacité, délai de prescription de droit commun)",
+   "« Conciliation, médiation et arbitrage, transaction » : distinguer les modes judiciaires et les modes alternatifs de règlement des différends",
+   "« Vérifier la validité d'une clause contractuelle »",
+   "« 3.4 Établir la preuve des droits » (10 heures) : charge de la preuve, objet de la preuve (acte juridique ou fait juridique), recevabilité et force probante des modes de preuve ; serments décisoire et supplétoire exclus"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "CPC, art. 30 à 32-1",
+   "objet": "L'action en justice : intérêt légitime et qualité pour agir (art. 31) ; irrecevabilité de la prétention émise par ou contre une personne dépourvue du droit d'agir (art. 32)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006117222",
+   "version": "en vigueur (art. 31 : rédaction en vigueur depuis le 1er janvier 1976)"
+  },
+  {
+   "ref": "CPC, art. 122 à 126",
+   "objet": "Fins de non-recevoir : définition (défaut de qualité, défaut d'intérêt, prescription, délai préfix, chose jugée) et régime",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006135868/",
+   "version": "en vigueur (art. 122 : rédaction en vigueur depuis 1976)"
+  },
+  {
+   "ref": "C. civ., art. 2224",
+   "objet": "Prescription de droit commun des actions personnelles ou mobilières : cinq ans ; point de départ",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017112",
+   "version": "en vigueur depuis le 19 juin 2008 (loi n° 2008-561 du 17 juin 2008 portant réforme de la prescription en matière civile)"
+  },
+  {
+   "ref": "COJ, art. L. 211-3",
+   "objet": "Compétence de droit commun du tribunal judiciaire en matière civile et commerciale",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038314073",
+   "version": "en vigueur depuis le 1er janvier 2020 (loi n° 2019-222 du 23 mars 2019)"
+  },
+  {
+   "ref": "COJ, art. R. 211-3-24 à R. 211-3-27",
+   "objet": "Compétence du tribunal judiciaire à charge d'appel ou en dernier ressort selon le montant de la demande (5 000 €)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006071164/LEGISCTA000039011948/",
+   "version": "en vigueur depuis le 1er janvier 2020 (décret n° 2019-912 du 30 août 2019)"
+  },
+  {
+   "ref": "COJ, art. L. 213-4-1 à L. 213-4-8",
+   "objet": "Le juge des contentieux de la protection : tutelles des majeurs, expulsions, baux d'habitation, surendettement",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006071164/LEGISCTA000038274599/",
+   "version": "en vigueur (art. L. 213-4-4 en vigueur depuis le 1er janvier 2020)"
+  },
+  {
+   "ref": "C. com., art. L. 721-3",
+   "objet": "Compétence d'attribution des tribunaux de commerce ; faculté de convenir de l'arbitrage",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044078679",
+   "version": "en vigueur depuis le 1er janvier 2022 (ordonnance n° 2021-1192 du 15 septembre 2021 ; loi n° 2016-1547 du 18 novembre 2016)"
+  },
+  {
+   "ref": "Loi n° 2023-1059 du 20 novembre 2023 d'orientation et de programmation du ministère de la justice 2023-2027, art. 26",
+   "objet": "Expérimentation du tribunal des activités économiques (décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024 désignant douze tribunaux)",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
+   "version": "expérimentation ouverte le 1er janvier 2025 pour quatre ans"
+  },
+  {
+   "ref": "CPC, art. 42 à 48",
+   "objet": "Compétence territoriale : lieu où demeure le défendeur, options du demandeur, clauses dérogatoires",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006135862/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CPC, art. 527 et suivants",
+   "objet": "Voies de recours : point de départ des délais (art. 528), délai d'appel (art. 538), effet dévolutif (art. 561 et 562), objet du pourvoi et décisions susceptibles de pourvoi (art. 604 et 605), délai de pourvoi (art. 612)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006117240/",
+   "version": "en vigueur (art. 561 modifié par le décret n° 2017-891 du 6 mai 2017)"
+  },
+  {
+   "ref": "CPC, art. 750-1",
+   "objet": "Tentative préalable obligatoire de conciliation, de médiation ou de procédure participative devant le tribunal judiciaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039501708/",
+   "version": "rédaction issue du décret n° 2023-357 du 11 mai 2023"
+  },
+  {
+   "ref": "Décret n° 2025-660 du 18 juillet 2025",
+   "objet": "Réforme de l'instruction conventionnelle et recodification des modes amiables de résolution des différends (livre V du CPC) ; principe de coopération entre le juge et les parties",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051919659",
+   "version": "JORF du 19 juillet 2025 ; en vigueur le 1er septembre 2025, applicable aux instances en cours"
+  },
+  {
+   "ref": "C. civ., art. 2044",
+   "objet": "Transaction : définition (concessions réciproques) ; contrat rédigé par écrit",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033458766",
+   "version": "en vigueur depuis le 20 novembre 2016"
+  },
+  {
+   "ref": "CPC, art. 1442 à 1503 ; C. civ., art. 2061",
+   "objet": "Arbitrage interne : convention d'arbitrage (clause compromissoire, compromis), écrit, sentence, exequatur (art. 1487 et 1488) ; opposabilité de la clause compromissoire",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006117269/",
+   "version": "CPC : art. 1442 et 1443 en vigueur depuis le 1er mai 2011, livre IV modifié par le décret n° 2026-741 du 6 août 2026 à compter du 1er janvier 2027 ; C. civ., art. 2061 : rédaction issue de la loi n° 2016-1547 du 18 novembre 2016"
+  },
+  {
+   "ref": "C. civ., art. 1353 à 1386-1",
+   "objet": "Preuve des obligations : charge de la preuve, présomptions, contrats sur la preuve, admissibilité des modes de preuve (seuil de 1 500 € fixé par le décret n° 80-533 du 15 juillet 1980)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006118074/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131 du 10 février 2016, en vigueur depuis le 1er octobre 2016"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Intérêt à agir</b> : l'action en justice est ouverte à tous ceux qui ont un intérêt légitime au succès ou au rejet d'une prétention. Exception : la loi peut réserver le droit d'agir aux seules personnes qu'elle qualifie ; elles seules ont alors <b>qualité pour agir</b>.",
+     "cite": "« L'action est ouverte à tous ceux qui ont un intérêt légitime au succès ou au rejet d'une prétention, […] »",
+     "src": "CPC, art. 31",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410125",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Fin de non-recevoir</b> : tout moyen qui tend à faire déclarer l'adversaire irrecevable en sa demande, sans examen au fond, pour défaut de droit d'agir, tel le défaut de qualité, le défaut d'intérêt, la prescription, le délai préfix ou la chose jugée (liste non limitative). Le juge écarte alors la demande sans dire si elle est fondée.",
+     "cite": "« Constitue une fin de non-recevoir tout moyen qui tend à faire déclarer l'adversaire irrecevable en sa demande, sans examen au fond, […] »",
+     "src": "CPC, art. 122",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410229",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Tribunal judiciaire</b> : juridiction de droit commun en matière civile depuis le 1er janvier 2020. Il connaît de toutes les affaires civiles et commerciales que la loi n'attribue pas, en raison de la nature de la demande, à une autre juridiction ; il a en outre une compétence exclusive dans les matières déterminées par les lois et règlements.",
+     "cite": "« Le tribunal judiciaire connaît de toutes les affaires civiles et commerciales pour lesquelles compétence n'est pas attribuée, en raison de la nature de la demande, à une autre juridiction. »",
+     "src": "COJ, art. L. 211-3 et L. 211-4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038314073",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Transaction</b> : contrat par lequel les parties, par des concessions réciproques, terminent une contestation née ou préviennent une contestation à naître. Ce contrat doit être rédigé par écrit. Le programme la range parmi les modes alternatifs de règlement des différends, avec la conciliation, la médiation et l'arbitrage.",
+     "cite": "« La transaction est un contrat par lequel les parties, par des concessions réciproques, terminent une contestation née, ou préviennent une contestation à naître. »",
+     "src": "C. civ., art. 2044",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033458766",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Convention d'arbitrage</b> : elle prend la forme d'une <b>clause compromissoire</b> ou d'un <b>compromis</b>. La clause compromissoire est l'engagement, pris par les parties à un ou plusieurs contrats, de soumettre à l'arbitrage les litiges qui pourraient naître de ces contrats ; le compromis est la convention par laquelle les parties à un litige déjà né le soumettent à l'arbitrage.",
+     "src": "CPC, art. 1442",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023450909",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Présomption légale</b> : celle que la loi attache à certains actes ou à certains faits en les tenant pour certains ; elle dispense celui au profit duquel elle existe d'en rapporter la preuve. Elle est <b>simple</b> lorsque la preuve contraire peut être rapportée par tout moyen, <b>mixte</b> lorsque la loi limite les moyens ou l'objet de la preuve contraire, <b>irréfragable</b> lorsqu'elle ne peut être renversée.",
+     "src": "C. civ., art. 1354",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042336",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Défaut de droit d'agir</b> : est irrecevable toute prétention émise par ou contre une personne dépourvue du droit d'agir. Le défaut d'intérêt ou de qualité s'invoque par une fin de non-recevoir, sans examen au fond.",
+     "src": "CPC, art. 32 et 122",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006117222",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Régime des fins de non-recevoir</b> : elles peuvent être proposées en tout état de cause, à moins qu'il en soit disposé autrement. Le juge doit relever d'office celles qui ont un caractère d'ordre public.",
+     "src": "CPC, art. 123 et 125",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006135868/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prescription de droit commun</b> : les actions personnelles ou mobilières se prescrivent par cinq ans à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer. Une action prescrite est irrecevable : la prescription est une fin de non-recevoir.",
+     "cite": "« Les actions personnelles ou mobilières se prescrivent par cinq ans à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer. »",
+     "src": "C. civ., art. 2224 ; CPC, art. 122",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017112",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Juge des contentieux de la protection</b> : juge du tribunal judiciaire, qui a remplacé le juge d'instance. Il exerce les fonctions de juge des tutelles des majeurs (sauvegarde de justice, curatelle, tutelle) et connaît notamment des actions tendant à l'expulsion des personnes qui occupent aux fins d'habitation des immeubles bâtis sans droit ni titre, des actions relatives au bail d'habitation ou à l'occupation d'un logement, et du traitement du surendettement des particuliers.",
+     "src": "COJ, art. L. 213-4-2, L. 213-4-3, L. 213-4-4 et L. 213-4-7",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006071164/LEGISCTA000038274599/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Tribunal de commerce</b> : il connaît des contestations relatives aux engagements entre commerçants, entre artisans, entre établissements de crédit, entre sociétés de financement ou entre eux, de celles relatives aux sociétés commerciales et de celles relatives aux actes de commerce entre toutes personnes. Les parties peuvent toutefois, au moment où elles contractent, convenir de soumettre ces contestations à l'arbitrage.",
+     "src": "C. com., art. L. 721-3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044078679",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Compétence territoriale de principe</b> : la juridiction compétente est celle du lieu où demeure le défendeur, c'est-à-dire, pour une personne physique, le lieu de son domicile ou, à défaut, de sa résidence et, pour une personne morale, le lieu où elle est établie. S'il y a plusieurs défendeurs, le demandeur peut saisir la juridiction du lieu où demeure l'un d'eux.",
+     "cite": "« La juridiction territorialement compétente est, sauf disposition contraire, celle du lieu où demeure le défendeur. »",
+     "src": "CPC, art. 42 et 43",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410140",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Options du demandeur</b> : outre la juridiction du lieu où demeure le défendeur, le demandeur peut saisir, à son choix, en matière contractuelle, la juridiction du lieu de la livraison effective de la chose ou du lieu de l'exécution de la prestation de service et, en matière délictuelle, la juridiction du lieu du fait dommageable ou celle dans le ressort de laquelle le dommage a été subi. L'article prévoit aussi des options en matière mixte et en matière d'aliments.",
+     "src": "CPC, art. 46",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410145",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause dérogeant à la compétence territoriale</b> : elle est réputée non écrite, sauf si elle a été convenue entre des personnes ayant toutes contracté en qualité de commerçant et si elle a été spécifiée de façon très apparente dans l'engagement de la partie à qui elle est opposée.",
+     "cite": "« Toute clause qui, directement ou indirectement, déroge aux règles de compétence territoriale est réputée non écrite […] »",
+     "src": "CPC, art. 48",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410147",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Appel</b> : il remet la chose jugée en question devant la juridiction d'appel, qui statue à nouveau en fait et en droit. Il ne défère à la cour que les chefs du dispositif du jugement qu'il critique expressément et ceux qui en dépendent ; la dévolution ne s'opère pour le tout que lorsque l'appel tend à l'annulation du jugement ou si l'objet du litige est indivisible. Le délai court en principe à compter de la notification du jugement.",
+     "cite": "« L'appel remet la chose jugée en question devant la juridiction d'appel. »",
+     "src": "CPC, art. 528, 561 et 562",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006181692/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pourvoi en cassation</b> : il tend à faire censurer par la Cour de cassation la non-conformité du jugement attaqué aux règles de droit ; il n'est ouvert qu'à l'encontre des jugements rendus en dernier ressort. Le délai de pourvoi est de deux mois, sauf disposition contraire.",
+     "src": "CPC, art. 604, 605 et 612",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Tentative préalable obligatoire</b> : devant le tribunal judiciaire, la demande en paiement d'une somme n'excédant pas 5 000 € ou relative à un trouble anormal de voisinage (entre autres cas visés par le texte) doit être précédée, au choix des parties, d'une tentative de conciliation menée par un conciliateur de justice, de médiation ou de procédure participative, à peine d'irrecevabilité que le juge peut prononcer d'office. Dispenses : homologation d'un accord sollicitée, recours préalable imposé auprès de l'auteur de la décision, motif légitime (urgence manifeste, circonstances rendant la tentative impossible ou nécessitant une décision non contradictoire, indisponibilité des conciliateurs de justice au-delà de trois mois), tentative préalable de conciliation imposée au juge ou à l'autorité administrative par un autre texte, échec de la procédure simplifiée de recouvrement des petites créances.",
+     "src": "CPC, art. 750-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039501708/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause compromissoire</b> : elle doit avoir été acceptée par la partie à laquelle on l'oppose, à moins que celle-ci n'ait succédé aux droits et obligations de la partie qui l'a initialement acceptée. Elle ne peut pas être opposée à la partie qui n'a pas contracté dans le cadre de son activité professionnelle.",
+     "cite": "« Lorsque l'une des parties n'a pas contracté dans le cadre de son activité professionnelle, la clause ne peut lui être opposée. »",
+     "src": "C. civ., art. 2061 (rédaction issue de la loi n° 2016-1547 du 18 novembre 2016)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033458809",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Arbitrage interne : écrit et exequatur</b> : la convention d'arbitrage est écrite, à peine de nullité. La sentence arbitrale n'est susceptible d'exécution forcée qu'en vertu d'une ordonnance d'exequatur du tribunal judiciaire dans le ressort duquel elle a été rendue ; la procédure d'exequatur n'est pas contradictoire. L'exequatur ne peut être accordé si la sentence est manifestement contraire à l'ordre public, et l'ordonnance qui le refuse est motivée.",
+     "src": "CPC, art. 1443, 1487 et 1488",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039386031",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Charge de la preuve</b> : celui qui réclame l'exécution d'une obligation doit la prouver ; réciproquement, celui qui se prétend libéré doit justifier le paiement ou le fait qui a produit l'extinction de son obligation.",
+     "cite": "« Celui qui réclame l'exécution d'une obligation doit la prouver. Réciproquement, celui qui se prétend libéré doit justifier le paiement ou le fait qui a produit l'extinction de son obligation. »",
+     "src": "C. civ., art. 1353",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042341",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Admissibilité des modes de preuve</b> : hors les cas où la loi en dispose autrement, la preuve peut être apportée par tout moyen. Par exception, l'acte juridique portant sur une somme ou une valeur excédant un montant fixé par décret (1 500 €) doit être prouvé par écrit sous signature privée ou authentique.",
+     "cite": "« Hors les cas où la loi en dispose autrement, la preuve peut être apportée par tout moyen. »",
+     "src": "C. civ., art. 1358 et 1359",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042316",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Exceptions à l'exigence d'un écrit</b> : l'écrit n'est pas exigé en cas d'impossibilité matérielle ou morale de se procurer un écrit, s'il est d'usage de ne pas établir un écrit, ou lorsque l'écrit a été perdu par force majeure.",
+     "cite": "« Les règles prévues à l'article précédent reçoivent exception en cas d'impossibilité matérielle ou morale de se procurer un écrit, s'il est d'usage de ne pas établir un écrit, ou lorsque l'écrit a été perdu par force majeure. »",
+     "src": "C. civ., art. 1360",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032035939/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrats sur la preuve</b> : ils sont valables lorsqu'ils portent sur des droits dont les parties ont la libre disposition. Ils ne peuvent toutefois ni contredire les présomptions irréfragables établies par la loi, ni modifier la foi attachée à l'aveu ou au serment, ni établir au profit de l'une des parties une présomption irréfragable.",
+     "src": "C. civ., art. 1356",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032035937/",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>5 000 €</b> : le tribunal judiciaire statue en dernier ressort sur les actions personnelles ou mobilières dont le montant n'excède pas 5 000 € ; au-delà, il statue à charge d'appel. Un jugement rendu en dernier ressort n'est pas susceptible d'appel, mais peut faire l'objet d'un pourvoi en cassation.",
+     "src": "COJ, art. R. 211-3-24 et R. 211-3-25 (décret n° 2019-912 du 30 août 2019) ; CPC, art. 605",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039013368",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>5 000 € également</b> pour la tentative préalable obligatoire de règlement amiable : demandes en paiement n'excédant pas ce montant. Ne pas confondre avec le taux du dernier ressort, qui décide de l'ouverture de l'appel et non de la recevabilité de la demande.",
+     "src": "CPC, art. 750-1 ; COJ, art. R. 211-3-24",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039501708/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>1 500 €</b> : montant au-delà duquel un acte juridique doit être prouvé par écrit sous signature privée ou authentique, fixé par le décret n° 80-533 du 15 juillet 1980 modifié.",
+     "src": "C. civ., art. 1359 ; décret n° 80-533 du 15 juillet 1980",
+     "url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=LEGITEXT000006063274",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Un mois</b> pour faire appel en matière contentieuse (quinze jours en matière gracieuse), sauf texte spécial ; <b>deux mois</b> pour former un pourvoi en cassation, sauf disposition contraire. Les délais courent en principe à compter de la notification du jugement.",
+     "cite": "« Le délai de recours par une voie ordinaire est d'un mois en matière contentieuse ; il est de quinze jours en matière gracieuse. »",
+     "src": "CPC, art. 528, 538 et 612",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410858",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cinq ans</b> : délai de prescription de droit commun des actions personnelles ou mobilières, en vigueur depuis le 19 juin 2008 (loi n° 2008-561 du 17 juin 2008 portant réforme de la prescription en matière civile).",
+     "src": "C. civ., art. 2224 ; loi n° 2008-561 du 17 juin 2008",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000019013696",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Tribunal judiciaire (1er janvier 2020)</b> : la loi n° 2019-222 du 23 mars 2019 a fusionné le tribunal de grande instance et le tribunal d'instance situés dans une même commune ; le décret n° 2019-966 du 18 septembre 2019 substitue le tribunal judiciaire à ces deux juridictions. Un ancien tribunal d'instance situé dans une autre commune devient une chambre de proximité du tribunal judiciaire, dénommée « tribunal de proximité ». Le taux du dernier ressort est passé de 4 000 € (tribunal de grande instance) à 5 000 €.",
+     "src": "Loi n° 2019-222 du 23 mars 2019, art. 95 ; décret n° 2019-966 du 18 septembre 2019 ; décret n° 2019-912 du 30 août 2019 (COJ, art. R. 211-3-24)",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000039110244",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décret n° 2023-357 du 11 mai 2023</b> relatif à la tentative préalable obligatoire de médiation, de conciliation ou de procédure participative en matière civile : il a donné à l'article 750-1 du CPC sa rédaction actuelle (seuil de 5 000 €, trouble anormal de voisinage, irrecevabilité que le juge peut prononcer d'office, dispenses).",
+     "src": "Décret n° 2023-357 du 11 mai 2023 ; CPC, art. 750-1",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047537847",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Tribunal des activités économiques</b> : à titre expérimental, la loi du 20 novembre 2023 étend les compétences du tribunal de commerce, qui devient tribunal des activités économiques dans douze tribunaux désignés par l'arrêté du 5 juillet 2024, depuis le 1er janvier 2025 et pour quatre ans. Il est seul compétent pour les procédures amiables et collectives de tous les professionnels, quels que soient leur statut et leur activité, à l'exception de certaines professions du droit réglementées (dont les avocats et les notaires), qui restent au tribunal judiciaire.",
+     "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Décret n° 2025-660 du 18 juillet 2025</b> : réforme de l'instruction conventionnelle et recodification des modes amiables. Le livre V du CPC (« La résolution amiable des différends ») est réécrit pour réunir toutes les dispositions sur les modes amiables, conventionnels et judiciaires ; un principe directeur de coopération entre le juge et les parties est consacré, et il entre dans la mission du juge de concilier les parties et de déterminer avec elles le mode de résolution du litige le plus adapté.",
+     "cite": "« Conformément à l'article 25 du décret n° 2025-660 du 18 juillet 2025, ces dispositions entrent en vigueur le 1er septembre 2025. Elles sont applicables aux instances en cours à cette date. »",
+     "src": "Décret n° 2025-660 du 18 juillet 2025, art. 25 ; CPC, art. 21 et livre V",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051919659",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décret n° 2026-741 du 6 août 2026</b> portant diverses mesures de clarification et modernisation de la procédure arbitrale : il entre en vigueur le 1er janvier 2027, sauf exceptions. L'article 1517 du CPC dans sa rédaction issue de ce décret exige la motivation du refus de l'exequatur ou de la reconnaissance d'une sentence arbitrale ; en arbitrage interne, l'article 1488 impose déjà que l'ordonnance qui refuse l'exequatur soit motivée. Jusqu'au 1er janvier 2027, les articles 1487 et 1488 s'appliquent dans leur rédaction actuelle.",
+     "cite": "« Le refus de l'exequatur ou de la reconnaissance d'une sentence arbitrale est motivé. »",
+     "src": "Décret n° 2026-741 du 6 août 2026 ; CPC, art. 1517 (rédaction applicable au 1er janvier 2027) et art. 1488",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054632457",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Réforme du droit de la preuve</b> : l'ordonnance n° 2016-131 du 10 février 2016 regroupe les règles de preuve aux articles 1353 à 1386-1 du Code civil (titre IV bis « De la preuve des obligations »), en vigueur depuis le 1er octobre 2016. Dans les manuels anciens, la charge de la preuve figurait à l'ancien article 1315 et l'exigence d'un écrit à l'ancien article 1341, pour l'application duquel le décret n° 80-533 a été pris.",
+     "src": "Ordonnance n° 2016-131 du 10 février 2016, art. 4 ; C. civ., art. 1353 à 1386-1",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000032005161",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Périmètre du programme</b> : le guide pédagogique du DCG précise que le Tribunal des conflits n'est pas étudié et que les voies de recours se limitent à l'appel et au pourvoi en cassation. La transaction est rattachée à cette première partie du programme, avec les modes alternatifs de règlement des différends.",
+     "src": "Guide pédagogique DCG, ministère de l'Enseignement supérieur, juillet 2026 (UE 1)",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Injonction de payer</b> : la procédure d'injonction de payer n'est, dans aucune de ses deux phases, soumise à la tentative préalable obligatoire de l'article 750-1 du CPC. Un créancier d'une somme inférieure à 5 000 € peut donc présenter une requête en injonction de payer sans tentative amiable préalable.",
+     "src": "Cass., avis, 25 septembre 2025, n° 25-70.013",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000052304015/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ne pas confondre clause attributive de compétence et clause compromissoire</b> : l'article 48 du CPC ne vise que les clauses qui dérogent aux règles de compétence territoriale ; il ne s'applique pas à une clause d'arbitrage. L'opposabilité d'une clause compromissoire relève de l'article 2061 du Code civil (acceptation par la partie à qui on l'oppose ; inopposabilité à celle qui n'a pas contracté dans le cadre de son activité professionnelle).",
+     "src": "Cass. 1re civ., 5 septembre 2018, n° 17-13.837 ; CPC, art. 48 ; C. civ., art. 2061",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000037450600/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Transaction : vérifier les concessions réciproques</b> : un acte ne peut être qualifié de transaction que si la réalité du différend et des concessions réciproques est caractérisée ; la Cour de cassation censure l'arrêt qui retient cette qualification sans les identifier. En cas pratique, il faut donc relever ce que chaque partie abandonne.",
+     "src": "C. civ., art. 2044 ; Cass. 1re civ., 10 juin 2015, n° 14-15.608",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000030722941/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Preuve contre un commerçant</b> : à l'égard des commerçants, les actes de commerce peuvent se prouver par tous moyens, à moins qu'il n'en soit autrement disposé par la loi. La règle joue à l'égard des commerçants : elle écarte l'exigence d'un écrit de l'article 1359 du Code civil lorsque la preuve d'un acte de commerce est rapportée contre un commerçant.",
+     "src": "C. com., art. L. 110-3 ; C. civ., art. 1359",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pas de contournement du seuil de 1 500 €</b> : le créancier dont la créance excède ce seuil ne peut être dispensé de la preuve par écrit en restreignant sa demande ; il en va de même lorsque la demande, même inférieure au seuil, porte sur le solde ou sur une partie d'une créance supérieure à ce montant. En outre, on ne peut prouver outre ou contre un écrit établissant un acte juridique, même pour une somme n'excédant pas ce seuil, que par un autre écrit sous signature privée ou authentique.",
+     "src": "C. civ., art. 1359",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042311",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

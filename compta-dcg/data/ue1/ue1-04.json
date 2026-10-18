@@ -1,0 +1,639 @@
+{
+ "id": "ue1-04",
+ "ue": "UE1",
+ "ordre": 4,
+ "title": "L'entrepreneur individuel, son activité et son couple",
+ "resume": "Conseiller un entrepreneur individuel et son couple : qualité de commerçant et formalités, séparation des patrimoines professionnel et personnel, renonciation et insaisissabilité, statut du conjoint, puis masses de biens et gage des créanciers selon le mariage (communauté légale, séparation de biens), le PACS ou le concubinage.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Exercer seul une activité commerciale",
+   "html": "<p>Le <b>commerçant</b> remplit deux conditions cumulatives : « Sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle » (C. com., art. L. 121-1). Les articles L. 110-1 et L. 110-2 énumèrent les actes de commerce, notamment :</p><ul><li>tout achat de biens meubles pour les revendre ;</li><li>tout achat d'immeubles aux fins de les revendre, sauf si l'acquéreur veut y édifier des bâtiments et les vendre en bloc ou par locaux ;</li><li>toute entreprise de location de meubles, de manufactures, de commission ou de transport ; toute opération de change, banque ou courtage.</li></ul><p>Certains actes sont commerciaux <b>entre toutes personnes</b>, même pour un non-commerçant : la lettre de change et, depuis le 1er janvier 2022, le cautionnement d'une dette commerciale.</p><p><b>Capacité</b> : le mineur émancipé peut être commerçant sur autorisation du juge des tutelles lors de l'émancipation, ou du président du tribunal judiciaire si sa demande est postérieure (art. L. 121-2). <b>Formalités</b> : depuis le 1er janvier 2023, création, modification et cessation se déclarent par voie électronique, en un dossier unique déposé auprès d'un organisme unique (art. L. 123-33).</p><p><i>Exemple</i> : Karim achète chaque semaine des vêtements en gros et les revend sur les marchés. Achats de meubles pour les revendre, à titre de profession habituelle : il est commerçant.</p>"
+  },
+  {
+   "h": "Le statut unique : deux patrimoines",
+   "html": "<p>Depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022), l'<b>entrepreneur individuel</b> (EI), personne physique qui exerce en son nom propre une activité professionnelle indépendante (commerciale, artisanale, libérale ou agricole), a de plein droit deux patrimoines (C. com., art. L. 526-22) :</p><ul><li><b>patrimoine professionnel</b> : les biens, droits, obligations et sûretés utiles à l'activité, c'est-à-dire ceux qui servent à celle-ci par nature, par destination ou en fonction de leur objet (art. R. 526-26) ;</li><li><b>patrimoine personnel</b> : tout le reste.</li></ul><p>Le gage dépend de l'origine de la dette. Les <b>créanciers professionnels</b> n'ont pour gage que le patrimoine professionnel, sauf sûreté conventionnelle ou renonciation. Les <b>créanciers personnels</b> saisissent le patrimoine personnel ; s'il est insuffisant, ils atteignent le patrimoine professionnel dans la limite du bénéfice du dernier exercice clos.</p><p>L'EI qui conteste qu'un bien entre dans le gage d'un créancier doit le prouver. La séparation cède devant le fisc et les organismes sociaux dans les cas prévus par le LPF et le CSS. Piège : l'EI ne peut pas se porter caution de sa propre dette. L'option pour l'EIRL est supprimée (loi de 2022, art. 6) ; les EIRL existantes restent régies par leurs textes.</p><p><i>Exemple</i> : le meunier impayé de Sophie, boulangère, peut saisir son four et son stock, pas sa maison de vacances.</p>"
+  },
+  {
+   "h": "Renonciation, insaisissabilité et transfert",
+   "html": "<p><b>Renonciation</b> (art. L. 526-25) : sur demande écrite d'un créancier, l'EI peut lui ouvrir son patrimoine personnel pour un <b>engagement spécifique</b>, dont il rappelle le terme et le montant, déterminé ou déterminable. En principe, il ne renonce qu'après un délai de réflexion de <span class=\"mono\">7</span> jours francs à compter de la réception de la demande (sauf aménagement, art. D. 526-28). À peine de nullité, l'acte mentionne notamment l'EI, le bénéficiaire et l'engagement, et porte les deux signatures, la date et le lieu.</p><p><b>Insaisissabilité</b> (art. L. 526-1 à L. 526-3) : la résidence principale d'une personne immatriculée au registre national des entreprises est insaisissable <b>de droit</b> par ses créanciers professionnels ; en cas d'usage mixte, la partie non professionnelle l'est aussi, sans état descriptif de division. Les autres biens fonciers non professionnels se protègent par <b>déclaration notariée</b>, publiée au fichier immobilier. Renonciation possible à tout moment ; protection inopposable au fisc en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales.</p><p><b>Transfert universel</b> (art. L. 526-27) : l'EI peut céder à titre onéreux, transmettre à titre gratuit entre vifs ou apporter en société l'intégralité de son patrimoine professionnel, sans liquidation, avec effet à l'égard des tiers dès sa publicité.</p><div class=\"note\">Dette professionnelle : patrimoine professionnel seul, sauf renonciation ou sûreté ; résidence principale insaisissable de droit. Dette personnelle : patrimoine personnel, puis professionnel plafonné au dernier bénéfice clos.</div>"
+  },
+  {
+   "h": "Le conjoint qui travaille dans l'entreprise",
+   "html": "<p>Le conjoint du chef d'une entreprise artisanale, commerciale ou libérale qui y exerce de manière régulière une activité professionnelle opte pour l'un de trois statuts (C. com., art. L. 121-4) : <b>conjoint collaborateur</b>, <b>conjoint salarié</b> ou <b>conjoint associé</b>. À défaut de déclaration d'activité professionnelle, il est réputé avoir travaillé sous le statut de <b>conjoint salarié</b>.</p><ul><li><b>Sociétés</b> : le statut de collaborateur est réservé au conjoint du gérant associé unique ou majoritaire d'une SARL ou d'une SELARL.</li><li><b>Durée</b> : depuis le 1er janvier 2022, le statut de collaborateur est limité à <span class=\"mono\">5</span> ans, en comptant toutes les périodes et toutes les entreprises au titre desquelles il a été choisi (art. L. 121-4, IV bis, issu de la LFSS pour 2022, art. 24). Au-delà, le conjoint qui continue choisit le statut de salarié ou d'associé ; à défaut, il est réputé salarié. Pour les conjoints déjà collaborateurs au 1er janvier 2022, seules les périodes postérieures à cette date comptent. L'organisme de sécurité sociale peut radier le collaborateur qui dépasse cette durée (CSS, art. L. 661-2).</li></ul><p>L'intitulé de la section (art. L. 121-4 à L. 121-8) vise aussi le partenaire de PACS et le concubin du chef d'entreprise.</p><p><i>Exemple</i> : Julie aide chaque jour son mari boulanger, sans déclaration : elle est réputée conjointe salariée.</p>"
+  },
+  {
+   "h": "Le mariage : règles communes aux époux",
+   "html": "<p>Les devoirs et droits respectifs des époux (C. civ., art. 212 à 226) jouent à côté du régime matrimonial ; l'article 1536 réserve ainsi l'article 220 en séparation de biens.</p><ul><li><b>Charges du mariage</b> : si les conventions matrimoniales ne les règlent pas, les époux y contribuent à proportion de leurs facultés respectives (art. 214).</li><li><b>Profession</b> : chaque époux exerce librement une profession, perçoit ses gains et salaires et en dispose après s'être acquitté des charges du mariage (art. 223).</li><li><b>Logement de la famille</b> : les époux ne peuvent l'un sans l'autre disposer des droits qui l'assurent, ni des meubles meublants qui le garnissent. L'époux qui n'a pas consenti peut demander l'annulation dans l'année à partir du jour où il a connu l'acte, au plus tard un an après la dissolution du régime (art. 215).</li><li><b>Dettes ménagères</b> : chaque époux passe seul les contrats ayant pour objet l'entretien du ménage ou l'éducation des enfants ; l'autre en est tenu solidairement (art. 220). Pas de solidarité pour les dépenses manifestement excessives, ni, sans l'accord des deux, pour les achats à tempérament et les emprunts, sauf emprunts modestes nécessaires à la vie courante, aux conditions de l'article.</li></ul><p><i>Exemple</i> : Thomas vend seul l'appartement familial, qui lui est propre : Clara peut agir en nullité dans l'année où elle l'apprend.</p>"
+  },
+  {
+   "h": "La communauté légale : biens, pouvoirs, dettes",
+   "html": "<p>Régime légal : la <b>communauté</b> (C. civ., art. 1400 et s.).</p><ul><li><b>Biens communs</b> : les acquêts faits ensemble ou séparément pendant le mariage, issus de l'industrie personnelle des époux ou des économies sur les fruits et revenus de leurs propres (art. 1401). Tout bien est réputé commun faute de preuve de son caractère propre (art. 1402).</li><li><b>Biens propres</b> : ceux possédés au jour du mariage ou reçus pendant le mariage par succession, donation ou legs (art. 1405), et les biens à caractère personnel (art. 1404).</li></ul><p><b>Pouvoirs</b> : chaque époux administre et dispose seul des biens communs, sauf à répondre de ses fautes ; l'époux qui exerce une profession séparée accomplit seul les actes nécessaires à celle-ci (art. 1421). L'accord des deux est requis, notamment, pour aliéner ou grever de droits réels un immeuble, un fonds de commerce ou une exploitation communs, ou des droits sociaux non négociables (art. 1424).</p><p><b>Dettes</b> : la dette d'un époux se poursuit sur les biens communs, sauf fraude du débiteur et mauvaise foi du créancier (art. 1413), mais pas sur les gains et salaires du conjoint, sauf dette ménagère (art. 1414). Emprunt ou cautionnement sans consentement exprès du conjoint : seuls les propres et revenus du signataire répondent (art. 1415).</p><p><i>Exemple</i> : Antoine commande seul ses marchandises, mais ne vend pas seul le fonds commun créé pendant le mariage.</p>"
+  },
+  {
+   "h": "Séparation de biens et changement de régime",
+   "html": "<p>La <b>séparation de biens</b> est stipulée par contrat de mariage (C. civ., art. 1536). Chaque époux conserve l'administration, la jouissance et la libre disposition de ses <b>biens personnels</b>. Il reste seul tenu des dettes nées en sa personne, avant ou pendant le mariage, hors les dettes ménagères de l'article 220.</p><p>Un époux prouve par tous moyens, à l'égard de son conjoint comme des tiers, qu'il a la propriété exclusive d'un bien. Les biens dont aucun ne peut justifier une propriété exclusive sont <b>indivis</b>, à chacun pour moitié (art. 1538).</p><p><b>Changer de régime</b> (art. 1397) : les époux peuvent modifier ou changer leur régime par acte notarié, sans plus attendre deux ans d'application depuis la loi n° 2019-222 du 23 mars 2019. Les créanciers, informés par un avis dans un support d'annonces légales, les parties au contrat modifié et les enfants majeurs peuvent s'opposer dans les <span class=\"mono\">3</span> mois ; en cas d'opposition, l'acte est soumis à l'homologation du tribunal. Le changement est opposable aux tiers <span class=\"mono\">3</span> mois après sa mention en marge de l'acte de mariage.</p><p><i>Exemple</i> : Rachid, séparé de biens, ouvre une épicerie ; son fournisseur impayé ne peut pas saisir l'appartement que son épouse a acheté seule avec ses deniers.</p>"
+  },
+  {
+   "h": "PACS et concubinage : tableau comparatif",
+   "html": "<p>Le <b>PACS</b> est un contrat conclu par deux personnes physiques majeures pour organiser leur vie commune (C. civ., art. 515-1). Les partenaires s'engagent à une vie commune, à une aide matérielle et à une assistance réciproques ; ils sont solidaires des dettes de l'un pour les besoins de la vie courante, sauf dépenses manifestement excessives et, sans l'accord des deux, achats à tempérament et emprunts, hors emprunts modestes nécessaires à la vie courante (art. 515-4). Sauf convention contraire, chacun garde ses biens personnels ; un bien dont nul ne prouve la propriété exclusive est indivis par moitié (art. 515-5). La convention peut soumettre à l'<b>indivision</b> les biens acquis après son enregistrement : ils sont indivis par moitié, sans recours pour contribution inégale (art. 515-5-1).</p><p>Le <b>concubinage</b> est une union de fait, stable et continue (art. 515-8) ; son chapitre se limite à cette définition.</p><table><thead><tr><th>Couple</th><th>Masses de biens</th><th>Dettes du quotidien</th></tr></thead><tbody><tr><td>Communauté légale</td><td>communs, propres</td><td>solidarité (art. 220)</td></tr><tr><td>Séparation de biens</td><td>personnels, indivis</td><td>solidarité (art. 220)</td></tr><tr><td>PACS</td><td>personnels, indivis</td><td>solidarité (art. 515-4)</td></tr><tr><td>Concubinage</td><td>aucun régime dans son chapitre</td><td>aucune solidarité dans son chapitre</td></tr></tbody></table><div class=\"note\">Méthode du cas pratique : qualifier la dette (professionnelle ou personnelle, ménagère ou non), situer le bien dans sa masse, puis appliquer le texte qui fixe le gage.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 110-1, L. 110-2, L. 121-1 et L. 121-2 ; C. civ., art. 413-8",
+   "note": "Actes de commerce, définition du commerçant, mineur émancipé commerçant sur autorisation"
+  },
+  {
+   "ref": "C. com., art. L. 123-33",
+   "note": "Dépôt électronique d'un dossier unique auprès d'un organisme unique, depuis le 1er janvier 2023"
+  },
+  {
+   "ref": "C. com., art. L. 526-22 à L. 526-27, R. 526-26 et D. 526-28 ; loi n° 2022-172 du 14 février 2022",
+   "note": "Statut de l'entrepreneur individuel : patrimoines professionnel et personnel, gage des créanciers, renonciation, transfert universel ; abrogation du recours à l'EIRL (art. 6)"
+  },
+  {
+   "ref": "C. com., art. L. 526-1 à L. 526-3",
+   "note": "Insaisissabilité de droit de la résidence principale ; déclaration notariée pour les autres biens fonciers"
+  },
+  {
+   "ref": "C. com., art. L. 121-4 ; loi n° 2021-1754 du 23 décembre 2021, art. 24",
+   "note": "Statuts du conjoint travaillant dans l'entreprise ; conjoint collaborateur limité à cinq ans"
+  },
+  {
+   "ref": "C. civ., art. 214, 215, 220 et 223",
+   "note": "Devoirs et droits respectifs des époux : charges du mariage, logement de la famille, dettes ménagères, libre exercice d'une profession"
+  },
+  {
+   "ref": "C. civ., art. 1397, 1401 à 1405, 1413 à 1415, 1421 et 1424",
+   "note": "Changement de régime ; communauté légale : biens communs et propres, gage des créanciers, pouvoirs des époux"
+  },
+  {
+   "ref": "C. civ., art. 1536 et 1538",
+   "note": "Séparation de biens : biens personnels, dettes personnelles, présomption d'indivision par moitié"
+  },
+  {
+   "ref": "C. civ., art. 515-1, 515-4, 515-5, 515-5-1 et 515-8",
+   "note": "PACS : définition, solidarité des dettes de la vie courante, biens personnels, option pour l'indivision ; définition du concubinage"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Selon l'article L. 121-1 du Code de commerce, quelles conditions font d'une personne un commerçant ?",
+   "opts": [
+    "Exercer des actes de commerce et en faire sa profession habituelle",
+    "Être majeur et immatriculé au registre national des entreprises",
+    "Accomplir un acte de commerce isolé et en tirer un bénéfice",
+    "Exercer une activité indépendante sous la forme d'une société"
+   ],
+   "a": 0,
+   "why": "L'article L. 121-1 pose deux conditions cumulatives : « Sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle ». Un acte isolé ne suffit pas, faute d'habitude professionnelle, et le bénéfice n'est pas un critère. La majorité et l'immatriculation ne figurent pas dans cette définition : le mineur émancipé peut d'ailleurs être commerçant sur autorisation (art. L. 121-2). Enfin, l'entrepreneur individuel qui remplit les deux conditions est commerçant sans avoir à constituer une société.",
+   "src": "C. com., art. L. 121-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Hugo crée en 2026 une entreprise individuelle de vente de vélos. Comment déclare-t-il la création de son activité ?",
+   "opts": [
+    "Par voie électronique, en un dossier unique déposé auprès d'un organisme unique",
+    "Par un dossier papier déposé séparément auprès de chaque organisme concerné",
+    "Par une déclaration écrite remise au tribunal judiciaire de son domicile",
+    "Il n'a aucune formalité à accomplir, faute de constituer une société"
+   ],
+   "a": 0,
+   "why": "Depuis le 1er janvier 2023, les entreprises déclarent leur création, les modifications de leur situation et la cessation de leur activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné par décret (C. com., art. L. 123-33). Ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard : il n'y a donc plus de démarche séparée par organisme. Le texte vise les entreprises, sans distinguer selon qu'elles sont ou non constituées en société : l'entrepreneur individuel est concerné.",
+   "src": "C. com., art. L. 123-33",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Sophie est boulangère en entreprise individuelle. Quels biens font partie de son patrimoine professionnel ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le four à pain du fournil",
+    "Le stock de farine destiné à la fabrication",
+    "La camionnette utilisée uniquement pour les livraisons",
+    "La maison de vacances qu'elle occupe l'été en famille",
+    "Les bijoux qu'elle a hérités de sa grand-mère"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le patrimoine professionnel réunit les biens, droits, obligations et sûretés utiles à l'activité (C. com., art. L. 526-22), c'est-à-dire ceux qui, par nature, par destination ou en fonction de leur objet, servent à celle-ci (art. R. 526-26). Le four, le stock de farine et la camionnette de livraison servent directement à la boulangerie. La maison de vacances et les bijoux de famille n'ont aucune utilité professionnelle : ils relèvent du patrimoine personnel.",
+   "src": "C. com., art. L. 526-22 ; R. 526-26",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le meunier de Sophie, boulangère en entreprise individuelle, n'est pas payé de ses livraisons de farine. Sophie ne lui a consenti ni sûreté ni renonciation. Peut-il saisir la maison de vacances de Sophie, qui ne sert pas à son activité ?",
+   "opts": [
+    "Non : son gage se limite au patrimoine professionnel de Sophie",
+    "Oui : l'entrepreneur individuel n'a pas de personnalité morale",
+    "Oui, mais dans la limite du bénéfice du dernier exercice clos",
+    "Oui, dès qu'il a obtenu un jugement de condamnation"
+   ],
+   "a": 0,
+   "why": "Les créanciers dont les droits sont nés à l'occasion de l'exercice professionnel n'ont pour gage que le patrimoine professionnel de l'entrepreneur individuel, sauf sûreté conventionnelle ou renonciation (C. com., art. L. 526-22). La maison de vacances, inutile à l'activité, appartient au patrimoine personnel : le meunier ne peut pas la saisir. L'absence de personnalité morale est indifférente, car la séparation des patrimoines résulte de la loi, et un jugement ne modifie pas l'étendue du gage. La limite du bénéfice du dernier exercice clos joue dans l'autre sens : elle plafonne l'accès des créanciers personnels au patrimoine professionnel.",
+   "src": "C. com., art. L. 526-22",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Paul, menuisier immatriculé au registre national des entreprises, n'a fait aucune déclaration chez un notaire. Un fournisseur de bois impayé veut saisir la maison où Paul a fixé sa résidence principale. Qu'en est-il ?",
+   "opts": [
+    "La maison est insaisissable de droit par ce créancier professionnel",
+    "La maison est saisissable, faute de déclaration notariée",
+    "La maison est insaisissable par tous ses créanciers, même personnels",
+    "La maison n'est saisissable que pour la moitié de sa valeur"
+   ],
+   "a": 0,
+   "why": "Les droits d'une personne physique immatriculée au registre national des entreprises sur l'immeuble où est fixée sa résidence principale sont de droit insaisissables par les créanciers dont les droits naissent à l'occasion de son activité professionnelle (C. com., art. L. 526-1). Aucune déclaration n'est nécessaire pour la résidence principale : la déclaration notariée sert à protéger les autres biens fonciers. La protection ne vise que les créanciers professionnels, pas les créanciers personnels, et aucun partage par moitié n'est prévu.",
+   "src": "C. com., art. L. 526-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "En septembre 2026, Lina crée une activité de graphiste et demande à son expert-comptable d'opter pour l'EIRL par une déclaration d'affectation. Que lui répondre ?",
+   "opts": [
+    "Impossible : le recours à l'EIRL a été supprimé en 2022",
+    "Possible, par une déclaration d'affectation au guichet unique",
+    "Obligatoire, pour toute activité libérale créée depuis 2022",
+    "Possible, si elle renonce à l'insaisissabilité de sa résidence"
+   ],
+   "a": 0,
+   "why": "L'article 6 de la loi n° 2022-172 du 14 février 2022 abroge l'article L. 526-5-1 du Code de commerce, qui organisait le recours à l'EIRL ; le décret n° 2022-709 du 26 avril 2022 met ce régime en extinction. Seuls les entrepreneurs qui exerçaient déjà sous ce régime restent régis par ses textes : aucune option nouvelle n'est possible, et un régime supprimé ne peut être ni imposé ni subordonné à une renonciation. Lina bénéficie en revanche, de plein droit et sans déclaration, de la séparation de ses patrimoines professionnel et personnel (C. com., art. L. 526-22).",
+   "src": "Loi n° 2022-172 du 14 février 2022, art. 6 ; C. com., art. L. 526-22",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Depuis deux ans, Julie travaille chaque jour dans la boulangerie de son mari, entrepreneur individuel, sans qu'aucune déclaration d'activité professionnelle ait été faite pour elle. Sous quel statut est-elle réputée avoir travaillé ?",
+   "opts": [
+    "Conjoint salarié",
+    "Conjoint collaborateur",
+    "Conjoint associé",
+    "Aide familiale sans statut"
+   ],
+   "a": 0,
+   "why": "Le conjoint du chef d'une entreprise artisanale, commerciale ou libérale qui y exerce de manière régulière une activité professionnelle opte pour le statut de conjoint collaborateur, de conjoint salarié ou de conjoint associé (C. com., art. L. 121-4). « A défaut de déclaration d'activité professionnelle, le conjoint ayant exercé une activité professionnelle de manière régulière dans l'entreprise est réputé l'avoir fait sous le statut de conjoint salarié. » Les statuts de collaborateur et d'associé supposent donc une option, et un travail régulier ne peut pas rester sans statut.",
+   "src": "C. com., art. L. 121-4",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque acte selon sa qualification au regard de l'article L. 110-1 du Code de commerce.",
+   "cats": [
+    "Acte de commerce entre toutes personnes",
+    "Autre acte réputé acte de commerce",
+    "Acte non réputé acte de commerce par L. 110-1"
+   ],
+   "items": [
+    [
+     "Un retraité signe une lettre de change",
+     0
+    ],
+    [
+     "Une enseignante se porte caution de la dette d'un épicier envers son fournisseur de marchandises destinées à la revente",
+     0
+    ],
+    [
+     "Un épicier achète des conserves pour les revendre",
+     1
+    ],
+    [
+     "Une entreprise de transport de marchandises par route exécute une livraison",
+     1
+    ],
+    [
+     "Un marchand de biens achète un appartement pour le revendre",
+     1
+    ],
+    [
+     "Un particulier achète un terrain pour y édifier un immeuble et le vendre par lots",
+     2
+    ],
+    [
+     "Une famille achète une voiture pour ses besoins personnels",
+     2
+    ]
+   ],
+   "why": "L'article L. 110-1 répute actes de commerce, entre toutes personnes, les lettres de change et, depuis le 1er janvier 2022, les cautionnements de dettes commerciales : la qualité de non-commerçant du signataire est indifférente. La dette de l'épicier, née d'un achat de marchandises pour les revendre, est commerciale. Le même article vise l'achat de biens meubles pour les revendre, toute entreprise de transport et l'achat d'immeubles aux fins de les revendre, sauf si l'acquéreur a agi en vue d'édifier des bâtiments et de les vendre en bloc ou par locaux. L'achat pour ses besoins personnels, sans intention de revendre, n'est pas visé.",
+   "src": "C. com., art. L. 110-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Léo, 17 ans, a été émancipé il y a six mois. Il veut aujourd'hui ouvrir un commerce de pièces détachées. De quelle autorisation a-t-il besoin pour devenir commerçant ?",
+   "opts": [
+    "Celle du président du tribunal judiciaire",
+    "Celle de ses deux parents, donnée par écrit",
+    "Celle du juge des tutelles, quelle que soit la date de la demande",
+    "Aucune autorisation ne peut lui être donnée avant 18 ans"
+   ],
+   "a": 0,
+   "why": "Le mineur émancipé peut être commerçant sur autorisation du juge des tutelles au moment de la décision d'émancipation, ou du président du tribunal judiciaire s'il formule sa demande après avoir été émancipé (C. com., art. L. 121-2 ; C. civ., art. 413-8). Léo demande après son émancipation : c'est donc le président du tribunal judiciaire qui autorise. Le juge des tutelles n'intervient qu'au moment de l'émancipation et l'autorisation des parents n'est pas prévue. Le texte ouvre le commerce au mineur émancipé : l'âge de 18 ans n'est pas une condition absolue.",
+   "src": "C. com., art. L. 121-2 ; C. civ., art. 413-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Paul, menuisier en entreprise individuelle, sollicite un prêt professionnel. La banque lui demande de signer en plus un cautionnement personnel garantissant ce même prêt, afin de pouvoir saisir son patrimoine personnel. Qu'en pensez-vous ?",
+   "opts": [
+    "Impossible : il faut une renonciation ou une sûreté conventionnelle",
+    "Valable : le cautionnement ouvre son patrimoine personnel",
+    "Valable, à condition que l'acte soit reçu par un notaire",
+    "Valable, dans la limite du bénéfice du dernier exercice clos"
+   ],
+   "a": 0,
+   "why": "La distinction des patrimoines personnel et professionnel « ne l'autorise pas à se porter caution en garantie d'une dette dont il est débiteur principal » (C. com., art. L. 526-22). Pour donner à un créancier professionnel un droit sur son patrimoine personnel, Paul doit consentir une sûreté conventionnelle ou renoncer à la protection, sur demande écrite du créancier et pour cet engagement précis (art. L. 526-25). L'intervention d'un notaire ne valide pas ce cautionnement, et la limite du dernier bénéfice clos concerne les seuls créanciers personnels.",
+   "src": "C. com., art. L. 526-22 et L. 526-25",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Une banque veut obtenir de Paul, entrepreneur individuel, une renonciation à la protection de son patrimoine personnel. Quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "La renonciation suppose une demande écrite du créancier",
+    "Elle porte sur un engagement spécifique dont Paul rappelle le terme et le montant",
+    "L'acte porte la signature des deux parties, sa date et son lieu",
+    "Elle peut valoir pour tous les engagements futurs de Paul envers cette banque",
+    "Les formes prévues par décret sont facultatives"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'entrepreneur individuel peut, sur demande écrite d'un créancier, renoncer à la protection de son patrimoine personnel « pour un engagement spécifique dont il doit rappeler le terme et le montant, qui doit être déterminé ou déterminable » (C. com., art. L. 526-25). La renonciation respecte, à peine de nullité, les formes prescrites par décret : l'acte mentionne notamment l'entrepreneur, le bénéficiaire et l'engagement, et porte la signature des deux parties, la date et le lieu (art. D. 526-28). Une renonciation globale pour tous les engagements futurs contredit l'exigence d'un engagement spécifique, et les formes ne sont pas facultatives puisque leur méconnaissance entraîne la nullité.",
+   "src": "C. com., art. L. 526-25 ; D. 526-28",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le 2 mars 2026, Paul, entrepreneur individuel, reçoit la demande écrite de sa banque l'invitant à renoncer à la protection de son patrimoine personnel pour un prêt précis. Hors aménagement prévu par décret, à partir de quand peut-il renoncer ?",
+   "opts": [
+    "Après un délai de 7 jours francs à compter de la réception",
+    "Dès le jour de la réception de la demande écrite",
+    "Quarante-huit heures après la réception de la demande",
+    "Un mois après la réception de la demande écrite"
+   ],
+   "a": 0,
+   "why": "L'entrepreneur individuel ne peut en principe renoncer au profit d'un créancier qu'à l'expiration d'un délai de réflexion de sept jours francs à compter de la réception de la demande écrite de ce créancier (C. com., art. L. 526-25 ; l'art. D. 526-28 prévoit un aménagement de ce délai). La signature immédiate est donc exclue, de même qu'un délai de quarante-huit heures, trop court. Le délai d'un mois ne correspond pas non plus au délai légal.",
+   "src": "C. com., art. L. 526-25 ; D. 526-28",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Paul, entrepreneur individuel immatriculé, possède un terrain à bâtir qu'il n'a pas affecté à son activité. Il veut le mettre à l'abri de ses créanciers professionnels. Que doit-il faire ?",
+   "opts": [
+    "Une déclaration d'insaisissabilité reçue par notaire et publiée",
+    "Rien : tout immeuble de l'entrepreneur est insaisissable de droit",
+    "Une déclaration sous seing privé déposée au guichet unique",
+    "Rien : un terrain non bâti ne peut pas être protégé"
+   ],
+   "a": 0,
+   "why": "La personne immatriculée peut déclarer insaisissables ses droits sur tout bien foncier, bâti ou non bâti, qu'elle n'a pas affecté à son usage professionnel (C. com., art. L. 526-1). La déclaration est reçue par notaire à peine de nullité et publiée au fichier immobilier (au livre foncier dans le Bas-Rhin, le Haut-Rhin et la Moselle). L'insaisissabilité de droit ne vise que la résidence principale : le terrain n'est protégé que par une déclaration notariée, et non par un acte sous seing privé. Le texte vise expressément les biens non bâtis.",
+   "src": "C. com., art. L. 526-1 à L. 526-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Paul, menuisier en entreprise individuelle, doit 25 000 € à son ancien bailleur pour des loyers impayés de son logement personnel. La vente de ses biens personnels saisissables rapporte 9 000 €. Son entreprise a réalisé un bénéfice de 30 000 € lors de l'exercice clos le 31 décembre 2024 et de 12 000 € lors de l'exercice clos le 31 décembre 2025 ; aucun exercice n'a été clos depuis. En octobre 2026, quel montant maximal le bailleur peut-il recouvrer sur le patrimoine professionnel de Paul (en €) ?",
+   "a": 12000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Les créanciers dont les droits ne sont pas nés de l'activité professionnelle ont pour gage le patrimoine personnel ; s'il est insuffisant, ils peuvent saisir le patrimoine professionnel dans la limite du montant du bénéfice réalisé lors du dernier exercice clos (C. com., art. L. 526-22). Reste dû après le patrimoine personnel : 25 000 − 9 000 = 16 000 €. Le dernier exercice clos est celui de 2025 : le plafond est de 12 000 €, et non de 30 000 €. Le bailleur recouvre donc au plus 12 000 € sur le patrimoine professionnel, et 4 000 € restent impayés.",
+   "src": "C. com., art. L. 526-22",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Paul, menuisier en entreprise individuelle, envisage de transférer son activité. Quelles affirmations sont exactes sur le transfert universel de son patrimoine professionnel ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il peut prendre la forme d'un apport en société",
+    "Il porte sur l'intégralité du patrimoine professionnel, sans liquidation",
+    "Il n'est opposable aux tiers qu'à compter de sa publicité",
+    "Il peut ne porter que sur quelques biens choisis par Paul",
+    "L'opposition d'un créancier antérieur interdit le transfert"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'entrepreneur individuel peut céder à titre onéreux, transmettre à titre gratuit entre vifs ou apporter en société l'intégralité de son patrimoine professionnel, sans liquidation (C. com., art. L. 526-27). Le transfert universel emporte cession des droits, biens, obligations et sûretés qui composent ce patrimoine et n'est opposable aux tiers qu'à compter de sa publicité : il ne peut donc pas se limiter à quelques biens choisis. L'opposition des créanciers antérieurs n'interdit pas le transfert : le juge la rejette ou ordonne le remboursement des créances ou la constitution de garanties.",
+   "src": "C. com., art. L. 526-27",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Nadia est présidente et associée majoritaire d'une SAS. Son mari, qui travaille régulièrement dans la société, souhaite adopter le statut de conjoint collaborateur. Est-ce possible ?",
+   "opts": [
+    "Non : la forme de SAS ne le permet pas",
+    "Oui, car Nadia est associée majoritaire",
+    "Oui, quelle que soit la forme de la société",
+    "Oui, mais seulement dans une SAS unipersonnelle"
+   ],
+   "a": 0,
+   "why": "Dans une société, le statut de conjoint collaborateur est réservé au conjoint du gérant associé unique ou majoritaire d'une SARL ou d'une SELARL (C. com., art. L. 121-4). Nadia préside une SAS et n'est pas gérante d'une SARL ou d'une SELARL : son mari ne peut pas être conjoint collaborateur. Sa qualité d'associée majoritaire ne suffit pas, et il en irait de même si la SAS n'avait qu'un associé.",
+   "src": "C. com., art. L. 121-4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Thomas, marié à Clara, vend seul l'appartement où vit la famille ; l'appartement lui appartient en propre. Clara, qui n'a pas donné son accord, apprend la vente deux mois plus tard. Les époux ne sont pas divorcés. Que peut faire Clara ?",
+   "opts": [
+    "Demander l'annulation de la vente dans l'année où elle l'a apprise",
+    "Rien : Thomas dispose librement de ses biens propres",
+    "Seulement réclamer des dommages-intérêts à l'acquéreur",
+    "Demander l'annulation de la vente dans les cinq ans"
+   ],
+   "a": 0,
+   "why": "Les époux ne peuvent l'un sans l'autre disposer des droits par lesquels est assuré le logement de la famille, ni des meubles meublants dont il est garni (C. civ., art. 215). Le texte vise les droits qui assurent le logement, sans distinguer selon l'époux qui en est titulaire : le caractère propre de l'appartement ne permet pas à Thomas d'agir seul. Clara peut demander l'annulation de l'acte dans l'année à partir du jour où elle en a eu connaissance, et non dans un délai de cinq ans. La sanction prévue est la nullité, pas de simples dommages-intérêts.",
+   "src": "C. civ., art. 215",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Marc, marié, a contracté seul les dettes suivantes. Pour lesquelles son épouse est-elle tenue solidairement sur le fondement de l'article 220 du Code civil ? (plusieurs réponses possibles)",
+   "opts": [
+    "La facture d'électricité du logement familial",
+    "Les frais de cantine scolaire des enfants",
+    "Une voiture de sport sans rapport avec le train de vie modeste du ménage",
+    "L'achat à tempérament d'un salon, sans l'accord de son épouse",
+    "Un emprunt de 40 000 € pour un voyage, souscrit sans l'accord de son épouse"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "Chacun des époux peut passer seul les contrats ayant pour objet l'entretien du ménage ou l'éducation des enfants, et toute dette ainsi contractée oblige l'autre solidairement (C. civ., art. 220) : c'est le cas de l'électricité du logement et de la cantine. La solidarité n'a pas lieu pour les dépenses manifestement excessives au regard du train de vie du ménage, comme la voiture de sport. Elle n'a pas lieu non plus, sans le consentement des deux époux, pour les achats à tempérament ni pour les emprunts, sauf emprunts de sommes modestes nécessaires aux besoins de la vie courante : un emprunt de 40 000 € pour un voyage n'en relève pas.",
+   "src": "C. civ., art. 220",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Bruno et Alice sont mariés sous le régime légal de la communauté. Classez chaque bien.",
+   "cats": [
+    "Bien commun",
+    "Bien propre"
+   ],
+   "items": [
+    [
+     "L'appartement acheté pendant le mariage avec les économies sur leurs salaires",
+     0
+    ],
+    [
+     "Le fonds de commerce créé par Bruno pendant le mariage avec les économies du ménage",
+     0
+    ],
+    [
+     "L'épargne constituée par Alice sur ses salaires pendant le mariage",
+     0
+    ],
+    [
+     "Un tableau acheté pendant le mariage dont aucun époux ne peut prouver le caractère propre",
+     0
+    ],
+    [
+     "La voiture qu'Alice possédait avant le mariage",
+     1
+    ],
+    [
+     "La maison reçue par Bruno en héritage pendant le mariage",
+     1
+    ],
+    [
+     "Une somme donnée à Alice par son oncle pendant le mariage, sans clause particulière",
+     1
+    ],
+    [
+     "Les vêtements à l'usage personnel de Bruno",
+     1
+    ]
+   ],
+   "why": "La communauté se compose des acquêts faits par les époux ensemble ou séparément durant le mariage, provenant de leur industrie personnelle ou des économies faites sur les fruits et revenus de leurs propres (C. civ., art. 1401) : appartement, fonds créé pendant le mariage, épargne sur salaires. Tout bien est réputé acquêt de communauté si l'on ne prouve pas qu'il est propre (art. 1402) : le tableau est commun. Restent propres les biens possédés au jour du mariage et ceux acquis pendant le mariage par succession, donation ou legs (art. 1405), ainsi que les biens à caractère personnel (art. 1404).",
+   "src": "C. civ., art. 1401, 1402, 1404 et 1405",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Antoine, marié sous le régime de la communauté légale, exploite en entreprise individuelle une quincaillerie dont le fonds, créé pendant le mariage, est commun. Quels actes peut-il accomplir seul, sans l'accord de son épouse ? (plusieurs réponses possibles)",
+   "opts": [
+    "Commander les marchandises nécessaires à son commerce",
+    "Vendre ses marchandises aux clients du magasin",
+    "Vendre le fonds de commerce de la quincaillerie",
+    "Vendre l'immeuble commun où se trouve le magasin",
+    "Céder des parts de SARL, non négociables, qui dépendent de la communauté"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "L'époux qui exerce une profession séparée a seul le pouvoir d'accomplir les actes d'administration et de disposition nécessaires à celle-ci (C. civ., art. 1421) : commander et vendre les marchandises en font partie. Ce pouvoir cède devant l'article 1424 : les époux ne peuvent, l'un sans l'autre, aliéner ou grever de droits réels les immeubles, fonds de commerce et exploitations dépendant de la communauté, ni les droits sociaux non négociables. La vente du fonds, la vente de l'immeuble commun et la cession des parts de SARL communes exigent donc l'accord des deux époux.",
+   "src": "C. civ., art. 1421 et 1424",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Rachid et Yasmine sont mariés sous le régime de la séparation de biens. Rachid, commerçant, ne paie pas son fournisseur. Yasmine a acheté seule, avec ses propres deniers, un appartement dont elle prouve être l'unique propriétaire. Le fournisseur peut-il saisir cet appartement ?",
+   "opts": [
+    "Non : chaque époux reste seul tenu des dettes nées en sa personne",
+    "Oui : les époux sont solidaires de toutes leurs dettes",
+    "Oui, mais seulement pour la moitié de sa valeur",
+    "Oui, puisque la dette est née pendant le mariage"
+   ],
+   "a": 0,
+   "why": "En séparation de biens, chaque époux conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu des dettes nées en sa personne, avant ou pendant le mariage, hors le cas de l'article 220 (C. civ., art. 1536). La dette envers le fournisseur, d'origine professionnelle, n'est pas une dette ménagère : elle ne concerne que Rachid. L'appartement, dont Yasmine prouve la propriété exclusive (art. 1538), ne peut être saisi ni en totalité ni pour moitié, et la naissance de la dette pendant le mariage est indifférente.",
+   "src": "C. civ., art. 1536 et 1538",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Rachid et Yasmine, sans enfant, sont mariés depuis 18 mois sous le régime de la communauté légale et veulent adopter la séparation de biens. Quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le changement se fait par acte notarié",
+    "Ils doivent attendre deux ans d'application de leur régime actuel",
+    "Les créanciers informés peuvent s'opposer dans les trois mois",
+    "Le changement est opposable aux tiers trois mois après sa mention en marge de l'acte de mariage",
+    "L'homologation par le tribunal est obligatoire même sans opposition"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ],
+   "why": "Le changement de régime matrimonial se fait par acte notarié (C. civ., art. 1397). Depuis la loi n° 2019-222 du 23 mars 2019, il n'est plus nécessaire que le régime ait été appliqué pendant deux ans : 18 mois de mariage ne sont pas un obstacle. Les créanciers informés par un avis dans un support d'annonces légales peuvent s'opposer dans les trois mois ; c'est en cas d'opposition que l'acte est soumis à l'homologation du tribunal, qui n'est donc pas systématique. Le changement est opposable aux tiers trois mois après sa mention en marge de l'acte de mariage.",
+   "src": "C. civ., art. 1397 ; loi n° 2019-222 du 23 mars 2019, art. 8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Comparez le mariage, le PACS et le concubinage. Quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les époux sont solidaires des dettes ménagères contractées par l'un d'eux",
+    "Les partenaires de PACS sont solidaires des dettes de la vie courante",
+    "Le chapitre du Code civil consacré au concubinage se limite à sa définition",
+    "Le PACS peut être conclu par une personne mineure",
+    "Le concubinage résulte d'une convention enregistrée"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les époux sont solidaires des dettes ayant pour objet l'entretien du ménage ou l'éducation des enfants (C. civ., art. 220) et les partenaires de PACS des dettes contractées pour les besoins de la vie courante (art. 515-4), sous les exceptions prévues par ces textes. Le chapitre « Du concubinage » ne comporte que l'article 515-8, qui le définit comme une union de fait, caractérisée par une vie commune stable et continue : il ne suppose aucune convention. Le PACS est un contrat conclu par deux personnes physiques majeures (art. 515-1), ce qui exclut le mineur.",
+   "src": "C. civ., art. 220, 515-1, 515-4 et 515-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Inès et Bastien sont pacsés. Leur convention, enregistrée en 2023, soumet à l'indivision les biens qu'ils acquièrent ensuite. En 2026, ils achètent un appartement de 240 000 €, payé à hauteur de 160 000 € par Inès et de 80 000 € par Bastien, au moyen de leurs salaires perçus depuis l'enregistrement. Quelle est la valeur de la part de Bastien dans l'appartement (en €) ?",
+   "a": 120000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Lorsque la convention de PACS soumet à l'indivision les biens acquis à compter de son enregistrement, « ces biens sont alors réputés indivis par moitié, sans recours de l'un des partenaires contre l'autre au titre d'une contribution inégale » (C. civ., art. 515-5-1). La part de Bastien vaut donc 240 000 × 1/2 = 120 000 €, bien qu'il n'ait financé que 80 000 €. Un calcul au prorata des financements (80 000 €) est écarté par le texte, qui exclut tout recours pour contribution inégale.",
+   "src": "C. civ., art. 515-5-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque règle selon le statut du couple auquel elle s'applique.",
+   "cats": [
+    "Communauté légale",
+    "Séparation de biens",
+    "PACS"
+   ],
+   "items": [
+    [
+     "Un bien acquis pendant le mariage est réputé acquêt faute de preuve de son caractère propre",
+     0
+    ],
+    [
+     "Les époux ne peuvent, l'un sans l'autre, vendre le fonds de commerce qui dépend de la masse commune",
+     0
+    ],
+    [
+     "Les biens reçus par succession pendant le mariage restent propres",
+     0
+    ],
+    [
+     "Chaque époux reste seul tenu des dettes nées en sa personne, hors le cas de l'article 220",
+     1
+    ],
+    [
+     "Un époux prouve par tous moyens, à l'égard de son conjoint comme des tiers, la propriété exclusive d'un bien",
+     1
+    ],
+    [
+     "Une convention modificative enregistrée peut soumettre à l'indivision les biens acquis ensuite",
+     2
+    ],
+    [
+     "Les biens indivis par option sont réputés indivis par moitié, sans recours pour contribution inégale",
+     2
+    ]
+   ],
+   "why": "La présomption d'acquêt (C. civ., art. 1402), la cogestion du fonds de commerce commun (art. 1424) et les propres reçus par succession (art. 1405) sont des règles de la communauté légale. En séparation de biens, chaque époux reste seul tenu des dettes nées en sa personne, hors dettes ménagères (art. 1536), et prouve par tous moyens la propriété exclusive d'un bien (art. 1538). Dans le PACS, la convention initiale ou modificative peut soumettre à l'indivision les biens acquis à compter de son enregistrement ; ils sont alors réputés indivis par moitié, sans recours pour contribution inégale (art. 515-5-1).",
+   "src": "C. civ., art. 1402, 1405, 1424, 1536, 1538 et 515-5-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Léa est conjointe collaboratrice dans la boulangerie de son mari depuis le 1er janvier 2015. La boulangerie est vendue le 30 juin 2023 et Léa cesse alors de travailler. Le 1er mars 2025, son mari ouvre un restaurant, où Léa reprend une activité régulière sous le statut de conjointe collaboratrice. À compter du 1er mars 2025, pendant combien de mois au plus peut-elle encore exercer sous ce statut (nombre entier de mois) ?",
+   "a": 42,
+   "unit": "mois",
+   "tol": 0,
+   "why": "Le statut de conjoint collaborateur est limité à cinq ans, soit 60 mois, en tenant compte de l'ensemble des périodes et des entreprises au titre desquelles la personne a opté pour ce statut (C. com., art. L. 121-4, IV bis). Pour une personne déjà collaboratrice au 1er janvier 2022, la durée s'apprécie au regard des seules périodes postérieures à cette date (loi n° 2021-1754, art. 24) : les années 2015 à 2021 ne comptent pas. Période déjà décomptée : du 1er janvier 2022 au 30 juin 2023, soit 18 mois. Reste : 60 − 18 = 42 mois, soit jusqu'au 31 août 2028.",
+   "src": "C. com., art. L. 121-4, IV bis ; loi n° 2021-1754 du 23 décembre 2021, art. 24",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Antoine, marié sous le régime de la communauté légale, est gérant associé de la SARL Vitrex. Il se porte seul caution d'un prêt bancaire de la SARL, sans le consentement exprès de son épouse. La SARL ne rembourse pas. Sur quels biens la banque peut-elle se faire payer au titre du cautionnement ?",
+   "opts": [
+    "Les biens propres et les revenus d'Antoine",
+    "Tous les biens communs et les propres d'Antoine",
+    "Les biens propres des deux époux",
+    "Les biens communs, hors revenus d'Antoine"
+   ],
+   "a": 0,
+   "why": "Chacun des époux ne peut engager que ses biens propres et ses revenus par un cautionnement ou un emprunt, à moins que l'acte n'ait été conclu avec le consentement exprès de l'autre conjoint (C. civ., art. 1415). Pour un tel acte, cette règle écarte le principe de l'article 1413, selon lequel la dette d'un époux peut être poursuivie sur les biens communs. La banque ne peut donc saisir ni les autres biens communs ni les biens propres de l'épouse ; même en cas de consentement exprès, l'épouse n'engagerait pas ses biens propres.",
+   "src": "C. civ., art. 1413 et 1415",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Hugo, marié sous le régime de la communauté légale, a contracté seul une dette pour la réparation de son bateau de plaisance. Cette dette est étrangère à l'entretien du ménage et à l'éducation des enfants ; ce n'est ni un emprunt ni un cautionnement. Le créancier peut-il saisir les salaires de Léna, l'épouse d'Hugo ?",
+   "opts": [
+    "Non, faute de dette ménagère au sens de l'article 220",
+    "Oui, car les salaires de Léna sont des biens communs",
+    "Oui, mais seulement pour la moitié des salaires",
+    "Oui, dès lors qu'Hugo est insolvable"
+   ],
+   "a": 0,
+   "why": "Le paiement des dettes de chaque époux peut en principe être poursuivi sur les biens communs (C. civ., art. 1413). Toutefois, les gains et salaires d'un époux ne peuvent être saisis par les créanciers de son conjoint que si l'obligation a été contractée pour l'entretien du ménage ou l'éducation des enfants, conformément à l'article 220 (art. 1414). La dette d'Hugo n'est pas ménagère : les salaires de Léna sont hors d'atteinte, même s'ils sont communs et même si Hugo est insolvable. Aucun partage par moitié n'est prévu.",
+   "src": "C. civ., art. 1413 et 1414",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

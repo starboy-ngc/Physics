@@ -6,6 +6,8 @@ const plan = JSON.parse(fs.readFileSync(path.join(ROOT, "data/plan.json"), "utf8
 const order = Object.fromEntries(plan.ues.map((u, i) => [u.code, i]));
 const chapitres = []; const skipped = [];
 for (const p of plan.chapitres) {
+  // Chapitre en brouillon (vérification sur sources officielles pas terminée) : jamais publié.
+  if (p.brouillon) { skipped.push(p.id + " (brouillon)"); continue; }
   const f = path.join(ROOT, "data", p.ue.toLowerCase(), p.id + ".json");
   if (!fs.existsSync(f)) { skipped.push(p.id + " (absent)"); continue; }
   let ok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), f], { stdio: "pipe" }); } catch (e) { ok = false; }

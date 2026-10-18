@@ -1,0 +1,390 @@
+{
+ "id": "ue1-04",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE1 Fondamentaux du droit), applicable à la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Programme 2025 : « 2.2 Accompagner un entrepreneur individuel dans son activité » (20 heures)",
+   "Programme 2025, point 2.2 : protection patrimoniale de l'entrepreneur individuel (droit de gage général des créanciers, créancier chirographaire et créancier privilégié, séparation des patrimoines, insaisissabilité) et renonciation à cette protection, avec son formalisme",
+   "Programme 2025, point 2.2 : catégories d'entrepreneurs individuels (commerçant, artisan, agriculteur, professionnel libéral), vérification des conditions d'exercice (liberté du commerce, obligation d'immatriculation) et formalités de création d'une entreprise individuelle",
+   "Programme 2025, point 2.2 : statut du conjoint de l'entrepreneur individuel (collaborateur, salarié, associé) et conséquences juridiques associées",
+   "Programme 2025 : étude comparative des masses de biens du couple marié, pacsé ou en concubinage (bien propre et bien commun, bien personnel et bien indivis), limitée aux conséquences des régimes ; pour le mariage, le régime légal et la séparation de biens seulement ; pour le PACS, le seul régime légal",
+   "Programme 2025, exclusions : fiducie, commerçant de fait, règles fiscales et sociales propres à chaque type d'entrepreneur individuel"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. com., art. L. 110-1 à L. 110-4",
+   "objet": "Actes de commerce (L. 110-1 et L. 110-2) ; preuve par tous moyens à l'égard des commerçants",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133171/",
+   "version": "en vigueur (L. 110-1 modifié par l'ordonnance n° 2021-1192 du 15 septembre 2021, version en vigueur depuis le 1er janvier 2022)"
+  },
+  {
+   "ref": "C. com., art. L. 121-1 à L. 121-3",
+   "objet": "Définition du commerçant ; capacité du mineur émancipé",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146023/",
+   "version": "en vigueur (L. 121-1 inchangé depuis le 21 septembre 2000 ; L. 121-2 dans sa rédaction applicable depuis le 1er janvier 2020)"
+  },
+  {
+   "ref": "C. com., art. L. 121-4 à L. 121-8",
+   "objet": "Conjoint, partenaire de PACS ou concubin du chef d'entreprise travaillant dans l'entreprise familiale : statuts de collaborateur, de salarié ou d'associé",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161248/",
+   "version": "en vigueur (L. 121-4, IV bis, issu de la loi n° 2021-1754 du 23 décembre 2021, art. 24, applicable depuis le 1er janvier 2022 ; rédaction de L. 121-4 en vigueur depuis le 1er janvier 2023, ordonnance n° 2021-1189)"
+  },
+  {
+   "ref": "C. com., art. L. 123-33",
+   "objet": "Guichet unique électronique des formalités de création, de modification et de cessation d'activité",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
+   "version": "en vigueur depuis le 1er janvier 2023"
+  },
+  {
+   "ref": "C. com., art. L. 526-1 à L. 526-5",
+   "objet": "Insaisissabilité de droit de la résidence principale ; déclaration notariée d'insaisissabilité des autres biens fonciers ; renonciation",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000022356376/",
+   "version": "en vigueur (L. 526-1 dans sa rédaction applicable depuis le 1er janvier 2023, qui vise la personne immatriculée au registre national des entreprises)"
+  },
+  {
+   "ref": "C. com., art. L. 526-22 à L. 526-26 ; D. 526-28",
+   "objet": "Statut de l'entrepreneur individuel : patrimoines professionnel et personnel, gage des créanciers, renonciation et ses mentions obligatoires",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022) ; L. 526-22 modifié en janvier 2024 ; D. 526-28 issu du décret n° 2022-799 du 12 mai 2022"
+  },
+  {
+   "ref": "C. com., art. L. 526-27 à L. 526-31",
+   "objet": "Transfert universel du patrimoine professionnel (cession, transmission, apport en société)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045168649/",
+   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022)"
+  },
+  {
+   "ref": "Loi n° 2022-172 du 14 février 2022 en faveur de l'activité professionnelle indépendante",
+   "objet": "Statut unique de l'entrepreneur individuel ; abrogation de l'article L. 526-5-1 (recours à l'EIRL) par l'article 6",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
+   "version": "JO du 15 février 2022 ; statut de l'entrepreneur individuel applicable depuis le 15 mai 2022"
+  },
+  {
+   "ref": "Loi n° 2021-1754 du 23 décembre 2021 de financement de la sécurité sociale pour 2022, art. 24",
+   "objet": "Limitation à cinq ans du statut de conjoint collaborateur ; règle transitoire",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489",
+   "version": "en vigueur depuis le 1er janvier 2022"
+  },
+  {
+   "ref": "C. civ., art. 212 à 226",
+   "objet": "Devoirs et droits respectifs des époux : contribution aux charges du mariage (214), logement de la famille (215), dettes ménagères (220), libre exercice d'une profession (223)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136137/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. civ., art. 1397",
+   "objet": "Modification ou changement de régime matrimonial par acte notarié ; opposition ; opposabilité aux tiers",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584427",
+   "version": "rédaction issue de la loi n° 2019-222 du 23 mars 2019 (art. 8)"
+  },
+  {
+   "ref": "C. civ., art. 1400 à 1491",
+   "objet": "Communauté légale : actif et passif (art. 1401 à 1418), administration des biens communs et propres (art. 1421 et s.)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150275/",
+   "version": "en vigueur (rédaction issue pour l'essentiel de la loi n° 85-1372 du 23 décembre 1985, applicable depuis le 1er juillet 1986)"
+  },
+  {
+   "ref": "C. civ., art. 1536 à 1543",
+   "objet": "Régime de séparation de biens",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136375/",
+   "version": "en vigueur depuis le 1er février 1966"
+  },
+  {
+   "ref": "C. civ., art. 515-1 à 515-7-1",
+   "objet": "Pacte civil de solidarité : définition, aide matérielle et solidarité des dettes, régime des biens",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136536/",
+   "version": "en vigueur (art. 515-5-1 issu de la loi n° 2006-728 du 23 juin 2006)"
+  },
+  {
+   "ref": "C. civ., art. 515-8",
+   "objet": "Définition du concubinage",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428571",
+   "version": "en vigueur depuis le 1er janvier 2009"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Commerçant</b> : sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle. Les deux conditions sont cumulatives : accomplir des actes de commerce et en faire sa profession habituelle.",
+     "cite": "« Sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle. »",
+     "src": "C. com., art. L. 121-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219167",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Actes de commerce</b> : la loi répute actes de commerce, notamment, tout achat de biens meubles pour les revendre, tout achat de biens immeubles aux fins de les revendre (sauf construction de bâtiments pour les vendre en bloc ou par locaux), toute entreprise de location de meubles, de manufactures, de commission ou de transport, toute opération de change, banque ou courtage. Sont des actes de commerce <b>entre toutes personnes</b> les lettres de change et, depuis le 1er janvier 2022, les cautionnements de dettes commerciales (11°). L'article L. 110-2 répute pareillement actes de commerce des opérations du commerce maritime.",
+     "src": "C. com., art. L. 110-1 et L. 110-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072567",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Entrepreneur individuel</b> : personne physique qui exerce en son nom propre une ou plusieurs activités professionnelles indépendantes. Les biens, droits, obligations et sûretés utiles à son activité forment son <b>patrimoine professionnel</b> ; les éléments de son patrimoine qui n'y sont pas compris forment son <b>patrimoine personnel</b>. Les biens utiles s'entendent de ceux qui, par nature, par destination ou en fonction de leur objet, servent à l'activité (R. 526-26).",
+     "cite": "« Les biens, droits, obligations et sûretés dont il est titulaire et qui sont utiles à son activité ou à ses activités professionnelles indépendantes constituent le patrimoine professionnel de l'entrepreneur individuel. »",
+     "src": "C. com., art. L. 526-22 ; R. 526-26, I",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Bien commun</b> (communauté légale) : la communauté se compose activement des acquêts faits par les époux ensemble ou séparément durant le mariage, provenant tant de leur industrie personnelle que des économies faites sur les fruits et revenus de leurs biens propres. Tout bien est présumé commun tant que la preuve de son caractère propre n'est pas rapportée.",
+     "cite": "« Tout bien, meuble ou immeuble, est réputé acquêt de communauté si l'on ne prouve qu'il est propre à l'un des époux par application d'une disposition de la loi. »",
+     "src": "C. civ., art. 1401 et 1402",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439420",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Bien propre</b> (communauté légale) : restent propres les biens possédés au jour du mariage et ceux acquis pendant le mariage par succession, donation ou legs (propres par origine, art. 1405), sous réserve des libéralités dont les biens tombent en communauté. Forment des propres par leur nature les biens qui ont un caractère personnel et, sauf récompense, les instruments de travail nécessaires à la profession d'un époux, à moins qu'ils ne soient l'accessoire d'un fonds de commerce ou d'une exploitation faisant partie de la communauté (art. 1404).",
+     "cite": "« Restent propres les biens dont les époux avaient la propriété ou la possession au jour de la célébration du mariage, ou qu'ils acquièrent, pendant le mariage, par succession, donation ou legs. »",
+     "src": "C. civ., art. 1404 et 1405",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165608/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Bien personnel et bien indivis</b> : dans la séparation de biens, et dans le PACS sauf dispositions contraires de la convention, chacun conserve l'administration, la jouissance et la libre disposition de ses <b>biens personnels</b>. Les biens dont aucun des deux ne peut justifier d'une propriété exclusive sont réputés leur appartenir <b>indivisément</b>, à chacun pour moitié.",
+     "src": "C. civ., art. 1536, 1538 et 515-5",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021330223",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pacte civil de solidarité (PACS)</b> : contrat conclu par deux personnes physiques majeures, de sexe différent ou de même sexe, pour organiser leur vie commune.",
+     "cite": "« Un pacte civil de solidarité est un contrat conclu par deux personnes physiques majeures, de sexe différent ou de même sexe, pour organiser leur vie commune. »",
+     "src": "C. civ., art. 515-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428463",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Concubinage</b> : union de fait, caractérisée par une vie commune présentant un caractère de stabilité et de continuité, entre deux personnes, de sexe différent ou de même sexe, qui vivent en couple.",
+     "cite": "« Le concubinage est une union de fait, caractérisée par une vie commune présentant un caractère de stabilité et de continuité, entre deux personnes, de sexe différent ou de même sexe, qui vivent en couple. »",
+     "src": "C. civ., art. 515-8",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428571",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Capacité</b> : le mineur émancipé peut être commerçant sur autorisation du juge des tutelles au moment de la décision d'émancipation, ou du président du tribunal judiciaire s'il formule sa demande après avoir été émancipé.",
+     "src": "C. com., art. L. 121-2 ; C. civ., art. 413-8",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039280381/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Formalités de création</b> : depuis le 1er janvier 2023, les entreprises déclarent leur création, les modifications de leur situation et la cessation de leur activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné par décret ; ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard.",
+     "src": "C. com., art. L. 123-33",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Créanciers professionnels</b> : les créanciers dont les droits sont nés à l'occasion de l'exercice professionnel de l'entrepreneur individuel n'ont pour gage que son patrimoine professionnel, sauf sûretés conventionnelles qu'il a consenties ou renonciation dans les conditions de l'article L. 526-25.",
+     "src": "C. com., art. L. 526-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Créanciers personnels</b> : les créanciers dont les droits ne sont pas nés à l'occasion de l'exercice professionnel ont pour gage le patrimoine personnel. Si celui-ci est insuffisant, ils peuvent saisir le patrimoine professionnel, dans la limite du montant du bénéfice réalisé lors du dernier exercice clos.",
+     "src": "C. com., art. L. 526-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Renonciation</b> : sur demande écrite d'un créancier, l'entrepreneur individuel peut renoncer à la protection de son patrimoine personnel pour un engagement spécifique dont il rappelle le terme et le montant, déterminé ou déterminable. La renonciation respecte, à peine de nullité, les formes prescrites par décret : l'acte mentionne notamment l'entrepreneur, le bénéficiaire et l'engagement, et il porte la signature des deux parties, la date et le lieu.",
+     "cite": "« L'entrepreneur individuel peut, sur demande écrite d'un créancier, renoncer à la dérogation prévue au quatrième alinéa de l'article L. 526-22, pour un engagement spécifique dont il doit rappeler le terme et le montant, qui doit être déterminé ou déterminable. »",
+     "src": "C. com., art. L. 526-25 ; D. 526-28 (décret n° 2022-799 du 12 mai 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168712",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Résidence principale</b> : les droits d'une personne physique immatriculée au registre national des entreprises sur l'immeuble où est fixée sa résidence principale sont, sans déclaration, insaisissables par les créanciers dont les droits naissent à l'occasion de son activité professionnelle. Si la résidence sert en partie à un usage professionnel, la partie non professionnelle reste de droit insaisissable, sans qu'un état descriptif de division soit nécessaire.",
+     "cite": "« […] les droits d'une personne physique immatriculée au registre national des entreprises sur l'immeuble où est fixée sa résidence principale sont de droit insaisissables […] »",
+     "src": "C. com., art. L. 526-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044056367",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Autres biens fonciers</b> : la personne immatriculée peut déclarer insaisissables ses droits sur tout bien foncier, bâti ou non bâti, qu'elle n'a pas affecté à son usage professionnel. La déclaration est reçue par notaire à peine de nullité, décrit les biens et indique leur caractère propre, commun ou indivis ; elle est publiée au fichier immobilier (au livre foncier dans le Bas-Rhin, le Haut-Rhin et la Moselle). L'insaisissabilité de la résidence principale et la déclaration peuvent, à tout moment, faire l'objet d'une renonciation.",
+     "src": "C. com., art. L. 526-1 à L. 526-3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000022356376/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Transfert du patrimoine professionnel</b> : l'entrepreneur individuel peut céder à titre onéreux, transmettre à titre gratuit entre vifs ou apporter en société l'intégralité de son patrimoine professionnel, sans liquidation. Le transfert universel emporte cession des droits, biens, obligations et sûretés qui le composent et n'est opposable aux tiers qu'à compter de sa publicité. L'opposition des créanciers antérieurs n'interdit pas le transfert : le juge la rejette ou ordonne le remboursement des créances ou la constitution de garanties.",
+     "src": "C. com., art. L. 526-27",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168736",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conjoint travaillant dans l'entreprise</b> : le conjoint du chef d'une entreprise artisanale, commerciale ou libérale qui y exerce de manière régulière une activité professionnelle opte pour le statut de conjoint collaborateur, de conjoint salarié ou de conjoint associé. À défaut de déclaration d'activité professionnelle, le conjoint qui a exercé une activité professionnelle de manière régulière dans l'entreprise est réputé l'avoir fait sous le statut de conjoint salarié. Dans une société, le statut de collaborateur est réservé au conjoint du gérant associé unique ou majoritaire d'une SARL ou d'une SELARL.",
+     "cite": "« A défaut de déclaration d'activité professionnelle, le conjoint ayant exercé une activité professionnelle de manière régulière dans l'entreprise est réputé l'avoir fait sous le statut de conjoint salarié. »",
+     "src": "C. com., art. L. 121-4",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161248/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Charges du mariage et profession</b> : si les conventions matrimoniales ne règlent pas la contribution des époux aux charges du mariage, ils y contribuent à proportion de leurs facultés respectives (art. 214). Chaque époux peut librement exercer une profession, percevoir ses gains et salaires et en disposer après s'être acquitté des charges du mariage (art. 223).",
+     "src": "C. civ., art. 214 et 223",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006422754",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Logement de la famille</b> : les époux ne peuvent l'un sans l'autre disposer des droits par lesquels est assuré le logement de la famille, ni des meubles meublants dont il est garni. L'époux qui n'a pas consenti peut demander l'annulation de l'acte dans l'année à partir du jour où il en a eu connaissance, sans que l'action puisse être intentée plus d'un an après la dissolution du régime matrimonial.",
+     "src": "C. civ., art. 215",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006422766",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dettes ménagères</b> : chacun des époux peut passer seul les contrats ayant pour objet l'entretien du ménage ou l'éducation des enfants ; toute dette ainsi contractée par l'un oblige l'autre solidairement. La solidarité n'a pas lieu pour les dépenses manifestement excessives (train de vie du ménage, utilité ou inutilité de l'opération, bonne ou mauvaise foi du tiers). Elle n'a pas lieu non plus, sans le consentement des deux époux, pour les achats à tempérament ni pour les emprunts, à l'exception, aux conditions fixées par l'article, des emprunts portant sur des sommes modestes nécessaires aux besoins de la vie courante.",
+     "src": "C. civ., art. 220",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028748098",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Gage des créanciers d'un époux commun en biens</b> : le paiement des dettes dont chaque époux est tenu pendant la communauté peut toujours être poursuivi sur les biens communs, sauf fraude de l'époux débiteur et mauvaise foi du créancier. Les gains et salaires d'un époux ne peuvent toutefois être saisis par les créanciers de son conjoint que si l'obligation a été contractée pour l'entretien du ménage ou l'éducation des enfants, conformément à l'article 220.",
+     "cite": "« Le paiement des dettes dont chaque époux est tenu, pour quelque cause que ce soit, pendant la communauté, peut toujours être poursuivi sur les biens communs, à moins qu'il n'y ait eu fraude de l'époux débiteur et mauvaise foi du créancier, sauf la récompense due à la communauté s'il y a lieu. »",
+     "src": "C. civ., art. 1413 et 1414",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165608/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Emprunt et cautionnement</b> : chacun des époux ne peut engager que ses biens propres et ses revenus par un cautionnement ou un emprunt, à moins que l'acte n'ait été conclu avec le consentement exprès de l'autre conjoint, qui, dans ce cas, n'engage pas ses biens propres.",
+     "src": "C. civ., art. 1415",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439364",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Gestion des biens communs</b> : chaque époux peut administrer seul les biens communs et en disposer, sauf à répondre de ses fautes de gestion ; l'époux qui exerce une profession séparée a seul le pouvoir d'accomplir les actes d'administration et de disposition nécessaires à celle-ci. En revanche, les époux ne peuvent, l'un sans l'autre, aliéner ou grever de droits réels les immeubles, fonds de commerce et exploitations dépendant de la communauté, ni les droits sociaux non négociables et les meubles corporels dont l'aliénation est soumise à publicité.",
+     "src": "C. civ., art. 1421 et 1424",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019288940",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Séparation de biens</b> : lorsque les époux l'ont stipulée dans leur contrat de mariage, chacun conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu des dettes nées en sa personne, avant ou pendant le mariage, hors le cas de l'article 220. Un époux peut prouver par tous moyens, à l'égard de son conjoint comme des tiers, qu'il a la propriété exclusive d'un bien.",
+     "src": "C. civ., art. 1536 et 1538",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006440761",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>PACS : régime des biens</b> : sauf dispositions contraires de la convention, chaque partenaire conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu de ses dettes personnelles, sous réserve de la solidarité de l'article 515-4. Les partenaires peuvent, dans la convention initiale ou une convention modificative, soumettre à l'indivision les biens qu'ils acquièrent, ensemble ou séparément, à compter de son enregistrement ; restent notamment la propriété exclusive de chacun les deniers perçus et non employés à l'acquisition d'un bien, les biens créés et les biens à caractère personnel.",
+     "cite": "« Ces biens sont alors réputés indivis par moitié, sans recours de l'un des partenaires contre l'autre au titre d'une contribution inégale. »",
+     "src": "C. civ., art. 515-5 à 515-5-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428523",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>PACS : dettes</b> : les partenaires s'engagent à une vie commune, ainsi qu'à une aide matérielle et une assistance réciproques. Ils sont solidaires envers les tiers des dettes contractées par l'un d'eux pour les besoins de la vie courante, sauf dépenses manifestement excessives ; la solidarité n'a pas lieu non plus, sans le consentement des deux, pour les achats à tempérament ni pour les emprunts, à l'exception, aux conditions fixées par l'article, des emprunts portant sur des sommes modestes nécessaires aux besoins de la vie courante.",
+     "cite": "« Les partenaires sont tenus solidairement à l'égard des tiers des dettes contractées par l'un d'eux pour les besoins de la vie courante. »",
+     "src": "C. civ., art. 515-4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028748096",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>5 ans</b> : durée maximale du statut de conjoint collaborateur, en tenant compte de l'ensemble des périodes et des entreprises au titre desquelles la personne a opté pour ce statut. Au-delà, le conjoint qui continue à travailler régulièrement dans l'entreprise opte pour le statut de conjoint salarié ou de conjoint associé.",
+     "cite": "« Au delà de cette durée, le conjoint continuant à exercer une activité professionnelle de manière régulière dans l'entreprise opte pour le statut de conjoint salarié ou de conjoint associé. A défaut, il est réputé avoir opté pour le statut de conjoint salarié. »",
+     "src": "C. com., art. L. 121-4, IV bis ; loi n° 2021-1754 du 23 décembre 2021, art. 24",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>7 jours francs</b> : délai de réflexion qui court à compter de la réception de la demande écrite du créancier ; en principe, l'entrepreneur individuel ne peut pas renoncer à la séparation de ses patrimoines au profit de ce créancier avant son expiration. L'article D. 526-28 (décret n° 2022-799 du 12 mai 2022) prévoit un aménagement de ce délai.",
+     "src": "C. com., art. L. 526-25 et D. 526-28",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168712",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>3 mois</b> : délai d'opposition au changement de régime matrimonial fait par acte notarié, ouvert aux créanciers informés par un avis dans un support d'annonces légales, aux personnes parties au contrat modifié et aux enfants majeurs ; en cas d'opposition, l'acte notarié est soumis à l'homologation du tribunal. Le changement est opposable aux tiers 3 mois après sa mention en marge de l'acte de mariage.",
+     "src": "C. civ., art. 1397",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584427",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Statut unique de l'entrepreneur individuel</b> : la loi n° 2022-172 du 14 février 2022 sépare de plein droit les patrimoines professionnel et personnel de l'entrepreneur individuel et organise le transfert universel du patrimoine professionnel (C. com., art. L. 526-22 à L. 526-31, applicables depuis le 15 mai 2022). Le décret n° 2022-725 du 28 avril 2022 définit les biens utiles à l'activité ; le décret n° 2022-799 du 12 mai 2022 fixe les mentions de l'acte de renonciation.",
+     "src": "Loi n° 2022-172 du 14 février 2022 ; décrets n° 2022-725 du 28 avril 2022 et n° 2022-799 du 12 mai 2022",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Mise en extinction de l'EIRL</b> : l'article 6 de la loi n° 2022-172 abroge l'article L. 526-5-1 du Code de commerce, qui organisait le recours au régime de l'entrepreneur individuel à responsabilité limitée ; le décret n° 2022-709 du 26 avril 2022 est relatif à la mise en extinction de ce régime. Les entrepreneurs qui exerçaient déjà sous ce régime restent régis par la section 2 du chapitre VI du titre II du livre V du Code de commerce.",
+     "src": "Loi n° 2022-172 du 14 février 2022, art. 6 ; décret n° 2022-709 du 26 avril 2022",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000045167559",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conjoint collaborateur limité à cinq ans</b> : l'article 24 de la loi de financement de la sécurité sociale pour 2022 insère un IV bis à l'article L. 121-4 du Code de commerce, en vigueur depuis le 1er janvier 2022. L'organisme de sécurité sociale peut radier le conjoint collaborateur qui dépasse cette durée (CSS, art. L. 661-2).",
+     "cite": "« Pour les personnes exerçant au 1er janvier 2022 une activité professionnelle sous le statut de conjoint collaborateur, la durée de cinq ans mentionnée au IV bis de l'article L. 121-4 du code de commerce s'apprécie au regard des seules périodes postérieures à cette date. »",
+     "src": "Loi n° 2021-1754 du 23 décembre 2021, art. 24 ; CSS, art. L. 661-2",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Changement de régime matrimonial</b> : la loi n° 2019-222 du 23 mars 2019 (art. 8) a supprimé la condition de deux années d'application du régime avant toute modification ; le changement se fait par acte notarié, soumis à l'homologation du tribunal en cas d'opposition.",
+     "src": "Loi n° 2019-222 du 23 mars 2019, art. 8 ; C. civ., art. 1397",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584427",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cautionnement de dettes commerciales</b> : l'ordonnance n° 2021-1192 du 15 septembre 2021 range parmi les actes de commerce, entre toutes personnes, les cautionnements de dettes commerciales (C. com., art. L. 110-1, 11°, version en vigueur depuis le 1er janvier 2022).",
+     "src": "Ordonnance n° 2021-1192 du 15 septembre 2021 ; C. com., art. L. 110-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072567",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Pas de caution de sa propre dette</b> : la séparation des patrimoines ne permet pas à l'entrepreneur individuel de se porter caution d'une dette dont il est débiteur principal. Pour ouvrir son patrimoine personnel à un créancier professionnel, il faut une renonciation conforme à l'article L. 526-25 ou une sûreté conventionnelle.",
+     "cite": "« La distinction des patrimoines personnel et professionnel de l'entrepreneur individuel ne l'autorise pas à se porter caution en garantie d'une dette dont il est débiteur principal. »",
+     "src": "C. com., art. L. 526-22 et L. 526-25",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Preuve et exceptions fiscales et sociales</b> : l'entrepreneur individuel qui conteste qu'un bien entre dans le gage d'un créancier en supporte la preuve ; le créancier qui saisit un bien manifestement hors de son gage s'expose à une action pour saisie abusive. La séparation des patrimoines cède devant l'administration fiscale et les organismes de sécurité sociale dans les cas prévus par le livre des procédures fiscales et le code de la sécurité sociale. L'insaisissabilité de l'article L. 526-1 n'est pas opposable à l'administration fiscale en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales.",
+     "src": "C. com., art. L. 526-22 et L. 526-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Fonds de commerce commun</b> : l'époux commerçant marié sous la communauté légale accomplit seul les actes d'administration et de disposition nécessaires à sa profession, mais il ne peut ni vendre ni grever de droits réels seul un fonds de commerce ou un immeuble commun : l'article 1421 réserve l'application de l'article 1424, qui exige l'accord des deux époux.",
+     "src": "C. civ., art. 1421 et 1424",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439544",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Emprunt professionnel d'un époux commun en biens</b> : la dette d'un époux peut être poursuivie sur les biens communs, sauf fraude de l'époux débiteur et mauvaise foi du créancier (art. 1413), mais pas sur les gains et salaires de son conjoint, sauf dette ménagère de l'article 220 (art. 1414). Pour un emprunt ou un cautionnement souscrit sans le consentement exprès de l'autre, le créancier ne peut saisir que les biens propres et les revenus de l'époux qui s'est engagé (art. 1415).",
+     "src": "C. civ., art. 1413 à 1415",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439364",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Concubins</b> : le chapitre du Code civil consacré au concubinage ne comporte que l'article 515-8, qui le définit. La solidarité des dettes ménagères est organisée pour les époux (art. 220) et pour les partenaires de PACS (art. 515-4). Le Code de commerce vise en revanche le concubin du chef d'entreprise dans l'intitulé de la section relative à la personne travaillant dans l'entreprise familiale (art. L. 121-4 à L. 121-8).",
+     "src": "C. civ., art. 515-8, 220 et 515-4 ; C. com., art. L. 121-4 à L. 121-8",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136537/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Lien avec le DSCG</b> : le guide pédagogique du DSCG 2026 ne prévoit, pour les règles générales du régime légal et de la séparation de biens, qu'un rappel des principes généraux ; ces principes sont étudiés en UE1 du DCG.",
+     "src": "Guide pédagogique DSCG 2026 ; arrêté du 4 août 2025, annexe 1 (DCG, UE1)",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DSCG_juillet2026.pdf",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

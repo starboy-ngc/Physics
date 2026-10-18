@@ -1,0 +1,597 @@
+{
+ "id": "ue1-07",
+ "ue": "UE1",
+ "ordre": 7,
+ "title": "La responsabilité civile de l'entrepreneur individuel",
+ "resume": "Qui répond d'un dommage né de l'activité, à quelles conditions et sur quel patrimoine : responsabilité contractuelle (art. 1231-1), fait personnel, fait des choses et fait des préposés (art. 1240 à 1242), exonérations, prescription et patrimoine professionnel de l'entrepreneur individuel.",
+ "duree": "60 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Responsabilité civile : réparer le dommage",
+   "html": "<p>La <b>responsabilité civile</b> oblige à <b>réparer</b> le dommage causé à autrui : tout fait quelconque de l'homme qui cause à autrui un dommage oblige celui par la faute duquel il est arrivé à le réparer (C. civ., art. 1240). Le Code civil organise deux régimes.</p><ul><li><b>Responsabilité contractuelle</b> : le débiteur d'une obligation contractuelle est condamné, s'il y a lieu, à payer des dommages et intérêts à son créancier, à raison de l'inexécution de l'obligation ou du retard dans l'exécution (art. 1231-1).</li><li><b>Responsabilité extracontractuelle</b> : on répond de son fait personnel (art. 1240 et 1241), mais aussi du dommage causé par le fait des choses que l'on a sous sa garde et des personnes dont on doit répondre (art. 1242, al. 1er).</li></ul><p><b>Civil et pénal.</b> La responsabilité pénale conduit à une condamnation pour une infraction ; la responsabilité civile, à la réparation d'un dommage. Les deux peuvent frapper la même personne : le préposé condamné pénalement pour une infraction intentionnelle ayant porté préjudice à un tiers engage aussi sa responsabilité civile envers la victime (Cass. ass. plén., 14 décembre 2001).</p><p><b>Numérotation.</b> Depuis l'ordonnance n° 2016-131 du 10 février 2016 (en vigueur le 1er octobre 2016), les anciens articles 1382, 1383 et 1384 sont les articles 1240, 1241 et 1242. Les arrêts antérieurs citent l'ancienne numérotation.</p>"
+  },
+  {
+   "h": "Responsabilité contractuelle : conditions et force majeure",
+   "html": "<p>Le guide pédagogique DCG 2026 retient <b>quatre conditions</b> :</p><ol><li>un <b>contrat</b> entre la victime et l'auteur du dommage ;</li><li>un <b>fait générateur</b> : l'inexécution du contrat (l'article 1231-1 vise l'inexécution de l'obligation et le retard dans l'exécution) ;</li><li>un <b>dommage</b> ;</li><li>un <b>lien de causalité</b> entre l'inexécution et le dommage.</li></ol><p><b>Exonération : la force majeure.</b> Le débiteur échappe aux dommages et intérêts s'il justifie que l'exécution a été empêchée par la force majeure (art. 1231-1). Il y a force majeure lorsqu'un événement échappant à son contrôle, qui ne pouvait être raisonnablement prévu lors de la conclusion du contrat et dont les effets ne peuvent être évités par des mesures appropriées, empêche l'exécution de son obligation (art. 1218).</p><ul><li>Empêchement <b>temporaire</b> : l'exécution est suspendue, sauf si le retard qui en résulte justifie la résolution du contrat.</li><li>Empêchement <b>définitif</b> : le contrat est résolu de plein droit et les parties sont libérées de leurs obligations.</li></ul><p><i>Piège.</i> La définition exige un empêchement d'exécuter : un simple surcoût de l'exécution n'est pas visé par l'article 1218.</p>"
+  },
+  {
+   "h": "Le dommage réparable en matière contractuelle",
+   "html": "<p>Les dommages et intérêts réparent en général la <b>perte faite</b> par le créancier et le <b>gain dont il a été privé</b> (art. 1231-2), sauf les exceptions prévues aux articles suivants, dont deux limites :</p><ul><li><b>dommage prévisible</b> : le débiteur n'est tenu que des dommages et intérêts qui ont été prévus ou qui pouvaient être prévus lors de la conclusion du contrat, sauf si l'inexécution est due à une <b>faute lourde ou dolosive</b> (art. 1231-3) ;</li><li><b>dommage direct</b> : même en cas de faute lourde ou dolosive, les dommages et intérêts ne comprennent que ce qui est une suite immédiate et directe de l'inexécution (art. 1231-4).</li></ul><p>La <b>faute lourde</b> est une négligence d'une extrême gravité, confinant au dol et dénotant l'inaptitude du débiteur à l'accomplissement de sa mission (Cass. civ. 1re, 29 octobre 2014).</p><p><i>Cas.</i> Lina, traiteur en entreprise individuelle, livre avec un jour de retard le buffet commandé par la société Arpège. <b>Faits</b> : un contrat, un retard, un dommage (plateaux-repas achetés en urgence, <span class=\"mono\">1 800</span> €). <b>Règle</b> : art. 1231-1 à 1231-3. <b>Application</b> : ce surcoût était prévisible et découle directement du retard ; la perte d'un marché exceptionnel, ignorée de Lina à la commande, ne l'était pas. <b>Conclusion</b> : sans force majeure ni faute lourde ou dolosive, Lina doit <span class=\"mono\">1 800</span> €, pas la perte du marché.</p>"
+  },
+  {
+   "h": "Les clauses limitatives et leurs limites",
+   "html": "<p>Les clauses limitatives d'indemnisation sont <b>en principe licites</b> (Cass. civ. 1re, 29 octobre 2014). Elles cèdent notamment dans deux cas.</p><ol><li><b>Clause qui vide l'obligation essentielle.</b> Toute clause qui prive de sa substance l'obligation essentielle du débiteur est <b>réputée non écrite</b> (art. 1170). Ce texte consacre l'arrêt <b>Chronopost</b> (Cass. com., 22 octobre 1996) : le transporteur qui s'était engagé à livrer dans un délai garanti ne pouvait pas se prévaloir de sa clause limitative après avoir manqué à ce délai, car elle contredisait la portée de son engagement. L'arrêt <b>Faurecia</b> (Cass. com., 29 juin 2010) en marque la limite : seule est réputée non écrite la clause qui contredit la portée de l'obligation essentielle ; celle qui ne la vide pas de sa substance s'applique.</li><li><b>Faute lourde ou dol.</b> Le débiteur ne peut pas se prévaloir de la clause (Cass. civ. 1re, 29 octobre 2014).</li></ol><p>Face à un consommateur, la clause peut en outre être écartée comme abusive (C. consom., art. L. 212-1).</p><div class=\"note\"><b>À retenir.</b> Clause qui vide l'obligation essentielle : réputée non écrite (art. 1170). Faute lourde ou dolosive : le débiteur ne peut pas se prévaloir de la clause limitative (Cass. civ. 1re, 29 octobre 2014) et la limite du dommage prévisible est écartée (art. 1231-3), mais seul le dommage direct est réparé (art. 1231-4).</div>"
+  },
+  {
+   "h": "Le fait personnel : une faute, même non intentionnelle",
+   "html": "<p>La responsabilité du fait personnel (art. 1240) suppose un <b>fait fautif</b>, un <b>dommage</b> causé à autrui et un <b>lien de causalité</b> entre les deux. La faute n'a pas besoin d'être voulue : chacun est responsable du dommage qu'il a causé non seulement par son fait, mais encore par sa <b>négligence</b> ou par son <b>imprudence</b> (art. 1241).</p><p><i>Cas.</i> Élodie, couvreuse en entreprise individuelle, affirme faussement à plusieurs clients qu'un concurrent de sa commune utilise des matériaux interdits ; le concurrent perd des commandes. <b>Qualification</b> : aucun contrat ne lie Élodie au concurrent ; ses affirmations mensongères sont un fait fautif ; la perte de commandes est un dommage qu'elles ont causé. <b>Règle</b> : art. 1240. <b>Conclusion</b> : Élodie doit réparer le dommage subi par son concurrent.</p><p><i>Piège.</i> L'intention de nuire n'est pas exigée : une négligence ou une imprudence suffit (art. 1241). Ne pas confondre la faute civile, source de réparation, avec l'infraction pénale.</p>"
+  },
+  {
+   "h": "Le fait des choses : la garde",
+   "html": "<p>On est responsable du dommage causé par le fait des choses que l'on a <b>sous sa garde</b> (art. 1242, al. 1er).</p><ul><li><b>Le gardien.</b> La garde se rattache aux pouvoirs d'<b>usage</b>, de <b>direction</b> et de <b>contrôle</b> de la chose. Le propriétaire privé de ces pouvoirs par l'effet d'un vol n'en a plus la garde (Cass. ch. réunies, 2 décembre 1941).</li><li><b>Une présomption.</b> Elle pèse sur le gardien de la chose qui a causé le dommage et ne peut être détruite que par la preuve d'un <b>cas fortuit</b>, d'une <b>force majeure</b> ou d'une <b>cause étrangère</b> qui ne lui soit pas imputable : prouver qu'il n'a commis aucune faute ne suffit donc pas. La loi ne distingue pas selon que la chose était ou non actionnée par la main de l'homme, et la chose n'a pas besoin d'avoir un vice (Cass. ch. réunies, 13 février 1930).</li></ul><p><i>Cas.</i> La meuleuse de Karim, menuisier en entreprise individuelle, est volée sur un chantier ; le voleur s'en sert et endommage la vitrine d'un commerce. <b>Qualification</b> : au moment du dommage, Karim n'avait plus l'usage, la direction et le contrôle de l'outil. <b>Règle</b> : arrêt du 2 décembre 1941. <b>Conclusion</b> : Karim n'est plus gardien ; le commerçant ne peut pas agir contre lui sur le fondement de l'article 1242, alinéa 1er.</p>"
+  },
+  {
+   "h": "Le commettant et ses préposés",
+   "html": "<p>Les commettants sont responsables du dommage causé par leurs préposés dans les fonctions auxquelles ils les ont employés (art. 1242, al. 5). À compter de la session 2027, c'est la seule responsabilité du fait d'autrui au programme du DCG (arrêté du 4 août 2025) : celle des parents et celle des artisans du fait de leurs apprentis n'y figurent pas.</p><ul><li><b>Exonération du commettant</b> : seulement si le préposé a agi <b>hors des fonctions</b> auxquelles il était employé, <b>sans autorisation</b> et <b>à des fins étrangères à ses attributions</b> (Cass. ass. plén., 19 mai 1988). L'inspecteur d'assurance qui détourne des fonds remis par des clients pendant ses fonctions n'en sort pas : la compagnie reste responsable.</li><li><b>Immunité du préposé</b> : celui qui agit sans excéder les limites de sa mission n'engage pas sa responsabilité à l'égard des tiers (Cass. ass. plén., 25 février 2000, Costedoat).</li><li><b>Limite</b> : condamné pénalement pour une infraction intentionnelle ayant porté préjudice à un tiers, le préposé engage sa responsabilité civile envers la victime (Cass. ass. plén., 14 décembre 2001).</li></ul><p><i>Cas.</i> Tom, livreur salarié de Nadia, fleuriste en entreprise individuelle, brise par maladresse la vitrine d'un commerçant en livrant à pied une composition florale, sans sortir de sa mission. Le commerçant agit contre Nadia (art. 1242, al. 5) ; Tom bénéficie de l'immunité.</p>"
+  },
+  {
+   "h": "Agir contre l'entrepreneur individuel : délai et patrimoine",
+   "html": "<p><b>Délai.</b> En droit commun, les actions personnelles ou mobilières se prescrivent par <b>cinq ans</b> à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer (C. civ., art. 2224). Par exception, l'action en responsabilité née d'un événement ayant entraîné un <b>dommage corporel</b> se prescrit par <b>dix ans</b> à compter de la consolidation du dommage initial ou aggravé (art. 2226).</p><p><b>Patrimoine engagé.</b> Depuis le 15 mai 2022 (loi n° 2022-172), le patrimoine de l'entrepreneur se divise en un <b>patrimoine professionnel</b> (biens, droits, obligations et sûretés utiles à son activité professionnelle indépendante) et un <b>patrimoine personnel</b> (C. com., art. L. 526-22).</p><ul><li>Les créanciers dont les droits sont nés à l'occasion de son exercice professionnel ne peuvent en principe saisir que le patrimoine professionnel, sauf sûreté conventionnelle ou renonciation.</li><li>La renonciation intervient sur demande écrite d'un créancier, pour un engagement spécifique dont l'entrepreneur rappelle le terme et le montant, déterminé ou déterminable (art. L. 526-25).</li><li>Les créanciers personnels saisissent le patrimoine personnel ; s'il est insuffisant, le patrimoine professionnel dans la limite du bénéfice du dernier exercice clos.</li></ul><div class=\"note\"><b>À retenir.</b> Le commerçant victime de Tom n'a en principe pour gage que le patrimoine professionnel de Nadia. L'entrepreneur ne peut pas se porter caution d'une dette dont il est débiteur principal (art. L. 526-22).</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. civ., art. 1231-1 à 1231-4",
+   "note": "Inexécution du contrat : dommages et intérêts, perte faite et gain manqué, dommage prévisible sauf faute lourde ou dolosive, suite immédiate et directe"
+  },
+  {
+   "ref": "C. civ., art. 1218",
+   "note": "Force majeure en matière contractuelle : définition ; suspension ou résolution du contrat"
+  },
+  {
+   "ref": "C. civ., art. 1170 ; C. consom., art. L. 212-1",
+   "note": "Clause qui prive de sa substance l'obligation essentielle du débiteur : réputée non écrite ; clauses abusives dans les contrats conclus entre professionnels et consommateurs"
+  },
+  {
+   "ref": "C. civ., art. 1240 à 1242",
+   "note": "Fait personnel (faute, négligence, imprudence), fait des choses, commettants du fait de leurs préposés (art. 1242, al. 5)"
+  },
+  {
+   "ref": "C. civ., art. 2224 et 2226, al. 1er",
+   "note": "Prescription de droit commun de cinq ans des actions personnelles ou mobilières ; dix ans à compter de la consolidation pour l'action née d'un dommage corporel"
+  },
+  {
+   "ref": "C. com., art. L. 526-22 et L. 526-25 (loi n° 2022-172 du 14 février 2022)",
+   "note": "Patrimoine professionnel et patrimoine personnel de l'entrepreneur individuel ; gage des créanciers ; renonciation"
+  },
+  {
+   "ref": "Cass. com., 22 octobre 1996, n° 93-18.632 (Chronopost) ; Cass. com., 29 juin 2010, n° 09-11.841 (Faurecia) ; Cass. civ. 1re, 29 octobre 2014, n° 13-21.980",
+   "note": "Clauses limitatives : obligation essentielle et faute lourde"
+  },
+  {
+   "ref": "Cass. ch. réunies, 13 février 1930 ; Cass. ch. réunies, 2 décembre 1941",
+   "note": "Présomption pesant sur le gardien ; garde : usage, direction et contrôle ; perte de la garde par le vol"
+  },
+  {
+   "ref": "Cass. ass. plén., 19 mai 1988, n° 87-82.654 ; 25 février 2000, n° 97-17.378 et 97-20.152 (Costedoat) ; 14 décembre 2001, n° 00-82.066",
+   "note": "Abus de fonctions ; immunité du préposé et sa limite en cas d'infraction intentionnelle"
+  },
+  {
+   "ref": "Arrêté du 4 août 2025, annexe 1 (BO ESR n° 32 du 28 août 2025) ; guide pédagogique DCG 2026",
+   "note": "Programme de l'UE1 : fait d'autrui limité aux commettants ; quatre conditions de la responsabilité contractuelle"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Un arrêt de 1995 condamne un artisan sur le fondement de l'article 1382 du Code civil. Quel article du Code civil énonce aujourd'hui cette règle ?",
+   "opts": [
+    "L'article 1240",
+    "L'article 1231-1",
+    "L'article 1242",
+    "L'article 1170"
+   ],
+   "a": 0,
+   "why": "Depuis l'ordonnance n° 2016-131 du 10 février 2016, en vigueur le 1er octobre 2016, les anciens articles 1382, 1383 et 1384 sont devenus les articles 1240, 1241 et 1242. L'article 1242 correspond à l'ancien article 1384 (fait des choses et fait d'autrui), pas à l'article 1382. Les articles 1231-1 (inexécution du contrat) et 1170 (clause qui prive de sa substance l'obligation essentielle) relèvent du droit des contrats.",
+   "src": "Ordonnance n° 2016-131 du 10 février 2016 ; C. civ., art. 1240",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Quel est l'objet de la responsabilité civile organisée par les articles 1231-1 et 1240 du Code civil ?",
+   "opts": [
+    "Obliger l'auteur à réparer le dommage causé",
+    "Punir l'auteur d'une infraction par une peine",
+    "Annuler le contrat que l'auteur a mal exécuté",
+    "Interdire à l'auteur d'exercer son activité"
+   ],
+   "a": 0,
+   "why": "L'article 1240 oblige celui par la faute duquel le dommage est arrivé à le réparer, et l'article 1231-1 condamne le débiteur défaillant à des dommages et intérêts : la responsabilité civile répare. La peine est prononcée pour une infraction et relève de la responsabilité pénale, qui peut d'ailleurs se cumuler avec la responsabilité civile (Cass. ass. plén., 14 décembre 2001). Ni l'annulation du contrat ni l'interdiction d'exercer ne figurent parmi les effets prévus par ces deux articles.",
+   "src": "C. civ., art. 1231-1 et 1240",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Selon le guide pédagogique du DCG 2026, quelles sont les quatre conditions de la responsabilité contractuelle ?",
+   "opts": [
+    "Un contrat entre la victime et l'auteur, une inexécution, un dommage, un lien de causalité",
+    "Un contrat, une faute intentionnelle, un dommage imprévisible, un lien de causalité",
+    "Une chose sous garde, un dommage, un lien de causalité, l'absence de force majeure",
+    "Un contrat, une inexécution, un dommage, une condamnation pénale du débiteur"
+   ],
+   "a": 0,
+   "why": "Le guide pédagogique DCG 2026 retient un contrat entre la victime et l'auteur du dommage, un fait générateur consistant en une inexécution du contrat, un dommage et un lien de causalité ; l'article 1231-1 vise l'inexécution et le retard. Aucune faute intentionnelle n'est exigée, et le dommage réparable est en principe le dommage prévisible, pas l'imprévisible (art. 1231-3). La garde d'une chose relève de l'article 1242, et la condamnation pénale n'est pas une condition de la réparation civile.",
+   "src": "Guide pédagogique DCG 2026 ; C. civ., art. 1231-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Un artisan cause un dommage à un tiers par une simple imprudence, sans avoir voulu nuire. Sa responsabilité du fait personnel peut-elle être engagée ?",
+   "opts": [
+    "Oui, l'imprudence suffit (art. 1241)",
+    "Non, une faute intentionnelle est exigée",
+    "Oui, mais seulement envers son cocontractant",
+    "Non, sauf condamnation pénale préalable"
+   ],
+   "a": 0,
+   "why": "L'article 1241 du Code civil rend chacun responsable du dommage qu'il a causé non seulement par son fait, mais encore par sa négligence ou par son imprudence : une faute non intentionnelle suffit. La responsabilité du fait personnel joue envers autrui (art. 1240), sans exiger de contrat entre l'auteur et la victime. Elle ne suppose pas non plus une condamnation pénale.",
+   "src": "C. civ., art. 1240 et 1241",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Selon la Cour de cassation (ch. réunies, 2 décembre 1941), le gardien d'une chose, au sens de l'article 1242, alinéa 1er, du Code civil, est celui qui en a :",
+   "opts": [
+    "L'usage, la direction et le contrôle",
+    "La propriété, en toutes circonstances",
+    "L'usage seul, sans direction ni contrôle",
+    "L'assurance contre les dommages"
+   ],
+   "a": 0,
+   "why": "La garde se rattache aux pouvoirs d'usage, de direction et de contrôle de la chose (Cass. ch. réunies, 2 décembre 1941) : l'usage seul ne suffit pas. La propriété ne suffit pas en toutes circonstances : le propriétaire privé de ces pouvoirs par l'effet d'un vol n'est plus gardien. L'assurance de la chose ne correspond pas à ces pouvoirs : seul compte le pouvoir exercé sur la chose.",
+   "src": "C. civ., art. 1242, al. 1er ; Cass. ch. réunies, 2 décembre 1941",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque règle selon le régime de responsabilité auquel elle appartient.",
+   "cats": [
+    "Responsabilité contractuelle (art. 1231-1 et s.)",
+    "Responsabilité extracontractuelle (art. 1240 à 1242)"
+   ],
+   "items": [
+    [
+     "Les dommages et intérêts sont limités au dommage prévisible, sauf faute lourde ou dolosive",
+     0
+    ],
+    [
+     "Chacun répond du dommage causé par sa négligence ou son imprudence",
+     1
+    ],
+    [
+     "Le gardien de la chose est présumé responsable du dommage qu'elle a causé",
+     1
+    ],
+    [
+     "Des dommages et intérêts sont dus à raison du retard dans l'exécution",
+     0
+    ],
+    [
+     "Le commettant répond du dommage causé par son préposé dans ses fonctions",
+     1
+    ],
+    [
+     "La victime et l'auteur du dommage sont liés par un contrat",
+     0
+    ],
+    [
+     "Le préposé qui reste dans les limites de sa mission n'engage pas sa responsabilité envers les tiers",
+     1
+    ],
+    [
+     "Le débiteur s'exonère s'il prouve que l'exécution a été empêchée par la force majeure",
+     0
+    ]
+   ],
+   "why": "Les règles de la responsabilité contractuelle supposent un contrat entre la victime et l'auteur (guide pédagogique DCG 2026) : retard dans l'exécution et force majeure (art. 1231-1), dommage prévisible (art. 1231-3). Les règles extracontractuelles visent le dommage causé à autrui : négligence et imprudence (art. 1241), présomption pesant sur le gardien (art. 1242, al. 1er ; Cass. ch. réunies, 13 février 1930), responsabilité du commettant (art. 1242, al. 5) et immunité du préposé (Cass. ass. plén., 25 février 2000).",
+   "src": "C. civ., art. 1231-1, 1231-3, 1241 et 1242",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "La société Delta a commandé à Iris, développeuse web en entreprise individuelle, un site marchand. Le site livré est défaillant et Delta perd des ventes. Quel régime de responsabilité correspond à cette situation ?",
+   "opts": [
+    "La responsabilité contractuelle (art. 1231-1)",
+    "La responsabilité du commettant (art. 1242, al. 5)",
+    "La responsabilité pénale de l'entrepreneur",
+    "Aucune, faute d'intention de nuire d'Iris"
+   ],
+   "a": 0,
+   "why": "Les quatre conditions retenues par le guide pédagogique DCG 2026 sont réunies : un contrat lie Delta et Iris, le site défaillant est une inexécution, la perte de ventes est un dommage qui en découle. L'article 1231-1 s'applique : Iris doit des dommages et intérêts, sauf force majeure. Aucun préposé n'intervient et aucune infraction n'est relevée ; quant à l'intention de nuire, l'article 1231-1 ne l'exige pas.",
+   "src": "C. civ., art. 1231-1 ; guide pédagogique DCG 2026",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Sauf faute lourde ou dolosive, de quels dommages et intérêts le débiteur d'une obligation contractuelle est-il tenu ?",
+   "opts": [
+    "De ceux prévus ou prévisibles à la conclusion du contrat",
+    "De ceux qui étaient prévisibles au jour du jugement",
+    "De ceux qui ne dépassent pas le prix du contrat",
+    "De tous ceux causés par l'inexécution, même indirects"
+   ],
+   "a": 0,
+   "why": "L'article 1231-3 limite la réparation aux dommages et intérêts qui ont été prévus ou qui pouvaient être prévus lors de la conclusion du contrat, sauf faute lourde ou dolosive. La date retenue est donc la conclusion du contrat, pas le jugement, et ces articles ne plafonnent pas la réparation au prix. Quant aux dommages indirects, ils sont exclus même en cas de faute lourde ou dolosive (art. 1231-4).",
+   "src": "C. civ., art. 1231-3 et 1231-4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "À propos de la faute lourde du débiteur contractuel, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "C'est une négligence d'une extrême gravité, confinant au dol",
+    "Elle prive le débiteur du bénéfice d'une clause limitative",
+    "Elle écarte la limitation au dommage prévisible",
+    "Elle permet d'obtenir réparation du dommage indirect",
+    "Elle suppose que le débiteur ait voulu nuire"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "La Cour de cassation définit la faute lourde comme une négligence d'une extrême gravité, confinant au dol et dénotant l'inaptitude du débiteur à sa mission ; elle l'empêche de se prévaloir d'une clause limitative (Cass. civ. 1re, 29 octobre 2014). L'article 1231-3 écarte aussi, dans ce cas, la limitation au dommage prévisible. En revanche, l'article 1231-4 limite toujours la réparation à la suite immédiate et directe de l'inexécution. Enfin, c'est une négligence : dans l'affaire de 2014, la négligence grave a été qualifiée de faute lourde et non de faute dolosive.",
+   "src": "Cass. civ. 1re, 29 octobre 2014, n° 13-21.980 ; C. civ., art. 1231-3 et 1231-4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Dans l'arrêt Chronopost (Cass. com., 22 octobre 1996), pourquoi le transporteur n'a-t-il pas pu se prévaloir de la clause limitant sa responsabilité ?",
+   "opts": [
+    "Elle contredisait son engagement de livrer dans un délai garanti",
+    "Il avait commis une faute lourde en livrant en retard",
+    "Il avait commis un dol en perdant volontairement le pli",
+    "Les clauses limitatives sont en principe interdites"
+   ],
+   "a": 0,
+   "why": "Le transporteur s'était engagé à livrer dans un délai garanti : ayant manqué à cette obligation essentielle, il ne pouvait pas invoquer une clause qui contredisait la portée de son engagement (Cass. com., 22 octobre 1996). Le motif retenu est cette contradiction, non une faute lourde ou un dol du transporteur. Les clauses limitatives sont d'ailleurs en principe licites (Cass. civ. 1re, 29 octobre 2014). L'article 1170 du Code civil consacre cette jurisprudence depuis le 1er octobre 2016.",
+   "src": "Cass. com., 22 octobre 1996, n° 93-18.632 ; C. civ., art. 1170 ; Cass. civ. 1re, 29 octobre 2014, n° 13-21.980",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le contrat de télésurveillance conclu entre la société Kéa et son prestataire contient une clause qui exonère totalement le prestataire s'il ne déclenche pas l'alerte en cas d'intrusion, alors que cette alerte est l'obligation essentielle du contrat. Quel est le sort de cette clause ?",
+   "opts": [
+    "Elle est réputée non écrite",
+    "Elle entraîne la nullité du contrat",
+    "Elle est valable entre professionnels",
+    "Le juge la réduit de moitié"
+   ],
+   "a": 0,
+   "why": "Toute clause qui prive de sa substance l'obligation essentielle du débiteur est réputée non écrite (C. civ., art. 1170) : une exonération totale en cas de manquement à cette obligation la vide de sa substance. La sanction vise la clause, qui est écartée ; le texte ne prévoit pas la nullité du contrat entier. L'article 1170 vise « toute clause » sans distinguer selon la qualité des parties, et il ne prévoit aucune réduction de la clause par le juge.",
+   "src": "C. civ., art. 1170",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Lina, traiteur en entreprise individuelle, livre avec un jour de retard le buffet commandé par la société Arpège. Il n'y a ni force majeure ni faute lourde ou dolosive. Arpège justifie trois postes, tous suite immédiate et directe du retard : (1) plateaux-repas achetés en urgence, 1 800 € (perte, prévisible lors de la commande) ; (2) marge perdue sur une prestation annulée, 700 € (gain manqué, prévisible lors de la commande) ; (3) perte d'un marché exceptionnel avec un client étranger dont Lina ne pouvait pas avoir connaissance lors de la commande, 5 000 €. Quel montant de dommages et intérêts Lina doit-elle (en €) ?",
+   "a": 2500,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Les dommages et intérêts couvrent la perte faite et le gain manqué (art. 1231-2) : 1 800 + 700 = 2 500 €. Le troisième poste ne pouvait pas être prévu lors de la conclusion du contrat ; sans faute lourde ou dolosive, il est exclu (art. 1231-3). Répondre 7 500 € reviendrait à ignorer cette limite.",
+   "src": "C. civ., art. 1231-2 et 1231-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Un rouleau de câble, entreposé par Bruno, électricien en entreprise individuelle, devant son local, roule sur le trottoir et endommage le vélo d'un passant. Poursuivi comme gardien sur le fondement de l'article 1242, alinéa 1er, Bruno prouve qu'il n'a commis aucune faute. Quelle est la conséquence ?",
+   "opts": [
+    "Il reste responsable, faute de prouver une cause étrangère",
+    "Il reste responsable, mais dans la limite de la valeur du câble",
+    "Il est exonéré, car une faute prouvée est exigée",
+    "Il est exonéré, le câble n'étant pas actionné par la main de l'homme",
+    "Il est exonéré, le câble ne présentant aucun vice"
+   ],
+   "a": 0,
+   "why": "La présomption qui pèse sur le gardien ne peut être détruite que par la preuve d'un cas fortuit, d'une force majeure ou d'une cause étrangère qui ne lui soit pas imputable (Cass. ch. réunies, 13 février 1930) : l'absence de faute ne suffit pas. Le même arrêt précise que la loi ne distingue pas selon que la chose était ou non actionnée par la main de l'homme, et qu'il n'est pas nécessaire que la chose ait un vice. L'article 1242, alinéa 1er, ne limite pas non plus la réparation à la valeur de la chose : les autres réponses sont donc fausses.",
+   "src": "C. civ., art. 1242, al. 1er ; Cass. ch. réunies, 13 février 1930",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "L'échelle de Sophie, peintre en entreprise individuelle, lui est volée sur un chantier. Le lendemain, le voleur s'en sert et brise en la manipulant la vitre de la véranda d'un particulier. Le particulier peut-il agir contre Sophie sur le fondement de l'article 1242, alinéa 1er, du Code civil ?",
+   "opts": [
+    "Non, Sophie a perdu la garde par l'effet du vol",
+    "Oui, la propriétaire reste toujours gardienne",
+    "Oui, mais dans la limite de la valeur de l'échelle",
+    "Non, car l'échelle était actionnée par la main de l'homme"
+   ],
+   "a": 0,
+   "why": "Le propriétaire privé de l'usage, de la direction et du contrôle de la chose par l'effet d'un vol n'en a plus la garde et échappe à la présomption du gardien (Cass. ch. réunies, 2 décembre 1941). La propriété ne fait donc pas toujours le gardien, et l'article 1242, alinéa 1er, ne limite pas la réparation à la valeur de la chose. Que la chose soit actionnée par la main de l'homme est indifférent (Cass. ch. réunies, 13 février 1930) : ce n'est pas la raison pour laquelle Sophie échappe à l'action.",
+   "src": "Cass. ch. réunies, 2 décembre 1941 ; Cass. ch. réunies, 13 février 1930 ; C. civ., art. 1242, al. 1er",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Selon l'arrêt d'assemblée plénière du 19 mai 1988, quelles conditions, réunies, exonèrent le commettant de sa responsabilité du fait de son préposé ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le préposé a agi hors des fonctions auxquelles il était employé",
+    "Il a agi sans autorisation",
+    "Il a agi à des fins étrangères à ses attributions",
+    "Il a agi en dehors de ses heures de travail",
+    "Il a commis une infraction pénale"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le commettant ne s'exonère que si son préposé a agi hors des fonctions auxquelles il était employé, sans autorisation et à des fins étrangères à ses attributions : les trois conditions sont cumulatives (Cass. ass. plén., 19 mai 1988). Les heures de travail ne font pas partie de ce critère. Une infraction ne suffit pas non plus : dans l'affaire jugée, l'inspecteur qui avait détourné des fonds pendant ses fonctions n'en était pas sorti, et la compagnie est restée civilement responsable.",
+   "src": "Cass. ass. plén., 19 mai 1988, n° 87-82.654 ; C. civ., art. 1242, al. 5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Sami, vendeur salarié du magasin de Mme Roux, entrepreneuse individuelle, détourne pendant son service des acomptes que des clients lui remettent en caisse. Les clients demandent réparation à Mme Roux. Que décider ?",
+   "opts": [
+    "Mme Roux est responsable : Sami n'est pas sorti de ses fonctions",
+    "Mme Roux est responsable, mais seulement si elle a manqué de surveillance",
+    "Mme Roux est exonérée, car un détournement est une infraction",
+    "Mme Roux est exonérée, car elle n'a pas autorisé le détournement",
+    "Mme Roux est exonérée, car Sami a agi pour son propre compte"
+   ],
+   "a": 0,
+   "why": "Le commettant répond du dommage causé par son préposé dans les fonctions auxquelles il l'a employé (art. 1242, al. 5). Il ne s'exonère que si le préposé a agi à la fois hors de ses fonctions, sans autorisation et à des fins étrangères à ses attributions (Cass. ass. plén., 19 mai 1988). Comme l'inspecteur d'assurance de l'affaire de 1988, Sami a détourné des fonds remis pendant l'exercice de ses fonctions : il n'en est pas sorti. L'absence d'autorisation ou le but personnel ne suffisent pas seuls, puisque les trois conditions sont cumulatives. Sa responsabilité ne dépend pas non plus d'un défaut de surveillance de sa part : le commettant ne s'exonère que dans le cas défini en 1988.",
+   "src": "C. civ., art. 1242, al. 5 ; Cass. ass. plén., 19 mai 1988, n° 87-82.654",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Hugo, commis salarié de Lina, traiteur en entreprise individuelle, renverse par maladresse un plat sur le manteau d'une invitée pendant le service d'un buffet, sans excéder les limites de sa mission. L'invitée n'a conclu aucun contrat avec Lina. Auprès de qui peut-elle obtenir réparation ?",
+   "opts": [
+    "De Lina, sa commettante",
+    "De Hugo seul, auteur direct du dommage",
+    "De Hugo et de Lina, chacun pour moitié",
+    "De personne, une maladresse n'étant pas fautive"
+   ],
+   "a": 0,
+   "why": "Lina répond du dommage causé par son préposé dans les fonctions auxquelles elle l'a employé (art. 1242, al. 5). Hugo, qui agit sans excéder les limites de sa mission, n'engage pas sa responsabilité à l'égard des tiers (Cass. ass. plén., 25 février 2000, Costedoat) : il ne peut être poursuivi ni seul ni pour moitié. Enfin, la négligence ou l'imprudence suffit à caractériser une faute (art. 1241) : une maladresse n'est pas exempte de responsabilité.",
+   "src": "C. civ., art. 1241 et 1242, al. 5 ; Cass. ass. plén., 25 février 2000, n° 97-17.378 et 97-20.152",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Lequel de ces éléments ne fait PAS partie de la définition de la force majeure en matière contractuelle (C. civ., art. 1218) ?",
+   "opts": [
+    "Un événement échappant au contrôle du débiteur",
+    "Un événement raisonnablement imprévisible lors de la conclusion du contrat",
+    "Des effets qui ne peuvent être évités par des mesures appropriées",
+    "Un événement qui rend l'exécution plus coûteuse pour le débiteur"
+   ],
+   "a": 3,
+   "why": "L'article 1218 définit la force majeure par trois traits : un événement échappant au contrôle du débiteur, qui ne pouvait être raisonnablement prévu lors de la conclusion du contrat et dont les effets ne peuvent être évités par des mesures appropriées. Cet événement doit empêcher l'exécution de l'obligation : un simple renchérissement de l'exécution n'est pas visé par le texte.",
+   "src": "C. civ., art. 1218",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Une inondation, qui présente les caractères de la force majeure, empêche pendant dix jours Inès, couturière en entreprise individuelle, de livrer une commande. Le retard ne justifie pas la résolution du contrat. Quel est l'effet de cet empêchement ?",
+   "opts": [
+    "L'exécution de son obligation est suspendue",
+    "Le contrat est résolu de plein droit",
+    "Inès doit des dommages et intérêts pour le retard",
+    "Le client est libéré mais Inès reste tenue"
+   ],
+   "a": 0,
+   "why": "Si l'empêchement est temporaire, l'exécution de l'obligation est suspendue, à moins que le retard qui en résulterait ne justifie la résolution du contrat (art. 1218). La résolution de plein droit, qui libère les deux parties, est réservée à l'empêchement définitif. Et le débiteur dont l'exécution a été empêchée par la force majeure ne doit pas de dommages et intérêts (art. 1231-1).",
+   "src": "C. civ., art. 1218 et 1231-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Le 1er mars 2021, un artisan endommage, sans que personne puisse s'en apercevoir, une canalisation enterrée appartenant à un voisin (dommage purement matériel). Le voisin découvre le dommage le 1er mars 2022 ; il ne pouvait pas le connaître avant. Nous sommes le 1er octobre 2026. Combien de mois lui reste-t-il pour agir avant l'expiration du délai de prescription de droit commun ?",
+   "a": 5,
+   "unit": "mois",
+   "tol": 0.5,
+   "why": "Les actions personnelles ou mobilières se prescrivent par cinq ans à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer (C. civ., art. 2224). Le point de départ est le 1er mars 2022 (découverte), non le 1er mars 2021 (dommage) : le délai expire le 1er mars 2027. Du 1er octobre 2026 au 1er mars 2027, il reste 5 mois. Partir de la date du dommage conduirait à tort à une action prescrite depuis mars 2026.",
+   "src": "C. civ., art. 2224",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "À propos de l'entrepreneur individuel soumis à la loi n° 2022-172 du 14 février 2022, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les biens, droits, obligations et sûretés utiles à son activité professionnelle forment son patrimoine professionnel",
+    "Les créanciers dont les droits sont nés à l'occasion de son exercice professionnel ne peuvent en principe saisir que son patrimoine professionnel",
+    "Il peut se porter caution d'une dette professionnelle dont il est débiteur principal",
+    "Ses créanciers personnels ne peuvent jamais saisir son patrimoine professionnel",
+    "La division de son patrimoine s'applique depuis le 15 mai 2022"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "L'article L. 526-22 du Code de commerce définit le patrimoine professionnel (biens, droits, obligations et sûretés utiles à l'activité professionnelle indépendante) et limite en principe le gage des créanciers professionnels à ce patrimoine, sauf sûreté conventionnelle ou renonciation ; ce régime s'applique depuis le 15 mai 2022. La distinction des patrimoines n'autorise pas l'entrepreneur à se porter caution d'une dette dont il est débiteur principal. Les créanciers personnels peuvent, si le patrimoine personnel est insuffisant, saisir le patrimoine professionnel dans la limite du bénéfice du dernier exercice clos : « jamais » est donc faux.",
+   "src": "C. com., art. L. 526-22",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Marc, plombier en entreprise individuelle, demande un prêt professionnel. La banque veut pouvoir agir aussi sur son patrimoine personnel. Parmi ces moyens, lequel est prévu par le Code de commerce ?",
+   "opts": [
+    "Une renonciation, sur demande écrite de la banque, limitée à ce prêt",
+    "Un cautionnement du prêt souscrit par Marc lui-même",
+    "Une renonciation générale pour toutes ses dettes futures",
+    "Un simple accord verbal entre Marc et la banque"
+   ],
+   "a": 0,
+   "why": "Sur demande écrite d'un créancier, l'entrepreneur individuel peut renoncer à la protection de son patrimoine personnel pour un engagement spécifique dont il doit rappeler le terme et le montant, qui doit être déterminé ou déterminable (C. com., art. L. 526-25). Une renonciation générale ou verbale ne répond pas à ces exigences. Et la distinction des patrimoines ne l'autorise pas à se porter caution d'une dette dont il est débiteur principal (art. L. 526-22).",
+   "src": "C. com., art. L. 526-22 et L. 526-25",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Florent est plombier en entreprise individuelle. Aucun de ses créanciers ne bénéficie d'une sûreté conventionnelle. Classez chaque créancier selon le patrimoine qu'il peut saisir, d'après les articles L. 526-22 et L. 526-25 du Code de commerce.",
+   "cats": [
+    "Patrimoine professionnel seulement",
+    "Patrimoine personnel, puis professionnel dans la limite du bénéfice du dernier exercice clos si le personnel est insuffisant",
+    "Patrimoine professionnel et, pour ce seul engagement, patrimoine personnel"
+   ],
+   "items": [
+    [
+     "Un client dont Florent a mal exécuté le chantier",
+     0
+    ],
+    [
+     "Un passant dont le vélo a été endommagé par le salarié de Florent au cours d'un chantier",
+     0
+    ],
+    [
+     "Le fournisseur impayé des tubes de cuivre utilisés sur ses chantiers",
+     0
+    ],
+    [
+     "Un voisin victime d'un dégât causé par Florent dans sa vie privée",
+     1
+    ],
+    [
+     "Le vendeur, impayé, de la voiture familiale de Florent",
+     1
+    ],
+    [
+     "La banque qui a obtenu, sur sa demande écrite, la renonciation de Florent pour un prêt professionnel déterminé",
+     2
+    ]
+   ],
+   "why": "Les créanciers dont les droits sont nés à l'occasion de l'exercice professionnel n'ont en principe pour gage que le patrimoine professionnel (C. com., art. L. 526-22) : client mal servi, victime du salarié pendant un chantier, fournisseur. Les créanciers personnels saisissent le patrimoine personnel et, s'il est insuffisant, le patrimoine professionnel dans la limite du bénéfice du dernier exercice clos. La banque qui a obtenu une renonciation pour un engagement spécifique (art. L. 526-25) peut aussi agir sur le patrimoine personnel pour ce prêt.",
+   "src": "C. com., art. L. 526-22 et L. 526-25",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Un contrat de licence de logiciel, négocié entre deux sociétés pour les besoins de leur activité, plafonne la réparation due par l'éditeur. La clause porte sur son obligation essentielle, mais ne la vide pas de sa substance. L'éditeur n'a commis ni faute lourde ni dol. Quel est le sort de la clause ?",
+   "opts": [
+    "Elle s'applique",
+    "Elle est réputée non écrite, car elle porte sur l'obligation essentielle",
+    "Elle est nulle avec l'ensemble du contrat",
+    "Elle est remplacée par un plafond fixé par le juge"
+   ],
+   "a": 0,
+   "why": "Une clause limitative qui porte sur une obligation essentielle n'est pas réputée non écrite pour ce seul motif : elle ne l'est que si elle vide cette obligation de sa substance en contredisant la portée de l'engagement (Cass. com., 29 juin 2010, Faurecia ; C. civ., art. 1170). Ici, elle ne la vide pas, et aucune faute lourde ni aucun dol ne permet de l'écarter (Cass. civ. 1re, 29 octobre 2014) : elle s'applique. Ces textes ne prévoient ni la nullité du contrat ni un plafond fixé par le juge. Enfin, ce contrat négocié entre deux sociétés n'est ni un contrat conclu avec un consommateur (C. consom., art. L. 212-1) ni un contrat d'adhésion (C. civ., art. 1171) : les règles sur les clauses abusives de ces deux textes ne s'appliquent pas.",
+   "src": "Cass. com., 29 juin 2010, n° 09-11.841 ; C. civ., art. 1170 et 1171 ; C. consom., art. L. 212-1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Lina, traiteur en entreprise individuelle, a livré en retard le buffet commandé par la société Arpège. Il est établi que ce retard est dû à une faute lourde de Lina ; il n'y a pas de force majeure. Arpège réclame : 1 800 € de perte et 700 € de gain manqué, prévisibles lors de la commande et suite directe du retard ; 5 000 € de perte d'un marché, suite directe du retard mais imprévisible lors de la commande ; 1 200 € de frais qui ne sont pas une suite immédiate et directe du retard. Quel montant de dommages et intérêts Lina doit-elle (en €) ?",
+   "a": 7500,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "La faute lourde écarte la limitation au dommage prévisible (C. civ., art. 1231-3) : les 5 000 € imprévisibles sont donc réparés. Mais même en cas de faute lourde ou dolosive, seuls sont dus les dommages qui sont une suite immédiate et directe de l'inexécution (art. 1231-4) : les 1 200 € sont exclus. Total : 1 800 + 700 + 5 000 = 7 500 € (et non 8 700 €).",
+   "src": "C. civ., art. 1231-3 et 1231-4",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Léo, salarié d'un entrepreneur individuel, est condamné pénalement pour une infraction intentionnelle commise pendant son travail au préjudice d'un client. Le client l'assigne en réparation devant le juge civil ; Léo invoque l'immunité du préposé. Que décider ?",
+   "opts": [
+    "Léo engage sa responsabilité civile envers le client",
+    "Léo n'en répond que si son employeur ne peut pas payer",
+    "Léo est protégé, car il agissait pendant son travail",
+    "Léo ne doit que la peine, pas de dommages et intérêts",
+    "Le client ne peut agir que contre l'employeur de Léo"
+   ],
+   "a": 0,
+   "why": "Le préposé condamné pénalement pour une infraction intentionnelle ayant porté préjudice à un tiers engage sa responsabilité civile à l'égard de celui-ci (Cass. ass. plén., 14 décembre 2001). L'immunité posée par l'arrêt Costedoat (Cass. ass. plén., 25 février 2000) ne le protège donc pas, même si l'infraction a été commise pendant le travail. La peine et la réparation civile se cumulent, et le client peut agir contre Léo lui-même. L'arrêt de 2001 ne subordonne pas non plus cette responsabilité à l'insolvabilité de l'employeur.",
+   "src": "Cass. ass. plén., 14 décembre 2001, n° 00-82.066",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Quelles affirmations sur les causes d'exonération sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le débiteur contractuel échappe aux dommages et intérêts s'il prouve que la force majeure a empêché l'exécution",
+    "Le gardien d'une chose s'exonère par la preuve d'une cause étrangère qui ne lui est pas imputable",
+    "Le gardien d'une chose s'exonère en prouvant qu'il n'a commis aucune faute",
+    "Le commettant s'exonère en prouvant qu'il a bien choisi son préposé",
+    "Le commettant s'exonère si le préposé a agi hors de ses fonctions, sans autorisation et à des fins étrangères à ses attributions"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "Le débiteur contractuel ne doit pas de dommages et intérêts s'il justifie que l'exécution a été empêchée par la force majeure (C. civ., art. 1231-1). Le gardien ne renverse la présomption que par un cas fortuit, une force majeure ou une cause étrangère non imputable : l'absence de faute ne suffit pas (Cass. ch. réunies, 13 février 1930). Le commettant ne s'exonère que dans le cas défini par l'assemblée plénière le 19 mai 1988 (hors des fonctions, sans autorisation, à des fins étrangères aux attributions) : la preuve d'un bon choix du préposé n'en fait pas partie.",
+   "src": "C. civ., art. 1231-1 ; Cass. ch. réunies, 13 février 1930 ; Cass. ass. plén., 19 mai 1988",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Paul, entrepreneur individuel, doit 30 000 € de dommages et intérêts à un voisin pour un dégât causé dans sa vie privée : ce voisin est un créancier personnel, sans sûreté ni renonciation. La saisie du patrimoine personnel de Paul rapporte 12 000 €. Son patrimoine professionnel vaut 80 000 € et le bénéfice de son dernier exercice clos s'élève à 10 000 €. Quel montant total maximal le voisin peut-il recouvrer (en €) ?",
+   "a": 22000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Le créancier personnel saisit d'abord le patrimoine personnel : 12 000 €. Celui-ci étant insuffisant, il peut saisir le patrimoine professionnel dans la limite du bénéfice réalisé lors du dernier exercice clos (C. com., art. L. 526-22), soit 10 000 €, et non la valeur de ce patrimoine (80 000 €). Total : 12 000 + 10 000 = 22 000 € ; le solde de 8 000 € ne peut pas être recouvré sur le patrimoine professionnel.",
+   "src": "C. com., art. L. 526-22",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

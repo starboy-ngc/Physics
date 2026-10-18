@@ -1,0 +1,366 @@
+{
+ "id": "ue1-07",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, applicable à la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Programme 2025, bloc « Appliquer le cadre juridique adapté à une situation professionnelle » (60 heures) : « Apprécier les conséquences des responsabilités civiles de l'entrepreneur individuel » (15 heures)",
+   "Programme 2025, limite du même point : « L'étude de la responsabilité du fait d'autrui sera limitée à la responsabilité des commettants du fait de leurs préposés. »",
+   "Programme 2025, objet du même point (termes exacts non restitués) : distinction entre responsabilité civile et responsabilité pénale ; responsabilité contractuelle et extracontractuelle (fait personnel, fait des choses, fait d'autrui) et possibilités de cumul des régimes ; conditions de mise en œuvre, caractéristiques du préjudice réparable et causes possibles d'exonération"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. civ., art. 1170",
+   "objet": "Clause qui prive de sa substance l'obligation essentielle du débiteur : réputée non écrite",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008690/",
+   "version": "en vigueur depuis le 1er octobre 2016 (ordonnance n° 2016-131 du 10 février 2016)"
+  },
+  {
+   "ref": "C. civ., art. 1218",
+   "objet": "Force majeure en matière contractuelle : définition ; suspension de l'obligation ou résolution du contrat",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041431",
+   "version": "en vigueur depuis le 1er octobre 2016 (ordonnance n° 2016-131 du 10 février 2016)"
+  },
+  {
+   "ref": "C. civ., art. 1231-1 à 1231-4",
+   "objet": "Réparation du préjudice résultant de l'inexécution du contrat : dommages et intérêts, force majeure, perte faite et gain manqué, dommage prévisible, suite immédiate et directe",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032009929/",
+   "version": "en vigueur depuis le 1er octobre 2016 (rédaction issue de l'ordonnance n° 2016-131 du 10 février 2016)"
+  },
+  {
+   "ref": "C. civ., art. 1240 et 1241",
+   "objet": "Responsabilité extracontractuelle du fait personnel : faute, négligence, imprudence (anciens art. 1382 et 1383)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032021488/",
+   "version": "en vigueur (numérotation issue de l'ordonnance n° 2016-131 du 10 février 2016, applicable depuis le 1er octobre 2016)"
+  },
+  {
+   "ref": "C. civ., art. 1242",
+   "objet": "Responsabilité du fait des choses et du fait d'autrui (al. 1er) ; responsabilité des commettants du fait de leurs préposés (al. 5)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051786000",
+   "version": "en vigueur depuis le 25 juin 2025 (loi n° 2025-568 du 23 juin 2025, art. 3) ; version antérieure en vigueur du 1er octobre 2016 au 25 juin 2025 (ordonnance n° 2016-131)"
+  },
+  {
+   "ref": "C. com., art. L. 526-22",
+   "objet": "Entrepreneur individuel : patrimoine professionnel et patrimoine personnel, droit de gage des créanciers",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+   "version": "en vigueur depuis le 28 janvier 2024 (créé par la loi n° 2022-172 du 14 février 2022, applicable depuis le 15 mai 2022 ; dernière modification : loi n° 2024-42 du 26 janvier 2024, art. 29)"
+  },
+  {
+   "ref": "Ordonnance n° 2016-131 du 10 février 2016 et rapport au Président de la République",
+   "objet": "Réforme du droit des contrats ; commentaire des art. 1170 et 1231-3 (consécration de la jurisprudence Chronopost et de l'assimilation de la faute lourde au dol)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004939",
+   "version": "en vigueur depuis le 1er octobre 2016"
+  },
+  {
+   "ref": "Cass. ch. réunies, 13 février 1930",
+   "objet": "Présomption de responsabilité du gardien d'une chose inanimée ; exonération par la seule cause étrangère",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006952821/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "Cass. ch. réunies, 2 décembre 1941",
+   "objet": "Garde de la chose : usage, direction et contrôle ; perte de la garde par l'effet d'un vol",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006953144/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "Cass. ass. plén., 19 mai 1988, n° 87-82.654",
+   "objet": "Exonération du commettant : préposé agissant hors de ses fonctions, sans autorisation et à des fins étrangères à ses attributions",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020609/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "Cass. ass. plén., 25 février 2000, n° 97-17.378 et 97-20.152 (Costedoat)",
+   "objet": "Immunité du préposé qui agit sans excéder les limites de sa mission",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007043704/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "Cass. ass. plén., 14 décembre 2001, n° 00-82.066",
+   "objet": "Responsabilité civile du préposé condamné pénalement pour une infraction intentionnelle",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007045753/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "Cass. com., 22 octobre 1996, n° 93-18.632 (Chronopost)",
+   "objet": "Clause limitative de responsabilité contredisant la portée de l'obligation essentielle",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007035966/",
+   "version": "arrêt publié au bulletin ; solution consacrée par l'art. 1170 du Code civil"
+  },
+  {
+   "ref": "Cass. com., 29 juin 2010, n° 09-11.841 (Faurecia)",
+   "objet": "Clause limitative qui ne vide pas l'obligation essentielle de sa substance : clause appliquée",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000022427254/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "Cass. civ. 1re, 29 octobre 2014, n° 13-21.980",
+   "objet": "Faute lourde assimilée au dol : clause limitative et limitation au dommage prévisible écartées",
+   "url": "https://legifrance.gouv.fr/affichJuriJudi.do?idTexte=JURITEXT000029681251",
+   "version": "arrêt publié au bulletin"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Responsabilité civile contractuelle</b> : le débiteur d'une obligation contractuelle est condamné, s'il y a lieu, à payer des dommages et intérêts à son créancier, soit à raison de l'inexécution de l'obligation, soit à raison du retard dans l'exécution. Il y échappe s'il justifie que l'exécution a été empêchée par la force majeure.",
+     "cite": "« Le débiteur est condamné, s'il y a lieu, au paiement de dommages et intérêts soit à raison de l'inexécution de l'obligation, soit à raison du retard dans l'exécution, s'il ne justifie pas que l'exécution a été empêchée par la force majeure. »",
+     "src": "C. civ., art. 1231-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010123/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Responsabilité extracontractuelle du fait personnel</b> : tout fait quelconque de l'homme qui cause à autrui un dommage oblige celui par la faute duquel il est arrivé à le réparer (art. 1240). Chacun est responsable du dommage qu'il a causé non seulement par son fait, mais encore par sa négligence ou par son imprudence (art. 1241) : une faute non intentionnelle suffit donc.",
+     "src": "C. civ., art. 1240 et 1241",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032021488/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dommages et intérêts contractuels</b> : ils réparent en général la perte que le créancier a faite et le gain dont il a été privé, sous réserve des exceptions et modifications prévues par les articles suivants (notamment limitation au dommage prévisible, art. 1231-3, et à la suite immédiate et directe de l'inexécution, art. 1231-4).",
+     "cite": "« […] de la perte qu'il a faite et du gain dont il a été privé, sauf les exceptions et modifications ci-après. »",
+     "src": "C. civ., art. 1231-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010125",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Garde de la chose</b> : la responsabilité du fait des choses pèse sur celui qui a la chose sous sa garde (art. 1242, al. 1er). La garde se rattache aux pouvoirs d'usage, de direction et de contrôle de la chose : celui qui en est privé, par exemple par l'effet d'un vol, n'est plus gardien (Cass. ch. réunies, 2 décembre 1941).",
+     "src": "C. civ., art. 1242, al. 1er ; Cass. ch. réunies, 2 décembre 1941",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006953144/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause qui prive de sa substance l'obligation essentielle</b> : toute clause qui prive de sa substance l'obligation essentielle du débiteur est réputée non écrite. Selon le rapport au Président de la République, ce texte consacre la jurisprudence Chronopost de 1996 sur les clauses contredisant l'obligation essentielle du débiteur et s'appliquera notamment aux clauses limitatives de responsabilité.",
+     "cite": "« Toute clause qui prive de sa substance l'obligation essentielle du débiteur est réputée non écrite. »",
+     "src": "C. civ., art. 1170 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008690/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Faute lourde</b> : négligence d'une extrême gravité, confinant au dol et dénotant l'inaptitude du débiteur à l'accomplissement de sa mission. La jurisprudence l'assimile au dol, assimilation que les articles 1231-3 et 1231-4 consacrent selon le rapport au Président de la République.",
+     "src": "Cass. civ. 1re, 29 octobre 2014, n° 13-21.980 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+     "url": "https://legifrance.gouv.fr/affichJuriJudi.do?idTexte=JURITEXT000029681251",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Patrimoine professionnel de l'entrepreneur individuel</b> : il réunit les biens, droits, obligations et sûretés dont l'entrepreneur individuel est titulaire et qui sont utiles à son activité professionnelle indépendante ; les autres éléments forment son patrimoine personnel.",
+     "cite": "« Les biens, droits, obligations et sûretés dont il est titulaire et qui sont utiles à son activité ou à ses activités professionnelles indépendantes constituent le patrimoine professionnel de l'entrepreneur individuel. »",
+     "src": "C. com., art. L. 526-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Conditions de la responsabilité contractuelle</b> : le guide pédagogique DCG 2026 retient quatre conditions : un contrat entre la victime et l'auteur du dommage, un fait générateur consistant en une inexécution du contrat, un dommage et un lien de causalité.",
+     "src": "Guide pédagogique DCG 2026 ; C. civ., art. 1231-1",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dommage prévisible</b> : en matière contractuelle, le débiteur n'est tenu que des dommages et intérêts qui ont été prévus ou qui pouvaient être prévus lors de la conclusion du contrat, sauf lorsque l'inexécution est due à une faute lourde ou dolosive.",
+     "src": "C. civ., art. 1231-3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010127",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dommage direct</b> : même lorsque l'inexécution du contrat résulte d'une faute lourde ou dolosive, les dommages et intérêts ne comprennent que ce qui est une suite immédiate et directe de l'inexécution.",
+     "src": "C. civ., art. 1231-4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010129",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Force majeure en matière contractuelle</b> : un événement échappant au contrôle du débiteur, qui ne pouvait être raisonnablement prévu lors de la conclusion du contrat et dont les effets ne peuvent être évités par des mesures appropriées, empêche l'exécution de son obligation. Si l'empêchement est temporaire, l'exécution est suspendue, sauf si le retard justifie la résolution du contrat ; s'il est définitif, le contrat est résolu de plein droit et les parties sont libérées de leurs obligations.",
+     "src": "C. civ., art. 1218",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041431",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause qui contredit l'obligation essentielle (Chronopost)</b> : le transporteur qui s'était engagé à livrer dans un délai garanti ne peut pas se prévaloir de la clause limitant sa responsabilité lorsqu'il manque à cette obligation essentielle, car la clause contredit la portée de son engagement. L'article 1170 consacre cette solution depuis le 1er octobre 2016.",
+     "src": "Cass. com., 22 octobre 1996, n° 93-18.632 ; C. civ., art. 1170",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007035966/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Limite de la solution (Faurecia)</b> : une clause limitative de réparation qui porte sur une obligation essentielle n'est pas réputée non écrite pour ce seul motif ; elle ne l'est que si elle vide cette obligation de sa substance en contredisant la portée de l'engagement pris. Dans l'arrêt du 29 juin 2010, la clause ne vidait pas de sa substance l'obligation essentielle de l'éditeur de logiciels : elle a été appliquée.",
+     "cite": "« […] seule est réputée non écrite la clause limitative de réparation qui contredit la portée de l'obligation essentielle souscrite par le débiteur […] »",
+     "src": "Cass. com., 29 juin 2010, n° 09-11.841 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 (art. 1170)",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000022427254/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clauses limitatives et faute lourde</b> : les clauses limitatives d'indemnisation sont en principe licites, mais le débiteur ne peut pas s'en prévaloir en cas de faute lourde ou de dol ; la faute lourde l'empêche aussi de limiter la réparation aux seuls dommages prévisibles.",
+     "src": "Cass. civ. 1re, 29 octobre 2014, n° 13-21.980 ; C. civ., art. 1231-3",
+     "url": "https://legifrance.gouv.fr/affichJuriJudi.do?idTexte=JURITEXT000029681251",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conditions de la responsabilité du fait personnel</b> : l'article 1240 exige un fait fautif, un dommage causé à autrui et un lien de causalité entre ce fait et le dommage ; la faute peut consister en une simple négligence ou imprudence (art. 1241).",
+     "src": "C. civ., art. 1240 et 1241",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041571",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Principe général de l'article 1242</b> : on est responsable non seulement du dommage que l'on cause par son propre fait, mais encore de celui qui est causé par le fait des personnes dont on doit répondre ou des choses que l'on a sous sa garde.",
+     "src": "C. civ., art. 1242, al. 1er",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051786000",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Présomption pesant sur le gardien</b> : la présomption de responsabilité de l'ancien article 1384, alinéa 1er (aujourd'hui article 1242, alinéa 1er), pèse sur le gardien de la chose inanimée qui a causé le dommage ; elle ne peut être détruite que par la preuve d'un cas fortuit, d'une force majeure ou d'une cause étrangère qui ne lui soit pas imputable. La loi ne distingue pas selon que la chose était ou non actionnée par la main de l'homme, et il n'est pas nécessaire qu'elle ait un vice inhérent à sa nature.",
+     "src": "Cass. ch. réunies, 13 février 1930",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006952821/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Perte de la garde par le vol</b> : le propriétaire privé de l'usage, de la direction et du contrôle de son véhicule par l'effet d'un vol n'en a plus la garde ; il n'est donc plus soumis à la présomption de responsabilité du gardien.",
+     "src": "Cass. ch. réunies, 2 décembre 1941",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006953144/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Responsabilité du commettant</b> : les maîtres et les commettants sont responsables du dommage causé par leurs domestiques et préposés dans les fonctions auxquelles ils les ont employés.",
+     "src": "C. civ., art. 1242, al. 5",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051786000",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Abus de fonctions</b> : le commettant ne s'exonère de sa responsabilité que si son préposé a agi hors des fonctions auxquelles il était employé, sans autorisation et à des fins étrangères à ses attributions. Dans l'affaire jugée, l'inspecteur d'une compagnie d'assurance qui avait détourné des fonds remis par des clients pendant l'exercice de ses fonctions n'en était pas sorti : la compagnie restait civilement responsable.",
+     "src": "Cass. ass. plén., 19 mai 1988, n° 87-82.654",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020609/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Immunité du préposé (Costedoat)</b> : le préposé qui agit sans excéder les limites de la mission qui lui a été impartie par son commettant n'engage pas sa responsabilité à l'égard des tiers.",
+     "cite": "« Attendu que n'engage pas sa responsabilité à l'égard des tiers le préposé qui agit sans excéder les limites de la mission qui lui a été impartie par son commettant […] »",
+     "src": "Cass. ass. plén., 25 février 2000, n° 97-17.378 et 97-20.152",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007043704/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Limite de l'immunité : infraction intentionnelle</b> : le préposé condamné pénalement pour une infraction intentionnelle ayant porté préjudice à un tiers engage sa responsabilité civile envers la victime. La condamnation pénale et la réparation civile se cumulent alors à l'égard du même préposé.",
+     "src": "Cass. ass. plén., 14 décembre 2001, n° 00-82.066",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007045753/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Patrimoine engagé par l'entrepreneur individuel</b> : depuis le 15 mai 2022, le patrimoine de l'entrepreneur individuel se divise en un patrimoine professionnel et un patrimoine personnel ; en principe, ses créanciers dont les droits sont nés à l'occasion de son exercice professionnel ne peuvent agir que sur son patrimoine professionnel, sauf sûreté conventionnelle ou renonciation (art. L. 526-25).",
+     "src": "C. com., art. L. 526-22 (loi n° 2022-172 du 14 février 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>Place dans le programme 2025</b> : l'UE 1 « Fondamentaux du droit » compte 150 heures en trois blocs (35, 55 et 60 heures). La partie « Apprécier les conséquences des responsabilités civiles de l'entrepreneur individuel » représente 15 heures du bloc « Appliquer le cadre juridique adapté à une situation professionnelle » (60 heures). Ce programme s'applique à compter de la session 2027.",
+     "src": "Arrêté du 4 août 2025, annexe 1 (BO ESR n° 32 du 28 août 2025)",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-1-programme-des-unit-s-d-enseignement-du-dipl-me-de-comptabilit-et-de-gestion-dcg--37751.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Gage des créanciers personnels de l'entrepreneur individuel</b> : si son patrimoine personnel est insuffisant, ses créanciers personnels peuvent saisir le patrimoine professionnel dans la limite du bénéfice réalisé lors du dernier exercice clos.",
+     "src": "C. com., art. L. 526-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>1er octobre 2016</b> : entrée en vigueur de l'ordonnance n° 2016-131 du 10 février 2016, qui a donné leur rédaction actuelle aux articles 1170, 1218 et 1231-1 à 1231-4 et renuméroté les articles de la responsabilité extracontractuelle (1382, 1383 et 1384 devenus 1240, 1241 et 1242).",
+     "src": "Ordonnance n° 2016-131 du 10 février 2016 ; C. civ., art. 1170, 1218, 1231-1 et 1240 à 1242",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004939",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cinq ans</b> : délai de prescription de droit commun des actions personnelles ou mobilières, qui court à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer.",
+     "cite": "« Les actions personnelles ou mobilières se prescrivent par cinq ans à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer. »",
+     "src": "C. civ., art. 2224",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017112",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Loi n° 2025-568 du 23 juin 2025</b> (renforcement de l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents) : son article 3 modifie l'article 1242 du Code civil, en vigueur dans cette rédaction depuis le 25 juin 2025. Il modifie le quatrième alinéa (responsabilité des parents du fait de leurs enfants mineurs) et remplace « père et mère » par « parents » à l'avant-dernier alinéa.",
+     "cite": "« I.-L'article 1242 du code civil est ainsi modifié : 1° Le quatrième alinéa est ainsi modifié »",
+     "src": "Loi n° 2025-568 du 23 juin 2025, art. 3 ; C. civ., art. 1242",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000051783004",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Assemblée plénière, 28 juin 2024</b> : lorsque les deux parents exercent conjointement l'autorité parentale à l'égard de leur enfant mineur, ils sont solidairement responsables du dommage qu'il cause, même si la résidence de l'enfant a été fixée chez un seul d'entre eux. Ce régime ne fait pas partie du programme DCG 2025, limité aux commettants.",
+     "cite": "« Il en résulte que les deux parents, lorsqu'ils exercent conjointement l'autorité parentale à l'égard de leur enfant mineur, sont solidairement responsables […] »",
+     "src": "Cass. ass. plén., 28 juin 2024, n° 22-84.760 ; arrêté du 4 août 2025, annexe 1",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000049857511",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Programme réformé (session 2027)</b> : la responsabilité du fait d'autrui est limitée à celle des commettants du fait de leurs préposés ; la responsabilité des artisans du fait de leurs apprentis n'est plus étudiée en DCG et relève du DSCG.",
+     "cite": "« La responsabilité du fait d'autrui spécifique aux artisans du fait de leurs apprentis ne sera plus étudiée dans le programme réformé, cette notion étant développée en DSCG. »",
+     "src": "Arrêté du 4 août 2025, annexe 1 ; guide pédagogique DCG 2026",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> en faveur de l'activité professionnelle indépendante : depuis le 15 mai 2022, le patrimoine de l'entrepreneur individuel se divise en un patrimoine professionnel et un patrimoine personnel (C. com., art. L. 526-22 et s.). L'article L. 526-22 a été modifié en dernier lieu par la loi n° 2024-42 du 26 janvier 2024 (version en vigueur depuis le 28 janvier 2024).",
+     "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 526-22 (loi n° 2024-42 du 26 janvier 2024, art. 29)",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Ancienne numérotation</b> : les arrêts antérieurs à 2016 visent les articles 1382, 1383 et 1384 du Code civil ; depuis l'ordonnance n° 2016-131, ces règles figurent aux articles 1240, 1241 et 1242. Les textes en vigueur sont les articles 1240, 1241 et 1242.",
+     "src": "Ordonnance n° 2016-131 du 10 février 2016 ; Cass. ch. mixte, 29 octobre 2021, n° 19-18.470",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000044299757",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ne pas confondre clause vidant l'obligation essentielle et faute lourde</b> : la première est réputée non écrite (art. 1170) ; la seconde prive le débiteur du bénéfice de la clause limitative et du plafond du dommage prévisible (art. 1231-3). Dans l'affaire jugée en 2014, la négligence grave n'était pas une faute dolosive mais une faute lourde, ce qui suffisait à écarter les limitations contractuelles.",
+     "src": "C. civ., art. 1170 et 1231-3 ; Cass. civ. 1re, 29 octobre 2014, n° 13-21.980",
+     "url": "https://legifrance.gouv.fr/affichJuriJudi.do?idTexte=JURITEXT000029681251",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Périmètre du fait d'autrui</b> : le programme 2025 limite l'étude de la responsabilité du fait d'autrui aux commettants du fait de leurs préposés (art. 1242, al. 5) ; la responsabilité des parents (al. 4) et celle des artisans du fait de leurs apprentis ne sont pas au programme du DCG.",
+     "cite": "« L'étude de la responsabilité du fait d'autrui sera limitée à la responsabilité des commettants du fait de leurs préposés. »",
+     "src": "Arrêté du 4 août 2025, annexe 1 ; C. civ., art. 1242",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-1-programme-des-unit-s-d-enseignement-du-dipl-me-de-comptabilit-et-de-gestion-dcg--37751.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Exonération : deux régimes à distinguer</b> : le débiteur contractuel échappe aux dommages et intérêts s'il justifie que l'exécution a été empêchée par la force majeure (art. 1231-1, force majeure définie à l'art. 1218) ; le gardien d'une chose ne renverse la présomption qui pèse sur lui que par un cas fortuit, une force majeure ou une cause étrangère qui ne lui soit pas imputable.",
+     "src": "C. civ., art. 1231-1 et 1218 ; Cass. ch. réunies, 13 février 1930",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010123/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Immunité du préposé : un moyen à soulever</b> : la première chambre civile a reproché à un avocat de ne pas avoir invoqué au profit de son client le principe posé par l'arrêt Costedoat. L'immunité a des limites : le préposé engage notamment sa responsabilité personnelle envers la victime s'il excède les limites de sa mission (2000) ou s'il est condamné pénalement pour une infraction intentionnelle ayant porté préjudice à un tiers (2001).",
+     "src": "Cass. civ. 1re, 14 mai 2009, n° 08-15.899 ; Cass. ass. plén., 25 février 2000 et 14 décembre 2001",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000020620804/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Limites de la séparation des patrimoines</b> : l'entrepreneur individuel ne peut pas se porter caution d'une dette dont il est débiteur principal. Sur demande écrite d'un créancier, il peut renoncer à la protection de son patrimoine personnel pour un engagement spécifique dont il doit rappeler le terme et le montant, qui doit être déterminé ou déterminable.",
+     "cite": "« La distinction des patrimoines personnel et professionnel de l'entrepreneur individuel ne l'autorise pas à se porter caution en garantie d'une dette dont il est débiteur principal. »",
+     "src": "C. com., art. L. 526-22 et L. 526-25",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

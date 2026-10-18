@@ -1,0 +1,380 @@
+{
+ "id": "ue1-05",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Programme 2025, bloc 3 « Appliquer le cadre juridique adapté à une situation professionnelle (60 heures) », sous-partie 3.1 « Accompagner le client dans ses relations contractuelles » (20 heures)",
+   "« Identifier la phase précontractuelle du contrat » : pourparlers, pacte de préférence, promesse unilatérale",
+   "Validité du contrat et de ses clauses : clauses limitative ou exclusive de responsabilité, pénale, résolutoire, compromissoire, attributive de compétence, de réserve de propriété (objet du point ; intitulé exact non restitué par les résultats)",
+   "« Apprécier la portée d'un engagement contractuel » : obligations de moyens et obligations de résultat, bonne foi, force obligatoire (contenu restitué en partie)",
+   "« Sanctions de l'inexécution : exception d'inexécution, exécution forcée en nature, réduction du prix, résolution, réparation liée à l'inexécution du contrat »",
+   "Limites du programme 2025 : « En matière de nullité, la confirmation du contrat et l'action interrogatoire ne sont pas à étudier. » ; « La promesse de porte-fort et la stipulation pour autrui sont exclues. »"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "Ordonnance n° 2016-131 du 10 février 2016",
+   "objet": "Réforme du droit des contrats, du régime général et de la preuve des obligations : nouvelle rédaction du sous-titre « Le contrat » du Code civil (art. 1101 à 1231-7)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004939",
+   "version": "en vigueur depuis le 1er octobre 2016 ; les contrats conclus avant cette date restent soumis à la loi ancienne"
+  },
+  {
+   "ref": "Loi n° 2018-287 du 20 avril 2018",
+   "objet": "Ratification de l'ordonnance n° 2016-131 et modification de plusieurs articles (dont 1110, 1112, 1117, 1137, 1143, 1171 et 1217)",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036825602/",
+   "version": "nouvelles rédactions applicables aux actes juridiques conclus ou établis à compter du 1er octobre 2018 (art. 16, I) ; certaines modifications sont interprétatives"
+  },
+  {
+   "ref": "C. civ., art. 1101 à 1111-1",
+   "objet": "Dispositions liminaires : définition du contrat, liberté contractuelle, force obligatoire, bonne foi, contrats de gré à gré et d'adhésion",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136340/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131 ; art. 1110 modifié par la loi n° 2018-287"
+  },
+  {
+   "ref": "C. civ., art. 1112 à 1127-4",
+   "objet": "Conclusion du contrat : négociations, devoir d'information, offre et acceptation, pacte de préférence et promesse unilatérale",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150236/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131 ; art. 1112 et 1117 modifiés par la loi n° 2018-287"
+  },
+  {
+   "ref": "C. civ., art. 1128 à 1171",
+   "objet": "Validité du contrat : consentement et vices du consentement, capacité, contenu (obligation essentielle, déséquilibre significatif)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150237/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131 ; plusieurs articles, dont 1137, 1143 et 1171, modifiés par la loi n° 2018-287"
+  },
+  {
+   "ref": "C. civ., art. 1178 à 1187",
+   "objet": "Sanctions des conditions de formation : nullité et caducité",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150239/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131, en vigueur depuis le 1er octobre 2016"
+  },
+  {
+   "ref": "C. civ., art. 1193 à 1198",
+   "objet": "Effets du contrat entre les parties : force obligatoire, révocation mutuelle, imprévision",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150249/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131, en vigueur depuis le 1er octobre 2016"
+  },
+  {
+   "ref": "C. civ., art. 1210 à 1215",
+   "objet": "Durée du contrat : prohibition des engagements perpétuels, contrat à durée indéterminée, tacite reconduction",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150252/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131, en vigueur depuis le 1er octobre 2016"
+  },
+  {
+   "ref": "C. civ., art. 1217 à 1231-7",
+   "objet": "Inexécution du contrat : force majeure, exception d'inexécution, exécution forcée, réduction du prix, résolution, dommages et intérêts, clause pénale",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150254/",
+   "version": "rédaction issue de l'ordonnance n° 2016-131 ; plusieurs articles, dont 1217 (modification interprétative), 1221 et 1223, modifiés par la loi n° 2018-287"
+  },
+  {
+   "ref": "C. civ., art. 2224",
+   "objet": "Prescription de cinq ans des actions personnelles ou mobilières",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017112",
+   "version": "en vigueur depuis le 19 juin 2008 (loi n° 2008-561 du 17 juin 2008)"
+  },
+  {
+   "ref": "Rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+   "objet": "Explication officielle des choix de la réforme (obligation essentielle, imprévision, dommages prévisibles, clause pénale)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539",
+   "version": "texte explicatif accompagnant l'ordonnance n° 2016-131"
+  },
+  {
+   "ref": "Cass. com., 29 juin 2010, n° 09-11.841 (Faurecia)",
+   "objet": "Clause limitative de réparation et obligation essentielle",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000022427254/",
+   "version": "arrêt publié au bulletin"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Contrat</b> : accord de volontés destiné à créer, modifier, transmettre ou éteindre des obligations. La définition issue de l'ordonnance du 10 février 2016 recentre le contrat sur sa nature d'accord de volontés et sur ses effets.",
+     "src": "C. civ., art. 1101 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040787",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrat de gré à gré et contrat d'adhésion</b> : le premier est celui dont les stipulations sont négociables entre les parties ; le second comporte un ensemble de clauses non négociables, déterminées à l'avance par l'une des parties. La distinction délimite le champ de l'article 1171 (déséquilibre significatif), réservé aux contrats d'adhésion.",
+     "src": "C. civ., art. 1110 (rédaction de la loi n° 2018-287) et art. 1171",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136340/",
+     "fiab": "stable",
+     "cite": "« Le contrat de gré à gré est celui dont les stipulations sont négociables entre les parties. Le contrat d'adhésion est celui qui comporte un ensemble de clauses non négociables, déterminées à l'avance par l'une des parties. »"
+    },
+    {
+     "t": "<b>Pacte de préférence</b> : contrat par lequel une partie s'engage à proposer prioritairement à son bénéficiaire de traiter avec lui pour le cas où elle déciderait de contracter. L'engagement ne joue que si le promettant décide de contracter.",
+     "src": "C. civ., art. 1123, al. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040825",
+     "fiab": "stable",
+     "cite": "« Le pacte de préférence est le contrat par lequel une partie s'engage à proposer prioritairement à son bénéficiaire de traiter avec lui pour le cas où elle déciderait de contracter. »"
+    },
+    {
+     "t": "<b>Promesse unilatérale</b> : contrat par lequel une partie, le promettant, accorde à l'autre, le bénéficiaire, le droit d'opter pour la conclusion d'un contrat dont les éléments essentiels sont déterminés et pour la formation duquel ne manque que le consentement du bénéficiaire. La révocation de la promesse pendant le temps laissé au bénéficiaire pour opter n'empêche pas la formation du contrat promis.",
+     "src": "C. civ., art. 1124, al. 1 et 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040818/",
+     "fiab": "stable",
+     "cite": "« La révocation de la promesse pendant le temps laissé au bénéficiaire pour opter n'empêche pas la formation du contrat promis. »"
+    },
+    {
+     "t": "<b>Dol</b> : fait pour un contractant d'obtenir le consentement de l'autre par des manœuvres ou des mensonges. Constitue également un dol la dissimulation intentionnelle d'une information dont le contractant sait le caractère déterminant pour l'autre partie (réticence dolosive).",
+     "src": "C. civ., art. 1137, al. 1 et 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829827",
+     "fiab": "stable",
+     "cite": "« Constitue également un dol la dissimulation intentionnelle par l'un des contractants d'une information dont il sait le caractère déterminant pour l'autre partie. »"
+    },
+    {
+     "t": "<b>Violence</b> : une partie s'engage sous la pression d'une contrainte qui lui inspire la crainte d'exposer sa personne, sa fortune ou celles de ses proches à un mal considérable. Il y a également violence quand une partie abuse de l'état de dépendance dans lequel se trouve son cocontractant à son égard, obtient de lui un engagement qu'il n'aurait pas souscrit sans cette contrainte et en tire un avantage manifestement excessif.",
+     "src": "C. civ., art. 1140 et 1143",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829824",
+     "fiab": "stable",
+     "cite": "« Il y a également violence lorsqu'une partie, abusant de l'état de dépendance dans lequel se trouve son cocontractant à son égard, obtient de lui un engagement qu'il n'aurait pas souscrit en l'absence d'une telle contrainte et en tire un avantage manifestement excessif. »"
+    },
+    {
+     "t": "<b>Force majeure</b> : en matière contractuelle, événement échappant au contrôle du débiteur, qui ne pouvait être raisonnablement prévu lors de la conclusion du contrat et dont les effets ne peuvent être évités par des mesures appropriées, qui empêche l'exécution de son obligation. Si l'empêchement est temporaire, l'exécution est suspendue, sauf si le retard justifie la résolution ; s'il est définitif, le contrat est résolu de plein droit et les parties sont libérées dans les conditions des articles 1351 et 1351-1.",
+     "src": "C. civ., art. 1218",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041431",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Liberté contractuelle</b> : chacun est libre de contracter ou de ne pas contracter, de choisir son cocontractant et de déterminer le contenu et la forme du contrat, dans les limites fixées par la loi. Cette liberté ne permet pas de déroger aux règles qui intéressent l'ordre public ; le contrat ne peut déroger à l'ordre public ni par ses stipulations, ni par son but.",
+     "src": "C. civ., art. 1102 et 1162",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040782",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Force obligatoire et effet relatif</b> : les contrats légalement formés tiennent lieu de loi à ceux qui les ont faits. Ils ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise. Le contrat ne crée d'obligations qu'entre les parties : les tiers ne peuvent ni en demander l'exécution ni être contraints de l'exécuter, sous réserve des exceptions prévues par le Code civil.",
+     "src": "C. civ., art. 1103, 1193 et 1199",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041314",
+     "fiab": "stable",
+     "cite": "« Les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise. »"
+    },
+    {
+     "t": "<b>Bonne foi</b> : les contrats doivent être négociés, formés et exécutés de bonne foi. Cette disposition est d'ordre public : les parties ne peuvent pas l'écarter. Avant la réforme de 2016, le texte ne visait que l'exécution du contrat.",
+     "src": "C. civ., art. 1104",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032006712/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Négociations précontractuelles</b> : leur initiative, leur déroulement et leur rupture sont libres, mais doivent satisfaire aux exigences de la bonne foi. En cas de faute dans les négociations, la réparation ne peut compenser ni la perte des avantages attendus du contrat non conclu, ni la perte de chance d'obtenir ces avantages. La mention de la perte de chance vient de la loi n° 2018-287, qui a donné à cette modification un caractère interprétatif.",
+     "src": "C. civ., art. 1112 ; loi n° 2018-287 du 20 avril 2018",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032007101/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Devoir d'information</b> : la partie qui connaît une information dont l'importance est déterminante pour le consentement de l'autre doit l'en informer dès lors que, légitimement, cette dernière ignore cette information ou fait confiance à son cocontractant. Ont une importance déterminante les informations qui ont un lien direct et nécessaire avec le contenu du contrat ou la qualité des parties ; le devoir ne porte pas sur l'estimation de la valeur de la prestation. Les parties ne peuvent ni le limiter ni l'exclure. Celui qui prétend qu'une information lui était due doit le prouver, à charge pour l'autre de prouver qu'elle l'a fournie ; le manquement engage la responsabilité de son auteur et peut entraîner l'annulation du contrat dans les conditions des vices du consentement.",
+     "src": "C. civ., art. 1112-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032007138",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Offre</b> : elle peut être librement rétractée tant qu'elle n'est pas parvenue à son destinataire. Ensuite, elle ne peut être rétractée avant l'expiration du délai fixé par son auteur ou, à défaut, d'un délai raisonnable. Une rétractation faite en violation de cette règle empêche la conclusion du contrat et engage la responsabilité extracontractuelle de son auteur. L'offre devient caduque à l'expiration de ce délai, ainsi qu'en cas d'incapacité ou de décès de son auteur ou, depuis la loi n° 2018-287, de décès de son destinataire.",
+     "src": "C. civ., art. 1115, 1116 et 1117",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829821",
+     "fiab": "stable",
+     "cite": "« L'offre est caduque à l'expiration du délai fixé par son auteur ou, à défaut, à l'issue d'un délai raisonnable. »"
+    },
+    {
+     "t": "<b>Acceptation et formation du contrat</b> : le contrat se forme par la rencontre d'une offre et d'une acceptation. L'acceptation non conforme à l'offre est dépourvue d'effet, sauf à constituer une offre nouvelle ; elle peut être rétractée tant qu'elle n'est pas parvenue à l'offrant, si la rétractation lui parvient avant elle. Le silence ne vaut pas acceptation, sauf s'il en résulte autrement de la loi, des usages, des relations d'affaires ou de circonstances particulières. Le contrat est conclu dès que l'acceptation parvient à l'offrant, au lieu où elle est parvenue.",
+     "src": "C. civ., art. 1113, 1118, 1120 et 1121",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032007103/",
+     "fiab": "stable",
+     "cite": "« Le contrat est conclu dès que l'acceptation parvient à l'offrant. Il est réputé l'être au lieu où l'acceptation est parvenue. »"
+    },
+    {
+     "t": "<b>Violation d'un pacte ou d'une promesse</b> : si un contrat est conclu avec un tiers en violation d'un pacte de préférence, le bénéficiaire peut obtenir réparation du préjudice subi ; si le tiers connaissait l'existence du pacte et l'intention du bénéficiaire de s'en prévaloir, celui-ci peut aussi agir en nullité ou demander au juge de le substituer au tiers. Le contrat conclu en violation d'une promesse unilatérale avec un tiers qui en connaissait l'existence est nul.",
+     "src": "C. civ., art. 1123, al. 2, et 1124, al. 3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032007247/",
+     "fiab": "stable",
+     "cite": "« Le contrat conclu en violation de la promesse unilatérale avec un tiers qui en connaissait l'existence est nul. »"
+    },
+    {
+     "t": "<b>Conditions de validité</b> : le consentement des parties, leur capacité de contracter et un contenu licite et certain. L'erreur, le dol et la violence vicient le consentement lorsqu'ils sont déterminants, c'est-à-dire que, sans eux, l'une des parties n'aurait pas contracté ou aurait contracté à des conditions substantiellement différentes ; ce caractère s'apprécie eu égard aux personnes et aux circonstances.",
+     "src": "C. civ., art. 1128 et 1130",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040911",
+     "fiab": "stable",
+     "cite": "« 1° Le consentement des parties ; 2° Leur capacité de contracter ; 3° Un contenu licite et certain. »"
+    },
+    {
+     "t": "<b>Erreur</b> : l'erreur de droit ou de fait, à moins qu'elle ne soit inexcusable, est une cause de nullité lorsqu'elle porte sur les qualités essentielles de la prestation due ou sur celles du cocontractant. Les qualités essentielles sont celles qui ont été expressément ou tacitement convenues et en considération desquelles les parties ont contracté ; l'acceptation d'un aléa sur une qualité exclut l'erreur relative à cette qualité. L'erreur sur la seule valeur n'est pas une cause de nullité.",
+     "src": "C. civ., art. 1132, 1133 et 1136",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040846",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Régime du dol</b> : l'erreur qui résulte d'un dol est toujours excusable ; elle est une cause de nullité même si elle porte sur la valeur de la prestation ou sur un simple motif du contrat. En revanche, ne constitue pas un dol le fait pour une partie de ne pas révéler à son cocontractant son estimation de la valeur de la prestation (art. 1137, al. 3, rédaction de la loi n° 2018-287).",
+     "src": "C. civ., art. 1139 et 1137, al. 3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040982",
+     "fiab": "stable",
+     "cite": "« L'erreur qui résulte d'un dol est toujours excusable ; elle est une cause de nullité alors même qu'elle porterait sur la valeur de la prestation ou sur un simple motif du contrat. »"
+    },
+    {
+     "t": "<b>Obligation essentielle</b> : toute clause qui prive de sa substance l'obligation essentielle du débiteur est réputée non écrite. Selon le rapport au Président de la République, le texte reprend la jurisprudence Chronopost de 1996 et vise surtout les clauses limitatives de responsabilité : une telle clause n'est prohibée que si elle contredit la portée de l'engagement souscrit, en vidant de sa substance cette obligation essentielle. La Cour de cassation l'avait jugé dans l'arrêt Faurecia (2010).",
+     "src": "C. civ., art. 1170 ; Cass. com., 29 juin 2010, n° 09-11.841",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008690/",
+     "fiab": "stable",
+     "cite": "« Toute clause qui prive de sa substance l'obligation essentielle du débiteur est réputée non écrite. »"
+    },
+    {
+     "t": "<b>Déséquilibre significatif</b> : dans un contrat d'adhésion, toute clause non négociable, déterminée à l'avance par l'une des parties, qui crée un déséquilibre significatif entre les droits et obligations des parties est réputée non écrite. L'appréciation ne porte ni sur l'objet principal du contrat ni sur l'adéquation du prix à la prestation. Depuis un arrêt du 13 mai 2026, la Cour de cassation juge que l'article 1171 ne s'applique pas aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services, sauf si l'application de l'article L. 442-1 du Code de commerce à ces contrats est exclue par une autre disposition.",
+     "src": "C. civ., art. 1171 (rédaction de la loi n° 2018-287) ; Cass. com., 13 mai 2026, n° 24-17.137",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829836",
+     "fiab": "stable",
+     "cite": "« L'appréciation du déséquilibre significatif ne porte ni sur l'objet principal du contrat ni sur l'adéquation du prix à la prestation. »"
+    },
+    {
+     "t": "<b>Nullité</b> : le contrat qui ne remplit pas les conditions de sa validité est nul ; la nullité est prononcée par le juge, sauf si les parties la constatent d'un commun accord. Le contrat annulé est censé n'avoir jamais existé : les prestations exécutées donnent lieu à restitution, et la partie lésée peut demander réparation selon le droit commun de la responsabilité extracontractuelle. La nullité est absolue si la règle violée protège l'intérêt général : toute personne justifiant d'un intérêt et le ministère public peuvent la demander, et la confirmation ne peut la couvrir. Elle est relative si la règle violée protège seulement un intérêt privé.",
+     "src": "C. civ., art. 1178 à 1180",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041243",
+     "fiab": "stable",
+     "cite": "« La nullité est absolue lorsque la règle violée a pour objet la sauvegarde de l'intérêt général. Elle est relative lorsque la règle violée a pour seul objet la sauvegarde d'un intérêt privé. »"
+    },
+    {
+     "t": "<b>Imprévision</b> : si un changement de circonstances imprévisible lors de la conclusion du contrat rend l'exécution excessivement onéreuse pour une partie qui n'avait pas accepté d'en assumer le risque, celle-ci peut demander une renégociation à son cocontractant ; elle continue d'exécuter ses obligations pendant la renégociation. En cas de refus ou d'échec, les parties peuvent convenir de la résolution ou demander d'un commun accord au juge d'adapter le contrat. À défaut d'accord dans un délai raisonnable, le juge peut, à la demande d'une partie, réviser le contrat ou y mettre fin, à la date et aux conditions qu'il fixe.",
+     "src": "C. civ., art. 1195",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041302",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Durée du contrat</b> : les engagements perpétuels sont prohibés ; chaque contractant peut y mettre fin comme dans un contrat à durée indéterminée. Un contrat à durée indéterminée peut être résilié à tout moment par chaque partie, sous réserve du préavis contractuel ou, à défaut, d'un délai raisonnable. Si, au terme d'un contrat à durée déterminée, les parties continuent d'en exécuter les obligations, il y a tacite reconduction, qui produit les mêmes effets que le renouvellement du contrat.",
+     "src": "C. civ., art. 1210, 1211 et 1215",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150252/",
+     "fiab": "stable",
+     "cite": "« Lorsque le contrat est conclu pour une durée indéterminée, chaque partie peut y mettre fin à tout moment, sous réserve de respecter le délai de préavis contractuellement prévu ou, à défaut, un délai raisonnable. »"
+    },
+    {
+     "t": "<b>Sanctions de l'inexécution</b> : la partie envers laquelle l'engagement n'a pas été exécuté, ou l'a été imparfaitement, peut refuser d'exécuter ou suspendre l'exécution de sa propre obligation, poursuivre l'exécution forcée en nature, obtenir une réduction du prix, provoquer la résolution du contrat et demander réparation des conséquences de l'inexécution. Les sanctions qui ne sont pas incompatibles peuvent être cumulées ; des dommages et intérêts peuvent toujours s'y ajouter.",
+     "src": "C. civ., art. 1217 (rédaction de la loi n° 2018-287)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829854",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Exception d'inexécution, exécution forcée, réduction du prix</b> : une partie peut refuser d'exécuter son obligation, même exigible, si l'autre n'exécute pas la sienne et si cette inexécution est suffisamment grave. Le créancier peut, après mise en demeure, poursuivre l'exécution en nature, sauf si elle est impossible ou s'il existe une disproportion manifeste entre son coût pour le débiteur de bonne foi et son intérêt pour le créancier. En cas d'exécution imparfaite, il peut, après mise en demeure et s'il n'a pas encore payé tout ou partie de la prestation, notifier dans les meilleurs délais au débiteur sa décision d'en réduire proportionnellement le prix ; s'il a déjà payé, il peut, à défaut d'accord entre les parties, demander la réduction au juge.",
+     "src": "C. civ., art. 1219, 1221 et 1223",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041509",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Résolution</b> : elle résulte soit d'une clause résolutoire, soit, en cas d'inexécution suffisamment grave, d'une notification du créancier ou d'une décision de justice. La clause résolutoire précise les engagements dont l'inexécution entraînera la résolution ; sauf s'il a été convenu que la résolution résulterait du seul fait de l'inexécution, elle suppose une mise en demeure infructueuse, qui doit mentionner expressément la clause. La résolution met fin au contrat.",
+     "src": "C. civ., art. 1224, 1225 et 1229",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041482",
+     "fiab": "stable",
+     "cite": "« La résolution prend effet, selon les cas, soit dans les conditions prévues par la clause résolutoire, soit à la date de la réception par le débiteur de la notification faite par le créancier, soit à la date fixée par le juge ou, à défaut, au jour de l'assignation en justice. »"
+    },
+    {
+     "t": "<b>Dommages et intérêts</b> : sauf inexécution définitive, ils ne sont dus que si le débiteur a préalablement été mis en demeure de s'exécuter dans un délai raisonnable. Le débiteur est condamné, s'il y a lieu, au paiement de dommages et intérêts à raison de l'inexécution ou du retard dans l'exécution, sauf s'il justifie que l'exécution a été empêchée par la force majeure. Il n'est tenu que des dommages et intérêts prévus ou prévisibles lors de la conclusion du contrat, sauf faute lourde ou dolosive ; même alors, la réparation ne couvre que ce qui est une suite immédiate et directe de l'inexécution.",
+     "src": "C. civ., art. 1231, 1231-1, 1231-3 et 1231-4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010127",
+     "fiab": "stable",
+     "cite": "« Le débiteur n'est tenu que des dommages et intérêts qui ont été prévus ou qui pouvaient être prévus lors de la conclusion du contrat, sauf lorsque l'inexécution est due à une faute lourde ou dolosive. »"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>Cinq ans</b> : délai de prescription des actions personnelles ou mobilières, à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer. Le report du point de départ est encadré par un délai butoir de <b>vingt ans</b> à compter de la naissance du droit (art. 2232).",
+     "src": "C. civ., art. 2224 et 2232",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017112",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Délai raisonnable</b> : les articles cités ne fixent aucune durée chiffrée. À défaut de délai convenu, ils renvoient à un délai raisonnable pour le maintien et la caducité de l'offre, pour le préavis de résiliation d'un contrat à durée indéterminée, pour la mise en demeure préalable à la résolution par notification ou aux dommages et intérêts, et pour l'accord des parties après l'échec d'une renégociation pour imprévision.",
+     "src": "C. civ., art. 1116, 1117, 1195, 1211, 1226 et 1231",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032006712/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clause pénale</b> : le juge peut, même d'office, modérer ou augmenter la pénalité convenue si elle est manifestement excessive ou dérisoire ; une stipulation contraire à ce pouvoir est réputée non écrite. Sauf inexécution définitive, la pénalité n'est encourue que si le débiteur a été mis en demeure. L'excès s'apprécie au regard de la disproportion manifeste entre le montant convenu et le préjudice réellement subi.",
+     "src": "C. civ., art. 1231-5 ; Cass. 3e civ., 5 septembre 2024, n° 23-19.492",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010131",
+     "fiab": "stable",
+     "cite": "« Néanmoins, le juge peut, même d'office, modérer ou augmenter la pénalité ainsi convenue si elle est manifestement excessive ou dérisoire. »"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Ordonnance n° 2016-131 du 10 février 2016</b> : réforme du droit des contrats, du régime général et de la preuve des obligations, en vigueur depuis le 1er octobre 2016. Les contrats conclus avant cette date demeurent soumis à la loi ancienne, y compris pour leurs effets légaux et pour les dispositions d'ordre public ; la Cour de cassation refuse ainsi d'appliquer l'article 1104 nouveau à des faits antérieurs au 1er octobre 2016.",
+     "src": "Ordonnance n° 2016-131 du 10 février 2016 ; Cass. 3e civ., 4 octobre 2018, n° 17-24.287",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004939",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2018-287 du 20 avril 2018</b> : ratification de l'ordonnance et retouches de plusieurs articles (contrat d'adhésion, négociations, caducité de l'offre, dol, abus de dépendance, déséquilibre significatif, sanctions de l'inexécution). Les nouvelles rédactions de plusieurs articles, dont 1110, 1117, 1137 et 1171, s'appliquent aux actes juridiques conclus ou établis à compter de son entrée en vigueur, le 1er octobre 2018 ; les modifications des articles 1112, 1143 et 1217 ont un caractère interprétatif.",
+     "src": "Loi n° 2018-287 du 20 avril 2018, art. 16, I",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036825602/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décision n° 2023-1049 QPC du 26 mai 2023</b> : le Conseil constitutionnel a validé l'article L. 211-40-1 du Code monétaire et financier, qui écarte l'imprévision de l'article 1195 du Code civil pour les obligations résultant d'opérations sur les titres et les contrats financiers.",
+     "src": "Cons. const., décision n° 2023-1049 QPC du 26 mai 2023 ; C. civ., art. 1195",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047596994",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cass. com., 13 mai 2026, n° 24-17.137</b> (publié) : l'article 1171 du Code civil ne s'applique pas aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services, sauf si l'application de l'article L. 442-1 du Code de commerce à ces contrats est exclue par une autre disposition. Un arrêt du 26 janvier 2022 (n° 20-16.782) l'avait appliqué à des contrats entre professionnels qui ne relevaient pas de l'ancien article L. 442-6, I, 2°.",
+     "src": "Cass. com., 13 mai 2026, n° 24-17.137 ; C. civ., art. 1171 ; C. com., art. L. 442-1",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167043",
+     "fiab": "stable",
+     "cite": "« L'article 1171 du code civil, interprété à la lumière de ces travaux, ne s'applique donc pas aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services, excepté si l'application de l'article L. 442-1 du code de commerce à ces contrats est exclue par une autre disposition. »"
+    },
+    {
+     "t": "<b>Cass. 3e civ., 4 juin 2026, n° 24-15.070</b> (publié) : l'état de dépendance exigé par l'article 1143 peut résulter d'un état de vulnérabilité, connu du cocontractant, dont celui-ci abuse lors de la conclusion du contrat.",
+     "src": "Cass. 3e civ., 4 juin 2026, n° 24-15.070 ; C. civ., art. 1143",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054218401",
+     "fiab": "stable",
+     "cite": "« l'état de dépendance à l'égard du cocontractant, exigé par ce dernier texte, peut résulter d'un état de vulnérabilité, connu de ce cocontractant, dont il abuse lors de la conclusion du contrat »"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Hors programme</b> : le programme 2025 exclut la promesse de porte-fort et la stipulation pour autrui ; en matière de nullité, la confirmation du contrat et l'action interrogatoire ne sont pas à étudier.",
+     "src": "Arrêté du 4 août 2025, annexe 1 (UE1, sous-partie 3.1)",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-1-programme-des-unit-s-d-enseignement-du-dipl-me-de-comptabilit-et-de-gestion-dcg--37751.pdf",
+     "fiab": "stable",
+     "cite": "« La promesse de porte-fort et la stipulation pour autrui sont exclues. »"
+    },
+    {
+     "t": "<b>Offre rétractée ou promesse révoquée</b> : ne pas confondre. L'offre rétractée en violation du délai empêche la conclusion du contrat ; son auteur engage seulement sa responsabilité extracontractuelle, sans devoir compenser la perte des avantages attendus du contrat. La promesse unilatérale révoquée pendant le délai d'option n'empêche pas la formation du contrat promis.",
+     "src": "C. civ., art. 1116 et 1124",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040881",
+     "fiab": "stable",
+     "cite": "« Elle engage la responsabilité extracontractuelle de son auteur dans les conditions du droit commun sans l'obliger à compenser la perte des avantages attendus du contrat. »"
+    },
+    {
+     "t": "<b>Devoir d'information et nullité</b> : le manquement au devoir d'information engage la responsabilité de son auteur ; il n'entraîne l'annulation du contrat que si les conditions d'un vice du consentement sont réunies. La Cour de cassation l'a rappelé le 20 décembre 2023.",
+     "src": "C. civ., art. 1112-1, al. 6 ; Cass. 1re civ., 20 décembre 2023, n° 22-18.928",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000048768933",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Résolution par notification</b> : le créancier agit à ses risques et périls. Sauf urgence, il doit d'abord mettre le débiteur en demeure de s'exécuter dans un délai raisonnable, en mentionnant expressément qu'à défaut il pourra résoudre le contrat ; sans cette mise en demeure, la résolution est privée de tout effet. Le débiteur peut à tout moment saisir le juge, et le créancier doit alors prouver la gravité de l'inexécution.",
+     "src": "C. civ., art. 1226 ; Cass. com., 1er juin 2022, n° 20-21.551",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041472",
+     "fiab": "stable",
+     "cite": "« Le débiteur peut à tout moment saisir le juge pour contester la résolution. Le créancier doit alors prouver la gravité de l'inexécution. »"
+    },
+    {
+     "t": "<b>Imprévision : pas de suspension</b> : la partie qui demande une renégociation pour imprévision continue d'exécuter ses obligations pendant celle-ci. Le rapport au Président de la République explique que cette règle vise à dissuader les demandes dilatoires et à préserver la force obligatoire du contrat. L'imprévision ne joue pas pour la partie qui avait accepté d'assumer le risque du changement de circonstances.",
+     "src": "C. civ., art. 1195 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

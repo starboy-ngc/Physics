@@ -1,0 +1,630 @@
+{
+ "id": "ue1-02",
+ "ue": "UE1",
+ "ordre": 2,
+ "title": "Le litige : juridictions, action en justice, modes amiables et preuve",
+ "resume": "Orienter un litige de droit privé : vérifier que l'action est recevable, choisir la juridiction compétente et la voie de recours, envisager un mode amiable ou l'arbitrage, puis savoir qui doit prouver quoi, et comment.",
+ "duree": "60 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Agir en justice : intérêt, qualité, prescription",
+   "html": "<p>On vérifie d'abord que le client peut agir. L'action est ouverte à tous ceux qui ont un <b>intérêt légitime</b> au succès ou au rejet d'une prétention (CPC, art. 31) ; parfois, la loi réserve le droit d'agir aux personnes qu'elle qualifie, qui ont seules <b>qualité pour agir</b>. Le programme ajoute la capacité et le délai de prescription.</p><p>Est irrecevable la prétention émise par ou contre une personne dépourvue du droit d'agir (art. 32). L'adversaire soulève alors une <b>fin de non-recevoir</b> : défaut de qualité ou d'intérêt, prescription, délai préfix, chose jugée (art. 122, liste non limitative). Le juge écarte la demande <b>sans examen au fond</b>. Ces moyens peuvent être proposés en tout état de cause, sauf disposition contraire (art. 123) ; le juge doit relever d'office ceux qui sont d'ordre public (art. 125).</p><p><b>Prescription de droit commun</b> : les actions personnelles ou mobilières se prescrivent par <b>cinq ans</b> à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer (C. civ., art. 2224).</p><p><i>Exemple.</i> Mme Arnaud a prêté 1 200 € à M. Faure, remboursables le 1er juin 2022, et constate ce jour-là qu'il ne paie pas. Le délai court du 1er juin 2022 : la prescription sera acquise en juin 2027, et une action plus tardive serait irrecevable.</p>"
+  },
+  {
+   "h": "Les juridictions civiles du premier degré",
+   "html": "<p>En droit privé, qui juge en raison de la matière ?</p><ul><li><b>Tribunal judiciaire</b> : juridiction de droit commun depuis le 1er janvier 2020, il connaît des affaires civiles et commerciales que la loi n'attribue pas à une autre juridiction et a une compétence exclusive dans les matières fixées par les textes (COJ, art. L. 211-3 et L. 211-4). Il réunit l'ancien tribunal de grande instance et l'ancien tribunal d'instance (loi n° 2019-222 du 23 mars 2019).</li><li><b>Juge des contentieux de la protection</b>, juge du tribunal judiciaire qui remplace le juge d'instance : tutelles des majeurs, expulsion des personnes occupant sans droit ni titre, pour y habiter, un immeuble bâti, bail d'habitation, surendettement des particuliers.</li><li><b>Tribunal de commerce</b> : engagements entre commerçants, entre artisans, entre établissements de crédit ou sociétés de financement ; litiges relatifs aux sociétés commerciales ; actes de commerce entre toutes personnes (C. com., art. L. 721-3). Depuis le 1er janvier 2025, douze d'entre eux expérimentent pour quatre ans le statut de <b>tribunal des activités économiques</b>, seul compétent pour les procédures amiables et collectives de tous les professionnels, sauf certaines professions du droit réglementées (avocats, notaires).</li><li><b>Conseil de prud'hommes</b> : juridiction paritaire, seule compétente pour les différends nés à l'occasion d'un contrat de travail, quel que soit le montant ; toute convention contraire est réputée non écrite (C. trav., art. L. 1411-1 et L. 1411-4).</li></ul>"
+  },
+  {
+   "h": "La compétence territoriale et les clauses de compétence",
+   "html": "<p>Principe : est territorialement compétente, sauf disposition contraire, la juridiction du <b>lieu où demeure le défendeur</b> (CPC, art. 42) : domicile ou, à défaut, résidence d'une personne physique ; lieu où est établie une personne morale (art. 43). S'il y a plusieurs défendeurs, le demandeur choisit le lieu où demeure l'un d'eux.</p><p><b>Options du demandeur</b> (art. 46) : en matière contractuelle, le lieu de la livraison effective de la chose ou de l'exécution de la prestation de service ; en matière délictuelle, le lieu du fait dommageable ou celui où le dommage a été subi.</p><p><b>Clause attributive de compétence territoriale</b> : elle est réputée non écrite, sauf si elle a été convenue entre des personnes ayant toutes contracté en qualité de commerçant <b>et</b> spécifiée de façon très apparente dans l'engagement de la partie à qui on l'oppose (art. 48). L'article 48 ne s'applique pas à une clause d'arbitrage (Cass. 1re civ., 5 septembre 2018, n° 17-13.837).</p><p><i>Exemple.</i> La SARL Bois d'Ouest (Nantes) a fait installer une chaudière dans son entrepôt de Rennes par la SAS Thermia (Lyon) ; l'installation est défectueuse. Litige contractuel entre sociétés commerciales : tribunal de commerce (C. com., art. L. 721-3). La SARL choisit entre le lieu où Thermia est établie et le lieu de la prestation ; pas Nantes, simple siège du demandeur.</p>"
+  },
+  {
+   "h": "Premier ou dernier ressort ; appel et pourvoi en cassation",
+   "html": "<p>Le tribunal judiciaire statue <b>en dernier ressort</b> sur les actions personnelles ou mobilières dont le montant n'excède pas <span class=\"mono\">5 000 €</span> ; au-delà, il statue à charge d'appel (COJ, art. R. 211-3-24 et R. 211-3-25). Un jugement en dernier ressort n'est pas susceptible d'appel, mais peut faire l'objet d'un pourvoi en cassation (CPC, art. 605). Le guide pédagogique limite l'étude des voies de recours à ces deux-là.</p><p><b>Appel</b> : il remet la chose jugée en question devant la juridiction d'appel, qui statue à nouveau en fait et en droit (art. 561). Il ne défère que les chefs du jugement expressément critiqués et ceux qui en dépendent, sauf appel tendant à l'annulation du jugement ou litige indivisible (art. 562). Délai : un mois en matière contentieuse, quinze jours en matière gracieuse (art. 538).</p><p><b>Pourvoi en cassation</b> : il tend à faire censurer par la Cour de cassation la non-conformité du jugement attaqué aux règles de droit (art. 604). Délai : deux mois, sauf disposition contraire (art. 612). Les délais courent en principe à compter de la <b>notification</b> du jugement (art. 528).</p><div class=\"note\"><b>Deux seuils de 5 000 € à ne pas confondre.</b> Le taux du dernier ressort dit si l'appel est ouvert ; le seuil de l'article 750-1 du CPC dit si une tentative amiable doit précéder la saisine du tribunal judiciaire.</div>"
+  },
+  {
+   "h": "Les modes amiables : tentative préalable obligatoire et transaction",
+   "html": "<p>Devant le tribunal judiciaire, certaines demandes doivent être précédées, au choix des parties, d'une <b>tentative de conciliation</b> menée par un conciliateur de justice, d'une <b>médiation</b> ou d'une <b>procédure participative</b> (CPC, art. 750-1, rédaction issue du décret n° 2023-357 du 11 mai 2023). Sont notamment visées les demandes en paiement n'excédant pas 5 000 € et celles relatives à un trouble anormal de voisinage. Sanction : l'irrecevabilité, que le juge peut prononcer d'office. Dispenses, entre autres : homologation d'un accord, motif légitime (urgence manifeste, conciliateurs indisponibles au-delà de trois mois…), conciliation imposée par un autre texte. L'injonction de payer n'y est pas soumise (Cass., avis, 25 septembre 2025, n° 25-70.013).</p><p>Depuis le 1er septembre 2025 (décret n° 2025-660 du 18 juillet 2025), le livre V du CPC réunit les modes amiables, et il entre dans la mission du juge de concilier les parties.</p><p><b>Transaction</b> : contrat écrit par lequel les parties, par des <b>concessions réciproques</b>, terminent une contestation née ou préviennent une contestation à naître (C. civ., art. 2044). <i>Exemple</i> : Alvéa réclame 9 000 € à Cobalt, qui invoque des retards ; Cobalt paie 7 000 € et renonce à agir pour les retards, Alvéa abandonne 2 000 €. Chacun cède quelque chose : c'est une transaction.</p>"
+  },
+  {
+   "h": "L'arbitrage et la clause compromissoire",
+   "html": "<p>La <b>convention d'arbitrage</b> prend deux formes (CPC, art. 1442) : la <b>clause compromissoire</b>, engagement de soumettre à l'arbitrage les litiges qui pourraient naître d'un contrat, et le <b>compromis</b>, qui soumet à l'arbitrage un litige déjà né. En arbitrage interne, elle est écrite, à peine de nullité (art. 1443).</p><p>Les parties peuvent, en contractant, soumettre à l'arbitrage les contestations qui relèvent du tribunal de commerce (C. com., art. L. 721-3). La clause compromissoire doit avoir été acceptée par la partie à laquelle on l'oppose (sauf succession aux droits de celle qui l'a acceptée) ; elle ne peut être opposée à celle qui n'a pas contracté dans le cadre de son activité professionnelle (C. civ., art. 2061).</p><p>La sentence n'est susceptible d'exécution forcée qu'en vertu d'une <b>ordonnance d'exequatur</b> du tribunal judiciaire du ressort où elle a été rendue ; l'exequatur est exclu si la sentence est manifestement contraire à l'ordre public, et l'ordonnance de refus est motivée (CPC, art. 1487 et 1488). Le décret n° 2026-741 du 6 août 2026 modifie la procédure arbitrale au 1er janvier 2027.</p><p><i>Exemple.</i> M. Morel, retraité, a signé avec la SAS Datalis un contrat de maintenance de son ordinateur personnel qui contient une clause compromissoire. N'ayant pas contracté pour une activité professionnelle, il ne peut se la voir opposer (art. 2061).</p>"
+  },
+  {
+   "h": "La charge de la preuve et les présomptions",
+   "html": "<p>Celui qui réclame l'exécution d'une obligation doit la <b>prouver</b>. Réciproquement, celui qui se prétend libéré doit justifier le paiement ou le fait qui a produit l'extinction de son obligation (C. civ., art. 1353).</p><p>Une <b>présomption légale</b> est celle que la loi attache à certains actes ou à certains faits en les tenant pour certains ; elle dispense de preuve celui au profit duquel elle existe (art. 1354). Elle est :</p><ul><li><b>simple</b> quand la preuve contraire peut être rapportée par tout moyen ;</li><li><b>mixte</b> quand la loi limite les moyens par lesquels elle peut être renversée, ou l'objet de la preuve contraire ;</li><li><b>irréfragable</b> quand elle ne peut être renversée.</li></ul><p>Les <b>contrats sur la preuve</b> sont valables lorsqu'ils portent sur des droits dont les parties ont la libre disposition. Ils ne peuvent toutefois ni contredire les présomptions irréfragables établies par la loi, ni modifier la foi attachée à l'aveu ou au serment, ni établir au profit de l'une des parties une présomption irréfragable (art. 1356).</p><p><i>Exemple.</i> La SARL Optima réclame 900 € de travaux à M. Lenoir, qui ne conteste pas la commande mais dit avoir déjà payé en espèces. Règle : art. 1353, al. 2. Conclusion : c'est à M. Lenoir de prouver ce paiement ; à défaut, il reste débiteur.</p>"
+  },
+  {
+   "h": "Les modes de preuve admis : liberté et exigence d'un écrit",
+   "html": "<p><b>Principe</b> : hors les cas où la loi en dispose autrement, la preuve peut être apportée par tout moyen (C. civ., art. 1358). Un fait, comme un accident ou un dégât des eaux, se prouve donc librement.</p><p><b>Exception</b> : l'acte juridique portant sur une somme ou une valeur excédant <span class=\"mono\">1 500 €</span> (décret n° 80-533 du 15 juillet 1980) se prouve par <b>écrit sous signature privée ou authentique</b> (art. 1359). On ne contourne pas ce seuil en réduisant sa demande ou en réclamant le solde d'une créance supérieure. Contre ou outre un écrit établissant un acte juridique, il faut un autre écrit, même sous le seuil.</p><p>L'écrit n'est pas exigé en cas d'impossibilité matérielle ou morale de se le procurer, s'il est d'usage de ne pas en établir, ou si l'écrit a été perdu par force majeure (art. 1360). À l'égard des commerçants, les actes de commerce se prouvent par tous moyens, sauf disposition légale contraire (C. com., art. L. 110-3) : la preuve est libre contre un commerçant, mais l'article 1359 joue contre un non-commerçant.</p><div class=\"note\"><b>Méthode.</b> 1. Fait ou acte juridique ? Un fait se prouve par tout moyen. 2. Acte de commerce invoqué contre un commerçant ? Preuve libre. 3. Acte de plus de 1 500 € ? Écrit exigé en principe. 4. Une exception de l'article 1360 joue-t-elle ?</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CPC, art. 31, 32 et 122 à 125",
+   "note": "Intérêt et qualité pour agir ; fins de non-recevoir et leur régime"
+  },
+  {
+   "ref": "C. civ., art. 2224",
+   "note": "Prescription de droit commun de cinq ans des actions personnelles ou mobilières ; point de départ"
+  },
+  {
+   "ref": "COJ, art. L. 211-3, L. 211-4, L. 213-4-2 à L. 213-4-7, R. 211-3-24 et R. 211-3-25",
+   "note": "Tribunal judiciaire, juge des contentieux de la protection, taux du dernier ressort (5 000 €)"
+  },
+  {
+   "ref": "C. com., art. L. 721-3 ; loi n° 2023-1059 du 20 novembre 2023, art. 26",
+   "note": "Compétence du tribunal de commerce ; expérimentation du tribunal des activités économiques depuis le 1er janvier 2025"
+  },
+  {
+   "ref": "C. trav., art. L. 1411-1 et L. 1411-4",
+   "note": "Compétence exclusive du conseil de prud'hommes ; convention contraire réputée non écrite"
+  },
+  {
+   "ref": "CPC, art. 42, 43, 46 et 48",
+   "note": "Compétence territoriale : lieu où demeure le défendeur, options du demandeur, clauses dérogatoires"
+  },
+  {
+   "ref": "CPC, art. 528, 538, 561, 562, 604, 605 et 612",
+   "note": "Voies de recours : point de départ des délais, appel, pourvoi en cassation"
+  },
+  {
+   "ref": "CPC, art. 750-1 ; C. civ., art. 2044",
+   "note": "Tentative préalable obligatoire de règlement amiable ; transaction"
+  },
+  {
+   "ref": "CPC, art. 1442, 1443, 1487 et 1488 ; C. civ., art. 2061",
+   "note": "Convention d'arbitrage, écrit, exequatur ; opposabilité de la clause compromissoire"
+  },
+  {
+   "ref": "C. civ., art. 1353 à 1360 ; C. com., art. L. 110-3 ; décret n° 80-533 du 15 juillet 1980",
+   "note": "Charge de la preuve, présomptions, contrats sur la preuve, admissibilité des modes de preuve (seuil de 1 500 €)"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Selon l'article 31 du Code de procédure civile, l'action en justice est en principe ouverte à :",
+   "opts": [
+    "Tous ceux qui ont un intérêt légitime au succès ou au rejet d'une prétention",
+    "Toute personne majeure de nationalité française, quel que soit son intérêt",
+    "Toute personne qui a d'abord mis son adversaire en demeure par écrit",
+    "Toute personne assistée d'un avocat inscrit au barreau du tribunal saisi"
+   ],
+   "a": 0,
+   "why": "L'article 31 du CPC ouvre l'action à tous ceux qui ont un intérêt légitime au succès ou au rejet d'une prétention, sous réserve des cas où la loi réserve le droit d'agir aux seules personnes qu'elle qualifie (qualité pour agir). Le texte ne pose aucune condition de nationalité, de mise en demeure préalable ou d'assistance par un avocat. Les trois autres propositions ajoutent donc des conditions que l'article 31 ne prévoit pas.",
+   "src": "CPC, art. 31",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Depuis le 1er janvier 2020, quelle juridiction connaît de toutes les affaires civiles et commerciales dont la loi n'attribue pas la connaissance, en raison de la nature de la demande, à une autre juridiction ?",
+   "opts": [
+    "Le tribunal judiciaire",
+    "Le tribunal de commerce",
+    "Le tribunal d'instance",
+    "La cour d'appel"
+   ],
+   "a": 0,
+   "why": "L'article L. 211-3 du COJ fait du tribunal judiciaire la juridiction de droit commun en matière civile. Le tribunal d'instance n'existe plus : la loi n° 2019-222 du 23 mars 2019 l'a réuni au tribunal de grande instance au sein du tribunal judiciaire. Le tribunal de commerce n'a qu'une compétence d'attribution, limitée aux matières de l'article L. 721-3 du Code de commerce, et la cour d'appel juge les appels, pas les affaires en premier ressort.",
+   "src": "COJ, art. L. 211-3 ; loi n° 2019-222 du 23 mars 2019",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "La SARL Optima réclame à M. Lenoir le paiement d'une facture de travaux de 900 €. M. Lenoir ne conteste pas la commande mais affirme avoir déjà payé, en espèces. Qui doit prouver le paiement ?",
+   "opts": [
+    "M. Lenoir, qui se prétend libéré",
+    "La SARL Optima, qui réclame le paiement",
+    "Le juge, qui doit ordonner une expertise",
+    "Celui des deux que le juge désigne librement"
+   ],
+   "a": 0,
+   "why": "Selon l'article 1353 du Code civil, celui qui réclame l'exécution d'une obligation doit la prouver ; réciproquement, celui qui se prétend libéré doit justifier le paiement. Ici, l'obligation n'est pas contestée : c'est donc à M. Lenoir de prouver le paiement qu'il invoque. La charge de la preuve est fixée par la loi : le juge ne la répartit pas librement, et l'article 1353 ne lui impose aucune expertise.",
+   "src": "C. civ., art. 1353",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le fournisseur Alvéa réclame 9 000 € à son client, la SAS Cobalt, qui invoque des retards de livraison. Les deux sociétés signent un écrit : Cobalt paie 7 000 € et renonce à toute action pour les retards ; Alvéa renonce au surplus de 2 000 €. Comment qualifier cet accord ?",
+   "opts": [
+    "Une transaction",
+    "Un compromis",
+    "Une clause compromissoire",
+    "Une clause attributive de compétence"
+   ],
+   "a": 0,
+   "why": "La transaction est le contrat par lequel les parties, par des concessions réciproques, terminent une contestation née ou préviennent une contestation à naître ; elle doit être rédigée par écrit (C. civ., art. 2044). Ici, la contestation est née et chacun cède quelque chose : Alvéa abandonne 2 000 €, Cobalt renonce à agir pour les retards. Le compromis et la clause compromissoire sont des conventions d'arbitrage (CPC, art. 1442) : aucun arbitre n'est désigné. Une clause attributive de compétence désigne un tribunal (CPC, art. 48) et ne met pas fin au litige.",
+   "src": "C. civ., art. 2044",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Une présomption légale est dite irréfragable lorsque :",
+   "opts": [
+    "Elle ne peut pas être renversée par la preuve contraire",
+    "La preuve contraire peut être rapportée par tout moyen",
+    "La loi limite les moyens par lesquels elle peut être renversée",
+    "Elle résulte d'une clause du contrat signé par les parties"
+   ],
+   "a": 0,
+   "why": "L'article 1354 du Code civil distingue trois présomptions légales : simple, lorsque la preuve contraire peut être rapportée par tout moyen ; mixte, lorsque la loi limite les moyens ou l'objet de la preuve contraire ; irréfragable, lorsqu'elle ne peut être renversée. Les deuxième et troisième propositions décrivent donc la présomption simple et la présomption mixte. Une présomption légale est attachée par la loi, et l'article 1356 interdit justement aux contrats sur la preuve d'établir une présomption irréfragable au profit d'une partie.",
+   "src": "C. civ., art. 1354 et 1356",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "À propos des délais des voies de recours en matière civile, quelles affirmations sont exactes, sauf texte spécial ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le délai d'appel est d'un mois en matière contentieuse",
+    "Le délai d'appel est de quinze jours en matière gracieuse",
+    "Le délai de pourvoi en cassation est de deux mois",
+    "Les délais courent en principe à compter du prononcé du jugement",
+    "Le délai de pourvoi en cassation est d'un mois"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le délai de recours par une voie ordinaire est d'un mois en matière contentieuse et de quinze jours en matière gracieuse (CPC, art. 538). Le délai de pourvoi en cassation est de deux mois, sauf disposition contraire (art. 612), et non d'un mois. Les délais courent en principe à compter de la notification du jugement, et non de son prononcé (art. 528).",
+   "src": "CPC, art. 528, 538 et 612",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Mme Arnaud a prêté 1 200 € à M. Faure, remboursables le 1er juin 2022. Elle constate dès ce jour que M. Faure ne rembourse pas. Aucun acte n'a interrompu ni suspendu le délai. En application de la prescription de droit commun, en quelle année la prescription de son action en remboursement sera-t-elle acquise ? (indiquez l'année, par exemple 2030)",
+   "a": 2027,
+   "unit": "",
+   "tol": 0,
+   "why": "L'action en remboursement est une action personnelle : elle se prescrit par cinq ans à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer (C. civ., art. 2224). Mme Arnaud a su le 1er juin 2022 qu'elle n'était pas remboursée : 2022 + 5 = 2027. Le jour du prêt n'est pas le point de départ, puisqu'elle ne pouvait pas réclamer le remboursement avant l'échéance.",
+   "src": "C. civ., art. 2224",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "M. Faure, assigné en remboursement d'un prêt, soulève la prescription de l'action. Le juge constate que le délai de prescription est expiré. Que décide-t-il ?",
+   "opts": [
+    "Il déclare la demande irrecevable, sans l'examiner au fond",
+    "Il rejette la demande après avoir examiné les preuves du prêt",
+    "Il renvoie les parties devant un conciliateur de justice",
+    "Il se déclare incompétent au profit du tribunal de commerce"
+   ],
+   "a": 0,
+   "why": "La prescription est une fin de non-recevoir : un moyen qui tend à faire déclarer l'adversaire irrecevable en sa demande, sans examen au fond, pour défaut de droit d'agir (CPC, art. 122). Le juge n'a donc pas à rechercher si le prêt est prouvé. La prescription ne pose pas une question de compétence et n'entraîne pas de renvoi à un conciliateur : elle prive le demandeur du droit d'agir.",
+   "src": "CPC, art. 122 ; C. civ., art. 2224",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Parmi les moyens suivants, lesquels sont des fins de non-recevoir au sens de l'article 122 du Code de procédure civile ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le défaut de qualité pour agir",
+    "La prescription de l'action",
+    "La chose jugée",
+    "L'incompétence territoriale du tribunal saisi",
+    "L'absence d'écrit prouvant un prêt de 3 000 €"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 122 du CPC cite, sans que la liste soit limitative, le défaut de qualité, le défaut d'intérêt, la prescription, le délai préfix et la chose jugée : tous tiennent au droit d'agir. L'incompétence territoriale concerne le choix du tribunal (CPC, art. 42 et s.), pas le droit d'agir. L'absence d'écrit pour un prêt de plus de 1 500 € est une question de preuve (C. civ., art. 1359) : le juge l'examine au fond.",
+   "src": "CPC, art. 122",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "La SARL Bois d'Ouest, établie à Nantes, a confié à la SAS Thermia, établie à Lyon, l'installation d'une chaudière dans son entrepôt de Rennes. L'installation est défectueuse et le contrat ne contient aucune clause de compétence. Quelles juridictions la SARL peut-elle saisir, du point de vue territorial ? (plusieurs réponses possibles)",
+   "opts": [
+    "Celle du lieu où est établie la SAS Thermia (Lyon)",
+    "Celle du lieu d'exécution de la prestation (Rennes)",
+    "Celle du lieu où est établie la SARL Bois d'Ouest (Nantes)",
+    "Celle du lieu où le contrat a été signé, s'il est différent",
+    "Celle de Paris, quel que soit le lieu des parties"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "Le principe est la compétence du lieu où demeure le défendeur, c'est-à-dire, pour une personne morale, le lieu où elle est établie (CPC, art. 42 et 43) : Lyon. En matière contractuelle, le demandeur peut aussi choisir le lieu de l'exécution de la prestation de service (art. 46) : Rennes. Le siège du demandeur, le lieu de signature du contrat ou Paris ne figurent dans aucune de ces règles.",
+   "src": "CPC, art. 42, 43 et 46",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque litige selon la juridiction compétente en raison de la matière (hors procédures collectives).",
+   "cats": [
+    "Tribunal judiciaire (hors juge des contentieux de la protection)",
+    "Juge des contentieux de la protection",
+    "Tribunal de commerce",
+    "Conseil de prud'hommes"
+   ],
+   "items": [
+    [
+     "Deux particuliers se disputent le remboursement d'un prêt de 9 000 €",
+     0
+    ],
+    [
+     "Deux particuliers se disputent la propriété d'un tableau",
+     0
+    ],
+    [
+     "Un bailleur agit contre son locataire au titre d'un bail d'habitation",
+     1
+    ],
+    [
+     "Une mesure de curatelle est demandée pour un majeur",
+     1
+    ],
+    [
+     "Le traitement du surendettement d'un particulier",
+     1
+    ],
+    [
+     "Une SARL réclame à une SAS le prix d'une livraison de marchandises",
+     2
+    ],
+    [
+     "Un associé conteste une décision de sa SAS sur les dividendes",
+     2
+    ],
+    [
+     "Une salariée conteste son licenciement",
+     3
+    ],
+    [
+     "Deux salariés ont un différend né à l'occasion du travail",
+     3
+    ]
+   ],
+   "why": "Le juge des contentieux de la protection connaît notamment des tutelles des majeurs (dont la curatelle), du bail d'habitation et du surendettement des particuliers (COJ, art. L. 213-4-2, L. 213-4-4 et L. 213-4-7). Le tribunal de commerce connaît des engagements entre commerçants et des contestations relatives aux sociétés commerciales, comme la SAS (C. com., art. L. 721-3). Le conseil de prud'hommes règle les litiges nés du contrat de travail et ceux nés entre salariés à l'occasion du travail (C. trav., art. L. 1411-1). Les litiges civils entre particuliers que la loi n'attribue à aucune autre juridiction relèvent du tribunal judiciaire, juridiction de droit commun (COJ, art. L. 211-3).",
+   "src": "COJ, art. L. 211-3 et L. 213-4-2 à L. 213-4-7 ; C. com., art. L. 721-3 ; C. trav., art. L. 1411-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le tribunal judiciaire a condamné M. Garnier à rembourser 4 200 € à M. Vidal, qui demandait 4 200 €. M. Garnier estime que le jugement viole la loi. Quel recours peut-il exercer ?",
+   "opts": [
+    "Un pourvoi en cassation, l'appel étant fermé",
+    "Un appel devant la cour d'appel dans le délai d'un mois",
+    "Un appel, puis un pourvoi contre l'arrêt d'appel",
+    "Aucun recours, le jugement étant définitif"
+   ],
+   "a": 0,
+   "why": "Le tribunal judiciaire statue en dernier ressort lorsque le montant de la demande n'excède pas 5 000 € (COJ, art. R. 211-3-24 et R. 211-3-25) : c'est le cas d'une demande de 4 200 €. Un jugement rendu en dernier ressort n'est pas susceptible d'appel, mais le pourvoi en cassation est ouvert contre lui (CPC, art. 605). Le pourvoi convient au grief invoqué, puisqu'il tend à faire censurer la non-conformité du jugement aux règles de droit (art. 604).",
+   "src": "COJ, art. R. 211-3-25 ; CPC, art. 604 et 605",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "La SAS Delmas a été condamnée en première instance à payer 12 000 € de prix et 3 000 € de dommages-intérêts. Elle fait appel en critiquant seulement le chef du jugement relatif aux dommages-intérêts ; l'appel ne tend pas à l'annulation du jugement et l'objet du litige n'est pas indivisible. Que défère cet appel à la cour ?",
+   "opts": [
+    "Le chef relatif aux dommages-intérêts et ceux qui en dépendent",
+    "L'ensemble du litige, y compris la condamnation au prix",
+    "Les seules questions de droit, à l'exclusion des faits",
+    "Le seul montant total de 15 000 €, à réduire en équité"
+   ],
+   "a": 0,
+   "why": "L'appel ne défère à la cour que la connaissance des chefs du dispositif du jugement qu'il critique expressément et de ceux qui en dépendent ; la dévolution ne s'opère pour le tout que si l'appel tend à l'annulation du jugement ou si l'objet du litige est indivisible (CPC, art. 562). Aucune de ces exceptions ne joue ici. Sur les chefs déférés, la cour statue à nouveau en fait et en droit (art. 561) : la limitation aux questions de droit caractérise le pourvoi en cassation (art. 604).",
+   "src": "CPC, art. 561 et 562",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Après un arrêt de la cour d'appel, M. Perrin forme un pourvoi en cassation. Selon l'article 604 du Code de procédure civile, que tend à obtenir un pourvoi ?",
+   "opts": [
+    "La censure de la non-conformité de la décision aux règles de droit",
+    "Un nouvel examen complet des faits et des preuves du litige",
+    "La désignation d'un médiateur par la Cour de cassation",
+    "La révision en équité du montant de la condamnation"
+   ],
+   "a": 0,
+   "why": "Le pourvoi en cassation tend à faire censurer par la Cour de cassation la non-conformité du jugement qu'il attaque aux règles de droit (CPC, art. 604). C'est l'appel qui remet la chose jugée en question et permet de statuer à nouveau en fait et en droit (art. 561). Le pourvoi ne sert ni à désigner un médiateur ni à réviser une condamnation en équité. Il doit être formé dans les deux mois, sauf disposition contraire (art. 612).",
+   "src": "CPC, art. 561, 604 et 612",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "En octobre 2026, M. Lambert saisit directement le tribunal judiciaire d'une demande en paiement de 3 800 € contre son voisin, sans tentative préalable de conciliation, de médiation ou de procédure participative, et sans aucun motif de dispense. Quelle sanction encourt-il ?",
+   "opts": [
+    "L'irrecevabilité de sa demande, que le juge peut prononcer d'office",
+    "La nullité de l'assignation, que seul le voisin peut invoquer",
+    "Une amende civile, sa demande restant recevable",
+    "Aucune, la tentative amiable étant facultative"
+   ],
+   "a": 0,
+   "why": "Devant le tribunal judiciaire, la demande en paiement d'une somme n'excédant pas 5 000 € doit être précédée, au choix des parties, d'une tentative de conciliation menée par un conciliateur de justice, d'une médiation ou d'une procédure participative, à peine d'irrecevabilité que le juge peut prononcer d'office (CPC, art. 750-1, rédaction issue du décret n° 2023-357 du 11 mai 2023). La tentative n'est donc pas facultative. Le texte ne prévoit ni nullité ni amende civile : la sanction est l'irrecevabilité de la demande.",
+   "src": "CPC, art. 750-1",
+   "fiab": "millésimé 2026",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "En 2026, la SARL Fixa détient sur un particulier une créance impayée de 2 000 €. Elle souhaite présenter une requête en injonction de payer. Doit-elle d'abord tenter une conciliation, une médiation ou une procédure participative ?",
+   "opts": [
+    "Non, l'injonction de payer n'est pas soumise à cette tentative",
+    "Oui, toute demande en paiement de moins de 5 000 € y est soumise",
+    "Oui, mais seulement si le débiteur forme opposition",
+    "Non, car une société n'est jamais soumise à l'article 750-1"
+   ],
+   "a": 0,
+   "why": "Dans un avis du 25 septembre 2025 (n° 25-70.013), la Cour de cassation a estimé que la procédure d'injonction de payer n'est, dans aucune de ses deux phases, soumise à la tentative préalable obligatoire de l'article 750-1 du CPC. La phase d'opposition n'y est donc pas soumise non plus. L'article 750-1 ne distingue pas selon que le demandeur est une société ou une personne physique : la dernière proposition est fausse.",
+   "src": "Cass., avis, 25 septembre 2025, n° 25-70.013 ; CPC, art. 750-1",
+   "fiab": "millésimé 2026",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le contrat de maintenance de l'ordinateur personnel de M. Morel, retraité, conclu avec la SAS Datalis, contient une clause compromissoire que M. Morel a acceptée en signant. En cas de litige, Datalis peut-elle opposer cette clause à M. Morel ?",
+   "opts": [
+    "Non, M. Morel n'a pas contracté pour une activité professionnelle",
+    "Oui, car M. Morel l'a acceptée en signant le contrat",
+    "Oui, si elle est rédigée de façon très apparente",
+    "Non, car une clause compromissoire est interdite dans tout contrat"
+   ],
+   "a": 0,
+   "why": "Selon l'article 2061 du Code civil, la clause compromissoire doit avoir été acceptée par la partie à laquelle on l'oppose ; mais, lorsque l'une des parties n'a pas contracté dans le cadre de son activité professionnelle, la clause ne peut lui être opposée. L'acceptation est donc nécessaire mais ne suffit pas ici. L'exigence d'une clause « très apparente » relève de l'article 48 du CPC, qui vise les clauses de compétence territoriale et ne s'applique pas aux clauses d'arbitrage. La clause compromissoire n'est pas interdite en général : les parties peuvent convenir de l'arbitrage en contractant (C. com., art. L. 721-3), et la clause est opposable au professionnel qui l'a acceptée.",
+   "src": "C. civ., art. 2061",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "En 2026, à propos de l'arbitrage interne, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "La convention d'arbitrage est écrite, à peine de nullité",
+    "La sentence n'est susceptible d'exécution forcée qu'en vertu d'un exequatur",
+    "L'exequatur est refusé si la sentence est manifestement contraire à l'ordre public",
+    "La clause compromissoire ne vise que des litiges déjà nés",
+    "L'exequatur est accordé par la Cour de cassation"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "En arbitrage interne, la convention d'arbitrage est écrite à peine de nullité (CPC, art. 1443). La sentence n'est susceptible d'exécution forcée qu'en vertu d'une ordonnance d'exequatur du tribunal judiciaire dans le ressort duquel elle a été rendue (art. 1487), et non de la Cour de cassation ; l'exequatur ne peut être accordé si la sentence est manifestement contraire à l'ordre public (art. 1488). La clause compromissoire vise les litiges qui pourraient naître du contrat ; c'est le compromis qui porte sur un litige déjà né (art. 1442). Le décret n° 2026-741 du 6 août 2026 modifie la procédure arbitrale à compter du 1er janvier 2027.",
+   "src": "CPC, art. 1442, 1443, 1487 et 1488",
+   "fiab": "millésimé 2026",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Dans quels cas l'écrit normalement exigé pour prouver un acte juridique de plus de 1 500 € n'est-il pas requis, selon l'article 1360 du Code civil ? (plusieurs réponses possibles)",
+   "opts": [
+    "Impossibilité matérielle ou morale de se procurer un écrit",
+    "Usage de ne pas établir d'écrit",
+    "Perte de l'écrit par force majeure",
+    "Perte de l'écrit par simple négligence du créancier",
+    "Bonne foi reconnue du créancier"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 1360 du Code civil écarte l'exigence d'un écrit en cas d'impossibilité matérielle ou morale de se procurer un écrit, s'il est d'usage de ne pas établir un écrit, ou lorsque l'écrit a été perdu par force majeure. Une perte due à la simple négligence du créancier n'est pas une force majeure. La bonne foi du créancier ne figure pas parmi les exceptions du texte.",
+   "src": "C. civ., art. 1360",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque situation selon la règle de preuve applicable. Aucune exception de l'article 1360 du Code civil ne joue.",
+   "cats": [
+    "Écrit exigé en principe (C. civ., art. 1359)",
+    "Preuve par tout moyen"
+   ],
+   "items": [
+    [
+     "Un particulier veut prouver le prêt de 3 000 € qu'il a consenti à un autre particulier",
+     0
+    ],
+    [
+     "Une victime veut prouver les circonstances d'une collision ayant causé 8 000 € de dégâts",
+     1
+    ],
+    [
+     "Une SARL veut prouver contre une SAS cliente, commerçante, une vente de marchandises de 7 000 €",
+     1
+    ],
+    [
+     "Un particulier veut prouver un prêt de 800 € consenti à un ami, sans aucun écrit",
+     1
+    ],
+    [
+     "Un particulier réclame le solde de 900 € d'un prêt de 2 500 € consenti à un autre particulier",
+     0
+    ],
+    [
+     "Une SARL veut prouver contre un acheteur particulier la vente d'un poêle de 3 200 €",
+     0
+    ]
+   ],
+   "why": "Hors les cas où la loi en dispose autrement, la preuve est libre (C. civ., art. 1358) : c'est le cas d'un fait comme une collision, et d'un acte juridique n'excédant pas 1 500 € qu'aucun écrit ne constate. L'acte juridique portant sur plus de 1 500 € doit en principe être prouvé par écrit sous signature privée ou authentique, même si l'on ne réclame que le solde d'une créance supérieure au seuil (art. 1359). Contre un commerçant, comme la SAS cliente, les actes de commerce se prouvent par tous moyens (C. com., art. L. 110-3) ; contre l'acheteur particulier, non commerçant, l'article 1359 s'applique.",
+   "src": "C. civ., art. 1358 et 1359 ; C. com., art. L. 110-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "M. Garcia a connu le 15 mars 2023 les faits qui lui permettent d'agir en paiement contre M. Petit. Son action est une action personnelle soumise à la prescription de droit commun, et rien n'a interrompu ni suspendu le délai. Au 15 mars 2026, combien d'années complètes lui reste-t-il pour agir ?",
+   "a": 2,
+   "unit": "ans",
+   "tol": 0,
+   "why": "Les actions personnelles ou mobilières se prescrivent par cinq ans à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer (C. civ., art. 2224). Le délai court du 15 mars 2023 et expire en mars 2028. Au 15 mars 2026, trois années se sont écoulées : il en reste 5 − 3 = 2.",
+   "src": "C. civ., art. 2224",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Après un différend sur une facture de 6 000 €, M. Hamon signe un document par lequel il reconnaît devoir l'intégralité de la somme et s'engage à la payer immédiatement ; le créancier n'abandonne rien. Ce document peut-il être qualifié de transaction ?",
+   "opts": [
+    "Non, faute de concessions réciproques",
+    "Oui, car il est rédigé par écrit",
+    "Oui, car il met fin à une contestation née",
+    "Non, car une transaction doit être homologuée par un juge"
+   ],
+   "a": 0,
+   "why": "La transaction suppose des concessions réciproques par lesquelles les parties terminent une contestation née ou préviennent une contestation à naître (C. civ., art. 2044). La Cour de cassation censure la qualification de transaction lorsque la réalité des concessions réciproques n'est pas caractérisée (Cass. 1re civ., 10 juin 2015, n° 14-15.608). Ici, seul M. Hamon cède : l'écrit et l'existence d'une contestation sont nécessaires mais ne suffisent pas. L'article 2044 ne subordonne pas la transaction à une homologation judiciaire : c'est un contrat.",
+   "src": "C. civ., art. 2044 ; Cass. 1re civ., 10 juin 2015, n° 14-15.608",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "En 2026, une procédure collective doit être ouverte dans le ressort de l'un des douze tribunaux des activités économiques de l'expérimentation. Pour lequel de ces débiteurs ce tribunal n'est-il PAS compétent ?",
+   "opts": [
+    "Un avocat exerçant à titre individuel",
+    "Une SARL de négoce de matériaux",
+    "Un exploitant agricole",
+    "Un artisan plombier"
+   ],
+   "a": 0,
+   "why": "À titre expérimental, depuis le 1er janvier 2025 et pour quatre ans, douze tribunaux de commerce désignés par l'arrêté du 5 juillet 2024 deviennent tribunaux des activités économiques (loi n° 2023-1059 du 20 novembre 2023, art. 26). Ils sont seuls compétents pour les procédures amiables et collectives de tous les professionnels, quels que soient leur statut et leur activité, ce qui inclut la SARL, l'exploitant agricole et l'artisan. Certaines professions du droit réglementées, dont les avocats et les notaires, restent au tribunal judiciaire.",
+   "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024",
+   "fiab": "millésimé 2026",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Les conditions générales d'un loueur de matériel de chantier, acceptées par ses clients professionnels, stipulent : « les relevés du compteur horaire tenus par le loueur font preuve de la durée d'utilisation, sans que le locataire puisse jamais apporter la preuve contraire ». Que vaut cette stipulation au regard de l'article 1356 du Code civil ?",
+   "opts": [
+    "Elle n'est pas admise : elle établit une présomption irréfragable au profit d'une partie",
+    "Elle est valable, car les contrats sur la preuve sont libres entre professionnels",
+    "Elle est valable, car elle porte sur des droits dont les parties disposent librement",
+    "Elle n'est pas admise, car tout contrat sur la preuve est interdit"
+   ],
+   "a": 0,
+   "why": "Les contrats sur la preuve sont valables lorsqu'ils portent sur des droits dont les parties ont la libre disposition, mais ils ne peuvent établir au profit de l'une des parties une présomption irréfragable (C. civ., art. 1356). En interdisant toute preuve contraire au locataire, la clause crée une présomption irréfragable au profit du loueur. La libre disposition des droits est une condition de validité, pas une dérogation à cette interdiction ; et le texte ne prévoit pas d'exception entre professionnels. Les contrats sur la preuve ne sont pas interdits en général.",
+   "src": "C. civ., art. 1356",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "La SARL Habitat Plus, commerçante, a vendu sans écrit à M. Olivier, particulier, un poêle de 3 200 €. M. Olivier nie la vente. La SARL peut-elle prouver la vente contre lui par de simples témoignages ?",
+   "opts": [
+    "Non, en principe : contre un non-commerçant, l'article 1359 exige un écrit",
+    "Oui, car la vente est un acte de commerce pour la SARL",
+    "Oui, car la preuve est libre dès qu'une partie est commerçante",
+    "Non, car seul un acte notarié peut prouver une vente"
+   ],
+   "a": 0,
+   "why": "L'article L. 110-3 du Code de commerce rend la preuve libre « à l'égard des commerçants » : il permet de prouver par tous moyens un acte de commerce contre un commerçant. Ici, la preuve est dirigée contre M. Olivier, non-commerçant : l'article 1359 du Code civil s'applique, et l'acte de plus de 1 500 € doit en principe être prouvé par écrit sous signature privée ou authentique. Le caractère commercial de l'acte pour la SARL ne suffit pas, et un acte sous signature privée suffirait : l'acte notarié n'est pas exigé.",
+   "src": "C. com., art. L. 110-3 ; C. civ., art. 1359",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Un écrit signé par les deux parties constate un prêt de 1 000 €. Le prêteur soutient que le prêt portait en réalité sur 1 400 € et veut le prouver par deux témoignages. Est-ce possible ?",
+   "opts": [
+    "Non, il faut un autre écrit, même sous 1 500 €",
+    "Oui, car la somme en litige ne dépasse pas 1 500 €",
+    "Oui, si les deux témoins sont étrangers au contrat",
+    "Non, car seul un acte notarié peut modifier un prêt"
+   ],
+   "a": 0,
+   "why": "Selon l'article 1359 du Code civil, il ne peut être prouvé outre ou contre un écrit établissant un acte juridique, même si la somme ou la valeur n'excède pas 1 500 €, que par un autre écrit sous signature privée ou authentique. Le montant inférieur au seuil ne rend donc pas la preuve libre ici, et la qualité des témoins n'y change rien. Un acte sous signature privée suffirait : l'acte notarié n'est pas exigé.",
+   "src": "C. civ., art. 1359",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque clause selon son efficacité à l'égard de la partie à qui on veut l'opposer.",
+   "cats": [
+    "Clause opposable à la partie visée",
+    "Clause sans effet à l'égard de la partie visée"
+   ],
+   "items": [
+    [
+     "Clause attributive de compétence territoriale convenue entre deux SARL commerçantes et spécifiée de façon très apparente dans le contrat",
+     0
+    ],
+    [
+     "Clause attributive de compétence territoriale figurant dans le bon de commande signé par un particulier",
+     1
+    ],
+    [
+     "Clause attributive de compétence territoriale entre deux commerçants, en petits caractères parmi trente conditions générales, sans aucune mise en évidence",
+     1
+    ],
+    [
+     "Clause compromissoire acceptée par deux sociétés commerciales contractant pour leur activité",
+     0
+    ],
+    [
+     "Clause compromissoire opposée à un retraité qui a contracté pour ses besoins personnels",
+     1
+    ],
+    [
+     "Clause d'un contrat de travail attribuant au tribunal de commerce les litiges avec le salarié",
+     1
+    ]
+   ],
+   "why": "La clause attributive de compétence territoriale est réputée non écrite, sauf si elle a été convenue entre personnes ayant toutes contracté en qualité de commerçant et spécifiée de façon très apparente (CPC, art. 48) : les deux conditions sont cumulatives, d'où l'échec de la clause signée par un particulier et de celle noyée dans les conditions générales. La clause compromissoire acceptée par des professionnels leur est opposable (C. civ., art. 2061, al. 1 ; C. com., art. L. 721-3), mais elle ne peut être opposée à la partie qui n'a pas contracté dans le cadre de son activité professionnelle (art. 2061, al. 2). Le conseil de prud'hommes est seul compétent pour les litiges du contrat de travail, et toute convention contraire est réputée non écrite (C. trav., art. L. 1411-4).",
+   "src": "CPC, art. 48 ; C. civ., art. 2061 ; C. trav., art. L. 1411-4",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Un jugement du tribunal judiciaire statuant sur une demande en paiement de 3 600 € a été notifié à la partie perdante le 10 septembre 2026. Elle veut exercer la seule voie de recours ouverte contre ce jugement. Au cours de quel mois de 2026 le délai de ce recours expire-t-il ? (indiquez le numéro du mois : 1 pour janvier, 12 pour décembre)",
+   "a": 11,
+   "unit": "",
+   "tol": 0,
+   "why": "La demande n'excède pas 5 000 € : le tribunal judiciaire statue en dernier ressort (COJ, art. R. 211-3-25), l'appel est fermé et seul le pourvoi en cassation est ouvert (CPC, art. 605). Le délai de pourvoi est de deux mois (art. 612) et court à compter de la notification (art. 528) : du 10 septembre au 10 novembre 2026, soit le mois 11. Répondre 10 reviendrait à appliquer à tort le délai d'appel d'un mois (art. 538).",
+   "src": "COJ, art. R. 211-3-25 ; CPC, art. 528, 605 et 612",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

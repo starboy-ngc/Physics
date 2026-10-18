@@ -1,0 +1,599 @@
+{
+ "id": "ue1-01",
+ "ue": "UE1",
+ "ordre": 1,
+ "title": "La règle de droit et ses sources",
+ "resume": "Trouver la règle applicable à un client et mesurer sa force : loi impérative ou supplétive, Constitution, traités et droit de l'Union, loi, ordonnance et règlement, contrôles du juge, jurisprudence et entrée en vigueur de la loi.",
+ "duree": "55 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Rechercher la règle applicable au client",
+   "html": "<p>Le programme de l'UE 1 (arrêté du 4 août 2025, applicable à compter de la session 2027 ; l'arrêté du 13 février 2019 reste applicable à la session 2026) ouvre le bloc 1 « Appréhender le contexte juridique en vigueur en droit privé » par le point 1.1 « Rechercher les règles applicables à la situation du client » (15 heures). Il en trace le périmètre :</p><ul><li>la règle de droit est étudiée par sa seule distinction avec la morale, pour comprendre son utilité ; le guide pédagogique de juillet 2026 limite la comparaison à la morale, sans l'éthique ;</li><li>les sources : loi impérative et loi supplétive, bloc réglementaire, puis les sources indirectes que sont les usages professionnels, la jurisprudence et la doctrine ;</li><li>le conflit de normes : hiérarchie des normes, contrôles de constitutionnalité et de conventionnalité, pour <b>placer une règle dans la hiérarchie</b> ;</li><li>la procédure d'élaboration de la loi, limitée à la reconnaissance d'une source de droit.</li></ul><p><b>Réflexe Légifrance.</b> Un article connaît souvent plusieurs versions, chacune avec sa période de vigueur : la version actuelle de l'article 34 de la Constitution est ainsi en vigueur depuis le 10 mars 2024. Méthode : identifier la source, la situer dans la hiérarchie, puis vérifier la version applicable.</p>"
+  },
+  {
+   "h": "Règle impérative ou règle supplétive",
+   "html": "<p>L'article 6 du Code civil trace la frontière : « On ne peut déroger, par des conventions particulières, aux lois qui intéressent l'ordre public et les bonnes mœurs. » Ces lois sont <b>impératives</b>. A contrario, une règle qui n'intéresse pas l'ordre public peut être écartée par les parties : elle est <b>supplétive de volonté</b>.</p><p>En droit des contrats, la liberté contractuelle s'exerce dans les limites fixées par la loi et ne permet pas de déroger aux règles d'ordre public (art. 1102) ; le contrat ne peut déroger à l'ordre public ni par ses stipulations, ni par son but (art. 1162). Selon le rapport au Président de la République sur l'ordonnance n° 2016-131, ces dispositions sont en principe supplétives, sauf mention contraire.</p><p><b>Exemple.</b> Le contrat de fourniture de la SARL Ferval stipule que le fournisseur « n'est pas tenu d'agir de bonne foi ». Règle : l'article 1104 impose la bonne foi et se déclare d'ordre public ; on ne peut y déroger (art. 6). Conclusion : la clause ne peut pas écarter l'exigence de bonne foi.</p><div class=\"note\"><b>À retenir.</b> Impérative : les parties ne peuvent pas l'écarter. Supplétive : elle s'applique si les parties n'ont rien prévu d'autre. L'article 6 vise encore les bonnes mœurs, mais le droit des contrats ne vise plus que l'ordre public : le rapport juge la notion désuète.</div>"
+  },
+  {
+   "h": "La Constitution partage la loi et le règlement",
+   "html": "<p>L'<b>article 34</b> de la Constitution réserve à la loi les règles concernant notamment les droits civiques et les garanties fondamentales accordées aux citoyens, la nationalité et la capacité des personnes, les crimes et délits et les peines applicables, l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures. La loi détermine aussi les principes fondamentaux de plusieurs matières, dont le droit du travail. Depuis la loi constitutionnelle n° 2024-200 du 8 mars 2024, il prévoit aussi que « la loi détermine les conditions dans lesquelles s'exerce la liberté garantie à la femme d'avoir recours à une interruption volontaire de grossesse ».</p><p>Selon l'<b>article 37</b>, les matières autres que celles du domaine de la loi ont un caractère réglementaire : c'est le <b>règlement autonome</b>, édicté sans loi préalable. Un texte de forme législative intervenu en matière réglementaire peut être modifié par décret après avis du Conseil d'État ; s'il est postérieur à 1958, il faut d'abord que le Conseil constitutionnel ait déclaré son caractère réglementaire.</p><p><b>Exemple.</b> Le gérant de la SAS Lumio lit qu'un décret autonome fixerait le taux d'un impôt. Règle : l'article 34 réserve à la loi le taux des impositions de toutes natures. Conclusion : la matière relève du domaine de la loi, pas de l'article 37.</p>"
+  },
+  {
+   "h": "Les ordonnances de l'article 38",
+   "html": "<p>Une <b>ordonnance</b> est prise par le Gouvernement, autorisé par une <b>loi d'habilitation</b> votée par le Parlement, dans des matières qui relèvent normalement du domaine de la loi et pendant un délai limité. Elle entre en vigueur dès sa publication. Elle devient caduque si le projet de loi de ratification n'est pas déposé avant la date fixée par la loi d'habilitation. Depuis la révision du 23 juillet 2008, elle ne peut être ratifiée que de manière expresse ; auparavant, une ratification implicite était admise.</p><p>Sa valeur dépend de la ratification :</p><ul><li><b>non ratifiée</b> : acte de forme réglementaire, soumis au contrôle du juge administratif ; mais dès l'expiration du délai d'habilitation, ses dispositions qui relèvent du domaine de la loi sont des dispositions législatives au sens de l'article 61-1 et peuvent faire l'objet d'une QPC (Cons. const., n° 2020-843 QPC du 28 mai 2020) ;</li><li><b>ratifiée</b> : valeur législative à compter de sa signature ; le juge administratif cesse d'être compétent (CE, 13 juin 2018, n° 408325).</li></ul><p><b>Exemple.</b> Un client invoque l'article 1104 du Code civil, issu de l'ordonnance n° 2016-131 du 10 février 2016. Celle-ci a été ratifiée par la loi n° 2018-287 du 20 avril 2018 : l'article a valeur législative.</p>"
+  },
+  {
+   "h": "Traités et droit de l'Union : au-dessus des lois",
+   "html": "<p>Selon l'<b>article 55</b> de la Constitution, les traités ou accords régulièrement ratifiés ou approuvés ont, dès leur publication, une autorité supérieure à celle des lois, sous réserve, pour chaque accord ou traité, de son application par l'autre partie.</p><p>Le TFUE (art. 288) distingue le <b>règlement</b>, qui a une portée générale, est obligatoire dans tous ses éléments et directement applicable dans tout État membre, et la <b>directive</b>, qui lie l'État quant au résultat à atteindre en lui laissant le choix de la forme et des moyens : elle doit être transposée.</p><p>Le <b>contrôle de conventionnalité</b> revient aux juges ordinaires. La Cour de cassation fait prévaloir le traité de Rome sur la loi interne, même postérieure (Cass. ch. mixte, 24 mai 1975, Jacques Vabre). Le Conseil d'État contrôle la compatibilité d'une loi, même postérieure, avec un traité et abandonne la « loi écran » (CE, ass., 20 octobre 1989, Nicolo). Le Conseil constitutionnel refuse ce contrôle : une loi contraire à un traité ne serait pas, pour autant, contraire à la Constitution (n° 74-54 DC du 15 janvier 1975).</p><p><b>Exemple.</b> Mme Roux a lu qu'une directive renforce ses droits. Une directive doit être transposée : la règle applicable se trouve en principe dans le texte national de transposition.</p>"
+  },
+  {
+   "h": "Le contrôle de constitutionnalité : a priori et QPC",
+   "html": "<p><b>Avant promulgation (art. 61).</b> Une loi peut être déférée au Conseil constitutionnel par le Président de la République, le Premier ministre, le président de l'Assemblée nationale, le président du Sénat, ou soixante députés ou soixante sénateurs. Le Conseil statue dans le délai d'un mois, ramené à huit jours si le Gouvernement le demande en cas d'urgence ; la saisine suspend le délai de promulgation. La disposition déclarée inconstitutionnelle ne peut être ni promulguée ni appliquée (art. 62).</p><p><b>QPC (art. 61-1).</b> Une partie à une instance soutient qu'une disposition législative porte atteinte aux droits et libertés que la Constitution garantit. Le moyen est présenté dans un écrit distinct et motivé ; le juge ne peut pas le relever d'office. Il transmet si la disposition est applicable au litige ou à la procédure, si elle n'a pas déjà été déclarée conforme (sauf changement des circonstances) et si la question n'est pas dépourvue de caractère sérieux. Le Conseil d'État ou la Cour de cassation se prononce dans les trois mois ; à défaut, la question est transmise. La disposition déclarée inconstitutionnelle est abrogée à compter de la publication de la décision ou d'une date ultérieure qu'elle fixe.</p><div class=\"note\"><b>Qui contrôle quoi ?</b> Loi face à la Constitution : Conseil constitutionnel. Loi face à un traité : juges judiciaire et administratif. Ordonnance non ratifiée : juge administratif.</div>"
+  },
+  {
+   "h": "La jurisprudence et les autres sources",
+   "html": "<p>Le juge qui refuse de juger sous prétexte du silence, de l'obscurité ou de l'insuffisance de la loi peut être poursuivi pour <b>déni de justice</b> (C. civ., art. 4) : il doit trancher. Mais il lui est défendu de prononcer par voie de disposition générale et réglementaire sur les causes qui lui sont soumises (art. 5) : pas d'<b>arrêt de règlement</b>. Le pourvoi en cassation tend à faire censurer par la Cour de cassation la non-conformité du jugement attaqué aux règles de droit ; il n'est ouvert que contre les jugements rendus en dernier ressort (CPC, art. 604 et 605). Plusieurs règles de ce chapitre viennent de décisions de justice : Jacques Vabre, Nicolo, valeur de l'ordonnance ratifiée.</p><p>Le programme range aussi les <b>usages professionnels</b> et la <b>doctrine</b> parmi les sources indirectes. La loi renvoie parfois à l'usage : la preuve par écrit n'est pas exigée « s'il est d'usage de ne pas établir un écrit » (C. civ., art. 1360).</p><p><b>Sources négociées.</b> Les contrats légalement formés tiennent lieu de loi à ceux qui les ont faits (art. 1103). Une convention ou un accord collectif peut comporter des stipulations plus favorables aux salariés que la loi, mais ne peut déroger aux dispositions d'ordre public (C. trav., art. L. 2251-1) : l'UE 3 y revient.</p>"
+  },
+  {
+   "h": "Appliquer la loi dans le temps",
+   "html": "<p><b>Entrée en vigueur (C. civ., art. 1).</b> Les lois et, lorsqu'ils sont publiés au Journal officiel, les actes administratifs entrent en vigueur à la date qu'ils fixent ou, à défaut, le lendemain de leur publication. Les dispositions dont l'exécution nécessite des mesures d'application n'entrent en vigueur qu'à la date d'entrée en vigueur de ces mesures. En cas d'urgence, entrent en vigueur dès leur publication les lois dont le décret de promulgation le prescrit et les actes administratifs pour lesquels le Gouvernement l'ordonne expressément. L'article 1er ne s'applique pas aux actes individuels.</p><p><b>Non-rétroactivité (art. 2).</b> « La loi ne dispose que pour l'avenir ; elle n'a point d'effet rétroactif. » Selon le guide de légistique, le législateur peut écarter ce principe, mais seulement pour un motif d'intérêt général suffisant, et la non-rétroactivité a, dans certaines matières, une valeur constitutionnelle.</p><p><b>Exemples.</b> Une loi publiée au Journal officiel le 10 juin 2026, sans date fixée, entre en vigueur le 11 juin, sauf ses dispositions qui attendent des mesures d'application. Un contrat conclu en 2015 reste soumis à la loi ancienne, même pour les dispositions d'ordre public : la Cour de cassation refuse d'appliquer l'article 1104 nouveau à des faits antérieurs au 1er octobre 2016 (Cass. 3e civ., 4 octobre 2018, n° 17-24.287).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. civ., art. 1, 2, 4, 5 et 6",
+   "note": "Entrée en vigueur des lois, non-rétroactivité, obligation de juger, prohibition des arrêts de règlement, lois d'ordre public"
+  },
+  {
+   "ref": "C. civ., art. 1102, 1103, 1104 et 1162 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016",
+   "note": "Liberté contractuelle et ordre public, force obligatoire du contrat, bonne foi d'ordre public, caractère en principe supplétif du droit des contrats"
+  },
+  {
+   "ref": "Constitution du 4 octobre 1958, art. 34, 37 et 38 ; loi constitutionnelle n° 2024-200 du 8 mars 2024",
+   "note": "Domaine de la loi, domaine réglementaire, ordonnances"
+  },
+  {
+   "ref": "Constitution du 4 octobre 1958, art. 55, 61, 61-1 et 62",
+   "note": "Autorité des traités, contrôle a priori, QPC, effets des décisions du Conseil constitutionnel"
+  },
+  {
+   "ref": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-1 à 23-7",
+   "note": "Procédure de la question prioritaire de constitutionnalité"
+  },
+  {
+   "ref": "TFUE, art. 288",
+   "note": "Règlement directement applicable, directive à transposer"
+  },
+  {
+   "ref": "Cass. ch. mixte, 24 mai 1975, n° 73-13.556 (Jacques Vabre) ; CE, ass., 20 octobre 1989, n° 108243 (Nicolo) ; Cons. const., n° 74-54 DC du 15 janvier 1975",
+   "note": "Contrôle de conventionnalité par le juge ordinaire, et non par le Conseil constitutionnel"
+  },
+  {
+   "ref": "CE, 13 juin 2018, n° 408325 ; Cons. const., n° 2020-843 QPC du 28 mai 2020 ; loi n° 2018-287 du 20 avril 2018",
+   "note": "Valeur de l'ordonnance avant et après ratification ; ratification de l'ordonnance n° 2016-131"
+  },
+  {
+   "ref": "Cass. 3e civ., 4 octobre 2018, n° 17-24.287 ; CPC, art. 604 et 605 ; C. civ., art. 1360 ; C. trav., art. L. 2251-1",
+   "note": "Application de la loi dans le temps ; rôle du pourvoi en cassation ; renvoi à l'usage ; sources négociées et ordre public"
+  },
+  {
+   "ref": "Arrêté du 4 août 2025, annexe 1 (UE 1, point 1.1) ; guide pédagogique DCG, juillet 2026",
+   "note": "Programme et limites du chapitre"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Deux commerçants veulent écarter, par une clause de leur contrat, une loi qui intéresse l'ordre public. Selon l'article 6 du Code civil :",
+   "opts": [
+    "Ils ne peuvent pas y déroger par une convention particulière",
+    "Ils le peuvent si la clause est rédigée par écrit",
+    "Ils le peuvent puisqu'ils sont tous deux professionnels",
+    "Ils le peuvent si l'acte est reçu par un notaire"
+   ],
+   "a": 0,
+   "why": "L'article 6 du Code civil dispose qu'« on ne peut déroger, par des conventions particulières, aux lois qui intéressent l'ordre public et les bonnes mœurs » : ces lois sont impératives. L'interdiction tient à la nature de la loi, pas à la forme de l'acte ni à la qualité des parties : ni l'écrit, ni la qualité de professionnel, ni l'intervention d'un notaire ne la lèvent.",
+   "src": "C. civ., art. 6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Selon l'article 34 de la Constitution, à quelle norme est réservée la fixation des règles concernant le taux des impositions de toutes natures ?",
+   "opts": [
+    "À la loi votée par le Parlement",
+    "Au règlement autonome de l'article 37",
+    "Aux conventions collectives de branche",
+    "À la jurisprudence de la Cour de cassation"
+   ],
+   "a": 0,
+   "why": "L'article 34 de la Constitution réserve à la loi les règles concernant l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures. Le règlement autonome de l'article 37 ne couvre que les matières qui ne relèvent pas du domaine de la loi. Ni une convention collective ni la jurisprudence ne figurent parmi les normes que l'article 34 désigne.",
+   "src": "Constitution du 4 octobre 1958, art. 34",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Saisi d'un litige entre deux entreprises, un juge constate qu'aucun texte ne règle précisément la question posée. Que doit-il faire ?",
+   "opts": [
+    "Trancher le litige malgré le silence de la loi",
+    "Renvoyer les parties devant le législateur",
+    "Surseoir à statuer jusqu'au vote d'une loi",
+    "Saisir le Conseil constitutionnel d'une QPC"
+   ],
+   "a": 0,
+   "why": "Selon l'article 4 du Code civil, le juge qui refuse de juger sous prétexte du silence, de l'obscurité ou de l'insuffisance de la loi peut être poursuivi pour déni de justice : il doit trancher. Il ne peut donc ni renvoyer les parties devant le législateur ni attendre une loi nouvelle. La QPC ne comble pas un vide : elle conteste une disposition législative existante au regard des droits et libertés que la Constitution garantit (art. 61-1).",
+   "src": "C. civ., art. 4",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Mme Roux, cliente du cabinet, a lu qu'une directive de l'Union européenne renforce ses droits. Où faut-il en principe chercher la règle applicable à sa situation ?",
+   "opts": [
+    "Dans le texte national de transposition de la directive",
+    "Dans la seule directive, applicable comme un règlement",
+    "Dans les décisions du Conseil constitutionnel",
+    "Dans les usages professionnels du secteur concerné"
+   ],
+   "a": 0,
+   "why": "Selon l'article 288 du TFUE, la directive lie l'État membre destinataire quant au résultat à atteindre, mais lui laisse le choix de la forme et des moyens : elle doit être transposée en droit national. Dans un cas pratique, la règle applicable au particulier se trouve donc en principe dans le texte national de transposition. C'est le règlement, et non la directive, qui est directement applicable dans tout État membre ; le Conseil constitutionnel et les usages ne sont pas le siège de cette règle.",
+   "src": "TFUE, art. 288",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Selon l'article 288 du TFUE, quelles caractéristiques sont celles du règlement de l'Union européenne ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il doit être transposé par un texte national",
+    "Il a une portée générale",
+    "Il ne lie l'État que quant au résultat à atteindre",
+    "Il est obligatoire dans tous ses éléments",
+    "Il est directement applicable dans tout État membre"
+   ],
+   "a": [
+    1,
+    3,
+    4
+   ],
+   "why": "L'article 288 du TFUE dispose que « le règlement a une portée générale. Il est obligatoire dans tous ses éléments et il est directement applicable dans tout État membre ». La transposition et l'obligation limitée au résultat à atteindre caractérisent la directive, qui lie l'État quant au résultat en lui laissant le choix de la forme et des moyens.",
+   "src": "TFUE, art. 288",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Une loi vient d'être définitivement adoptée et n'est pas encore promulguée. 47 députés et 18 sénateurs ont signé un recours commun pour la déférer au Conseil constitutionnel ; aucune autre autorité ne compte le saisir. Combien de députés supplémentaires, au minimum, doivent signer pour que la saisine puisse être faite par les députés (nombre entier) ?",
+   "a": 13,
+   "unit": "députés",
+   "tol": 0,
+   "why": "L'article 61 de la Constitution ouvre la saisine à « soixante députés ou soixante sénateurs » : le seuil s'apprécie dans chaque assemblée, les signatures des députés et des sénateurs ne s'additionnent pas. Il manque donc 60 − 47 = 13 députés. Les 18 sénateurs ne comptent pas pour atteindre le seuil des députés ; pour saisir seuls, ils devraient eux-mêmes être soixante.",
+   "src": "Constitution du 4 octobre 1958, art. 61",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Une convention collective de branche accorde aux salariés une prime que le Code du travail ne prévoit pas et, dans une autre clause, écarte une disposition légale d'ordre public. Au regard de l'article L. 2251-1 du Code du travail :",
+   "opts": [
+    "La prime est admise ; la dérogation à l'ordre public ne l'est pas",
+    "Les deux clauses sont admises, la convention étant une source négociée",
+    "Les deux clauses sont interdites, la convention ne pouvant s'écarter de la loi",
+    "La prime est interdite ; la dérogation est admise si les syndicats l'ont signée"
+   ],
+   "a": 0,
+   "why": "L'article L. 2251-1 du Code du travail dispose qu'une convention ou un accord « peut comporter des stipulations plus favorables aux salariés que les dispositions légales en vigueur » mais qu'ils « ne peuvent déroger aux dispositions qui revêtent un caractère d'ordre public ». La prime, plus favorable, est donc admise ; la clause qui écarte une disposition d'ordre public ne l'est pas, signature syndicale ou non. Une source négociée n'est ni libre de tout, ni privée de toute marge.",
+   "src": "C. trav., art. L. 2251-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le contrat de fourniture conclu en 2026 par la SARL Ferval stipule que le fournisseur « n'est pas tenu d'agir de bonne foi » dans l'exécution du contrat. Cette clause peut-elle écarter l'exigence de bonne foi ?",
+   "opts": [
+    "Oui, car le droit des contrats est en principe supplétif",
+    "Non, car l'article 1104 du Code civil est d'ordre public",
+    "Oui, car les deux parties sont des professionnels",
+    "Oui, si la clause a été signée séparément du contrat"
+   ],
+   "a": 1,
+   "why": "L'article 1104 du Code civil impose que les contrats soient négociés, formés et exécutés de bonne foi et déclare cette disposition d'ordre public. Or l'article 6 interdit de déroger par des conventions particulières aux lois d'ordre public. Le caractère en principe supplétif du droit des contrats ne joue pas ici, puisque le texte lui-même exclut toute dérogation ; la qualité de professionnel ou une signature séparée n'y change rien.",
+   "src": "C. civ., art. 1104 et 6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Le contrat de prestation entre la SAS Ondine et son client écarte une disposition du Code civil relative aux contrats, qui ne précise pas qu'elle est d'ordre public et ne touche pas à l'ordre public. Selon le rapport au Président de la République sur l'ordonnance n° 2016-131, cette disposition est en principe :",
+   "opts": [
+    "Supplétive de volonté : les parties pouvaient l'écarter",
+    "Impérative : toute disposition du Code civil s'impose",
+    "Impérative entre professionnels, supplétive sinon",
+    "Dépourvue de valeur, faute de ratification de l'ordonnance"
+   ],
+   "a": 0,
+   "why": "Le rapport au Président de la République relatif à l'ordonnance n° 2016-131 indique que les dispositions du droit des contrats sont en principe supplétives de volonté, sauf mention contraire, ce caractère se déduisant des articles 1102 et 1103 du Code civil. Les parties pouvaient donc l'écarter, dans les limites de l'ordre public (art. 1102). Le rapport ne distingue pas selon la qualité des parties, et l'ordonnance a été ratifiée par la loi n° 2018-287 du 20 avril 2018.",
+   "src": "C. civ., art. 1102 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Un tribunal termine son jugement par cette phrase : « Désormais, tous les contrats de franchise de la région devront comporter une clause de non-concurrence d'un an. » Que faut-il en penser ?",
+   "opts": [
+    "Elle est interdite : le juge ne statue pas par disposition générale",
+    "Elle est valable, car le juge doit combler le silence de la loi",
+    "Elle est valable dès lors que le jugement est confirmé en appel",
+    "Elle s'impose à tous les tribunaux du ressort de la cour d'appel"
+   ],
+   "a": 0,
+   "why": "L'article 5 du Code civil défend aux juges de prononcer par voie de disposition générale et réglementaire sur les causes qui leur sont soumises : le juge tranche le litige particulier dont il est saisi, il ne légifère pas. L'obligation de juger de l'article 4 impose de trancher ce litige, pas d'édicter une règle pour tous les contrats de la région. Une confirmation en appel ne transforme pas le jugement en règle générale, et aucun texte ne fait d'un jugement une règle obligatoire pour les autres tribunaux.",
+   "src": "C. civ., art. 5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Une loi est publiée au Journal officiel. Selon l'article 1er du Code civil, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle entre en vigueur le jour de son vote définitif par le Parlement",
+    "Si elle ne fixe aucune date, elle entre en vigueur le lendemain de sa publication",
+    "L'article 1er régit aussi l'entrée en vigueur des actes individuels",
+    "Ses dispositions qui nécessitent des mesures d'application attendent l'entrée en vigueur de ces mesures",
+    "En cas d'urgence, elle entre en vigueur dès sa publication si le décret de promulgation le prescrit"
+   ],
+   "a": [
+    1,
+    3,
+    4
+   ],
+   "why": "L'article 1er du Code civil prévoit que les lois entrent en vigueur à la date qu'elles fixent ou, à défaut, le lendemain de leur publication, sauf pour les dispositions dont l'exécution nécessite des mesures d'application, qui n'entrent en vigueur qu'avec ces mesures. En cas d'urgence, entrent en vigueur dès leur publication les lois dont le décret de promulgation le prescrit. Le vote ne suffit pas : l'entrée en vigueur se calcule à partir de la publication. Enfin, l'article 1er précise qu'il ne s'applique pas aux actes individuels.",
+   "src": "C. civ., art. 1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Une loi est publiée au Journal officiel le 30 avril 2026. Elle prévoit qu'elle « entre en vigueur le 1er juillet 2026 ». Combien de jours après la date à laquelle elle serait entrée en vigueur si elle n'avait fixé aucune date entre-t-elle en vigueur (nombre entier) ?",
+   "a": 61,
+   "unit": "jours",
+   "tol": 0,
+   "why": "Selon l'article 1er du Code civil, la loi entre en vigueur à la date qu'elle fixe ou, à défaut, le lendemain de sa publication. Sans date fixée, elle serait entrée en vigueur le 1er mai 2026. Du 1er mai au 1er juillet 2026 : 31 jours (mai) + 30 jours (juin) = 61 jours.",
+   "src": "C. civ., art. 1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque norme selon sa place dans la hiérarchie des normes.",
+   "cats": [
+    "Norme constitutionnelle",
+    "Traité (autorité supérieure à celle des lois)",
+    "Norme de valeur législative",
+    "Acte de forme réglementaire"
+   ],
+   "items": [
+    [
+     "La Constitution du 4 octobre 1958",
+     0
+    ],
+    [
+     "La loi constitutionnelle n° 2024-200 du 8 mars 2024, qui a modifié l'article 34",
+     0
+    ],
+    [
+     "Un traité régulièrement ratifié et publié, appliqué par l'autre partie",
+     1
+    ],
+    [
+     "Une loi votée par le Parlement et promulguée",
+     2
+    ],
+    [
+     "L'ordonnance n° 2016-131, ratifiée par la loi n° 2018-287",
+     2
+    ],
+    [
+     "Une ordonnance publiée, non ratifiée, le délai d'habilitation courant encore",
+     3
+    ],
+    [
+     "Un décret pris dans une matière étrangère au domaine de l'article 34",
+     3
+    ]
+   ],
+   "why": "La Constitution et la loi constitutionnelle qui la révise (n° 2024-200, qui a inséré un alinéa à l'article 34) sont des normes constitutionnelles. Un traité régulièrement ratifié et publié a, sous réserve de son application par l'autre partie, une autorité supérieure à celle des lois (art. 55). Une ordonnance ratifiée a valeur législative à compter de sa signature ; non ratifiée, pendant le délai d'habilitation, c'est un acte de forme réglementaire (CE, 13 juin 2018, n° 408325). Le décret pris hors du domaine de la loi est un règlement autonome (art. 37).",
+   "src": "Constitution du 4 octobre 1958, art. 34, 37, 38 et 55 ; CE, 13 juin 2018, n° 408325",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "À propos des ordonnances de l'article 38 de la Constitution, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elles sont prises par le Gouvernement, autorisé par une loi d'habilitation",
+    "Depuis 2008, elles peuvent être ratifiées implicitement",
+    "Elles entrent en vigueur dès leur publication",
+    "Une fois ratifiées, elles conservent une valeur réglementaire",
+    "Elles deviennent caduques si le projet de loi de ratification n'est pas déposé à temps"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "L'article 38 de la Constitution permet au Gouvernement, autorisé par une loi d'habilitation, de prendre des ordonnances qui entrent en vigueur dès leur publication ; elles deviennent caduques si le projet de loi de ratification n'est pas déposé avant la date fixée par la loi d'habilitation. Depuis la révision du 23 juillet 2008, elles « ne peuvent être ratifiées que de manière expresse » : la ratification implicite n'était admise qu'auparavant. Une fois ratifiée, l'ordonnance acquiert valeur législative (CE, 13 juin 2018, n° 408325).",
+   "src": "Constitution du 4 octobre 1958, art. 38",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "L'ordonnance n° 2016-131 du 10 février 2016, qui a réformé le droit des contrats, a été ratifiée par la loi n° 2018-287 du 20 avril 2018. Quelle valeur a-t-elle ?",
+   "opts": [
+    "Une valeur législative, à compter de sa signature",
+    "Une valeur réglementaire, sous le contrôle du juge administratif",
+    "Une valeur constitutionnelle, car elle réforme le Code civil",
+    "Une valeur supérieure aux traités, car elle leur est postérieure"
+   ],
+   "a": 0,
+   "why": "Selon le Conseil d'État, « dès lors que sa ratification est opérée par le législateur, une ordonnance acquiert valeur législative à compter de sa signature » (CE, 13 juin 2018, n° 408325). La valeur réglementaire et le contrôle du juge administratif ne concernent que l'ordonnance non ratifiée. Réformer le Code civil ne donne pas valeur constitutionnelle, et une norme législative, même récente, reste soumise aux traités (Constitution, art. 55).",
+   "src": "CE, 13 juin 2018, n° 408325 ; Constitution, art. 38",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Une ordonnance vient d'être publiée ; elle n'est pas ratifiée et le délai d'habilitation court encore. La SAS Vellan veut en contester la légalité. Quel juge en connaît ?",
+   "opts": [
+    "Le juge administratif, l'acte étant de forme réglementaire",
+    "Le Conseil constitutionnel, saisi par soixante sénateurs",
+    "Le juge judiciaire, en premier et dernier ressort",
+    "Aucun : l'ordonnance a force de loi dès sa publication"
+   ],
+   "a": 0,
+   "why": "Tant qu'elle n'est pas ratifiée, l'ordonnance est un acte de forme réglementaire, soumis au contrôle du juge administratif (CE, 13 juin 2018, n° 408325). La saisine par soixante sénateurs (art. 61) vise une loi avant sa promulgation, pas une ordonnance publiée. L'ordonnance n'acquiert valeur législative qu'avec sa ratification, et la jurisprudence désigne le juge administratif, non le juge judiciaire.",
+   "src": "CE, 13 juin 2018, n° 408325 ; Constitution, art. 38",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Devant le juge judiciaire, la société Kerlan invoque un traité régulièrement ratifié, publié et appliqué par les autres parties, contraire à une loi votée après ce traité. Selon la jurisprudence Jacques Vabre, que fait le juge ?",
+   "opts": [
+    "Il applique la loi, plus récente que le traité",
+    "Il fait prévaloir le traité sur la loi, même postérieure",
+    "Il transmet une QPC sur la contrariété au traité",
+    "Il sursoit à statuer jusqu'à l'abrogation de la loi"
+   ],
+   "a": 1,
+   "why": "Par l'arrêt Jacques Vabre (Cass. ch. mixte, 24 mai 1975, n° 73-13.556), la Cour de cassation juge que le traité a, en vertu de l'article 55 de la Constitution, une autorité supérieure à celle de la loi et l'emporte sur la loi interne, même postérieure : l'ordre chronologique ne joue pas. La QPC ne sert pas à faire juger la contrariété à un traité, elle porte sur les droits et libertés que la Constitution garantit (art. 61-1). Le juge n'a pas à attendre une abrogation pour trancher.",
+   "src": "Cass. ch. mixte, 24 mai 1975, n° 73-13.556 ; Constitution, art. 55",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Saisi au titre de l'article 61 par soixante députés, le Conseil constitutionnel est invité à déclarer une loi contraire à un traité. Que décide-t-il, selon sa jurisprudence constante depuis 1975 ?",
+   "opts": [
+    "Il déclare la loi contraire à la Constitution, l'article 55 étant méconnu",
+    "Il n'examine pas la conformité de la loi au traité",
+    "Il renvoie l'examen de la loi au Conseil d'État",
+    "Il suspend la promulgation jusqu'à la révision du traité"
+   ],
+   "a": 1,
+   "why": "Dans sa décision n° 74-54 DC du 15 janvier 1975, le Conseil constitutionnel juge qu'« une loi contraire à un traité ne serait pas, pour autant, contraire à la Constitution » : saisi au titre de l'article 61, il n'examine donc pas la conformité de la loi au traité. Il ne déclare pas la loi inconstitutionnelle pour ce motif et ne renvoie l'examen à aucune juridiction. Ce contrôle de conventionnalité revient aux juges ordinaires (Jacques Vabre, 1975 ; Nicolo, 1989).",
+   "src": "Cons. const., décision n° 74-54 DC du 15 janvier 1975",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "nature": "notion",
+   "q": "Classez chaque contrôle selon l'autorité qui l'exerce.",
+   "cats": [
+    "Conseil constitutionnel",
+    "Juge judiciaire (Cour de cassation)",
+    "Juge administratif (Conseil d'État)"
+   ],
+   "items": [
+    [
+     "Examen, avant promulgation, d'une loi déférée par soixante députés",
+     0
+    ],
+    [
+     "Examen d'une QPC renvoyée par le Conseil d'État ou la Cour de cassation",
+     0
+    ],
+    [
+     "Arrêt Jacques Vabre (1975) : primauté du traité de Rome sur une loi postérieure",
+     1
+    ],
+    [
+     "Arrêt Nicolo (1989) : compatibilité d'une loi postérieure avec un traité",
+     2
+    ],
+    [
+     "Recours contre une ordonnance non ratifiée, pendant le délai d'habilitation",
+     2
+    ]
+   ],
+   "why": "Le Conseil constitutionnel contrôle la conformité des lois à la Constitution, avant promulgation (art. 61) ou sur QPC renvoyée par le Conseil d'État ou la Cour de cassation (art. 61-1). Il ne contrôle pas leur conformité aux traités (n° 74-54 DC) : ce contrôle revient au juge judiciaire (Cass. ch. mixte, 24 mai 1975, Jacques Vabre) et au juge administratif (CE, ass., 20 octobre 1989, Nicolo). L'ordonnance non ratifiée, acte de forme réglementaire, relève du juge administratif (CE, 13 juin 2018, n° 408325).",
+   "src": "Constitution, art. 61 et 61-1 ; Cons. const., n° 74-54 DC ; Cass. ch. mixte, 24 mai 1975 ; CE, ass., 20 octobre 1989 ; CE, 13 juin 2018, n° 408325",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Qui peut déférer une loi au Conseil constitutionnel avant sa promulgation, selon l'article 61 de la Constitution ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le Président de la République",
+    "Tout justiciable partie à un procès",
+    "Le Premier ministre",
+    "Le premier président de la Cour de cassation",
+    "Le président du Sénat",
+    "Soixante députés"
+   ],
+   "a": [
+    0,
+    2,
+    4,
+    5
+   ],
+   "why": "L'article 61 de la Constitution permet de déférer une loi au Conseil constitutionnel avant sa promulgation par le Président de la République, le Premier ministre, le président de l'Assemblée nationale, le président du Sénat, ou soixante députés ou soixante sénateurs. Le justiciable ne dispose pas de cette voie : il peut seulement soulever une QPC à l'occasion d'une instance en cours (art. 61-1). La Cour de cassation n'intervient qu'au stade du filtre de la QPC, pas dans la saisine a priori.",
+   "src": "Constitution du 4 octobre 1958, art. 61",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Au cours d'un procès devant le tribunal judiciaire, l'avocat de la SARL Bellane estime qu'une disposition législative applicable au litige porte atteinte à un droit garanti par la Constitution. Comment doit-il procéder ?",
+   "opts": [
+    "Présenter le moyen dans un écrit distinct et motivé",
+    "Saisir directement le Conseil constitutionnel par lettre",
+    "Attendre que le juge soulève d'office la question",
+    "Demander à soixante députés de saisir le Conseil"
+   ],
+   "a": 0,
+   "why": "Selon l'article 23-1 de l'ordonnance n° 58-1067 du 7 novembre 1958, le moyen tiré de l'atteinte d'une disposition législative aux droits et libertés garantis par la Constitution est présenté, à peine d'irrecevabilité, dans un écrit distinct et motivé, et le juge ne peut pas le relever d'office. Le Conseil constitutionnel n'est saisi que sur renvoi du Conseil d'État ou de la Cour de cassation (art. 61-1), pas directement par une partie. La saisine par soixante députés relève du contrôle a priori, avant promulgation.",
+   "src": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-1 ; Constitution, art. 61-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Sur QPC, le Conseil constitutionnel déclare inconstitutionnelle une disposition législative du Code de commerce, sans fixer de date particulière. Quel est l'effet de sa décision ?",
+   "opts": [
+    "La disposition est abrogée à compter de la publication de la décision",
+    "La disposition est réputée n'avoir jamais existé",
+    "La disposition reste applicable jusqu'à son abrogation par le Parlement",
+    "La disposition ne pourra plus être promulguée, mais reste appliquée"
+   ],
+   "a": 0,
+   "why": "Selon l'article 62, alinéa 2, de la Constitution, une disposition déclarée inconstitutionnelle sur le fondement de l'article 61-1 est abrogée à compter de la publication de la décision du Conseil constitutionnel ou d'une date ultérieure fixée par cette décision : sans date particulière, l'abrogation joue dès la publication. Le texte parle d'abrogation, non d'une disparition depuis l'origine, et n'attend aucune intervention du Parlement. L'interdiction de promulguer vise le contrôle a priori (art. 62, al. 1).",
+   "src": "Constitution du 4 octobre 1958, art. 62",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "La SARL Brenne a conclu un contrat en mars 2015. En 2026, elle reproche à son cocontractant un manque de bonne foi lors de la formation du contrat et invoque l'article 1104 du Code civil dans sa rédaction issue de l'ordonnance n° 2016-131, en vigueur depuis le 1er octobre 2016. Quelle loi s'applique à ce contrat ?",
+   "opts": [
+    "La loi ancienne, le contrat ayant été conclu avant le 1er octobre 2016",
+    "L'article 1104 nouveau, parce qu'il est d'ordre public",
+    "L'article 1104 nouveau, parce que le litige naît en 2026",
+    "L'article 1104 nouveau, l'ordonnance ayant été ratifiée en 2018"
+   ],
+   "a": 0,
+   "why": "Les contrats conclus avant le 1er octobre 2016, date d'entrée en vigueur de l'ordonnance n° 2016-131, demeurent soumis à la loi ancienne, y compris pour leurs effets légaux et pour les dispositions d'ordre public. La Cour de cassation refuse ainsi d'appliquer l'article 1104 nouveau à des faits antérieurs au 1er octobre 2016 (Cass. 3e civ., 4 octobre 2018, n° 17-24.287). Ni le caractère d'ordre public du texte, ni la date du litige, ni la ratification de 2018 ne rendent la loi nouvelle applicable à ce contrat.",
+   "src": "Ordonnance n° 2016-131 du 10 février 2016 ; Cass. 3e civ., 4 octobre 2018, n° 17-24.287",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "nature": "calcul",
+   "q": "Une loi est publiée au Journal officiel le 10 mars 2026 ; elle ne fixe aucune date d'entrée en vigueur. Son article 5 ne peut s'appliquer qu'avec un décret d'application, publié au Journal officiel le 14 avril 2026 sans date d'entrée en vigueur. Combien de jours séparent l'entrée en vigueur des autres articles de la loi de celle de l'article 5 (nombre entier) ?",
+   "a": 35,
+   "unit": "jours",
+   "tol": 0,
+   "why": "Selon l'article 1er du Code civil, la loi qui ne fixe pas de date entre en vigueur le lendemain de sa publication, soit le 11 mars 2026 pour les articles qui n'attendent rien. L'article 5, qui nécessite des mesures d'application, n'entre en vigueur qu'avec elles : le décret, publié au Journal officiel sans date, entre en vigueur le lendemain, le 15 avril 2026. Du 11 mars au 15 avril : 20 jours (fin mars) + 15 jours = 35 jours.",
+   "src": "C. civ., art. 1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Selon le guide de légistique publié sur Légifrance, le législateur peut-il adopter une disposition rétroactive, malgré l'article 2 du Code civil ?",
+   "opts": [
+    "Oui, pour un motif d'intérêt général suffisant et dans certaines limites",
+    "Oui, librement, sans avoir à justifier d'aucun motif particulier",
+    "Non, jamais : l'article 2 du Code civil s'impose au législateur lui-même",
+    "Oui, mais seulement avec l'accord préalable du Conseil constitutionnel"
+   ],
+   "a": 0,
+   "why": "L'article 2 du Code civil dispose que « la loi ne dispose que pour l'avenir ; elle n'a point d'effet rétroactif ». Selon le guide de légistique (fiche 1.2.2), le législateur peut écarter ce principe, mais seulement pour un motif d'intérêt général suffisant, et la non-rétroactivité a, dans certaines matières, une valeur constitutionnelle. La rétroactivité n'est donc ni interdite en toute hypothèse, ni libre ; le guide ne la subordonne pas à un accord préalable du Conseil constitutionnel.",
+   "src": "C. civ., art. 2 ; guide de légistique, fiche 1.2.2",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "Une loi de 1975 contient une disposition qui relève en réalité du domaine réglementaire. Le Gouvernement veut la modifier par décret. Que faut-il, selon l'article 37 de la Constitution ?",
+   "opts": [
+    "Un décret après avis du Conseil d'État, la disposition étant déclarée réglementaire par le Conseil constitutionnel",
+    "Un décret pris après avis du Conseil d'État, sans décision préalable du Conseil constitutionnel",
+    "Un décret simple, sans avis du Conseil d'État ni décision préalable du Conseil constitutionnel",
+    "Une ordonnance de l'article 38, prise par le Gouvernement sans loi d'habilitation préalable"
+   ],
+   "a": 0,
+   "why": "L'article 37, alinéa 2, de la Constitution permet de modifier par décret pris après avis du Conseil d'État un texte de forme législative intervenu en matière réglementaire. S'il est intervenu après l'entrée en vigueur de la Constitution de 1958, comme cette loi de 1975, il faut en outre que le Conseil constitutionnel ait déclaré qu'il a un caractère réglementaire : l'avis du Conseil d'État seul ne suffit que pour un texte antérieur à 1958. Un décret simple ne suffit pas, et une ordonnance suppose toujours une loi d'habilitation (art. 38).",
+   "src": "Constitution du 4 octobre 1958, art. 37, al. 2",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "nature": "notion",
+   "q": "Saisi d'une question prioritaire de constitutionnalité présentée dans un écrit distinct et motivé, le juge du fond la transmet si plusieurs conditions sont réunies. Lesquelles ? (plusieurs réponses possibles)",
+   "opts": [
+    "La disposition contestée est un décret d'application de la loi",
+    "La disposition contestée est applicable au litige ou à la procédure, ou fonde les poursuites",
+    "La question a d'abord été soumise au Parlement",
+    "La disposition n'a pas déjà été déclarée conforme par le Conseil constitutionnel, sauf changement des circonstances",
+    "La question n'est pas dépourvue de caractère sérieux"
+   ],
+   "a": [
+    1,
+    3,
+    4
+   ],
+   "why": "Selon l'article 23-2 de l'ordonnance n° 58-1067, la juridiction transmet la question si la disposition contestée est applicable au litige ou à la procédure, ou constitue le fondement des poursuites, si elle n'a pas déjà été déclarée conforme à la Constitution dans les motifs et le dispositif d'une décision du Conseil constitutionnel, sauf changement des circonstances, et si la question n'est pas dépourvue de caractère sérieux. La QPC vise une disposition législative, non un décret (Constitution, art. 61-1). Aucun passage préalable devant le Parlement n'est exigé.",
+   "src": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-2 ; Constitution, art. 61-1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "nature": "notion",
+   "q": "La Cour de cassation a reçu le 6 janvier 2026 une QPC transmise par une cour d'appel. Le 15 avril 2026, elle ne s'est toujours pas prononcée sur le renvoi. Que devient la question ?",
+   "opts": [
+    "Elle est réputée rejetée et le procès reprend",
+    "Elle est transmise au Conseil constitutionnel",
+    "La partie doit saisir elle-même le Conseil constitutionnel",
+    "La cour d'appel doit statuer de nouveau sur la transmission"
+   ],
+   "a": 1,
+   "why": "Le Conseil d'État ou la Cour de cassation se prononce sur le renvoi dans un délai de trois mois à compter de la réception de la transmission (ordonnance n° 58-1067, art. 23-4) : reçue le 6 janvier 2026, la question devait être tranchée début avril 2026. À défaut de décision dans ce délai, la question est transmise au Conseil constitutionnel (art. 23-7). Le silence ne vaut donc pas rejet, la partie n'a pas à saisir elle-même le Conseil constitutionnel, et la cour d'appel n'a pas à statuer de nouveau.",
+   "src": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-4 et 23-7",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

@@ -1,0 +1,379 @@
+{
+ "id": "ue1-01",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; guide pédagogique DCG de juillet 2026 ; arrêté du 13 février 2019 pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Bloc 1 « Appréhender le contexte juridique en vigueur en droit privé » (35 heures)",
+   "« 1.1 Rechercher les règles applicables à la situation du client » (15 heures)",
+   "Règle de droit et ses caractères : limiter l'étude à la distinction règle de droit et morale pour comprendre l'utilité de la règle de droit",
+   "Sources du droit : loi impérative et loi supplétive, bloc réglementaire ; sources indirectes : usages professionnels, jurisprudence, doctrine",
+   "« Résoudre un conflit de normes » : hiérarchie des normes, contrôle de constitutionnalité de la loi, contrôle de conventionnalité de la loi ; limite : placer une règle dans la hiérarchie",
+   "« Procédure d'élaboration de la loi » : limiter l'étude à la reconnaissance d'une source de droit"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. civ., art. 1",
+   "objet": "Entrée en vigueur des lois et des actes administratifs publiés au Journal officiel ; report en cas de mesures d'application ; entrée en vigueur immédiate en cas d'urgence",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419280",
+   "version": "en vigueur depuis le 1er juin 2004 (rédaction issue de l'ordonnance n° 2004-164 du 20 février 2004)"
+  },
+  {
+   "ref": "C. civ., art. 2",
+   "objet": "Non-rétroactivité de la loi",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419281",
+   "version": "en vigueur depuis le 21 mars 1804 (rédaction d'origine)"
+  },
+  {
+   "ref": "C. civ., art. 4 et 5",
+   "objet": "Obligation de juger (déni de justice) ; interdiction de statuer par voie de disposition générale et réglementaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419283",
+   "version": "en vigueur depuis le 21 mars 1804 (rédaction d'origine) ; le lien renvoie à l'art. 4"
+  },
+  {
+   "ref": "C. civ., art. 6",
+   "objet": "Lois qui intéressent l'ordre public et les bonnes mœurs : interdiction d'y déroger par des conventions particulières",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419285",
+   "version": "en vigueur (rédaction d'origine)"
+  },
+  {
+   "ref": "C. civ., art. 1102, 1104 et 1162 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016",
+   "objet": "Liberté contractuelle et ordre public ; bonne foi déclarée d'ordre public ; contrat et ordre public ; caractère en principe supplétif du droit des contrats",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539",
+   "version": "articles en vigueur depuis le 1er octobre 2016 (ordonnance n° 2016-131) ; le lien renvoie au rapport"
+  },
+  {
+   "ref": "Constitution du 4 octobre 1958, art. 34, 37 et 38 (titre V)",
+   "objet": "Domaine de la loi ; domaine réglementaire et modification par décret des textes de forme législative ; ordonnances (habilitation, caducité, ratification expresse)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/",
+   "version": "art. 34 : version en vigueur depuis le 10 mars 2024 (loi constitutionnelle n° 2024-200 du 8 mars 2024) ; art. 37 : en vigueur depuis 1958 ; art. 38 : rédaction issue de la révision constitutionnelle du 23 juillet 2008 (ratification expresse)"
+  },
+  {
+   "ref": "Constitution du 4 octobre 1958, art. 55, 61, 61-1 et 62",
+   "objet": "Autorité des traités ; contrôle de constitutionnalité a priori ; question prioritaire de constitutionnalité ; effets des décisions du Conseil constitutionnel",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+   "version": "texte intégral en vigueur publié par le Conseil constitutionnel"
+  },
+  {
+   "ref": "Ordonnance n° 58-1067 du 7 novembre 1958 portant loi organique sur le Conseil constitutionnel, art. 23-1 à 23-12",
+   "objet": "Procédure de la question prioritaire de constitutionnalité : écrit distinct, conditions de transmission, filtre du Conseil d'État et de la Cour de cassation",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000705065/LEGISCTA000021448078/",
+   "version": "chapitre II bis en vigueur"
+  },
+  {
+   "ref": "TFUE, art. 288",
+   "objet": "Actes de l'Union européenne : règlement directement applicable, directive à transposer",
+   "url": null,
+   "version": "version consolidée publiée au JOUE C 202 du 7 juin 2016 (texte sur EUR-Lex, CELEX 12016E288)"
+  },
+  {
+   "ref": "Cass. ch. mixte, 24 mai 1975, n° 73-13.556 (Société des cafés Jacques Vabre)",
+   "objet": "Le juge judiciaire fait prévaloir le traité sur la loi interne, même postérieure",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006994625/",
+   "version": "arrêt publié au bulletin"
+  },
+  {
+   "ref": "CE, ass., 20 octobre 1989, n° 108243 (Nicolo)",
+   "objet": "Le juge administratif contrôle la compatibilité d'une loi, même postérieure, avec un traité",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007742504/",
+   "version": "décision publiée au recueil Lebon"
+  },
+  {
+   "ref": "Cons. const., décision n° 74-54 DC du 15 janvier 1975 (loi relative à l'interruption volontaire de la grossesse)",
+   "objet": "Le Conseil constitutionnel ne contrôle pas la conformité des lois aux traités",
+   "url": "https://www.legifrance.gouv.fr/cons/id/CONSTEXT000017665674/",
+   "version": "décision de conformité ; jurisprudence constante depuis 1975"
+  },
+  {
+   "ref": "CE, 13 juin 2018, n° 408325",
+   "objet": "Valeur de l'ordonnance avant et après ratification",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000037059321/",
+   "version": "5e et 6e chambres réunies"
+  },
+  {
+   "ref": "Loi constitutionnelle n° 2024-200 du 8 mars 2024 relative à la liberté de recourir à l'interruption volontaire de grossesse",
+   "objet": "Insertion d'un alinéa à l'article 34 de la Constitution",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000049251464",
+   "version": "article unique ; version de l'art. 34 en vigueur depuis le 10 mars 2024"
+  },
+  {
+   "ref": "Guide de légistique (Légifrance), fiche 1.2.2 « Application dans le temps »",
+   "objet": "Portée de l'article 2 du Code civil et conditions des dispositions rétroactives",
+   "url": "https://www.legifrance.gouv.fr/contenu/Media/files/autour-de-la-loi/guide-de-legistique/2023_12_28_fiche_1.2.2_application_dans_le_temps.pdf",
+   "version": "fiche publiée sur Légifrance (fichier daté du 28 décembre 2023)"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Loi</b> : la Constitution fixe son domaine. L'article 34 réserve à la loi les règles concernant notamment les droits civiques et les garanties fondamentales accordées aux citoyens, la nationalité et la capacité des personnes, les crimes et délits et les peines applicables, l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures. La loi détermine aussi les principes fondamentaux de plusieurs matières, dont le droit du travail.",
+     "src": "Constitution du 4 octobre 1958, art. 34",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Règlement autonome</b> : tout ce qui ne relève pas du domaine de la loi a un caractère réglementaire. La Constitution reconnaît ainsi au pouvoir exécutif un domaine réglementaire propre, dans lequel il édicte des règles sans loi préalable.",
+     "cite": "« Les matières autres que celles qui sont du domaine de la loi ont un caractère réglementaire. »",
+     "src": "Constitution du 4 octobre 1958, art. 37, al. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance</b> : mesure prise par le Gouvernement, autorisé par une loi d'habilitation votée par le Parlement, dans des matières qui relèvent normalement du domaine de la loi et pendant un délai limité. Elle entre en vigueur dès sa publication.",
+     "src": "Constitution du 4 octobre 1958, art. 38",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019241024",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Règlement et directive de l'Union européenne</b> : le règlement a une portée générale, il est obligatoire dans tous ses éléments et directement applicable dans tout État membre. La directive lie l'État membre destinataire quant au résultat à atteindre, mais lui laisse le choix de la forme et des moyens : elle doit être transposée en droit national.",
+     "cite": "« Le règlement a une portée générale. Il est obligatoire dans tous ses éléments et il est directement applicable dans tout État membre. »",
+     "src": "TFUE, art. 288",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi impérative (d'ordre public) et loi supplétive</b> : les parties ne peuvent pas écarter par leurs conventions une loi qui intéresse l'ordre public ou les bonnes mœurs ; elle est impérative. A contrario, les règles qui n'intéressent pas l'ordre public peuvent être écartées par les conventions des parties : elles sont dites supplétives de volonté.",
+     "cite": "« On ne peut déroger, par des conventions particulières, aux lois qui intéressent l'ordre public et les bonnes mœurs. »",
+     "src": "C. civ., art. 6",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419285",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Question prioritaire de constitutionnalité (QPC)</b> : moyen soulevé à l'occasion d'une instance en cours devant une juridiction, par lequel une partie soutient qu'une disposition législative porte atteinte aux droits et libertés que la Constitution garantit. Le Conseil constitutionnel en est saisi sur renvoi du Conseil d'État ou de la Cour de cassation.",
+     "src": "Constitution du 4 octobre 1958, art. 61-1",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Entrée en vigueur</b> : les lois et, lorsqu'ils sont publiés au Journal officiel, les actes administratifs entrent en vigueur à la date qu'ils fixent ou, à défaut, le lendemain de leur publication. Les dispositions dont l'exécution nécessite des mesures d'application n'entrent en vigueur qu'à la date d'entrée en vigueur de ces mesures.",
+     "src": "C. civ., art. 1, al. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419280",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Entrée en vigueur immédiate</b> : en cas d'urgence, entrent en vigueur dès leur publication les lois dont le décret de promulgation le prescrit et les actes administratifs pour lesquels le Gouvernement l'ordonne expressément. L'article 1er du Code civil ne s'applique pas aux actes individuels.",
+     "src": "C. civ., art. 1, al. 2 et 3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419280",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Non-rétroactivité</b> : la loi ne dispose que pour l'avenir. Selon le guide de légistique, le législateur peut écarter ce principe de l'article 2, mais dans des limites : la non-rétroactivité a aussi, dans certaines matières, une valeur constitutionnelle, et une disposition rétroactive n'est admise que pour un motif d'intérêt général suffisant.",
+     "cite": "« La loi ne dispose que pour l'avenir ; elle n'a point d'effet rétroactif. »",
+     "src": "C. civ., art. 2 ; guide de légistique, fiche 1.2.2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419281",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Obligation de juger</b> : le juge qui refuse de juger sous prétexte du silence, de l'obscurité ou de l'insuffisance de la loi peut être poursuivi pour déni de justice. Il doit donc trancher le litige même lorsque la loi est muette, obscure ou incomplète.",
+     "src": "C. civ., art. 4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419283",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prohibition des arrêts de règlement</b> : il est défendu aux juges de prononcer par voie de disposition générale et réglementaire sur les causes qui leur sont soumises. Le juge tranche le litige particulier dont il est saisi ; il ne légifère pas.",
+     "src": "C. civ., art. 5",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006089696/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Droit des contrats : des règles en principe supplétives</b> : la liberté contractuelle s'exerce dans les limites fixées par la loi et ne permet pas de déroger aux règles qui intéressent l'ordre public. Le rapport au Président de la République sur l'ordonnance n° 2016-131 indique que les dispositions du droit des contrats sont en principe supplétives de volonté, sauf mention contraire, ce caractère se déduisant des articles 1102 et 1103 du Code civil.",
+     "src": "C. civ., art. 1102 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Texte de forme législative en matière réglementaire</b> : il peut être modifié par décret pris après avis du Conseil d'État. S'il est intervenu après l'entrée en vigueur de la Constitution de 1958, il ne peut l'être que si le Conseil constitutionnel a déclaré qu'il a un caractère réglementaire.",
+     "src": "Constitution du 4 octobre 1958, art. 37, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sort de l'ordonnance</b> : elle devient caduque si le projet de loi de ratification n'est pas déposé avant la date fixée par la loi d'habilitation. Elle ne peut être ratifiée que par un vote exprès du législateur.",
+     "cite": "« Elles ne peuvent être ratifiées que de manière expresse. »",
+     "src": "Constitution du 4 octobre 1958, art. 38, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019241024",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Valeur de l'ordonnance</b> : tant qu'elle n'est pas ratifiée, l'ordonnance est un acte de forme réglementaire, soumis au contrôle du juge administratif (voir la réserve sur la QPC dans les points de vigilance). Une fois ratifiée, elle acquiert valeur législative à compter de sa signature, et la juridiction administrative cesse d'être compétente pour en connaître.",
+     "cite": "« dès lors que sa ratification est opérée par le législateur, une ordonnance acquiert valeur législative à compter de sa signature »",
+     "src": "CE, 13 juin 2018, n° 408325 ; Constitution, art. 38",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000037059321/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Supériorité des traités sur les lois</b> : les traités ou accords régulièrement ratifiés ou approuvés ont, dès leur publication, une autorité supérieure à celle des lois, sous réserve, pour chaque accord ou traité, de son application par l'autre partie.",
+     "src": "Constitution du 4 octobre 1958, art. 55",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Le juge judiciaire et le traité</b> : la Cour de cassation juge que le traité de Rome du 25 mars 1957 a, en vertu de l'article 55 de la Constitution, une autorité supérieure à celle de la loi et institue un ordre juridique propre intégré à celui des États membres. Ses dispositions l'emportent sur la loi interne, même postérieure.",
+     "src": "Cass. ch. mixte, 24 mai 1975, n° 73-13.556 (Société des cafés Jacques Vabre)",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006994625/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Le juge administratif et le traité</b> : par l'arrêt Nicolo, le Conseil d'État accepte, sur le fondement de l'article 55 de la Constitution, de contrôler la compatibilité d'une loi avec un traité, même lorsque la loi est postérieure au traité. Il abandonne ainsi la théorie de la « loi écran ».",
+     "src": "CE, ass., 20 octobre 1989, n° 108243 (Nicolo) ; présentation de l'arrêt par le Conseil d'État (« Les grandes décisions depuis 1873 »)",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007742504/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Le Conseil constitutionnel ne contrôle pas la conventionnalité</b> : saisi au titre de l'article 61, il n'examine pas la conformité d'une loi aux stipulations d'un traité, car une loi contraire à un traité n'est pas, de ce seul fait, contraire à la Constitution. Ce contrôle revient aux juridictions ordinaires.",
+     "cite": "« une loi contraire à un traité ne serait pas, pour autant, contraire à la Constitution »",
+     "src": "Cons. const., décision n° 74-54 DC du 15 janvier 1975",
+     "url": "https://www.legifrance.gouv.fr/cons/id/CONSTEXT000017665674/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrôle de constitutionnalité a priori</b> : avant leur promulgation, les lois peuvent être déférées au Conseil constitutionnel par le Président de la République, le Premier ministre, le président de l'Assemblée nationale, le président du Sénat, ou soixante députés ou soixante sénateurs. La saisine suspend le délai de promulgation.",
+     "src": "Constitution du 4 octobre 1958, art. 61",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>QPC devant le juge du fond</b> : le moyen est présenté, à peine d'irrecevabilité, dans un écrit distinct et motivé ; le juge ne peut pas le relever d'office. La juridiction transmet la question si la disposition contestée est applicable au litige ou à la procédure, ou constitue le fondement des poursuites, si elle n'a pas déjà été déclarée conforme à la Constitution dans les motifs et le dispositif d'une décision du Conseil constitutionnel, sauf changement des circonstances, et si la question n'est pas dépourvue de caractère sérieux.",
+     "src": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-1 et 23-2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000705065/LEGISCTA000021448078/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Filtre du Conseil d'État et de la Cour de cassation</b> : ils se prononcent sur le renvoi dans un délai de trois mois, qui court à compter de la réception de la transmission (art. 23-4) ou, lorsque la question est soulevée directement devant eux, à compter de la présentation du moyen (art. 23-5). Ils renvoient au Conseil constitutionnel si les deux premières conditions sont remplies et si la question est nouvelle ou présente un caractère sérieux. À défaut de décision dans le délai, la question est transmise au Conseil constitutionnel ; le refus de le saisir n'est susceptible d'aucun recours.",
+     "src": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-4, 23-5 et 23-7 ; Conseil constitutionnel, plaquette « La question prioritaire de constitutionnalité »",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000705065/LEGISCTA000021448078/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Effets des décisions du Conseil constitutionnel</b> : une disposition déclarée inconstitutionnelle lors du contrôle a priori ne peut être ni promulguée ni appliquée. Une disposition déclarée inconstitutionnelle sur QPC est abrogée à compter de la publication de la décision ou d'une date ultérieure fixée par celle-ci.",
+     "cite": "« Une disposition déclarée inconstitutionnelle sur le fondement de l'article 61 ne peut être promulguée ni mise en application. »",
+     "src": "Constitution du 4 octobre 1958, art. 62, al. 1 et 2",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>Le lendemain de la publication</b> : sans date d'entrée en vigueur fixée par le texte, une loi publiée au Journal officiel le 10 du mois entre en vigueur le 11, sauf pour les dispositions qui nécessitent des mesures d'application : elles attendent l'entrée en vigueur de ces mesures.",
+     "src": "C. civ., art. 1, al. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419280",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Soixante députés ou soixante sénateurs</b> peuvent saisir le Conseil constitutionnel d'une loi avant sa promulgation. Le Conseil statue dans le délai d'un mois, ramené à huit jours si le Gouvernement le demande en cas d'urgence.",
+     "src": "Constitution du 4 octobre 1958, art. 61",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Trois conditions, puis trois mois</b> : le juge du fond vérifie trois conditions avant de transmettre une QPC ; le Conseil d'État ou la Cour de cassation dispose ensuite de trois mois, à compter de la réception de la transmission, pour décider du renvoi au Conseil constitutionnel.",
+     "src": "Ordonnance n° 58-1067 du 7 novembre 1958, art. 23-2 et 23-4",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000705065/LEGISCTA000021448078/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>1958, date charnière de l'article 37</b> : une loi antérieure à la Constitution de 1958 intervenue en matière réglementaire peut être modifiée par décret après avis du Conseil d'État ; une loi postérieure ne peut l'être qu'après une décision du Conseil constitutionnel reconnaissant son caractère réglementaire.",
+     "src": "Constitution du 4 octobre 1958, art. 37, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Révision constitutionnelle du 8 mars 2024</b> : la loi constitutionnelle n° 2024-200 insère à l'article 34 un alinéa sur la liberté de recourir à l'interruption volontaire de grossesse ; la version de l'article 34 issue de cette loi est en vigueur depuis le 10 mars 2024. Le texte, voté en termes identiques par l'Assemblée nationale (30 janvier 2024) et par le Sénat (28 février 2024), a été adopté par le Parlement réuni en Congrès le 4 mars 2024 (art. 89).",
+     "cite": "« La loi détermine les conditions dans lesquelles s'exerce la liberté garantie à la femme d'avoir recours à une interruption volontaire de grossesse. »",
+     "src": "Loi constitutionnelle n° 2024-200 du 8 mars 2024, article unique ; Constitution, art. 34 et 89",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000049251464",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Nouveau programme du DCG</b> : l'arrêté du 4 août 2025, publié au BO ESR n° 32 du 28 août 2025, fixe le programme de l'UE 1 « Fondamentaux du droit », applicable à compter de la session 2027. L'arrêté du 13 février 2019 reste applicable à la session 2026.",
+     "src": "Arrêté du 4 août 2025 (NOR MENS2523324A), annexe 1",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Guide pédagogique DCG de juillet 2026</b> : il limite désormais la comparaison de la règle de droit à la règle morale, sans référence à l'éthique, et relève que le programme ne mentionne plus explicitement la schématisation du processus d'élaboration de la loi.",
+     "src": "Guide pédagogique DCG, juillet 2026 (ministère de l'Enseignement supérieur)",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "fiab": "millésimé 2026"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Constitutionnalité et conventionnalité</b> : la QPC confronte une disposition législative aux droits et libertés que la Constitution garantit et relève du Conseil constitutionnel. La compatibilité d'une loi avec un traité est appréciée par le juge judiciaire (Jacques Vabre, 1975) et par le juge administratif (Nicolo, 1989), pas par le Conseil constitutionnel.",
+     "src": "Constitution, art. 55 et 61-1 ; Cons. const., n° 74-54 DC ; Cass. ch. mixte, 24 mai 1975 ; CE, ass., 20 octobre 1989",
+     "url": "https://www.legifrance.gouv.fr/cons/id/CONSTEXT000017665674/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Règlement ou directive de l'Union</b> : seul le règlement est directement applicable dans tout État membre. La directive lie l'État quant au résultat et doit être transposée : dans un cas pratique, la règle applicable au particulier se trouve en principe dans le texte national de transposition.",
+     "src": "TFUE, art. 288",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance : vérifier la ratification</b> : non ratifiée, une ordonnance est un acte de forme réglementaire et relève du juge administratif ; ratifiée de manière expresse, elle a valeur législative depuis sa signature. Avant de situer une ordonnance dans la hiérarchie des normes, il faut donc vérifier si elle a été ratifiée.",
+     "src": "Constitution, art. 38 ; CE, 13 juin 2018, n° 408325",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000037059321/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance non ratifiée et QPC</b> : le Conseil constitutionnel juge que, dès l'expiration du délai d'habilitation et dans les matières qui sont du domaine législatif, les dispositions d'une ordonnance non ratifiée doivent être regardées comme des dispositions législatives au sens de l'article 61-1. Elles peuvent donc faire l'objet d'une QPC.",
+     "src": "Cons. const., décision n° 2020-843 QPC du 28 mai 2020 ; Constitution, art. 38 et 61-1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnances anciennes : ratification implicite</b> : depuis la révision constitutionnelle du 23 juillet 2008, la dernière phrase de l'article 38, alinéa 2, exige une ratification expresse. Auparavant, le Conseil constitutionnel, le Conseil d'État et la Cour de cassation admettaient une ratification implicite : une ordonnance antérieure à cette révision peut donc avoir été ratifiée implicitement.",
+     "src": "Constitution du 4 octobre 1958, art. 38, al. 2 (rédaction issue de la révision du 23 juillet 2008)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019241024",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Bonnes mœurs et ordre public</b> : l'article 6 vise toujours les lois qui intéressent l'ordre public et les bonnes mœurs, mais le droit des contrats issu de l'ordonnance n° 2016-131 ne vise plus que l'ordre public : le contrat ne peut y déroger ni par ses stipulations, ni par son but (art. 1162). Le rapport au Président de la République explique que la notion de bonnes mœurs paraît désuète et que la jurisprudence l'a progressivement abandonnée au profit de l'ordre public.",
+     "src": "C. civ., art. 6 et 1162 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Repérer une règle impérative</b> : le texte le précise parfois lui-même. Ainsi, l'article 1104 du Code civil impose que les contrats soient négociés, formés et exécutés de bonne foi et déclare cette disposition d'ordre public : les parties ne peuvent pas l'écarter par une clause.",
+     "src": "C. civ., art. 1104",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032006712/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Lire la version en vigueur</b> : un article peut connaître plusieurs versions successives, et Légifrance indique pour chacune sa période de vigueur. L'article 1er du Code civil est en vigueur dans sa rédaction issue de l'ordonnance n° 2004-164 depuis le 1er juin 2004 ; l'article 34 de la Constitution l'est dans une version en vigueur depuis le 10 mars 2024.",
+     "src": "Légifrance : C. civ., art. 1 ; Constitution, art. 34",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419280",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sources négociées et ordre public</b> : une convention ou un accord collectif peut comporter des stipulations plus favorables aux salariés que les dispositions légales en vigueur, mais ne peut pas déroger aux dispositions qui revêtent un caractère d'ordre public. L'articulation des normes en droit du travail est étudiée en UE 3.",
+     "cite": "« Une convention ou un accord peut comporter des stipulations plus favorables aux salariés que les dispositions légales en vigueur. Ils ne peuvent déroger aux dispositions qui revêtent un caractère d'ordre public. »",
+     "src": "C. trav., art. L. 2251-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901772",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}
