@@ -1,6 +1,6 @@
 {
  "id": "ue10-07",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue10-07-k01",
@@ -95,7 +95,7 @@
     "Définitions#5"
    ],
    "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -153,7 +153,7 @@
    "id": "ue10-07-k13",
    "type": "def",
    "q": "En quoi consiste l'option pour le report en arrière des déficits (carry-back) en matière d'impôt sur les sociétés ?",
-   "r": "<b>Le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent (bénéfice d'imputation), dans la limite de 1 000 000 €.</b> Il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur ce bénéfice d'imputation.",
+   "r": "<b>Le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent, dans la limite de la fraction non distribuée de ce bénéfice et de 1 000 000 €</b> ; les bénéfices exonérés et ceux dont l'impôt a été payé au moyen de crédits ou de réductions d'impôt sont aussi exclus. Il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur le bénéfice d'imputation.",
    "base": [
     "Règles essentielles#5",
     "Chiffres et seuils#4"
@@ -258,7 +258,7 @@
     "Règles essentielles#13"
    ],
    "src": "PCG, art. 312-1 ; règlement ANC n° 2020-09",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -270,7 +270,7 @@
     "Règles essentielles#13"
    ],
    "src": "PCG, art. 312-1 ; règlement ANC n° 2020-09",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {

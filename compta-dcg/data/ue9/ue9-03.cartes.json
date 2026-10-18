@@ -1,6 +1,6 @@
 {
  "id": "ue9-03",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-03-k01",
@@ -106,7 +106,7 @@
    "id": "ue9-03-k09",
    "type": "comp",
    "q": "En règle générale, pour quelles opérations un assujetti à la TVA doit-il s'assurer qu'une facture est émise ?",
-   "r": "<b>Les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
+   "r": "<b>Les livraisons de biens et prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie</b>, lorsqu'elles ne sont pas exonérées en application des articles 261 à 261 E, ainsi que les acomptes qui lui sont versés avant que l'opération soit effectuée.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -265,7 +265,7 @@
    "id": "ue9-03-k22",
    "type": "comp",
    "q": "Selon le PCG, que comprend le prix d'achat retenu dans le coût d'acquisition d'une immobilisation corporelle, et qu'en déduit-on ?",
-   "r": "<b>Il comprend les droits de douane et taxes non récupérables ; on en déduit les remises, rabais commerciaux et escomptes de règlement.</b> Le coût d'acquisition y ajoute les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner.",
+   "r": "<b>Il comprend les droits de douane et taxes non récupérables ; on en déduit les remises, rabais commerciaux et escomptes de règlement.</b> Le coût d'acquisition y ajoute les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner, ainsi que l'estimation initiale des coûts de démantèlement, d'enlèvement et de restauration du site.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -290,11 +290,11 @@
    "id": "ue9-03-k24",
    "type": "comp",
    "q": "Quels comptes le plan de comptes du PCG consacre-t-il aux frais de port, à l'achat et à la vente ?",
-   "r": "À l'achat : charge <b>6241</b> « Transports sur achats ». À la vente : charge <b>6242</b> « Transports sur ventes » lorsque le vendeur paie le transporteur ; le port refacturé au client est un produit <b>7085</b> « Ports et frais accessoires facturés ».",
+   "r": "À l'achat : charge <b>6241</b> « Transports sur achats », sauf incorporation de ces frais accessoires au coût d'achat (récapitulation possible en 608). À la vente : charge <b>6242</b> « Transports sur ventes » lorsque le vendeur paie le transporteur ; le port refacturé au client est un produit <b>7085</b> « Ports et frais accessoires facturés ».",
    "base": [
     "Règles essentielles#10"
    ],
-   "src": "Plan de comptes du PCG (art. 1121-1), comptes 6241, 6242 et 7085",
+   "src": "Plan de comptes du PCG (art. 1121-1), comptes 60, 608, 6241, 6242 et 7085",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },
@@ -306,7 +306,7 @@
    "base": [
     "Définitions#5"
    ],
-   "src": "Plan de comptes du PCG (art. 1121-1), comptes 4091 et 4191",
+   "src": "Plan de comptes du PCG (art. 1121-1), comptes 237, 238, 4091 et 4191",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "fiab": "stable"
   },
@@ -343,7 +343,7 @@
     "Règles essentielles#14",
     "Ce qui a changé récemment#3"
    ],
-   "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; C. com., art. L. 123-19 ; plan de comptes du PCG, compte 708",
+   "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 du 5 décembre 2025 ; C. com., art. L. 123-19 ; plan de comptes du PCG, compte 708",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
    "fiab": "stable"
   },
@@ -423,11 +423,11 @@
    "id": "ue9-03-k35",
    "type": "comp",
    "q": "Entre professionnels, quel délai de paiement maximal le Code de commerce permet-il en principe de convenir pour régler une facture ?",
-   "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou quarante-cinq jours fin de mois si ce délai est expressément stipulé.",
+   "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou quarante-cinq jours fin de mois si ce délai est expressément stipulé et ne constitue pas un abus manifeste à l'égard du créancier.",
    "base": [
     "Chiffres et seuils#1"
    ],
-   "src": "C. com., art. L. 441-10, I et II, et D. 441-5 ; DGCCRF, « Délais de paiement : les règles à connaître »",
+   "src": "C. com., art. L. 441-10, I et II, L. 441-11 et D. 441-5 ; DGCCRF, « Délais de paiement : les règles à connaître »",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038411055",
    "fiab": "stable"
   }

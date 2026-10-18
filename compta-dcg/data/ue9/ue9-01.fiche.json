@@ -1,6 +1,6 @@
 {
  "id": "ue9-01",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -86,13 +86,13 @@
   },
   {
    "ref": "Règlement ANC n° 2025-05 du 5 décembre 2025",
-   "objet": "Coordination : maintien du compte 791 pour les seules opérations de concession d'aménagement",
+   "objet": "Modification des règlements n° 2023-03 et n° 2015-04 : compte 791 maintenu, dans le plan de comptes des organismes de logement social (HLM), exclusivement pour les opérations de concession d'aménagement",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2025/REGLT_2025_05-web.pdf",
-   "version": "homologué par arrêté du 26 décembre 2025"
+   "version": "homologué par arrêté du 26 décembre 2025 ; exercices ouverts à compter du 1er janvier 2026"
   },
   {
    "ref": "Règlement ANC n° 2026-03 du 6 mars 2026",
-   "objet": "Comptabilisation des produits des ventes ; définition du résultat exceptionnel reprise à l'art. 531-5 du PCG",
+   "objet": "Notamment comptabilisation des produits des ventes ; définition du résultat exceptionnel reprise à l'art. 531-5 du PCG (actuel art. 513-5)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
    "version": "homologué par arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027, application anticipée possible"
   },
@@ -115,7 +115,7 @@
      "cite": "« La comptabilité est un système d'organisation de l'information financière permettant de saisir, classer, enregistrer des données de base chiffrées et présenter des états reflétant une image fidèle du patrimoine, de la situation financière et du résultat de l'entité à la date de clôture. »"
     },
     {
-     "t": "<b>Actif</b> : élément identifiable du patrimoine ayant une valeur économique positive pour l'entité, c'est-à-dire une ressource qu'elle contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
+     "t": "<b>Actif</b> : élément identifiable du patrimoine ayant une valeur économique positive pour l'entité, c'est-à-dire un élément générant une ressource qu'elle contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
      "src": "PCG, art. 211-1",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
@@ -136,14 +136,14 @@
      "cite": "« Les éléments destinés à servir de façon durable à l'activité de l'entreprise constituent l'actif immobilisé. »"
     },
     {
-     "t": "<b>Stock</b> : actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production. Il relève de l'actif circulant, alors que l'immobilisation est destinée à servir de façon durable à l'activité.",
+     "t": "<b>Stock</b> : actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures. Il relève de l'actif circulant, alors que l'immobilisation est destinée à servir de façon durable à l'activité.",
      "src": "PCG, art. 211-7 ; C. com., art. R. 123-181 et R. 123-182",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
-     "cite": "« Un stock est un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production »"
+     "cite": "« Un stock est un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures. »"
     },
     {
-     "t": "<b>Charges</b> : sommes ou valeurs versées ou à verser en contrepartie de marchandises, approvisionnements, travaux et services consommés, ou en exécution d'une obligation légale (art. 511-2). Une dépense qui ne remplit pas les conditions de définition et de comptabilisation d'un actif et n'est pas incorporable à son coût est comptabilisée en charges, sous réserve des articles 212-9 à 212-11 (art. 511-1).",
+     "t": "<b>Charges</b> : elles comprennent notamment les sommes ou valeurs versées ou à verser en contrepartie de marchandises, approvisionnements, travaux et services consommés ainsi que des avantages consentis à l'entité, ou en exécution d'une obligation légale, et les dotations aux amortissements, aux dépréciations et aux provisions (art. 511-2). Une dépense qui ne remplit pas les conditions de définition et de comptabilisation d'un actif et n'est pas incorporable à son coût est comptabilisée en charges, sous réserve des articles 212-9 à 212-11 (art. 511-1).",
      "src": "PCG, art. 511-1 et 511-2",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
@@ -238,7 +238,7 @@
      "cite": "« Les comptes annuels doivent respecter le principe de prudence. Pour leur établissement, le commerçant, personne physique ou morale, est présumé poursuivre ses activités. »"
     },
     {
-     "t": "Seuls les <b>bénéfices réalisés</b> à la date de clôture peuvent être inscrits dans les comptes annuels (un gain latent n'est pas un produit).",
+     "t": "Seuls les <b>bénéfices réalisés</b> à la date de clôture peuvent être inscrits dans les comptes annuels : en principe, un gain latent n'est pas un produit. Par exception, peut être inscrit, après inventaire, le bénéfice réalisé sur une opération partiellement exécutée et acceptée par le cocontractant, lorsque sa réalisation est certaine et que le bénéfice global de l'opération peut être évalué avec une sécurité suffisante au moyen de documents comptables prévisionnels (al. 2).",
      "src": "C. com., art. L. 123-21",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
      "fiab": "stable",
@@ -265,7 +265,7 @@
      "cite": "« Au titre des charges : les charges d'exploitation, les charges financières, les charges exceptionnelles ainsi que la participation des salariés aux fruits de l'expansion et l'impôt sur le bénéfice »"
     },
     {
-     "t": "<b>Résultat exceptionnel</b> : y sont comptabilisés les seuls produits et charges directement liés à un événement majeur et inhabituel. L'événement est majeur lorsque ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse, et présumé inhabituel lorsqu'il ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains. Les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) restent en résultat exceptionnel (comptes 687 et 787).",
+     "t": "<b>Résultat exceptionnel</b> : y sont comptabilisés les produits et charges directement liés à un événement majeur et inhabituel. L'événement est majeur lorsque ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse, et présumé inhabituel lorsqu'il ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains. Le même article y range aussi les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées : comptes 687 et 787), l'incidence des changements de méthodes comptabilisée en résultat pour des raisons fiscales et certaines corrections d'erreurs.",
      "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes PCG 2026, comptes 687 et 787",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
@@ -333,7 +333,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Les <b>transferts de charges</b> disparaissent du PCG : la mention « les transferts de charges » est supprimée de l'article 512-1. Le règlement ANC n° 2025-05 du 5 décembre 2025 (homologué par arrêté du 26 décembre 2025) ne maintient le compte 791 que pour les opérations de concession d'aménagement.",
+     "t": "Les <b>transferts de charges</b> disparaissent du PCG : la mention « les transferts de charges » est supprimée de l'article 512-1. Le règlement ANC n° 2025-05 du 5 décembre 2025 (homologué par arrêté du 26 décembre 2025), qui modifie les règlements n° 2023-03 et n° 2015-04, ne maintient le compte 791 « Transfert de charges » qu'à titre d'exception, dans le plan de comptes des organismes de logement social (HLM), exclusivement pour les opérations de concession d'aménagement, pour les exercices ouverts à compter du 1er janvier 2026.",
      "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; règlement ANC n° 2025-05 du 5 décembre 2025",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
@@ -354,7 +354,7 @@
      "cite": "« Le texte modifie le montant des seuils relatifs aux chiffre d'affaires et au bilan, afin de tenir compte de l'inflation. »"
     },
     {
-     "t": "Le <b>règlement ANC n° 2026-03</b> du 6 mars 2026, homologué par arrêté du 12 août 2026, modifie le PCG sur la comptabilisation des produits des ventes et reprend la définition du résultat exceptionnel (événement majeur et inhabituel) à l'article 531-5. Il s'applique aux exercices ouverts à compter du 1er janvier 2027 et peut être appliqué par anticipation sur l'exercice en cours à sa date de publication au Journal officiel.",
+     "t": "Le <b>règlement ANC n° 2026-03</b> du 6 mars 2026, homologué par arrêté du 12 août 2026, modifie le PCG, notamment sur la comptabilisation des produits des ventes, et reprend à l'article 531-5 la définition du résultat exceptionnel (événement majeur et inhabituel) : futur article 531-5, actuel article 513-5. Il s'applique aux exercices ouverts à compter du 1er janvier 2027 et peut être appliqué par anticipation sur l'exercice en cours à sa date de publication au Journal officiel.",
      "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 4 ; arrêté du 12 août 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
      "fiab": "stable",
@@ -393,7 +393,7 @@
      "cite": "« Il est fait application, le cas échéant, des dispositions prévues aux premier et deuxième alinéas de l'article L. 123-14. »"
     },
     {
-     "t": "Depuis les exercices ouverts au 1er janvier 2025, la cession d'une immobilisation incorporelle ou corporelle (comptes <code>657</code> / <code>757</code>) relève de l'exploitation, celle d'une immobilisation financière du résultat financier (<code>6671</code> / <code>7671</code>), et la quote-part de subvention d'investissement virée au résultat passe en <code>747</code> : un manuel antérieur à la réforme peut encore classer ces opérations en 67/77 (anciens comptes 675 et 775 supprimés).",
+     "t": "Depuis les exercices ouverts au 1er janvier 2025, la cession d'une immobilisation incorporelle ou corporelle (comptes <code>657</code> / <code>757</code>) relève en principe de l'exploitation et celle d'une immobilisation financière du résultat financier (<code>6671</code> / <code>7671</code>), sauf lien direct avec un événement majeur et inhabituel ; la quote-part de subvention d'investissement virée au résultat passe en <code>747</code>. Un manuel antérieur à la réforme peut encore classer les cessions en 67/77 (anciens comptes 675 et 775, supprimés) et la quote-part de subvention en 77 (ancien compte 777).",
      "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2026 (comptes 657, 6671, 747, 757 et 7671)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"

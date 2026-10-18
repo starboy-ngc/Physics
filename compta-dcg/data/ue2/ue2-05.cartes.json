@@ -1,6 +1,6 @@
 {
  "id": "ue2-05",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue2-05-k01",
@@ -338,7 +338,7 @@
    "base": [
     "Règles essentielles#14"
    ],
-   "src": "C. civ., art. 1844-7",
+   "src": "C. civ., art. 1844-7 et 1844-5, al. 1 ; C. com., art. L. 223-4 et L. 227-4",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
    "fiab": "stable"
   },
@@ -350,7 +350,7 @@
    "base": [
     "Règles essentielles#14"
    ],
-   "src": "C. civ., art. 1844-7",
+   "src": "C. civ., art. 1844-7 et 1844-5, al. 1 ; C. com., art. L. 223-4 et L. 227-4",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
    "fiab": "stable"
   },

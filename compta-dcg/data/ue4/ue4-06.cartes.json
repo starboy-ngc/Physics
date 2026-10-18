@@ -1,6 +1,6 @@
 {
  "id": "ue4-06",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue4-06-k01",
@@ -127,7 +127,7 @@
    "id": "ue4-06-k12",
    "type": "comp",
    "q": "Quelle est l'assiette des droits d'enregistrement dus sur une cession de fonds de commerce ?",
-   "r": "<b>Le prix de la clientèle, du droit au bail et des objets mobiliers servant à l'exploitation.</b> Le tarif de l'article 719 du CGI se combine avec des taxes additionnelles, dont la taxe départementale de l'article 1595.",
+   "r": "<b>Le prix de la clientèle, du droit au bail et des objets mobiliers servant à l'exploitation</b>, à l'exception des marchandises neuves garnissant le fonds. Le tarif de l'article 719 du CGI se combine avec des taxes additionnelles, dont la taxe départementale de l'article 1595.",
    "base": [
     "Règles essentielles#6"
    ],
@@ -323,7 +323,7 @@
    "base": [
     "Règles essentielles#14"
    ],
-   "src": "CGI, art. 1728, 1 et 1729 ; BOI-CF-INF-20-10-10",
+   "src": "CGI, art. 1728, 1, 1729 et 1758 A, III ; BOI-CF-INF-20-10-10",
    "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
    "fiab": "stable"
   },
@@ -421,7 +421,7 @@
     "Règles essentielles#14",
     "Règles essentielles#13"
    ],
-   "src": "CGI, art. 1728, 1 et 1729 ; BOI-CF-INF-20-10-10",
+   "src": "CGI, art. 1728, 1, 1729 et 1758 A, III ; BOI-CF-INF-20-10-10",
    "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
    "fiab": "stable"
   }

@@ -1,6 +1,6 @@
 {
  "id": "ue9-09",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -118,7 +118,7 @@
      "cite": "« 1° Elle établit sous forme de règlements les prescriptions comptables générales et sectorielles que doivent respecter les personnes physiques ou morales soumises à l'obligation légale d'établir des documents comptables conformes aux normes de la comptabilité privée »"
     },
     {
-     "t": "<b>Plan comptable général</b> (PCG) : règlement ANC n° 2014-03, modifié notamment par le règlement n° 2022-06 ; l'ANC en publie des versions consolidées, la plus récente au 1er janvier 2026.",
+     "t": "<b>Plan comptable général</b> (PCG) : règlement ANC n° 2014-03, modifié notamment par le règlement n° 2022-06 ; l'ANC en publie des versions consolidées.",
      "src": "Règlement ANC n° 2014-03 (PCG), version consolidée au 1er janvier 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
@@ -212,7 +212,7 @@
      "cite": "« Les comptes annuels doivent respecter le principe de prudence. Pour leur établissement, le commerçant, personne physique ou morale, est présumé poursuivre ses activités. »"
     },
     {
-     "t": "<b>Indépendance des exercices</b> : le compte de résultat récapitule les produits et les charges de l'exercice sans qu'il soit tenu compte de leur date d'encaissement ou de paiement ; seul le bénéfice réalisé à la date de clôture peut être inscrit dans les comptes annuels.",
+     "t": "<b>Indépendance des exercices</b> : le compte de résultat récapitule les produits et les charges de l'exercice sans qu'il soit tenu compte de leur date d'encaissement ou de paiement (L. 123-13, al. 2). <b>Bénéfices réalisés</b> : seuls les bénéfices réalisés à la date de clôture d'un exercice peuvent être inscrits dans les comptes annuels ; peut toutefois être inscrit, après inventaire, le bénéfice réalisé sur une opération partiellement exécutée et acceptée par le cocontractant, lorsque sa réalisation est certaine et qu'il est possible, au moyen de documents comptables prévisionnels, d'évaluer avec une sécurité suffisante le bénéfice global de l'opération (L. 123-21).",
      "src": "C. com., art. L. 123-13, al. 2 et L. 123-21",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
      "fiab": "stable",
@@ -227,7 +227,7 @@
     },
     {
      "t": "<b>Rapprochement bancaire</b> : les données d'inventaire doivent justifier chaque poste du bilan, dont le compte <code>512</code> « Banques ». Le solde de ce compte est rapproché du relevé de la banque ; les mouvements figurant sur le relevé et non encore comptabilisés (frais, prélèvements, virements reçus) sont enregistrés, puisque tout mouvement affectant le patrimoine doit l'être. Les chèques émis et les remises déjà enregistrés à leur date mais pas encore portés sur le relevé n'appellent aucune écriture : ils expliquent l'écart entre les deux soldes.",
-     "src": "C. com., art. L. 123-12, R. 123-174 et R. 123-177 ; plan de comptes 2026 (PCG, art. 1121-1), compte 512",
+     "src": "C. com., art. L. 123-12, R. 123-174 et R. 123-177 ; plan de comptes (PCG, art. 1121-1), compte 512",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
      "fiab": "stable",
      "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
@@ -240,14 +240,14 @@
      "cite": "« Le bilan décrit séparément les éléments actifs et passifs de l'entreprise, et fait apparaître, de façon distincte, les capitaux propres. »"
     },
     {
-     "t": "L'<b>annexe</b> complète et commente l'information donnée par le bilan et le compte de résultat ; les petites entreprises peuvent adopter une présentation simplifiée de leurs comptes annuels et les micro-entreprises sont dispensées d'annexe, sauf celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières.",
-     "src": "C. com., art. L. 123-13, L. 123-16 et L. 123-16-1",
+     "t": "L'<b>annexe</b> complète et commente l'information donnée par le bilan et le compte de résultat ; les petites entreprises peuvent adopter une présentation simplifiée de leurs comptes annuels et les micro-entreprises sont dispensées d'annexe, sauf celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières. Ces allègements ne s'appliquent pas aux entités visées à l'article L. 123-16-2, notamment les établissements de crédit et sociétés de financement, les entreprises d'assurance et de réassurance et les personnes et entités dont les titres sont admis aux négociations sur un marché réglementé.",
+     "src": "C. com., art. L. 123-13, L. 123-16, L. 123-16-1 et L. 123-16-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
      "fiab": "stable",
      "cite": "« Par dérogation aux dispositions du troisième alinéa de l'article L. 123-12, les micro-entreprises, à l'exception de celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières, ne sont pas tenues d'établir d'annexe. »"
     },
     {
-     "t": "<b>Publicité allégée</b> : lors du dépôt au greffe, les micro-entreprises peuvent déclarer que leurs comptes annuels ne seront pas rendus publics (sauf sociétés visées à L. 123-16-2 et sociétés de gestion de titres) ; les petites entreprises peuvent demander que leur seul compte de résultat ne soit pas rendu public ; les moyennes entreprises peuvent rendre publique une présentation simplifiée de leur bilan et de leur annexe.",
+     "t": "<b>Publicité allégée</b> : lors du dépôt au greffe, les micro-entreprises peuvent déclarer que leurs comptes annuels ne seront pas rendus publics (sauf sociétés visées à L. 123-16-2 et sociétés de gestion de titres) ; les petites entreprises peuvent demander que leur seul compte de résultat ne soit pas rendu public (sauf sociétés visées à L. 123-16-2 et sociétés appartenant à un groupe au sens de L. 233-16) ; les moyennes entreprises (sauf sociétés visées à L. 123-16-2) peuvent demander que ne soit rendue publique qu'une présentation simplifiée de leur bilan et de leur annexe.",
      "src": "C. com., art. L. 232-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038611013",
      "fiab": "stable",
@@ -292,7 +292,7 @@
      "cite": "« lorsqu'une entreprise dépasse ou cesse de dépasser deux de ces trois seuils, cette circonstance n'a d'incidence que si elle se produit pendant deux exercices consécutifs »"
     },
     {
-     "t": "<b>Dépôt des comptes au greffe</b> : les SARL et les sociétés par actions déposent leurs comptes annuels, avec notamment le rapport des commissaires aux comptes, dans le <span class=\"mono\">mois</span> qui suit leur approbation, ou dans les <span class=\"mono\">deux mois</span> lorsque le dépôt est effectué par voie électronique ; dans les sociétés par actions, en cas de refus d'approbation, une copie de la délibération est déposée dans le même délai.",
+     "t": "<b>Dépôt des comptes au greffe</b> : les SARL et les sociétés par actions déposent leurs comptes annuels, avec notamment, le cas échéant, le rapport des commissaires aux comptes, dans le <span class=\"mono\">mois</span> qui suit leur approbation, ou dans les <span class=\"mono\">deux mois</span> lorsque le dépôt est effectué par voie électronique ; dans les unes comme dans les autres, en cas de refus d'approbation, une copie de la délibération ou de la décision est déposée dans le même délai.",
      "src": "C. com., art. L. 232-22 et L. 232-23",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559583",
      "fiab": "stable"
@@ -341,7 +341,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Le <b>règlement ANC n° 2025-05</b> du 5 décembre 2025, homologué par arrêté du 26 décembre 2025, maintient le compte 791 pour les seules opérations de concession d'aménagement.",
+     "t": "Le <b>règlement ANC n° 2025-05</b> du 5 décembre 2025, homologué par arrêté du 26 décembre 2025, modifie notamment le règlement n° 2023-03 : il prévoit un compte 791 de <b>transfert de charges</b>, réservé aux seules opérations de concession d'aménagement. Il nuance ainsi, pour ces seules opérations, la suppression des transferts de charges opérée par le règlement n° 2022-06. Il s'applique aux exercices ouverts à compter du 1er janvier 2026.",
      "src": "Règlement ANC n° 2025-05 du 5 décembre 2025 ; arrêté du 26 décembre 2025",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053174797",
      "fiab": "stable"
@@ -366,10 +366,11 @@
      "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
     },
     {
-     "t": "La <b>déclaration de confidentialité</b> ne dispense pas du dépôt : la micro-entreprise dépose ses comptes annuels au greffe, mais ils ne sont pas rendus publics ; la petite entreprise ne peut soustraire à la publicité que son compte de résultat.",
+     "t": "La <b>déclaration de confidentialité</b> ne dispense pas du dépôt : la micro-entreprise dépose ses comptes annuels au greffe, mais ils ne sont pas rendus publics ; la petite entreprise ne peut soustraire à la publicité que son compte de résultat, et seulement si elle n'est ni une société visée à L. 123-16-2 ni une société appartenant à un groupe au sens de L. 233-16.",
      "src": "C. com., art. L. 232-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038611013",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Les sociétés appartenant à un groupe, au sens de l'article L. 233-16, ne peuvent faire usage de cette faculté. »"
     },
     {
      "t": "Les personnes physiques placées sous le régime réel simplifié d'imposition bénéficient de simplifications (créances et dettes enregistrées à la clôture, enregistrement des encaissements et paiements à la date du relevé bancaire) qui ne s'appliquent pas aux sociétés.",

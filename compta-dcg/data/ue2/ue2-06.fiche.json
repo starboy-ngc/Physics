@@ -1,6 +1,6 @@
 {
  "id": "ue2-06",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE2 Droit des sociétés et des groupements d'affaires), BO ESR n° 26 du 27 juin 2019, applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -178,21 +178,21 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Nullités de la période suspecte</b> : sont nuls de droit lorsqu'ils sont intervenus depuis la date de cessation des paiements, notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs dans lesquels les obligations du débiteur excèdent notablement celles de l'autre partie, les paiements de dettes non échues, les paiements de dettes échues faits par un mode de paiement non communément admis et les sûretés (hypothèque, nantissement, gage) constituées pour des dettes antérieurement contractées ; le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant la date de cessation des paiements. Les paiements de dettes échues et les actes à titre onéreux accomplis à compter de cette date peuvent être annulés si ceux qui ont traité avec le débiteur ont eu connaissance de la cessation des paiements.",
+     "t": "<b>Nullités de la période suspecte</b> : sont nuls de droit lorsqu'ils sont intervenus depuis la date de cessation des paiements, notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs dans lesquels les obligations du débiteur excèdent notablement celles de l'autre partie, les paiements de dettes non échues, les paiements de dettes échues faits par un mode de paiement non communément admis et les sûretés réelles conventionnelles ou droits de rétention conventionnels constitués sur les biens ou droits du débiteur pour des dettes antérieurement contractées, sauf s'ils remplacent une sûreté antérieure d'une nature et d'une assiette au moins équivalentes et sauf cession de créance prévue à l'article L. 313-23 du Code monétaire et financier faite en exécution d'un contrat-cadre conclu avant la cessation des paiements ; le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant la date de cessation des paiements. Les paiements de dettes échues et les actes à titre onéreux accomplis à compter de cette date peuvent être annulés si ceux qui ont traité avec le débiteur ont eu connaissance de la cessation des paiements.",
      "src": "C. com., art. L. 632-1 et L. 632-2",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146112/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Liquidation judiciaire</b> : elle est destinée à mettre fin à l'activité de l'entreprise ou à réaliser le patrimoine du débiteur par une cession globale ou séparée de ses droits et de ses biens ; le jugement emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens, ses droits et actions étant exercés par le liquidateur. La liquidation judiciaire simplifiée s'applique lorsque l'actif du débiteur ne comprend pas de bien immobilier et que le nombre de ses salariés au cours des six mois précédant l'ouverture et son chiffre d'affaires hors taxes n'excèdent pas des seuils fixés par décret. La clôture est prononcée lorsqu'il n'existe plus de passif exigible, lorsque la poursuite des opérations est rendue impossible par l'insuffisance de l'actif ou lorsque l'intérêt de cette poursuite est disproportionné par rapport aux difficultés de réalisation des actifs résiduels ; la clôture pour insuffisance d'actif ne fait pas recouvrer aux créanciers l'exercice individuel de leurs actions, sauf exceptions légales (notamment créance née d'une infraction dont le débiteur a été reconnu coupable, droits attachés à la personne du créancier, fraude).",
+     "t": "<b>Liquidation judiciaire</b> : elle est destinée à mettre fin à l'activité de l'entreprise ou à réaliser le patrimoine du débiteur par une cession globale ou séparée de ses droits et de ses biens ; le jugement emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens, ses droits et actions concernant son patrimoine étant exercés par le liquidateur ; le débiteur exerce les droits et actions qui ne sont pas compris dans la mission du liquidateur. La liquidation judiciaire simplifiée s'applique lorsque l'actif du débiteur ne comprend pas de bien immobilier et que le nombre de ses salariés au cours des six mois précédant l'ouverture et son chiffre d'affaires hors taxes n'excèdent pas des seuils fixés par décret. La clôture est prononcée lorsqu'il n'existe plus de passif exigible, lorsque la poursuite des opérations est rendue impossible par l'insuffisance de l'actif ou lorsque l'intérêt de cette poursuite est disproportionné par rapport aux difficultés de réalisation des actifs résiduels ; la clôture pour insuffisance d'actif ne fait pas recouvrer aux créanciers l'exercice individuel de leurs actions, sauf exceptions légales (notamment créance née d'une infraction dont le débiteur a été reconnu coupable, droits attachés à la personne du créancier, fraude).",
      "src": "C. com., art. L. 640-1, L. 641-2, L. 641-9, L. 643-9 et L. 643-11",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133199/",
      "fiab": "stable",
      "cite": "« La procédure de liquidation judiciaire est destinée à mettre fin à l'activité de l'entreprise ou à réaliser le patrimoine du débiteur par une cession globale ou séparée de ses droits et de ses biens. »"
     },
     {
-     "t": "<b>Situation des créanciers antérieurs</b> : le jugement d'ouverture emporte de plein droit interdiction de payer toute créance née antérieurement, sauf paiement par compensation de créances connexes ; il interrompt ou interdit toute action en justice des créanciers, autres que les créanciers postérieurs privilégiés, tendant à la condamnation du débiteur au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution. Les créanciers déclarent leurs créances au mandataire judiciaire dans les deux mois de la publication du jugement au BODACC (délai augmenté de deux mois pour ceux qui ne demeurent pas en France métropolitaine) ; à défaut, ils ne sont pas admis dans les répartitions et les dividendes, sauf relevé de forclusion par le juge-commissaire. Au-delà de seuils fixés par décret, ou à la demande du débiteur, les parties affectées sont réparties en classes appelées à voter sur le projet de plan.",
-     "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+     "t": "<b>Situation des créanciers antérieurs</b> : le jugement d'ouverture emporte de plein droit interdiction de payer toute créance née antérieurement, sauf paiement par compensation de créances connexes ; il interrompt ou interdit toute action en justice des créanciers, autres que les créanciers postérieurs privilégiés, tendant à la condamnation du débiteur au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution. Les créanciers déclarent leurs créances au mandataire judiciaire (au liquidateur en liquidation judiciaire) dans les deux mois de la publication du jugement au BODACC (délai augmenté de deux mois pour ceux qui ne demeurent pas en France métropolitaine) ; à défaut, ils ne sont pas admis dans les répartitions et les dividendes, sauf relevé de forclusion par le juge-commissaire. Au-delà de seuils fixés par décret, ou à la demande du débiteur, les parties affectées sont réparties en classes appelées à voter sur le projet de plan.",
+     "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s., L. 641-3 ; R. 622-24",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
      "fiab": "stable"
     },
@@ -313,8 +313,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> en faveur de l'activité professionnelle indépendante : depuis le 15 mai 2022, les procédures du livre VI ouvertes à l'égard d'un entrepreneur individuel ne portent que sur son patrimoine professionnel (titre VIII bis du livre VI).",
-     "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 681-1 à L. 681-4",
+     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> en faveur de l'activité professionnelle indépendante : depuis le 15 mai 2022, les procédures du livre VI ouvertes à l'égard d'un entrepreneur individuel ne portent en principe que sur son patrimoine professionnel (titre VIII bis du livre VI) ; d'autres patrimoines du débiteur peuvent toutefois être réunis au patrimoine visé par la procédure, notamment en cas de confusion avec celui-ci (art. L. 621-2).",
+     "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 621-2 et L. 681-1 à L. 681-4",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
      "fiab": "stable"
     },
@@ -361,8 +361,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Cessation des paiements récente</b> : un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut encore demander une conciliation, mais pas une sauvegarde, réservée au débiteur qui n'est pas en cessation des paiements. Le dirigeant qui a omis sciemment de demander l'ouverture d'un redressement ou d'une liquidation judiciaire dans les quarante-cinq jours, sans avoir demandé de conciliation, encourt l'interdiction de gérer.",
-     "src": "C. com., art. L. 611-4, L. 620-1, L. 631-4 et L. 653-8",
+     "t": "<b>Cessation des paiements récente</b> : un débiteur en cessation des paiements depuis moins de quarante-cinq jours peut encore demander une conciliation, mais pas une sauvegarde de droit commun, réservée au débiteur qui n'est pas en cessation des paiements ; la cessation des paiements ne fait pas obstacle, en revanche, à l'ouverture d'une sauvegarde accélérée, à la demande du débiteur engagé dans une conciliation, si elle ne précédait pas de plus de quarante-cinq jours la date de la demande d'ouverture de la conciliation. Le dirigeant qui a omis sciemment de demander l'ouverture d'un redressement ou d'une liquidation judiciaire dans les quarante-cinq jours, sans avoir demandé de conciliation, encourt l'interdiction de gérer.",
+     "src": "C. com., art. L. 611-4, L. 620-1, L. 628-1, L. 631-4 et L. 653-8",
      "url": null,
      "fiab": "stable"
     },

@@ -1,6 +1,6 @@
 {
  "id": "ue3-05",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue3-05-k01",
@@ -47,7 +47,7 @@
    "base": [
     "Règles essentielles#13"
    ],
-   "src": "C. trav., art. L. 2142-1-1 et L. 2143-3",
+   "src": "C. trav., art. L. 2142-1-1, L. 2143-3 et L. 2143-23",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006195667/",
    "fiab": "stable"
   },
@@ -71,7 +71,7 @@
    "base": [
     "Règles essentielles#13"
    ],
-   "src": "C. trav., art. L. 2142-1-1 et L. 2143-3",
+   "src": "C. trav., art. L. 2142-1-1, L. 2143-3 et L. 2143-23",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006195667/",
    "fiab": "stable"
   },
@@ -133,7 +133,7 @@
    "base": [
     "Ce qui a changé récemment#4"
    ],
-   "src": "Loi n° 2026-403 du 26 mai 2026, art. 22 ; travail-emploi.gouv.fr, « L'information et la consultation du CSE »",
+   "src": "Loi n° 2026-403 du 26 mai 2026, art. 22 ; C. com., art. L. 141-28 ; travail-emploi.gouv.fr, « L'information et la consultation du CSE »",
    "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054131729",
    "fiab": "stable"
   },
@@ -225,7 +225,7 @@
    "id": "ue3-05-k20",
    "type": "comp",
    "q": "Comment s'articulent l'accord de branche et l'accord d'entreprise selon les blocs de matières définis par le Code du travail ?",
-   "r": "<b>Bloc 1 (treize matières)</b> : la branche prime ; <b>bloc 2 (quatre matières)</b> : elle prime si elle le stipule expressément ; dans ces deux blocs, sauf garanties au moins équivalentes de l'accord d'entreprise. <b>Toutes les autres matières</b> : l'accord d'entreprise, antérieur ou postérieur, prévaut sur l'accord de branche.",
+   "r": "<b>Bloc 1 (treize matières)</b> : la branche prime ; <b>bloc 2 (quatre matières)</b> : elle prime sur l'accord d'entreprise postérieur si elle le stipule expressément ; dans ces deux blocs, sauf garanties au moins équivalentes de l'accord d'entreprise. <b>Toutes les autres matières</b> : l'accord d'entreprise, antérieur ou postérieur, prévaut sur l'accord de branche.",
    "base": [
     "Règles essentielles#3"
    ],
@@ -274,11 +274,11 @@
    "id": "ue3-05-k24",
    "type": "comp",
    "q": "Que devient un accord collectif à durée indéterminée dénoncé par la totalité des signataires employeurs ou des signataires salariés ?",
-   "r": "<b>Il continue de produire effet jusqu'à l'entrée en vigueur de l'accord de substitution</b> ou, à défaut, pendant un an à compter de l'expiration du préavis (trois mois à défaut de stipulation). Les salariés conservent ensuite une rémunération au moins égale à celle perçue au cours des douze derniers mois.",
+   "r": "<b>Il continue de produire effet jusqu'à l'entrée en vigueur de l'accord de substitution</b> ou, à défaut, pendant un an à compter de l'expiration du préavis (trois mois à défaut de stipulation), sauf clause prévoyant une durée supérieure. Les salariés conservent ensuite une rémunération au moins égale à celle perçue au cours des douze derniers mois.",
    "base": [
     "Règles essentielles#7"
    ],
-   "src": "C. trav., art. L. 2261-9, L. 2261-10 et L. 2261-13",
+   "src": "C. trav., art. L. 2261-9, L. 2261-10, L. 2261-11 et L. 2261-13",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189534/",
    "fiab": "stable"
   },
@@ -336,12 +336,12 @@
    "id": "ue3-05-k31",
    "type": "comp",
    "q": "Quelle condition préalable s'impose à une grève dans les services publics ?",
-   "r": "<b>Un préavis de cinq jours francs</b>, déposé par une organisation représentative.",
+   "r": "<b>Un préavis</b>, qui doit émaner d'une organisation syndicale remplissant la condition de représentativité fixée par l'article L. 2512-2, préciser les motifs du recours à la grève et parvenir cinq jours francs avant son déclenchement.",
    "base": [
     "Règles essentielles#15"
    ],
    "src": "C. trav., art. L. 2511-1, L. 2512-2, L. 2522-1, L. 2523-1 et L. 2524-1",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177989/",
    "fiab": "stable"
   },
   {
@@ -353,7 +353,7 @@
     "Règles essentielles#15"
    ],
    "src": "C. trav., art. L. 2511-1, L. 2512-2, L. 2522-1, L. 2523-1 et L. 2524-1",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177989/",
    "fiab": "stable"
   },
   {
@@ -372,7 +372,7 @@
    "id": "ue3-05-k34",
    "type": "comp",
    "q": "Sur quels thèmes les organisations liées par une convention de branche doivent-elles négocier au moins une fois tous les cinq ans ?",
-   "r": "<b>Sur les classifications et sur l'épargne salariale.</b> Les autres négociations obligatoires de branche, dont celles sur les salaires et l'égalité professionnelle, ont lieu au moins une fois tous les quatre ans.",
+   "r": "<b>Sur les classifications et sur l'épargne salariale.</b> Les négociations sur les salaires et l'égalité professionnelle, notamment, ont lieu au moins une fois tous les quatre ans.",
    "base": [
     "Règles essentielles#6"
    ],

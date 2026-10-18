@@ -1,6 +1,6 @@
 {
  "id": "ue10-07",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -40,7 +40,7 @@
    "ref": "CGI, art. 220 quinquies ; BOI-IS-DEF-20",
    "objet": "Report en arrière des déficits : option, plafond de 1 000 000 €, créance sur le Trésor",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006179988",
-   "version": "en vigueur ; BOFiP du 23 août 2021"
+   "version": "en vigueur ; BOFiP du 23 août 2021 (BOI-IS-DEF-20), du 12 août 2026 (BOI-IS-DEF-20-10) et du 2 février 2022 (BOI-IS-DEF-20-20)"
   },
   {
    "ref": "Loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 48 ; loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 12 ; BOI-IS-AUT-60",
@@ -100,7 +100,7 @@
    "ref": "Règlement ANC n° 2026-04 du 4 mai 2026 (PCG, art. 515-1)",
    "objet": "Comptabilisation de l'impôt sur les bénéfices et des contributions qui s'y rattachent ; abrogation de l'art. 515-1-1",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/REGLT_2026_04_JO-SITE.pdf",
-   "version": "homologué par arrêté du 12 août 2026"
+   "version": "homologué par arrêté du 12 août 2026 ; en vigueur le lendemain de sa publication au Journal officiel, applicable aux exercices en cours à cette date"
   }
  ],
  "sections": [
@@ -144,7 +144,7 @@
      "t": "<b>Résultat exceptionnel</b> (PCG 2025) : produits et charges directement liés à un événement majeur et inhabituel ; un événement est présumé inhabituel lorsqu'un même événement ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains exercices ; les aides, remboursements et indemnités reçus en compensation de charges d'exploitation liées à cet événement restent en résultat d'exploitation.",
      "cite": "« Les aides, les remboursements et les indemnités directement liés à l'évènement majeur et inhabituel et reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »",
      "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     }
    ]
@@ -172,27 +172,28 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Comptabilisation de l'IS et des crédits d'impôt</b> : à la clôture, débit 695, crédit 444 pour l'impôt de l'exercice ; selon la FAQ CNCC-CNOEC sur le règlement ANC n° 2022-06, les aides correspondant à des crédits d'impôt imputables sur l'impôt sur les sociétés (crédit d'impôt recherche, crédit d'impôt innovation) sont comptabilisées au crédit du compte 695, en diminution de l'impôt sur les bénéfices, et non en subvention.",
+     "t": "<b>Comptabilisation de l'IS et des crédits d'impôt</b> : à la clôture, débit 695, crédit 444 pour l'impôt de l'exercice ; selon la FAQ CNCC-CNOEC sur le règlement ANC n° 2022-06, les aides correspondant à des crédits d'impôt imputables sur l'impôt sur les sociétés (crédit d'impôt recherche, crédit d'impôt innovation) sont comptabilisées au crédit du compte 695, en diminution de l'impôt sur les bénéfices, et non en subvention. Le recueil annoté du règlement ANC n° 2026-04 indique que le Collège de l'ANC a retenu, dans les comptes individuels, la présentation des produits de crédits d'impôt imputables sur l'IS, CIR compris, en diminution de l'impôt sur les bénéfices. Le BOFiP (BOI-BIC-RICI-10-10-50) enregistre pour sa part la créance de CIR au débit du compte 444 par le crédit du compte 699 « Produits – Crédit d'impôt recherche ».",
      "cite": "« les aides correspondant à des crédits d'impôt imputables sur l'impôt sur les sociétés sont à comptabiliser au crédit d'un compte #695 »",
-     "src": "FAQ CNCC-CNOEC, règlement ANC n° 2022-06, plan de comptes et écritures comptables (février 2026)",
+     "src": "FAQ CNCC-CNOEC, règlement ANC n° 2022-06, plan de comptes et écritures comptables (février 2026) ; règlement ANC n° 2026-04, recueil annoté ; BOI-BIC-RICI-10-10-50 (13 août 2025)",
      "url": "https://doc.cncc.fr/docs/faq-questions-reponses-relatives/attachments/faq-cncc-cnoec-reglement-n2022-06-relatif-a-la-modernisation-des-etats-financiers-plan-de-comptes-et-ecritures-comptables",
      "fiab": "stable"
     },
     {
-     "t": "<b>Crédit d'impôt recherche et crédit d'impôt innovation</b> : CIR égal à 30 % de la fraction des dépenses de recherche inférieure ou égale à 100 M€ et à 5 % au-delà (50 % pour la première fraction dans les départements d'outre-mer) ; CII réservé aux PME, égal à 20 % des dépenses d'innovation (k du II de l'article 244 quater B) retenues dans la limite de 400 000 € par an, non prises en compte dans le seuil de 100 M€, applicable jusqu'au 31 décembre 2027 ; le crédit s'impute sur l'impôt sur les sociétés dans les conditions de l'article 199 ter B (CGI, art. 220 B).",
+     "t": "<b>Crédit d'impôt recherche et crédit d'impôt innovation</b> : CIR égal à 30 % de la fraction des dépenses de recherche inférieure ou égale à 100 M€ et à 5 % au-delà (50 % pour la première fraction dans les départements d'outre-mer) ; CII réservé aux PME, égal à 20 % des dépenses d'innovation (k du II de l'article 244 quater B) retenues dans la limite de 400 000 € par an (60 % pour les dépenses exposées dans des exploitations situées dans les départements d'outre-mer), non prises en compte dans le seuil de 100 M€, applicable jusqu'au 31 décembre 2027 ; le crédit s'impute sur l'impôt sur les sociétés dans les conditions de l'article 199 ter B (CGI, art. 220 B).",
      "cite": "« Le taux du crédit d'impôt est de 30 % pour la fraction des dépenses de recherche inférieure ou égale à 100 millions d'euros et de 5 % pour la fraction des dépenses de recherche supérieure à ce montant. »",
      "src": "CGI, art. 244 quater B (version en vigueur depuis le 1er janvier 2026) ; BOI-BIC-RICI-10-10-30-10 et BOI-BIC-RICI-10-10-45 (13 août 2025)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051215816",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Report en arrière des déficits (carry-back)</b> : sur option, le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent dans la limite de 1 000 000 € ; il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur le bénéfice d'imputation, imputable sur l'IS des cinq exercices suivants et remboursable à l'issue de ce délai (cessible selon les articles L. 313-23 s. du Code monétaire et financier) ; la créance est inscrite au débit du compte 444 par le crédit du compte 699.",
+     "t": "<b>Report en arrière des déficits (carry-back)</b> : sur option, le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent, dans la limite de la fraction non distribuée de ce bénéfice et de 1 000 000 € ; le bénéfice d'imputation exclut aussi les bénéfices exonérés et la fraction de bénéfice ayant donné lieu à un impôt payé au moyen de crédits ou de réductions d'impôt. Il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur le bénéfice d'imputation, imputable sur l'IS des cinq exercices suivants et remboursable à l'issue de ce délai (cessible selon les articles L. 313-23 s. du Code monétaire et financier) ; une entreprise en conciliation, sauvegarde, redressement ou liquidation judiciaire peut demander le remboursement de sa créance non utilisée dès l'ouverture de la procédure, sous déduction d'un intérêt. La créance est inscrite au débit du compte 444 par le crédit du compte 699.",
+     "cite": "« peuvent demander le remboursement de leur créance non utilisée à compter de la date de la décision ou du jugement qui a ouvert ces procédures. Ce remboursement est effectué sous déduction d'un intérêt appliqué à la créance restant à imputer. »",
      "src": "CGI, art. 220 quinquies ; BOI-IS-DEF-20 et BOI-IS-DEF-20-20 ; PCG, comptes 444 et 699",
      "url": "https://bofip.impots.gouv.fr/bofip/5641-PGP.html/identifiant=BOI-IS-DEF-20-20210823",
      "fiab": "stable"
     },
     {
-     "t": "<b>Contribution exceptionnelle sur les bénéfices des grandes entreprises</b> (loi de finances pour 2025, art. 48, prorogée par la loi de finances pour 2026, art. 12) : due au titre des deux premiers exercices clos à compter du 31 décembre 2025 ; seuil de chiffre d'affaires de 1 Md€ pour le premier exercice (apprécié sur l'exercice ou l'exercice précédent) et de plus de 1,5 Md€ pour le second (apprécié sur ce seul exercice) ; assise sur la moyenne de l'IS dû au titre de l'exercice et de l'exercice précédent ; taux de 20,6 % (chiffre d'affaires inférieur à 3 Md€) ou 41,2 % (3 Md€ et plus), avec lissage à l'entrée de chaque seuil ; acompte versé avec le dernier acompte d'IS.",
+     "t": "<b>Contribution exceptionnelle sur les bénéfices des grandes entreprises</b> (loi de finances pour 2025, art. 48, prorogée par la loi de finances pour 2026, art. 12) : due au titre des deux premiers exercices clos à compter du 31 décembre 2025 ; seuil de chiffre d'affaires de 1 Md€ pour le premier exercice (apprécié sur l'exercice ou l'exercice précédent) et de plus de 1,5 Md€ pour le second (apprécié sur ce seul exercice) ; assise sur la moyenne de l'IS dû au titre de l'exercice et de l'exercice précédent ; taux de 20,6 % (chiffre d'affaires inférieur à 3 Md€) ou 41,2 % (3 Md€ et plus) pour chacun des deux exercices, avec lissage à l'entrée de chaque seuil ; acompte versé avec le dernier acompte d'IS.",
      "src": "Loi n° 2025-127 du 14 février 2025, art. 48 ; loi n° 2026-103 du 19 février 2026, art. 12 ; BOI-IS-AUT-60 (12 août 2026)",
      "url": "https://bofip.impots.gouv.fr/bofip/14607-PGP.html/identifiant=BOI-IS-AUT-60-20260812",
      "fiab": "millésimé 2026"
@@ -240,7 +241,7 @@
      "t": "<b>Reprise des subventions d'investissement au résultat</b> : pour une immobilisation amortissable, la reprise s'effectue sur la même durée et au même rythme que l'amortissement de l'immobilisation financée (reprise = subvention × dotation / coût) ; pour une immobilisation non amortissable, elle est étalée sur le nombre d'années pendant lequel l'immobilisation est inaliénable aux termes du contrat ou, à défaut de clause d'inaliénabilité, par dixième chaque année ; des dérogations à la durée et au rythme de reprise peuvent être admises lorsque des circonstances particulières le justifient (règlement ANC n° 2020-09). Écriture : débit 139, crédit 747.",
      "cite": "« La reprise de la subvention d'investissement qui finance une immobilisation amortissable s'effectue sur la même durée et au même rythme que l'amortissement »",
      "src": "PCG, art. 312-1 ; règlement ANC n° 2020-09",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -250,7 +251,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Subventions d'exploitation et d'équilibre</b> : produits d'exploitation de la classe 74, enregistrés aux comptes <span class=\"mono\">741</span> Subventions d'exploitation et <span class=\"mono\">742</span> Subventions d'équilibre, par le débit du compte 441 État – Subventions et aides à recevoir lorsque l'octroi est acquis ; depuis le PCG 2025, la quote-part de subvention d'investissement virée au résultat (747) et les subventions d'équilibre relèvent du résultat d'exploitation et non plus du résultat exceptionnel.",
+     "t": "<b>Subventions d'exploitation et d'équilibre</b> : produits d'exploitation du compte 74, enregistrés aux comptes <span class=\"mono\">741</span> Subventions d'exploitation et <span class=\"mono\">742</span> Subventions d'équilibre, par le débit du compte 441 État – Subventions et aides à recevoir lorsque l'octroi est acquis ; depuis le PCG 2025, la quote-part de subvention d'investissement virée au résultat (747) et les subventions d'équilibre relèvent du résultat d'exploitation et non plus du résultat exceptionnel.",
      "src": "PCG, plan de comptes 2026, comptes 441, 741, 742 et 747 ; règlement ANC n° 2022-06",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
@@ -269,7 +270,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Comptabilisation des abandons de créances sous le PCG 2025</b> : le résultat exceptionnel étant réservé aux produits et charges directement liés à un événement majeur et inhabituel (art. 513-5), les opérations relevant de l'activité normale et courante sont classées en résultat courant selon leur nature : un abandon commercial en résultat d'exploitation (classes 65 / 75), un abandon financier en résultat financier (classes 66 / 76).",
+     "t": "<b>Comptabilisation des abandons de créances sous le PCG 2025</b> : le résultat exceptionnel étant réservé aux produits et charges directement liés à un événement majeur et inhabituel (art. 513-5), les opérations relevant de l'activité normale et courante sont classées en résultat courant selon leur nature : un abandon commercial en résultat d'exploitation (comptes 65 / 75), un abandon financier en résultat financier (comptes 66 / 76).",
      "src": "PCG, art. 513-5 (règlement ANC n° 2022-06, version commentée)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
      "fiab": "stable"
@@ -298,15 +299,16 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Crédits d'impôt 2026</b> : CIR <span class=\"mono\">30 %</span> jusqu'à <span class=\"mono\">100 M€</span> de dépenses, <span class=\"mono\">5 %</span> au-delà ; CII <span class=\"mono\">20 %</span> pour les PME, dépenses retenues dans la limite de <span class=\"mono\">400 000 €</span> par an, jusqu'au 31 décembre 2027 (taux de 60 % outre-mer).",
+     "t": "<b>Crédits d'impôt 2026</b> : CIR <span class=\"mono\">30 %</span> jusqu'à <span class=\"mono\">100 M€</span> de dépenses, <span class=\"mono\">5 %</span> au-delà ; CII <span class=\"mono\">20 %</span> pour les PME, dépenses retenues dans la limite de <span class=\"mono\">400 000 €</span> par an, jusqu'au 31 décembre 2027 (taux de 60 % pour les dépenses exposées dans des exploitations situées dans les départements d'outre-mer).",
      "src": "CGI, art. 244 quater B ; impots.gouv.fr, « Mesures d'attractivité fiscale »",
      "url": "https://www.impots.gouv.fr/international-professionnel/investissement-et-innovation",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Report en arrière</b> : déficit imputable dans la limite du plus faible du bénéfice de l'exercice précédent et de <span class=\"mono\">1 000 000 €</span> ; créance égale à l'IS acquitté sur le bénéfice d'imputation, utilisable pendant <span class=\"mono\">cinq ans</span> puis remboursée pour la fraction non utilisée.",
-     "src": "CGI, art. 220 quinquies ; BOI-IS-DEF-20-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/5647-PGP.html/identifiant=BOI-IS-DEF-20-20-20210224",
+     "t": "<b>Report en arrière</b> : déficit imputable sur la fraction non distribuée du bénéfice de l'exercice précédent, dans la limite de <span class=\"mono\">1 000 000 €</span>, après exclusion des bénéfices exonérés et de la fraction ayant donné lieu à un impôt payé au moyen de crédits ou de réductions d'impôt ; créance égale à l'IS acquitté sur le bénéfice d'imputation, utilisable pendant <span class=\"mono\">cinq ans</span> puis remboursée pour la fraction non utilisée.",
+     "cite": "« La fraction non distribuée du bénéfice est égale à la différence entre le bénéfice déclaré et soumis à l'impôt sur les sociétés et le montant des distributions effectuées par prélèvement sur ce même bénéfice »",
+     "src": "CGI, art. 220 quinquies ; BOI-IS-DEF-20-10 (12 août 2026) et BOI-IS-DEF-20-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/5645-PGP.html/identifiant=BOI-IS-DEF-20-10-20260812",
      "fiab": "stable"
     },
     {
@@ -351,10 +353,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2026-04 du 4 mai 2026</b> (homologué par arrêté du 12 août 2026) : réécrit l'article 515-1 du PCG : l'impôt sur les bénéfices et les contributions qui s'y rattachent sont comptabilisés dans la rubrique « Impôts sur les bénéfices » du compte de résultat de l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture ; l'article 515-1-1, consacré à la contribution exceptionnelle sur les bénéfices des grandes entreprises, est abrogé.",
+     "t": "<b>Règlement ANC n° 2026-04 du 4 mai 2026</b> (homologué par arrêté du 12 août 2026 ; en vigueur le lendemain de sa publication au Journal officiel, applicable aux exercices en cours à cette date) : réécrit l'article 515-1 du PCG : l'impôt sur les bénéfices et les contributions qui s'y rattachent sont comptabilisés dans la rubrique « Impôts sur les bénéfices » du compte de résultat de l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture ; l'article 515-1-1, consacré à la contribution exceptionnelle sur les bénéfices des grandes entreprises, est abrogé.",
      "src": "Règlement ANC n° 2026-04 ; arrêté du 12 août 2026 ; PCG, art. 515-1",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/REGLT_2026_04_-recueil.pdf",
-     "fiab": "millésimé 2026"
+     "fiab": "stable"
     },
     {
      "t": "<b>Loi de finances pour 2026, art. 42</b> : l'article L. 3324-1 du Code du travail (calcul de la réserve spéciale de participation) a été modifié, dans une version en vigueur depuis le 1er janvier 2026 ; la réserve reste égale à la moitié du chiffre obtenu en appliquant au bénéfice net, diminué de 5 % des capitaux propres, le rapport des salaires à la valeur ajoutée.",

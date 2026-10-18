@@ -1,6 +1,6 @@
 {
  "id": "ue9-04",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -88,7 +88,7 @@
    "ref": "CGI, art. 261 C, 1° à 3° ; art. 260 B",
    "objet": "Exonération de TVA des opérations bancaires et financières (octroi de crédits), des opérations d'assurance et des livraisons de timbres-poste à leur valeur officielle ; option des établissements bancaires pour la taxation (art. 260 B)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467574",
-   "version": "dernière rédaction issue de la loi n° 2019-1479 du 28 décembre 2019, art. 33 ; abrogé par l'ordonnance n° 2025-1247 du 17 décembre 2025, art. 9, à compter du 1er janvier 2027 (TVA recodifiée au livre II du code des impositions sur les biens et services)"
+   "version": "dernière rédaction issue de la loi n° 2019-1479 du 28 décembre 2019, art. 33 ; abrogé par l'ordonnance n° 2025-1247 du 17 décembre 2025, art. 9, à compter du 1er janvier 2027, date de l'entrée en vigueur du transfert de la TVA au livre II du code des impositions sur les biens et services, décalée du 1er septembre 2026 par l'ordonnance n° 2026-671 du 27 juillet 2026"
   },
   {
    "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
@@ -101,6 +101,12 @@
    "objet": "Intitulé du compte 6454 : « France Travail » au lieu de « Pôle emploi » (art. 6)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
    "version": "homologué par arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027, application anticipée possible"
+  },
+  {
+   "ref": "Ordonnance n° 2026-671 du 27 juillet 2026 portant divers ajustements du code des impositions sur les biens et services",
+   "objet": "Entrée en vigueur du transfert de la TVA au CIBS décalée du 1er septembre 2026 au 1er janvier 2027 ; anciennes références au CGI utilisables jusqu'au 30 juin 2028 (au lieu du 31 décembre 2027)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054497160",
+   "version": "publiée au Journal officiel du 28 juillet 2026 (rapport au Président de la République : JORFTEXT000054497139)"
   }
  ],
  "sections": [
@@ -127,8 +133,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Charges de personnel</b> (compte <code>64</code>) : rémunérations du personnel <code>641</code> ; charges de sécurité sociale et de prévoyance <code>645</code> (<code>6451</code> URSSAF, <code>6452</code> mutuelles, <code>6453</code> caisses de retraites, <code>6454</code> Pôle emploi, <code>6458</code> autres organismes sociaux) ; remboursements de charges de personnel <code>649</code>.",
-     "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), compte 64",
+     "t": "<b>Charges de personnel</b> (compte <code>64</code>) : notamment rémunérations du personnel <code>641</code> ; charges de sécurité sociale et de prévoyance <code>645</code> (<code>6451</code> URSSAF, <code>6452</code> mutuelles, <code>6453</code> caisses de retraites, <code>6454</code> Pôle emploi, <code>6458</code> autres organismes sociaux) ; cotisations sociales personnelles de l'exploitant <code>646</code> ; autres charges de personnel <code>648</code> ; remboursements de charges de personnel <code>649</code>. Le compte <code>6454</code> devient « Cotisations à France Travail » pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03, voir « Ce qui a changé récemment »).",
+     "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), compte 64 ; règlement ANC n° 2026-03 du 6 mars 2026, art. 6 (compte 6454)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -165,7 +171,7 @@
      "cite": "« Le livre-journal et le grand livre sont détaillés en autant de journaux auxiliaires et de livres auxiliaires que les besoins du commerce l'exigent. »"
     },
     {
-     "t": "Les charges externes sont enregistrées <b>hors taxes</b> aux comptes 61/62, la TVA déductible au compte <code>44566</code> « TVA sur autres biens et services » ; une charge exonérée de TVA (intérêts, primes d'assurance, timbres-poste acquis à leur valeur officielle) est enregistrée pour son montant total, sans TVA déductible.",
+     "t": "Les charges externes sont enregistrées <b>hors taxes</b> aux comptes 61/62, la TVA déductible au compte <code>44566</code> « TVA sur autres biens et services » ; une charge externe exonérée de TVA (primes d'assurance, timbres-poste acquis à leur valeur officielle) est enregistrée pour son montant total, sans TVA déductible. Les intérêts, exonérés eux aussi au titre de l'octroi de crédits, ne sont pas des charges externes mais des charges financières (compte <code>661</code>).",
      "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62 et 44566 ; CGI, art. 261 C, 1° à 3°",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
@@ -217,7 +223,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Charges patronales</b> : débit <code>645</code> « Charges de sécurité sociale et de prévoyance » et crédit <code>431</code> / <code>437</code>. La charge de personnel de la période est la somme des comptes 641 et 645 ; les cotisations salariales, comprises dans le brut, ne sont pas une charge supplémentaire.",
+     "t": "<b>Charges patronales</b> : débit <code>645</code> « Charges de sécurité sociale et de prévoyance » et crédit <code>431</code> / <code>437</code>. Le coût de la paie pour l'employeur (salaire brut et charges patronales) est la somme des comptes 641 et 645 ; les cotisations salariales, comprises dans le brut, ne sont pas une charge supplémentaire.",
      "src": "Plan de comptes (version au 1er janvier 2026), comptes 431, 437, 641 et 645",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
@@ -336,8 +342,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la taxe sur la valeur ajoutée au livre II du code des impositions sur les biens et services (CIBS). Son article 9 abroge l'article 261 C du CGI ; Légifrance fixe au 1er janvier 2027 l'abrogation des dispositions TVA du CGI concernées et présente l'exonération des opérations d'assurance aux articles L. 213-129 à L. 213-131 du CIBS (version au 1er janvier 2027). Les références de cette fiche (CGI, art. 260 B et 261 C) sont celles de la numérotation du CGI.",
-     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, art. 9 ; CGI, art. 261 C (abrogé) ; CIBS, art. L. 213-129 à L. 213-131",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la taxe sur la valeur ajoutée au livre II du code des impositions sur les biens et services (CIBS) ; son article 9 abroge l'article 261 C du CGI. Son article 49 fixait l'entrée en vigueur au 1er septembre 2026 ; l'ordonnance n° 2026-671 du 27 juillet 2026 a décalé au 1er janvier 2027 l'entrée en vigueur du transfert de la TVA au sein du CIBS, où l'exonération des opérations d'assurance figure aux articles L. 213-129 à L. 213-131. Jusqu'au 31 décembre 2026, les références de cette fiche (CGI, art. 260 B et 261 C) restent donc celles du texte applicable ; selon le rapport au Président de la République, l'ordonnance de 2026 reporte aussi du 31 décembre 2027 au 30 juin 2028 la date jusqu'à laquelle les anciennes références au CGI peuvent être utilisées.",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, art. 9 et 49 ; ordonnance n° 2026-671 du 27 juillet 2026 et rapport au Président de la République ; CGI, art. 261 C (abrogé à compter du 1er janvier 2027) ; CIBS, art. L. 213-129 à L. 213-131",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
     }
@@ -353,28 +359,28 @@
      "fiab": "stable"
     },
     {
-     "t": "Piège TVA : les intérêts et agios (octroi de crédits), les primes d'assurance et les livraisons de timbres-poste à leur valeur officielle sont <b>exonérés de TVA</b> (CGI, art. 261 C, 1° à 3°) ; aucune TVA déductible n'est enregistrée. Les frais et commissions bancaires vont au compte <code>627</code> « Services bancaires et assimilés », distinct des intérêts (compte 661) ; ils ne supportent la TVA que si l'établissement a opté pour la taxation des opérations qu'il désigne (CGI, art. 260 B).",
+     "t": "Piège TVA : les intérêts et agios (octroi de crédits), les primes d'assurance et les livraisons de timbres-poste à leur valeur officielle sont <b>exonérés de TVA</b> (CGI, art. 261 C, 1° à 3°) ; aucune TVA déductible n'est enregistrée. Les frais et commissions bancaires vont au compte <code>627</code> « Services bancaires et assimilés », distinct des intérêts (compte 661) ; ils peuvent supporter la TVA, notamment lorsque l'établissement a opté pour la taxation des opérations qu'il désigne (CGI, art. 260 B) ou lorsque l'opération est exclue de l'exonération, comme le recouvrement de créances ou la garde et la gestion de titres (art. 261 C, 1°, c et e).",
      "src": "CGI, art. 261 C et 260 B ; plan de comptes (version au 1er janvier 2026), comptes 616, 627 et 661",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467574",
      "fiab": "stable",
      "cite": "« les livraisons à leur valeur officielle de timbres fiscaux et de timbres-poste ayant cours ou valeur d'affranchissement en France »"
     },
     {
-     "t": "Dans un rapprochement, un chèque émis non encore débité par la banque a déjà été enregistré à son émission, sur sa pièce justificative : il figure sur l'état de rapprochement mais ne donne lieu à <b>aucune nouvelle écriture</b>. Seules les opérations connues par le relevé et absentes de la comptabilité sont enregistrées.",
+     "t": "Dans un rapprochement, un chèque émis non encore débité par la banque a déjà été enregistré à son émission, sur sa pièce justificative : il figure sur l'état de rapprochement mais ne donne lieu à <b>aucune nouvelle écriture</b>. Les opérations figurant sur le relevé et absentes de la comptabilité sont, elles, enregistrées sur la base du relevé.",
      "src": "C. com., art. R. 123-174 et R. 123-177",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
      "fiab": "stable"
     },
     {
-     "t": "Lien DSCG : la CFE et la CVAE sont des impôts directs autres que l'impôt sur les bénéfices, enregistrés en charges d'exploitation au compte <code>6351</code> ; seul l'impôt sur les bénéfices passe par le compte <code>695</code>.",
-     "src": "CGI, art. 1447 et 1586 ter ; plan de comptes (version au 1er janvier 2026), comptes 6351 et 695",
+     "t": "Lien DSCG : la CFE et la CVAE (cotisation sur la valeur ajoutée des entreprises, CGI, art. 1586 ter et suivants) sont des impôts directs autres que l'impôt sur les bénéfices, enregistrés en charges d'exploitation au compte <code>6351</code> ; seul l'impôt sur les bénéfices passe par le compte <code>695</code>. La CVAE est en voie de suppression : sa suppression définitive est fixée au 1er janvier 2030 (loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 62), calendrier que la loi de finances pour 2026 a maintenu.",
+     "src": "CGI, art. 1447 et 1586 ter ; loi n° 2025-127 du 14 février 2025, art. 62 ; BOI-CVAE ; plan de comptes (version au 1er janvier 2026), comptes 6351 et 695",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
      "t": "Une amende ou une pénalité n'est pas un impôt : depuis le PCG 2025, elle est enregistrée au compte <code>6582</code> « Pénalités, amendes fiscales et pénales », subdivision du compte 658 « Pénalités et autres charges » (charges de gestion courante), et non au compte 63 ; avant 2025, elle relevait du compte <code>6712</code>.",
-     "src": "Plan de comptes (version au 1er janvier 2025), comptes 658 et 6582 ; plan de comptes 2024, compte 6712",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 658 et 6582 ; plan de comptes 2024, compte 6712",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {

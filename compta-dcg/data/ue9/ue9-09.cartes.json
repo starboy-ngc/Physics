@@ -1,6 +1,6 @@
 {
  "id": "ue9-09",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-09-k01",
@@ -226,7 +226,7 @@
    "id": "ue9-09-k19",
    "type": "def",
    "q": "Que prévoit le principe d'indépendance des exercices pour le compte de résultat d'un commerçant ?",
-   "r": "<b>Le compte de résultat récapitule les produits et les charges de l'exercice</b>, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. En principe, seul le bénéfice réalisé à la date de clôture peut être inscrit dans les comptes annuels.",
+   "r": "<b>Le compte de résultat récapitule les produits et les charges de l'exercice</b>, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement.",
    "base": [
     "Règles essentielles#9"
    ],
@@ -254,7 +254,7 @@
    "base": [
     "Règles essentielles#11"
    ],
-   "src": "C. com., art. L. 123-12, R. 123-174 et R. 123-177 ; plan de comptes 2026 (PCG, art. 1121-1), compte 512",
+   "src": "C. com., art. L. 123-12, R. 123-174 et R. 123-177 ; plan de comptes (PCG, art. 1121-1), compte 512",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
    "fiab": "stable"
   },
@@ -279,7 +279,7 @@
     "Règles essentielles#13",
     "Définitions#1"
    ],
-   "src": "C. com., art. L. 123-13, L. 123-16 et L. 123-16-1",
+   "src": "C. com., art. L. 123-13, L. 123-16, L. 123-16-1 et L. 123-16-2",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
    "fiab": "stable"
   },
@@ -291,7 +291,7 @@
    "base": [
     "Règles essentielles#13"
    ],
-   "src": "C. com., art. L. 123-13, L. 123-16 et L. 123-16-1",
+   "src": "C. com., art. L. 123-13, L. 123-16, L. 123-16-1 et L. 123-16-2",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
    "fiab": "stable"
   },
@@ -312,7 +312,7 @@
    "id": "ue9-09-k26",
    "type": "comp",
    "q": "Quelles mesures de publicité allégée le Code de commerce prévoit-il pour les petites et les moyennes entreprises ?",
-   "r": "<b>Les petites entreprises peuvent, sauf exceptions, demander que leur seul compte de résultat ne soit pas rendu public</b> ; les moyennes entreprises peuvent rendre publique une présentation simplifiée de leur bilan et de leur annexe.",
+   "r": "<b>Les petites entreprises peuvent demander que leur seul compte de résultat ne soit pas rendu public</b>, sauf sociétés visées à l'article L. 123-16-2 et sociétés appartenant à un groupe ; les moyennes entreprises, sauf sociétés visées à l'article L. 123-16-2, peuvent demander que ne soit rendue publique qu'une présentation simplifiée de leur bilan et de leur annexe.",
    "base": [
     "Règles essentielles#14"
    ],

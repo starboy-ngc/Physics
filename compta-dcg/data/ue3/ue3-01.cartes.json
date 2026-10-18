@@ -1,6 +1,6 @@
 {
  "id": "ue3-01",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue3-01-k01",
@@ -34,8 +34,8 @@
    "base": [
     "Définitions#1"
    ],
-   "src": "C. trav., art. L. 2231-1",
-   "url": null,
+   "src": "C. trav., art. L. 2231-1 ; L. 2232-21 à L. 2232-29-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019353732",
    "fiab": "stable"
   },
   {
@@ -95,7 +95,7 @@
     "Points de vigilance#3",
     "Règles essentielles#3"
    ],
-   "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1",
+   "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1 à L. 2253-3",
    "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020048",
    "fiab": "stable"
   },
@@ -115,12 +115,12 @@
    "id": "ue3-01-k10",
    "type": "comp",
    "q": "Dans les matières du bloc 2 (art. L. 2253-2 du Code du travail), à quelle condition la convention de branche prime-t-elle sur un accord d'entreprise conclu après elle ?",
-   "r": "<b>Seulement si elle le stipule expressément</b>, et sauf garanties au moins équivalentes dans l'accord d'entreprise. Ce bloc vise la prévention des effets de l'exposition aux facteurs de risques professionnels, l'insertion professionnelle et le maintien dans l'emploi des travailleurs handicapés, l'effectif à partir duquel les délégués syndicaux peuvent être désignés et les primes pour travaux dangereux ou insalubres.",
+   "r": "<b>Seulement si elle le stipule expressément</b>, et sauf garanties au moins équivalentes dans l'accord d'entreprise. Ce bloc vise la prévention des effets de l'exposition aux facteurs de risques professionnels, l'insertion professionnelle et le maintien dans l'emploi des travailleurs handicapés, l'effectif à partir duquel les délégués syndicaux peuvent être désignés, leur nombre et la valorisation de leur parcours syndical, et les primes pour travaux dangereux ou insalubres.",
    "base": [
     "Règles essentielles#2"
    ],
    "src": "C. trav., art. L. 2253-2",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177936/",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761762",
    "fiab": "stable"
   },
   {
@@ -324,8 +324,8 @@
    "base": [
     "Ce qui a changé récemment#4"
    ],
-   "src": "C. trav., art. L. 8115-1 (version en vigueur depuis le 27 juin 2026 ; loi n° 2026-534 du 25 juin 2026)",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+   "src": "Loi n° 2026-534 du 25 juin 2026, art. 48 ; C. trav., art. L. 8115-1, 6° (version en vigueur depuis le 27 juin 2026)",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054309845",
    "fiab": "stable"
   },
   {

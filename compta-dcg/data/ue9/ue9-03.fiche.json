@@ -1,6 +1,6 @@
 {
  "id": "ue9-03",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -72,14 +72,14 @@
    "version": "en vigueur (ordonnance n° 2019-359 du 24 avril 2019 ; D. 441-5 modifié par le décret n° 2021-211 du 24 février 2021)"
   },
   {
-   "ref": "C. com., art. L. 123-19 et L. 123-22",
-   "objet": "Non-compensation des charges et des produits ; conservation des documents comptables et pièces justificatives (dix ans)",
+   "ref": "C. com., art. L. 441-9, L. 441-10, L. 441-11 et D. 441-5",
+   "objet": "Facture commerciale : délivrance, mentions (réductions, escompte, pénalités de retard, indemnité forfaitaire de 40 €) ; délais de paiement (60 jours, ou 45 jours fin de mois ; 45 jours pour une facture périodique ; délais propres à certains secteurs)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
    "version": "L. 123-19 : rédaction de l'ordonnance n° 2015-900, en vigueur depuis le 1er janvier 2016 ; L. 123-22 : en vigueur"
   },
   {
    "ref": "Plan de comptes du PCG (PCG, art. 1121-1)",
-   "objet": "Comptes 401, 411, 4091, 4191, 445, 60, 609, 6241, 6242, 665, 70, 708, 7085, 709, 765",
+   "objet": "Comptes 237, 238, 401, 411, 4091, 4191, 445, 60, 608, 609, 6241, 6242, 665, 70, 708, 7085, 709, 765",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "version": "version au 1er janvier 2026 (règlement ANC n° 2014-03 modifié, notamment par le règlement n° 2022-06)"
   },
@@ -137,8 +137,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Acompte reçu d'un client</b> : dette envers le client jusqu'à la facturation, au compte <code>4191</code> « Clients – Avances et acomptes reçus sur commandes » ; <b>acompte versé à un fournisseur</b> : créance au compte <code>4091</code> « Fournisseurs – Avances et acomptes versés sur commandes ».",
-     "src": "Plan de comptes du PCG (art. 1121-1), comptes 4091 et 4191",
+     "t": "<b>Acompte reçu d'un client</b> : dette envers le client jusqu'à la facturation, au compte <code>4191</code> « Clients – Avances et acomptes reçus sur commandes » ; <b>acompte versé à un fournisseur</b> sur une commande d'exploitation : créance au compte <code>4091</code> « Fournisseurs – Avances et acomptes versés sur commandes ». L'acompte versé sur une commande d'immobilisation relève des comptes <code>237</code> « Avances et acomptes versés sur immobilisations incorporelles » et <code>238</code> « Avances et acomptes versés sur commandes d'immobilisations corporelles ».",
+     "src": "Plan de comptes du PCG (art. 1121-1), comptes 237, 238, 4091 et 4191",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     }
@@ -161,7 +161,7 @@
      "cite": "« La déduction peut être opérée : a) Pour les livraisons de biens et les prestations de services, si les redevables sont en possession des factures »"
     },
     {
-     "t": "Tout assujetti doit s'assurer qu'une <b>facture</b> est émise pour les livraisons de biens et les prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie, ainsi que pour les acomptes qui lui sont versés avant que l'opération soit effectuée.",
+     "t": "Tout assujetti doit s'assurer qu'une <b>facture</b> est émise, notamment pour les livraisons de biens et les prestations de services qu'il effectue pour un autre assujetti ou pour une personne morale non assujettie, lorsqu'elles ne sont pas exonérées en application des articles 261 à 261 E, ainsi que pour les acomptes qui lui sont versés avant que l'opération soit effectuée. Le texte vise aussi d'autres opérations, comme les ventes à distance de biens (art. 258 A) et les livraisons de biens exonérées en application de l'article 262 ter (livraisons intracommunautaires).",
      "src": "CGI, art. 289, I-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048827413",
      "fiab": "stable"
@@ -186,13 +186,13 @@
      "cite": "« Ne sont pas à comprendre dans la base d'imposition : 1° Les escomptes de caisse, remises, rabais, ristournes et autres réductions de prix consenties directement aux clients »"
     },
     {
-     "t": "<b>Achat</b> : le compte d'achat (classe 60) est débité du montant <b>hors taxes</b>, la TVA déductible au débit de <code>44566</code> « TVA sur autres biens et services » (ou <code>44562</code> « TVA sur immobilisations » pour une immobilisation), le fournisseur <code>401</code> crédité du montant TTC.",
+     "t": "<b>Achat</b> : le compte d'achat <code>60</code> est débité du montant <b>hors taxes</b>, la TVA déductible au débit de <code>44566</code> « TVA sur autres biens et services » (ou <code>44562</code> « TVA sur immobilisations » pour une immobilisation), le fournisseur <code>401</code> crédité du montant TTC.",
      "src": "Plan de comptes du PCG (art. 1121-1), comptes 401, 4456 et 60",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Vente</b> : le compte de produit (classe 70) est crédité du montant hors taxes collectées, la TVA collectée au crédit de <code>44571</code>, le client <code>411</code> débité du montant TTC. La TVA transite par les comptes de tiers <code>445</code> « État – Taxes sur le chiffre d'affaires » : elle n'est ni une charge ni un produit pour l'assujetti. Enregistrer une vente TTC en <code>707</code> est l'erreur classique.",
+     "t": "<b>Vente</b> : le compte de produit <code>70</code> est crédité du montant hors taxes collectées, la TVA collectée au crédit de <code>44571</code>, le client <code>411</code> débité du montant TTC. La TVA collectée et la TVA déductible transitent par les comptes de tiers <code>445</code> « État – Taxes sur le chiffre d'affaires » : elles ne sont ni des charges ni des produits pour l'assujetti. Enregistrer une vente TTC en <code>707</code> est l'erreur classique.",
      "src": "Plan de comptes du PCG (art. 1121-1), comptes 411, 445 et 70",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable",
@@ -205,15 +205,15 @@
      "fiab": "stable"
     },
     {
-     "t": "Pour une <b>immobilisation corporelle</b>, le coût d'acquisition est le prix d'achat, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, majoré des coûts directement attribuables à la mise en place et en état de fonctionner de l'actif.",
+     "t": "Pour une <b>immobilisation corporelle</b>, le coût d'acquisition est le prix d'achat, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, majoré des coûts directement attribuables à la mise en place et en état de fonctionner de l'actif, ainsi que de l'estimation initiale des coûts de démantèlement, d'enlèvement et de restauration du site sur lequel elle est située.",
      "src": "PCG, art. 213-8",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
      "cite": "« Le coût d'acquisition d'une immobilisation corporelle est constitué de : son prix d'achat, y compris les droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement »"
     },
     {
-     "t": "<b>Frais de port</b> : à l'achat, charge <code>6241</code> « Transports sur achats » ; à la vente, charge <code>6242</code> « Transports sur ventes » lorsque le vendeur paie le transporteur ; le port refacturé au client est un produit au compte <code>7085</code> « Ports et frais accessoires facturés ».",
-     "src": "Plan de comptes du PCG (art. 1121-1), comptes 6241, 6242 et 7085",
+     "t": "<b>Frais de port</b> : à l'achat, charge <code>6241</code> « Transports sur achats », sauf si l'entreprise incorpore ces frais accessoires au coût d'achat (compte <code>60</code>, avec récapitulation possible au compte <code>608</code> « Compte réservé, le cas échéant, à la récapitulation des frais accessoires incorporés aux achats ») ; à la vente, charge <code>6242</code> « Transports sur ventes » lorsque le vendeur paie le transporteur ; le port refacturé au client est un produit au compte <code>7085</code> « Ports et frais accessoires facturés ».",
+     "src": "Plan de comptes du PCG (art. 1121-1), comptes 60, 608, 6241, 6242 et 7085",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -230,15 +230,15 @@
      "fiab": "stable"
     },
     {
-     "t": "En 2026, les redevables placés sous le <b>régime réel normal</b> déposent chaque mois une déclaration (CA3) ; lorsque la taxe exigible annuellement est inférieure à <span class=\"mono\">4 000 €</span>, ils sont admis à la déposer par trimestre civil. Ce seuil s'apprécie au début de chaque trimestre, d'après la taxe exigible au cours des quatre trimestres civils précédents.",
-     "src": "CGI, art. 287, 2 ; CE, 17 octobre 2022, n° 458767",
+     "t": "En 2026, les redevables placés sous le <b>régime réel normal</b> déposent chaque mois une déclaration (CA3) ; lorsque la taxe exigible annuellement est inférieure à <span class=\"mono\">4 000 €</span>, ils sont admis à la déposer par trimestre civil. Ce seuil s'apprécie au début de chaque trimestre, d'après la taxe exigible au cours des quatre trimestres civils précédents. À compter du 1er janvier 2027, la CA3 est trimestrielle tant que le chiffre d'affaires n'excède pas <span class=\"mono\">1 000 000 €</span> pour l'année civile précédente et <span class=\"mono\">1 100 000 €</span> pour l'année en cours, mensuelle au-delà.",
+     "src": "CGI, art. 287, 2 ; CE, 17 octobre 2022, n° 458767 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191928/",
      "fiab": "millésimé 2026",
      "cite": "« Lorsque la taxe exigible annuellement est inférieure à 4 000 €, ils sont admis à déposer leurs déclarations par trimestre civil. »"
     },
     {
-     "t": "La <b>refacturation de frais</b> à un tiers ne peut plus être neutralisée par un compte de transfert de charges : la mention « les transferts de charges » est supprimée des produits de l'article 512-1, et aucune compensation n'est admise entre charges et produits sauf exception prévue par un règlement de l'ANC. La refacturation est donc un produit, que l'ANC rattache au compte <code>708</code> « Produits des activités annexes » (avis n° 2025-01), et la charge reste inscrite à son compte.",
-     "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; C. com., art. L. 123-19 ; plan de comptes du PCG, compte 708",
+     "t": "La <b>refacturation de frais</b> à un tiers ne peut plus être neutralisée par un compte de transfert de charges : la mention « les transferts de charges » est supprimée des produits de l'article 512-1, et aucune compensation n'est admise entre charges et produits sauf exception prévue par un règlement de l'ANC. La refacturation est donc un produit, que l'ANC rattache au compte <code>708</code> « Produits des activités annexes » (avis n° 2025-01), et la charge reste inscrite à son compte. Le règlement ANC n° 2025-05 du 5 décembre 2025 maintient toutefois le compte <code>791</code> pour les seules opérations de concession d'aménagement.",
+     "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 du 5 décembre 2025 ; C. com., art. L. 123-19 ; plan de comptes du PCG, compte 708",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
      "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
@@ -255,8 +255,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Délais et pénalités</b> : le délai de paiement convenu ne peut dépasser <span class=\"mono\">60 jours</span> à compter de la date d'émission de la facture, ou <span class=\"mono\">45 jours fin de mois</span> si ce délai est expressément stipulé. À défaut de stipulation, les pénalités de retard sont calculées au taux de la Banque centrale européenne à son opération de refinancement la plus récente majoré de <span class=\"mono\">10 points</span> (taux en vigueur au 1er janvier pour le premier semestre, au 1er juillet pour le second) ; un taux contractuel ne peut être inférieur à <span class=\"mono\">trois fois</span> le taux d'intérêt légal. Tout professionnel en retard de paiement doit de plein droit une indemnité forfaitaire pour frais de recouvrement de <span class=\"mono\">40 €</span>.",
-     "src": "C. com., art. L. 441-10, I et II, et D. 441-5 ; DGCCRF, « Délais de paiement : les règles à connaître »",
+     "t": "<b>Délais et pénalités</b> : en règle générale entre professionnels, sauf délais propres à certains secteurs (art. L. 441-11), le délai de paiement convenu ne peut dépasser <span class=\"mono\">60 jours</span> à compter de la date d'émission de la facture, ou <span class=\"mono\">45 jours fin de mois</span> si ce délai est expressément stipulé et ne constitue pas un abus manifeste à l'égard du créancier ; pour une facture périodique, il ne peut dépasser <span class=\"mono\">45 jours</span> à compter de la date d'émission de la facture. À défaut de stipulation, les pénalités de retard sont calculées au taux de la Banque centrale européenne à son opération de refinancement la plus récente majoré de <span class=\"mono\">10 points</span> (taux en vigueur au 1er janvier pour le premier semestre, au 1er juillet pour le second) ; un taux contractuel ne peut être inférieur à <span class=\"mono\">trois fois</span> le taux d'intérêt légal. Tout professionnel en retard de paiement doit de plein droit une indemnité forfaitaire pour frais de recouvrement de <span class=\"mono\">40 €</span>.",
+     "src": "C. com., art. L. 441-10, I et II, L. 441-11 et D. 441-5 ; DGCCRF, « Délais de paiement : les règles à connaître »",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038411055",
      "fiab": "stable",
      "cite": "« Le montant de l'indemnité forfaitaire pour frais de recouvrement prévue au II de l'article L. 441-10 est fixé à 40 euros. »"
@@ -282,10 +282,10 @@
      "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »"
     },
     {
-     "t": "Conservation au titre du contrôle fiscal : délai général de <span class=\"mono\">six ans</span> pour les documents sur lesquels l'administration peut exercer ses droits de communication, d'enquête et de contrôle (version en vigueur du 1er janvier 2023 au 1er janvier 2027).",
-     "src": "LPF, art. L. 102 B, I",
+     "t": "Conservation au titre du contrôle fiscal : en 2026, délai général de <span class=\"mono\">six ans</span> pour les documents sur lesquels l'administration peut exercer ses droits de communication, d'enquête et de contrôle (rédaction en vigueur du 1er janvier 2023 au 1er janvier 2027). La loi n° 2026-534 du 25 juin 2026 (art. 36) porte ce délai à <span class=\"mono\">dix ans</span> pour les documents et pièces dont le délai de conservation expire après le 1er janvier 2027.",
+     "src": "LPF, art. L. 102 B, I ; loi n° 2026-534 du 25 juin 2026 relative à la lutte contre les fraudes sociales et fiscales, art. 36",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041471233/",
-     "fiab": "stable"
+     "fiab": "millésimé 2026"
     }
    ]
   },
@@ -311,14 +311,14 @@
      "fiab": "stable"
     },
     {
-     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus les <b>transferts de charges</b> (anciens comptes 791, 796 et 797) : les refacturations sont des produits. Le règlement ANC n° 2025-05 du 5 décembre 2025 maintient le compte 791 pour les seules opérations de concession d'aménagement.",
+     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus les <b>transferts de charges</b> (comptes 791, 796 et 797) : les refacturations sont des produits. Le règlement ANC n° 2025-05 du 5 décembre 2025 maintient toutefois le compte 791 pour les seules opérations de concession d'aménagement.",
      "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1 modifié) ; règlement ANC n° 2025-05 du 5 décembre 2025",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
      "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
     },
     {
-     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du <b>1er janvier 2027</b> (loi de finances pour 2025, art. 38, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; la déclaration annuelle CA12 et les acomptes semestriels disparaissent. Les redevables concernés relèvent du régime réel normal : CA3 trimestrielle tant que le chiffre d'affaires n'excède pas <span class=\"mono\">1 000 000 €</span> pour l'année civile précédente et <span class=\"mono\">1 100 000 €</span> pour l'année en cours, mensuelle au-delà.",
+     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du <b>1er janvier 2027</b> (loi de finances pour 2025, art. 38, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; la déclaration annuelle CA12 et les acomptes semestriels disparaissent. Les redevables concernés relèvent du régime réel normal, avec une CA3 trimestrielle tant que leur chiffre d'affaires n'excède pas un seuil, mensuelle au-delà (seuils indiqués avec la règle de périodicité de la CA3).",
      "src": "Loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 38 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
      "url": "https://www.impots.gouv.fr/actualite/le-regime-simplifie-dimposition-la-tva-est-supprime-compter-du-1er-janvier-2027",
      "fiab": "stable"
@@ -359,7 +359,7 @@
      "fiab": "stable"
     },
     {
-     "t": "L'escompte sur facture d'<b>immobilisation corporelle</b> est déduit du coût d'acquisition (pas de compte <code>765</code>), contrairement à l'escompte obtenu sur un achat de biens ou de services.",
+     "t": "L'escompte obtenu sur une facture d'<b>immobilisation corporelle</b> est déduit du coût d'acquisition et n'est pas enregistré au compte <code>765</code>, contrairement à l'escompte obtenu sur un achat de biens ou de services, qui y est enregistré.",
      "src": "PCG, art. 213-8",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
@@ -371,7 +371,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Lien DSCG/UE4 : le droit à déduction suppose une facture régulière mentionnant la TVA ; il naît chez le client à la date d'exigibilité chez le fournisseur.",
+     "t": "Lien avec l'UE 4 (Droit fiscal) et la fiscalité du DSCG : le droit à déduction suppose une facture régulière mentionnant la TVA ; il naît chez le client à la date d'exigibilité chez le fournisseur.",
      "src": "CGI, art. 271, I et II",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835114",
      "fiab": "stable",

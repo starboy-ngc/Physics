@@ -1,6 +1,6 @@
 {
  "id": "ue9-02",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -194,15 +194,15 @@
      "cite": "« Les documents comptables sont établis en euros et en langue française. Les documents comptables relatifs à l'enregistrement des opérations et à l'inventaire sont établis et tenus sans blanc ni altération d'aucune sorte, dans des conditions fixées par décret en Conseil d'Etat. »"
     },
     {
-     "t": "La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les <b>charges par nature</b> ; les charges d'exploitation normale et courante sont enregistrées dans les comptes 60 à 65 et les charges financières au compte 66.",
-     "src": "PCG (version consolidée au 1er janvier 2026), classe 6",
+     "t": "La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les <b>charges par nature</b> ; les charges d'exploitation normale et courante sont enregistrées dans les comptes 60 à 65 et les charges financières au compte 66. Les <b>dotations</b> aux amortissements, aux dépréciations et aux provisions sont enregistrées au compte 68, selon la catégorie de charges dans laquelle elles s'inscrivent : 681 (charges d'exploitation), 686 (charges financières) et 687 (charges exceptionnelles).",
+     "src": "PCG (version consolidée au 1er janvier 2026), classe 6 ; plan de comptes (art. 1121-1), comptes 681, 686 et 687",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
      "cite": "« La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les charges par nature »"
     },
     {
-     "t": "Les <b>produits</b> d'exploitation normale et courante sont enregistrés dans les comptes 70 (ventes), 71 (production stockée), 72 (production immobilisée), 74 (subventions) et 75 (autres produits de gestion courante) ; les produits de la classe 7 sont enregistrés hors taxes collectées.",
-     "src": "PCG (version consolidée au 1er janvier 2026), classe 7",
+     "t": "Les <b>produits</b> d'exploitation normale et courante sont enregistrés dans les comptes 70 (ventes), 71 (production stockée), 72 (production immobilisée), 74 (subventions) et 75 (autres produits de gestion courante) ; les produits de la classe 7 sont enregistrés hors taxes collectées. Les <b>reprises</b> sur amortissements, dépréciations et provisions sont enregistrées au compte 78, selon la catégorie de produits dans laquelle elles s'inscrivent : 781 (produits d'exploitation), 786 (produits financiers) et 787 (produits exceptionnels).",
+     "src": "PCG (version consolidée au 1er janvier 2026), classe 7 ; plan de comptes (art. 1121-1, version au 1er janvier 2026), comptes 781, 786 et 787",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
      "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
@@ -240,11 +240,18 @@
      "fiab": "stable"
     },
     {
-     "t": "Les commerçants personnes physiques visés aux articles L. 123-25 (régime réel simplifié) et L. 123-28 (régime micro de l'article 50-0 du CGI) peuvent enregistrer les encaissements et les paiements à la <b>date figurant sur le relevé</b> de leur établissement de crédit, par dérogation à l'enregistrement « opération par opération et jour par jour ».",
+     "t": "Les commerçants personnes physiques visés aux articles L. 123-25 (régime réel simplifié) et L. 123-28 (régime micro de l'article 50-0 du CGI) peuvent enregistrer les encaissements et les paiements en retenant la <b>date de l'opération figurant sur le relevé</b> qui leur est adressé par un établissement de crédit, par dérogation à l'enregistrement « opération par opération et jour par jour ».",
      "src": "C. com., art. R. 123-203 (sous-section 2 : obligations comptables applicables à certains commerçants, personnes physiques ou morales)",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000030927480",
      "fiab": "stable",
      "cite": "« Par dérogation à l'article R. 123-174, les personnes mentionnées aux articles L. 123-25 et L. 123-28 peuvent procéder à l'enregistrement comptable des encaissements et des paiements en retenant la date de l'opération figurant sur le relevé qui leur est adressé par un établissement de crédit. »"
+    },
+    {
+     "t": "Les écritures comptables sont passées selon le système dit « en <b>partie double</b> ». La doctrine fiscale le rappelle pour les entreprises au régime réel normal : les obligations de tenue des comptabilités ont leur fondement dans les articles L. 123-12 à L. 123-28 du Code de commerce, dont les prescriptions sont reprises et précisées par le Plan comptable général.",
+     "src": "BOFiP, BOI-BIC-DECLA-30-10-20-10 (BIC, régime du réel normal : tenue de la comptabilité), version du 12 septembre 2012",
+     "url": "https://bofip.impots.gouv.fr/bofip/2834-PGP.html/identifiant=BOI-BIC-DECLA-30-10-20-10-20120912",
+     "fiab": "stable",
+     "cite": "« Les écritures sont passées selon le système dit « en partie double ». »"
     }
    ]
   },

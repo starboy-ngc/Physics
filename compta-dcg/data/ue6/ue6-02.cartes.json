@@ -1,6 +1,6 @@
 {
  "id": "ue6-02",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue6-02-k01",
@@ -104,12 +104,12 @@
    "id": "ue6-02-k09",
    "type": "def",
    "q": "Qu'est-ce que le crédit-bail au sens du Code monétaire et financier ?",
-   "r": "<b>Une opération de location</b> qui donne au locataire <b>la possibilité d'acquérir le bien loué</b> moyennant un prix convenu tenant compte des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
+   "r": "<b>Une opération de location</b> qui donne au locataire <b>la possibilité d'acquérir le bien loué</b> moyennant un prix convenu tenant compte, au moins pour partie, des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
    "base": [
     "Définitions#5"
    ],
    "src": "C. mon. fin., art. L. 313-7",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006652100",
    "fiab": "stable"
   },
   {
@@ -181,7 +181,7 @@
     "Règles essentielles#7",
     "Chiffres et seuils#1"
    ],
-   "src": "Plan de comptes PCG 2025, compte 109 ; C. com., art. L. 225-3 et L. 225-144",
+   "src": "Plan de comptes PCG 2025, comptes 109 et 4562 ; C. com., art. L. 225-3 et L. 225-144",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -194,8 +194,8 @@
     "Chiffres et seuils#1",
     "Règles essentielles#7"
    ],
-   "src": "C. com., art. L. 225-3 et L. 225-144 ; plan de comptes PCG 2025",
-   "url": null,
+   "src": "C. com., art. L. 225-3 et L. 225-144 ; plan de comptes PCG 2025, comptes 109 et 4562",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223427",
    "fiab": "stable"
   },
   {
@@ -206,7 +206,7 @@
    "base": [
     "Règles essentielles#8"
    ],
-   "src": "Plan de comptes PCG 2025, comptes 1618, 1638, 1648 et 5186 ; règlement ANC n° 2022-06",
+   "src": "Plan de comptes PCG 2025, comptes 1618, 1638 et 1648 ; règlement ANC n° 2022-06",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -292,7 +292,7 @@
    "base": [
     "Règles essentielles#14"
    ],
-   "src": "CGI, art. 219, I (taux de 25 %) ; programme de l'UE6, analyse de la rentabilité (effet de levier)",
+   "src": "CGI, art. 219, I ; programme de l'UE6, analyse de la rentabilité (effet de levier)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046868562",
    "fiab": "stable"
   },
@@ -304,7 +304,7 @@
    "base": [
     "Ce qui a changé récemment#1"
    ],
-   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; plan de comptes PCG 2025, comptes 657, 757, 667 et 767",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
    "fiab": "stable"
   },

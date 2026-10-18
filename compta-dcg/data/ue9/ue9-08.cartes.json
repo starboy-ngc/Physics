@@ -1,6 +1,6 @@
 {
  "id": "ue9-08",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-08-k01",
@@ -277,7 +277,7 @@
    "id": "ue9-08-k23",
    "type": "comp",
    "q": "Lors d'une remise d'effets de commerce à l'escompte, dans quels comptes l'entreprise enregistre-t-elle les intérêts d'escompte et les commissions retenus par la banque ?",
-   "r": "<b>Les intérêts d'escompte au compte 6616</b> « Intérêts bancaires et sur opérations de financement (escompte...) », sans TVA, <b>et les commissions au compte 627</b>. La banque ne crédite que le net ; l'effet sort alors du compte 5114 « Effets à l'escompte ».",
+   "r": "<b>Les intérêts d'escompte au compte 6616</b> « Intérêts bancaires et sur opérations de financement (escompte…) », en principe sans TVA, <b>et les commissions au compte 627</b>. La banque ne crédite que le net ; l'effet sort alors du compte 5114 « Effets à l'escompte ».",
    "base": [
     "Règles essentielles#12"
    ],
@@ -289,7 +289,7 @@
    "id": "ue9-08-k24",
    "type": "comp",
    "q": "Dans quel compte le PCG enregistre-t-il l'escompte de règlement accordé à un client, à ne pas confondre avec l'intérêt d'escompte d'un effet ?",
-   "r": "<b>Au compte 665 « Escomptes accordés ».</b> L'intérêt d'escompte retenu par la banque sur un effet remis à l'escompte va, lui, au compte 6616 « Intérêts bancaires et sur opérations de financement (escompte...) ».",
+   "r": "<b>Au compte 665 « Escomptes accordés ».</b> L'intérêt d'escompte retenu par la banque sur un effet remis à l'escompte va, lui, au compte 6616 « Intérêts bancaires et sur opérations de financement (escompte…) ».",
    "base": [
     "Points de vigilance#2",
     "Règles essentielles#12"
@@ -400,7 +400,7 @@
    "id": "ue9-08-k33",
    "type": "comp",
    "q": "Selon le règlement ANC n° 2024-07, dans quelle rubrique du bilan figurent les avances conditionnées ?",
-   "r": "<b>Dans la rubrique « Autres fonds propres »</b>, qui comprend aussi les fonds non remboursables et les droits du concédant. Le règlement s'applique aux exercices ouverts à compter du 1er janvier 2026, avec application anticipée possible.",
+   "r": "<b>Dans la rubrique « Autres fonds propres »</b>, qui comprend aussi les fonds non remboursables et les droits du concédant. Le règlement s'applique en principe aux exercices ouverts à compter du 1er janvier 2026, avec application anticipée possible.",
    "base": [
     "Ce qui a changé récemment#5"
    ],

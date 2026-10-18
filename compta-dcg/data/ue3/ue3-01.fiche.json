@@ -1,6 +1,6 @@
 {
  "id": "ue3-01",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 3 Droit social), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -90,7 +90,7 @@
    "ref": "C. trav., art. L. 8112-1 à L. 8115-8",
    "objet": "Inspection du travail : compétence, droit d'entrée, obstacle, amendes administratives",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160845/",
-   "version": "en vigueur (L. 8115-1 dans sa version en vigueur depuis le 27 juin 2026, loi n° 2026-534 du 25 juin 2026)"
+   "version": "en vigueur (L. 8115-1 dans sa version en vigueur depuis le 27 juin 2026, complété par un 6° par l'article 48 de la loi n° 2026-534 du 25 juin 2026)"
   },
   {
    "ref": "Ordonnance n° 2017-1385 du 22 septembre 2017",
@@ -116,9 +116,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Parties à la convention ou à l'accord</b> : d'un côté une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de l'accord ; de l'autre une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement.",
-     "src": "C. trav., art. L. 2231-1",
-     "url": null,
+     "t": "<b>Parties à la convention ou à l'accord</b> : d'un côté une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de l'accord ; de l'autre une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement. Dans les entreprises dépourvues de délégué syndical ou de conseil d'entreprise, le code prévoit des modalités de négociation propres (L. 2232-21 à L. 2232-29-2).",
+     "cite": "« La convention ou l'accord est conclu entre : d'une part, une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de la convention ou de l'accord ; d'autre part, une ou plusieurs organisations syndicales d'employeurs, ou toute autre association d'employeurs, ou un ou plusieurs employeurs pris individuellement. »",
+     "src": "C. trav., art. L. 2231-1 ; L. 2232-21 à L. 2232-29-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019353732",
      "fiab": "stable"
     },
     {
@@ -160,9 +161,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Bloc 2 (matières verrouillables par la branche)</b> : prévention des effets de l'exposition aux facteurs de risques professionnels, insertion professionnelle et maintien dans l'emploi des travailleurs handicapés, effectif à partir duquel les délégués syndicaux peuvent être désignés, primes pour travaux dangereux ou insalubres. La branche ne prime que si elle le stipule expressément, et sous réserve de garanties au moins équivalentes dans l'accord d'entreprise.",
+     "t": "<b>Bloc 2 (matières verrouillables par la branche)</b> : prévention des effets de l'exposition aux facteurs de risques professionnels, insertion professionnelle et maintien dans l'emploi des travailleurs handicapés, effectif à partir duquel les délégués syndicaux peuvent être désignés, leur nombre et la valorisation de leur parcours syndical, primes pour travaux dangereux ou insalubres. Lorsque la convention de branche le stipule expressément, la convention d'entreprise conclue postérieurement ne peut comporter des stipulations différentes, sauf lorsqu'elle assure des garanties au moins équivalentes, appréciées par ensemble de garanties se rapportant à la même matière.",
      "src": "C. trav., art. L. 2253-2",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177936/",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761762",
      "fiab": "stable"
     },
     {
@@ -173,6 +174,7 @@
     },
     {
      "t": "<b>Extension et élargissement</b> : le ministre chargé du travail peut, par arrêté pris après avis motivé de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle, rendre obligatoires les stipulations d'une convention de branche ou d'un accord professionnel ou interprofessionnel pour tous les salariés et employeurs du champ d'application ; il peut exclure de l'extension les clauses contraires à la loi ou refuser l'extension pour des motifs d'intérêt général. En cas de carence des organisations se traduisant par une impossibilité persistante de conclure, il peut rendre obligatoire un texte déjà étendu dans un autre secteur présentant des conditions analogues quant aux emplois exercés (élargissement), sauf opposition écrite et motivée de la majorité des membres de cette commission ; l'absence d'avenant ou d'annexe pendant cinq ans au moins peut être assimilée à une carence.",
+     "cite": "« Dans les cas prévus aux 1° et 2°, le secteur professionnel ou territorial faisant l'objet de l'arrêté d'élargissement doit présenter des conditions analogues à celles du secteur dans lequel l'extension est déjà intervenue, quant aux emplois exercés. »",
      "src": "C. trav., art. L. 2261-15, L. 2261-17, L. 2261-18 et L. 2261-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042654536",
      "fiab": "stable"
@@ -239,7 +241,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amendes administratives</b> : sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales, l'autorité administrative (directeur régional de l'économie, de l'emploi, du travail et des solidarités) peut adresser un avertissement ou prononcer une amende pour certains manquements : durées maximales de travail, repos, salaire minimum de croissance et salaires minima conventionnels, installations sanitaires et hébergement et, depuis le 27 juin 2026, absence de document unique d'évaluation des risques professionnels. La décision se conteste devant le tribunal administratif.",
+     "t": "<b>Amendes administratives</b> : sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales, l'autorité administrative (directeur régional de l'économie, de l'emploi, du travail et des solidarités) peut adresser un avertissement ou prononcer une amende pour certains manquements, notamment en matière de durées maximales de travail, de repos, de décompte de la durée du travail (L. 3171-2), de salaire minimum de croissance et de salaires minima conventionnels, d'installations sanitaires et d'hébergement et, depuis le 27 juin 2026, en cas d'absence de document unique d'évaluation des risques professionnels. La décision se conteste devant le tribunal administratif.",
      "src": "C. trav., art. L. 8115-1 à L. 8115-8 (L. 8115-1 dans sa version en vigueur depuis le 27 juin 2026) ; R. 8115-1",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
      "fiab": "stable"
@@ -348,9 +350,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amendes administratives étendues au document unique (2026)</b> : l'article L. 8115-1, dans sa version en vigueur depuis le 27 juin 2026 issue de la loi n° 2026-534 du 25 juin 2026, permet à l'autorité administrative de sanctionner par un avertissement ou une amende l'absence de document unique d'évaluation des risques professionnels (I et II de l'article L. 4121-3-1), en plus des manquements déjà visés (durées maximales de travail, repos, salaire minimum, installations sanitaires et hébergement).",
-     "src": "C. trav., art. L. 8115-1 (version en vigueur depuis le 27 juin 2026 ; loi n° 2026-534 du 25 juin 2026)",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+     "t": "<b>Amendes administratives étendues au document unique (2026)</b> : l'article 48 de la loi n° 2026-534 du 25 juin 2026 relative à la lutte contre les fraudes sociales et fiscales complète l'article L. 8115-1 par un 6°. Dans sa version en vigueur depuis le 27 juin 2026, cet article permet à l'autorité administrative de sanctionner par un avertissement ou une amende l'absence de document unique d'évaluation des risques professionnels (I et II de l'article L. 4121-3-1), en plus des manquements déjà visés, notamment les durées maximales de travail, les repos, le décompte de la durée du travail, le salaire minimum, les installations sanitaires et l'hébergement.",
+     "src": "Loi n° 2026-534 du 25 juin 2026, art. 48 ; C. trav., art. L. 8115-1, 6° (version en vigueur depuis le 27 juin 2026)",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054309845",
      "fiab": "stable"
     }
    ]
@@ -379,13 +381,13 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Comparaison des normes</b> : en cas de concours de conventions collectives, les avantages ayant le même objet ou la même cause ne se cumulent pas, sauf stipulations contraires ; seul le plus favorable est accordé. La comparaison se fait avantage par avantage, en regroupant ceux qui ont la même cause ou le même objet, et non par addition d'avantages de nature différente. Entre branche et entreprise (blocs 1 et 2), l'équivalence des garanties s'apprécie par ensemble de garanties se rapportant à la même matière (L. 2253-1).",
-     "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1",
+     "t": "<b>Comparaison des normes</b> : en cas de concours de conventions collectives, les avantages ayant le même objet ou la même cause ne se cumulent pas, sauf stipulations contraires ; seul le plus favorable est accordé. La comparaison se fait avantage par avantage, en regroupant ceux qui ont la même cause ou le même objet, et non par addition d'avantages de nature différente. Entre branche et entreprise, le concours est réglé par les articles L. 2253-1 à L. 2253-3 : dans les blocs 1 et 2, l'équivalence des garanties s'apprécie par ensemble de garanties se rapportant à la même matière ; dans le bloc 3, l'accord d'entreprise, conclu avant ou après l'accord de branche, prévaut sur les stipulations de la branche ayant le même objet (L. 2253-3).",
+     "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1 à L. 2253-3",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020048",
      "fiab": "stable"
     },
     {
-     "t": "<b>Juridiction compétente</b> : le conseil de prud'hommes est incompétent pour le contentieux des accidents du travail et maladies professionnelles, attribué par le Code de la sécurité sociale au tribunal judiciaire spécialement désigné (pôle social). Lien DSCG : l'UE 1 « Gestion juridique, fiscale et sociale » réutilise ces règles de sources et de compétence.",
+     "t": "<b>Juridiction compétente</b> : le conseil de prud'hommes est incompétent pour le contentieux des accidents du travail et maladies professionnelles, attribué par le Code de la sécurité sociale au tribunal judiciaire spécialement désigné (pôle social).",
      "src": "C. trav., art. L. 1411-4 ; C. org. jud., art. L. 211-16",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
      "fiab": "stable"

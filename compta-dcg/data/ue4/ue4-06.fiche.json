@@ -1,6 +1,6 @@
 {
  "id": "ue4-06",
- "maj": "2026-10-15",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -59,7 +59,7 @@
    "ref": "CGI, art. 1447-0 à 1478",
    "objet": "Contribution économique territoriale et cotisation foncière des entreprises",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
-   "version": "en vigueur (art. 1447 modifié par la loi n° 2026-103 du 19 février 2026, art. 55, version en vigueur depuis le 21 février 2026)"
+   "version": "en vigueur (art. 1447 modifié par la loi n° 2026-103 du 19 février 2026, art. 56, version en vigueur depuis le 21 février 2026 ; BOFiP ACTU-2026-00056)"
   },
   {
    "ref": "CGI, art. 1586 ter à 1586 nonies ; loi n° 2025-127 du 14 février 2025, art. 62",
@@ -184,7 +184,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Cessions de fonds de commerce et de clientèles</b> : le tarif de l'article 719 est de 0 % jusqu'à 23 000 €, 2 % de 23 000 à 107 000 €, 0,60 % de 107 000 à 200 000 € et 2,60 % au-delà ; il se combine avec des taxes additionnelles, dont la taxe départementale de l'article 1595, soit un taux global de 0 %, puis 3 % jusqu'à 200 000 € et 5 % au-delà. Assiette : prix de la clientèle, du droit au bail et des objets mobiliers servant à l'exploitation.",
+     "t": "<b>Cessions de fonds de commerce et de clientèles</b> : le tarif de l'article 719 est de 0 % jusqu'à 23 000 €, 2 % de 23 000 à 107 000 €, 0,60 % de 107 000 à 200 000 € et 2,60 % au-delà ; il se combine avec des taxes additionnelles, dont la taxe départementale de l'article 1595, soit un taux global de 0 %, puis 3 % jusqu'à 200 000 € et 5 % au-delà. Assiette : prix de la clientèle, du droit au bail et des objets mobiliers servant à l'exploitation, à l'exception des marchandises neuves garnissant le fonds.",
      "cite": "« Ces barèmes constituent le tarif normal applicable aux cessions de fonds de commerce, de clientèle et aux conventions assimilées. »",
      "src": "CGI, art. 719 et 1595 ; BOI-ENR-DMTOM-10-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/3313-PGP.html/identifiant=BOI-ENR-DMTOM-10-20-20-20240619",
@@ -223,7 +223,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Prise de position lors d'un contrôle</b> : la garantie de l'article L. 80 A couvre aussi la position prise par l'administration sur les points examinés au cours d'un examen ou d'une vérification de comptabilité ou d'un examen contradictoire de la situation fiscale personnelle, y compris tacitement lorsqu'elle ne les a pas rectifiés ; cette règle s'applique aux contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
+     "t": "<b>Prise de position lors d'un contrôle</b> : la garantie de l'article L. 80 A couvre aussi la position prise par l'administration sur les points examinés au cours d'un examen ou d'une vérification de comptabilité ou d'un examen contradictoire de la situation fiscale personnelle, y compris tacitement lorsqu'elle ne les a pas rectifiés ; cette règle s'applique aux contrôles dont les avis sont adressés depuis le 1er janvier 2019. Selon le BOFiP, un point n'est considéré comme examiné que si l'administration dispose de toutes les informations nécessaires pour prendre position, et le contribuable doit avoir exposé toute sa situation fiscale sans omettre aucun élément.",
      "cite": "« Ces dispositions s'appliquent aux contrôles dont les avis sont adressés à compter du 1er janvier 2019. »",
      "src": "LPF, art. L. 80 A, 2e alinéa (loi n° 2018-727 du 10 août 2018, art. 9) ; BOI-CF-PGR-30-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
@@ -237,8 +237,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Majorations de droits</b> : défaut ou retard de déclaration, 10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure, 40 % au-delà, 80 % en cas de découverte d'une activité occulte ; insuffisance de déclaration, 40 % en cas de manquement délibéré, 80 % en cas d'abus de droit (40 % s'il n'est pas établi que le contribuable en a eu l'initiative principale ou en a été le principal bénéficiaire) ou de manœuvres frauduleuses.",
-     "src": "CGI, art. 1728, 1 et 1729 ; BOI-CF-INF-20-10-10",
+     "t": "<b>Majorations de droits</b> : défaut ou retard de déclaration, 10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure, 40 % au-delà, 80 % en cas de découverte d'une activité occulte ; insuffisance de déclaration, 40 % en cas de manquement délibéré, 80 % en cas d'abus de droit (40 % s'il n'est pas établi que le contribuable en a eu l'initiative principale ou en a été le principal bénéficiaire) ou de manœuvres frauduleuses. Pour la déclaration d'impôt sur le revenu, la majoration de l'article 1758 A (10 %, portée à 20 % en cas de dépôt dans les trente jours d'une mise en demeure) est exclusive de la majoration de 10 % du a du 1 de l'article 1728 (art. 1758 A, III, issu de la loi n° 2016-1918 du 29 décembre 2016).",
+     "src": "CGI, art. 1728, 1, 1729 et 1758 A, III ; BOI-CF-INF-20-10-10",
      "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
      "fiab": "stable"
     },
@@ -312,9 +312,9 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Champ de la CFE (loi de finances pour 2026, art. 55)</b> : depuis le 21 février 2026, l'article 1447, I vise « les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires » ; la rédaction antérieure visait les « sociétés » non dotées de la personnalité morale.",
-     "src": "CGI, art. 1447, I (loi n° 2026-103 du 19 février 2026, art. 55)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
+     "t": "<b>Champ de la CFE (loi de finances pour 2026, art. 56)</b> : depuis le 21 février 2026, l'article 1447, I vise « les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires » ; la rédaction antérieure visait les « sociétés » non dotées de la personnalité morale. Le BOFiP présente cette nouvelle rédaction comme une précision de caractère interprétatif, et non comme une extension du champ de la CFE.",
+     "src": "CGI, art. 1447, I (loi n° 2026-103 du 19 février 2026, art. 56) ; BOFiP ACTU-2026-00056",
+     "url": "https://bofip.impots.gouv.fr/bofip/15003-PGP.html/ACTU-2026-00056",
      "fiab": "stable"
     },
     {
@@ -342,7 +342,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Activité occulte</b> : le délai de reprise de dix ans ne s'applique qu'aux catégories de revenus que le contribuable n'a fait figurer dans aucune déclaration ; l'activité est réputée occulte lorsque les déclarations n'ont pas été déposées dans le délai légal et que l'activité n'a pas été portée à la connaissance d'un organisme compétent, ou lorsqu'il s'agit d'une activité illicite.",
+     "t": "<b>Activité occulte</b> : le délai de reprise de dix ans ne s'applique qu'aux catégories de revenus que le contribuable n'a fait figurer dans aucune déclaration ; l'activité est réputée occulte lorsque le contribuable n'a pas déposé dans le délai légal les déclarations qu'il était tenu de souscrire et, soit n'a pas fait connaître son activité à un organisme compétent, soit s'est livré à une activité illicite. Le défaut de dépôt des déclarations est donc exigé dans les deux cas.",
      "cite": "« ne s'applique qu'aux seules catégories de revenus que le contribuable n'a pas fait figurer dans une quelconque des déclarations »",
      "src": "LPF, art. L. 169, 2e alinéa",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051759330",

@@ -1,6 +1,6 @@
 {
  "id": "ue10-06",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -110,13 +110,13 @@
    "h": "Définitions",
    "items": [
     {
-     "t": "<b>Capitaux propres</b> : somme algébrique des apports (capital, primes liées au capital), des écarts de réévaluation, des écarts d'équivalence, des bénéfices non distribués (réserves, report à nouveau créditeur, bénéfice de l'exercice), diminuée des pertes (report à nouveau débiteur, perte de l'exercice), à laquelle s'ajoutent les subventions d'investissement et les provisions réglementées. La situation nette exclut les subventions d'investissement, les provisions réglementées et les autres fonds propres.",
+     "t": "<b>Capitaux propres</b> : somme algébrique des apports (capital, primes liées au capital), des écarts de réévaluation, des écarts d'équivalence, des bénéfices non distribués (réserves, report à nouveau créditeur, bénéfice de l'exercice), diminuée des pertes (report à nouveau débiteur, perte de l'exercice), à laquelle s'ajoutent les subventions d'investissement et les provisions réglementées. La situation nette en exclut les subventions d'investissement et les provisions réglementées ; les autres fonds propres forment une rubrique distincte du bilan et ne font pas partie des capitaux propres.",
      "src": "PCG, classe 1 (comptes de capitaux) ; C. com., art. R. 123-191 ; règlement ANC n° 2024-07",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Capital souscrit non appelé, appelé non versé, appelé versé</b> : le compte 101 Capital est subdivisé en <span class=\"mono\">1011</span>, <span class=\"mono\">1012</span> et <span class=\"mono\">1013</span> ; la fraction non appelée a pour contrepartie à l'actif le compte <span class=\"mono\">109</span> Actionnaires : capital souscrit – non appelé, présenté distinctement en premier poste de l'actif.",
+     "t": "<b>Capital souscrit non appelé, appelé non versé, appelé versé</b> : le compte 101 Capital est subdivisé en <span class=\"mono\">1011</span> Capital souscrit – non appelé, <span class=\"mono\">1012</span> Capital souscrit – appelé, non versé et <span class=\"mono\">1013</span> Capital souscrit – appelé, versé ; la fraction non appelée a pour contrepartie à l'actif le compte <span class=\"mono\">109</span> Actionnaires : capital souscrit – non appelé, présenté distinctement en premier poste de l'actif.",
      "cite": "« La contrepartie du capital souscrit non appelé figure distinctement comme premier poste de l'actif. »",
      "src": "PCG, plan de comptes 2026 (comptes 101 et 109) ; recueil des normes comptables françaises au 1er janvier 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
@@ -190,7 +190,7 @@
     },
     {
      "t": "<b>Apports en nature en cours de vie sociale (SA)</b> : un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice ; si l'assemblée réduit l'évaluation des apports, l'approbation expresse des apporteurs est requise, à défaut l'augmentation du capital n'est pas réalisée ; les titres émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission (prime d'apport au compte <span class=\"mono\">1043</span>).",
-     "cite": "« Les titres de capital émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission. »",
+     "cite": "« En cas d'apports en nature ou de stipulation d'avantages particuliers, un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice. […] Les titres de capital émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission. »",
      "src": "C. com., art. L. 225-147 ; PCG, compte 1043",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539465",
      "fiab": "stable"
@@ -202,7 +202,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Incorporation de réserves, bénéfices ou primes</b> : l'assemblée générale statue, par dérogation à l'article L. 225-96, aux conditions de quorum et de majorité de l'article L. 225-98 ; l'augmentation par majoration du nominal, hors ce cas, exige le consentement unanime des actionnaires ; dans la SARL, la décision d'incorporer bénéfices ou réserves est prise par les associés représentant au moins la moitié des parts (L. 223-30). Comptablement : débit 106 (ou 104, 110), crédit 1013 ; aucun apport, les capitaux propres totaux sont inchangés.",
+     "t": "<b>Incorporation de réserves, bénéfices ou primes</b> : l'assemblée générale statue, par dérogation à l'article L. 225-96 (assemblée générale extraordinaire, seule habilitée à modifier les statuts), aux conditions de quorum et de majorité de l'assemblée générale ordinaire (L. 225-98) ; l'augmentation par majoration du nominal, hors ce cas, exige le consentement unanime des actionnaires ; dans la SARL, la décision d'incorporer bénéfices ou réserves est prise par les associés représentant au moins la moitié des parts (L. 223-30). Comptablement : débit 106 (ou 104, 110), crédit 1013 ; aucun apport, les capitaux propres totaux sont inchangés.",
      "cite": "« l'assemblée générale, par dérogation aux dispositions de l'article L. 225-96, statue dans les conditions de quorum et de majorité prévues à l'article L. 225-98 »",
      "src": "C. com., art. L. 225-130 et L. 223-30 ; PCG, comptes 101 et 106",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042339726",
@@ -216,14 +216,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Réduction non motivée par des pertes</b> : le représentant de la masse des obligataires et les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal peuvent former opposition dans le délai fixé par décret (vingt jours dans la SA, R. 225-152 ; un mois dans la SARL, R. 223-35) ; le juge rejette l'opposition ou ordonne le remboursement des créances ou la constitution de garanties ; les opérations ne peuvent commencer pendant le délai d'opposition. L'assemblée qui a décidé une telle réduction peut autoriser le conseil d'administration ou le directoire à acheter un nombre déterminé d'actions pour les annuler (L. 225-207). Une réduction motivée par des pertes (débit 1013, crédit 119) n'ouvre pas ce droit d'opposition.",
+     "t": "<b>Réduction non motivée par des pertes</b> : les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal peuvent former opposition dans le délai fixé par décret (vingt jours dans la SA, R. 225-152 ; un mois dans la SARL, R. 223-35), ainsi que, dans la SA, le représentant de la masse des obligataires (L. 225-205) ; le juge rejette l'opposition ou ordonne le remboursement des créances ou la constitution de garanties ; les opérations ne peuvent commencer pendant le délai d'opposition ni, dans la SA, avant qu'il ait été statué en première instance sur cette opposition. L'assemblée qui a décidé une telle réduction peut autoriser le conseil d'administration ou le directoire à acheter un nombre déterminé d'actions pour les annuler (L. 225-207). Une réduction motivée par des pertes (débit 1013, crédit 119) n'ouvre pas ce droit d'opposition.",
      "cite": "« Les opérations de réduction du capital ne peuvent commencer pendant le délai d'opposition ni, le cas échéant, avant qu'il ait été statué en première instance sur cette opposition. »",
      "src": "C. com., art. L. 225-205 et L. 225-207 ; R. 225-152 ; L. 223-34 et R. 223-35",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178841/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Capitaux propres inférieurs à la moitié du capital social</b> (SA : L. 225-248 ; SARL : L. 223-42) : dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte, les associés décident s'il y a lieu à dissolution anticipée ; à défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital ; si les capitaux propres ne sont pas reconstitués et que le capital dépasse un seuil fixé par décret, elle doit réduire son capital, au plus tard à la clôture du deuxième exercice suivant, pour le ramener au plus à ce seuil ; à défaut, tout intéressé peut demander la dissolution en justice, le tribunal pouvant accorder un délai maximal de six mois pour régulariser. Ces règles ne s'appliquent pas aux sociétés en sauvegarde ou en redressement judiciaire.",
+     "t": "<b>Capitaux propres inférieurs à la moitié du capital social</b> (SA : L. 225-248 ; SARL : L. 223-42) : dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte, les associés de la SARL décident s'il y a lieu à dissolution anticipée ; dans la SA, le conseil d'administration ou le directoire doit, dans ce délai, convoquer l'assemblée générale extraordinaire, qui en décide ; à défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital ; si les capitaux propres ne sont pas reconstitués et que le capital dépasse un seuil fixé par décret, elle doit réduire son capital, au plus tard à la clôture du deuxième exercice suivant, pour le ramener au plus à ce seuil ; à défaut, tout intéressé peut demander la dissolution en justice, le tribunal pouvant accorder un délai maximal de six mois pour régulariser. Ces règles ne s'appliquent pas aux sociétés en sauvegarde ou en redressement judiciaire.",
      "src": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171 du 9 mars 2023) ; R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
      "fiab": "stable",
@@ -258,8 +258,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Prélèvement forfaitaire non libératoire sur les dividendes</b> : les personnes physiques fiscalement domiciliées en France qui perçoivent des revenus distribués sont assujetties à un prélèvement de 12,8 %, calculé sur le montant brut sans l'abattement de 40 %, opéré par l'établissement payeur et imputable sur l'impôt sur le revenu de l'année (excédent restitué) ; dispense sur demande (attestation sur l'honneur au plus tard le 30 novembre de l'année précédant le paiement) lorsque le revenu fiscal de référence de l'avant-dernière année est inférieur à 50 000 € (contribuable célibataire, divorcé ou veuf) ou 75 000 € (imposition commune). Le prélèvement et les prélèvements sociaux sont versés au Trésor dans les quinze premiers jours du mois qui suit celui du paiement des revenus (CGI, art. 1671 C). La société enregistre la retenue au crédit du compte 442 État – impôts et taxes recouvrables sur des tiers.",
-     "cite": "« sont assujetties à un prélèvement au taux de 12,8 % »",
+     "t": "<b>Prélèvement forfaitaire non libératoire sur les dividendes</b> : les personnes physiques fiscalement domiciliées en France qui perçoivent des revenus distribués sont assujetties à un prélèvement (taux et seuils de dispense : voir « Chiffres et seuils »), calculé sur le montant brut sans l'abattement de 40 %, opéré par l'établissement payeur et imputable sur l'impôt sur le revenu de l'année (excédent restitué) ; dispense sur demande (attestation sur l'honneur au plus tard le 30 novembre de l'année précédant le paiement) lorsque le revenu fiscal de référence de l'avant-dernière année est inférieur aux seuils fixés par l'article 117 quater. Le prélèvement et les prélèvements sociaux sont versés au Trésor dans les quinze premiers jours du mois qui suit celui du paiement des revenus (CGI, art. 1671 C). La société enregistre la retenue au crédit du compte <span class=\"mono\">442</span> Contributions, impôts et taxes recouvrés pour le compte de l'État (subdivisions <span class=\"mono\">4422</span> Prélèvements forfaitaires non libératoires et <span class=\"mono\">4423</span> Retenues et prélèvements sur les distributions).",
      "src": "CGI, art. 117 quater et 1671 C ; BOI-RPPM-RCM-30-20-10 et BOI-RPPM-RCM-30-20-50 ; PCG, compte 442",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036428175",
      "fiab": "stable"
@@ -271,7 +270,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Frais de constitution et d'augmentation de capital</b> : les frais de constitution, de transformation et de premier établissement peuvent être inscrits à l'actif en frais d'établissement, mais leur comptabilisation en charges est la méthode de référence ; les frais d'établissement sont amortis selon un plan et dans un délai maximal de cinq ans ; les frais d'augmentation de capital, de fusion et de scission peuvent être inscrits à l'actif en frais d'établissement ou imputés sur les primes d'émission et de fusion, et sont comptabilisés en charges en cas d'insuffisance de la prime. Depuis le règlement ANC n° 2018-01, le texte ne qualifie plus l'imputation sur la prime de « méthode préférentielle ».",
+     "t": "<b>Frais de constitution et d'augmentation de capital</b> : les frais de constitution, de transformation et de premier établissement peuvent être inscrits à l'actif en frais d'établissement, mais leur comptabilisation en charges est la méthode de référence ; les frais d'établissement sont amortis selon un plan et dans un délai maximal de cinq ans ; les frais d'augmentation de capital, de fusion et de scission peuvent être inscrits à l'actif en frais d'établissement ou imputés sur les primes d'émission et de fusion, et sont comptabilisés en charges en cas d'insuffisance de la prime ; ces deux traitements étant facultatifs (« peuvent »), la comptabilisation directe en charges reste possible. Depuis le règlement ANC n° 2018-01, le texte ne qualifie plus l'imputation sur la prime de « méthode préférentielle ».",
      "cite": "« Les frais d'augmentation de capital, de fusion et de scission peuvent être inscrits à l'actif en frais d'établissement ou imputés sur les primes d'émission et de fusion. »",
      "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-187",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
@@ -296,7 +295,7 @@
      "cite": "« Pour l'application du deuxième alinéa de l'article L. 223-9, le montant de la valeur qu'aucun apport en nature ne doit excéder est fixé à 30 000 euros. »"
     },
     {
-     "t": "<b>Capitaux propres inférieurs à la moitié du capital</b> : consultation des associés dans les <span class=\"mono\">4 mois</span> de l'approbation des comptes ; reconstitution au plus tard à la clôture du <span class=\"mono\">2e exercice</span> suivant ; seuil de capital au-delà duquel la réduction devient obligatoire : <span class=\"mono\">1 %</span> du total du bilan à la dernière clôture dans la SARL (R. 223-37) ; dans la SA, le plus élevé de <span class=\"mono\">1 %</span> du total du bilan et du capital minimal applicable à sa forme (R. 225-166-1).",
+     "t": "<b>Capitaux propres inférieurs à la moitié du capital</b> : décision sur la dissolution anticipée dans les <span class=\"mono\">4 mois</span> de l'approbation des comptes (par les associés dans la SARL ; dans la SA, par l'assemblée générale extraordinaire que convoque le conseil d'administration ou le directoire) ; reconstitution au plus tard à la clôture du <span class=\"mono\">2e exercice</span> suivant ; seuil de capital au-delà duquel la réduction devient obligatoire : <span class=\"mono\">1 %</span> du total du bilan à la dernière clôture dans la SARL (R. 223-37) ; dans la SA, le plus élevé de <span class=\"mono\">1 %</span> du total du bilan et du capital minimal applicable à sa forme (R. 225-166-1).",
      "src": "C. com., art. R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023) ; L. 223-42 et L. 225-248",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047881958",
      "fiab": "stable"
@@ -325,7 +324,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> portant réforme du régime des nullités en droit des sociétés, applicable à compter du 1er octobre 2025 : délai de prescription des actions en nullité de la société, d'apport ou de décisions sociales ramené de trois à deux ans (C. civ., art. 1844-14) ; « triple test » du nouvel article 1844-12-1 du Code civil (grief, influence de l'irrégularité sur le sens de la décision, conséquences non excessives pour l'intérêt social) ; action en nullité d'une décision d'augmentation de capital d'une société par actions enfermée dans un délai de trois mois (C. com., art. L. 225-149-4) ; L. 232-10 réécrit (suppression de la formule « à peine de nullité de toute délibération contraire »).",
+     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> portant réforme du régime des nullités en droit des sociétés, applicable à compter du 1er octobre 2025 : délai de prescription des actions en nullité de la société, d'apport ou de décisions sociales ramené de trois à deux ans (C. civ., art. 1844-14) ; « triple test » du nouvel article 1844-12-1 du Code civil (grief, influence de l'irrégularité sur le sens de la décision, conséquences non excessives pour l'intérêt social) ; action en nullité d'une décision d'augmentation de capital d'une société par actions enfermée dans un délai de trois mois (C. com., art. L. 225-149-4), qui court à compter de l'assemblée générale à laquelle est communiqué le rapport sur les conditions définitives de l'opération lorsque l'augmentation a fait l'objet d'une délégation de pouvoirs ou de compétence au conseil d'administration ou au directoire et, dans tous les autres cas, à compter de la date de la décision contestée ; L. 232-10 réécrit (suppression de la formule « à peine de nullité de toute délibération contraire »).",
      "src": "Ordonnance n° 2025-229 du 12 mars 2025 (art. 62 et 70) ; C. civ., art. 1844-12-1 et 1844-14 ; C. com., art. L. 225-149-4 ; rapport au Président de la République",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
      "fiab": "stable",
@@ -344,7 +343,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2024-07 du 6 décembre 2024</b>, homologué par arrêté du 26 décembre 2025 et applicable aux exercices ouverts à compter du 1er janvier 2026 : il distingue les dettes des « autres fonds propres », qui deviennent une rubrique à part entière du bilan ; sa version commentée précise que le compte <span class=\"mono\">109</span> est débité en contrepartie de la subdivision « capital souscrit non appelé » du compte 101 ; le plan de comptes au 1er janvier 2026 conserve les subdivisions 1011, 1012 et 1013.",
+     "t": "<b>Règlement ANC n° 2024-07 du 6 décembre 2024</b>, homologué par arrêté du 26 décembre 2025 et applicable aux exercices ouverts à compter du 1er janvier 2026 : consacré aux « autres fonds propres », il les distingue des dettes ; au bilan, ils forment une rubrique distincte des capitaux propres ; sa version commentée précise que le compte <span class=\"mono\">109</span> est débité en contrepartie de la subdivision « capital souscrit non appelé » du compte 101 ; le plan de comptes au 1er janvier 2026 conserve les subdivisions 1011, 1012 et 1013.",
      "src": "Règlement ANC n° 2024-07 (version commentée) ; arrêté du 26 décembre 2025 ; plan de comptes 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf",
      "fiab": "stable"
@@ -355,7 +354,7 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "Ne pas confondre la libération minimale <b>à la constitution</b> (1/5 en SARL, 1/2 en SA) et celle exigée <b>lors d'une augmentation de capital en numéraire</b> (1/4 du nominal dans les deux formes, plus la totalité de la prime d'émission) : un sujet qui donne un prix d'émission supérieur au nominal attend que la prime soit encaissée intégralement.",
+     "t": "Ne pas confondre la libération minimale <b>à la constitution</b> (1/5 en SARL, 1/2 en SA) et celle exigée <b>lors d'une augmentation de capital en numéraire</b> (1/4 du nominal dans les deux formes, plus, dans la SA, la totalité de la prime d'émission) : dans une SA, un sujet qui donne un prix d'émission supérieur au nominal attend que la prime soit encaissée intégralement.",
      "src": "C. com., art. L. 225-144 et L. 223-32",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
      "fiab": "stable"
@@ -380,14 +379,14 @@
      "fiab": "stable"
     },
     {
-     "t": "La dispense du prélèvement de 12,8 % ne porte pas sur les <b>prélèvements sociaux</b>, toujours retenus à la source ; le prélèvement de l'article 117 quater ne vise que les personnes physiques fiscalement domiciliées en France : l'associé personne morale ne le subit pas.",
+     "t": "La dispense du prélèvement forfaitaire non libératoire ne porte pas sur les <b>prélèvements sociaux</b>, toujours retenus à la source ; le prélèvement de l'article 117 quater ne vise que les personnes physiques fiscalement domiciliées en France : l'associé personne morale ne le subit pas.",
      "cite": "« la dispense ne concerne pas les prélèvements sociaux »",
      "src": "CGI, art. 117 quater ; impots.gouv.fr, dispense du prélèvement forfaitaire non libératoire",
      "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-beneficier-dune-dispense-du-prelevement-forfaitaire-non-liberatoire",
      "fiab": "stable"
     },
     {
-     "t": "<b>Piège des manuels anciens et lien avec le DSCG</b> : depuis le règlement ANC n° 2018-01, l'article 212-9 du PCG ne qualifie plus de « méthode préférentielle » l'imputation des frais d'augmentation de capital sur la prime d'émission ; ces frais peuvent être inscrits en frais d'établissement ou imputés sur les primes d'émission et de fusion, et sont comptabilisés en charges en cas d'insuffisance. Le même choix se retrouve pour les frais de fusion et de scission étudiés au DSCG.",
+     "t": "<b>Piège des manuels anciens et lien avec le DSCG</b> : depuis le règlement ANC n° 2018-01, l'article 212-9 du PCG ne qualifie plus de « méthode préférentielle » l'imputation des frais d'augmentation de capital sur la prime d'émission ; ces frais peuvent être inscrits en frais d'établissement ou imputés sur les primes d'émission et de fusion (traitements facultatifs : la comptabilisation directe en charges reste possible), et sont comptabilisés en charges en cas d'insuffisance de la prime. Le même choix se retrouve pour les frais de fusion et de scission étudiés au DSCG.",
      "src": "Règlement ANC n° 2018-01, art. 3 ; PCG, art. 212-9",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2018/REGLT_2018_01_PCG.pdf",
      "fiab": "stable"

@@ -1,12 +1,12 @@
 {
  "id": "ue10-06",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue10-06-k01",
    "type": "def",
    "q": "Comment le PCG définit-il les capitaux propres d'une entreprise ?",
-   "r": "<b>La somme algébrique des apports (capital, primes liées au capital), des écarts de réévaluation, des écarts d'équivalence et des bénéfices non distribués, diminuée des pertes</b>, à laquelle s'ajoutent les subventions d'investissement et les provisions réglementées. La situation nette exclut les subventions d'investissement, les provisions réglementées et les autres fonds propres.",
+   "r": "<b>La somme algébrique des apports (capital, primes liées au capital), des écarts de réévaluation, des écarts d'équivalence et des bénéfices non distribués, diminuée des pertes</b>, à laquelle s'ajoutent les subventions d'investissement et les provisions réglementées. La situation nette en exclut les subventions d'investissement et les provisions réglementées ; les autres fonds propres forment une rubrique distincte.",
    "base": [
     "Définitions#0"
    ],
@@ -29,7 +29,7 @@
   {
    "id": "ue10-06-k03",
    "type": "comp",
-   "q": "Quelle rubrique du bilan le règlement ANC n° 2024-07 consacre-t-il comme rubrique à part entière, distincte des dettes ?",
+   "q": "Quelle rubrique du bilan le règlement ANC n° 2024-07 distingue-t-il des dettes ?",
    "r": "<b>Les « autres fonds propres »</b>, que le règlement distingue des dettes. Ils ne font pas non plus partie des capitaux propres tels que le PCG les définit : ils forment une rubrique distincte et sont exclus de la situation nette.",
    "base": [
     "Ce qui a changé récemment#4",
@@ -252,7 +252,7 @@
    "id": "ue10-06-k21",
    "type": "comp",
    "q": "Hors sauvegarde ou redressement judiciaire, que doivent faire une SA ou une SARL dont les capitaux propres deviennent inférieurs à la moitié du capital social ?",
-   "r": "<b>Consulter les associés sur une éventuelle dissolution anticipée, dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte.</b> À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital.",
+   "r": "<b>Faire statuer sur une éventuelle dissolution anticipée dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte</b> : les associés en SARL, l'assemblée générale extraordinaire convoquée par le conseil d'administration ou le directoire en SA. À défaut, la société doit, au plus tard à la clôture du deuxième exercice suivant, reconstituer ses capitaux propres à la moitié au moins du capital ou réduire son capital.",
    "base": [
     "Règles essentielles#11",
     "Chiffres et seuils#2"
@@ -411,7 +411,7 @@
    "id": "ue10-06-k35",
    "type": "comp",
    "q": "Dans une SA, à quelle condition une augmentation de capital par majoration du nominal des actions est-elle possible, hors incorporation de réserves, bénéfices ou primes ?",
-   "r": "<b>Le consentement unanime des actionnaires.</b> En cas d'incorporation de réserves, bénéfices ou primes, l'assemblée générale statue au contraire, par dérogation à l'article L. 225-96, aux conditions de quorum et de majorité de l'article L. 225-98 ; dans la SARL, la décision d'incorporer bénéfices ou réserves est prise par les associés représentant au moins la moitié des parts.",
+   "r": "<b>Le consentement unanime des actionnaires.</b> En cas d'incorporation de réserves, bénéfices ou primes, l'assemblée générale statue au contraire, par dérogation aux règles de l'assemblée générale extraordinaire (art. L. 225-96), aux conditions de quorum et de majorité de l'assemblée générale ordinaire (art. L. 225-98) ; dans la SARL, la décision d'incorporer bénéfices ou réserves est prise par les associés représentant au moins la moitié des parts.",
    "base": [
     "Règles essentielles#8"
    ],

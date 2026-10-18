@@ -1,6 +1,6 @@
 {
  "id": "ue2-07",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue2-07-k01",
@@ -84,8 +84,8 @@
    "base": [
     "Règles essentielles#2"
    ],
-   "src": "C. com., art. L. 123-12, L. 123-22 et L. 123-24",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "src": "C. com., art. L. 123-12, L. 123-22, L. 123-24 et L. 123-28",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/",
    "fiab": "stable"
   },
   {
@@ -122,7 +122,7 @@
     "Définitions#3",
     "Règles essentielles#7"
    ],
-   "src": "C. com., art. L. 142-2 (version en vigueur depuis le 1er janvier 2023)",
+   "src": "C. com., art. L. 142-2 (version en vigueur depuis le 1er janvier 2023) ; BOI-ENR-DMTOM-10-10-10 (12 septembre 2012)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072493",
    "fiab": "stable"
   },
@@ -368,7 +368,7 @@
     "Règles essentielles#15",
     "Chiffres et seuils#1"
    ],
-   "src": "C. com., art. L. 145-33 et L. 145-34",
+   "src": "C. com., art. L. 145-33 et L. 145-34 ; R. 145-10 et R. 145-11",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161267/",
    "fiab": "stable"
   },
@@ -400,11 +400,11 @@
    "id": "ue2-07-k34",
    "type": "comp",
    "q": "Qu'a changé la loi du 26 mai 2026 pour le dépôt de garantie et le paiement du loyer du preneur d'un local à usage commercial ou artisanal ?",
-   "r": "<b>Pour les baux conclus ou renouvelés depuis sa promulgation, le dépôt de garantie ne peut excéder le loyer d'un trimestre et ne porte pas intérêt</b> ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés. Le preneur peut aussi obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer, y compris dans les baux en cours.",
+   "r": "<b>Pour les baux conclus ou renouvelés depuis sa promulgation, le dépôt de garantie est limité au loyer d'un trimestre, sans intérêt</b>. Sa restitution dans les trois mois de la remise des clés vaut aussi pour les baux en cours si cette remise intervient trois mois ou plus après la promulgation. Le preneur sans arriéré obtient de droit, sur demande, le paiement mensuel du loyer, même en cours de bail.",
    "base": [
     "Ce qui a changé récemment#0"
    ],
-   "src": "Loi n° 2026-403 du 26 mai 2026 ; C. com., art. L. 145-38-1 et L. 145-40 (section « Du loyer », art. L. 145-32-1 à L. 145-40)",
+   "src": "Loi n° 2026-403 du 26 mai 2026, notamment art. 62 ; C. com., art. L. 145-32-1, L. 145-38-1 et L. 145-40 (section « Du loyer », art. L. 145-32-1 à L. 145-40)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161267/",
    "fiab": "stable"
   },

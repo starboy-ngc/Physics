@@ -1,6 +1,6 @@
 {
  "id": "ue2-06",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue2-06-k01",
@@ -158,7 +158,7 @@
     "Points de vigilance#2",
     "Règles essentielles#4"
    ],
-   "src": "C. com., art. L. 611-4, L. 620-1, L. 631-4 et L. 653-8",
+   "src": "C. com., art. L. 611-4, L. 620-1, L. 628-1, L. 631-4 et L. 653-8",
    "url": null,
    "fiab": "stable"
   },
@@ -171,19 +171,19 @@
     "Règles essentielles#5"
    ],
    "src": "C. com., art. L. 632-1 et L. 632-2",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146112/",
    "fiab": "stable"
   },
   {
    "id": "ue2-06-k15",
    "type": "comp",
    "q": "En période suspecte, hormis les paiements, quels actes du débiteur intervenus depuis la date de cessation des paiements sont nuls de droit ?",
-   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés réelles conventionnelles (hypothèque, nantissement, gage) constituées pour des dettes antérieurement contractées.</b> Le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
+   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés réelles conventionnelles ou droits de rétention conventionnels constitués pour des dettes antérieurement contractées,</b> sauf s'ils remplacent une sûreté antérieure de nature et d'assiette au moins équivalentes. Le tribunal peut aussi annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
    "base": [
     "Règles essentielles#5"
    ],
    "src": "C. com., art. L. 632-1 et L. 632-2",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146112/",
    "fiab": "stable"
   },
   {
@@ -194,7 +194,7 @@
    "base": [
     "Règles essentielles#7"
    ],
-   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s., L. 641-3 ; R. 622-24",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
    "fiab": "stable"
   },
@@ -206,7 +206,7 @@
    "base": [
     "Règles essentielles#7"
    ],
-   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s., L. 641-3 ; R. 622-24",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
    "fiab": "stable"
   },
@@ -219,7 +219,7 @@
     "Règles essentielles#7",
     "Ce qui a changé récemment#0"
    ],
-   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s., L. 641-3 ; R. 622-24",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
    "fiab": "stable"
   },
@@ -295,7 +295,7 @@
    "base": [
     "Ce qui a changé récemment#1"
    ],
-   "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 681-1 à L. 681-4",
+   "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 621-2 et L. 681-1 à L. 681-4",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
    "fiab": "stable"
   },

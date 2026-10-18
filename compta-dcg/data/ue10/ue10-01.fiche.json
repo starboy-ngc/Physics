@@ -1,6 +1,6 @@
 {
  "id": "ue10-01",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -115,7 +115,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Autorité des normes comptables (ANC)</b> : autorité créée par l'ordonnance n° 2009-79 ; elle établit sous forme de règlements les prescriptions comptables générales et sectorielles, donne un avis sur tout projet de disposition législative ou réglementaire applicable aux personnes tenues d'établir des documents comptables et participe à l'élaboration des normes comptables européennes et internationales.",
+     "t": "<b>Autorité des normes comptables (ANC)</b> : autorité créée par l'ordonnance n° 2009-79 ; elle établit sous forme de règlements les prescriptions comptables générales et sectorielles, donne un avis sur les projets de dispositions législatives ou réglementaires élaborés par les autorités nationales « contenant des mesures de nature comptable ou prévoyant la publication par les entreprises d'informations sur les enjeux environnementaux, sociaux ou de gouvernance » et participe à l'élaboration des normes comptables européennes et internationales.",
      "cite": "« Elle établit sous forme de règlements les prescriptions comptables générales et sectorielles que doivent respecter les personnes physiques ou morales soumises à l'obligation légale d'établir des documents comptables conformes aux normes de la comptabilité privée »",
      "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1er (version en vigueur depuis le 1er janvier 2024)",
      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
@@ -148,7 +148,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Résultat exceptionnel</b> (PCG 2025) : seuls les produits et charges directement liés à un événement majeur et inhabituel y sont comptabilisés ; un événement est majeur lorsque ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse, et présumé inhabituel lorsqu'un même événement ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains.",
+     "t": "<b>Résultat exceptionnel</b> (PCG 2025) : y sont comptabilisés les produits et charges directement liés à un événement majeur et inhabituel, ainsi que les écritures comptables d'origine purement fiscale ; un événement est majeur lorsque ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse, et présumé inhabituel lorsqu'un même événement ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains.",
      "cite": "« Sont comptabilisés en résultat exceptionnel les produits et les charges directement liés à un événement majeur et inhabituel. »",
      "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
@@ -247,7 +247,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Désignation obligatoire du commissaire aux comptes</b> : une SAS doit désigner au moins un commissaire aux comptes lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5 (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société. Sous les seuils, la désignation est aussi obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée, et elle peut être demandée en justice par des associés représentant au moins le dixième du capital.",
+     "t": "<b>Désignation obligatoire du commissaire aux comptes</b> : une SAS doit désigner au moins un commissaire aux comptes lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5 (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société commerciale. Sous les seuils, la désignation est aussi obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée, et elle peut être demandée en justice par des associés représentant au moins le dixième du capital.",
      "cite": "« Sont tenues de désigner au moins un commissaire aux comptes les sociétés par actions simplifiées qui dépassent, à la clôture d'un exercice social, deux des seuils suivants, fixés par décret »",
      "src": "C. com., art. L. 227-9-1 et D. 221-5",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799598",
@@ -297,7 +297,7 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Entités d'intérêt public</b> : un commissaire aux comptes unique ne peut certifier les comptes pendant une période supérieure à <span class=\"mono\">10</span> ans ; la durée peut être portée au maximum à <span class=\"mono\">24</span> ans lorsque l'entité recourt ensuite à plusieurs commissaires aux comptes ; le commissaire ne peut ensuite accepter de mandat auprès de la même entité avant un délai de <span class=\"mono\">4</span> ans.",
+     "t": "<b>Entités d'intérêt public</b> : un commissaire aux comptes unique ne peut certifier les comptes pendant une période supérieure à <span class=\"mono\">10</span> ans ; à l'issue de cette période, un nouveau mandat de <span class=\"mono\">6</span> exercices peut lui être confié dans les conditions prévues à l'article 16 du règlement (UE) n° 537/2014 ; la durée peut être portée au maximum à <span class=\"mono\">24</span> ans lorsque l'entité recourt ensuite à plusieurs commissaires aux comptes ; le commissaire ne peut ensuite accepter de mandat auprès de la même entité avant un délai de <span class=\"mono\">4</span> ans.",
      "src": "C. com., art. L. 821-45 ; règlement (UE) n° 537/2014",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048532444",
      "fiab": "stable"
@@ -315,7 +315,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : il met le plan de comptes en cohérence avec le règlement 2022-06 pour les exercices ouverts à compter du 1er janvier 2025 ; il supprime notamment les comptes 675 et 775, les cessions d'immobilisations incorporelles et corporelles relevant désormais des comptes 657 et 757 « Produits des cessions d'immobilisations incorporelles et corporelles » (les gains de change sur créances et dettes commerciales passent au compte 756).",
+     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : il met le plan de comptes en cohérence avec le règlement 2022-06 pour les exercices ouverts à compter du 1er janvier 2025 ; il supprime notamment les comptes 675 et 775, les cessions d'immobilisations incorporelles et corporelles relevant désormais des comptes 657 « Valeurs comptables des immobilisations incorporelles et corporelles cédées » et 757 « Produits des cessions d'immobilisations incorporelles et corporelles » (les gains de change sur créances et dettes commerciales passent au compte 756).",
      "src": "Règlement ANC n° 2023-03 du 7 juillet 2023 ; plan de comptes 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
      "fiab": "stable"
@@ -386,7 +386,7 @@
     {
      "t": "<b>Lien avec le DSCG (UE4)</b> : les comptes consolidés des sociétés cotées sont établis en IFRS en application du règlement (CE) n° 1606/2002 ; l'article L. 233-24 n'écarte les règles nationales que pour les comptes consolidés, les comptes individuels restant établis selon le PCG.",
      "src": "C. com., art. L. 233-24",
-     "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927225",
      "fiab": "stable"
     }
    ]

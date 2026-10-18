@@ -1,6 +1,6 @@
 {
  "id": "ue9-01",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-01-k01",
@@ -54,7 +54,7 @@
    "id": "ue9-01-k05",
    "type": "comp",
    "q": "Selon le PCG et le Code de commerce, qu'est-ce qui distingue un stock d'une immobilisation ?",
-   "r": "<b>Leur destination.</b> L'immobilisation est destinée à servir de façon durable à l'activité ; le stock est notamment un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production. Le stock relève donc de l'actif circulant.",
+   "r": "<b>Leur destination.</b> L'immobilisation est destinée à servir de façon durable à l'activité ; le stock est notamment un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente. Le stock relève donc de l'actif circulant.",
    "base": [
     "Définitions#4",
     "Définitions#3"

@@ -1,6 +1,6 @@
 {
  "id": "ue9-02",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue9-02-k01",
@@ -70,7 +70,7 @@
    "base": [
     "Règles essentielles#7"
    ],
-   "src": "PCG (version consolidée au 1er janvier 2026), classe 6",
+   "src": "PCG (version consolidée au 1er janvier 2026), classe 6 ; plan de comptes (art. 1121-1), comptes 681, 686 et 687",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
@@ -82,7 +82,7 @@
    "base": [
     "Règles essentielles#8"
    ],
-   "src": "PCG (version consolidée au 1er janvier 2026), classe 7",
+   "src": "PCG (version consolidée au 1er janvier 2026), classe 7 ; plan de comptes (art. 1121-1, version au 1er janvier 2026), comptes 781, 786 et 787",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },

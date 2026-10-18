@@ -1,6 +1,6 @@
 {
  "id": "ue6-03",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue6-03-k01",
@@ -18,7 +18,7 @@
    "id": "ue6-03-k02",
    "type": "def",
    "q": "Qu'est-ce que le tableau des flux de trésorerie utilisé en analyse financière ?",
-   "r": "<b>Un tableau qui classe les flux de l'exercice en flux liés à l'activité, aux opérations d'investissement et aux opérations de financement</b>, dont la somme explique la variation de la trésorerie. Modèle prévu par le règlement ANC n° 2020-01 pour les comptes consolidés, il est préconisé par l'OEC pour les comptes sociaux.",
+   "r": "<b>Un tableau qui classe les flux de l'exercice en flux liés à l'activité, aux opérations d'investissement et aux opérations de financement</b>, dont la somme explique la variation de la trésorerie. Classement des deux modèles prévus par le règlement ANC n° 2020-01 pour les comptes consolidés, il est préconisé par l'OEC pour les comptes sociaux.",
    "base": [
     "Définitions#1"
    ],
@@ -34,7 +34,7 @@
    "base": [
     "Définitions#2"
    ],
-   "src": "Règlement ANC n° 2020-01, art. 282-43 (modèle de tableau des flux de trésorerie établi à partir du résultat net des entités intégrées)",
+   "src": "Règlement ANC n° 2020-01, art. 282-43 (modèle de tableau des flux de trésorerie établi à partir du résultat net des entités intégrées) et art. 282-44 (modèle établi à partir du résultat d'exploitation des entités intégrées)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
    "fiab": "stable"
   },
@@ -167,7 +167,7 @@
    "base": [
     "Règles essentielles#5"
    ],
-   "src": "Plan de comptes PCG 2025, comptes 657 et 757 ; PCG, modèle de tableau de détermination de la CAF",
+   "src": "Plan de comptes PCG 2025, comptes 657, 757, 6671 et 7671 ; PCG, modèle de tableau de détermination de la CAF",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -241,7 +241,7 @@
    "base": [
     "Règles essentielles#9"
    ],
-   "src": "Plan de comptes PCG 2025, compte 481 « Charges à répartir sur plusieurs exercices » ; PCG, chapitre « Tableau de financement » (emplois)",
+   "src": "Plan de comptes PCG 2025, comptes 481 « Frais d'émission des emprunts » et 6862 « Dotations aux amortissements des frais d'émission des emprunts » ; PCG, chapitre « Tableau de financement » (emplois)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -309,11 +309,11 @@
    "id": "ue6-03-k28",
    "type": "comp",
    "q": "Dans quelle catégorie du tableau des flux de trésorerie classe-t-on l'impôt sur les bénéfices et la participation des salariés ?",
-   "r": "<b>Dans les flux liés à l'activité</b>, comme dans la CAF qui les déduit : ce sont des charges décaissables du compte de résultat.",
+   "r": "<b>En principe, dans les flux liés à l'activité</b>, comme dans la CAF qui les déduit : ce sont des charges décaissables du compte de résultat. Les modèles du règlement ANC n° 2020-01 isolent toutefois l'impôt sur les plus-values de cession : la cession figure nette d'impôt dans les flux d'investissement.",
    "base": [
     "Règles essentielles#13"
    ],
-   "src": "C. com., art. R. 123-193 ; PCG, modèle de tableau de détermination de la CAF",
+   "src": "C. com., art. R. 123-193 ; PCG, modèle de tableau de détermination de la CAF ; règlement ANC n° 2020-01, art. 282-43 et 282-44, modifiés par le règlement ANC n° 2024-05",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927468",
    "fiab": "stable"
   },
