@@ -274,7 +274,7 @@
    "id": "ue3-05-k24",
    "type": "comp",
    "q": "Que devient un accord collectif à durée indéterminée dénoncé par la totalité des signataires employeurs ou des signataires salariés ?",
-   "r": "<b>Il continue de produire effet jusqu'à l'entrée en vigueur de l'accord de substitution</b> ou, à défaut, pendant un an à compter de l'expiration du préavis (trois mois à défaut de stipulation), sauf clause prévoyant une durée supérieure. Les salariés conservent ensuite une rémunération au moins égale à celle perçue au cours des douze derniers mois.",
+   "r": "<b>Il continue de produire effet jusqu'à l'entrée en vigueur de l'accord de substitution</b> ou, à défaut, pendant un an à compter de l'expiration du préavis (trois mois à défaut de stipulation), sauf clause prévoyant une durée déterminée supérieure. Les salariés conservent ensuite une rémunération au moins égale à celle perçue au cours des douze derniers mois.",
    "base": [
     "Règles essentielles#7"
    ],
@@ -420,7 +420,7 @@
    "id": "ue3-05-k40",
    "type": "comp",
    "q": "Quelles organisations syndicales sont habilitées à engager la procédure de révision d'un accord d'entreprise ?",
-   "r": "<b>Jusqu'à la fin du cycle électoral au cours duquel l'accord a été conclu, les organisations représentatives signataires ou adhérentes</b> ; après, toutes les organisations représentatives dans l'entreprise.",
+   "r": "<b>Jusqu'à la fin du cycle électoral au cours duquel l'accord a été conclu, une ou plusieurs organisations représentatives signataires ou adhérentes</b> ; à l'issue de cette période, une ou plusieurs organisations représentatives dans son champ d'application.",
    "base": [
     "Règles essentielles#9"
    ],

@@ -172,7 +172,7 @@
     },
     {
      "t": "Les charges externes sont enregistrées <b>hors taxes</b> aux comptes 61/62, la TVA déductible au compte <code>44566</code> « TVA sur autres biens et services » ; une charge externe exonérée de TVA (primes d'assurance, timbres-poste acquis à leur valeur officielle) est enregistrée pour son montant total, sans TVA déductible. Les intérêts, exonérés eux aussi au titre de l'octroi de crédits, ne sont pas des charges externes mais des charges financières (compte <code>661</code>).",
-     "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62 et 44566 ; CGI, art. 261 C, 1° à 3°",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62, 44566 et 661 ; CGI, art. 261 C, 1° à 3°",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -372,8 +372,8 @@
      "fiab": "stable"
     },
     {
-     "t": "Lien DSCG : la CFE et la CVAE (cotisation sur la valeur ajoutée des entreprises, CGI, art. 1586 ter et suivants) sont des impôts directs autres que l'impôt sur les bénéfices, enregistrés en charges d'exploitation au compte <code>6351</code> ; seul l'impôt sur les bénéfices passe par le compte <code>695</code>. La CVAE est en voie de suppression : sa suppression définitive est fixée au 1er janvier 2030 (loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 62), calendrier que la loi de finances pour 2026 a maintenu.",
-     "src": "CGI, art. 1447 et 1586 ter ; loi n° 2025-127 du 14 février 2025, art. 62 ; BOI-CVAE ; plan de comptes (version au 1er janvier 2026), comptes 6351 et 695",
+     "t": "Lien DSCG : la CFE et la CVAE (cotisation sur la valeur ajoutée des entreprises, CGI, art. 1586 ter et suivants) sont des impôts directs autres que l'impôt sur les bénéfices, enregistrés en charges d'exploitation au compte <code>6351</code> ; seul l'impôt sur les bénéfices passe par le compte <code>695</code>. La CVAE est en voie de suppression : sa suppression définitive est fixée au 1er janvier 2030 (loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 62), calendrier que la loi de finances pour 2026 (loi n° 2026-103 du 19 février 2026) a maintenu.",
+     "src": "CGI, art. 1447 et 1586 ter ; loi n° 2025-127 du 14 février 2025, art. 62 ; loi n° 2026-103 du 19 février 2026 ; BOI-CVAE ; plan de comptes (version au 1er janvier 2026), comptes 6351 et 695",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },

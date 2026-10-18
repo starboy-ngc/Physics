@@ -190,7 +190,7 @@
     },
     {
      "t": "<b>Apports en nature en cours de vie sociale (SA)</b> : un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice ; si l'assemblée réduit l'évaluation des apports, l'approbation expresse des apporteurs est requise, à défaut l'augmentation du capital n'est pas réalisée ; les titres émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission (prime d'apport au compte <span class=\"mono\">1043</span>).",
-     "cite": "« En cas d'apports en nature ou de stipulation d'avantages particuliers, un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice. […] Les titres de capital émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission. »",
+     "cite": "« Les titres de capital émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission. »",
      "src": "C. com., art. L. 225-147 ; PCG, compte 1043",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539465",
      "fiab": "stable"
@@ -295,7 +295,7 @@
      "cite": "« Pour l'application du deuxième alinéa de l'article L. 223-9, le montant de la valeur qu'aucun apport en nature ne doit excéder est fixé à 30 000 euros. »"
     },
     {
-     "t": "<b>Capitaux propres inférieurs à la moitié du capital</b> : décision sur la dissolution anticipée dans les <span class=\"mono\">4 mois</span> de l'approbation des comptes (par les associés dans la SARL ; dans la SA, par l'assemblée générale extraordinaire que convoque le conseil d'administration ou le directoire) ; reconstitution au plus tard à la clôture du <span class=\"mono\">2e exercice</span> suivant ; seuil de capital au-delà duquel la réduction devient obligatoire : <span class=\"mono\">1 %</span> du total du bilan à la dernière clôture dans la SARL (R. 223-37) ; dans la SA, le plus élevé de <span class=\"mono\">1 %</span> du total du bilan et du capital minimal applicable à sa forme (R. 225-166-1).",
+     "t": "<b>Capitaux propres inférieurs à la moitié du capital</b> : dans les <span class=\"mono\">4 mois</span> de l'approbation des comptes, décision des associés sur la dissolution anticipée dans la SARL et, dans la SA, convocation par le conseil d'administration ou le directoire de l'assemblée générale extraordinaire, qui en décide ; reconstitution au plus tard à la clôture du <span class=\"mono\">2e exercice</span> suivant ; seuil de capital au-delà duquel la réduction devient obligatoire : <span class=\"mono\">1 %</span> du total du bilan à la dernière clôture dans la SARL (R. 223-37) ; dans la SA, le plus élevé de <span class=\"mono\">1 %</span> du total du bilan et du capital minimal applicable à sa forme (R. 225-166-1).",
      "src": "C. com., art. R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023) ; L. 223-42 et L. 225-248",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047881958",
      "fiab": "stable"
@@ -343,7 +343,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2024-07 du 6 décembre 2024</b>, homologué par arrêté du 26 décembre 2025 et applicable aux exercices ouverts à compter du 1er janvier 2026 : consacré aux « autres fonds propres », il les distingue des dettes ; au bilan, ils forment une rubrique distincte des capitaux propres ; sa version commentée précise que le compte <span class=\"mono\">109</span> est débité en contrepartie de la subdivision « capital souscrit non appelé » du compte 101 ; le plan de comptes au 1er janvier 2026 conserve les subdivisions 1011, 1012 et 1013.",
+     "t": "<b>Règlement ANC n° 2024-07 du 6 décembre 2024</b>, homologué par arrêté du 26 décembre 2025 et applicable aux exercices ouverts à compter du 1er janvier 2026 : il distingue les « autres fonds propres » des dettes ; au bilan, ils forment une rubrique distincte des capitaux propres ; sa version commentée précise que le compte <span class=\"mono\">109</span> est débité en contrepartie de la subdivision « capital souscrit non appelé » du compte 101 ; le plan de comptes au 1er janvier 2026 conserve les subdivisions 1011, 1012 et 1013.",
      "src": "Règlement ANC n° 2024-07 (version commentée) ; arrêté du 26 décembre 2025 ; plan de comptes 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf",
      "fiab": "stable"

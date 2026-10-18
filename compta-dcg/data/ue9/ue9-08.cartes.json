@@ -127,7 +127,7 @@
    "id": "ue9-08-k11",
    "type": "comp",
    "q": "Pourquoi les intérêts d'escompte facturés par une banque ne supportent-ils en principe pas de TVA, alors qu'une commission bancaire peut en supporter ?",
-   "r": "<b>L'octroi et la négociation de crédits et les opérations concernant les effets de commerce (hors recouvrement de créances) sont exonérés de TVA.</b> Mais un établissement bancaire peut opter pour la taxation des opérations exonérées qu'il désigne, par exemple ses commissions, qui sont alors facturées avec TVA.",
+   "r": "<b>L'octroi et la négociation de crédits et les opérations concernant les effets de commerce (hors recouvrement de créances) sont exonérés de TVA.</b> Une commission peut toutefois être facturée avec TVA, soit parce que l'établissement bancaire a opté pour la taxation des opérations exonérées qu'il désigne, soit parce qu'elle rémunère une opération non exonérée, comme le recouvrement de créances.",
    "base": [
     "Règles essentielles#2"
    ],
@@ -376,7 +376,7 @@
    "id": "ue9-08-k31",
    "type": "comp",
    "q": "Depuis le règlement ANC n° 2022-06, où classe-t-on une aide directement liée à un événement majeur et inhabituel et reçue en compensation de charges d'exploitation ?",
-   "r": "<b>En résultat d'exploitation</b>, comme les remboursements et indemnités reçus dans les mêmes conditions. Le résultat exceptionnel est en principe réservé aux produits et charges directement liés à un événement majeur et inhabituel, mais ces compensations n'y vont pas.",
+   "r": "<b>En résultat d'exploitation</b>, comme les remboursements et indemnités reçus dans les mêmes conditions. Le résultat exceptionnel est recentré sur les produits et charges directement liés à un événement majeur et inhabituel, mais ces compensations n'y vont pas.",
    "base": [
     "Ce qui a changé récemment#3"
    ],

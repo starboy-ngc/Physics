@@ -1,6 +1,6 @@
 {
  "id": "ue6-06",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue6-06-k01",
@@ -59,8 +59,8 @@
    "base": [
     "Règles essentielles#1"
    ],
-   "src": "CGI, art. 269",
-   "url": null,
+   "src": "CGI, art. 269, 2-a et 2-c (acomptes : loi n° 2021-1900 du 30 décembre 2021, art. 30)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827",
    "fiab": "stable"
   },
   {
@@ -108,7 +108,7 @@
    "base": [
     "Définitions#1"
    ],
-   "src": "Plan de comptes PCG 2025, comptes 519 et 5191 ; PCG, chapitre « Tableau de financement »",
+   "src": "Plan de comptes PCG 2025, comptes 519, 5191 et 5198 ; PCG, chapitre « Tableau de financement »",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -194,8 +194,8 @@
    "base": [
     "Règles essentielles#6"
    ],
-   "src": "C. mon. fin., art. L. 314-1 et R. 314-2",
-   "url": null,
+   "src": "C. consom., art. R. 314-2 et L. 314-1 ; C. mon. fin., art. R. 313-1 (renvoi aux art. R. 314-1 à R. 314-14 du C. consom.)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032807606",
    "fiab": "stable"
   },
   {
@@ -218,7 +218,7 @@
    "base": [
     "Règles essentielles#8"
    ],
-   "src": "Plan de comptes PCG 2025, comptes 5088, 5186 et 5187",
+   "src": "Plan de comptes PCG 2025, comptes 5088, 518, 5181, 5188 et 5198",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
    "fiab": "stable"
   },
@@ -255,8 +255,8 @@
     "Chiffres et seuils#1",
     "Définitions#5"
    ],
-   "src": "C. mon. fin., art. D. 213-1 et suivants",
-   "url": null,
+   "src": "C. mon. fin., art. D. 213-1 et suivants ; arrêté du 30 mai 2016",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051377824",
    "fiab": "stable"
   },
   {
@@ -340,8 +340,8 @@
    "base": [
     "Règles essentielles#9"
    ],
-   "src": "C. com., art. L. 225-122 et L. 232-12",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "src": "C. com., art. L. 225-122, L. 225-123 et L. 232-12",
+   "url": null,
    "fiab": "stable"
   },
   {
@@ -389,7 +389,7 @@
    "base": [
     "Règles essentielles#13"
    ],
-   "src": "PCG, art. 420-5 ; plan de comptes PCG 2025, comptes 476 et 477",
+   "src": "PCG, art. 420-5 et 420-6 ; plan de comptes PCG 2025, comptes 476, 477 et 1515",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
    "fiab": "stable"
   },
@@ -401,7 +401,7 @@
    "base": [
     "Règles essentielles#13"
    ],
-   "src": "PCG, art. 420-5 ; plan de comptes PCG 2025, comptes 476 et 477",
+   "src": "PCG, art. 420-5 et 420-6 ; plan de comptes PCG 2025, comptes 476, 477 et 1515",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
    "fiab": "stable"
   }

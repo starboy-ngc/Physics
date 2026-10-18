@@ -169,7 +169,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Calcul du dégressif</b> : la première annuité se rattache à l'exercice d'acquisition ou de construction et est ajustée en fonction de la durée courue du premier jour du mois de l'acquisition ou de la construction à la clôture. L'annuité s'applique à la valeur résiduelle, entendue ici comme la valeur restant à amortir (et non comme la valeur résiduelle déduite du montant amortissable en comptabilité) ; lorsque l'annuité dégressive devient inférieure à la valeur résiduelle divisée par le nombre d'années restant à courir, l'entreprise peut pratiquer cette dernière annuité (passage au linéaire).",
+     "t": "<b>Calcul du dégressif</b> : la première annuité se rattache à l'exercice d'acquisition ou de construction et est ajustée en fonction de la durée courue du premier jour du mois de l'acquisition ou de la construction à la clôture. L'annuité s'applique à la valeur résiduelle, entendue ici comme la valeur restant à amortir (et non au sens comptable de la valeur résiduelle que le PCG déduit de la valeur brute pour obtenir le montant amortissable) ; lorsque l'annuité dégressive devient inférieure à la valeur résiduelle divisée par le nombre d'années restant à courir, l'entreprise peut pratiquer cette dernière annuité (passage au linéaire).",
      "src": "BOI-BIC-AMT-20-20-30",
      "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
      "fiab": "stable"
@@ -310,7 +310,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : modifie divers règlements de l'ANC en coordination avec le règlement n° 2022-06, pour les exercices ouverts à compter du 1er janvier 2025. Les comptes de cession relèvent, eux, du plan de comptes du PCG issu du règlement n° 2022-06 : le compte 757 enregistre les produits des cessions d'immobilisations incorporelles et corporelles ; dans le plan de comptes 2026, les gains de change sur créances et dettes commerciales relèvent du compte 756. Les sujets antérieurs à 2025 utilisent encore 675/775.",
+     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : modifie divers règlements de l'ANC en coordination avec le règlement n° 2022-06, pour les exercices ouverts à compter du 1er janvier 2025. Les comptes de cession relèvent, eux, du plan de comptes du PCG issu du règlement n° 2022-06, où le compte 757 enregistre les produits des cessions d'immobilisations incorporelles et corporelles. Dans le plan de comptes 2026, les gains de change sur créances et dettes commerciales relèvent du compte 756. Les sujets antérieurs à 2025 utilisent encore 675/775.",
      "cite": "« Le présent règlement s'applique aux comptes afférents aux exercices ouverts à compter du 1er janvier 2025. »",
      "src": "Règlement ANC n° 2023-03 ; règlement ANC n° 2022-06 ; PCG, plan de comptes 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
