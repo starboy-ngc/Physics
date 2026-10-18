@@ -27,7 +27,7 @@ function checkEntry(entry, where, errs) {
 }
 function checkChapter(ch, errs) {
   for (const k of ["id", "ue", "ordre", "title", "resume", "duree", "niveau", "lecon", "sources", "exercices"]) if (ch[k] === undefined) errs.push(`champ manquant : ${k}`);
-  if (!/^ue(2|3|4|6|9|10)-\d\d$/.test(ch.id || "")) errs.push(`id invalide : ${ch.id}`);
+  if (!/^ue(1|2|3|4|6|9|10)-\d\d$/.test(ch.id || "")) errs.push(`id invalide : ${ch.id}`);
   if (!Array.isArray(ch.lecon) || ch.lecon.length < 4) errs.push(`lecon : au moins 4 sections attendues (${(ch.lecon || []).length})`);
   (ch.lecon || []).forEach((s, i) => {
     if (typeof s.html !== "string" || s.html.length < 150) errs.push(`lecon[${i}] : html trop court`);
@@ -85,7 +85,7 @@ const OFFICIAL = ["legifrance.gouv.fr","bofip.impots.gouv.fr","impots.gouv.fr","
 function isOfficial(url) { try { const h = new URL(url).hostname.toLowerCase(); return OFFICIAL.some(d => h === d || h.endsWith("." + d)); } catch (e) { return false; } }
 const SECTIONS = ["Définitions", "Règles essentielles", "Chiffres et seuils", "Ce qui a changé récemment", "Points de vigilance"];
 function checkFiche(f, errs) {
-  if (!/^ue(2|3|4|6|9|10)-\d\d$/.test(f.id || "")) errs.push(`fiche : id invalide ${f.id}`);
+  if (!/^ue(1|2|3|4|6|9|10)-\d\d$/.test(f.id || "")) errs.push(`fiche : id invalide ${f.id}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(f.maj || "")) errs.push("fiche : maj doit être une date AAAA-MM-JJ");
   const p = f.programme || {};
   if (typeof p.ref !== "string" || p.ref.length < 10) errs.push("fiche : programme.ref manquant");
@@ -131,7 +131,7 @@ function checkPcg(list, errs) {
 }
 function checkCartes(d, file, errs) {
   const path = require("path");
-  if (!/^ue(2|3|4|6|9|10)-\d\d$/.test(d.id || "")) errs.push(`cartes : id invalide ${d.id}`);
+  if (!/^ue(1|2|3|4|6|9|10)-\d\d$/.test(d.id || "")) errs.push(`cartes : id invalide ${d.id}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(d.maj || "")) errs.push("cartes : maj doit être une date AAAA-MM-JJ");
   const ff = path.join(path.dirname(file), `${d.id}.fiche.json`);
   let fiche = null; try { fiche = JSON.parse(fs.readFileSync(ff, "utf8")); } catch (e) { errs.push(`cartes : fiche voisine illisible (${ff})`); }

@@ -14,10 +14,11 @@
   --bronze: #9a5b2e; --silver: #5f6b78; --gold: #9a7410;
   --st1: #86b6ef; --st1-ink: #0b0b0b; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #1c5cab; --st3-ink: #ffffff; --st4: #0d366b; --st4-ink: #ffffff; --viz1: #2a78d6;
   --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
-  /* Bandes du spectre électromagnétique : UE9 visible, UE10 ultraviolet, UE2 radio, UE3 infrarouge, UE4 rayons X, UE6 rayons gamma,
-     plan comptable micro-ondes (le fond diffus cosmologique). Ordre des matières validé pour le daltonisme ; --o-* = texte posé sur la couleur. */
-  --c-UE9: #1f7a3a; --c-UE10: #2196d6; --c-UE2: #a8231b; --c-UE3: #d6a200; --c-UE4: #4434c2; --c-UE6: #c63aa9; --c-PCG: #e35d1a;
-  --o-UE9: #ffffff; --o-UE10: #ffffff; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #1c0d00;
+  /* Bandes du spectre électromagnétique : UE9 visible, UE10 ultraviolet, UE1 micro-ondes (le fond diffus cosmologique : les fondamentaux),
+     UE2 radio, UE3 infrarouge, UE4 rayons X, UE6 rayons gamma ; le plan comptable en lumière blanche (neutre).
+     Ordre des matières validé pour le daltonisme ; --o-* = texte posé sur la couleur. */
+  --c-UE9: #1f7a3a; --c-UE10: #2196d6; --c-UE1: #e35d1a; --c-UE2: #a8231b; --c-UE3: #d6a200; --c-UE4: #4434c2; --c-UE6: #c63aa9; --c-PCG: #56657d;
+  --o-UE9: #ffffff; --o-UE10: #ffffff; --o-UE1: #1c0d00; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #ffffff;
   --night1: #050816; --night2: #101a3c; --night-ink: #eef2ff; --night-muted: #aab5d6; --night-line: rgba(170, 181, 214, 0.22);
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 6px 18px rgba(16, 24, 40, 0.06);
   --bar-bg: rgba(255, 255, 255, 0.92);
@@ -30,8 +31,8 @@
     --paper: #0e131b; --card: #161d28; --ink: #e8ecf3; --muted: #9aa5b8; --rule: #283245; --rule-soft: #1d2533; --margin: #ef6262;
     --accent: #7da2ff; --accent-soft: #1c2a4a; --accent-ink: #0b1020; --ok: #5fcf8c; --ok-soft: #16301f; --bad: #f07a72; --bad-soft: #3a1f1e; --warn: #e6b84f; --warn-soft: #3a2f17;
     --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
-    --c-UE9: #2b9149; --c-UE10: #3b8fe0; --c-UE2: #c7372f; --c-UE3: #b58f12; --c-UE4: #6f5ee8; --c-UE6: #c74fb4; --c-PCG: #dc7426;
-    --o-UE9: #ffffff; --o-UE10: #0b1020; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #1c0d00;
+    --c-UE9: #2b9149; --c-UE10: #3b8fe0; --c-UE1: #dc7426; --c-UE2: #c42f48; --c-UE3: #b58f12; --c-UE4: #6f5ee8; --c-UE6: #c74fb4; --c-PCG: #9aa7bd;
+    --o-UE9: #ffffff; --o-UE10: #0b1020; --o-UE1: #1c0d00; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #0b1020;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.25); --bar-bg: rgba(22, 29, 40, 0.94);
     color-scheme: dark;
   }
@@ -40,8 +41,8 @@
   --paper: #0e131b; --card: #161d28; --ink: #e8ecf3; --muted: #9aa5b8; --rule: #283245; --rule-soft: #1d2533; --margin: #ef6262;
   --accent: #7da2ff; --accent-soft: #1c2a4a; --accent-ink: #0b1020; --ok: #5fcf8c; --ok-soft: #16301f; --bad: #f07a72; --bad-soft: #3a1f1e; --warn: #e6b84f; --warn-soft: #3a2f17;
   --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
-  --c-UE9: #2b9149; --c-UE10: #3b8fe0; --c-UE2: #c7372f; --c-UE3: #b58f12; --c-UE4: #6f5ee8; --c-UE6: #c74fb4; --c-PCG: #dc7426;
-  --o-UE9: #ffffff; --o-UE10: #0b1020; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #1c0d00;
+  --c-UE9: #2b9149; --c-UE10: #3b8fe0; --c-UE1: #dc7426; --c-UE2: #c42f48; --c-UE3: #b58f12; --c-UE4: #6f5ee8; --c-UE6: #c74fb4; --c-PCG: #9aa7bd;
+  --o-UE9: #ffffff; --o-UE10: #0b1020; --o-UE1: #1c0d00; --o-UE2: #ffffff; --o-UE3: #1c1500; --o-UE4: #ffffff; --o-UE6: #ffffff; --o-PCG: #0b1020;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.25); --bar-bg: rgba(22, 29, 40, 0.94);
   color-scheme: dark;
 }
@@ -1387,10 +1388,11 @@ ${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.t
 
 // ---------- Observatoire ----------
 // Chaque matière est observée dans une bande du spectre ; chaque chapitre acquis permet d'observer une cible des catalogues Messier et NGC.
-const BANDES = { UE2: ["Radio", "plus de 1 m"], PCG: ["Micro-ondes", "1 mm à 1 m"], UE3: ["Infrarouge", "700 nm à 1 mm"], UE9: ["Visible", "400 à 700 nm"], UE10: ["Ultraviolet", "10 à 400 nm"], UE4: ["Rayons X", "0,01 à 10 nm"], UE6: ["Rayons gamma", "moins de 0,01 nm"] };
-const SPECTRE = ["UE2", "PCG", "UE3", "UE9", "UE10", "UE4", "UE6"];
+const BANDES = { UE2: ["Radio", "plus de 1 m"], UE1: ["Micro-ondes", "1 mm à 1 m"], UE3: ["Infrarouge", "700 nm à 1 mm"], UE9: ["Visible", "400 à 700 nm"], UE10: ["Ultraviolet", "10 à 400 nm"], UE4: ["Rayons X", "0,01 à 10 nm"], UE6: ["Rayons gamma", "moins de 0,01 nm"], PCG: ["Lumière blanche", "toutes les longueurs d'onde"] };
+const SPECTRE = ["UE2", "UE1", "UE3", "UE9", "UE10", "UE4", "UE6"].filter(c => c === "PCG" || UE_BY[c]);
 const TYPE_OBJ = { neb: "nébuleuse diffuse", pla: "nébuleuse planétaire", gal: "galaxie", glo: "amas globulaire", ouv: "amas ouvert", snr: "rémanent de supernova", ref: "nébuleuse par réflexion", nua: "nuage stellaire" };
 const CIBLES_UE = {
+  UE1: [["M6", "Amas du Papillon", "ouv", "Scorpion"], ["M7", "Amas de Ptolémée", "ouv", "Scorpion"], ["M35", "Amas ouvert M35", "ouv", "Gémeaux"], ["M41", "Amas ouvert M41", "ouv", "Grand Chien"], ["M47", "Amas ouvert M47", "ouv", "Poupe"], ["M46", "Amas ouvert M46", "ouv", "Poupe"], ["M39", "Amas ouvert M39", "ouv", "Cygne"]],
   UE9: [["M42", "Grande nébuleuse d'Orion", "neb", "Orion"], ["M45", "Les Pléiades", "ouv", "Taureau"], ["M31", "Galaxie d'Andromède", "gal", "Andromède"], ["M13", "Grand amas d'Hercule", "glo", "Hercule"], ["M57", "Nébuleuse de l'Anneau", "pla", "Lyre"], ["M27", "Nébuleuse de l'Haltère", "pla", "Petit Renard"], ["M44", "Amas de la Ruche", "ouv", "Cancer"], ["M8", "Nébuleuse de la Lagune", "neb", "Sagittaire"], ["M51", "Galaxie du Tourbillon", "gal", "Chiens de chasse"]],
   UE10: [["M33", "Galaxie du Triangle", "gal", "Triangle"], ["M81", "Galaxie de Bode", "gal", "Grande Ourse"], ["M101", "Galaxie du Moulinet", "gal", "Grande Ourse"], ["M104", "Galaxie du Sombrero", "gal", "Vierge"], ["M63", "Galaxie du Tournesol", "gal", "Chiens de chasse"], ["M64", "Galaxie de l'Œil noir", "gal", "Chevelure de Bérénice"], ["M83", "Galaxie du Moulinet austral", "gal", "Hydre"], ["M106", "Galaxie spirale M106", "gal", "Chiens de chasse"]],
   UE2: [["M1", "Nébuleuse du Crabe", "snr", "Taureau"], ["M87", "Virgo A, au trou noir imagé en 2019", "gal", "Vierge"], ["M82", "Galaxie du Cigare", "gal", "Grande Ourse"], ["M77", "Galaxie de Seyfert M77", "gal", "Baleine"], ["M84", "Radiogalaxie M84", "gal", "Vierge"], ["M17", "Nébuleuse Oméga", "neb", "Sagittaire"], ["M20", "Nébuleuse Trifide", "neb", "Sagittaire"]],
@@ -1414,7 +1416,7 @@ function renderObservatoire() {
 </div>
 <h3>Le spectre des matières</h3>
 <div class="spectre">${SPECTRE.map(code => `<div style="${ucol(code)}"><b>${esc(BANDES[code][0])}</b><span>${code === "PCG" ? "Plan comptable" : code}</span><span>${esc(BANDES[code][1])}</span></div>`).join("")}</div>
-<p class="muted small">Des grandes longueurs d'onde (radio) aux plus courtes (gamma). Le plan comptable est le fond diffus cosmologique de la comptabilité : il se voit en micro-ondes, partout. Longueurs d'onde indicatives.</p>
+<p class="muted small">Des grandes longueurs d'onde (radio) aux plus courtes (gamma). Les fondamentaux du droit sont le fond diffus cosmologique : on les capte en micro-ondes, partout. Le plan comptable est la lumière blanche, qui contient toutes les couleurs : il sert dans toutes les matières. Longueurs d'onde indicatives.</p>
 ${UES.map(u => `<h3><span class="dotc" style="${ucol(u.code)}"></span>${esc(u.code)} · ${esc(u.nom)} <span class="muted small">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></h3><div class="cat" style="${ucol(u.code)}">${ueChaps(u.code).map(c => { const t = CIBLE[c.id]; if (!t) return ""; const m = chapMastery(c); const st = m >= 0.999 ? "seen" : chapStarted(c) ? "prog" : ""; return `<button class="obj ${st}" data-c="${c.id}"><span class="des">${esc(t.des)}${st === "seen" ? '<span class="pill seen">observé</span>' : st === "prog" ? `<span class="pill prog">${Math.round(m * 100)} %</span>` : '<span class="pill">à observer</span>'}</span><span class="nm">${esc(t.nom)}</span><span class="ty">${esc(TYPE_OBJ[t.type])} · ${esc(t.cons)}</span><span class="ch">Chapitre ${c.ordre} · ${esc(c.title)}</span></button>`; }).join("")}</div>`).join("")}
 <h3>Derniers succès</h3>${(() => { const last = SUCCES.filter(x => state.succes[x.id]).sort((a, b) => state.succes[b.id] - state.succes[a.id]).slice(0, 4); return last.length ? `<div class="sgrid">${last.map(succCard).join("")}</div>` : `<p class="muted">Aucun succès pour l'instant. Le premier se débloque dès la première réponse.</p>`; })()}
 <div class="actions"><button class="btn ghost" id="toSucc">Voir les ${SUCCES.length} succès</button></div>
