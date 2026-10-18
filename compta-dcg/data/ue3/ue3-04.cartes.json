@@ -1,6 +1,6 @@
 {
  "id": "ue3-04",
- "maj": "2026-10-16",
+ "maj": "2026-10-18",
  "cartes": [
   {
    "id": "ue3-04-k01",
@@ -399,7 +399,7 @@
    "base": [
     "Règles essentielles#14"
    ],
-   "src": "C. trav., art. L. 1243-1 à L. 1243-5",
+   "src": "C. trav., art. L. 1242-10 et L. 1243-1 à L. 1243-5",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029946319",
    "fiab": "stable"
   },

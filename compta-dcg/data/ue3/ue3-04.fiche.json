@@ -1,6 +1,6 @@
 {
  "id": "ue3-04",
- "maj": "2026-10-14",
+ "maj": "2026-10-18",
  "programme": {
   "ref": "Arrêté du 4 août 2025 (NOR MENS2523324A), annexe 1 (DCG, UE 3 Droit social), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026.",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -43,8 +43,8 @@
    "version": "R. 1234-2 en vigueur depuis le 27 septembre 2017 (décret n° 2017-1398 du 25 septembre 2017)"
   },
   {
-   "ref": "C. trav., art. L. 1243-1 à L. 1243-4",
-   "objet": "Rupture anticipée du CDD",
+   "ref": "C. trav., art. L. 1243-1 à L. 1243-5",
+   "objet": "Rupture anticipée du CDD (L. 1243-1 à L. 1243-4) ; cessation de plein droit à l'échéance du terme (L. 1243-5)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189458/",
    "version": "en vigueur"
   },
@@ -120,7 +120,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Rupture conventionnelle</b> : l'employeur et le salarié conviennent en commun des conditions de la rupture du CDI. Exclusive du licenciement et de la démission, elle ne peut être imposée par l'une ou l'autre des parties ; elle résulte d'une convention signée par elles et n'est valable qu'après homologation par l'autorité administrative.",
+     "t": "<b>Rupture conventionnelle</b> : l'employeur et le salarié conviennent en commun des conditions de la rupture du CDI. Exclusive du licenciement et de la démission, elle ne peut être imposée par l'une ou l'autre des parties ; elle résulte d'une convention signée par elles et n'est valable, en principe, qu'après homologation par l'autorité administrative.",
      "src": "C. trav., art. L. 1237-11 et L. 1237-14",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
      "fiab": "stable"
@@ -151,13 +151,13 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Difficultés économiques</b> : caractérisées par l'évolution significative d'au moins un indicateur (baisse des commandes ou du chiffre d'affaires, pertes d'exploitation, dégradation de la trésorerie ou de l'excédent brut d'exploitation). La baisse des commandes ou du chiffre d'affaires est significative si sa durée, comparée à la même période de l'année précédente, atteint au moins un trimestre (moins de 11 salariés), deux trimestres consécutifs (11 à moins de 50), trois trimestres consécutifs (50 à moins de 300) ou quatre trimestres consécutifs (300 et plus). Dans un groupe, les difficultés s'apprécient au niveau du secteur d'activité commun aux entreprises du groupe établies sur le territoire national.",
+     "t": "<b>Difficultés économiques</b> : caractérisées notamment par l'évolution significative d'au moins un indicateur économique tel qu'une baisse des commandes ou du chiffre d'affaires, des pertes d'exploitation ou une dégradation de la trésorerie ou de l'excédent brut d'exploitation. La baisse des commandes ou du chiffre d'affaires est significative si sa durée, comparée à la même période de l'année précédente, atteint au moins un trimestre (moins de 11 salariés), deux trimestres consécutifs (11 à moins de 50), trois trimestres consécutifs (50 à moins de 300) ou quatre trimestres consécutifs (300 et plus). Dans un groupe, les difficultés s'apprécient au niveau du secteur d'activité commun aux entreprises du groupe établies sur le territoire national.",
      "src": "C. trav., art. L. 1233-3",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762081",
      "fiab": "stable"
     },
     {
-     "t": "<b>Obligations préalables au licenciement économique</b> : efforts de formation et d'adaptation et recherche de reclassement sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe ; critères d'ordre des licenciements (charges de famille, ancienneté, situation sociale rendant la réinsertion difficile, qualités professionnelles) ; consultation du CSE et information de l'administration ; priorité de réembauche pendant un an à compter de la rupture, si le salarié en fait la demande dans ce délai.",
+     "t": "<b>Licenciement économique : obligations de l'employeur</b> : avant le licenciement, efforts de formation et d'adaptation et recherche de reclassement sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe ; critères d'ordre des licenciements, qui prennent notamment en compte les charges de famille, l'ancienneté, la situation sociale rendant la réinsertion difficile et les qualités professionnelles ; en cas de licenciement collectif, consultation du CSE et information de l'administration ; priorité de réembauche pendant un an à compter de la rupture, si le salarié en fait la demande dans ce délai.",
      "src": "C. trav., art. L. 1233-4, L. 1233-5, L. 1233-8, L. 1233-19 et L. 1233-45",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
      "fiab": "stable"
@@ -225,19 +225,19 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Mise à la retraite</b> : possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge prévu au 1° de l'article L. 351-8 CSS (âge du taux plein automatique, 67 ans). Avant cette date, l'employeur interroge par écrit le salarié sur son intention de quitter volontairement l'entreprise pour bénéficier d'une pension de vieillesse ; en cas de réponse négative ou à défaut d'interrogation, il ne peut pas le mettre à la retraite pendant l'année qui suit, la même procédure s'appliquant chaque année jusqu'au 69e anniversaire du salarié. La mise à la retraite ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement ; le salarié qui part volontairement respecte le préavis de licenciement et perçoit l'indemnité de départ à la retraite.",
+     "t": "<b>Mise à la retraite</b> : possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge prévu au 1° de l'article L. 351-8 CSS (âge du taux plein automatique, 67 ans). Avant cette date, l'employeur interroge par écrit le salarié sur son intention de quitter volontairement l'entreprise pour bénéficier d'une pension de vieillesse ; en cas de réponse négative ou à défaut d'interrogation, il ne peut pas le mettre à la retraite pendant l'année qui suit, la même procédure s'appliquant chaque année jusqu'au 69e anniversaire du salarié. La mise à la retraite ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement ; le salarié qui part volontairement respecte le préavis de licenciement et perçoit l'indemnité de départ à la retraite. Par exception, dans le contrat de valorisation de l'expérience, l'employeur peut mettre le salarié à la retraite sans recueillir son accord dès qu'il remplit les conditions d'une pension à taux plein (voir « Ce qui a changé récemment »).",
      "src": "C. trav., art. L. 1237-5 (version en vigueur depuis le 26 octobre 2025), L. 1237-7, L. 1237-9 et L. 1237-10 ; CSS, art. L. 351-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052437183",
      "fiab": "stable"
     },
     {
-     "t": "<b>Fin du CDD</b> : le contrat cesse de plein droit à l'échéance du terme. Sauf accord des parties, il ne peut être rompu avant le terme qu'en cas de faute grave, de force majeure ou d'inaptitude constatée par le médecin du travail ; le salarié peut aussi le rompre en justifiant d'une embauche en CDI (préavis de deux semaines au plus). La rupture anticipée injustifiée par l'employeur ouvre droit à des dommages-intérêts au moins égaux aux rémunérations que le salarié aurait perçues jusqu'au terme, sans préjudice de l'indemnité de fin de contrat.",
-     "src": "C. trav., art. L. 1243-1 à L. 1243-5",
+     "t": "<b>Fin du CDD</b> : le contrat cesse de plein droit à l'échéance du terme. Sauf accord des parties et hors période d'essai, il ne peut être rompu avant le terme qu'en cas de faute grave, de force majeure ou d'inaptitude constatée par le médecin du travail ; le salarié peut aussi le rompre en justifiant d'une embauche en CDI (préavis de deux semaines au plus). Le CDD à objet défini peut en outre être rompu par l'une ou l'autre partie, pour un motif réel et sérieux, dix-huit mois après sa conclusion puis à la date anniversaire de sa conclusion. La rupture anticipée injustifiée par l'employeur ouvre droit à des dommages-intérêts au moins égaux aux rémunérations que le salarié aurait perçues jusqu'au terme, sans préjudice de l'indemnité de fin de contrat.",
+     "src": "C. trav., art. L. 1242-10 et L. 1243-1 à L. 1243-5",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029946319",
      "fiab": "stable"
     },
     {
-     "t": "<b>Prise d'acte et résiliation judiciaire</b> : lorsque le salarié prend acte de la rupture en raison de faits qu'il reproche à l'employeur, la rupture produit les effets d'un licenciement sans cause réelle et sérieuse si les faits invoqués la justifiaient, d'une démission dans le cas contraire. Saisi d'une demande de qualification de la rupture, le conseil de prud'hommes porte l'affaire directement devant le bureau de jugement, qui statue au fond dans le délai d'un mois ; la règle vaut aussi pour la demande de requalification d'une démission. Le salarié peut également rester en poste et demander au juge la résiliation judiciaire du contrat.",
+     "t": "<b>Prise d'acte et résiliation judiciaire</b> : lorsque le salarié prend acte de la rupture en raison de faits qu'il reproche à l'employeur, la rupture produit en principe les effets d'un licenciement sans cause réelle et sérieuse si les faits invoqués la justifiaient, d'une démission dans le cas contraire. Saisi d'une demande de qualification de la rupture, le conseil de prud'hommes porte l'affaire directement devant le bureau de jugement, qui statue au fond dans le délai d'un mois ; la règle vaut aussi pour la demande de requalification d'une démission. Le salarié peut également rester en poste et demander au juge la résiliation judiciaire du contrat.",
      "cite": "« lorsqu'un salarié prend acte de la rupture de son contrat de travail en raison de faits qu'il reproche à son employeur, cette rupture produit les effets, soit d'un licenciement sans cause réelle et sérieuse si les faits invoqués la justifiaient, soit, dans le cas contraire, d'une démission »",
      "src": "Cass. soc., 25 juin 2003, n° 01-42.679, publié au bulletin ; C. trav., art. L. 1451-1 (loi n° 2014-743 du 1er juillet 2014) ; Cass. soc., 18 septembre 2019, n° 18-15.765 ; C. civ., art. 1224 et 1227",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007045912/",
@@ -337,7 +337,7 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Refus d'un accord de performance collective (2026)</b> : le licenciement du salarié qui refuse la modification de son contrat résultant d'un APC repose sur un motif spécifique constituant une cause réelle et sérieuse et suit la procédure du licenciement pour motif personnel ; mais seules les clauses relatives à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne peuvent s'imposer au contrat, et le licenciement est sans cause réelle et sérieuse si l'accord comportait des dispositions étrangères à ces objets.",
+     "t": "<b>Refus d'un accord de performance collective (2026)</b> : le licenciement du salarié qui refuse la modification de son contrat résultant d'un APC repose sur un motif spécifique constituant une cause réelle et sérieuse et suit la procédure du licenciement pour motif personnel ; mais seules les clauses relatives à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne peuvent s'imposer au contrat, et le licenciement est sans cause réelle et sérieuse si l'accord comportait des dispositions étrangères à ces objets et modifiant son contrat de travail.",
      "cite": "« le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord de performance collective comportant des dispositions étrangères à ces objets et modifiant son contrat de travail, est sans cause réelle et sérieuse »",
      "src": "C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
