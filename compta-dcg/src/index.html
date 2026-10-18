@@ -334,6 +334,42 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .obj.seen { border-color: color-mix(in srgb, var(--c) 45%, var(--rule)); background: color-mix(in srgb, var(--c) 7%, var(--card)); }
 .obj .pill.seen { background: var(--c); color: var(--o); }
 @media (max-width: 700px) { .instr { grid-template-columns: 1fr; } .spectre { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.plan-card { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 16px 18px; display: grid; gap: 10px; margin-top: 16px; }
+.plan-card .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; }
+.plan-card .j { font: 800 1.9rem var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.plan-card .j small { font: 600 0.9rem var(--body); color: var(--muted); }
+.plan-card .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.plan-card .grid div { background: var(--rule-soft); border-radius: 12px; padding: 9px 11px; display: grid; gap: 1px; }
+.plan-card .grid b { font: 700 1.15rem var(--display); font-variant-numeric: tabular-nums; }
+.plan-card .grid span { font-size: 0.8rem; color: var(--muted); }
+.plan-card .verdict { font-size: 0.92rem; }
+.plan-card .verdict.ok { color: var(--ok); } .plan-card .verdict.late { color: var(--bad); }
+.plan-card form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.plan-card input[type="date"] { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 7px 10px; }
+@media (max-width: 560px) { .plan-card .grid { grid-template-columns: 1fr 1fr; } }
+.heat { position: relative; overflow-x: auto; padding-bottom: 4px; }
+.heat svg, .heat.chart svg { display: block; width: auto; max-width: none; height: auto; }
+.heat .cellh { stroke: var(--card); stroke-width: 2; }
+.heat text { fill: var(--muted); font: 10px var(--mono); }
+.heat .h0 { fill: var(--rule-soft); } .heat .h1 { fill: var(--st1); } .heat .h2 { fill: var(--st2); } .heat .h3 { fill: var(--st3); } .heat .h4 { fill: var(--st4); }
+.heat .today { stroke: var(--ink); stroke-width: 1.5; }
+.heat-sum { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 0.85rem; color: var(--muted); margin: 4px 0 0; }
+.heat-sum b { color: var(--ink); }
+.ann { display: grid; gap: 10px; }
+.ann-ue { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 12px 14px; display: grid; gap: 8px; }
+.ann-ue h3 { margin: 0; font-size: 1.05rem; }
+.ann-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--rule-soft); }
+.ann-row:first-of-type { border-top: none; }
+.ann-row .y { font: 700 1rem var(--mono); }
+.ann-row .links { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 0.88rem; }
+.ann-row .links a { color: var(--accent); }
+.ann-row .links .na { color: var(--muted); }
+.ann-row .note { font: 600 0.9rem var(--mono); text-align: right; white-space: nowrap; }
+.chrono { background: var(--card); border: 1px solid var(--rule); border-radius: 20px; padding: 18px; display: grid; gap: 12px; justify-items: start; box-shadow: var(--shadow); }
+.chrono .t { font: 800 clamp(2.4rem, 9vw, 3.6rem) var(--mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.chrono .t.late { color: var(--bad); }
+.chrono input[type="number"] { font: 600 1.1rem var(--mono); width: 110px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); color: var(--ink); }
+@media (max-width: 560px) { .ann-row { grid-template-columns: 52px 1fr; } .ann-row .note { grid-column: 2; text-align: left; } }
 .howto { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 16px; margin: 14px 0; }
 .howto summary { cursor: pointer; font-weight: 600; }
 @media (max-width: 560px) {
@@ -522,8 +558,8 @@ const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "E
 const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
 function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
 function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
-function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
+function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
@@ -931,13 +967,63 @@ const main = document.getElementById("main");
 let view = { tab: "accueil" };
 const chapLabel = ex => { const ch = CHAP_BY[ex.chap]; return `${ch.ue} · ${ch.title}`; };
 
+// ---------- Plan de travail ----------
+const NPD_CHOIX = [0, 5, 10, 15, 20, 25, 30, 40, 50, 60];
+const MARGE = 14; // derniers jours sans nouvelles notions : consolidation avant l'examen
+function planTravail() {
+  if (!state.exam) return null;
+  const ex = new Date(state.exam + "T12:00:00"); if (isNaN(ex)) return null;
+  const jours = Math.ceil((startOfDay(ex) - startOfDay(Date.now())) / DAY);
+  const restantes = newPool("Tous").length; const utiles = Math.max(1, jours - MARGE);
+  const conseil = jours > 0 ? Math.ceil(restantes / utiles) : 0;
+  const chapRest = CHAPS.filter(c => chapMastery(c) < 0.999).length; const parSem = jours > 0 ? Math.ceil(chapRest / Math.max(1, utiles / 7)) : 0;
+  const rythme = state.newPerDay || 0; const fin = rythme > 0 ? new Date(startOfDay(Date.now()) + Math.ceil(restantes / rythme) * DAY) : null;
+  const limite = new Date(startOfDay(ex) - MARGE * DAY);
+  return { ex, jours, restantes, conseil, chapRest, parSem, rythme, fin, limite, aTemps: !!fin && fin <= limite };
+}
+function planHTML() {
+  const P = planTravail();
+  if (!P) return `<section class="plan-card" aria-labelledby="pTitle"><div class="hd"><h3 id="pTitle" style="margin:0">Plan de travail</h3></div><p class="muted" style="margin:0">Indiquez la date de votre examen : l'outil calcule combien de nouvelles notions apprendre chaque jour et combien de chapitres boucler par semaine pour tout voir à temps, avec deux semaines de consolidation à la fin.</p><form id="examForm"><label for="examDate" class="small muted">Date de l'examen</label><input type="date" id="examDate" required><button class="btn" type="submit">Enregistrer</button></form></section>`;
+  const dt = d => d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }).replace(/^1 /, "1er ");
+  if (P.jours <= 0) return `<section class="plan-card"><div class="hd"><h3 style="margin:0">Plan de travail</h3><button class="linkbtn" id="examEdit">changer la date</button></div><p style="margin:0">L'examen du ${dt(P.ex)} est passé. Indiquez la date de la prochaine session pour un nouveau plan.</p></section>`;
+  const verdict = P.restantes === 0 ? `<p class="verdict ok">Toutes les notions sont déjà entrées dans les révisions : place à la consolidation.</p>` : P.rythme === 0 ? `<p class="verdict late">Aucune nouvelle notion n'est programmée chaque jour : réglez le rythme pour avancer.</p>` : P.aTemps ? `<p class="verdict ok">Au rythme actuel (${P.rythme} par jour), toutes les notions auront été vues le ${dt(P.fin)}, avant le début de la consolidation (${dt(P.limite)}).</p>` : `<p class="verdict late">Au rythme actuel (${P.rythme} par jour), les dernières notions arriveraient le ${dt(P.fin)}, après le début de la consolidation (${dt(P.limite)}). Passez à ${P.conseil} par jour.</p>`;
+  return `<section class="plan-card" aria-labelledby="pTitle"><div class="hd"><h3 id="pTitle" style="margin:0">Plan de travail</h3><span class="j">J-${P.jours}<small> · examen le ${dt(P.ex)}</small></span></div>
+<div class="grid"><div><b>${fmt(P.restantes)}</b><span>notions encore jamais vues</span></div><div><b>${P.conseil} / jour</b><span>rythme conseillé de nouvelles notions</span></div><div><b>${P.parSem} / semaine</b><span>chapitres à boucler (${P.chapRest} restants)</span></div></div>
+${verdict}<div class="actions" style="margin-top:0">${P.restantes && P.conseil !== P.rythme ? `<button class="btn" id="planApply">Passer à ${NPD_CHOIX.find(v => v >= P.conseil) || 60} nouvelles notions par jour</button>` : ""}<button class="btn quiet" id="examEdit">Changer la date</button></div></section>`;
+}
+function bindPlan(root) {
+  const f = root.querySelector("#examForm"); if (f) f.onsubmit = e => { e.preventDefault(); const v = root.querySelector("#examDate").value; if (!v) return; state.exam = v; save(); go(view); toast("Date d'examen enregistrée."); };
+  const a = root.querySelector("#planApply"); if (a) a.onclick = () => { const P = planTravail(); state.newPerDay = NPD_CHOIX.find(v => v >= P.conseil) || 60; save(); go(view); toast(`Rythme réglé à ${state.newPerDay} nouvelles notions par jour.`); };
+  const ed = root.querySelector("#examEdit"); if (ed) ed.onclick = () => { state.exam = null; save(); go(view); };
+}
+// ---------- Calendrier d'activité (heatmap) ----------
+const HEAT_SEUILS = [1, 10, 30, 60]; // réponses par jour : 1-9, 10-29, 30-59, 60 et plus
+function heatHTML(semaines) {
+  const kOf = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const today = new Date(); today.setHours(12, 0, 0, 0); const dow = (today.getDay() + 6) % 7; // lundi = 0
+  const start = new Date(today); start.setDate(today.getDate() - dow - (semaines - 1) * 7);
+  const C = 13, G = 3, L = 28, T = 18; const W = L + semaines * (C + G), H = T + 7 * (C + G);
+  const items = []; let cells = ""; let mois = ""; let lastM = -1; let jours = 0, total = 0;
+  for (let w = 0; w < semaines; w++) for (let d = 0; d < 7; d++) {
+    const x = new Date(start); x.setDate(start.getDate() + w * 7 + d); if (x > today) continue;
+    const n = state.days[kOf(x)] || 0; if (n) { jours++; total += n; }
+    const b = n >= HEAT_SEUILS[3] ? 4 : n >= HEAT_SEUILS[2] ? 3 : n >= HEAT_SEUILS[1] ? 2 : n >= HEAT_SEUILS[0] ? 1 : 0;
+    const i = items.length; items.push({ v: n ? `${n} réponse${n > 1 ? "s" : ""}` : "aucune réponse", l: x.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) });
+    cells += `<rect class="cellh h${b}${x.getTime() === today.getTime() ? " today" : ""}" data-i="${i}" tabindex="-1" x="${L + w * (C + G)}" y="${T + d * (C + G)}" width="${C}" height="${C}" rx="3"><title>${items[i].l} : ${items[i].v}</title></rect>`;
+    if (d === 0 && x.getMonth() !== lastM) { lastM = x.getMonth(); mois += `<text x="${L + w * (C + G)}" y="11">${x.toLocaleDateString("fr-FR", { month: "short" })}</text>`; }
+  }
+  const lab = ["lun.", "", "mer.", "", "ven.", "", ""].map((t, d) => t ? `<text x="0" y="${T + d * (C + G) + 10}">${t}</text>` : "").join("");
+  heatHTML.items = items;
+  return { html: `<div class="heat chart" id="heatBox"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Calendrier d'activité : ${jours} jours travaillés sur les ${semaines} dernières semaines">${mois}${lab}${cells}</svg><div class="tip"></div></div>
+<div class="heat-sum"><span><b>${jours}</b> jour${jours > 1 ? "s" : ""} travaillé${jours > 1 ? "s" : ""} sur ${semaines} semaines</span><span><b>${fmt(total)}</b> réponses</span><span>série actuelle : <b>${streak()}</b> j</span><span class="legend" style="margin:0">moins <i style="background:var(--rule-soft)"></i><i style="background:var(--st1)"></i><i style="background:var(--st2)"></i><i style="background:var(--st3)"></i><i style="background:var(--st4)"></i> plus (1, 10, 30, 60 réponses)</span></div>`, items };
+}
 function seance() {
   const due = dueFor("Tous").length, nouv = Math.min(newLeftToday(), newPool("Tous").length);
   const plan = state.daily[todayKey()]; const nAns = plan ? Object.keys(plan.answers || {}).length : 0;
   return { due, nouv, notions: due + nouv, testDone: !!(plan && plan.done), nAns, plan };
 }
 function renderAccueil() {
-  const S = seance(); const nc = nextChapter(); const hist = dailyHistory(30); const st = streak();
+  const S = seance(); const nc = nextChapter(); const hist = dailyHistory(30); const st = streak(); const heat = heatHTML(innerWidth < 600 ? 17 : innerWidth < 1000 ? 30 : 52);
   const s1 = S.notions ? "cur" : "done", s2 = S.testDone ? "done" : s1 === "done" ? "cur" : "todo";
   const mins = Math.max(1, Math.round(Math.min(S.notions, 70) * 0.4)) + (S.testDone ? 0 : 20);
   const dateTxt = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
@@ -954,6 +1040,7 @@ function renderAccueil() {
   </ol>
   <div class="go">${btn}</div>
 </section>
+${planHTML()}
 <div class="stats">
   <div class="stat" title="Notions arrivées à l'étape « 10 jours » ou au-delà, sur ${fmt(SRS_IDS.length)}"><span class="v">${fmt(mem)}</span><span class="l">notions mémorisées</span></div>
   <div class="stat" title="Part des exercices des 42 chapitres acquis"><span class="v">${Math.round(globalMastery() * 100)}<small> %</small></span><span class="l">exercices acquis</span></div>
@@ -970,9 +1057,10 @@ ${plateauHTML(SRS_IDS)}
 <h3>Prochains succès</h3>
 <div class="sgrid">${nextSucces(3).map(succCard).join("")}</div>
 <div class="actions" style="margin-top:8px"><button class="btn quiet" id="goSucc">Tous les succès (${Object.keys(state.succes).length} / ${SUCCES.length})</button></div>
-<h3>Tests du jour, 30 derniers jours</h3>
-<div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div>
-<p class="muted small">Chaque barre est le score d'un test du jour. Les barres grises sont les jours sans test.</p>`;
+<h3>Calendrier d'activité</h3>
+${heat.html}
+<details class="datatab"><summary>Scores des tests du jour, 30 derniers jours</summary><div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div><p class="muted small">Chaque barre est le score d'un test du jour ; les barres grises sont les jours sans test.</p></details>`;
+  bindTip(main.querySelector("#heatBox"), heat.items); bindPlan(main);
   const b1 = main.querySelector("#goSeance"); if (b1) b1.onclick = () => startSession("Tous", { chain: true });
   const b2 = main.querySelector("#goTest"); if (b2) b2.onclick = () => go({ tab: "test" });
   const b3 = main.querySelector("#goMore"); if (b3) b3.onclick = () => go({ tab: "revisions" });
@@ -1199,7 +1287,7 @@ function renderRevisions() {
   main.innerHTML = `<h2>Révisions espacées</h2>
 <p class="mix">Définitions et compréhension, sans calcul : ${fmt(srsCount("carte"))} cartes de notions · ${fmt(srsCount("exo"))} QCM de compréhension · ${fmt(srsCount("compte"))} comptes.</p>
 <div class="filters" style="margin-top:12px"><div class="chips" role="group" aria-label="Thème">${["Tous", ...THEMES.map(t => t.code)].map(c => `<button data-th="${c}" aria-pressed="${c === revTheme}" ${c === "Tous" ? "" : `style="${ucol(c)}"`}>${c === "Tous" ? "Tous les thèmes" : c === "PCG" ? "Plan comptable" : c}</button>`).join("")}</div>
-<label class="setting" for="npd">Nouvelles notions par jour <select id="npd">${[0, 5, 10, 15, 20, 30].map(v => `<option value="${v}" ${v === state.newPerDay ? "selected" : ""}>${v}</option>`).join("")}</select></label></div>
+${planTravail() && planTravail().jours > 0 ? `<span class="setting">Rythme conseillé par le plan : <b>${planTravail().conseil}</b> par jour</span>` : ""}<label class="setting" for="npd">Nouvelles notions par jour <select id="npd">${NPD_CHOIX.map(v => `<option value="${v}" ${v === state.newPerDay ? "selected" : ""}>${v}</option>`).join("")}</select></label></div>
 <div class="cta"><div><div class="t">${dueTh + newTh ? `${dueTh} à réviser · ${newTh} nouvelle${newTh > 1 ? "s" : ""}` : "Tout est à jour"}</div><div class="muted small">${revTheme === "Tous" ? "Tous les thèmes, en alternance" : esc(thNom(revTheme))}. ${dueTh + newTh ? "Les notions dues passent en premier, les plus anciennes d'abord." : nextDue ? `Prochaine révision ${fmtDue(nextDue.due)}.` : "Commencez par quelques nouvelles notions."}</div></div><button class="btn red" id="startRev" ${dueTh + newTh ? "" : "disabled"}>Commencer</button></div>
 <details class="howto"><summary>Comment fonctionne l'échelle de rappel ?</summary><p class="muted">Chaque notion avance sur une échelle. Bonne réponse : une marche vers la droite. Erreur : une marche vers la gauche, et la notion revient selon cette marche. Une notion jamais vue entre à « 2 jours » si elle est réussie, à « demain » sinon. Une bonne réponse donnée avant la date prévue ne fait pas monter la notion. Les calculs et les écritures se travaillent dans les chapitres et le test du jour.</p>${ladderHTML(MAX_STEP)}</details>
 <div class="board">
