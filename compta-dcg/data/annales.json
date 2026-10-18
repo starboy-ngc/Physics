@@ -1,0 +1,358 @@
+{
+ "maj": "18 octobre 2026",
+ "avertissement": "Sessions 2022 à 2026 : programme de l'arrêté du 13 février 2019. À partir de la session 2027, le programme de l'arrêté du 4 août 2025 s'applique : certains points ont changé, d'où les sujets zéro. Les corrigés du CRCF sont des éléments indicatifs de corrigé ; certains fichiers peuvent être réservés aux enseignants inscrits. Une connexion internet est nécessaire pour ouvrir les sujets.",
+ "index": [
+  {
+   "titre": "Sujets DCG (CRCF)",
+   "url": "https://www.crcf-edu.fr/category/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/"
+  },
+  {
+   "titre": "Rapports du jury (SIEC)",
+   "url": "https://siec.education.fr/candidats/docutheque/dcg-dscg-rapports-de-jury"
+  },
+  {
+   "titre": "Guide pédagogique DCG et sujets zéro (ministère)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf"
+  }
+ ],
+ "epreuves": {
+  "UE1": {
+   "intitule": "Fondamentaux du droit",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude d'une ou de plusieurs situations pratiques et/ou commentaire de documents et/ou questions.",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf"
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf",
+     "info": "Épreuve du 21 mai 2024 : trois dossiers (8, 7 et 5 points)."
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf",
+     "info": "Rapport du jury : 36,1 % de réussite, moyenne 7,9."
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf"
+    }
+   ]
+  },
+  "UE2": {
+   "intitule": "Droit des sociétés et des groupements d'affaires (« Droit des affaires » à partir de 2027)",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude d'une ou de plusieurs situations pratiques et/ou commentaire de documents et/ou questions.",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf",
+     "info": "Cas d'une SAS, trois dossiers (11,5 ; 5,5 ; 3 points)."
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf",
+     "info": "Cas d'une SAS, trois dossiers (8 ; 6,5 ; 5,5 points) ; 36,7 % de réussite."
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf",
+     "info": "Rapport du jury : 31,6 % de réussite."
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf",
+     "info": "Rapport du jury : 41,4 % de réussite."
+    }
+   ]
+  },
+  "UE3": {
+   "intitule": "Droit social",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude d'une ou de plusieurs situations pratiques et/ou commentaire de documents et/ou questions.",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf",
+     "info": "Entreprise de façade et couverture, quatre dossiers (6, 4, 7 et 3 points) ; 44,3 % de certifiés."
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf",
+     "info": "Cas de gouvernance d'entreprise ; 39,1 % de certifiés."
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf",
+     "info": "Trois dossiers obligatoires ; 42,4 % de certifiés, moyenne 8,8."
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf",
+     "info": "Rapport du jury : 37,6 % de candidats certifiés, moyenne 8,2."
+    }
+   ]
+  },
+  "UE4": {
+   "intitule": "Droit fiscal",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude d'une ou de plusieurs situations pratiques et/ou commentaire de documents et/ou questions.",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf",
+     "info": "Cabinet d'expertise et SAS Ferronnerie de l'Avesnois : TVA, IS et IR."
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf"
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf"
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf"
+    }
+   ]
+  },
+  "UE6": {
+   "intitule": "Finance d'entreprise",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude d'une ou de plusieurs situations pratiques, avec le cas échéant une ou plusieurs questions.",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf",
+     "info": "Dossier 1 : diagnostic financier."
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf",
+     "info": "Entreprise du BTP, quatre dossiers (flux de trésorerie, rentabilité et risque, investissement et financement, placement obligataire) ; moyenne 8,2, 37,5 % de certifiés."
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf",
+     "info": "Rapport du jury : moyenne 8,5."
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf"
+    }
+   ]
+  },
+  "UE9": {
+   "intitule": "Comptabilité",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude de situations pratiques ; en 2024 et 2025, trois dossiers : opérations courantes, investissement et financement, inventaire.",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf",
+     "info": "Trois dossiers : opérations courantes, investissement et financement, inventaire.",
+     "remarque": "Le rapport du jury 2025 signale que les sujets ont été conçus avec l'ancienne version du PCG ; le CRCF propose des sujets nationaux modifiés pour le PCG 2025 : https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-ue9-sujets-nationaux-modifies/"
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf",
+     "info": "SARL Pallui (chocolats), trois dossiers obligatoires ; 66,1 % de certifiés.",
+     "remarque": "Le rapport du jury 2025 signale que les sujets ont été conçus avec l'ancienne version du PCG ; le CRCF propose des sujets nationaux modifiés pour le PCG 2025 : https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-ue9-sujets-nationaux-modifies/"
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf",
+     "info": "Rapport du jury : 62,8 % de certifiés.",
+     "remarque": "Le rapport du jury 2025 signale que les sujets ont été conçus avec l'ancienne version du PCG ; le CRCF propose des sujets nationaux modifiés pour le PCG 2025 : https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-ue9-sujets-nationaux-modifies/"
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf",
+     "remarque": "Le rapport du jury 2025 signale que les sujets ont été conçus avec l'ancienne version du PCG ; le CRCF propose des sujets nationaux modifiés pour le PCG 2025 : https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-ue9-sujets-nationaux-modifies/"
+    }
+   ]
+  },
+  "UE10": {
+   "intitule": "Comptabilité approfondie",
+   "duree_min": 180,
+   "coefficient": "1",
+   "nature": "Étude d'une ou de plusieurs situations pratiques, en dossiers indépendants ; aucun document autorisé (rapports du jury 2022 et 2024).",
+   "source_court": "arrêté du 13 février 2019 ; arrêté du 4 août 2025 à partir de 2027",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "url_2025": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "sessions": [
+    {
+     "session": 2027,
+     "zero": true,
+     "page": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
+     "rapport": null,
+     "info": "Sujet zéro du nouveau programme, avec son corrigé (guide pédagogique du ministère, juillet 2026).",
+     "remarque": "Le sujet zéro illustre l'épreuve de l'arrêté du 4 août 2025 (session 2027 et suivantes). Il se trouve dans la partie de l'UE du guide pédagogique."
+    },
+    {
+     "session": 2026,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2026/",
+     "rapport": null,
+     "remarque": "Rapport du jury 2026 pas encore publié par le SIEC au 18 octobre 2026."
+    },
+    {
+     "session": 2025,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2025/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202025-pdf",
+     "info": "Dossier le moins réussi : l'emprunt obligataire avec bons de souscription."
+    },
+    {
+     "session": 2024,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/sujets-et-corriges-dcg-session-2024/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202024-pdf"
+    },
+    {
+     "session": 2023,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2023/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202023-pdf"
+    },
+    {
+     "session": 2022,
+     "page": "https://www.crcf-edu.fr/ressources/enseignement-superieur/dcg-dscg/sujets-dcg/sujets-et-corriges-dcg-session-2022/",
+     "rapport": "https://siec.education.fr/candidats/docutheque/download/dcg-dscg-rapports-de-jury/Rapport%20de%20jury%20DCG%202022-pdf",
+     "info": "Rapport du jury : 33,2 % de réussite, moyenne 8,0."
+    }
+   ]
+  }
+ }
+}

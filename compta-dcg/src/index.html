@@ -354,7 +354,8 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .ann-ue h3 .code { font: 700 0.78rem var(--mono); color: var(--o); background: var(--c); border-radius: 8px; padding: 3px 8px; }
 .ann-ue .ep { margin: 4px 0 8px; }
 .ann-row { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule-soft); }
-.ann-row .ses { font: 700 1.05rem var(--display); font-variant-numeric: tabular-nums; }
+.ann-row .ses { font: 700 1.05rem var(--display); font-variant-numeric: tabular-nums; display: grid; line-height: 1.1; }
+.ann-row .ses small { font: 500 0.72rem var(--mono); color: var(--muted); }
 .ann-row .lk { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.9rem; min-width: 0; }
 .ann-row .lk .muted { font-size: 0.82rem; }
 .ann-row .act { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
@@ -1520,37 +1521,43 @@ const annSplit = k => { const i = k.lastIndexOf("-"); const ue = k.slice(0, i), 
 const hms = sec => { const a = Math.abs(Math.round(sec)); return `${Math.floor(a / 3600)}:${String(Math.floor(a % 3600 / 60)).padStart(2, "0")}:${String(a % 60).padStart(2, "0")}`; };
 const dureeTxt = min => min % 60 ? `${Math.floor(min / 60)} h ${min % 60}` : `${min / 60} heure${min >= 120 ? "s" : ""}`;
 const note20 = n => fmt(n).replace(".", ",") + "/20";
+const sesNom = (s, long) => s.zero ? (long ? "sujet zéro (programme 2027)" : "sujet zéro") : (long ? "session " : "") + s.session;
 const ext = (url, txt) => url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${txt} ↗</a>` : "";
 function compoElapsed(c) { return ((c.pause || Date.now()) - c.debut - (c.pauses || 0)) / 1000; }
+let annUe = null;
 function renderAnnales() {
+  if (!ANN_UES.some(u => u.code === annUe)) annUe = (ANN_UES.find(u => annDoneUe(u.code)) || ANN_UES[0]).code;
   const ess = annEssais(); const notes = ANN_KEYS.map(annBest).filter(n => n != null);
   const moy = notes.length ? notes.reduce((a, b) => a + b, 0) / notes.length : null;
   main.innerHTML = `<h2>Annales officielles</h2>
-<p class="muted">Les sujets du DCG des cinq dernières sessions, avec les éléments de corrigé publiés par le CRCF (centre de ressources comptabilité et finance du réseau de l'Éducation nationale) et les rapports du jury du SIEC, le service qui organise l'examen. Composez sur papier dans la durée officielle, puis corrigez-vous et notez-vous sur 20.</p>
+<p class="muted">Les sujets du DCG des cinq dernières sessions, avec les éléments de corrigé publiés par le CRCF (centre de ressources comptabilité et finance du réseau de l'Éducation nationale) et les rapports du jury du SIEC, le service qui organise l'examen ; pour chaque matière, le sujet zéro du programme 2027 et son corrigé, publiés par le ministère. Composez sur papier dans la durée officielle, puis corrigez-vous et notez-vous sur 20.</p>
 ${compoBanner()}
 <div class="board"><div class="tile"><div class="big">${annCount()}<span class="muted" style="font-size:1rem"> / ${ANN_KEYS.length}</span></div><div class="lab">annales composées</div></div><div class="tile"><div class="big">${moy == null ? "–" : note20(Math.round(moy * 4) / 4)}</div><div class="lab">moyenne de vos meilleures notes</div></div><div class="tile"><div class="big">${ess.length ? note20(annBestAll()) : "–"}</div><div class="lab">meilleure note</div></div></div>
-${ANN_UES.map(u => { const ep = ANN.epreuves[u.code]; return `<section class="ann-ue" style="${ucol(u.code)}" aria-labelledby="ah-${u.code}"><h3 id="ah-${u.code}"><span class="code">${esc(u.code)}</span>${esc(ep.intitule || u.nom)}</h3>
+<div class="chips" role="group" aria-label="Matières">${ANN_UES.map(u => `<button data-u="${u.code}" style="${ucol(u.code)}" aria-pressed="${u.code === annUe}">${esc(u.code)} <span class="mono">${annDoneUe(u.code)}/${ANN.epreuves[u.code].sessions.length}</span></button>`).join("")}</div>
+${ANN_UES.filter(u => u.code === annUe).map(u => { const ep = ANN.epreuves[u.code]; return `<section class="ann-ue" style="${ucol(u.code)}" aria-labelledby="ah-${u.code}"><h3 id="ah-${u.code}"><span class="code">${esc(u.code)}</span>${esc(ep.intitule || u.nom)}</h3>
 <p class="ep small muted">Épreuve écrite de ${dureeTxt(ep.duree_min)}${ep.coefficient ? `, coefficient ${esc(ep.coefficient)}` : ""}. ${esc(ep.nature || "")} ${ext(ep.url, "Source : " + esc(ep.source_court || "texte officiel"))}</p>
-${ep.sessions.slice().sort((a, b) => b.session - a.session).map(x => { const k = `${u.code}-${x.session}`; const b = annBest(k); const n = annEssais(k).length; return `<div class="ann-row"><span class="ses">${x.session}</span><span class="lk">${ext(x.page, "Sujet et corrigé (CRCF)")}${ext(x.rapport, "Rapport du jury (SIEC)")}${x.info ? `<span class="muted">${esc(x.info)}</span>` : ""}</span><span class="act">${b != null ? `<span class="note" title="${n} essai${n > 1 ? "s" : ""}">${note20(b)}</span>` : `<span class="pill">à composer</span>`}<button class="btn ${b != null ? "quiet" : "ghost"}" data-k="${k}">${b != null ? "Recomposer" : "Composer"}</button></span></div>`; }).join("")}</section>`; }).join("")}
+${ep.sessions.slice().sort((a, b) => b.session - a.session).map(x => { const k = `${u.code}-${x.session}`; const b = annBest(k); const n = annEssais(k).length; return `<div class="ann-row"><span class="ses">${x.zero ? `Zéro<small>${x.session}</small>` : x.session}</span><span class="lk">${ext(x.page, x.zero ? "Sujet zéro et corrigé (guide du ministère)" : "Sujet et corrigé (CRCF)")}${ext(x.rapport, "Rapport du jury (SIEC)")}${x.info ? `<span class="muted">${esc(x.info)}</span>` : ""}</span><span class="act">${b != null ? `<span class="note" title="${n} essai${n > 1 ? "s" : ""}">${note20(b)}</span>` : `<span class="pill">à composer</span>`}<button class="btn ${b != null ? "quiet" : "ghost"}" data-k="${k}">${b != null ? "Recomposer" : "Composer"}</button></span></div>`; }).join("")}</section>`; }).join("")}
 <p class="muted small" style="margin-top:16px">${esc(ANN.avertissement || "")} ${(ANN.index || []).map(i => ext(i.url, esc(i.titre))).join(" · ")}</p>`;
   main.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => go({ tab: "annales", k: b.dataset.k }));
+  main.querySelectorAll("button[data-u]").forEach(b => b.onclick = () => { annUe = b.dataset.u; renderAnnales(); addSubnav("annales"); });
 }
 // Bandeau « composition en cours » (accueil et annales) ; le bouton est relié par un écouteur global.
 function compoBanner() {
   const c = state.compo && annSplit(state.compo.k); if (!c || !c.s) return "";
-  return `<div class="compo-banner" style="${ucol(c.ue)}"><span><b>Composition en cours</b> · ${esc(c.ue)} session ${c.ses} · ${hms(compoElapsed(state.compo)).replace(/:\d\d$/, "").replace(":", " h ")} écoulées${state.compo.pause ? " (en pause)" : ""}</span><button class="btn" data-resume="1">Reprendre</button></div>`;
+  return `<div class="compo-banner" style="${ucol(c.ue)}"><span><b>Composition en cours</b> · ${esc(c.ue)}, ${sesNom(c.s, true)} · ${hms(compoElapsed(state.compo)).replace(/:\d\d$/, "").replace(":", " h ")} écoulées${state.compo.pause ? " (en pause)" : ""}</span><button class="btn" data-resume="1">Reprendre</button></div>`;
 }
 document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-resume]"); if (b && state.compo) go({ tab: "annales", k: state.compo.k }); });
 function renderCompo(k) {
   const { ue, ses, ep, s } = annSplit(k); if (!s) { renderAnnales(); return; }
-  if (state.compo && state.compo.k !== k) { const o = annSplit(state.compo.k); main.innerHTML = `<h2>Une composition est déjà en cours</h2><p>${esc(o.ue)} session ${o.ses} : terminez-la ou abandonnez-la avant d'en commencer une autre.</p><div class="actions"><button class="btn" id="go1">Reprendre ${esc(o.ue)} ${o.ses}</button><button class="btn quiet" id="back">Retour aux annales</button></div>`; main.querySelector("#go1").onclick = () => go({ tab: "annales", k: state.compo.k }); main.querySelector("#back").onclick = () => go({ tab: "annales" }); return; }
+  annUe = ue;
+  if (state.compo && state.compo.k !== k) { const o = annSplit(state.compo.k); main.innerHTML = `<h2>Une composition est déjà en cours</h2><p>${esc(o.ue)}, ${sesNom(o.s, true)} : terminez-la ou abandonnez-la avant d'en commencer une autre.</p><div class="actions"><button class="btn" id="go1">Reprendre ${esc(o.ue)}, ${sesNom(o.s)}</button><button class="btn quiet" id="back">Retour aux annales</button></div>`; main.querySelector("#go1").onclick = () => go({ tab: "annales", k: state.compo.k }); main.querySelector("#back").onclick = () => go({ tab: "annales" }); return; }
   const D = ep.duree_min * 60; const essais = annEssais(k);
   main.innerHTML = `<div class="crumb"><button id="back">← Annales</button></div>
-<div class="compo-run" style="${ucol(ue)}"><div><h2 style="margin:0">${esc(ue)} · session ${ses}</h2><p class="muted" style="margin:4px 0 0">${esc(ep.intitule || UE_BY[ue].nom)} · durée officielle : ${dureeTxt(ep.duree_min)}</p></div>
+<div class="compo-run" style="${ucol(ue)}"><div><h2 style="margin:0">${esc(ue)} · ${sesNom(s, true)}</h2><p class="muted" style="margin:4px 0 0">${esc(ep.intitule || UE_BY[ue].nom)} · durée officielle : ${dureeTxt(ep.duree_min)}</p></div>
 <div class="clock" aria-live="off"><span class="t" id="clk">${hms(D)}</span><span class="small muted" id="clkL">temps restant</span><span class="bar"><i id="clkB" style="width:0%"></i></span></div>
 <div class="actions" style="justify-content:center;margin-top:0" id="ctl"></div>
 <form id="noteForm" hidden><label for="noteIn"><b>Votre note</b>, après correction avec le corrigé et le rapport du jury :</label><input id="noteIn" type="number" inputmode="decimal" min="0" max="20" step="0.25" required> <span>/ 20</span><button class="btn" type="submit">Enregistrer</button></form>
-<ol class="small"><li>Ouvrez le sujet sur la page du CRCF : ${ext(s.page, "sujets et corrigés de la session " + ses)}. Lisez les consignes en tête du sujet (documents et matériel autorisés).</li><li>Lancez le chronomètre et composez sur papier, sans regarder le corrigé.</li><li>À la fin du temps, posez le stylo. Cliquez sur « J'ai terminé » : le temps passé est enregistré.</li><li>Corrigez-vous avec le corrigé ${s.rapport ? `et le ${ext(s.rapport, "rapport du jury")}` : ""}, puis entrez votre note sur 20.</li></ol>
+<ol class="small"><li>${s.zero ? `Ouvrez le ${ext(s.page, "guide pédagogique du DCG")} du ministère, à la partie ${esc(ue)} : le sujet zéro y est suivi de son corrigé.` : `Ouvrez le sujet sur la page du CRCF : ${ext(s.page, "sujets et corrigés de la session " + ses)}.`} Lisez les consignes en tête du sujet (documents et matériel autorisés).</li><li>Lancez le chronomètre et composez sur papier, sans regarder le corrigé.</li><li>À la fin du temps, posez le stylo. Cliquez sur « J'ai terminé » : le temps passé est enregistré.</li><li>Corrigez-vous avec le corrigé ${s.rapport ? `et le ${ext(s.rapport, "rapport du jury")}` : ""}, puis entrez votre note sur 20.</li></ol>
 ${s.remarque ? `<p class="small muted" style="margin:0">${esc(s.remarque)}</p>` : ""}
 ${essais.length ? `<p class="small" style="margin:0"><b>Vos essais :</b> ${essais.map(e => `${note20(e.note)} le ${new Date(e.date + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }).replace(/^1 /, "1er ")} (${hms(e.sec).replace(/:\d\d$/, "").replace(":", " h ")}${e.temps ? "" : ", hors délai"})`).join(" · ")}</p>` : ""}</div>`;
   main.querySelector("#back").onclick = () => go({ tab: "annales" });
