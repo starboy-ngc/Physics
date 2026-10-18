@@ -935,7 +935,7 @@ const SUCCES = [
   S("pcg-entier", "Maîtrise", "or", "📗", "Fond diffus cosmologique", "Tous les comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), Object.keys(COMPTE).length),
   S("chapitre-fini", "Maîtrise", "bronze", "📖", "Chapitre bouclé", "Terminer la série d'exercices d'un chapitre", () => Object.keys(state.done).length, 1),
   S("chapitres-10", "Maîtrise", "argent", "📚", "Dix chapitres bouclés", "Terminer la série d'exercices de 10 chapitres", () => Object.keys(state.done).length, 10),
-  S("chapitres-tous", "Maîtrise", "or", "🏛", "Programme bouclé", "Terminer la série d'exercices des 42 chapitres", () => Object.keys(state.done).length, CHAPS.length),
+  S("chapitres-tous", "Maîtrise", "or", "🏛", "Programme bouclé", `Terminer la série d'exercices des ${CHAPS.length} chapitres`, () => Object.keys(state.done).length, CHAPS.length),
   // Matières
   ...UES.map(u => S("ue-" + u.code.toLowerCase(), "Matières", "or", (UE_SUCC[u.code] || ["🎓"])[0], (UE_SUCC[u.code] || ["", u.nom])[1], `${u.code} ${u.nom} : tous les exercices acquis (en %)`, () => Math.floor(ueMastery(u.code) * 100), 100)),
   ...UES.map(u => S("notions-moitie-" + u.code.toLowerCase(), "Matières", "argent", "🌓", `${u.code} à moitié en mémoire`, `${u.code} ${u.nom} : la moitié des notions mémorisées (en %)`, () => ueNotionsPct(u.code), 50)),
@@ -945,9 +945,9 @@ const SUCCES = [
   // Exploration
   S("premier-dossier", "Exploration", "bronze", "🗂", "Premier dossier", "Lire une fiche documentaire", () => Object.keys(state.fiches).length, 1),
   S("dix-dossiers", "Exploration", "argent", "🗃", "Dix dossiers", "Lire 10 fiches documentaires", () => Object.keys(state.fiches).length, 10),
-  S("bibliothecaire", "Exploration", "or", "🏛", "Bibliothécaire", "Lire les 42 fiches documentaires", () => Object.keys(state.fiches).length, CHAPS.length),
+  S("bibliothecaire", "Exploration", "or", "🏛", "Bibliothécaire", `Lire les ${CHAPS.length} fiches documentaires`, () => Object.keys(state.fiches).length, CHAPS.length),
   S("cours-10", "Exploration", "bronze", "📖", "Dix cours ouverts", "Ouvrir le cours de 10 chapitres", () => Object.keys(state.read).length, 10),
-  S("cours-tous", "Exploration", "argent", "📚", "Tous les cours ouverts", "Ouvrir le cours des 42 chapitres", () => Object.keys(state.read).length, CHAPS.length),
+  S("cours-tous", "Exploration", "argent", "📚", "Tous les cours ouverts", `Ouvrir le cours des ${CHAPS.length} chapitres`, () => Object.keys(state.read).length, CHAPS.length),
   S("a-la-source", "Exploration", "bronze", "🔗", "À la source", "Ouvrir un texte officiel depuis une fiche", () => state.stats.src, 1),
   S("documentaliste", "Exploration", "argent", "📜", "Documentaliste", "Ouvrir 25 textes officiels", () => state.stats.src, 25),
   S("archiviste", "Exploration", "or", "🗄", "Archiviste", "Ouvrir 100 textes officiels", () => state.stats.src, 100),
@@ -962,7 +962,7 @@ const SUCCES = [
   S("objets-5", "Observatoire", "argent", "✨", "Cinq objets", "Observer 5 cibles du ciel profond", campsLit, 5),
   S("dix-camps", "Observatoire", "or", "🌌", "Dix objets", "Observer 10 cibles du ciel profond", campsLit, 10),
   S("objets-25", "Observatoire", "or", "🌌", "Vingt-cinq objets", "Observer 25 cibles du ciel profond", campsLit, 25),
-  S("tous-camps", "Observatoire", "or", "🗺", "Catalogue complet", "Observer les 42 cibles", campsLit, CHAPS.length),
+  S("tous-camps", "Observatoire", "or", "🗺", "Catalogue complet", `Observer les ${CHAPS.length} cibles`, campsLit, CHAPS.length),
   S("jwst", "Observatoire", "or", "🛰", "Premières images", "Observer les six cibles du James-Webb (tous les chapitres de l'UE3 acquis)", () => ueChaps("UE3").filter(c => chapMastery(c) >= 0.999).length, ueChaps("UE3").length),
   S("aurore-25", "Observatoire", "argent", "🌄", "Un quart du ciel", "Un quart du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 25),
   S("aurore-50", "Observatoire", "or", "🌗", "La moitié du ciel", "La moitié du parcours d'exercices acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
@@ -1472,7 +1472,7 @@ ${UES.map(u => `<h3><span class="dotc" style="${ucol(u.code)}"></span>${esc(u.co
   drawCiel(main.querySelector("#skyC"));
 }
 let skyAnim = 0;
-// Carte du ciel : étoiles et Voie lactée, puis les 42 cibles regroupées par matière, en couleur une fois observées.
+// Carte du ciel : étoiles et Voie lactée, puis les cibles (une par chapitre) regroupées par matière, en couleur une fois observées.
 function drawCiel(cv) {
   cancelAnimationFrame(skyAnim);
   const box = cv.parentElement.clientWidth || 960; const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -1486,7 +1486,7 @@ function drawCiel(cv) {
   const bg = document.createElement("canvas"); bg.width = W * dpr; bg.height = H * dpr; const b = bg.getContext("2d"); b.scale(dpr, dpr);
   const gr = b.createLinearGradient(0, 0, W, H); gr.addColorStop(0, "#0b1430"); gr.addColorStop(1, "#04060f"); b.fillStyle = gr; b.fillRect(0, 0, W, H);
   for (let k = 0; k < 90; k++) { const tt = rs(); const x = tt * W, y = H * 0.82 - tt * H * 0.6 + (rs() - 0.5) * 90; const g = b.createRadialGradient(x, y, 0, x, y, 40 + rs() * 70); g.addColorStop(0, `rgba(170,180,230,${0.035 + rs() * 0.04})`); g.addColorStop(1, "rgba(170,180,230,0)"); b.fillStyle = g; b.beginPath(); b.arc(x, y, 110, 0, 7); b.fill(); }
-  const groups = UES.map((u, gi) => { const t = (gi + 0.5) / UES.length; return narrow ? { code: u.code, cx: W * (gi % 2 ? 0.7 : 0.3), cy: H * (0.88 - t * 0.78) } : { code: u.code, cx: 80 + t * (W - 160), cy: H * 0.8 - t * H * 0.58 + (gi % 2 ? 46 : -34) * K }; });
+  const groups = UES.map((u, gi) => { const t = (gi + 0.5) / UES.length; return narrow ? { code: u.code, cx: W * (gi % 2 ? 0.7 : 0.3), cy: H * (0.88 - t * 0.78) } : { code: u.code, cx: 80 + t * (W - 160), cy: Math.min(H - 100 * K - 30, Math.max(96 * K + 22, H * 0.74 - t * H * 0.46 + (gi % 2 ? 46 : -34) * K)) }; });
   const objs = [];
   groups.forEach(g => { const cs = ueChaps(g.code); cs.forEach((c, k) => { const ang = -Math.PI / 2 + k / cs.length * Math.PI * 2 + (g.code.length % 7); const rad = (narrow ? 34 : 46 + (k % 2) * 22) * (narrow ? 1 : K); objs.push({ c, t: CIBLE[c.id], x: g.cx + Math.cos(ang) * rad * (narrow ? 1.5 : 1.25), y: g.cy + Math.sin(ang) * rad * (narrow ? 0.95 : 0.85), col: col(g.code), m: chapMastery(c), st: chapStarted(c), code: g.code }); }); });
   const nc = nextChapter();
