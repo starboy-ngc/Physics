@@ -360,7 +360,7 @@
    "id": "ue9-06-k30",
    "type": "comp",
    "q": "Pour les exercices ouverts depuis le 1er janvier 2025, dans quel résultat se classe la dotation à une provision pour un litige courant ?",
-   "r": "<b>Dans le résultat d'exploitation (6815 / 7815).</b> Une dotation n'est exceptionnelle (6875 / 7875) que si elle se rattache directement à un événement majeur et inhabituel : le résultat exceptionnel est recentré sur ces événements et sur les écritures d'origine purement fiscale.",
+   "r": "<b>Dans le résultat d'exploitation (6815 / 7815).</b> Une dotation n'est exceptionnelle (6875 / 7875) que si elle se rattache directement à un événement majeur et inhabituel. Le résultat exceptionnel est recentré sur ces événements ; l'article 513-5 y range aussi les écritures d'origine purement fiscale, les changements de méthodes passés en résultat pour des raisons fiscales et certaines corrections d'erreurs.",
    "base": [
     "Ce qui a changé récemment#1"
    ],
