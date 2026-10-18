@@ -46,9 +46,9 @@
   },
   {
    "ref": "C. com., art. L. 526-22 à L. 526-26 ; D. 526-28",
-   "objet": "Statut de l'entrepreneur individuel : patrimoines professionnel et personnel, gage des créanciers, renonciation et ses mentions obligatoires",
+   "objet": "Statut de l'entrepreneur individuel : patrimoines professionnel et personnel, gage des créanciers, renonciation, délai de réflexion et mentions obligatoires",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
-   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022) ; L. 526-22 modifié en janvier 2024 ; D. 526-28 issu du décret n° 2022-799 du 12 mai 2022"
+   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022) ; L. 526-22 modifié par la loi n° 2024-42 du 26 janvier 2024 (art. 29), version en vigueur depuis le 28 janvier 2024 ; D. 526-28 issu du décret n° 2022-799 du 12 mai 2022, en vigueur depuis le 15 mai 2022"
   },
   {
    "ref": "C. com., art. L. 526-27 à L. 526-31",
@@ -96,7 +96,7 @@
    "ref": "C. civ., art. 515-1 à 515-7-1",
    "objet": "Pacte civil de solidarité : définition, aide matérielle et solidarité des dettes, régime des biens",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136536/",
-   "version": "en vigueur (art. 515-5-1 issu de la loi n° 2006-728 du 23 juin 2006)"
+   "version": "en vigueur (art. 515-5-1 et 515-5-2 issus de la loi n° 2006-728 du 23 juin 2006 ; art. 515-5-2 modifié par la loi du 5 mars 2007, version en vigueur depuis le 1er janvier 2009)"
   },
   {
    "ref": "C. civ., art. 515-8",
@@ -117,7 +117,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Actes de commerce</b> : la loi répute actes de commerce, notamment, tout achat de biens meubles pour les revendre, tout achat de biens immeubles aux fins de les revendre (sauf construction de bâtiments pour les vendre en bloc ou par locaux), toute entreprise de location de meubles, de manufactures, de commission ou de transport, toute opération de change, banque ou courtage. Sont des actes de commerce <b>entre toutes personnes</b> les lettres de change et, depuis le 1er janvier 2022, les cautionnements de dettes commerciales (11°). L'article L. 110-2 répute pareillement actes de commerce des opérations du commerce maritime.",
+     "t": "<b>Actes de commerce</b> : la loi répute actes de commerce, notamment, tout achat de biens meubles pour les revendre, tout achat de biens immeubles aux fins de les revendre (à moins que l'acquéreur n'ait agi en vue d'édifier un ou plusieurs bâtiments et de les vendre en bloc ou par locaux), toute entreprise de location de meubles, de manufactures, de commission ou de transport, toute opération de change, banque ou courtage. Sont des actes de commerce <b>entre toutes personnes</b> les lettres de change (10°) et, depuis le 1er janvier 2022, les cautionnements de dettes commerciales (11°). L'article L. 110-2 répute pareillement actes de commerce des opérations du commerce maritime.",
      "src": "C. com., art. L. 110-1 et L. 110-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072567",
      "fiab": "stable"
@@ -137,7 +137,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Bien propre</b> (communauté légale) : restent propres les biens possédés au jour du mariage et ceux acquis pendant le mariage par succession, donation ou legs (propres par origine, art. 1405), sous réserve des libéralités dont les biens tombent en communauté. Forment des propres par leur nature les biens qui ont un caractère personnel et, sauf récompense, les instruments de travail nécessaires à la profession d'un époux, à moins qu'ils ne soient l'accessoire d'un fonds de commerce ou d'une exploitation faisant partie de la communauté (art. 1404).",
+     "t": "<b>Bien propre</b> (communauté légale) : restent propres les biens possédés au jour du mariage et ceux acquis pendant le mariage par succession, donation ou legs (propres par origine, art. 1405). La libéralité peut toutefois stipuler que les biens qui en font l'objet appartiendront à la communauté, et ils y tombent, sauf stipulation contraire, quand elle est faite aux deux époux conjointement. Forment des propres par leur nature les biens qui ont un caractère personnel et, sauf récompense s'il y a lieu, les instruments de travail nécessaires à la profession d'un époux, à moins qu'ils ne soient l'accessoire d'un fonds de commerce ou d'une exploitation faisant partie de la communauté (art. 1404).",
      "cite": "« Restent propres les biens dont les époux avaient la propriété ou la possession au jour de la célébration du mariage, ou qu'ils acquièrent, pendant le mariage, par succession, donation ou legs. »",
      "src": "C. civ., art. 1404 et 1405",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165608/",
@@ -170,6 +170,7 @@
    "items": [
     {
      "t": "<b>Capacité</b> : le mineur émancipé peut être commerçant sur autorisation du juge des tutelles au moment de la décision d'émancipation, ou du président du tribunal judiciaire s'il formule sa demande après avoir été émancipé.",
+     "cite": "« Le mineur émancipé peut être commerçant sur autorisation du juge des tutelles au moment de la décision d'émancipation et du président du tribunal judiciaire s'il formule cette demande après avoir été émancipé. »",
      "src": "C. com., art. L. 121-2 ; C. civ., art. 413-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039280381/",
      "fiab": "stable"
@@ -207,7 +208,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Autres biens fonciers</b> : la personne immatriculée peut déclarer insaisissables ses droits sur tout bien foncier, bâti ou non bâti, qu'elle n'a pas affecté à son usage professionnel. La déclaration est reçue par notaire à peine de nullité, décrit les biens et indique leur caractère propre, commun ou indivis ; elle est publiée au fichier immobilier (au livre foncier dans le Bas-Rhin, le Haut-Rhin et la Moselle). L'insaisissabilité de la résidence principale et la déclaration peuvent, à tout moment, faire l'objet d'une renonciation.",
+     "t": "<b>Autres biens fonciers</b> : la personne immatriculée peut déclarer insaisissables ses droits sur tout bien foncier, bâti ou non bâti, qu'elle n'a pas affecté à son usage professionnel. La déclaration est reçue par notaire à peine de nullité, contient la description détaillée des biens et l'indication de leur caractère propre, commun ou indivis ; elle est publiée au fichier immobilier (au livre foncier dans le Bas-Rhin, le Haut-Rhin et la Moselle). L'insaisissabilité de la résidence principale et la déclaration peuvent, à tout moment, faire l'objet d'une renonciation soumise aux mêmes conditions de validité et d'opposabilité (L. 526-2) ; la renonciation peut être révoquée dans les mêmes conditions, la révocation n'ayant d'effet qu'à l'égard des créanciers dont les droits naissent après sa publication.",
      "src": "C. com., art. L. 526-1 à L. 526-3",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000022356376/",
      "fiab": "stable"
@@ -238,7 +239,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Dettes ménagères</b> : chacun des époux peut passer seul les contrats ayant pour objet l'entretien du ménage ou l'éducation des enfants ; toute dette ainsi contractée par l'un oblige l'autre solidairement. La solidarité n'a pas lieu pour les dépenses manifestement excessives (train de vie du ménage, utilité ou inutilité de l'opération, bonne ou mauvaise foi du tiers). Elle n'a pas lieu non plus, sans le consentement des deux époux, pour les achats à tempérament ni pour les emprunts, à l'exception, aux conditions fixées par l'article, des emprunts portant sur des sommes modestes nécessaires aux besoins de la vie courante.",
+     "t": "<b>Dettes ménagères</b> : chacun des époux peut passer seul les contrats ayant pour objet l'entretien du ménage ou l'éducation des enfants ; toute dette ainsi contractée par l'un oblige l'autre solidairement. La solidarité n'a pas lieu pour les dépenses manifestement excessives (train de vie du ménage, utilité ou inutilité de l'opération, bonne ou mauvaise foi du tiers). Elle n'a pas lieu non plus, sans le consentement des deux époux, pour les achats à tempérament ni pour les emprunts, à moins que ces derniers ne portent sur des sommes modestes nécessaires aux besoins de la vie courante et que leur montant cumulé, en cas de pluralité d'emprunts, ne soit pas manifestement excessif eu égard au train de vie du ménage.",
      "src": "C. civ., art. 220",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028748098",
      "fiab": "stable"
@@ -269,7 +270,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>PACS : régime des biens</b> : sauf dispositions contraires de la convention, chaque partenaire conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu de ses dettes personnelles, sous réserve de la solidarité de l'article 515-4. Les partenaires peuvent, dans la convention initiale ou une convention modificative, soumettre à l'indivision les biens qu'ils acquièrent, ensemble ou séparément, à compter de son enregistrement ; restent notamment la propriété exclusive de chacun les deniers perçus et non employés à l'acquisition d'un bien, les biens créés et les biens à caractère personnel.",
+     "t": "<b>PACS : régime des biens</b> : sauf dispositions contraires de la convention, chaque partenaire conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu de ses dettes personnelles, sous réserve de la solidarité de l'article 515-4. Les partenaires peuvent, dans la convention initiale ou une convention modificative, soumettre à l'indivision les biens qu'ils acquièrent, ensemble ou séparément, à compter de son enregistrement ; restent notamment la propriété exclusive de chacun les deniers perçus après la conclusion du pacte et non employés à l'acquisition d'un bien, les biens créés et leurs accessoires et les biens à caractère personnel (art. 515-5-2).",
      "cite": "« Ces biens sont alors réputés indivis par moitié, sans recours de l'un des partenaires contre l'autre au titre d'une contribution inégale. »",
      "src": "C. civ., art. 515-5 à 515-5-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428523",
@@ -288,20 +289,22 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>5 ans</b> : durée maximale du statut de conjoint collaborateur, en tenant compte de l'ensemble des périodes et des entreprises au titre desquelles la personne a opté pour ce statut. Au-delà, le conjoint qui continue à travailler régulièrement dans l'entreprise opte pour le statut de conjoint salarié ou de conjoint associé.",
+     "t": "<b>5 ans</b> : durée maximale du statut de conjoint collaborateur, en tenant compte de l'ensemble des périodes et des entreprises au titre desquelles la personne a opté pour ce statut. Au-delà, le conjoint qui continue à travailler régulièrement dans l'entreprise opte pour le statut de conjoint salarié ou de conjoint associé ; à défaut, il est réputé avoir opté pour le statut de conjoint salarié.",
      "cite": "« Au delà de cette durée, le conjoint continuant à exercer une activité professionnelle de manière régulière dans l'entreprise opte pour le statut de conjoint salarié ou de conjoint associé. A défaut, il est réputé avoir opté pour le statut de conjoint salarié. »",
      "src": "C. com., art. L. 121-4, IV bis ; loi n° 2021-1754 du 23 décembre 2021, art. 24",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489",
      "fiab": "stable"
     },
     {
-     "t": "<b>7 jours francs</b> : délai de réflexion qui court à compter de la réception de la demande écrite du créancier ; en principe, l'entrepreneur individuel ne peut pas renoncer à la séparation de ses patrimoines au profit de ce créancier avant son expiration. L'article D. 526-28 (décret n° 2022-799 du 12 mai 2022) prévoit un aménagement de ce délai.",
-     "src": "C. com., art. L. 526-25 et D. 526-28",
+     "t": "<b>7 jours francs</b> : délai de réflexion qui court à compter de la réception de la demande de renonciation du créancier ; l'entrepreneur individuel ne peut pas renoncer à la séparation de ses patrimoines avant son échéance. Le délai est réduit à <b>3 jours francs</b> si l'entrepreneur fait précéder sa signature de la mention manuscrite énoncée par décret, et uniquement de celle-ci (D. 526-28, IV).",
+     "cite": "« Cette renonciation ne peut intervenir avant l'échéance d'un délai de réflexion de sept jours francs à compter de la réception de la demande de renonciation. […] Si l'entrepreneur individuel fait précéder sa signature de la mention manuscrite énoncée par décret et uniquement de celle-ci, le délai de réflexion est réduit à trois jours francs. »",
+     "src": "C. com., art. L. 526-25 ; D. 526-28, IV (décret n° 2022-799 du 12 mai 2022)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168712",
      "fiab": "stable"
     },
     {
-     "t": "<b>3 mois</b> : délai d'opposition au changement de régime matrimonial fait par acte notarié, ouvert aux créanciers informés par un avis dans un support d'annonces légales, aux personnes parties au contrat modifié et aux enfants majeurs ; en cas d'opposition, l'acte notarié est soumis à l'homologation du tribunal. Le changement est opposable aux tiers 3 mois après sa mention en marge de l'acte de mariage.",
+     "t": "<b>3 mois</b> : délai d'opposition au changement de régime matrimonial fait par acte notarié, ouvert aux personnes parties au contrat modifié, aux enfants majeurs et aux créanciers, informés par un avis publié sur un support habilité à recevoir des annonces légales dans le département du domicile des époux ; en cas d'opposition, l'acte notarié est soumis à l'homologation du tribunal. Le changement est opposable aux tiers 3 mois après sa mention en marge de l'acte de mariage.",
+     "cite": "« Le changement a effet entre les parties à la date de l'acte ou du jugement qui le prévoit et, à l'égard des tiers, trois mois après que mention en a été portée en marge de l'acte de mariage. »",
      "src": "C. civ., art. 1397",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584427",
      "fiab": "stable"
@@ -312,7 +315,7 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Statut unique de l'entrepreneur individuel</b> : la loi n° 2022-172 du 14 février 2022 sépare de plein droit les patrimoines professionnel et personnel de l'entrepreneur individuel et organise le transfert universel du patrimoine professionnel (C. com., art. L. 526-22 à L. 526-31, applicables depuis le 15 mai 2022). Le décret n° 2022-725 du 28 avril 2022 définit les biens utiles à l'activité ; le décret n° 2022-799 du 12 mai 2022 fixe les mentions de l'acte de renonciation.",
+     "t": "<b>Statut unique de l'entrepreneur individuel</b> : la loi n° 2022-172 du 14 février 2022 sépare de plein droit les patrimoines professionnel et personnel de l'entrepreneur individuel et organise le transfert universel du patrimoine professionnel (C. com., art. L. 526-22 à L. 526-31, applicables depuis le 15 mai 2022). Ces articles s'appliquent aux créances nées après l'entrée en vigueur de la loi. Le décret n° 2022-725 du 28 avril 2022 définit les biens utiles à l'activité ; le décret n° 2022-799 du 12 mai 2022 fixe les mentions de l'acte de renonciation.",
      "src": "Loi n° 2022-172 du 14 février 2022 ; décrets n° 2022-725 du 28 avril 2022 et n° 2022-799 du 12 mai 2022",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
      "fiab": "stable"
@@ -324,7 +327,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Conjoint collaborateur limité à cinq ans</b> : l'article 24 de la loi de financement de la sécurité sociale pour 2022 insère un IV bis à l'article L. 121-4 du Code de commerce, en vigueur depuis le 1er janvier 2022. L'organisme de sécurité sociale peut radier le conjoint collaborateur qui dépasse cette durée (CSS, art. L. 661-2).",
+     "t": "<b>Conjoint collaborateur limité à cinq ans</b> : l'article 24 de la loi de financement de la sécurité sociale pour 2022 insère un IV bis à l'article L. 121-4 du Code de commerce, en vigueur depuis le 1er janvier 2022. L'organisme de sécurité sociale dont relève le conjoint collaborateur peut, selon une procédure contradictoire, prononcer sa radiation lorsque cette durée est dépassée ; la radiation prend effet à la fin de la dernière année civile au cours de laquelle les cinq ans arrivent à échéance (CSS, art. L. 661-2). Les personnes qui atteignent, au plus tard le 31 décembre 2031, l'âge prévu à l'article L. 351-8 du code de la sécurité sociale peuvent conserver ce statut jusqu'à la liquidation de leur pension.",
      "cite": "« Pour les personnes exerçant au 1er janvier 2022 une activité professionnelle sous le statut de conjoint collaborateur, la durée de cinq ans mentionnée au IV bis de l'article L. 121-4 du code de commerce s'apprécie au regard des seules périodes postérieures à cette date. »",
      "src": "Loi n° 2021-1754 du 23 décembre 2021, art. 24 ; CSS, art. L. 661-2",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489",
@@ -355,7 +358,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Preuve et exceptions fiscales et sociales</b> : l'entrepreneur individuel qui conteste qu'un bien entre dans le gage d'un créancier en supporte la preuve ; le créancier qui saisit un bien manifestement hors de son gage s'expose à une action pour saisie abusive. La séparation des patrimoines cède devant l'administration fiscale et les organismes de sécurité sociale dans les cas prévus par le livre des procédures fiscales et le code de la sécurité sociale. L'insaisissabilité de l'article L. 526-1 n'est pas opposable à l'administration fiscale en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales.",
+     "t": "<b>Preuve et exceptions fiscales et sociales</b> : l'entrepreneur individuel qui conteste qu'un bien entre dans le gage général d'un créancier en supporte la preuve ; le créancier qui pratique une mesure d'exécution forcée ou une mesure conservatoire sur un élément d'actif ne faisant manifestement pas partie de son gage général peut voir sa responsabilité recherchée pour abus de saisie. La séparation des patrimoines cède devant l'administration fiscale et les organismes de sécurité sociale dans les cas prévus par le livre des procédures fiscales et le code de la sécurité sociale. L'insaisissabilité de l'article L. 526-1 n'est pas opposable à l'administration fiscale en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales.",
      "src": "C. com., art. L. 526-22 et L. 526-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
      "fiab": "stable"

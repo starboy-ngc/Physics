@@ -1,0 +1,374 @@
+{
+ "id": "ue1-03",
+ "maj": "2026-10-18",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE1 Fondamentaux du droit), applicable à la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Programme 2025 : bloc 2 « Qualifier la situation juridique du client » (55 heures)",
+   "Programme 2025 : « 2.1 Qualifier la personne juridique et ses biens » (15 heures) ; savoirs associés : « Constitution et extinction des personnes » ; « Nom, domicile, patrimoine et nationalité » ; « Droits patrimoniaux et droits extrapatrimoniaux » ; « Biens meubles et biens immeubles »",
+   "Programme 2025, limites du point 2.1 : « La disparition ou l'absence des personnes physiques sont exclues » ; « Les conditions d'obtention de la nationalité ne sont pas à l'étude » ; les conditions de changement du nom sont exclues et toutes les formes de personnes morales ne sont pas à connaître (objet, formulation non restituée mot pour mot)",
+   "Programme 2025 (rattachement à un point numéroté non restitué) : « Analyser la capacité d'une personne à accomplir un acte juridique dans une situation donnée » ; « Capacité de jouissance et capacité d'exercice (majeur, mineur, personnes morales) » ; « Actes d'administration, conservatoires, de disposition » ; « Régimes de la tutelle et de la curatelle » ; « Sanctions des actes accomplis en cas de défaut de capacité »",
+   "Programme 2025 : « 2.3 Déterminer l'étendue du droit d'une personne juridique sur ses biens » (20 heures) ; objet (formulation non restituée mot pour mot) : prérogatives du propriétaire, du nu-propriétaire et de l'usufruitier ; constitution de l'usufruit (légal ou contractuel) et son extinction",
+   "Programme 2025, limites du point 2.3 (objet) : les régimes de la donation, de la succession et du legs ne sont pas à étudier ; la notion d'indivision n'est pas à étudier dans le détail ; la copropriété est exclue"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. civ., art. 9 et 16 à 16-9",
+   "objet": "Respect de la vie privée (art. 9) ; respect du corps humain (art. 16 à 16-9) : droits extrapatrimoniaux",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136059/",
+   "version": "en vigueur (art. 9 inchangé dans sa rédaction actuelle ; art. 16 à 16-9 insérés par la loi n° 94-653 du 29 juillet 1994 ; art. 16-1-1 ajouté par la loi n° 2008-1350 du 19 décembre 2008)"
+  },
+  {
+   "ref": "C. civ., art. 102 à 111",
+   "objet": "Domicile",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006117683",
+   "version": "en vigueur (art. 102 modifié par la loi n° 2014-366 du 24 mars 2014)"
+  },
+  {
+   "ref": "C. civ., art. 388 à 413-8",
+   "objet": "Minorité, administration légale, émancipation",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000031345334",
+   "version": "en vigueur (art. 388-1-1 en vigueur depuis le 1er janvier 2016 ; art. 413-2 et 413-6 dans leur rédaction issue de la loi n° 2007-308 du 5 mars 2007, applicable depuis le 1er janvier 2009)"
+  },
+  {
+   "ref": "C. civ., art. 414 à 495-9",
+   "objet": "Majorité ; mesures de protection juridique des majeurs (sauvegarde de justice, curatelle, tutelle)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006117881/",
+   "version": "en vigueur (réforme de la loi n° 2007-308 du 5 mars 2007, applicable depuis le 1er janvier 2009 ; art. 441 dans sa version issue de la loi n° 2015-177 du 16 février 2015, en vigueur depuis le 18 février 2015)"
+  },
+  {
+   "ref": "Décret n° 2008-1484 du 22 décembre 2008",
+   "objet": "Actes de gestion du patrimoine des personnes en curatelle ou en tutelle : définition et listes des actes d'administration et des actes de disposition",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020017088",
+   "version": "en vigueur (annexe 1 modifiée en dernier lieu par le décret n° 2021-1888 du 29 décembre 2021, art. 5, en vigueur depuis le 1er janvier 2022)"
+  },
+  {
+   "ref": "C. civ., art. 1145 à 1152",
+   "objet": "Capacité de contracter des personnes physiques et des personnes morales ; incapacités ; nullité relative ; actes courants",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008380/",
+   "version": "en vigueur depuis le 1er octobre 2016 (ordonnance n° 2016-131 du 10 février 2016) ; art. 1145 modifié par la loi n° 2018-287 du 20 avril 2018, version en vigueur depuis le 1er octobre 2018"
+  },
+  {
+   "ref": "C. civ., art. 1842",
+   "objet": "Acquisition de la personnalité morale des sociétés par l'immatriculation",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049876831",
+   "version": "version en vigueur depuis le 5 juillet 2024 (ordonnance n° 2024-662 du 3 juillet 2024)"
+  },
+  {
+   "ref": "Loi du 1er juillet 1901 relative au contrat d'association, art. 2 et 5",
+   "objet": "Liberté d'association ; capacité juridique de l'association déclarée",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000497458",
+   "version": "en vigueur (art. 5 dans sa rédaction issue de l'ordonnance n° 2015-904 du 23 juillet 2015, en vigueur depuis le 25 juillet 2015 : déclaration au représentant de l'État dans le département du siège)"
+  },
+  {
+   "ref": "C. civ., art. 515-14 et 516 à 543",
+   "objet": "Animaux ; distinction des biens (immeubles et meubles)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006117894/",
+   "version": "en vigueur (art. 516 et 529 inchangés depuis 1804 ; art. 515-14, 524 et 528 issus de la loi n° 2015-177 du 16 février 2015, en vigueur depuis le 18 février 2015)"
+  },
+  {
+   "ref": "C. civ., art. 544 à 577",
+   "objet": "Propriété ; expropriation ; droit d'accession",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006117904/",
+   "version": "en vigueur (art. 544, 545 et 546 inchangés depuis 1804)"
+  },
+  {
+   "ref": "C. civ., art. 578 à 624",
+   "objet": "Usufruit : définition, droits et obligations de l'usufruitier, extinction",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136246",
+   "version": "en vigueur (art. 578, 605 et 606 inchangés depuis 1804 ; art. 601 modifié par la loi n° 2014-873 du 4 août 2014 ; art. 617 dans sa version en vigueur depuis le 14 mai 2009)"
+  },
+  {
+   "ref": "C. civ., art. 2255 à 2278",
+   "objet": "Possession et prescription acquisitive (immobilière et mobilière)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000019015324/",
+   "version": "en vigueur depuis le 19 juin 2008 (loi n° 2008-561 du 17 juin 2008)"
+  },
+  {
+   "ref": "C. civ., art. 1253 ; loi n° 2024-346 du 15 avril 2024",
+   "objet": "Responsabilité de plein droit pour trouble anormal du voisinage",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000049419511/",
+   "version": "en vigueur depuis le 17 avril 2024"
+  },
+  {
+   "ref": "C. civ., art. 2284 et 2285",
+   "objet": "Droit de gage général des créanciers",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032",
+   "version": "en vigueur (art. 2285 dans sa rédaction issue de l'ordonnance n° 2006-346 du 23 mars 2006, en vigueur depuis le 24 mars 2006)"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Domicile</b> : le domicile de tout Français, quant à l'exercice de ses droits civils, est au lieu où il a son principal établissement. La personne sans domicile stable exerce ses droits civils au lieu où elle a fait élection de domicile dans les conditions de l'article L. 264-1 du Code de l'action sociale et des familles. Le changement de domicile s'opère par une habitation réelle dans un autre lieu, jointe à l'intention d'y fixer son principal établissement (art. 103).",
+     "cite": "« Le domicile de tout Français, quant à l'exercice de ses droits civils, est au lieu où il a son principal établissement. »",
+     "src": "C. civ., art. 102 et 103",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028807383",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Majorité et capacité d'exercice</b> : la majorité est fixée à dix-huit ans accomplis ; à cet âge, chacun est capable d'exercer les droits dont il a la jouissance (art. 414). Toute personne physique peut contracter sauf en cas d'incapacité prévue par la loi (art. 1145) ; les majeurs protégés au sens de l'article 425 font partie des incapables de contracter, dans la mesure définie par la loi (art. 1146).",
+     "cite": "« La majorité est fixée à dix-huit ans accomplis ; à cet âge, chacun est capable d'exercer les droits dont il a la jouissance. »",
+     "src": "C. civ., art. 414, 1145 et 1146",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427400",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Immeubles et meubles</b> : tous les biens sont meubles ou immeubles. Les biens sont immeubles par leur nature, par leur destination ou par l'objet auquel ils s'appliquent ; les fonds de terre et les bâtiments sont immeubles par leur nature (art. 518).",
+     "cite": "« Les biens sont immeubles, ou par leur nature, ou par leur destination, ou par l'objet auquel ils s'appliquent. »",
+     "src": "C. civ., art. 516 à 518",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428592",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Meubles</b> : les biens sont meubles par leur nature ou par la détermination de la loi. Sont meubles par leur nature les biens qui peuvent se transporter d'un lieu à un autre. Sont meubles par la détermination de la loi, notamment, les obligations et actions qui ont pour objet des sommes exigibles ou des effets mobiliers, ainsi que les actions ou intérêts dans les compagnies de finance, de commerce ou d'industrie, réputés meubles à l'égard de chaque associé tant que dure la société (art. 529).",
+     "cite": "« Sont meubles par leur nature les biens qui peuvent se transporter d'un lieu à un autre. »",
+     "src": "C. civ., art. 527 à 529",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030254004",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Animaux</b> : les animaux sont des êtres vivants doués de sensibilité. Sous réserve des lois qui les protègent, ils sont soumis au régime des biens. L'article est issu de la loi n° 2015-177 du 16 février 2015 et s'applique depuis le 18 février 2015.",
+     "cite": "« Les animaux sont des êtres vivants doués de sensibilité. Sous réserve des lois qui les protègent, les animaux sont soumis au régime des biens. »",
+     "src": "C. civ., art. 515-14",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030250342",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Propriété</b> : droit de jouir et de disposer des choses de la manière la plus absolue, pourvu qu'on n'en fasse pas un usage prohibé par les lois ou par les règlements. Ce caractère absolu a donc des limites : les usages prohibés par les lois et règlements, l'expropriation pour cause d'utilité publique (art. 545) et la responsabilité pour trouble anormal du voisinage (art. 1253).",
+     "cite": "« La propriété est le droit de jouir et disposer des choses de la manière la plus absolue, pourvu qu'on n'en fasse pas un usage prohibé par les lois ou par les règlements. »",
+     "src": "C. civ., art. 544, 545 et 1253",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428859",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Droit d'accession</b> : la propriété d'une chose, mobilière ou immobilière, donne droit sur tout ce qu'elle produit et sur ce qui s'y unit accessoirement, soit naturellement, soit artificiellement ; ce droit s'appelle droit d'accession. Les fruits naturels ou industriels de la terre, les fruits civils et le croît des animaux appartiennent au propriétaire par droit d'accession (art. 547).",
+     "src": "C. civ., art. 546 et 547",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428873",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Usufruit</b> : droit de jouir des choses dont un autre a la propriété, comme le propriétaire lui-même, mais à la charge d'en conserver la substance. Les prérogatives se répartissent alors entre l'usufruitier, qui jouit de la chose et en perçoit les fruits (art. 582), et le nu-propriétaire, qui conserve la propriété du bien : c'est le démembrement de la propriété.",
+     "cite": "« L'usufruit est le droit de jouir des choses dont un autre a la propriété, comme le propriétaire lui-même, mais à la charge d'en conserver la substance. »",
+     "src": "C. civ., art. 578 et 582",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136246",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Acte d'administration et acte de disposition</b> : constituent des actes d'administration les actes d'exploitation ou de mise en valeur du patrimoine de la personne protégée dénués de risque anormal (art. 1). Constituent des actes de disposition les actes qui engagent le patrimoine de la personne protégée, pour le présent ou l'avenir, par une modification importante de son contenu, une dépréciation significative de sa valeur en capital ou une altération durable des prérogatives de ses titulaires (art. 2). L'annexe 1 classe les actes en deux colonnes (administration, disposition) ; la vente ou l'apport en société d'un immeuble figure parmi les actes de disposition.",
+     "cite": "« Constituent des actes d'administration les actes d'exploitation ou de mise en valeur du patrimoine de la personne protégée dénués de risque anormal. »",
+     "src": "Décret n° 2008-1484 du 22 décembre 2008, art. 1 et 2, annexes 1 et 2",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000020063723",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Vie privée</b> : chacun a droit au respect de sa vie privée. Les juges peuvent, sans préjudice de la réparation du dommage subi, prescrire toutes mesures propres à empêcher ou faire cesser une atteinte à l'intimité de la vie privée ; en cas d'urgence, ces mesures peuvent être ordonnées en référé.",
+     "cite": "« Chacun a droit au respect de sa vie privée. »",
+     "src": "C. civ., art. 9",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419288",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Corps humain</b> : chacun a droit au respect de son corps ; le corps humain est inviolable. Le corps humain, ses éléments et ses produits ne peuvent faire l'objet d'un droit patrimonial, et les conventions ayant pour effet de leur conférer une valeur patrimoniale sont nulles (art. 16-5). Le respect dû au corps humain ne cesse pas avec la mort (art. 16-1-1).",
+     "cite": "« Le corps humain, ses éléments et ses produits ne peuvent faire l'objet d'un droit patrimonial. »",
+     "src": "C. civ., art. 16-1, 16-1-1 et 16-5",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419293",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Enfant conçu</b> : pour succéder, il faut exister à l'instant de l'ouverture de la succession ou, ayant déjà été conçu, naître viable. L'enfant simplement conçu peut donc recueillir une succession, à condition de naître viable ; le régime des successions lui-même est hors programme.",
+     "src": "C. civ., art. 725",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006430764",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Personnalité morale des sociétés</b> : les sociétés autres que les sociétés en participation et les sociétés de libre partenariat spéciales jouissent de la personnalité morale à compter de leur immatriculation. Jusqu'à l'immatriculation, les rapports entre les associés sont régis par le contrat de société et par les principes généraux du droit applicables aux contrats et obligations.",
+     "src": "C. civ., art. 1842",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049876831",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Associations</b> : les associations peuvent se former librement sans autorisation ni déclaration préalable, mais elles ne jouissent de la capacité juridique que si elles se conforment à l'article 5 de la loi de 1901 (art. 2). Toute association qui veut obtenir la capacité juridique doit être rendue publique par les soins de ses fondateurs ; la déclaration préalable est faite au représentant de l'État dans le département du siège social et fait connaître le titre et l'objet de l'association, le siège de ses établissements et l'identité des personnes chargées de son administration, avec un exemplaire des statuts (art. 5). Le décret du 16 août 1901 organise la publicité par l'insertion d'un extrait de la déclaration au Journal officiel.",
+     "src": "Loi du 1er juillet 1901, art. 2 et 5 ; décret du 16 août 1901, chapitre Ier (associations déclarées)",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000030930137",
+     "fiab": "stable",
+     "cite": "« Toute association qui voudra obtenir la capacité juridique prévue par l'article 6 devra être rendue publique par les soins de ses fondateurs. »"
+    },
+    {
+     "t": "<b>Capacité de contracter</b> : toute personne physique peut contracter, sauf en cas d'incapacité prévue par la loi ; la capacité des personnes morales est limitée par les règles applicables à chacune d'entre elles. Sont incapables de contracter, dans la mesure définie par la loi, les mineurs non émancipés et les majeurs protégés au sens de l'article 425. L'incapacité de contracter est une cause de nullité relative. La personne incapable peut néanmoins accomplir seule les actes courants autorisés par la loi ou l'usage, pourvu qu'ils soient conclus à des conditions normales (art. 1148).",
+     "cite": "« L'incapacité de contracter est une cause de nullité relative. »",
+     "src": "C. civ., art. 1145 à 1148",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008380/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Mineur et mineur émancipé</b> : l'administrateur légal représente le mineur dans tous les actes de la vie civile, sauf les cas dans lesquels la loi ou l'usage autorise les mineurs à agir eux-mêmes. Le mineur émancipé est capable, comme un majeur, de tous les actes de la vie civile ; il doit néanmoins, pour se marier ou se donner en adoption, observer les mêmes règles que s'il n'était point émancipé (art. 413-6).",
+     "cite": "« L'administrateur légal représente le mineur dans tous les actes de la vie civile, sauf les cas dans lesquels la loi ou l'usage autorise les mineurs à agir eux-mêmes. »",
+     "src": "C. civ., art. 388-1-1 et 413-6",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031323522",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Majeurs protégés</b> : une mesure de protection juridique peut être ouverte pour toute personne dans l'impossibilité de pourvoir seule à ses intérêts en raison d'une altération, médicalement constatée, soit de ses facultés mentales, soit de ses facultés corporelles de nature à empêcher l'expression de sa volonté (art. 425). La curatelle concerne la personne qui a besoin d'être assistée ou contrôlée d'une manière continue dans les actes importants de la vie civile ; la tutelle, celle qui doit être représentée d'une manière continue. La curatelle n'est prononcée que si la sauvegarde de justice ne peut assurer une protection suffisante, et la tutelle que si ni la sauvegarde de justice ni la curatelle ne le peuvent.",
+     "src": "C. civ., art. 425 et 440",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427481",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Expropriation</b> : nul ne peut être contraint de céder sa propriété, si ce n'est pour cause d'utilité publique, et moyennant une juste et préalable indemnité. Le Code de l'expropriation pour cause d'utilité publique ne permet de prononcer l'expropriation d'immeubles ou de droits réels immobiliers que si l'utilité publique a été préalablement et formellement constatée à la suite d'une enquête (art. L. 1).",
+     "cite": "« Nul ne peut être contraint de céder sa propriété, si ce n'est pour cause d'utilité publique, et moyennant une juste et préalable indemnité. »",
+     "src": "C. civ., art. 545 ; C. expr., art. L. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006117904/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dessus et dessous</b> : la propriété du sol emporte la propriété du dessus et du dessous. Le propriétaire peut faire au-dessus toutes les plantations et constructions qu'il juge à propos, sauf les exceptions relatives aux servitudes, et au-dessous toutes les constructions et fouilles qu'il juge à propos, sous réserve des lois et règlements relatifs aux mines et des lois et règlements de police. La Cour de cassation y voit une présomption de propriété du sous-sol au profit du propriétaire du sol, qui ne cède que devant la preuve contraire (titre ou prescription acquisitive).",
+     "src": "C. civ., art. 552 ; Cass. 3e civ., 13 mai 2015, n° 13-27.342 et 14-15.678",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428953",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Acquisition de la propriété</b> : la propriété des biens s'acquiert et se transmet par succession, par donation entre vifs ou testamentaire et par l'effet des obligations ; elle s'acquiert aussi par accession ou incorporation, et par prescription (art. 711 et 712). Dans les contrats ayant pour objet l'aliénation de la propriété ou la cession d'un autre droit, le transfert s'opère lors de la conclusion du contrat ; il peut être différé par la volonté des parties, la nature des choses ou par l'effet de la loi. Le transfert de propriété emporte transfert des risques de la chose ; toutefois le débiteur de l'obligation de délivrer en retrouve la charge à compter de sa mise en demeure (art. 1196).",
+     "cite": "« Dans les contrats ayant pour objet l'aliénation de la propriété ou la cession d'un autre droit, le transfert s'opère lors de la conclusion du contrat. »",
+     "src": "C. civ., art. 711, 712 et 1196",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041294/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Action en revendication</b> : le droit de propriété est imprescriptible (art. 2227). La Cour de cassation, combinant les articles 544 et 2227, en déduit que l'action en revendication, fondée sur le droit de propriété, est imprescriptible : le propriétaire ne perd pas son droit faute de l'exercer. Il peut en revanche être évincé par un possesseur qui a acquis le bien par prescription acquisitive (art. 2258 et 2272).",
+     "src": "C. civ., art. 544 et 2227 ; Cass. 3e civ., 25 mars 2021, n° 20-10.947",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000043302326",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Possession des meubles</b> : en fait de meubles, la possession vaut titre. La Cour de cassation y voit une présomption de propriété : celui qui revendique le meuble doit prouver le titre précaire en vertu duquel le possesseur le détient ou le vice affectant sa possession. Le propriétaire d'une chose perdue ou volée peut toutefois la revendiquer pendant trois ans à compter du jour de la perte ou du vol, contre celui dans les mains duquel il la trouve. Si le possesseur actuel l'a achetée dans une foire, un marché, une vente publique ou chez un marchand vendant des choses pareilles, le propriétaire originaire ne peut se la faire rendre qu'en lui remboursant le prix qu'elle lui a coûté (art. 2277).",
+     "cite": "« En fait de meubles, la possession vaut titre. »",
+     "src": "C. civ., art. 2276 et 2277 ; Cass. 1re civ., 24 octobre 2012, n° 11-16.431",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017163/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prescription acquisitive</b> : elle permet d'acquérir un bien ou un droit par l'effet de la possession, sans que celui qui l'allègue soit obligé d'en rapporter un titre (art. 2258). Pour pouvoir prescrire, il faut une possession continue et non interrompue, paisible, publique, non équivoque, et à titre de propriétaire : le texte exige toutes ces qualités (art. 2261).",
+     "cite": "« Pour pouvoir prescrire, il faut une possession continue et non interrompue, paisible, publique, non équivoque, et à titre de propriétaire. »",
+     "src": "C. civ., art. 2258 et 2261",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017143",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Droits de l'usufruitier</b> : l'usufruitier a le droit de jouir de toute espèce de fruits, naturels, industriels ou civils, que peut produire l'objet dont il a l'usufruit ; les fruits civils (loyers, intérêts) s'acquièrent jour par jour (art. 586). Lorsque l'usufruit porte sur des choses dont on ne peut faire usage sans les consommer, comme l'argent, l'usufruitier a le droit de s'en servir, à charge de rendre à la fin de l'usufruit soit des choses de même quantité et qualité, soit leur valeur estimée à la date de la restitution : c'est le quasi-usufruit, appliqué par la Cour de cassation aux sommes figurant sur des comptes bancaires.",
+     "src": "C. civ., art. 582, 586 et 587 ; Cass. 1re civ., 4 novembre 2020, n° 19-14.421",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006429324",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Obligations de l'usufruitier</b> : il prend les choses dans l'état où elles sont et ne peut entrer en jouissance qu'après avoir fait dresser, en présence du propriétaire ou lui dûment appelé, un inventaire des meubles et un état des immeubles. Il donne caution de jouir raisonnablement, s'il n'en est dispensé par l'acte constitutif ; les père et mère ayant l'usufruit légal du bien de leurs enfants, le vendeur ou le donateur sous réserve d'usufruit ne sont pas tenus de donner caution. Il n'est tenu qu'aux réparations d'entretien ; les grosses réparations (gros murs et voûtes, rétablissement des poutres et des couvertures entières, digues et murs de soutènement et de clôture en entier) demeurent à la charge du propriétaire, à moins qu'elles n'aient été occasionnées par le défaut de réparations d'entretien depuis l'ouverture de l'usufruit, auquel cas l'usufruitier en est aussi tenu.",
+     "src": "C. civ., art. 600, 601, 605 et 606",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150118",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Fin de l'usufruit</b> : l'usufruit s'éteint par la mort de l'usufruitier, par l'expiration du temps pour lequel il a été accordé, par la consolidation ou réunion sur la même tête des deux qualités d'usufruitier et de propriétaire, par le non-usage du droit pendant trente ans et par la perte totale de la chose (art. 617) ; il ne passe donc pas aux héritiers de l'usufruitier. Il peut aussi cesser par l'abus que l'usufruitier fait de sa jouissance, en commettant des dégradations sur le fonds ou en le laissant dépérir faute d'entretien (art. 618). L'usufruit qui n'est pas accordé à des particuliers, par exemple à une personne morale, ne dure que trente ans (art. 619).",
+     "src": "C. civ., art. 617 à 619 ; CE, 31 mars 2022, n° 458518",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150119",
+     "fiab": "stable",
+     "cite": "« L'usufruit peut aussi cesser par l'abus que l'usufruitier fait de sa jouissance, soit en commettant des dégradations sur le fonds, soit en le laissant dépérir faute d'entretien. »"
+    },
+    {
+     "t": "<b>Droit de gage général</b> : quiconque s'est obligé personnellement est tenu de remplir son engagement sur tous ses biens mobiliers et immobiliers, présents et à venir. Les biens du débiteur sont le gage commun de ses créanciers, et le prix s'en distribue entre eux par contribution, à moins qu'il n'y ait entre les créanciers des causes légitimes de préférence (art. 2285).",
+     "src": "C. civ., art. 2284 et 2285",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>18 ans et 16 ans</b> : la majorité est fixée à dix-huit ans accomplis (art. 414). Le mineur, même non marié, peut être émancipé lorsqu'il a atteint l'âge de seize ans révolus ; après audition du mineur, l'émancipation est prononcée, s'il y a de justes motifs, par le juge des tutelles, à la demande des père et mère ou de l'un d'eux.",
+     "cite": "« Le mineur, même non marié, pourra être émancipé lorsqu'il aura atteint l'âge de seize ans révolus. »",
+     "src": "C. civ., art. 414 et 413-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427901",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>30 ans ou 10 ans</b> : le délai de la prescription acquisitive en matière immobilière est de trente ans ; celui qui acquiert de bonne foi et par juste titre un immeuble en prescrit la propriété par dix ans. À défaut de bonne foi ou de juste titre, c'est le délai de trente ans qui s'applique. La bonne foi est présumée, et il suffit qu'elle ait existé au moment de l'acquisition (art. 2274 et 2275).",
+     "src": "C. civ., art. 2272, 2274 et 2275",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017157",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>1 an, 5 ans, 10 ans</b> : sous peine de caducité, la sauvegarde de justice ne peut excéder un an, renouvelable une fois (art. 439). Le juge fixe la durée de la curatelle ou de la tutelle sans qu'elle puisse excéder cinq ans ; pour une tutelle, il peut fixer une durée plus longue, n'excédant pas dix ans, par décision spécialement motivée et sur avis conforme d'un médecin inscrit sur la liste de l'article 431, lorsque l'altération des facultés n'apparaît manifestement pas susceptible de connaître une amélioration (art. 441, rédaction issue de la loi n° 2015-177 du 16 février 2015).",
+     "cite": "« Le juge fixe la durée de la mesure sans que celle-ci puisse excéder cinq ans. »",
+     "src": "C. civ., art. 439 et 441",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030253950",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Troubles anormaux du voisinage</b> : la loi n° 2024-346 du 15 avril 2024 insère dans le Code civil un chapitre « Les troubles anormaux du voisinage » (art. 1253), applicable depuis le 17 avril 2024. Le propriétaire, le locataire, l'occupant sans titre, le bénéficiaire d'un titre l'autorisant à occuper ou exploiter un fonds, le maître d'ouvrage ou celui qui en exerce les pouvoirs, à l'origine d'un trouble excédant les inconvénients normaux de voisinage, est responsable de plein droit du dommage qui en résulte. Sous réserve de l'article L. 311-1-1 du Code rural et de la pêche maritime, propre aux activités agricoles, sa responsabilité n'est pas engagée si le trouble provient d'activités conformes aux lois et règlements, antérieures à l'acte transférant la propriété ou la jouissance du bien à la victime (ou, à défaut d'acte, à son entrée en possession), et poursuivies dans les mêmes conditions ou dans des conditions nouvelles qui n'aggravent pas le trouble.",
+     "cite": "« Le propriétaire, le locataire, l'occupant sans titre, le bénéficiaire d'un titre ayant pour objet principal de l'autoriser à occuper ou à exploiter un fonds, le maître d'ouvrage ou celui qui en exerce les pouvoirs qui est à l'origine d'un trouble excédant les inconvénients normaux de voisinage est responsable de plein droit du dommage qui en résulte. »",
+     "src": "C. civ., art. 1253 ; loi n° 2024-346 du 15 avril 2024",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000049419511/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Article 1842 retouché</b> : l'ordonnance n° 2024-662 du 3 juillet 2024, portant modernisation du régime des fonds d'investissement alternatifs, ajoute les sociétés de libre partenariat spéciales aux exceptions de l'article 1842 (version en vigueur depuis le 5 juillet 2024) ; ces sociétés sont constituées sans personnalité morale (C. monét. fin., art. L. 214-162-13). Le principe ne change pas : les autres sociétés, hors sociétés en participation, acquièrent la personnalité morale à leur immatriculation.",
+     "src": "Ordonnance n° 2024-662 du 3 juillet 2024 ; C. civ., art. 1842",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049870394/",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>Animal et immeuble par destination</b> : l'animal est un être vivant doué de sensibilité, soumis au régime des biens sous réserve des lois qui le protègent (art. 515-14). Les objets que le propriétaire d'un fonds y a placés pour le service et l'exploitation de ce fonds sont immeubles par destination, et les animaux qu'il y place aux mêmes fins sont soumis au régime des immeubles par destination. Sont aussi immeubles par destination les effets mobiliers que le propriétaire a attachés au fonds à perpétuelle demeure.",
+     "src": "C. civ., art. 515-14 et 524",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030254009",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Qui paie les travaux ?</b> L'usufruitier n'est tenu qu'aux réparations d'entretien ; les grosses réparations demeurent à la charge du propriétaire, sauf si elles ont été occasionnées par le défaut de réparations d'entretien depuis l'ouverture de l'usufruit (art. 605). L'article 606 énumère les grosses réparations et précise que toutes les autres réparations sont d'entretien. Piège : l'usufruitier ne peut pas agir contre le nu-propriétaire pour le contraindre à exécuter les grosses réparations nécessaires à la conservation de l'immeuble.",
+     "src": "C. civ., art. 605 et 606 ; Cass. 3e civ., 3 mai 2012, n° 11-14.964",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006429505",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Parts sociales démembrées (lien UE2 et DSCG)</b> : si une part est grevée d'un usufruit, le nu-propriétaire et l'usufruitier ont le droit de participer aux décisions collectives. Le droit de vote appartient au nu-propriétaire, sauf pour les décisions concernant l'affectation des bénéfices, où il est réservé à l'usufruitier ; pour les autres décisions, ils peuvent convenir que le droit de vote sera exercé par l'usufruitier. Les statuts peuvent déroger à cette répartition du vote, mais l'usufruitier de parts sociales n'a pas pour autant la qualité d'associé, qui n'appartient qu'au nu-propriétaire (Cass. 3e civ., 16 février 2022). Rédaction de l'article 1844 issue de la loi n° 2019-744 du 19 juillet 2019, en vigueur depuis le 21 juillet 2019 et inchangée depuis.",
+     "src": "C. civ., art. 1844 ; Cass. 3e civ., 16 février 2022, n° 20-15.164",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799283",
+     "fiab": "stable",
+     "cite": "« […] l'usufruitier de parts sociales ne peut se voir reconnaître la qualité d'associé, qui n'appartient qu'au nu-propriétaire […] »"
+    },
+    {
+     "t": "<b>Indivision : la notion seulement</b> : nul ne peut être contraint à demeurer dans l'indivision et le partage peut toujours être provoqué, à moins qu'il n'y ait été sursis par jugement ou convention. Le programme 2025 n'en demande pas l'étude détaillée et exclut les régimes de la donation, de la succession et du legs.",
+     "cite": "« Nul ne peut être contraint à demeurer dans l'indivision et le partage peut toujours être provoqué, à moins qu'il n'y ait été sursis par jugement ou convention. »",
+     "src": "C. civ., art. 815 ; arrêté du 4 août 2025, annexe 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006432351",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ancienne rédaction de l'article 1145 (manuels antérieurs à 2018)</b> : depuis la loi n° 2018-287 du 20 avril 2018 (version en vigueur depuis le 1er octobre 2018), l'article 1145 se borne à dire que la capacité des personnes morales est limitée par les règles applicables à chacune d'entre elles. La rédaction issue de l'ordonnance n° 2016-131, applicable du 1er octobre 2016 au 1er octobre 2018, la limitait aux actes utiles à la réalisation de leur objet tel que défini par leurs statuts et aux actes qui leur sont accessoires : ne pas la reprendre dans une copie.",
+     "src": "C. civ., art. 1145 ; loi n° 2018-287 du 20 avril 2018",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008380/",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

@@ -6,7 +6,7 @@
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
    "« 1.2 Déterminer le mode de résolution adapté à un litige » (20 heures)",
-   "« Déterminer la juridiction compétente dans un litige de droit privé » (selon le guide pédagogique de juillet 2026 : Tribunal des conflits non étudié ; voies de recours limitées à l'appel et au pourvoi en cassation)",
+   "« Déterminer la juridiction compétente dans un litige de droit privé » (le programme précise : Tribunal des conflits et sa jurisprudence non étudiés ; voies de recours limitées à l'appel et au pourvoi en cassation)",
    "Action en justice : conditions de recevabilité (intérêt à agir, qualité pour agir, capacité, délai de prescription de droit commun)",
    "« Conciliation, médiation et arbitrage, transaction » : distinguer les modes judiciaires et les modes alternatifs de règlement des différends",
    "« Vérifier la validité d'une clause contractuelle »",
@@ -52,7 +52,7 @@
   },
   {
    "ref": "C. com., art. L. 721-3",
-   "objet": "Compétence d'attribution des tribunaux de commerce ; faculté de convenir de l'arbitrage",
+   "objet": "Compétence d'attribution des tribunaux de commerce ; faculté de convenir de l'arbitrage, la clause compromissoire n'étant pas opposable à la caution d'une dette commerciale qui ne s'est pas engagée dans le cadre de son activité professionnelle",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044078679",
    "version": "en vigueur depuis le 1er janvier 2022 (ordonnance n° 2021-1192 du 15 septembre 2021 ; loi n° 2016-1547 du 18 novembre 2016)"
   },
@@ -60,7 +60,7 @@
    "ref": "Loi n° 2023-1059 du 20 novembre 2023 d'orientation et de programmation du ministère de la justice 2023-2027, art. 26",
    "objet": "Expérimentation du tribunal des activités économiques (décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024 désignant douze tribunaux)",
    "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
-   "version": "expérimentation ouverte le 1er janvier 2025 pour quatre ans"
+   "version": "expérimentation du 1er janvier 2025 au 31 décembre 2028"
   },
   {
    "ref": "CPC, art. 42 à 48",
@@ -72,7 +72,7 @@
    "ref": "CPC, art. 527 et suivants",
    "objet": "Voies de recours : point de départ des délais (art. 528), délai d'appel (art. 538), effet dévolutif (art. 561 et 562), objet du pourvoi et décisions susceptibles de pourvoi (art. 604 et 605), délai de pourvoi (art. 612)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006117240/",
-   "version": "en vigueur (art. 561 modifié par le décret n° 2017-891 du 6 mai 2017)"
+   "version": "en vigueur (art. 561 modifié par le décret n° 2017-891 du 6 mai 2017 ; art. 562 : rédaction issue du décret n° 2023-1391 du 29 décembre 2023, en vigueur depuis le 1er septembre 2024)"
   },
   {
    "ref": "CPC, art. 750-1",
@@ -144,7 +144,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Présomption légale</b> : celle que la loi attache à certains actes ou à certains faits en les tenant pour certains ; elle dispense celui au profit duquel elle existe d'en rapporter la preuve. Elle est <b>simple</b> lorsque la preuve contraire peut être rapportée par tout moyen, <b>mixte</b> lorsque la loi limite les moyens ou l'objet de la preuve contraire, <b>irréfragable</b> lorsqu'elle ne peut être renversée.",
+     "t": "<b>Présomption légale</b> : celle que la loi attache à certains actes ou à certains faits en les tenant pour certains ; elle dispense celui au profit duquel elle existe d'en rapporter la preuve. Elle est <b>simple</b> lorsque la loi réserve la preuve contraire (elle peut alors être renversée par tout moyen de preuve), <b>mixte</b> lorsque la loi limite les moyens par lesquels elle peut être renversée ou l'objet sur lequel elle peut l'être, <b>irréfragable</b> lorsqu'elle ne peut être renversée.",
+     "cite": "« La présomption que la loi attache à certains actes ou à certains faits en les tenant pour certains dispense celui au profit duquel elle existe d'en rapporter la preuve. »",
      "src": "C. civ., art. 1354",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042336",
      "fiab": "stable"
@@ -180,7 +181,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Tribunal de commerce</b> : il connaît des contestations relatives aux engagements entre commerçants, entre artisans, entre établissements de crédit, entre sociétés de financement ou entre eux, de celles relatives aux sociétés commerciales et de celles relatives aux actes de commerce entre toutes personnes. Les parties peuvent toutefois, au moment où elles contractent, convenir de soumettre ces contestations à l'arbitrage.",
+     "t": "<b>Tribunal de commerce</b> : il connaît des contestations relatives aux engagements entre commerçants, entre artisans, entre établissements de crédit, entre sociétés de financement ou entre eux, de celles relatives aux sociétés commerciales et de celles relatives aux actes de commerce entre toutes personnes. Les parties peuvent toutefois, au moment où elles contractent, convenir de soumettre ces contestations à l'arbitrage. Exception : lorsque le cautionnement d'une dette commerciale n'a pas été souscrit dans le cadre de l'activité professionnelle de la caution, la clause compromissoire ne peut être opposée à celle-ci.",
+     "cite": "« Les tribunaux de commerce connaissent : 1° Des contestations relatives aux engagements entre commerçants, entre artisans, entre établissements de crédit, entre sociétés de financement ou entre eux ; 2° De celles relatives aux sociétés commerciales ; 3° De celles relatives aux actes de commerce entre toutes personnes. »",
      "src": "C. com., art. L. 721-3",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044078679",
      "fiab": "stable"
@@ -193,7 +195,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Options du demandeur</b> : outre la juridiction du lieu où demeure le défendeur, le demandeur peut saisir, à son choix, en matière contractuelle, la juridiction du lieu de la livraison effective de la chose ou du lieu de l'exécution de la prestation de service et, en matière délictuelle, la juridiction du lieu du fait dommageable ou celle dans le ressort de laquelle le dommage a été subi. L'article prévoit aussi des options en matière mixte et en matière d'aliments.",
+     "t": "<b>Options du demandeur</b> : outre la juridiction du lieu où demeure le défendeur, le demandeur peut saisir, à son choix, en matière contractuelle, la juridiction du lieu de la livraison effective de la chose ou du lieu de l'exécution de la prestation de service ; en matière délictuelle, la juridiction du lieu du fait dommageable ou celle dans le ressort de laquelle le dommage a été subi ; en matière mixte, la juridiction du lieu où est situé l'immeuble.",
      "src": "CPC, art. 46",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410145",
      "fiab": "stable"
@@ -206,7 +208,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Appel</b> : il remet la chose jugée en question devant la juridiction d'appel, qui statue à nouveau en fait et en droit. Il ne défère à la cour que les chefs du dispositif du jugement qu'il critique expressément et ceux qui en dépendent ; la dévolution ne s'opère pour le tout que lorsque l'appel tend à l'annulation du jugement ou si l'objet du litige est indivisible. Le délai court en principe à compter de la notification du jugement.",
+     "t": "<b>Appel</b> : il remet la chose jugée en question devant la juridiction d'appel, qui statue à nouveau en fait et en droit. Il ne défère à la cour que les chefs du jugement qu'il critique expressément et ceux qui en dépendent ; depuis le 1er septembre 2024 (décret n° 2023-1391 du 29 décembre 2023), l'article 562 ne prévoit la dévolution pour le tout que lorsque l'appel tend à l'annulation du jugement (la mention de l'objet du litige indivisible a disparu de cet article). Le délai court en principe à compter de la notification du jugement.",
      "cite": "« L'appel remet la chose jugée en question devant la juridiction d'appel. »",
      "src": "CPC, art. 528, 561 et 562",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006181692/",
@@ -260,6 +262,7 @@
     },
     {
      "t": "<b>Contrats sur la preuve</b> : ils sont valables lorsqu'ils portent sur des droits dont les parties ont la libre disposition. Ils ne peuvent toutefois ni contredire les présomptions irréfragables établies par la loi, ni modifier la foi attachée à l'aveu ou au serment, ni établir au profit de l'une des parties une présomption irréfragable.",
+     "cite": "« Les contrats sur la preuve sont valables lorsqu'ils portent sur des droits dont les parties ont la libre disposition. »",
      "src": "C. civ., art. 1356",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032035937/",
      "fiab": "stable"
@@ -270,7 +273,7 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>5 000 €</b> : le tribunal judiciaire statue en dernier ressort sur les actions personnelles ou mobilières dont le montant n'excède pas 5 000 € ; au-delà, il statue à charge d'appel. Un jugement rendu en dernier ressort n'est pas susceptible d'appel, mais peut faire l'objet d'un pourvoi en cassation.",
+     "t": "<b>5 000 €</b> : le tribunal judiciaire statue en dernier ressort sur les actions personnelles ou mobilières dont le montant n'excède pas 5 000 € ; au-delà, il statue à charge d'appel. Sauf disposition contraire, le même taux vaut dans les matières relevant de sa compétence exclusive. Un jugement rendu en dernier ressort n'est pas susceptible d'appel, mais peut faire l'objet d'un pourvoi en cassation.",
      "src": "COJ, art. R. 211-3-24 et R. 211-3-25 (décret n° 2019-912 du 30 août 2019) ; CPC, art. 605",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039013368",
      "fiab": "stable"
@@ -318,7 +321,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Tribunal des activités économiques</b> : à titre expérimental, la loi du 20 novembre 2023 étend les compétences du tribunal de commerce, qui devient tribunal des activités économiques dans douze tribunaux désignés par l'arrêté du 5 juillet 2024, depuis le 1er janvier 2025 et pour quatre ans. Il est seul compétent pour les procédures amiables et collectives de tous les professionnels, quels que soient leur statut et leur activité, à l'exception de certaines professions du droit réglementées (dont les avocats et les notaires), qui restent au tribunal judiciaire.",
+     "t": "<b>Tribunal des activités économiques</b> : à titre expérimental, la loi du 20 novembre 2023 étend les compétences du tribunal de commerce, qui devient tribunal des activités économiques dans douze tribunaux désignés par l'arrêté du 5 juillet 2024, du 1er janvier 2025 au 31 décembre 2028. Il est seul compétent pour les procédures de sauvegarde, de redressement judiciaire, de liquidation judiciaire et les procédures amiables de tous les professionnels, quels que soient leur statut et leur activité, à l'exception des professions réglementées du droit (dont les avocats et les notaires), qui relèvent toujours du tribunal judiciaire.",
      "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
      "fiab": "millésimé 2026"
@@ -349,13 +352,13 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Périmètre du programme</b> : le guide pédagogique du DCG précise que le Tribunal des conflits n'est pas étudié et que les voies de recours se limitent à l'appel et au pourvoi en cassation. La transaction est rattachée à cette première partie du programme, avec les modes alternatifs de règlement des différends.",
-     "src": "Guide pédagogique DCG, ministère de l'Enseignement supérieur, juillet 2026 (UE 1)",
-     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
-     "fiab": "millésimé 2026"
+     "t": "<b>Périmètre du programme</b> : le programme de l'UE 1 limite les voies de recours à l'appel et au pourvoi en cassation ; le Tribunal des conflits et sa jurisprudence ne sont pas étudiés. La transaction y figure avec les modes alternatifs de règlement des différends (« Conciliation, médiation et arbitrage, transaction »).",
+     "src": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 1, point 1.2)",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+     "fiab": "stable"
     },
     {
-     "t": "<b>Injonction de payer</b> : la procédure d'injonction de payer n'est, dans aucune de ses deux phases, soumise à la tentative préalable obligatoire de l'article 750-1 du CPC. Un créancier d'une somme inférieure à 5 000 € peut donc présenter une requête en injonction de payer sans tentative amiable préalable.",
+     "t": "<b>Injonction de payer</b> : la procédure d'injonction de payer n'est, dans aucune de ses deux phases, soumise à la tentative préalable obligatoire de l'article 750-1 du CPC. Un créancier d'une somme n'excédant pas 5 000 € peut donc présenter une requête en injonction de payer sans tentative amiable préalable.",
      "src": "Cass., avis, 25 septembre 2025, n° 25-70.013",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000052304015/",
      "fiab": "stable"
@@ -373,9 +376,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Preuve contre un commerçant</b> : à l'égard des commerçants, les actes de commerce peuvent se prouver par tous moyens, à moins qu'il n'en soit autrement disposé par la loi. La règle joue à l'égard des commerçants : elle écarte l'exigence d'un écrit de l'article 1359 du Code civil lorsque la preuve d'un acte de commerce est rapportée contre un commerçant.",
+     "t": "<b>Preuve des actes de commerce</b> : à l'égard des commerçants, les actes de commerce peuvent se prouver par tous moyens, à moins qu'il n'en soit autrement disposé par la loi (rédaction en vigueur depuis le 21 septembre 2000, reprise de l'ancien article 109 du Code de commerce). Ce texte spécial écarte, à l'égard des commerçants, l'exigence d'un écrit que l'article 1359 du Code civil pose pour les actes juridiques excédant 1 500 €.",
      "src": "C. com., art. L. 110-3 ; C. civ., art. 1359",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219127",
      "fiab": "stable"
     },
     {

@@ -44,9 +44,9 @@
   },
   {
    "ref": "C. civ., art. 1710 et 1787 à 1799-1",
-   "objet": "Louage d'ouvrage (contrat d'entreprise) : définition, fourniture de la matière, risques",
+   "objet": "Louage d'ouvrage (contrat d'entreprise) : définition, fourniture du travail seul ou de la matière, risques",
    "url": null,
-   "version": "en vigueur (art. 1710 depuis le 21 mars 1804)"
+   "version": "en vigueur (art. 1710, 1787, 1788 et 1789 dans leur rédaction de 1804)"
   },
   {
    "ref": "C. consom., article liminaire",
@@ -68,9 +68,9 @@
   },
   {
    "ref": "C. consom., art. L. 221-18 à L. 221-28",
-   "objet": "Droit de rétractation dans les contrats conclus à distance et hors établissement : délai, exercice, remboursement, exceptions",
+   "objet": "Droit de rétractation dans les contrats conclus à distance et hors établissement : délai, exercice (dont la fonctionnalité de rétractation en ligne), remboursement, exceptions",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
-   "version": "en vigueur (art. L. 221-28 dans sa version en vigueur depuis le 28 mai 2022)"
+   "version": "en vigueur (art. L. 221-28 dans sa version en vigueur depuis le 28 mai 2022 ; art. L. 221-21 complété par l'ordonnance n° 2026-2 du 5 janvier 2026, en vigueur depuis le 19 juin 2026)"
   },
   {
    "ref": "C. com., art. L. 142-1 à L. 142-5",
@@ -122,8 +122,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Consommateur, non-professionnel, professionnel</b> : pour l'application du Code de la consommation, le consommateur est toute personne physique qui agit à des fins qui n'entrent pas dans le cadre de son activité commerciale, industrielle, artisanale, libérale ou agricole ; le non-professionnel est toute personne morale qui n'agit pas à des fins professionnelles ; le professionnel est toute personne physique ou morale, publique ou privée, qui agit dans le cadre de son activité, y compris lorsqu'elle agit pour le compte d'un autre professionnel.",
-     "cite": "« 2° Non-professionnel : toute personne morale qui n'agit pas à des fins professionnelles […] »",
+     "t": "<b>Consommateur, non-professionnel, professionnel</b> : pour l'application du Code de la consommation, le consommateur est toute personne physique qui agit à des fins qui n'entrent pas dans le cadre de son activité commerciale, industrielle, artisanale, libérale ou agricole ; le non-professionnel est toute personne morale qui n'agit pas à des fins professionnelles ; le professionnel est toute personne physique ou morale, publique ou privée, qui agit à des fins entrant dans le cadre de son activité commerciale, industrielle, artisanale, libérale ou agricole, y compris lorsqu'elle agit au nom ou pour le compte d'un autre professionnel.",
+     "cite": "« 2° Non-professionnel : toute personne morale qui n'agit pas à des fins professionnelles […] 3° Professionnel : toute personne physique ou morale, publique ou privée, qui agit à des fins entrant dans le cadre de son activité commerciale, industrielle, artisanale, libérale ou agricole, y compris lorsqu'elle agit au nom ou pour le compte d'un autre professionnel. »",
      "src": "C. consom., article liminaire",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049464063",
      "fiab": "stable"
@@ -167,10 +167,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Prix</b> : le prix de la vente doit en principe être déterminé et désigné par les parties. Avec la chose, il forme l'objet de l'accord qui rend la vente parfaite.",
-     "src": "C. civ., art. 1591 et 1583",
+     "t": "<b>Prix</b> : le prix de la vente doit être déterminé et désigné par les parties. Il peut toutefois être laissé à l'estimation d'un tiers ; si ce tiers ne veut ou ne peut pas faire l'estimation, il n'y a point de vente, sauf estimation par un autre tiers. Avec la chose, le prix forme l'objet de l'accord qui rend la vente parfaite.",
+     "src": "C. civ., art. 1591, 1592 et 1583",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136377",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Le prix de la vente doit être déterminé et désigné par les parties. »"
     },
     {
      "t": "<b>Transfert de propriété et des risques</b> : dans les contrats ayant pour objet l'aliénation de la propriété, le transfert s'opère lors de la conclusion du contrat. Il peut être différé par la volonté des parties, la nature des choses ou l'effet de la loi. Le transfert de propriété emporte transfert des risques de la chose.",
@@ -193,17 +194,18 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Vendeur professionnel</b> : la Cour de cassation tire de l'article 1645 une présomption irréfragable de connaissance du vice par le vendeur professionnel, qui l'oblige à réparer l'intégralité des dommages qui en sont la conséquence. Tenu de connaître les vices, il ne peut en principe pas se prévaloir d'une clause limitative ou exclusive de la garantie des vices cachés.",
+     "t": "<b>Vendeur professionnel</b> : la Cour de cassation tire de l'article 1645 une présomption irréfragable de connaissance du vice par le vendeur professionnel, qui l'oblige à réparer l'intégralité des dommages qui en sont la conséquence. Au visa de l'article 1643, elle juge aussi que le vendeur professionnel, tenu de connaître les vices de la chose vendue, ne peut en principe pas se prévaloir d'une clause limitative ou exclusive de garantie des vices cachés.",
      "cite": "« Il résulte de ce texte une présomption irréfragable de connaissance par le vendeur professionnel du vice de la chose vendue, qui l'oblige à réparer l'intégralité de tous les dommages qui en sont la conséquence. »",
-     "src": "Cass. com., 19 mai 2021, n° 19-18.230 ; Cass. 3e civ., 15 juin 2022, n° 21-21.143 (inédit) ; C. civ., art. 1645",
+     "src": "Cass. com., 19 mai 2021, n° 19-18.230 ; C. civ., art. 1645 ; Cass. 3e civ., 15 juin 2022, n° 21-21.143 (inédit) ; C. civ., art. 1643",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000043566067",
      "fiab": "stable"
     },
     {
-     "t": "<b>Risques dans le contrat d'entreprise</b> : lorsque l'entrepreneur fournit la matière et que la chose vient à périr avant d'être livrée, la perte est pour lui, à moins que le maître de l'ouvrage ne fût en demeure de recevoir la chose. Lorsqu'il ne fournit que son travail ou son industrie, il n'est tenu que de sa faute.",
+     "t": "<b>Risques dans le contrat d'entreprise</b> : lorsque l'ouvrier (l'entrepreneur) fournit la matière et que la chose vient à périr, de quelque manière que ce soit, avant d'être livrée, la perte en est pour lui, à moins que le maître de l'ouvrage ne fût en demeure de recevoir la chose. Lorsqu'il fournit seulement son travail ou son industrie, il n'est tenu que de sa faute si la chose vient à périr.",
      "src": "C. civ., art. 1788 et 1789",
-     "url": null,
-     "fiab": "stable"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006443464/1804-03-17",
+     "fiab": "stable",
+     "cite": "« Si, dans le cas où l'ouvrier fournit la matière, la chose vient à périr, de quelque manière que ce soit, avant d'être livrée, la perte en est pour l'ouvrier, à moins que le maître ne fût en demeure de recevoir la chose. »"
     },
     {
      "t": "<b>Prix dans les contrats de prestation de service</b> : à défaut d'accord des parties avant leur exécution, le prix peut être fixé par le créancier, à charge pour lui d'en motiver le montant en cas de contestation. En cas d'abus, le juge peut être saisi d'une demande de dommages et intérêts et, le cas échéant, de résolution du contrat.",
@@ -212,10 +214,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Appréciation du caractère abusif</b> (consommation) : elle ne porte ni sur la définition de l'objet principal du contrat ni sur l'adéquation du prix ou de la rémunération, pour autant que les clauses soient rédigées de façon claire et compréhensible. Un décret établit une liste de clauses présumées abusives : en cas de litige, le professionnel doit prouver le caractère non abusif de la clause litigieuse.",
-     "src": "C. consom., art. L. 212-1",
+     "t": "<b>Appréciation du caractère abusif</b> (consommation) : elle ne porte ni sur la définition de l'objet principal du contrat ni sur l'adéquation du prix ou de la rémunération, pour autant que les clauses soient rédigées de façon claire et compréhensible. Un décret en Conseil d'État, pris après avis de la commission des clauses abusives, détermine des types de clauses qui sont, de manière irréfragable, présumées abusives (art. R. 212-1). Un autre décret fixe une liste de clauses présumées abusives (art. R. 212-2) : en cas de litige, le professionnel doit prouver le caractère non abusif de la clause litigieuse.",
+     "src": "C. consom., art. L. 212-1, R. 212-1 et R. 212-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032890812",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« […] le professionnel doit apporter la preuve du caractère non abusif de la clause litigieuse. »"
     },
     {
      "t": "<b>Garantie légale de conformité</b> : le vendeur répond des défauts de conformité existant au moment de la délivrance du bien qui apparaissent dans un délai de deux ans à compter de celle-ci. Ce régime du Code de la consommation a été réécrit par l'ordonnance n° 2021-1247 du 29 septembre 2021 relative à la garantie légale de conformité pour les biens, les contenus numériques et les services numériques.",
@@ -225,33 +228,37 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Présomption d'antériorité du défaut</b> : les défauts de conformité qui apparaissent dans un délai de vingt-quatre mois à compter de la délivrance du bien sont, sauf preuve contraire, présumés exister au moment de la délivrance ; pour les biens d'occasion, ce délai est de douze mois. Le vendeur peut écarter cette présomption si elle est incompatible avec la nature du bien ou du défaut invoqué.",
-     "src": "C. consom., art. L. 217-7",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000044130262/",
-     "fiab": "stable"
+     "t": "<b>Présomption d'antériorité du défaut</b> : les défauts de conformité qui apparaissent dans un délai de vingt-quatre mois à compter de la délivrance du bien sont, sauf preuve contraire, présumés exister au moment de la délivrance, à moins que cette présomption ne soit incompatible avec la nature du bien ou du défaut invoqué. Pour les biens d'occasion, ce délai est de douze mois.",
+     "src": "C. consom., art. L. 217-7 (version issue de l'ordonnance n° 2021-1247 du 29 septembre 2021)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044152587",
+     "fiab": "stable",
+     "cite": "« Pour les biens d'occasion, ce délai est fixé à douze mois. »"
     },
     {
-     "t": "<b>Droit de rétractation</b> (contrat conclu à distance ou hors établissement) : le consommateur dispose d'un délai de quatorze jours pour exercer son droit de rétractation, sans avoir à motiver sa décision. Le délai court à compter de la conclusion du contrat pour les prestations de services, et de la réception du bien pour les ventes de biens.",
+     "t": "<b>Droit de rétractation</b> (contrat conclu à distance, à la suite d'un démarchage téléphonique ou hors établissement) : le consommateur dispose d'un délai de quatorze jours pour exercer son droit de rétractation, sans avoir à motiver sa décision. Le délai court à compter de la conclusion du contrat pour les prestations de services, et de la réception du bien par le consommateur ou par un tiers, autre que le transporteur, désigné par lui, pour les ventes de biens. Pour une commande de plusieurs biens livrés séparément, il court à compter de la réception du dernier bien ou lot ou de la dernière pièce.",
      "src": "C. consom., art. L. 221-18",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226842/",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Le consommateur dispose d'un délai de quatorze jours pour exercer son droit de rétractation d'un contrat conclu à distance, à la suite d'un démarchage téléphonique ou hors établissement, sans avoir à motiver sa décision […] »"
     },
     {
-     "t": "<b>Exercice de la rétractation</b> : avant l'expiration du délai, le consommateur informe le professionnel de sa décision au moyen du formulaire type de rétractation ou de toute autre déclaration dénuée d'ambiguïté exprimant sa volonté de se rétracter.",
-     "src": "C. consom., art. L. 221-21 (section 6 : art. L. 221-18 à L. 221-28)",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
-     "fiab": "stable"
+     "t": "<b>Exercice de la rétractation</b> : avant l'expiration du délai, le consommateur informe le professionnel de sa décision au moyen du formulaire type de rétractation ou de toute autre déclaration dénuée d'ambiguïté exprimant sa volonté de se rétracter. Depuis le 19 juin 2026, pour les contrats conclus à distance au moyen d'une interface en ligne, le professionnel met à la disposition du consommateur, sans frais pour ce dernier, une fonctionnalité lui permettant d'exercer gratuitement son droit de rétractation ; un décret en fixe les modalités de présentation et d'utilisation.",
+     "src": "C. consom., art. L. 221-21 (version issue de l'ordonnance n° 2026-2 du 5 janvier 2026, en vigueur depuis le 19 juin 2026)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053310520",
+     "fiab": "stable",
+     "cite": "« Pour les contrats conclus à distance au moyen d'une interface en ligne, le professionnel met à la disposition du consommateur, sans frais pour ce dernier, une fonctionnalité lui permettant d'exercer gratuitement son droit de rétractation. »"
     },
     {
-     "t": "<b>Remboursement après rétractation</b> : le professionnel rembourse les sommes versées, frais de livraison compris, dans les quatorze jours à compter de la date à laquelle il est informé de la décision de rétractation. Pour une vente de biens, il peut en principe différer le remboursement jusqu'à la récupération des biens ou jusqu'à la preuve de leur expédition. Il utilise le même moyen de paiement que pour la transaction initiale, sauf accord exprès du consommateur, et ne rembourse pas le surcoût d'un mode de livraison plus coûteux que le mode standard expressément choisi par le consommateur.",
+     "t": "<b>Remboursement après rétractation</b> : le professionnel rembourse la totalité des sommes versées, frais de livraison compris, dans les quatorze jours à compter de la date à laquelle il est informé de la décision de rétractation. Pour une vente de biens, à moins qu'il ne propose de récupérer lui-même les biens, il peut différer le remboursement jusqu'à la récupération des biens ou jusqu'à la preuve de leur expédition. Il utilise le même moyen de paiement que pour la transaction initiale, sauf accord exprès du consommateur, et ne rembourse pas le surcoût d'un mode de livraison plus coûteux que le mode standard expressément choisi par le consommateur.",
      "src": "C. consom., art. L. 221-24",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226828",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Lorsque le droit de rétractation est exercé, le professionnel rembourse le consommateur de la totalité des sommes versées […] »"
     },
     {
      "t": "<b>Exceptions au droit de rétractation</b> : il ne peut notamment pas être exercé pour les services pleinement exécutés avant la fin du délai, dans les conditions d'accord exprès prévues par le texte, pour les biens confectionnés selon les spécifications du consommateur ou nettement personnalisés, pour les biens susceptibles de se détériorer ou de se périmer rapidement, et pour certains contenus numériques dont l'exécution a commencé avec l'accord exprès du consommateur.",
      "src": "C. consom., art. L. 221-28 (version en vigueur depuis le 28 mai 2022)",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044563170",
      "fiab": "stable"
     },
     {
@@ -267,7 +274,7 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>14 jours</b> pour se rétracter d'un contrat conclu à distance ou hors établissement ; <b>14 jours</b> pour que le professionnel rembourse, à compter du moment où il est informé de la rétractation ; délai de rétractation prolongé de <b>12 mois</b> au plus lorsque les informations relatives au droit de rétractation n'ont pas été fournies au consommateur.",
+     "t": "<b>14 jours</b> pour se rétracter d'un contrat conclu à distance, à la suite d'un démarchage téléphonique ou hors établissement ; <b>14 jours</b> pour que le professionnel rembourse, à compter du moment où il est informé de la rétractation ; délai de rétractation prolongé de <b>12 mois</b> à compter de l'expiration du délai initial lorsque les informations relatives au droit de rétractation n'ont pas été fournies au consommateur. Si ces informations sont fournies pendant la prolongation, le délai expire <b>14 jours</b> après le jour où le consommateur les a reçues.",
      "src": "C. consom., art. L. 221-18, L. 221-20 et L. 221-24",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221365/",
      "fiab": "stable"
@@ -286,7 +293,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>10 jours</b> : une promesse unilatérale de vente immobilière doit être constatée par un acte authentique ou par un acte sous seing privé enregistré dans un délai de dix jours. Par ailleurs, est nul tout engagement unilatéral d'acquisition immobilière pour lequel un versement est exigé ou reçu.",
+     "t": "<b>10 jours</b> : est nulle la promesse unilatérale de vente afférente à un immeuble, à un droit immobilier, à un fonds de commerce, à un droit au bail ou aux titres de certaines sociétés si elle n'est pas constatée par un acte authentique ou par un acte sous seing privé enregistré dans le délai de dix jours à compter de son acceptation par le bénéficiaire ; il en est de même de la cession de ces promesses. Par ailleurs, est nul tout engagement unilatéral d'acquisition immobilière pour lequel un versement est exigé ou reçu.",
      "src": "C. civ., art. 1589-2 et 1589-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441326",
      "fiab": "stable"
@@ -332,6 +339,13 @@
      "src": "Cass. com., 13 mai 2026, n° 24-17.137 ; C. civ., art. 1171 ; C. com., art. L. 442-1",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167043",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2026-2 du 5 janvier 2026</b> relative à la commercialisation à distance de services financiers auprès des consommateurs : depuis le 19 juin 2026, l'article L. 221-21 du Code de la consommation impose au professionnel, pour les contrats conclus à distance au moyen d'une interface en ligne, une fonctionnalité permettant au consommateur d'exercer gratuitement son droit de rétractation. Le décret n° 2026-3 du même jour (art. D. 221-5) prévoit qu'elle est signalée par la mention « renoncer au contrat ici » ou une formule analogue, qu'elle est affichée de manière visible, directement et facilement accessible, et qu'elle est disponible pendant toute la durée du délai de rétractation.",
+     "cite": "« Elle est affichée sur l'interface en ligne de manière visible et est directement et facilement accessible au consommateur. Elle est disponible pendant toute la durée du délai de rétractation. »",
+     "src": "Ordonnance n° 2026-2 du 5 janvier 2026 ; C. consom., art. L. 221-21 et D. 221-5 ; décret n° 2026-3 du 5 janvier 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053298845",
+     "fiab": "stable"
     }
    ]
   },
@@ -364,8 +378,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Sujet d'examen</b> : le guide pédagogique du DCG 2026 illustre la sous-partie « Accompagner le client dans ses contrats courants » par un sujet sur le délai de rétractation dans les ventes à distance. Il faut en maîtriser le régime : quatorze jours sans motif, point de départ à la réception du bien, prolongation de douze mois au plus à défaut d'information, remboursement dans les quatorze jours.",
-     "src": "Guide pédagogique DCG 2026 ; C. consom., art. L. 221-18, L. 221-20 et L. 221-24",
+     "t": "<b>Sujet d'examen</b> : le guide pédagogique du DCG 2026 illustre la sous-partie « Accompagner le client dans ses contrats courants » par un sujet sur le délai de rétractation dans les ventes à distance. Il faut en maîtriser le régime : quatorze jours sans motif, point de départ à la réception du bien, prolongation de douze mois à défaut d'information (le délai expire quatorze jours après l'information si elle est fournie pendant la prolongation), remboursement dans les quatorze jours, et, depuis le 19 juin 2026, fonctionnalité de rétractation pour les contrats conclus au moyen d'une interface en ligne.",
+     "src": "Guide pédagogique DCG 2026 ; C. consom., art. L. 221-18, L. 221-20, L. 221-21 et L. 221-24",
      "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
      "fiab": "millésimé 2026"
     }
