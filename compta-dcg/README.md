@@ -7,7 +7,7 @@ test quotidien, révisions espacées sur 1 436 cartes de notions (définitions e
 plateau d'avancement par thème, plan comptable général 2025 commenté
 compte par compte (612 comptes), les annales officielles des cinq dernières sessions et les sujets zéro du programme
 2027 en composition chronométrée, un observatoire à remplir (chaque chapitre acquis révèle une cible des catalogues Messier et NGC, l'XP fait passer de
-l'œil nu au télescope James-Webb puis à l'ELT) et __NSUCC__ succès à débloquer (bronze, argent, or) dans sept catégories :
+l'œil nu au télescope James-Webb puis à l'ELT) et 141 succès à débloquer (bronze, argent, or) dans sept catégories :
 régularité, précision, maîtrise, matières, exploration, observatoire et annales. Chaque matière a la couleur d'une bande du
 spectre électromagnétique (radio, micro-ondes, infrarouge, visible, ultraviolet, X, gamma).
 
