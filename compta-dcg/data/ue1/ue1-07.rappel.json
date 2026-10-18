@@ -1,0 +1,133 @@
+{
+ "id": "ue1-07",
+ "ue": "UE1",
+ "ordre": 7,
+ "title": "La responsabilité civile de l'entrepreneur individuel",
+ "maj": "2026-10-19",
+ "resume": "Se remettre en tête la responsabilité contractuelle (force majeure, dommage réparable, clauses limitatives, faute lourde), la responsabilité extracontractuelle du fait personnel, du fait des choses et du fait des préposés, et le patrimoine que l'entrepreneur individuel engage envers ses créanciers professionnels.",
+ "rappels": [
+  {
+   "t": "<b>Responsabilité contractuelle</b> : le débiteur est condamné, s'il y a lieu, à des dommages et intérêts pour inexécution de l'obligation ou retard dans l'exécution, sauf s'il justifie que l'exécution a été empêchée par la force majeure (art. 1231-1).",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. civ., art. 1231-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010123/"
+  },
+  {
+   "t": "<b>Force majeure contractuelle</b> (art. 1218) : événement échappant au contrôle du débiteur, raisonnablement imprévisible à la conclusion, aux effets inévitables par des mesures appropriées, qui empêche l'exécution. Empêchement temporaire : suspension, sauf si le retard justifie la résolution ; définitif : résolution de plein droit, parties libérées (art. 1351 et 1351-1).",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. civ., art. 1218",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041431"
+  },
+  {
+   "t": "<b>Dommages et intérêts contractuels</b> : en général, la perte faite et le gain dont le créancier a été privé (art. 1231-2) ; seulement le dommage prévu ou prévisible à la conclusion, sauf faute lourde ou dolosive (art. 1231-3) ; même alors, la seule suite immédiate et directe de l'inexécution (art. 1231-4).",
+   "base": [
+    "Définitions#2",
+    "Règles essentielles#0",
+    "Règles essentielles#1"
+   ],
+   "src": "C. civ., art. 1231-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010125"
+  },
+  {
+   "t": "<b>Obligation essentielle</b> : toute clause qui la prive de sa substance est réputée non écrite (art. 1170). Une clause limitative portant sur elle ne l'est pas pour ce seul motif : celle de l'arrêt Faurecia, au plafond égal au prix payé et non dérisoire, a été appliquée (Com., 29 juin 2010).",
+   "base": [
+    "Définitions#4",
+    "Règles essentielles#4"
+   ],
+   "src": "C. civ., art. 1170 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008690/"
+  },
+  {
+   "t": "<b>Faute lourde</b> : elle est décrite comme une négligence d'une extrême gravité, confinant au dol et dénotant l'inaptitude du débiteur à accomplir sa mission contractuelle. Assimilée au dol, elle écarte la limitation au dommage prévisible et la clause limitative ou exclusive de responsabilité (Civ. 1re, 29 octobre 2014).",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#5"
+   ],
+   "src": "Cass. civ. 1re, 10 juillet 2014, n° 12-28.116 ; Cass. civ. 1re, 29 octobre 2014, n° 13-21.980 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000029244991/"
+  },
+  {
+   "t": "<b>Fait personnel</b> : tout fait quelconque de l'homme qui cause à autrui un dommage oblige celui par la faute duquel il est arrivé à le réparer (art. 1240) : fait fautif, dommage, lien de causalité. Une simple négligence ou imprudence suffit (art. 1241).",
+   "base": [
+    "Définitions#1",
+    "Règles essentielles#6"
+   ],
+   "src": "C. civ., art. 1240 et 1241",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032021488/"
+  },
+  {
+   "t": "<b>Fait des choses</b> : on est responsable du dommage causé par les choses que l'on a sous sa garde (art. 1242, al. 1er). La garde se rattache aux pouvoirs d'usage, de direction et de contrôle : le propriétaire qui en est privé par un vol n'est plus gardien (Ch. réunies, 2 décembre 1941).",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#7",
+    "Règles essentielles#9"
+   ],
+   "src": "C. civ., art. 1242, al. 1er ; Cass. ch. réunies, 2 décembre 1941",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006953144/"
+  },
+  {
+   "t": "<b>Présomption pesant sur le gardien</b> : seuls un cas fortuit, une force majeure ou une cause étrangère non imputable la renversent ; prouver l'absence de faute ne suffit pas, et peu importe que la chose ait été actionnée par la main de l'homme (Ch. réunies, 13 février 1930).",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "Cass. ch. réunies, 13 février 1930",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006952821/"
+  },
+  {
+   "t": "<b>Responsabilité du commettant</b> : les commettants sont responsables du dommage causé par leurs préposés dans les fonctions auxquelles ils les ont employés (art. 1242). Le programme 2025 limite à ce régime l'étude du fait d'autrui ; la responsabilité des artisans du fait de leurs apprentis relève du DSCG.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#10",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 1 ; C. civ., art. 1242",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-1-programme-des-unit-s-d-enseignement-du-dipl-me-de-comptabilit-et-de-gestion-dcg--37751.pdf"
+  },
+  {
+   "t": "<b>Immunité du préposé (Costedoat)</b> : en principe, le préposé qui agit sans excéder les limites de la mission qui lui a été impartie par son commettant n'engage pas sa responsabilité à l'égard des tiers (Ass. plén., 25 février 2000).",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "Cass. ass. plén., 25 février 2000, n° 97-17.378 et 97-20.152",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007043704/"
+  },
+  {
+   "t": "<b>Patrimoine professionnel</b> : biens, droits, obligations et sûretés de l'entrepreneur individuel utiles à son activité professionnelle indépendante. Sauf sûretés conventionnelles ou renonciation, il n'est en principe tenu que sur ce patrimoine envers ses créanciers dont les droits sont nés à l'occasion de son exercice professionnel, après l'entrée en vigueur de la loi n° 2022-172.",
+   "base": [
+    "Définitions#6",
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 526-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964"
+  },
+  {
+   "t": "<b>Piège : obligation essentielle et faute lourde</b> : la clause qui vide l'obligation essentielle de sa substance est réputée non écrite (art. 1170) ; la faute lourde ne peut résulter du seul manquement à une obligation contractuelle, fût-elle essentielle (Com., 29 juin 2010).",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "C. civ., art. 1170 et 1231-3 ; Cass. civ. 1re, 29 octobre 2014, n° 13-21.980 ; Cass. com., 29 juin 2010, n° 09-11.841",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000029681251"
+  },
+  {
+   "t": "<b>Limites de la séparation</b> : l'entrepreneur ne peut se porter caution d'une dette dont il est débiteur principal. Sur demande écrite d'un créancier, il peut renoncer à la dérogation de l'article L. 526-22 pour un engagement spécifique dont il doit rappeler le terme et le montant, déterminé ou déterminable (art. L. 526-25).",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "C. com., art. L. 526-22 et L. 526-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964"
+  },
+  {
+   "t": "<b>Ancienne numérotation</b> : les arrêts antérieurs à 2016 visent les articles 1382, 1383 et 1384, devenus 1240, 1241 et 1242 avec l'ordonnance n° 2016-131 (en vigueur le 1er octobre 2016).",
+   "base": [
+    "Points de vigilance#0",
+    "Chiffres et seuils#2"
+   ],
+   "src": "Ordonnance n° 2016-131 du 10 février 2016 ; Cass. ch. mixte, 29 octobre 2021, n° 19-18.470 ; Cass. com., 12 février 2020, n° 17-31.614",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000044299757"
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+{
+ "id": "ue1-02",
+ "ue": "UE1",
+ "ordre": 2,
+ "title": "Le litige : juridictions, action en justice, modes amiables et preuve",
+ "maj": "2026-10-19",
+ "resume": "Se remettre en tête les conditions de l'action en justice, la juridiction compétente et les voies de recours, les modes amiables et l'arbitrage, puis les règles de preuve.",
+ "rappels": [
+  {
+   "t": "<b>Intérêt et qualité pour agir</b> : l'action est ouverte à quiconque a un intérêt légitime au succès ou au rejet d'une prétention, sauf si la loi réserve le droit d'agir aux seules personnes qu'elle qualifie. Leur défaut est une <b>fin de non-recevoir</b> : irrecevabilité sans examen au fond.",
+   "base": [
+    "Définitions#0",
+    "Définitions#1"
+   ],
+   "src": "CPC, art. 31",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410125"
+  },
+  {
+   "t": "<b>Prescription de droit commun</b> : cinq ans pour les actions personnelles ou mobilières, à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer. L'action prescrite est irrecevable (fin de non-recevoir).",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. civ., art. 2224 ; CPC, art. 122",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017112"
+  },
+  {
+   "t": "<b>Tribunal judiciaire</b> : juridiction de droit commun pour les affaires civiles et commerciales que la loi n'attribue pas, en raison de la nature de la demande, à une autre juridiction. Dernier ressort jusqu'à 5 000 € (actions personnelles ou mobilières) : pas d'appel, mais pourvoi possible.",
+   "base": [
+    "Définitions#2",
+    "Chiffres et seuils#0"
+   ],
+   "src": "COJ, art. L. 211-3 et L. 211-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038314073"
+  },
+  {
+   "t": "<b>Tribunal de commerce</b> : contestations relatives aux engagements entre commerçants, entre artisans, entre établissements de crédit, entre sociétés de financement ou entre eux, aux sociétés commerciales et aux actes de commerce entre toutes personnes. Clause compromissoire possible en contractant, mais inopposable à la caution qui a garanti une dette commerciale hors de son activité professionnelle.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 721-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044078679"
+  },
+  {
+   "t": "<b>Compétence territoriale</b> : en principe, lieu où demeure le défendeur ou, au choix du demandeur, lieu de livraison effective ou d'exécution de la prestation (matière contractuelle), du fait dommageable ou du dommage subi (matière délictuelle). Clause dérogatoire réputée non écrite, sauf entre personnes ayant toutes contracté comme commerçants et spécifiée de façon très apparente.",
+   "base": [
+    "Règles essentielles#5",
+    "Règles essentielles#6",
+    "Règles essentielles#7"
+   ],
+   "src": "CPC, art. 42 et 43",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410140"
+  },
+  {
+   "t": "<b>Appel</b> : la cour statue à nouveau en fait et en droit sur les seuls chefs du jugement expressément critiqués et ceux qui en dépendent ; la dévolution ne s'opère pour le tout que si l'appel tend à l'annulation du jugement. Délai : un mois en matière contentieuse, sauf texte spécial.",
+   "base": [
+    "Règles essentielles#8",
+    "Chiffres et seuils#3"
+   ],
+   "src": "CPC, art. 528, 561 et 562",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006181692/"
+  },
+  {
+   "t": "<b>Pourvoi en cassation</b> : il tend à faire censurer la non-conformité du jugement aux règles de droit ; il n'est ouvert que contre les jugements rendus en dernier ressort. Délai : deux mois, sauf disposition contraire.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "CPC, art. 604, 605 et 612",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410964"
+  },
+  {
+   "t": "<b>Tentative préalable obligatoire</b> : devant le tribunal judiciaire, la demande en paiement n'excédant pas 5 000 € ou relative à un trouble anormal de voisinage, notamment, doit être précédée d'une tentative de conciliation par un conciliateur de justice, de médiation ou de procédure participative, sauf dispense, à peine d'irrecevabilité que le juge peut prononcer d'office.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "CPC, art. 750-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039501708/"
+  },
+  {
+   "t": "<b>Transaction</b> : contrat écrit par lequel les parties, par des concessions réciproques, terminent une contestation née ou préviennent une contestation à naître. Le programme la range parmi les modes alternatifs, avec conciliation, médiation et arbitrage.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. civ., art. 2044",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033458766"
+  },
+  {
+   "t": "<b>Clause compromissoire</b> : elle doit avoir été acceptée par la partie à qui on l'oppose, sauf si celle-ci a succédé aux droits et obligations de celle qui l'avait acceptée. Elle est inopposable à la partie qui n'a pas contracté dans le cadre de son activité professionnelle.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. civ., art. 2061 (rédaction issue de la loi n° 2016-1547 du 18 novembre 2016)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033458809"
+  },
+  {
+   "t": "<b>Charge de la preuve</b> : celui qui réclame l'exécution d'une obligation doit la prouver ; celui qui se prétend libéré doit justifier le paiement ou le fait qui a produit l'extinction de son obligation.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. civ., art. 1353",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042341"
+  },
+  {
+   "t": "<b>Présomption légale</b> : elle dispense de preuve son bénéficiaire. Elle est <b>simple</b> si la loi réserve la preuve contraire, apportée par tout moyen ; <b>mixte</b> si la loi limite les moyens par lesquels elle peut être renversée ou l'objet sur lequel elle peut l'être ; <b>irréfragable</b> si elle ne peut être renversée.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. civ., art. 1354",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042336"
+  },
+  {
+   "t": "<b>Admissibilité des preuves</b> : sauf loi contraire, la preuve se fait par tout moyen, mais l'acte juridique de plus de 1 500 € se prouve en principe par écrit sous signature privée ou authentique, sauf impossibilité matérielle ou morale de s'en procurer un, usage de ne pas en établir ou perte par force majeure.",
+   "base": [
+    "Règles essentielles#14",
+    "Règles essentielles#15"
+   ],
+   "src": "C. civ., art. 1358 et 1359",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042316"
+  },
+  {
+   "t": "<b>Preuve des actes de commerce</b> : à l'égard des commerçants, ils peuvent se prouver par tous moyens, sauf loi contraire. Ce texte spécial écarte ainsi, à leur seul égard, l'écrit que l'article 1359 du Code civil exige au-delà de 1 500 €.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. L. 110-3 ; C. civ., art. 1359",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219127"
+  }
+ ]
+}

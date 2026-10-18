@@ -1,0 +1,131 @@
+{
+ "id": "ue1-05",
+ "ue": "UE1",
+ "ordre": 5,
+ "title": "Le contrat : formation, validité, effets et inexécution",
+ "maj": "2026-10-19",
+ "resume": "Se remettre en tête la force obligatoire et la bonne foi, la phase précontractuelle (pacte de préférence, promesse, offre, devoir d'information), les conditions de validité, les vices du consentement et la nullité, les clauses contrôlées, l'imprévision, puis les sanctions de l'inexécution.",
+ "rappels": [
+  {
+   "t": "<b>Force obligatoire et bonne foi</b> : le contrat légalement formé tient lieu de loi aux parties ; il ne peut être modifié ou révoqué que d'un commun accord ou pour les causes que la loi autorise. Il doit être négocié, formé et exécuté de bonne foi (ordre public).",
+   "base": [
+    "Règles essentielles#1",
+    "Règles essentielles#2"
+   ],
+   "src": "C. civ., art. 1103, 1193 et 1199",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041314"
+  },
+  {
+   "t": "<b>Pacte de préférence</b> : contrat engageant une partie à proposer prioritairement au bénéficiaire de traiter avec lui si elle décide de contracter. Violé au profit d'un tiers : réparation et, si ce tiers connaissait le pacte et l'intention du bénéficiaire de s'en prévaloir, nullité ou substitution judiciaire du bénéficiaire au tiers.",
+   "base": [
+    "Définitions#2",
+    "Règles essentielles#7"
+   ],
+   "src": "C. civ., art. 1123, al. 1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040825"
+  },
+  {
+   "t": "<b>Promesse unilatérale</b> : contrat conférant au bénéficiaire le droit d'opter pour un contrat aux éléments essentiels déterminés, auquel seul manque son consentement. Sa révocation pendant le délai d'option n'empêche pas la formation du contrat promis ; l'offre reçue puis rétractée avant l'expiration de son délai empêche la conclusion, son auteur engageant seulement sa responsabilité extracontractuelle.",
+   "base": [
+    "Définitions#3",
+    "Points de vigilance#1",
+    "Règles essentielles#5"
+   ],
+   "src": "C. civ., art. 1124, al. 1 et 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040818/"
+  },
+  {
+   "t": "<b>Devoir d'information</b> : qui connaît une information déterminante pour le consentement de l'autre doit l'en informer si, légitimement, celle-ci l'ignore ou lui fait confiance ; ce devoir ne porte pas sur l'estimation de la valeur et ne peut être limité ni exclu. Manquement : responsabilité ; annulation seulement aux conditions d'un vice du consentement.",
+   "base": [
+    "Règles essentielles#4",
+    "Points de vigilance#2"
+   ],
+   "src": "C. civ., art. 1112-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032007138"
+  },
+  {
+   "t": "<b>Conditions de validité</b> : consentement, capacité de contracter, contenu licite et certain. Erreur, dol et violence vicient le consentement s'ils sont déterminants (sans eux, l'une des parties n'aurait pas contracté, ou à des conditions substantiellement différentes) ; l'erreur doit en outre être excusable et porter sur des qualités essentielles convenues.",
+   "base": [
+    "Règles essentielles#8",
+    "Règles essentielles#9"
+   ],
+   "src": "C. civ., art. 1128 et 1130",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040911"
+  },
+  {
+   "t": "<b>Dol</b> : fait pour un contractant d'obtenir le consentement de l'autre par manœuvres, mensonges ou dissimulation intentionnelle d'une information qu'il sait déterminante pour celui-ci.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. civ., art. 1137, al. 1 et 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829827"
+  },
+  {
+   "t": "<b>Violence</b> : contrainte inspirant la crainte d'un mal considérable (personne, fortune, proches). Également : abus de la dépendance du cocontractant à son égard, procurant un engagement autrement non souscrit et un avantage manifestement excessif.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. civ., art. 1140 et 1143",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829824"
+  },
+  {
+   "t": "<b>Nullité</b> : prononcée par le juge, sauf constat d'un commun accord ; le contrat annulé est censé n'avoir jamais existé (restitutions). Absolue si la règle violée protège l'intérêt général (tout intéressé, ministère public), relative si elle ne protège qu'un intérêt privé.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. civ., art. 1178 à 1180",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041243"
+  },
+  {
+   "t": "<b>Déséquilibre significatif</b> : en contrat d'adhésion, la clause non négociable le créant est réputée non écrite (appréciation hors objet principal et adéquation du prix). Cass. com., 13 mai 2026 : inapplicable aux contrats d'une personne exerçant des activités de production, de distribution ou de services, sauf si un texte écarte l'article L. 442-1 C. com.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. civ., art. 1171 (rédaction de la loi n° 2018-287) ; Cass. com., 13 mai 2026, n° 24-17.137",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829836"
+  },
+  {
+   "t": "<b>Obligation essentielle et clause pénale</b> : est réputée non écrite la clause qui prive de sa substance l'obligation essentielle du débiteur. Le juge peut, même d'office, modérer ou augmenter la pénalité manifestement excessive ou dérisoire ; sauf inexécution définitive, elle suppose une mise en demeure.",
+   "base": [
+    "Règles essentielles#11",
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. civ., art. 1170 ; Cass. com., 29 juin 2010, n° 09-11.841",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008690/"
+  },
+  {
+   "t": "<b>Imprévision</b> : changement de circonstances imprévisible à la conclusion, rendant l'exécution excessivement onéreuse pour une partie n'en ayant pas accepté le risque : renégociation, sans cesser d'exécuter. Refus ou échec : résolution convenue ou adaptation demandée ensemble au juge ; sinon, après un délai raisonnable, une partie peut lui demander révision ou fin du contrat.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. civ., art. 1195",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041302"
+  },
+  {
+   "t": "<b>Sanctions de l'inexécution</b> : refus ou suspension de sa propre obligation, exécution forcée en nature, réduction du prix, résolution, réparation, cumulables si compatibles. Résolution : clause résolutoire, après mise en demeure infructueuse la mentionnant expressément (sauf dispense convenue) ; ou, pour inexécution suffisamment grave, notification, en principe après mise en demeure, ou décision de justice.",
+   "base": [
+    "Règles essentielles#16",
+    "Règles essentielles#18",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. civ., art. 1217 (rédaction de la loi n° 2018-287)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829854"
+  },
+  {
+   "t": "<b>Force majeure</b> : événement échappant au contrôle du débiteur, raisonnablement imprévisible à la conclusion, aux effets inévitables par des mesures appropriées, empêchant l'exécution. Empêchement temporaire : suspension, sauf si le retard justifie la résolution ; définitif : résolution de plein droit.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "C. civ., art. 1218",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041431"
+  },
+  {
+   "t": "<b>Dommages et intérêts</b> : sauf inexécution définitive, mise en demeure préalable ; la force majeure exonère. Seuls sont dus ceux prévus ou prévisibles à la conclusion, sauf faute lourde ou dolosive ; même alors, seule la suite immédiate et directe est réparée.",
+   "base": [
+    "Règles essentielles#19"
+   ],
+   "src": "C. civ., art. 1231, 1231-1, 1231-3 et 1231-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032010127"
+  }
+ ]
+}

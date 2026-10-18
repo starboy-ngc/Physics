@@ -1,0 +1,133 @@
+{
+ "id": "ue1-03",
+ "ue": "UE1",
+ "ordre": 3,
+ "title": "Les personnes juridiques, leurs biens et le droit de propriété",
+ "maj": "2026-10-19",
+ "resume": "Se remettre en tête la personnalité juridique et ses attributs, la capacité et la protection des incapables, la distinction des biens, puis la propriété, la prescription acquisitive et l'usufruit.",
+ "rappels": [
+  {
+   "t": "<b>Personnalité morale</b> : les sociétés, hors sociétés en participation et sociétés de libre partenariat spéciales, en jouissent dès leur immatriculation. Les associations n'ont la capacité juridique qu'une fois déclarées au représentant de l'État et rendues publiques. La capacité des personnes morales est limitée par les règles applicables à chacune.",
+   "base": [
+    "Règles essentielles#3",
+    "Règles essentielles#4",
+    "Règles essentielles#5"
+   ],
+   "src": "C. civ., art. 1842",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049876831"
+  },
+  {
+   "t": "<b>Domicile</b> : pour l'exercice des droits civils de tout Français, lieu de son principal établissement. Il change par une habitation réelle ailleurs, jointe à l'intention d'y fixer son principal établissement.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. civ., art. 102 et 103",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028807383"
+  },
+  {
+   "t": "<b>Vie privée et corps humain</b> : chacun a droit au respect de sa vie privée ; le juge peut prescrire des mesures, en référé si urgence, pour empêcher ou faire cesser une atteinte à l'intimité. Le corps humain, ses éléments et ses produits ne peuvent faire l'objet d'un droit patrimonial.",
+   "base": [
+    "Règles essentielles#0",
+    "Règles essentielles#1"
+   ],
+   "src": "C. civ., art. 9",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419288"
+  },
+  {
+   "t": "<b>Capacité d'exercice</b> : acquise à dix-huit ans accomplis. Sont incapables de contracter, dans la mesure définie par la loi, les mineurs non émancipés et les majeurs protégés, à peine de nullité relative. Ils peuvent toutefois faire seuls les actes courants autorisés par la loi ou l'usage, conclus à des conditions normales.",
+   "base": [
+    "Définitions#1",
+    "Règles essentielles#5"
+   ],
+   "src": "C. civ., art. 414, 1145 et 1146",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427400"
+  },
+  {
+   "t": "<b>Mineur</b> : représenté par l'administrateur légal, sauf si la loi ou l'usage l'autorise à agir seul. Émancipé dès seize ans par le juge des tutelles, après audition, pour justes motifs, il est capable comme un majeur des actes de la vie civile, sauf pour se marier ou se donner en adoption.",
+   "base": [
+    "Règles essentielles#6",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. civ., art. 388-1-1 et 413-6",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031323522"
+  },
+  {
+   "t": "<b>Curatelle et tutelle</b> : pour qui ne peut pourvoir seul à ses intérêts, par altération médicalement constatée de ses facultés mentales, ou corporelles de nature à empêcher d'exprimer sa volonté. Curatelle (assistance ou contrôle continu des actes importants) si la sauvegarde de justice est insuffisante ; tutelle (représentation continue) si aucune des deux ne suffit.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. civ., art. 425 et 440",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427481"
+  },
+  {
+   "t": "<b>Administration ou disposition</b> : l'acte d'administration exploite ou met en valeur le patrimoine du protégé sans risque anormal ; l'acte de disposition l'engage par une modification importante de son contenu, une dépréciation significative de sa valeur en capital ou une altération durable des prérogatives de ses titulaires.",
+   "base": [
+    "Définitions#8"
+   ],
+   "src": "Décret n° 2008-1484 du 22 décembre 2008, art. 1 et 2, annexes 1 et 2",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000020063723"
+  },
+  {
+   "t": "<b>Meubles et immeubles</b> : tout bien est l'un ou l'autre. Immeubles par nature (fonds de terre, bâtiments), par destination ou par l'objet auquel ils s'appliquent ; meubles par nature (transportables) ou par détermination de la loi. Les animaux, êtres vivants doués de sensibilité, relèvent du régime des biens, sous réserve des lois qui les protègent.",
+   "base": [
+    "Définitions#2",
+    "Définitions#3",
+    "Définitions#4"
+   ],
+   "src": "C. civ., art. 516 à 518",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428592"
+  },
+  {
+   "t": "<b>Droit de gage général</b> : en principe, qui s'est obligé personnellement répond de son engagement sur tous ses biens, présents et à venir, gage commun de ses créanciers, payés par contribution sauf causes légitimes de préférence.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "C. civ., art. 2284 et 2285",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032"
+  },
+  {
+   "t": "<b>Propriété</b> : droit de jouir et disposer des choses de la manière la plus absolue, sauf usage prohibé par les lois ou règlements. Limites : expropriation pour cause d'utilité publique, moyennant une juste et préalable indemnité ; trouble anormal du voisinage.",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#8"
+   ],
+   "src": "C. civ., art. 544, 545 et 1253",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428859"
+  },
+  {
+   "t": "<b>Prescription acquisitive</b> : il faut une possession continue et non interrompue, paisible, publique, non équivoque et à titre de propriétaire. Immeuble : trente ans, ou dix avec juste titre et bonne foi (présumée ; il suffit qu'elle existe à l'acquisition) ; son propriétaire, dont la revendication est imprescriptible, peut être évincé par qui a prescrit.",
+   "base": [
+    "Règles essentielles#13",
+    "Chiffres et seuils#1",
+    "Règles essentielles#11"
+   ],
+   "src": "C. civ., art. 2258 et 2261",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019017143"
+  },
+  {
+   "t": "<b>Usufruit</b> : droit de jouir de la chose d'autrui comme le propriétaire, à charge d'en conserver la substance. L'usufruitier acquiert tous les fruits, les civils jour par jour. Quasi-usufruit sur les choses consomptibles, comme l'argent : il s'en sert, puis rend même quantité et qualité ou leur valeur à la restitution.",
+   "base": [
+    "Définitions#7",
+    "Règles essentielles#14"
+   ],
+   "src": "C. civ., art. 578 et 582",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136246"
+  },
+  {
+   "t": "<b>Grosses réparations</b> : l'usufruitier n'est tenu qu'aux réparations d'entretien ; les grosses réparations incombent au nu-propriétaire, sauf si elles résultent du défaut de réparations d'entretien depuis l'ouverture de l'usufruit. Piège : l'usufruitier ne peut contraindre le nu-propriétaire à les exécuter.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "C. civ., art. 605 et 606 ; Cass. 3e civ., 3 mai 2012, n° 11-14.964",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006429505"
+  },
+  {
+   "t": "<b>Fin de l'usufruit</b> : mort de l'usufruitier (intransmissible aux héritiers), terme, consolidation, non-usage trentenaire, perte totale de la chose ; il peut aussi cesser par abus de jouissance. Accordé à une personne morale, il ne dure que trente ans.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. civ., art. 617 à 619 ; CE, 31 mars 2022, n° 458518",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150119"
+  }
+ ]
+}

@@ -1,0 +1,132 @@
+{
+ "id": "ue1-06",
+ "ue": "UE1",
+ "ordre": 6,
+ "title": "Les contrats courants et les sûretés",
+ "maj": "2026-10-19",
+ "resume": "Se remettre en tête la vente (prix, transfert de propriété et des risques, promesses, vices cachés), le contrat d'entreprise, le droit de la consommation (clauses abusives, garantie de conformité, rétractation) et deux règles sur les sûretés (nantissement du fonds de commerce, sûreté prise pour une dette ancienne).",
+ "rappels": [
+  {
+   "t": "<b>Prix</b> : déterminé et désigné par les parties, ou laissé à l'estimation d'un tiers ; si celui-ci ne veut ou ne peut la faire, il n'y a point de vente, sauf estimation par un autre tiers.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. civ., art. 1591, 1592 et 1583",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136377"
+  },
+  {
+   "t": "<b>Transfert de propriété</b> : dans la vente, il s'opère lors de la conclusion du contrat, sauf report par la volonté des parties, la nature des choses ou l'effet de la loi, et emporte en principe transfert des risques.",
+   "base": [
+    "Règles essentielles#2",
+    "Points de vigilance#2"
+   ],
+   "src": "C. civ., art. 1196",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041294/"
+  },
+  {
+   "t": "<b>Promesse unilatérale de vente</b> : sans engagement corrélatif d'acheter, elle ne peut être assimilée à une promesse synallagmatique. Pour un immeuble, droit immobilier, fonds de commerce, droit au bail ou titres de certaines sociétés, elle est nulle sans acte authentique ou sous seing privé enregistré dans les dix jours de son acceptation.",
+   "base": [
+    "Points de vigilance#1",
+    "Chiffres et seuils#3"
+   ],
+   "src": "C. civ., art. 1589 ; Cass. com., 25 avril 1989, n° 87-17.281",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007022561/"
+  },
+  {
+   "t": "<b>Vice caché</b> : défaut caché rendant la chose impropre à l'usage auquel on la destine, ou diminuant tellement cet usage que l'acheteur ne l'aurait pas acquise ou en aurait donné un moindre prix. Action dans les deux ans de sa découverte.",
+   "base": [
+    "Définitions#6",
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. civ., art. 1641",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441924"
+  },
+  {
+   "t": "<b>Vendeur professionnel</b> : présumé irréfragablement connaître le vice, il doit réparer l'intégralité des dommages en résultant et ne peut en principe se prévaloir d'une clause limitative ou exclusive de garantie.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Cass. com., 19 mai 2021, n° 19-18.230 ; C. civ., art. 1645 ; Cass. 3e civ., 15 juin 2022, n° 21-21.143 (inédit) ; C. civ., art. 1643",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000043566067"
+  },
+  {
+   "t": "<b>Contrat d'entreprise</b> : l'un s'engage à faire quelque chose pour l'autre, moyennant un prix convenu. Fournissant la matière, l'entrepreneur supporte la perte de la chose avant livraison, sauf mise en demeure du maître de la recevoir ; s'il ne fournit que son travail, il n'est tenu que de sa faute.",
+   "base": [
+    "Définitions#1",
+    "Règles essentielles#6",
+    "Points de vigilance#2"
+   ],
+   "src": "C. civ., art. 1710 et 1787",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006442681/1804-03-17"
+  },
+  {
+   "t": "<b>Consommateur</b> : personne physique agissant à des fins étrangères à son activité commerciale, industrielle, artisanale, libérale ou agricole. <b>Non-professionnel</b> : personne morale n'agissant pas à des fins professionnelles. <b>Professionnel</b> : personne physique ou morale, publique ou privée, agissant à des fins entrant dans le cadre d'une telle activité.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. consom., article liminaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049464063"
+  },
+  {
+   "t": "<b>Clause abusive (consommation)</b> : elle a pour objet ou pour effet de créer, au détriment du consommateur, un déséquilibre significatif entre droits et obligations des parties, apprécié hors objet principal et adéquation du prix si elle est claire et compréhensible. Certaines sont irréfragablement présumées abusives (R. 212-1), d'autres jusqu'à preuve contraire du professionnel (R. 212-2).",
+   "base": [
+    "Définitions#4",
+    "Règles essentielles#8"
+   ],
+   "src": "C. consom., art. L. 212-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032890812"
+  },
+  {
+   "t": "<b>Contrat d'adhésion</b> : la clause non négociable, déterminée à l'avance par une partie, qui crée un déséquilibre significatif est réputée non écrite ; selon Cass. com., 13 mai 2026, l'article 1171 ne s'applique pas, en principe, aux contrats conclus par une personne exerçant des activités de production, de distribution ou de services.",
+   "base": [
+    "Définitions#3",
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. civ., art. 1110 et 1171 ; Cass. com., 13 mai 2026, n° 24-17.137",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829836"
+  },
+  {
+   "t": "<b>Garantie légale de conformité</b> : le vendeur répond des défauts existant à la délivrance et apparus dans les deux ans ; ceux apparus dans les 24 mois (12 pour l'occasion) sont présumés exister à la délivrance, sauf preuve contraire ou incompatibilité avec la nature du bien ou du défaut.",
+   "base": [
+    "Règles essentielles#9",
+    "Règles essentielles#10"
+   ],
+   "src": "C. consom., art. L. 217-3 ; ordonnance n° 2021-1247 du 29 septembre 2021",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044142579"
+  },
+  {
+   "t": "<b>Délai de rétractation</b> : 14 jours sans motif (contrat à distance, après démarchage téléphonique ou hors établissement), à compter de la conclusion pour un service, de la réception pour un bien. Faute d'information sur ce droit, prolongation de 12 mois, ou expiration 14 jours après une information reçue pendant celle-ci.",
+   "base": [
+    "Règles essentielles#11",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. consom., art. L. 221-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226842/"
+  },
+  {
+   "t": "<b>Exercice et remboursement</b> : formulaire type, déclaration dénuée d'ambiguïté ou, depuis le 19 juin 2026, fonctionnalité gratuite pour un contrat conclu par interface en ligne. Remboursement intégral, livraison standard comprise, dans les 14 jours de l'information ; pour un bien, différable jusqu'à récupération ou preuve d'expédition, sauf si le professionnel propose de le récupérer.",
+   "base": [
+    "Règles essentielles#12",
+    "Règles essentielles#13"
+   ],
+   "src": "C. consom., art. L. 221-21 (version issue de l'ordonnance n° 2026-2 du 5 janvier 2026, en vigueur depuis le 19 juin 2026)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053310520"
+  },
+  {
+   "t": "<b>Nantissement du fonds de commerce</b> : le créancier ne peut se faire attribuer le fonds en paiement ; sauf désignation expresse et précise, le nantissement ne comprend que l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. Inscription dans les trente jours de l'acte, à peine de nullité.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037"
+  },
+  {
+   "t": "<b>Sûreté pour dette ancienne</b> : en redressement judiciaire, est nulle de droit la sûreté réelle conventionnelle constituée depuis la cessation des paiements pour une dette antérieure, sauf exceptions, dont le remplacement d'une sûreté antérieure d'une nature et d'une assiette au moins équivalentes.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. L. 632-1, I, 6° (version en vigueur depuis le 15 mai 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146112/"
+  }
+ ]
+}

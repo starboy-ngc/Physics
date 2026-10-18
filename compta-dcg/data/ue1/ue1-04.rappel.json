@@ -1,0 +1,129 @@
+{
+ "id": "ue1-04",
+ "ue": "UE1",
+ "ordre": 4,
+ "title": "L'entrepreneur individuel, son activité et son couple",
+ "maj": "2026-10-19",
+ "resume": "Se remettre en tête le commerçant, la protection patrimoniale de l'entrepreneur individuel et sa renonciation, l'insaisissabilité, le statut du conjoint collaborateur et les masses de biens du couple marié, pacsé ou en concubinage.",
+ "rappels": [
+  {
+   "t": "<b>Commerçant</b> : celui qui exerce des <b>actes de commerce</b> et en fait sa profession habituelle (conditions cumulatives). La loi répute notamment actes de commerce l'achat de meubles pour les revendre et, entre toutes personnes, les lettres de change et les cautionnements de dettes commerciales.",
+   "base": [
+    "Définitions#0",
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 121-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219167"
+  },
+  {
+   "t": "<b>Entrepreneur individuel</b> : personne physique exerçant en son nom propre une ou plusieurs activités professionnelles indépendantes. Pour les créances nées depuis le 15 mai 2022 (loi du 14 février 2022), son <b>patrimoine professionnel</b> (biens, droits, obligations et sûretés utiles à l'activité) est séparé de plein droit de son <b>patrimoine personnel</b>.",
+   "base": [
+    "Définitions#2",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. com., art. L. 526-22 ; R. 526-26, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964"
+  },
+  {
+   "t": "<b>Créanciers personnels</b> : ceux dont les droits ne sont pas nés à l'occasion de l'exercice professionnel ont pour gage le patrimoine personnel ; s'il est insuffisant, ils peuvent saisir le patrimoine professionnel dans la limite du bénéfice du dernier exercice clos.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 526-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964"
+  },
+  {
+   "t": "<b>Renonciation</b> : sur demande écrite d'un créancier, l'entrepreneur peut renoncer à la protection de son patrimoine personnel pour un engagement spécifique dont il rappelle le terme et le montant, déterminé ou déterminable, dans les formes prescrites par décret à peine de nullité.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 526-25 ; D. 526-28 (décret n° 2022-799 du 12 mai 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168712"
+  },
+  {
+   "t": "<b>Délai de réflexion</b> : l'entrepreneur ne peut renoncer avant l'échéance de <b>7 jours francs</b> à compter de la réception de la demande du créancier, ou <b>3 jours francs</b> s'il fait précéder sa signature de la seule mention manuscrite énoncée par décret.",
+   "base": [
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 526-25 ; D. 526-28, IV (décret n° 2022-799 du 12 mai 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045168712"
+  },
+  {
+   "t": "<b>Caution de sa propre dette</b> : la séparation des patrimoines n'autorise pas l'entrepreneur à se porter caution d'une dette dont il est débiteur principal ; pour ouvrir son patrimoine personnel à un créancier professionnel, il faut une renonciation ou une sûreté conventionnelle (sauf exceptions légales fiscales et sociales).",
+   "base": [
+    "Points de vigilance#0",
+    "Points de vigilance#1"
+   ],
+   "src": "C. com., art. L. 526-22 et L. 526-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964"
+  },
+  {
+   "t": "<b>Insaisissabilité</b> : les droits de la personne physique immatriculée au registre national des entreprises sur sa résidence principale sont, sans déclaration, insaisissables par ses créanciers professionnels. Autres biens fonciers non affectés à l'usage professionnel : déclaration notariée, à peine de nullité, publiée au fichier immobilier (ou au livre foncier).",
+   "base": [
+    "Règles essentielles#5",
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 526-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044056367"
+  },
+  {
+   "t": "<b>Conjoint collaborateur</b> : statut limité à <b>5 ans</b>, toutes périodes et entreprises confondues ; au-delà, le conjoint qui travaille encore régulièrement dans l'entreprise opte pour le statut de conjoint salarié ou associé (à défaut, réputé conjoint salarié).",
+   "base": [
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. com., art. L. 121-4, IV bis ; loi n° 2021-1754 du 23 décembre 2021, art. 24",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489"
+  },
+  {
+   "t": "<b>Règles transitoires</b> : pour le conjoint collaborateur en activité au 1er janvier 2022, seules comptent les périodes postérieures à cette date. Qui atteint, au plus tard le 31 décembre 2031, l'âge prévu à l'article L. 351-8 du CSS peut garder ce statut jusqu'à la liquidation de sa pension.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Loi n° 2021-1754 du 23 décembre 2021, art. 24 ; CSS, art. L. 661-2",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044553489"
+  },
+  {
+   "t": "<b>Biens communs</b> : en communauté légale, acquêts faits par les époux, ensemble ou séparément, durant le mariage, issus de leur industrie personnelle ou des économies sur les fruits et revenus de leurs propres ; tout bien est présumé commun faute de preuve de son caractère propre.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. civ., art. 1401 et 1402",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439420"
+  },
+  {
+   "t": "<b>Biens propres</b> : possédés au jour du mariage ou reçus par succession, donation ou legs (sauf libéralité stipulant l'entrée en communauté ou, sauf stipulation contraire, faite aux deux époux conjointement) ; aussi, sauf récompense s'il y a lieu, instruments de travail nécessaires à la profession d'un époux, hors accessoire d'un fonds ou d'une exploitation commune.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. civ., art. 1404 et 1405",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165608/"
+  },
+  {
+   "t": "<b>Dettes ménagères</b> : toute dette d'un époux pour l'entretien du ménage ou l'éducation des enfants oblige l'autre solidairement, sauf dépense manifestement excessive et, sans le consentement des deux, achat à tempérament ou emprunt autre que de sommes modestes nécessaires aux besoins de la vie courante dont le montant cumulé n'est pas manifestement excessif.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. civ., art. 220",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028748098"
+  },
+  {
+   "t": "<b>PACS et concubinage</b> : le PACS est un contrat conclu par deux personnes physiques majeures pour organiser leur vie commune ; le concubinage, une union de fait : vie commune stable et continue entre deux personnes vivant en couple.",
+   "base": [
+    "Définitions#6",
+    "Définitions#7"
+   ],
+   "src": "C. civ., art. 515-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428463"
+  },
+  {
+   "t": "<b>Biens personnels et indivis</b> : en séparation de biens, et dans le PACS sauf convention contraire, chacun conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu de ses dettes (sauf art. 220 et 515-4) ; faute de preuve d'une propriété exclusive, les biens sont réputés indivis par moitié.",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#15",
+    "Règles essentielles#16"
+   ],
+   "src": "C. civ., art. 1536, 1538 et 515-5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021330223"
+  }
+ ]
+}
