@@ -168,6 +168,37 @@ function checkCartes(d, file, errs) {
   if (n.def < 5) errs.push(`cartes : ${n.def} cartes « def » (5 minimum)`);
   if (n.comp < 5) errs.push(`cartes : ${n.comp} cartes « comp » (5 minimum)`);
 }
+// Rappels courts (UE1) : une page par chapitre, chaque rappel tiré d'un ou plusieurs items de la fiche vérifiée.
+function checkRappel(d, file, errs) {
+  const path = require("path");
+  if (!/^ue1-\d\d$/.test(d.id || "")) errs.push(`rappels : id invalide ${d.id}`);
+  if (d.ue !== "UE1") errs.push("rappels : ue doit être UE1");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d.maj || "")) errs.push("rappels : maj doit être une date AAAA-MM-JJ");
+  if (!d.title || !d.resume) errs.push("rappels : title et resume obligatoires");
+  const ff = path.join(path.dirname(file), `${d.id}.fiche.json`);
+  let fiche = null; try { fiche = JSON.parse(fs.readFileSync(ff, "utf8")); } catch (e) { errs.push(`rappels : fiche voisine illisible (${ff})`); }
+  const item = ref => { const m = /^(.+)#(\d+)$/.exec(ref || ""); if (!m || !fiche) return null; const sct = (fiche.sections || []).find(x => x.h === m[1]); return sct && sct.items ? sct.items[+m[2]] || null : null; };
+  const list = d.rappels;
+  if (!Array.isArray(list)) { errs.push("rappels : tableau « rappels » manquant"); return; }
+  if (list.length < 8 || list.length > 14) errs.push(`rappels : ${list.length} rappels (8 à 14 attendus)`);
+  let total = 0;
+  list.forEach((k, i) => {
+    const w = `rappels[${i}]`;
+    const t = String(k.t || ""); const tw = t.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length; total += tw;
+    if (tw < 10 || tw > 60) errs.push(`${w}: ${tw} mots (12 à 55 attendus)`);
+    (t.match(/<\/?([a-zA-Z0-9]+)([^>]*)>/g) || []).forEach(x => { const m = x.match(/^<\/?([a-zA-Z0-9]+)([^>]*)>$/); if (!["b", "i"].includes(m[1].toLowerCase()) || m[2].trim()) errs.push(`${w}: balise interdite ${x}`); });
+    if (!Array.isArray(k.base) || k.base.length < 1 || k.base.length > 3) { errs.push(`${w}: base doit lister 1 à 3 items de la fiche`); return; }
+    const its = k.base.map(item);
+    k.base.forEach((b, j) => { if (!its[j]) errs.push(`${w}: base « ${b} » introuvable dans la fiche`); });
+    if (its[0]) {
+      if (k.src !== its[0].src) errs.push(`${w}: src « ${k.src} » différente de celle de l'item de base « ${its[0].src} »`);
+      if (k.url === undefined) errs.push(`${w}: url doit être présente (URL de l'item de base ou null)`);
+      else if ((k.url || null) !== (its[0].url || null)) errs.push(`${w}: url différente de celle de l'item de base`);
+    }
+    if (its.some(x => x && /millésimé/.test(x.fiab || ""))) errs.push(`${w}: repose sur un item millésimé`);
+  });
+  if (total > 650) errs.push(`rappels : ${total} mots au total (650 au plus : une page)`);
+}
 let failed = 0;
 for (const f of process.argv.slice(2)) {
   const errs = [];
@@ -175,6 +206,7 @@ for (const f of process.argv.slice(2)) {
   try { data = JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.log(`✗ ${f} : JSON invalide — ${e.message}`); failed++; continue; }
   let info = "";
   if (data.comptes) { checkPcg(data.comptes, errs); info = `${data.comptes.length} comptes`; }
+  else if (data.rappels) { checkRappel(data, f, errs); info = `rappels, ${(data.rappels || []).length}`; }
   else if (data.cartes) { checkCartes(data, f, errs); info = `cartes, ${(data.cartes || []).length} (${(data.cartes || []).filter(k => k.type === "def").length} déf.)`; }
   else if (data.maj && data.sections) { checkFiche(data, errs); info = `fiche, ${(data.sections || []).reduce((a, s) => a + (s.items || []).length, 0)} items, ${(data.textes || []).length} textes`; }
   else { const c = checkChapter(data, errs); info = `${(data.exercices || []).length} exercices ${JSON.stringify(c)}`; total += (data.exercices || []).length; }

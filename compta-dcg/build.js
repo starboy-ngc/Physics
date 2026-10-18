@@ -4,10 +4,17 @@ const fs = require("fs"), path = require("path"), { execFileSync } = require("ch
 const ROOT = __dirname; const lenient = process.argv.includes("--lenient"); const strict = process.argv.includes("--strict");
 const plan = JSON.parse(fs.readFileSync(path.join(ROOT, "data/plan.json"), "utf8"));
 const order = Object.fromEntries(plan.ues.map((u, i) => [u.code, i]));
-const chapitres = []; const skipped = [];
+const chapitres = []; const skipped = []; const rappels = [];
 for (const p of plan.chapitres) {
   // Chapitre en brouillon (vérification sur sources officielles pas terminée) : jamais publié.
   if (p.brouillon) { skipped.push(p.id + " (brouillon)"); continue; }
+  // UE en « rappels » (UE1) : une page de rappels courts par chapitre, sans exercices ni cartes.
+  if (p.rappel) {
+    const fr = path.join(ROOT, "data", p.ue.toLowerCase(), p.id + ".rappel.json");
+    let rok = fs.existsSync(fr); if (rok) { try { execFileSync("node", [path.join(ROOT, "validate.js"), fr], { stdio: "pipe" }); } catch (e) { rok = false; } }
+    if (rok) rappels.push(JSON.parse(fs.readFileSync(fr, "utf8"))); else skipped.push(p.id + " (rappels absents ou invalides)");
+    continue;
+  }
   const f = path.join(ROOT, "data", p.ue.toLowerCase(), p.id + ".json");
   if (!fs.existsSync(f)) { skipped.push(p.id + " (absent)"); continue; }
   let ok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), f], { stdio: "pipe" }); } catch (e) { ok = false; }
@@ -41,7 +48,9 @@ const ues = plan.ues.filter(u => chapitres.some(c => c.ue === u.code));
 const annF = path.join(ROOT, "data/annales.json");
 const annales = fs.existsSync(annF) ? JSON.parse(fs.readFileSync(annF, "utf8")) : null;
 if (annales) for (const code of Object.keys(annales.epreuves)) if (!ues.some(u => u.code === code)) delete annales.epreuves[code];
-const data = { ues, chapitres, pcg: pcgU, annales, build: { date: new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) } };
+rappels.sort((a, b) => a.ordre - b.ordre);
+const rapUe = rappels.length ? plan.ues.find(u => u.code === rappels[0].ue) : null;
+const data = { ues, chapitres, pcg: pcgU, annales, rappels: rapUe ? { ue: rapUe, pages: rappels } : null, build: { date: new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) } };
 const tpl = fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8");
 const json = JSON.stringify(data).replace(/<\/script/gi, "<\\/script");
 const out = tpl.replace("/*__DATA__*/null", json);
@@ -51,5 +60,5 @@ const nEx = chapitres.reduce((a, c) => a + c.exercices.length, 0);
 const nCartes = chapitres.reduce((a, c) => a + (c.cartes || []).length, 0);
 const nNotion = chapitres.reduce((a, c) => a + c.exercices.filter(e => e.nature === "notion").length, 0);
 const nAnn = annales ? Object.values(annales.epreuves).reduce((a, e) => a + e.sessions.length, 0) : 0;
-console.log(`dist/DebitCredit.html : ${chapitres.length} chapitres (${chapitres.filter(c => c.fiche).length} fiches), ${nEx} exercices dont ${nNotion} de notion, ${nCartes} cartes, ${pcgU.length} comptes, ${nAnn} annales, ${(out.length / 1024).toFixed(0)} Ko`);
+console.log(`dist/DebitCredit.html : ${chapitres.length} chapitres (${chapitres.filter(c => c.fiche).length} fiches), ${nEx} exercices dont ${nNotion} de notion, ${nCartes} cartes, ${pcgU.length} comptes, ${nAnn} annales, ${rappels.length} pages de rappels, ${(out.length / 1024).toFixed(0)} Ko`);
 if (skipped.length) console.log("Ignorés : " + skipped.join(", "));

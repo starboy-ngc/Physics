@@ -348,6 +348,14 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .plan-card .verdict { font-size: 0.92rem; }
 .plan-card .verdict.ok { color: var(--ok); } .plan-card .verdict.late { color: var(--bad); }
 .plan-card form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+/* Rappels (UE1) */
+.rappel { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--c); border-radius: 16px; padding: 14px clamp(14px, 3vw, 20px); margin-top: 14px; scroll-margin-top: 80px; }
+.rappel h3 { margin: 0 0 2px; }
+.rappel > p { margin: 0; }
+.rappel ol { margin: 10px 0 0; padding-left: 1.5em; display: grid; gap: 10px; }
+.rappel li { line-height: 1.5; max-width: 72ch; }
+.rappel .rsrc { display: block; font: 500 0.76rem var(--mono); color: var(--muted); margin-top: 2px; }
+.rappel .rsrc a { color: var(--muted); }
 /* Annales */
 .ann-ue { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 14px 16px 6px; margin-top: 14px; border-top: 4px solid var(--c); }
 .ann-ue h3 { margin: 0; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
@@ -555,6 +563,9 @@ const THEMES = [...DATA.ues.map(u => ({ code: u.code, nom: u.nom })), ...(SRS_OR
 const srsCount = kind => SRS_IDS.filter(id => SRS[id].kind === kind).length;
 // Couleur d'identité d'une matière (toujours affichée avec son code).
 const ucol = code => `--c:var(--c-${code});--o:var(--o-${code})`;
+// Rappels courts (UE1) : une page par chapitre, sans exercices ni cartes, tirée de la fiche vérifiée.
+const RAP = DATA.rappels && DATA.rappels.pages.length ? DATA.rappels : null;
+const rapLus = () => RAP ? RAP.pages.filter(p => state.rappels[p.id]).length : 0;
 // Annales officielles : une épreuve par matière (durée, coefficient, source) et ses sessions (page du CRCF, rapport du jury).
 const ANN = DATA.annales || { epreuves: {}, index: [] };
 const ANN_UES = UES.filter(u => ANN.epreuves[u.code] && ANN.epreuves[u.code].sessions.length);
@@ -593,8 +604,8 @@ const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "E
 const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
 function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
 function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
-function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, rappels: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
+function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; o.rappels = o.rappels || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
@@ -968,6 +979,7 @@ const SUCCES = [
   S("aurore-50", "Observatoire", "or", "🌗", "La moitié du ciel", "La moitié du parcours d'exercices acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
   S("ciel-75", "Observatoire", "or", "🌖", "Trois quarts du ciel", "Les trois quarts du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 75),
   S("aurore-100", "Observatoire", "or", "🌕", "Le ciel entier", "Tout le parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 100),
+  ...(RAP ? [S("rappels-ue1", "Exploration", "argent", "⚖", "Bases du droit rafraîchies", `Relire les ${RAP.pages.length} pages de rappels de l'UE1`, rapLus, RAP.pages.length)] : []),
   // Annales
   ...(ANN_KEYS.length ? [
     S("annale-1", "Annales", "bronze", "📝", "Première nuit d'observation", "Composer une annale officielle en temps réel et se noter", annCount, 1),
@@ -1117,8 +1129,9 @@ ${heat.html}
 }
 
 function renderMatieres() {
-  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
-  main.querySelectorAll(".ue").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.${RAP ? ` Les ${esc(RAP.ue.nom.toLowerCase())} (${esc(RAP.ue.code)}) se révisent par des pages de rappels courts.` : ""}</p><div class="ues">${rapCard(UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; })).join("")}</div>`;
+  main.querySelectorAll(".ue[data-ue]").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  main.querySelectorAll(".ue[data-rap]").forEach(b => b.onclick = () => go({ tab: "rappels" }));
 }
 
 function renderFiches() {
@@ -1435,7 +1448,7 @@ ${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.t
 // ---------- Observatoire ----------
 // Chaque matière est observée dans une bande du spectre ; chaque chapitre acquis permet d'observer une cible des catalogues Messier et NGC.
 const BANDES = { UE2: ["Radio", "plus de 1 m"], UE1: ["Micro-ondes", "1 mm à 1 m"], UE3: ["Infrarouge", "700 nm à 1 mm"], UE9: ["Visible", "400 à 700 nm"], UE10: ["Ultraviolet", "10 à 400 nm"], UE4: ["Rayons X", "0,01 à 10 nm"], UE6: ["Rayons gamma", "moins de 0,01 nm"], PCG: ["Lumière blanche", "toutes les longueurs d'onde"] };
-const SPECTRE = ["UE2", "UE1", "UE3", "UE9", "UE10", "UE4", "UE6"].filter(c => c === "PCG" || UE_BY[c]);
+const SPECTRE = ["UE2", "UE1", "UE3", "UE9", "UE10", "UE4", "UE6"].filter(c => c === "PCG" || UE_BY[c] || (RAP && c === RAP.ue.code));
 const TYPE_OBJ = { neb: "nébuleuse diffuse", pla: "nébuleuse planétaire", gal: "galaxie", glo: "amas globulaire", ouv: "amas ouvert", snr: "rémanent de supernova", ref: "nébuleuse par réflexion", nua: "nuage stellaire" };
 const CIBLES_UE = {
   UE1: [["M6", "Amas du Papillon", "ouv", "Scorpion"], ["M7", "Amas de Ptolémée", "ouv", "Scorpion"], ["M35", "Amas ouvert M35", "ouv", "Gémeaux"], ["M41", "Amas ouvert M41", "ouv", "Grand Chien"], ["M47", "Amas ouvert M47", "ouv", "Poupe"], ["M46", "Amas ouvert M46", "ouv", "Poupe"], ["M39", "Amas ouvert M39", "ouv", "Cygne"]],
@@ -1466,7 +1479,7 @@ function renderObservatoire() {
 ${UES.map(u => `<h3><span class="dotc" style="${ucol(u.code)}"></span>${esc(u.code)} · ${esc(u.nom)} <span class="muted small">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></h3><div class="cat" style="${ucol(u.code)}">${ueChaps(u.code).map(c => { const t = CIBLE[c.id]; if (!t) return ""; const m = chapMastery(c); const st = m >= 0.999 ? "seen" : chapStarted(c) ? "prog" : ""; return `<button class="obj ${st}" data-c="${c.id}"><span class="des">${esc(t.des)}${st === "seen" ? '<span class="pill seen">observé</span>' : st === "prog" ? `<span class="pill prog">${Math.round(m * 100)} %</span>` : '<span class="pill">à observer</span>'}</span><span class="nm">${esc(t.nom)}</span><span class="ty">${esc(TYPE_OBJ[t.type])} · ${esc(t.cons)}</span><span class="ch">Chapitre ${c.ordre} · ${esc(c.title)}</span></button>`; }).join("")}</div>`).join("")}
 <h3>Derniers succès</h3>${(() => { const last = SUCCES.filter(x => state.succes[x.id]).sort((a, b) => state.succes[b.id] - state.succes[a.id]).slice(0, 4); return last.length ? `<div class="sgrid">${last.map(succCard).join("")}</div>` : `<p class="muted">Aucun succès pour l'instant. Le premier se débloque dès la première réponse.</p>`; })()}
 <div class="actions"><button class="btn ghost" id="toSucc">Voir les ${SUCCES.length} succès</button></div>
-<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision, 5 par carte sue), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute${ANN_KEYS.length ? ", 150 par annale composée (50 quand on la recompose)" : ""}, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
+<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision, 5 par carte sue), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute${ANN_KEYS.length ? ", 150 par annale composée (50 quand on la recompose)" : ""}${RAP ? ", 10 par page de rappels relue" : ""}, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
   main.querySelector("#toSucc").onclick = () => go({ tab: "succes" });
   main.querySelectorAll(".obj").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
   drawCiel(main.querySelector("#skyC"));
@@ -1511,6 +1524,31 @@ function drawCiel(cv) {
     if (!reduce) skyAnim = requestAnimationFrame(frame);
   };
   frame(0);
+}
+
+// ---------- Rappels (UE1) ----------
+// Carte « Rappels » insérée dans la grille des matières, avant la première matière de droit.
+function rapCard(cards) {
+  if (!RAP) return cards;
+  const n = RAP.pages.length, lus = rapLus(), u = RAP.ue;
+  const card = `<button class="ue" data-rap="1" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">rappels · bande ${esc(BANDES[u.code][0].toLowerCase())}</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${lus === n ? "full" : ""}"><i style="width:${Math.round(lus / n * 100)}%"></i></span><span class="mono muted small">${n} pages de rappels · ${lus} relue${lus > 1 ? "s" : ""}</span></button>`;
+  const i = UES.findIndex(x => x.code === "UE2"); const out = cards.slice(); out.splice(i < 0 ? out.length : i, 0, card); return out;
+}
+const rapHtml = t => esc(t).replace(/&lt;(\/?)(b|i)&gt;/g, "<$1$2>");
+const dateFr = k => new Date(k + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" }).replace(/^1 /, "1er ");
+function renderRappels() {
+  if (!RAP) { renderMatieres(); return; }
+  const u = RAP.ue, col = ucol(u.code);
+  main.innerHTML = `<div class="crumb"><button id="back">← Cours</button></div>
+<header class="chead" style="${col}"><div class="eyebrow"><b>${esc(u.code)}</b>Rappels · bande ${esc(BANDES[u.code][0].toLowerCase())}</div><h2 style="margin:0">${esc(u.nom)}</h2><p class="muted" style="margin:0">L'essentiel à se remettre en tête avant le DSCG : ${RAP.pages.length} pages courtes, sans exercices. Chaque rappel renvoie à son texte officiel.</p></header>
+<div class="chips" role="group" aria-label="Chapitres" style="margin-top:12px">${RAP.pages.map(p => `<button data-go="${p.id}" style="${col}" aria-pressed="${!!state.rappels[p.id]}">${p.ordre}. ${esc(p.title.split(/ :|,/)[0])}</button>`).join("")}</div>
+${RAP.pages.map(p => `<section class="rappel" id="r-${p.id}" style="${col}" aria-labelledby="rh-${p.id}"><h3 id="rh-${p.id}">${p.ordre}. ${esc(p.title)}</h3><p class="muted small">${esc(p.resume)}</p>
+<ol>${p.rappels.map(r => `<li>${rapHtml(r.t)}<span class="rsrc">${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.src)} ↗</a>` : esc(r.src)}</span></li>`).join("")}</ol>
+<div class="actions" style="margin-top:10px">${state.rappels[p.id] ? `<span class="pill done">Relue le ${dateFr(state.rappels[p.id])}</span>` : `<button class="btn ghost" data-lu="${p.id}">J'ai relu cette page</button>`}</div></section>`).join("")}
+<p class="muted small" style="margin-top:16px">Chaque rappel est tiré de la fiche documentaire du chapitre, vérifiée sur les textes officiels. Programme : ${esc(u.programme)}.</p>`;
+  main.querySelector("#back").onclick = () => go({ tab: "matieres" });
+  main.querySelectorAll("button[data-go]").forEach(b => b.onclick = () => { const el = document.getElementById("r-" + b.dataset.go); if (el) el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+  main.querySelectorAll("button[data-lu]").forEach(b => b.onclick = () => { const id = b.dataset.lu; if (!state.rappels[id]) { state.rappels[id] = todayKey(); addXp(10); save(); } b.outerHTML = `<span class="pill done">Relue le ${dateFr(state.rappels[id])}</span>`; const c = main.querySelector(`button[data-go="${id}"]`); if (c) c.setAttribute("aria-pressed", "true"); });
 }
 
 // ---------- Annales ----------
@@ -1596,7 +1634,7 @@ ${essais.length ? `<p class="small" style="margin:0"><b>Vos essais :</b> ${essai
 
 // ---------- Navigation ----------
 // Cinq rubriques ; certaines regroupent deux pages, reliées par une sous-navigation.
-const GROUP = { accueil: "accueil", revisions: "revisions", test: "revisions", annales: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", observatoire: "observatoire", succes: "observatoire" };
+const GROUP = { rappels: "matieres", accueil: "accueil", revisions: "revisions", test: "revisions", annales: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", observatoire: "observatoire", succes: "observatoire" };
 const SUBNAV = { revisions: [["revisions", "Révisions<span class=\"wide\"> espacées</span>"], ["test", "Test du jour"], ...(ANN_KEYS.length ? [["annales", "Annales"]] : [])], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], observatoire: [["observatoire", "Observatoire"], ["succes", "Succès"]] };
 function addSubnav(tab) {
   const items = SUBNAV[GROUP[tab]]; if (!items || !items.some(x => x[0] === tab)) return;
@@ -1610,7 +1648,7 @@ function go(v) {
   view = v;
   const tab = GROUP[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, annales: () => v.k ? renderCompo(v.k) : renderAnnales(), revisions: renderRevisions, pcg: renderPcg, observatoire: renderObservatoire, expedition: renderObservatoire, succes: renderSucces })[v.tab]();
+  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, annales: () => v.k ? renderCompo(v.k) : renderAnnales(), revisions: renderRevisions, rappels: renderRappels, pcg: renderPcg, observatoire: renderObservatoire, expedition: renderObservatoire, succes: renderSucces })[v.tab]();
   addSubnav(v.tab);
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
   updateBadge(); renderRank(); window.scrollTo({ top: 0 });
@@ -1635,7 +1673,7 @@ document.addEventListener("click", e => { const a = e.target.closest && e.target
 (function boot() {
   const h = (location.hash || "").slice(1);
   if (h === "expedition") go({ tab: "observatoire" });
-  else if (["matieres", "fiches", "test", "revisions", "pcg", "observatoire", "succes"].includes(h) || (h === "annales" && ANN_KEYS.length)) go({ tab: h });
+  else if (["matieres", "fiches", "test", "revisions", "pcg", "observatoire", "succes"].includes(h) || (h === "annales" && ANN_KEYS.length) || (h === "rappels" && RAP)) go({ tab: h });
   else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
   else if (CHAP_BY[h]) go({ tab: "chap", id: h });
   else go({ tab: "accueil" });

@@ -146,3 +146,28 @@ Règle d'or : **une carte ne dit rien que la fiche documentaire ne dise déjà.*
 - Valider : `node validate.js data/<ue>/<id>.cartes.json` (le validateur relit la fiche voisine pour contrôler `base`, `src` et `url`).
 
 Les exercices des chapitres portent aussi un champ `nature` : `notion` (définition, règle, qualification, choix d'un compte, classement, sans calcul), `calcul` (il faut calculer : montant, taux, prorata, délai à décompter) ou `chiffre` (rappel d'un chiffre millésimé). Seuls les QCM, QCM multiples et classements de nature `notion` entrent dans les révisions espacées, avec les cartes et les comptes du plan comptable (intitulé et rôle, comptes supprimés exclus).
+
+## 9. Rappels courts (`data/ue1/<id>.rappel.json`) — UE1 Fondamentaux du droit
+
+L'UE1 n'a ni exercices ni cartes : chaque chapitre est une **page de rappels** (l'essentiel à retenir avant le
+DSCG), tirée de la fiche documentaire vérifiée du chapitre (`<id>.fiche.json`, qui reste la référence et n'est pas
+affichée). Règle d'or : **un rappel ne dit rien que la fiche ne dise déjà**, et ne s'appuie pas sur un item que le
+rapport du chapitre (`rapports/<id>.md`) signale comme non vérifié.
+
+```json
+{
+ "id": "ue1-01", "ue": "UE1", "ordre": 1, "title": "La règle de droit et ses sources", "maj": "2026-10-19",
+ "resume": "Une phrase : ce que la page permet de se remettre en tête.",
+ "rappels": [
+  { "t": "<b>Hiérarchie des normes</b> : …", "base": ["Règles essentielles#3"], "src": "Constitution, art. 55", "url": "https://www.legifrance.gouv.fr/…" }
+ ]
+}
+```
+
+- 8 à 14 rappels, 650 mots au plus pour la page ; chaque rappel : 12 à 55 mots, une ou deux phrases, commence par
+  la notion en `<b>` ; HTML limité à `b i`.
+- `base` : 1 à 3 items de la fiche (`<section>#<index>`, index à partir de 0) ; `src` et `url` copiés à
+  l'identique depuis le premier item de base (`url` null si l'item n'en a pas). Aucun item millésimé.
+- Ordre : celui d'une révision rapide (définitions, règles essentielles, pièges), en couvrant les points
+  du programme du chapitre.
+- Validation : `node validate.js data/ue1/<id>.rappel.json`.
