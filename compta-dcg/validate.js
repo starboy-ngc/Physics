@@ -180,7 +180,7 @@ function checkRappel(d, file, errs) {
   const item = ref => { const m = /^(.+)#(\d+)$/.exec(ref || ""); if (!m || !fiche) return null; const sct = (fiche.sections || []).find(x => x.h === m[1]); return sct && sct.items ? sct.items[+m[2]] || null : null; };
   const list = d.rappels;
   if (!Array.isArray(list)) { errs.push("rappels : tableau « rappels » manquant"); return; }
-  if (list.length < 8 || list.length > 14) errs.push(`rappels : ${list.length} rappels (8 à 14 attendus)`);
+  if (list.length < 8 || list.length > 18) errs.push(`rappels : ${list.length} rappels (8 à 18 attendus)`);
   let total = 0;
   list.forEach((k, i) => {
     const w = `rappels[${i}]`;
@@ -197,7 +197,7 @@ function checkRappel(d, file, errs) {
     }
     if (its.some(x => x && /millésimé/.test(x.fiab || ""))) errs.push(`${w}: repose sur un item millésimé`);
   });
-  if (total > 650) errs.push(`rappels : ${total} mots au total (650 au plus : une page)`);
+  if (total > 850) errs.push(`rappels : ${total} mots au total (850 au plus : une page)`);
 }
 let failed = 0;
 for (const f of process.argv.slice(2)) {

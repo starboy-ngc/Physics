@@ -34,7 +34,7 @@ chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé 
 ## UE1 : pages de rappels
 
 L'UE1 Fondamentaux du droit se révise par des **rappels courts**, sans exercices ni cartes : une page par chapitre
-(8 à 14 rappels, 650 mots au plus), dans l'onglet Cours. Chaque rappel est tiré d'un item de la fiche documentaire
+(8 à 18 rappels, 850 mots au plus), dans l'onglet Cours. Chaque rappel est tiré d'un item de la fiche documentaire
 du chapitre (`data/ue1/<id>.fiche.json`, vérifiée sur les textes officiels) et renvoie à son texte (Code civil,
 Code de procédure civile, Code de commerce, Constitution, jurisprudence de la Cour de cassation). Format :
 `data/CONTRAT.md`, section 9 ; fichiers `data/ue1/<id>.rappel.json`. Programme : annexe 1 de l'arrêté du

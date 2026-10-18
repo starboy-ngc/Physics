@@ -164,7 +164,7 @@ rapport du chapitre (`rapports/<id>.md`) signale comme non vérifié.
 }
 ```
 
-- 8 à 14 rappels, 650 mots au plus pour la page ; chaque rappel : 12 à 55 mots, une ou deux phrases, commence par
+- 8 à 18 rappels, 850 mots au plus pour la page ; chaque rappel : 12 à 55 mots, une ou deux phrases, commence par
   la notion en `<b>` ; HTML limité à `b i`.
 - `base` : 1 à 3 items de la fiche (`<section>#<index>`, index à partir de 0) ; `src` et `url` copiés à
   l'identique depuis le premier item de base (`url` null si l'item n'en a pas). Aucun item millésimé.
