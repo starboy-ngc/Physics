@@ -26,7 +26,7 @@ aucun serveur. La progression est gardée dans le navigateur ; un code de sauveg
 | UE3 Droit social | 6 | 171 |
 | UE4 Droit fiscal | 6 | 176 |
 | UE6 Finance d'entreprise | 6 | 157 |
-| UE1 Fondamentaux du droit | 7 pages de rappels | — |
+| UE1 Fondamentaux du droit | 7 pages de rappels (126 rappels) | — |
 
 Référentiel : PCG 2025 (règlement ANC n° 2022-06), droit et fiscalité 2025-2026. Les chiffres qui changent
 chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé et signalés « chiffres 2025 ».

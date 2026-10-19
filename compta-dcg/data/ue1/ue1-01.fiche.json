@@ -1,6 +1,6 @@
 {
  "id": "ue1-01",
- "maj": "2026-10-18",
+ "maj": "2026-10-19",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; guide pédagogique DCG de juillet 2026 ; arrêté du 13 février 2019 pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -39,8 +39,8 @@
    "version": "en vigueur (rédaction d'origine)"
   },
   {
-   "ref": "C. civ., art. 1102, 1104 et 1162 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016",
-   "objet": "Liberté contractuelle et ordre public ; bonne foi déclarée d'ordre public ; contrat et ordre public ; caractère en principe supplétif du droit des contrats",
+   "ref": "C. civ., art. 1102, 1104, 1162 et 1194 ; rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016",
+   "objet": "Liberté contractuelle et ordre public ; bonne foi déclarée d'ordre public ; contrat et ordre public ; caractère en principe supplétif du droit des contrats ; suites que l'équité, l'usage ou la loi donnent au contrat (art. 1194)",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539",
    "version": "articles en vigueur depuis le 1er octobre 2016 (ordonnance n° 2016-131) ; le lien renvoie au rapport"
   },
@@ -51,8 +51,8 @@
    "version": "art. 34 : version en vigueur depuis le 10 mars 2024 (loi constitutionnelle n° 2024-200 du 8 mars 2024) ; art. 37 : en vigueur depuis 1958 ; art. 38 : rédaction issue de la révision constitutionnelle du 23 juillet 2008 (ratification expresse)"
   },
   {
-   "ref": "Constitution du 4 octobre 1958, art. 55, 61, 61-1 et 62",
-   "objet": "Autorité des traités ; contrôle de constitutionnalité a priori ; question prioritaire de constitutionnalité ; effets des décisions du Conseil constitutionnel",
+   "ref": "Constitution du 4 octobre 1958, art. 10, 39, 45, 54, 55, 61, 61-1 et 62",
+   "objet": "Promulgation et nouvelle délibération ; initiative et examen des lois (navette, commission mixte paritaire, dernier mot de l'Assemblée nationale) ; engagement international contraire à la Constitution ; autorité des traités ; contrôle de constitutionnalité a priori ; question prioritaire de constitutionnalité ; effets des décisions du Conseil constitutionnel",
    "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
    "version": "texte intégral en vigueur publié par le Conseil constitutionnel"
   },
@@ -99,10 +99,10 @@
    "version": "article unique ; version de l'art. 34 en vigueur depuis le 10 mars 2024"
   },
   {
-   "ref": "Guide de légistique (Légifrance), fiche 1.2.2 « Application dans le temps »",
-   "objet": "Portée de l'article 2 du Code civil et conditions des dispositions rétroactives",
+   "ref": "Guide de légistique (Légifrance), fiches 1.2.2 « Application dans le temps » et 1.3.1 « Différentes normes »",
+   "objet": "Portée de l'article 2 du Code civil et conditions des dispositions rétroactives ; bloc de constitutionnalité au sommet de la hiérarchie des normes",
    "url": "https://www.legifrance.gouv.fr/contenu/Media/files/autour-de-la-loi/guide-de-legistique/2023_12_28_fiche_1.2.2_application_dans_le_temps.pdf",
-   "version": "fiche publiée sur Légifrance (fichier daté du 28 décembre 2023)"
+   "version": "fiches publiées sur Légifrance (fichiers datés du 28 décembre 2023 et du 7 février 2024) ; le lien renvoie à la fiche 1.2.2"
   }
  ],
  "sections": [
@@ -129,8 +129,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement et directive de l'Union européenne</b> : le règlement a une portée générale, il est obligatoire dans tous ses éléments et directement applicable dans tout État membre. La directive lie l'État membre destinataire quant au résultat à atteindre, mais lui laisse le choix de la forme et des moyens : elle doit être transposée en droit national.",
-     "cite": "« Le règlement a une portée générale. Il est obligatoire dans tous ses éléments et il est directement applicable dans tout État membre. »",
+     "t": "<b>Règlement et directive de l'Union européenne</b> : le règlement a une portée générale, il est obligatoire dans tous ses éléments et directement applicable dans tout État membre. La directive lie tout État membre destinataire quant au résultat à atteindre, tout en laissant aux instances nationales la compétence quant à la forme et aux moyens : elle doit être transposée en droit national.",
+     "cite": "« Le règlement a une portée générale. Il est obligatoire dans tous ses éléments et il est directement applicable dans tout État membre. La directive lie tout État membre destinataire quant au résultat à atteindre, tout en laissant aux instances nationales la compétence quant à la forme et aux moyens. »",
      "src": "TFUE, art. 288",
      "url": null,
      "fiab": "stable"
@@ -146,6 +146,27 @@
      "t": "<b>Question prioritaire de constitutionnalité (QPC)</b> : moyen soulevé à l'occasion d'une instance en cours devant une juridiction, par lequel une partie soutient qu'une disposition législative porte atteinte aux droits et libertés que la Constitution garantit. Le Conseil constitutionnel en est saisi sur renvoi du Conseil d'État ou de la Cour de cassation.",
      "src": "Constitution du 4 octobre 1958, art. 61-1",
      "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Bloc de constitutionnalité</b> : les normes constitutionnelles sont au sommet de la hiérarchie de l'ordre juridique interne. Selon le guide de légistique, elles comprennent la Constitution de 1958 et son préambule, le Préambule de 1946, la Déclaration des droits de l'homme et du citoyen de 1789, la Charte de l'environnement, les principes fondamentaux reconnus par les lois de la République et les principes et objectifs de valeur constitutionnelle. Les lois organiques, prévues par la Constitution pour préciser les modalités d'application de certaines de ses dispositions, n'en font pas partie.",
+     "cite": "« Elles sont au sommet de la hiérarchie de l'ordre juridique interne. »",
+     "src": "Guide de légistique (Légifrance), fiche 1.3.1 « Différentes normes »",
+     "url": "https://www.legifrance.gouv.fr/contenu/Media/files/autour-de-la-loi/guide-de-legistique/2024_02_07_fiche_1.3.1_differentes_normes.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cour de cassation</b> : il y a, pour toute la République, une Cour de cassation. Elle statue sur les pourvois en cassation formés contre les arrêts et jugements rendus en dernier ressort par les juridictions de l'ordre judiciaire et ne connaît pas du fond des affaires, sauf disposition législative contraire.",
+     "cite": "« La Cour de cassation ne connaît pas du fond des affaires, sauf disposition législative contraire. »",
+     "src": "Code de l'organisation judiciaire, art. L. 411-1 et L. 411-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006572199",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Usage et contrat</b> : les contrats obligent non seulement à ce qui y est exprimé, mais encore à toutes les suites que leur donnent l'équité, l'usage ou la loi. L'usage peut donc ajouter au contrat des suites que les parties n'ont pas exprimées.",
+     "cite": "« Les contrats obligent non seulement à ce qui y est exprimé, mais encore à toutes les suites que leur donnent l'équité, l'usage ou la loi. »",
+     "src": "C. civ., art. 1194",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041309",
      "fiab": "stable"
     }
    ]
@@ -220,7 +241,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Le juge judiciaire et le traité</b> : la Cour de cassation juge que le traité de Rome du 25 mars 1957 a, en vertu de l'article 55 de la Constitution, une autorité supérieure à celle de la loi et institue un ordre juridique propre intégré à celui des États membres. Ses dispositions l'emportent sur la loi interne, même postérieure.",
+     "t": "<b>Le juge judiciaire et le traité</b> : la Cour de cassation juge que le traité du 25 mars 1957 instituant la Communauté économique européenne, qui a, en vertu de l'article 55 de la Constitution, une autorité supérieure à la loi, institue un ordre juridique propre intégré à celui des États membres, directement applicable à leurs ressortissants et qui s'impose à leurs juridictions. Ses dispositions doivent prévaloir sur la loi interne, même postérieure : l'article 95 du traité devait être appliqué, à l'exclusion de l'article 265 du Code des douanes, pourtant postérieur.",
      "src": "Cass. ch. mixte, 24 mai 1975, n° 73-13.556 (Société des cafés Jacques Vabre)",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006994625/",
      "fiab": "stable"
@@ -239,10 +260,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Contrôle de constitutionnalité a priori</b> : avant leur promulgation, les lois peuvent être déférées au Conseil constitutionnel par le Président de la République, le Premier ministre, le président de l'Assemblée nationale, le président du Sénat, ou soixante députés ou soixante sénateurs. La saisine suspend le délai de promulgation.",
+     "t": "<b>Contrôle de constitutionnalité a priori</b> : les lois organiques, avant leur promulgation, et les règlements des assemblées parlementaires, avant leur mise en application, doivent être soumis au Conseil constitutionnel. Les autres lois peuvent lui être déférées, avant leur promulgation, par le Président de la République, le Premier ministre, le président de l'Assemblée nationale, le président du Sénat, ou soixante députés ou soixante sénateurs. La saisine suspend le délai de promulgation.",
      "src": "Constitution du 4 octobre 1958, art. 61",
      "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Dans ces mêmes cas, la saisine du Conseil constitutionnel suspend le délai de promulgation. »"
     },
     {
      "t": "<b>QPC devant le juge du fond</b> : le moyen est présenté, à peine d'irrecevabilité, dans un écrit distinct et motivé ; le juge ne peut pas le relever d'office. La juridiction transmet la question si la disposition contestée est applicable au litige ou à la procédure, ou constitue le fondement des poursuites, si elle n'a pas déjà été déclarée conforme à la Constitution dans les motifs et le dispositif d'une décision du Conseil constitutionnel, sauf changement des circonstances, et si la question n'est pas dépourvue de caractère sérieux.",
@@ -263,6 +285,19 @@
      "src": "Constitution du 4 octobre 1958, art. 62, al. 1 et 2",
      "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>La Constitution, norme suprême de l'ordre interne</b> : selon le Conseil d'État, la hiérarchie des normes, qui découle des articles 54 et 55 de la Constitution, fait de la Constitution la norme suprême dans l'ordre juridique interne, au-dessus des normes internationales. Si le Conseil constitutionnel déclare qu'un engagement international comporte une clause contraire à la Constitution, l'autorisation de le ratifier ou de l'approuver ne peut intervenir qu'après la révision de la Constitution (art. 54). La supériorité que l'article 55 confère aux traités ne s'applique pas, dans l'ordre interne, aux dispositions de nature constitutionnelle (Sarran et Levacher).",
+     "cite": "« la hiérarchie des normes juridiques - qui découle en France des articles 54 et 55 de la Constitution - fait de la Constitution la norme suprême dans l'ordre juridique interne »",
+     "src": "Avis du Conseil d'État sur le projet de loi constitutionnelle de protection de la Nation ; Constitution du 4 octobre 1958, art. 54 ; CE, ass., 30 octobre 1998, n° 200286 et 200287 (Sarran et Levacher)",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032107707",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Procédure législative</b> : l'initiative des lois appartient concurremment au Premier ministre et aux membres du Parlement ; les projets de loi sont délibérés en Conseil des ministres après avis du Conseil d'État, puis déposés sur le bureau de l'une des deux assemblées (en premier lieu l'Assemblée nationale pour les projets de loi de finances et de financement de la sécurité sociale, le Sénat pour ceux qui ont pour principal objet l'organisation des collectivités territoriales). Tout projet ou proposition de loi est examiné successivement dans les deux assemblées en vue de l'adoption d'un texte identique. Faute d'adoption après deux lectures par chaque assemblée (une seule si le Gouvernement a engagé la procédure accélérée), le Premier ministre ou, pour une proposition de loi, les présidents des deux assemblées agissant conjointement peuvent provoquer la réunion d'une commission mixte paritaire. Si elle ne parvient pas à un texte commun, ou si ce texte n'est pas adopté, le Gouvernement peut, après une nouvelle lecture par l'Assemblée nationale et par le Sénat, demander à l'Assemblée nationale de statuer définitivement.",
+     "src": "Constitution du 4 octobre 1958, art. 39 et 45",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+     "fiab": "stable"
     }
    ]
   },
@@ -276,10 +311,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Soixante députés ou soixante sénateurs</b> peuvent saisir le Conseil constitutionnel d'une loi avant sa promulgation. Le Conseil statue dans le délai d'un mois, ramené à huit jours si le Gouvernement le demande en cas d'urgence.",
+     "t": "<b>Soixante députés ou soixante sénateurs</b> peuvent saisir le Conseil constitutionnel d'une loi avant sa promulgation ; cette saisine parlementaire existe depuis la révision constitutionnelle du 29 octobre 1974. Le Conseil statue dans le délai d'un mois, ramené à huit jours si le Gouvernement le demande en cas d'urgence.",
      "src": "Constitution du 4 octobre 1958, art. 61",
      "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Dans les cas prévus aux deux alinéas précédents, le Conseil constitutionnel doit statuer dans le délai d'un mois. Toutefois, à la demande du Gouvernement, s'il y a urgence, ce délai est ramené à huit jours. »"
     },
     {
      "t": "<b>Trois conditions, puis trois mois</b> : le juge du fond vérifie trois conditions avant de transmettre une QPC ; le Conseil d'État ou la Cour de cassation dispose ensuite de trois mois, à compter de la réception de la transmission, pour décider du renvoi au Conseil constitutionnel.",
@@ -291,6 +327,13 @@
      "t": "<b>1958, date charnière de l'article 37</b> : une loi antérieure à la Constitution de 1958 intervenue en matière réglementaire peut être modifiée par décret après avis du Conseil d'État ; une loi postérieure ne peut l'être qu'après une décision du Conseil constitutionnel reconnaissant son caractère réglementaire.",
      "src": "Constitution du 4 octobre 1958, art. 37, al. 2",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Quinze jours pour promulguer</b> : le Président de la République promulgue les lois dans les quinze jours qui suivent la transmission au Gouvernement de la loi définitivement adoptée. Avant l'expiration de ce délai, il peut demander au Parlement une nouvelle délibération de la loi ou de certains de ses articles, qui ne peut être refusée. La saisine du Conseil constitutionnel suspend le délai de promulgation (art. 61).",
+     "cite": "« Cette nouvelle délibération ne peut être refusée. »",
+     "src": "Constitution du 4 octobre 1958, art. 10 et 61",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
      "fiab": "stable"
     }
    ]
@@ -329,10 +372,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ou directive de l'Union</b> : seul le règlement est directement applicable dans tout État membre. La directive lie l'État quant au résultat et doit être transposée : dans un cas pratique, la règle applicable au particulier se trouve en principe dans le texte national de transposition.",
+     "t": "<b>Règlement ou directive de l'Union</b> : seul le règlement est directement applicable dans tout État membre. La directive lie tout État membre destinataire quant au résultat à atteindre et doit être transposée : dans un cas pratique, la règle applicable au particulier se trouve en principe dans le texte national de transposition.",
      "src": "TFUE, art. 288",
      "url": null,
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« La directive lie tout État membre destinataire quant au résultat à atteindre, tout en laissant aux instances nationales la compétence quant à la forme et aux moyens. »"
     },
     {
      "t": "<b>Ordonnance : vérifier la ratification</b> : non ratifiée, une ordonnance est un acte de forme réglementaire et relève du juge administratif, sous la réserve de la QPC (item suivant) ; ratifiée de manière expresse, elle a valeur législative depuis sa signature. Avant de situer une ordonnance dans la hiérarchie des normes, il faut donc vérifier si elle a été ratifiée.",

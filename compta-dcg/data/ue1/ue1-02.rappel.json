@@ -16,6 +16,15 @@
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006410125"
   },
   {
+   "t": "<b>Capacité d'ester en justice</b> : son défaut est une irrégularité de fond affectant la validité de l'acte de procédure, nullité que le juge peut relever d'office. À distinguer du défaut d'intérêt ou de qualité, sanctionné par une fin de non-recevoir.",
+   "base": [
+    "Règles essentielles#17",
+    "Règles essentielles#0"
+   ],
+   "src": "CPC, art. 117 et 120",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070716/LEGISCTA000006165182/"
+  },
+  {
    "t": "<b>Prescription de droit commun</b> : cinq ans pour les actions personnelles ou mobilières, à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer. L'action prescrite est irrecevable (fin de non-recevoir).",
    "base": [
     "Règles essentielles#2"
@@ -39,6 +48,16 @@
    ],
    "src": "C. com., art. L. 721-3",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044078679"
+  },
+  {
+   "t": "<b>Autres juridictions</b> : le conseil de prud'hommes concilie puis, à défaut, juge les différends nés à l'occasion du contrat de travail ; le juge des contentieux de la protection connaît notamment des tutelles des majeurs, baux d'habitation, expulsions et surendettement ; les tribunaux administratifs sont, en premier ressort, juges de droit commun du contentieux administratif.",
+   "base": [
+    "Règles essentielles#18",
+    "Règles essentielles#3",
+    "Règles essentielles#19"
+   ],
+   "src": "C. trav., art. L. 1411-1 et L. 1411-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457"
   },
   {
    "t": "<b>Compétence territoriale</b> : en principe, lieu où demeure le défendeur ou, au choix du demandeur, lieu de livraison effective ou d'exécution de la prestation (matière contractuelle), du fait dommageable ou du dommage subi (matière délictuelle). Clause dérogatoire réputée non écrite, sauf entre personnes ayant toutes contracté comme commerçants et spécifiée de façon très apparente.",
@@ -74,6 +93,15 @@
    ],
    "src": "CPC, art. 750-1",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039501708/"
+  },
+  {
+   "t": "<b>Médiation et conciliation</b> : la médiation est un processus structuré où les parties tentent de s'accorder avec l'aide d'un tiers choisi par elles ou désigné par le juge avec leur accord ; elle est confidentielle, sauf accord contraire ou exceptions légales. Le conciliateur de justice, bénévole, recherche le règlement amiable du différend.",
+   "base": [
+    "Définitions#6",
+    "Définitions#7"
+   ],
+   "src": "Loi n° 95-125 du 8 février 1995, art. 21 et 21-3",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000024808648"
   },
   {
    "t": "<b>Transaction</b> : contrat écrit par lequel les parties, par des concessions réciproques, terminent une contestation née ou préviennent une contestation à naître. Le programme la range parmi les modes alternatifs, avec conciliation, médiation et arbitrage.",
@@ -115,6 +143,16 @@
    ],
    "src": "C. civ., art. 1358 et 1359",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042316"
+  },
+  {
+   "t": "<b>Force probante</b> : l'acte authentique fait foi jusqu'à inscription de faux des constatations personnelles de l'officier public, l'acte sous signature privée reconnu entre ses signataires ; l'écrit électronique vaut l'écrit papier, sous conditions d'identification et d'intégrité. Suppléent l'écrit : l'aveu judiciaire, irrévocable sauf erreur de fait, et le commencement de preuve par écrit corroboré.",
+   "base": [
+    "Règles essentielles#21",
+    "Règles essentielles#22",
+    "Définitions#8"
+   ],
+   "src": "C. civ., art. 1366, 1371 et 1372",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032037827"
   },
   {
    "t": "<b>Preuve des actes de commerce</b> : à l'égard des commerçants, ils peuvent se prouver par tous moyens, sauf loi contraire. Ce texte spécial écarte ainsi, à leur seul égard, l'écrit que l'article 1359 du Code civil exige au-delà de 1 500 €.",

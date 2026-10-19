@@ -1,6 +1,6 @@
 {
  "id": "ue1-03",
- "maj": "2026-10-18",
+ "maj": "2026-10-19",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE1 Fondamentaux du droit), applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -33,10 +33,10 @@
    "version": "en vigueur (art. 388-1-1 en vigueur depuis le 1er janvier 2016 ; art. 413-2 et 413-6 dans leur rédaction issue de la loi n° 2007-308 du 5 mars 2007, applicable depuis le 1er janvier 2009)"
   },
   {
-   "ref": "C. civ., art. 414 à 495-9",
-   "objet": "Majorité ; mesures de protection juridique des majeurs (sauvegarde de justice, curatelle, tutelle)",
+   "ref": "C. civ., art. 414 à 495-9, 504 et 505",
+   "objet": "Majorité ; mesures de protection juridique des majeurs (sauvegarde de justice, curatelle, tutelle) ; régularité des actes (art. 465) ; actes du tuteur (art. 504 et 505)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006117881/",
-   "version": "en vigueur (réforme de la loi n° 2007-308 du 5 mars 2007, applicable depuis le 1er janvier 2009 ; art. 441 dans sa version issue de la loi n° 2015-177 du 16 février 2015, en vigueur depuis le 18 février 2015)"
+   "version": "en vigueur (réforme de la loi n° 2007-308 du 5 mars 2007, applicable depuis le 1er janvier 2009 ; art. 441 dans sa version issue de la loi n° 2015-177 du 16 février 2015, en vigueur depuis le 18 février 2015) ; art. 465 dans sa version en vigueur depuis le 1er octobre 2016 ; art. 504 en vigueur depuis le 1er janvier 2009 ; art. 505 dans sa rédaction issue de la loi n° 2022-267 du 28 février 2022, en vigueur depuis le 2 mars 2022"
   },
   {
    "ref": "Décret n° 2008-1484 du 22 décembre 2008",
@@ -51,10 +51,10 @@
    "version": "en vigueur depuis le 1er octobre 2016 (ordonnance n° 2016-131 du 10 février 2016) ; art. 1145 modifié par la loi n° 2018-287 du 20 avril 2018, version en vigueur depuis le 1er octobre 2018"
   },
   {
-   "ref": "C. civ., art. 1842",
-   "objet": "Acquisition de la personnalité morale des sociétés par l'immatriculation",
+   "ref": "C. civ., art. 1842 et 1844-8",
+   "objet": "Acquisition de la personnalité morale des sociétés par l'immatriculation ; survie de la personnalité morale pour les besoins de la liquidation",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049876831",
-   "version": "version en vigueur depuis le 5 juillet 2024 (ordonnance n° 2024-662 du 3 juillet 2024)"
+   "version": "art. 1842 : version en vigueur depuis le 5 juillet 2024 (ordonnance n° 2024-662 du 3 juillet 2024) ; art. 1844-8 en vigueur"
   },
   {
    "ref": "Loi du 1er juillet 1901 relative au contrat d'association, art. 2 et 5",
@@ -76,7 +76,7 @@
   },
   {
    "ref": "C. civ., art. 578 à 624",
-   "objet": "Usufruit : définition, droits et obligations de l'usufruitier, extinction",
+   "objet": "Usufruit : définition, constitution (art. 579), droits et obligations de l'usufruitier, extinction",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136246",
    "version": "en vigueur (art. 578, 605 et 606 inchangés depuis 1804 ; art. 601 modifié par la loi n° 2014-873 du 4 août 2014 ; art. 617 dans sa version en vigueur depuis le 14 mai 2009)"
   },
@@ -97,6 +97,12 @@
    "objet": "Droit de gage général des créanciers",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032",
    "version": "en vigueur (art. 2285 dans sa rédaction issue de l'ordonnance n° 2006-346 du 23 mars 2006, en vigueur depuis le 24 mars 2006)"
+  },
+  {
+   "ref": "C. civ., art. 17, 79-1, 311-21 et 720 ; TFUE, art. 20",
+   "objet": "Nationalité et citoyenneté de l'Union ; acte de naissance et acte d'enfant sans vie ; dévolution du nom de famille ; ouverture de la succession par la mort",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043895575",
+   "version": "art. 17 créé par la loi n° 93-933 du 22 juillet 1993 ; art. 79-1 modifié par la loi n° 2021-1576 du 6 décembre 2021 ; art. 311-21 en vigueur depuis le 4 août 2021 (loi n° 2021-1017 du 2 août 2021) ; art. 720 en vigueur depuis le 1er juillet 2002 (loi n° 2001-1135 du 3 décembre 2001)"
   }
  ],
  "sections": [
@@ -163,6 +169,25 @@
      "cite": "« Constituent des actes d'administration les actes d'exploitation ou de mise en valeur du patrimoine de la personne protégée dénués de risque anormal. »",
      "src": "Décret n° 2008-1484 du 22 décembre 2008, art. 1 et 2, annexes 1 et 2",
      "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000020063723",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Nom de famille</b> : lorsque la filiation d'un enfant est établie à l'égard de ses deux parents au plus tard le jour de la déclaration de sa naissance, ou par la suite mais simultanément, ceux-ci choisissent le nom de famille qui lui est dévolu : le nom du père, le nom de la mère ou leurs deux noms accolés dans l'ordre choisi par eux, dans la limite d'un nom de famille pour chacun d'eux. En l'absence de déclaration conjointe à l'officier de l'état civil mentionnant le choix du nom, l'enfant prend le nom du parent à l'égard duquel sa filiation est établie en premier lieu, et le nom du père si elle est établie simultanément ; en cas de désaccord des parents, signalé par l'un d'eux à l'officier de l'état civil au plus tard le jour de la déclaration de naissance (ou, après la naissance, lors de l'établissement simultané de la filiation), il prend leurs deux noms, dans la limite du premier nom de famille pour chacun d'eux, accolés selon l'ordre alphabétique. Lorsqu'il a déjà été fait application de cet article, ou de l'une des autres dispositions qu'il mentionne, à l'égard d'un enfant commun, le nom précédemment dévolu ou choisi vaut pour les autres enfants communs (version en vigueur depuis le 4 août 2021, loi n° 2021-1017 du 2 août 2021).",
+     "src": "C. civ., art. 311-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043895575",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Nationalité</b> : la nationalité française est attribuée, s'acquiert ou se perd selon les dispositions du titre « De la nationalité française » du Code civil (art. 17 à 33-2), sous la réserve de l'application des traités et autres engagements internationaux de la France (art. 17, créé par la loi n° 93-933 du 22 juillet 1993). Il est institué une citoyenneté de l'Union : est citoyen de l'Union toute personne ayant la nationalité d'un État membre, et cette citoyenneté s'ajoute à la citoyenneté nationale sans la remplacer (TFUE, art. 20, § 1). Les conditions d'obtention de la nationalité ne sont pas au programme.",
+     "cite": "« La nationalité française est attribuée, s'acquiert ou se perd selon les dispositions fixées par le présent titre, sous la réserve de l'application des traités et autres engagements internationaux de la France. »",
+     "src": "C. civ., art. 17 ; TFUE, art. 20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419321",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Constitution de l'usufruit</b> : l'usufruit est établi par la loi, ou par la volonté de l'homme (art. 579, inchangé depuis 1804). L'article 601 mentionne ainsi l'acte constitutif de l'usufruit, qui peut dispenser l'usufruitier de donner caution, et l'usufruit légal des père et mère sur le bien de leurs enfants ; le vendeur ou le donateur sous réserve d'usufruit est lui aussi dispensé de caution.",
+     "src": "C. civ., art. 579 et 601",
+     "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006070721&idArticle=LEGIARTI000006429243",
      "fiab": "stable"
     }
    ]
@@ -287,6 +312,20 @@
      "src": "C. civ., art. 2284 et 2285",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Naissance et décès</b> : lorsqu'un enfant est décédé avant que sa naissance ait été déclarée à l'état civil, l'officier de l'état civil établit un acte de naissance et un acte de décès sur production d'un certificat médical indiquant que l'enfant est né vivant et viable et précisant les jours et heures de sa naissance et de son décès ; à défaut de ce certificat, il établit un acte d'enfant sans vie, qui ne préjuge pas de savoir si l'enfant a vécu ou non (art. 79-1, modifié par la loi n° 2021-1576 du 6 décembre 2021). Les successions s'ouvrent par la mort, au dernier domicile du défunt (art. 720, rédaction issue de la loi n° 2001-1135 du 3 décembre 2001, en vigueur depuis le 1er juillet 2002) ; le régime des successions est hors programme.",
+     "cite": "« Les successions s'ouvrent par la mort, au dernier domicile du défunt. »",
+     "src": "C. civ., art. 79-1 et 720",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044444557",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Actes irréguliers du majeur protégé</b> : à compter de la publicité du jugement d'ouverture, si la personne protégée a accompli seule un acte pour lequel elle aurait dû être assistée, l'acte ne peut être annulé que s'il est établi qu'elle a subi un préjudice ; si elle aurait dû être représentée, l'acte est nul de plein droit sans qu'il soit nécessaire de justifier d'un préjudice. Il en va de même de l'acte que le tuteur ou le curateur a accompli seul alors qu'il aurait dû être fait par la personne protégée, seule ou avec son assistance, ou qui ne pouvait être accompli qu'avec l'autorisation du juge ou du conseil de famille. L'acte que la personne protégée pouvait faire seule reste sujet aux actions en rescision ou en réduction de l'article 435, sauf autorisation expresse du juge ou du conseil de famille, et l'action s'éteint dans tous les cas par le délai de cinq ans de l'article 2224 (art. 465, version en vigueur depuis le 1er octobre 2016). Le contractant capable peut faire obstacle à l'action en nullité en établissant que l'acte était utile à la personne protégée et exempt de lésion, ou qu'il a profité à celle-ci (art. 1151).",
+     "cite": "« Dans tous les cas, l'action s'éteint par le délai de cinq ans prévu à l'article 2224. »",
+     "src": "C. civ., art. 465 et 1151",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032042597",
+     "fiab": "stable"
     }
    ]
   },
@@ -365,6 +404,26 @@
     {
      "t": "<b>Ancienne rédaction de l'article 1145 (manuels antérieurs à 2018)</b> : depuis la loi n° 2018-287 du 20 avril 2018 (version en vigueur depuis le 1er octobre 2018), l'article 1145 se borne à dire que la capacité des personnes morales est limitée par les règles applicables à chacune d'entre elles. La rédaction issue de l'ordonnance n° 2016-131, applicable du 1er octobre 2016 au 1er octobre 2018, la limitait aux actes utiles à la réalisation de leur objet tel que défini par leurs statuts et aux actes qui leur sont accessoires : ne pas la reprendre dans une copie.",
      "src": "C. civ., art. 1145 ; loi n° 2018-287 du 20 avril 2018",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008380/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dissolution n'est pas disparition</b> : la personnalité morale de la société subsiste pour les besoins de la liquidation jusqu'à la publication de la clôture de celle-ci. Si la clôture de la liquidation n'est pas intervenue dans un délai de trois ans à compter de la dissolution, le ministère public ou tout intéressé peut saisir le tribunal, qui fait procéder à la liquidation ou, si celle-ci a été commencée, à son achèvement.",
+     "src": "C. civ., art. 1844-8",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444186",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Actes conservatoires, d'administration, de disposition</b> : dans la gestion du patrimoine des mineurs et majeurs en tutelle, le tuteur accomplit seul les actes conservatoires et, sous réserve du second alinéa de l'article 473, les actes d'administration nécessaires à la gestion du patrimoine de la personne protégée ; il agit seul en justice pour faire valoir ses droits patrimoniaux (art. 504, en vigueur depuis le 1er janvier 2009). En revanche, il ne peut, sans y être autorisé par le conseil de famille ou, à défaut, le juge, faire des actes de disposition au nom de la personne protégée (art. 505, rédaction issue de la loi n° 2022-267 du 28 février 2022, en vigueur depuis le 2 mars 2022). L'autorisation n'est pas exigée en cas de vente forcée sur décision judiciaire ou en cas de vente amiable sur autorisation du juge.",
+     "cite": "« Le tuteur accomplit seul les actes conservatoires et, sous réserve des dispositions du second alinéa de l'article 473, les actes d'administration nécessaires à la gestion du patrimoine de la personne protégée. »",
+     "src": "C. civ., art. 504 et 505",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428288",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Actes courants du mineur</b> : ils peuvent être annulés pour simple lésion, sauf si la lésion résulte d'un événement imprévisible. Piège : la simple déclaration de majorité faite par le mineur ne fait pas obstacle à l'annulation ; en revanche, le mineur ne peut se soustraire aux engagements qu'il a pris dans l'exercice de sa profession (art. 1149, version en vigueur depuis le 1er octobre 2016). Pour les actes faits par un mineur, la prescription de l'action court du jour de la majorité ou de l'émancipation (art. 1152).",
+     "cite": "« Les actes courants accomplis par le mineur peuvent être annulés pour simple lésion. Toutefois, la nullité n'est pas encourue lorsque la lésion résulte d'un événement imprévisible. La simple déclaration de majorité faite par le mineur ne fait pas obstacle à l'annulation. »",
+     "src": "C. civ., art. 1149 et 1152",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032008380/",
      "fiab": "stable"
     }

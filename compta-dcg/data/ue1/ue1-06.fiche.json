@@ -1,6 +1,6 @@
 {
  "id": "ue1-06",
- "maj": "2026-10-18",
+ "maj": "2026-10-19",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -154,6 +154,27 @@
      "src": "C. civ., art. 1641",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441924",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Droit de gage général</b> : quiconque s'est obligé personnellement est tenu de remplir son engagement sur tous ses biens mobiliers et immobiliers, présents et à venir. Les biens du débiteur sont le gage commun de ses créanciers ; le prix s'en distribue entre eux par contribution (au prorata), à moins qu'il n'y ait entre les créanciers des causes légitimes de préférence.",
+     "cite": "« Les biens du débiteur sont le gage commun de ses créanciers ; et le prix s'en distribue entre eux par contribution, à moins qu'il n'y ait entre les créanciers des causes légitimes de préférence. » (art. 2285)",
+     "src": "C. civ., art. 2284 et 2285",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sûretés personnelles et cautionnement</b> : les sûretés personnelles régies par le titre Ier du livre IV du Code civil sont le cautionnement, la garantie autonome et la lettre d'intention. Le cautionnement est le contrat par lequel une caution s'oblige envers le créancier à payer la dette du débiteur en cas de défaillance de celui-ci ; il peut être souscrit à la demande du débiteur principal, sans demande de sa part et même à son insu.",
+     "cite": "« Le cautionnement est le contrat par lequel une caution s'oblige envers le créancier à payer la dette du débiteur en cas de défaillance de celui-ci. »",
+     "src": "C. civ., art. 2288 et 2287-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044071209",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Gage, nantissement, hypothèque</b> : le gage est une convention par laquelle le constituant accorde à un créancier le droit de se faire payer par préférence sur un ou plusieurs biens mobiliers corporels ; les créances garanties peuvent être présentes ou futures, à condition d'être déterminables dans ce dernier cas. Le nantissement est l'affectation, en garantie d'une obligation, d'un bien meuble incorporel ou d'un ensemble de biens meubles incorporels, présents ou futurs ; il est conventionnel ou judiciaire. L'hypothèque est l'affectation d'un immeuble en garantie d'une obligation, sans dépossession de celui qui la constitue.",
+     "cite": "« Le nantissement est l'affectation, en garantie d'une obligation, d'un bien meuble incorporel ou d'un ensemble de biens meubles incorporels, présents ou futurs. Il est conventionnel ou judiciaire. » (art. 2355)",
+     "src": "C. civ., art. 2333, 2355 et 2385 (versions en vigueur depuis le 1er janvier 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006118201",
+     "fiab": "stable"
     }
    ]
   },
@@ -184,7 +205,8 @@
      "t": "<b>Obligations du vendeur</b> : il a deux obligations principales, délivrer et garantir la chose qu'il vend. La délivrance est le transport de la chose vendue en la puissance et possession de l'acheteur. La garantie a deux objets : la possession paisible de la chose vendue (garantie d'éviction) et les défauts cachés de cette chose ou vices rédhibitoires.",
      "src": "C. civ., art. 1603, 1604 et 1625",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136381/",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Il a deux obligations principales, celle de délivrer et celle de garantir la chose qu'il vend. » (art. 1603) ; « La délivrance est le transport de la chose vendue en la puissance et possession de l'acheteur. » (art. 1604)"
     },
     {
      "t": "<b>Vendeur qui connaissait le vice</b> : il est tenu, outre la restitution du prix qu'il a reçu, de tous les dommages et intérêts envers l'acheteur.",
@@ -267,6 +289,39 @@
      "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Obligation de l'acheteur</b> : la principale obligation de l'acheteur est de payer le prix au jour et au lieu réglés par la vente.",
+     "cite": "« La principale obligation de l'acheteur est de payer le prix au jour et au lieu réglés par la vente. »",
+     "src": "C. civ., art. 1650",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006442037",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Protection de la caution personne physique</b> : à peine de nullité de son engagement, elle appose elle-même la mention qu'elle s'engage en qualité de caution à payer au créancier ce que lui doit le débiteur en cas de défaillance de celui-ci, dans la limite d'un montant en principal et accessoires exprimé en toutes lettres et en chiffres ; en cas de différence, le cautionnement vaut pour la somme écrite en toutes lettres. Si le cautionnement qu'elle a souscrit envers un créancier professionnel était, lors de sa conclusion, manifestement disproportionné à ses revenus et à son patrimoine, il est réduit au montant à hauteur duquel elle pouvait s'engager à cette date.",
+     "src": "C. civ., art. 2297 et 2300 (versions en vigueur depuis le 1er janvier 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044071230",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Formation du gage et de l'hypothèque conventionnelle</b> : le gage est parfait par l'établissement d'un écrit désignant la dette garantie, la quantité des biens donnés en gage et leur espèce ou nature ; il est opposable aux tiers par la publicité ou par la dépossession du bien (ou d'un titre qui le représente). L'hypothèque conventionnelle est consentie par acte notarié ; le mandat d'hypothéquer est donné dans la même forme.",
+     "src": "C. civ., art. 2336, 2337 et 2409",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150365/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pratiques commerciales déloyales</b> : elles sont interdites. Une pratique commerciale est déloyale lorsqu'elle est contraire aux exigences de la diligence professionnelle et qu'elle altère ou est susceptible d'altérer de manière substantielle le comportement économique du consommateur. Les pratiques commerciales trompeuses des articles L. 121-2 à L. 121-4 en font partie.",
+     "cite": "« Constituent, en particulier, des pratiques commerciales déloyales les pratiques commerciales trompeuses définies aux articles L. 121-2 à L. 121-4 […] »",
+     "src": "C. consom., art. L. 121-1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032220949/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pratique commerciale trompeuse</b> : une pratique commerciale est notamment trompeuse lorsqu'elle crée une confusion avec un autre bien ou service, une marque, un nom commercial ou un autre signe distinctif d'un concurrent, ou lorsqu'elle repose sur des allégations, indications ou présentations fausses ou de nature à induire en erreur portant notamment sur l'existence et la nature du bien ou du service, ses caractéristiques essentielles, son prix, le service après-vente, la portée des engagements de l'annonceur, l'identité du professionnel ou le traitement des réclamations. Elle l'est aussi lorsque la personne pour le compte de laquelle elle est mise en œuvre n'est pas clairement identifiable.",
+     "cite": "« Lorsqu'elle crée une confusion avec un autre bien ou service, une marque, un nom commercial ou un autre signe distinctif d'un concurrent […] » (1°)",
+     "src": "C. consom., art. L. 121-2 (version en vigueur depuis le 28 mai 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044563114",
+     "fiab": "stable"
     }
    ]
   },
@@ -302,6 +357,13 @@
      "t": "<b>Arrhes : perte ou restitution du double</b>. Si la promesse de vendre a été faite avec des arrhes, chacun des contractants peut s'en départir : celui qui les a versées en les perdant, celui qui les a reçues en restituant le double.",
      "src": "C. civ., art. 1590",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441327",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>2 ans d'emprisonnement et 300 000 € d'amende</b> : peines encourues pour les pratiques commerciales trompeuses mentionnées aux articles L. 121-2 à L. 121-4. Le montant de l'amende peut être porté, de manière proportionnée aux avantages tirés du délit, à 10 % du chiffre d'affaires moyen annuel, calculé sur les trois derniers chiffres d'affaires annuels connus à la date des faits, ou à 50 % des dépenses engagées pour la publicité ou la pratique ; les peines sont aggravées dans certains cas (pratique commise en ligne ou en bande organisée notamment).",
+     "cite": "« Les pratiques commerciales trompeuses mentionnées aux articles L. 121-2 à L. 121-4 sont punies d'un emprisonnement de deux ans et d'une amende de 300 000 euros. »",
+     "src": "C. consom., art. L. 132-2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032221101/",
      "fiab": "stable"
     }
    ]
@@ -346,6 +408,12 @@
      "src": "Ordonnance n° 2026-2 du 5 janvier 2026 ; C. consom., art. L. 221-21 et D. 221-5 ; décret n° 2026-3 du 5 janvier 2026",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053298845",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2021-1192 du 15 septembre 2021</b> portant réforme du droit des sûretés, applicable pour l'essentiel depuis le 1er janvier 2022 : nouvelle définition du cautionnement (art. 2288), mention apposée par la caution personne physique elle-même (art. 2297), réduction de l'engagement manifestement disproportionné, qui remplace la déchéance totale (art. 2300). Les cautionnements conclus avant le 1er janvier 2022 demeurent soumis à la loi ancienne, sauf les articles 2302 à 2304, applicables dès cette date. La réforme modifie aussi les règles du gage, du nantissement et de l'hypothèque, dont la définition figure désormais à l'article 2385 (auparavant à l'article 2393).",
+     "src": "Ordonnance n° 2021-1192 du 15 septembre 2021, art. 37 ; C. civ., art. 2288, 2297, 2300, 2385 et 2409 ; C. civ., anc. art. 2393 ; rapport au Président de la République relatif à l'ordonnance",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044044441",
+     "fiab": "stable"
     }
    ]
   },
@@ -382,6 +450,12 @@
      "src": "Guide pédagogique DCG 2026 ; C. consom., art. L. 221-18, L. 221-20, L. 221-21 et L. 221-24",
      "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-07/Guide_pedagogique_DCG-juillet2026.pdf",
      "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Mention de la caution : pas forcément manuscrite</b> : pour un cautionnement conclu depuis le 1er janvier 2022, il suffit que la mention soit apposée par la caution personne physique elle-même (les cautionnements antérieurs restent soumis à la loi ancienne). Si la caution est privée des bénéfices de discussion ou de division, elle le reconnaît dans cette mention ; à défaut, elle conserve le droit de s'en prévaloir. La mention fixe aussi la limite de l'engagement : en cas de différence, la somme écrite en toutes lettres l'emporte.",
+     "src": "C. civ., art. 2297 ; ordonnance n° 2021-1192 du 15 septembre 2021, art. 37 ; rapport au Président de la République relatif à l'ordonnance",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044071230",
+     "fiab": "stable"
     }
    ]
   }

@@ -1,6 +1,6 @@
 {
  "id": "ue1-04",
- "maj": "2026-10-18",
+ "maj": "2026-10-19",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE1 Fondamentaux du droit), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE1 Fondamentaux du droit), applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -162,6 +162,26 @@
      "src": "C. civ., art. 515-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428571",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Entreprise artisanale</b> : doivent être immatriculées au registre national des entreprises les personnes physiques et les personnes morales qui emploient moins de onze salariés (effectif déterminé selon le I de l'article L. 130-1 du code de la sécurité sociale) et exercent, à titre principal ou secondaire, une activité professionnelle indépendante de production, de transformation, de réparation ou de prestation de services figurant sur une liste fixée par décret en Conseil d'État (décret n° 98-247 du 2 avril 1998). Celles dont l'effectif atteint ou dépasse onze salariés tout en demeurant inférieur à deux cent cinquante peuvent demeurer immatriculées.",
+     "src": "Loi n° 96-603 du 5 juillet 1996, art. 19",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000038610206",
+     "fiab": "stable",
+     "cite": "« Doivent être immatriculées au registre national des entreprises les personnes physiques et les personnes morales qui emploient moins de onze salariés […] » ; « Peuvent demeurer immatriculées au registre national des entreprises les personnes physiques et les personnes morales dont l'effectif atteint ou dépasse onze salariés tout en demeurant inférieur à deux cent cinquante salariés. »"
+    },
+    {
+     "t": "<b>Activité agricole</b> : sont réputées agricoles les activités correspondant à la maîtrise et à l'exploitation d'un cycle biologique de caractère végétal ou animal et constituant une ou plusieurs étapes nécessaires au déroulement de ce cycle, ainsi que les activités exercées par un exploitant agricole qui sont dans le prolongement de l'acte de production ou qui ont pour support l'exploitation. Les activités agricoles ainsi définies ont un caractère civil.",
+     "src": "C. rur., art. L. 311-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038492093",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Profession libérale</b> : les professions libérales groupent les personnes exerçant à titre habituel, de manière indépendante et sous leur responsabilité, une activité de nature généralement civile ayant pour objet d'assurer, dans l'intérêt du client ou du public, des prestations principalement intellectuelles, techniques ou de soins, mises en œuvre au moyen de qualifications professionnelles appropriées et dans le respect de principes éthiques ou d'une déontologie professionnelle, sans préjudice des dispositions législatives applicables aux autres formes de travail indépendant.",
+     "src": "Loi n° 2012-387 du 22 mars 2012, art. 29, I",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000025555060",
+     "fiab": "stable",
+     "cite": "« Les professions libérales groupent les personnes exerçant à titre habituel, de manière indépendante et sous leur responsabilité […] »"
     }
    ]
   },
@@ -176,10 +196,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Formalités de création</b> : depuis le 1er janvier 2023, les entreprises déclarent leur création, les modifications de leur situation et la cessation de leur activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné par décret ; ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard.",
-     "src": "C. com., art. L. 123-33",
+     "t": "<b>Formalités de création</b> : à l'exception des procédures et formalités nécessaires à l'accès aux activités réglementées et à leur exercice, l'entreprise déclare sa création, les modifications de sa situation et la cessation de son activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné à cet effet ; ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard (régime applicable au plus tard le 1er janvier 2023). L'organisme unique exploite le guichet unique électronique des formalités d'entreprises, accessible par l'internet, sécurisé et gratuit (R. 123-2).",
+     "src": "C. com., art. L. 123-33 et R. 123-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Ce dépôt vaut déclaration auprès du destinataire dès lors que le dossier est régulier et complet […] »"
     },
     {
      "t": "<b>Créanciers professionnels</b> : les créanciers dont les droits sont nés à l'occasion de l'exercice professionnel de l'entrepreneur individuel n'ont pour gage que son patrimoine professionnel, sauf sûretés conventionnelles qu'il a consenties ou renonciation dans les conditions de l'article L. 526-25.",
@@ -236,7 +257,8 @@
      "t": "<b>Logement de la famille</b> : les époux ne peuvent l'un sans l'autre disposer des droits par lesquels est assuré le logement de la famille, ni des meubles meublants dont il est garni. L'époux qui n'a pas consenti peut demander l'annulation de l'acte dans l'année à partir du jour où il en a eu connaissance, sans que l'action puisse être intentée plus d'un an après la dissolution du régime matrimonial.",
      "src": "C. civ., art. 215",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006422766",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Les époux ne peuvent l'un sans l'autre disposer des droits par lesquels est assuré le logement de la famille, ni des meubles meublants dont il est garni. »"
     },
     {
      "t": "<b>Dettes ménagères</b> : chacun des époux peut passer seul les contrats ayant pour objet l'entretien du ménage ou l'éducation des enfants ; toute dette ainsi contractée par l'un oblige l'autre solidairement. La solidarité n'a pas lieu pour les dépenses manifestement excessives (train de vie du ménage, utilité ou inutilité de l'opération, bonne ou mauvaise foi du tiers). Elle n'a pas lieu non plus, sans le consentement des deux époux, pour les achats à tempérament ni pour les emprunts, à moins que ces derniers ne portent sur des sommes modestes nécessaires aux besoins de la vie courante et que leur montant cumulé, en cas de pluralité d'emprunts, ne soit pas manifestement excessif eu égard au train de vie du ménage.",
@@ -252,16 +274,18 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Emprunt et cautionnement</b> : chacun des époux ne peut engager que ses biens propres et ses revenus par un cautionnement ou un emprunt, à moins que l'acte n'ait été conclu avec le consentement exprès de l'autre conjoint, qui, dans ce cas, n'engage pas ses biens propres.",
+     "t": "<b>Emprunt et cautionnement</b> : chacun des époux ne peut engager que ses biens propres et ses revenus, par un cautionnement ou un emprunt, à moins que ceux-ci n'aient été contractés avec le consentement exprès de l'autre conjoint, qui, dans ce cas, n'engage pas ses biens propres. Ces dispositions sont impératives : elles s'appliquent au crédit consenti par découvert en compte et aux époux mariés sous le régime de la communauté universelle (Cass. 1re civ., 5 octobre 2016, n° 15-24.616).",
      "src": "C. civ., art. 1415",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439364",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Chacun des époux ne peut engager que ses biens propres et ses revenus, par un cautionnement ou un emprunt, à moins que ceux-ci n'aient été contractés avec le consentement exprès de l'autre conjoint […] »"
     },
     {
-     "t": "<b>Gestion des biens communs</b> : chaque époux peut administrer seul les biens communs et en disposer, sauf à répondre de ses fautes de gestion ; l'époux qui exerce une profession séparée a seul le pouvoir d'accomplir les actes d'administration et de disposition nécessaires à celle-ci. En revanche, les époux ne peuvent, l'un sans l'autre, aliéner ou grever de droits réels les immeubles, fonds de commerce et exploitations dépendant de la communauté, ni les droits sociaux non négociables et les meubles corporels dont l'aliénation est soumise à publicité.",
+     "t": "<b>Gestion des biens communs</b> : chacun des époux a le pouvoir d'administrer seul les biens communs et d'en disposer, sauf à répondre des fautes qu'il aurait commises dans sa gestion ; l'époux qui exerce une profession séparée a seul le pouvoir d'accomplir les actes d'administration et de disposition nécessaires à celle-ci, le tout sous réserve des articles 1422 à 1425. Les époux ne peuvent, l'un sans l'autre, aliéner ou grever de droits réels les immeubles, fonds de commerce et exploitations dépendant de la communauté, ni les droits sociaux non négociables et les meubles corporels dont l'aliénation est soumise à publicité ; ils ne peuvent, sans leur conjoint, percevoir les capitaux provenant de telles opérations.",
      "src": "C. civ., art. 1421 et 1424",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019288940",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Les époux ne peuvent, l'un sans l'autre, aliéner ou grever de droits réels les immeubles, fonds de commerce et exploitations dépendant de la communauté […] »"
     },
     {
      "t": "<b>Séparation de biens</b> : lorsque les époux l'ont stipulée dans leur contrat de mariage, chacun conserve l'administration, la jouissance et la libre disposition de ses biens personnels et reste seul tenu des dettes nées en sa personne, avant ou pendant le mariage, hors le cas de l'article 220. Un époux peut prouver par tous moyens, à l'égard de son conjoint comme des tiers, qu'il a la propriété exclusive d'un bien.",
@@ -281,6 +305,18 @@
      "cite": "« Les partenaires sont tenus solidairement à l'égard des tiers des dettes contractées par l'un d'eux pour les besoins de la vie courante. »",
      "src": "C. civ., art. 515-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028748096",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Obligation d'immatriculation</b> : il est tenu un registre national des entreprises, auquel s'immatriculent les entreprises exerçant sur le territoire français une activité de nature commerciale, artisanale, agricole ou indépendante. Y sont notamment immatriculées, sur leur déclaration, les personnes tenues de s'immatriculer au registre du commerce et des sociétés (L. 123-1, I), les agents commerciaux (L. 134-1), les entreprises du secteur des métiers et de l'artisanat, les personnes exerçant une activité agricole au sens de l'article L. 311-1 du code rural et de la pêche maritime et les personnes physiques exerçant de manière indépendante une activité professionnelle, y compris libérale.",
+     "src": "C. com., art. L. 123-36",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051315595",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Liberté du commerce et de l'industrie</b> : l'article 7 de la loi des 2-17 mars 1791 (décret d'Allarde), resté dans sa rédaction d'origine, pose le principe de la liberté pour toute personne de faire tel négoce ou d'exercer telle profession, art ou métier qu'elle trouve bon, à charge de se pourvoir d'une patente et de se conformer aux règlements de police. Le principe est encadré par la police administrative : un arrêté préfectoral interdisant le racolage commercial sur la voie publique ne lui porte pas atteinte (Cass. crim., 8 avril 1992, n° 91-84.530).",
+     "src": "Loi des 2-17 mars 1791 (décret d'Allarde), art. 7",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006501995",
      "fiab": "stable"
     }
    ]
@@ -367,13 +403,15 @@
      "t": "<b>Fonds de commerce commun</b> : l'époux commerçant marié sous la communauté légale accomplit seul les actes d'administration et de disposition nécessaires à sa profession, mais il ne peut ni vendre ni grever de droits réels seul un fonds de commerce ou un immeuble commun : l'article 1421 réserve l'application de l'article 1424, qui exige l'accord des deux époux.",
      "src": "C. civ., art. 1421 et 1424",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439544",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« L'époux qui exerce une profession séparée a seul le pouvoir d'accomplir les actes d'administration et de disposition nécessaires à celle-ci. Le tout sous réserve des articles 1422 à 1425. »"
     },
     {
      "t": "<b>Emprunt professionnel d'un époux commun en biens</b> : la dette d'un époux peut être poursuivie sur les biens communs, sauf fraude de l'époux débiteur et mauvaise foi du créancier (art. 1413), mais pas sur les gains et salaires de son conjoint, sauf dette ménagère de l'article 220 (art. 1414). Pour un emprunt ou un cautionnement souscrit sans le consentement exprès de l'autre, le créancier ne peut saisir que les biens propres et les revenus de l'époux qui s'est engagé (art. 1415).",
      "src": "C. civ., art. 1413 à 1415",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006439364",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Chacun des époux ne peut engager que ses biens propres et ses revenus, par un cautionnement ou un emprunt, à moins que ceux-ci n'aient été contractés avec le consentement exprès de l'autre conjoint […] »"
     },
     {
      "t": "<b>Concubins</b> : le chapitre du Code civil consacré au concubinage ne comporte que l'article 515-8, qui le définit. La solidarité des dettes ménagères est organisée pour les époux (art. 220) et pour les partenaires de PACS (art. 515-4). Le Code de commerce vise en revanche le concubin du chef d'entreprise dans l'intitulé de la section relative à la personne travaillant dans l'entreprise familiale (art. L. 121-4 à L. 121-8).",

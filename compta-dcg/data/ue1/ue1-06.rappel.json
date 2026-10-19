@@ -4,7 +4,7 @@
  "ordre": 6,
  "title": "Les contrats courants et les sûretés",
  "maj": "2026-10-19",
- "resume": "Se remettre en tête la vente (prix, transfert de propriété et des risques, promesses, vices cachés), le contrat d'entreprise, le droit de la consommation (clauses abusives, garantie de conformité, rétractation) et deux règles sur les sûretés (nantissement du fonds de commerce, sûreté prise pour une dette ancienne).",
+ "resume": "Se remettre en tête la vente (prix, transfert de propriété et des risques, promesses, obligations des parties, vices cachés), le contrat d'entreprise, le droit de la consommation (clauses abusives, garantie de conformité, rétractation, pratiques commerciales trompeuses) et les sûretés (droit de gage général, gage, nantissement, hypothèque, cautionnement, sûreté prise en période suspecte).",
  "rappels": [
   {
    "t": "<b>Prix</b> : déterminé et désigné par les parties, ou laissé à l'estimation d'un tiers ; si celui-ci ne veut ou ne peut la faire, il n'y a point de vente, sauf estimation par un autre tiers.",
@@ -31,6 +31,15 @@
    ],
    "src": "C. civ., art. 1589 ; Cass. com., 25 avril 1989, n° 87-17.281",
    "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007022561/"
+  },
+  {
+   "t": "<b>Obligations des parties</b> : le vendeur a deux obligations principales, délivrer et garantir la chose qu'il vend ; la principale obligation de l'acheteur est de payer le prix au jour et au lieu réglés par la vente.",
+   "base": [
+    "Règles essentielles#3",
+    "Règles essentielles#16"
+   ],
+   "src": "C. civ., art. 1603, 1604 et 1625",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136381/"
   },
   {
    "t": "<b>Vice caché</b> : défaut caché rendant la chose impropre à l'usage auquel on la destine, ou diminuant tellement cet usage que l'acheteur ne l'aurait pas acquise ou en aurait donné un moindre prix. Action dans les deux ans de sa découverte.",
@@ -113,12 +122,42 @@
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053310520"
   },
   {
+   "t": "<b>Pratique commerciale trompeuse</b> : pratique déloyale, donc interdite, notamment lorsqu'elle crée une confusion avec un bien, une marque ou un signe distinctif d'un concurrent, ou repose sur des allégations fausses ou trompeuses (caractéristiques essentielles, prix…). Délit puni en principe de deux ans d'emprisonnement et de 300 000 € d'amende.",
+   "base": [
+    "Règles essentielles#20",
+    "Règles essentielles#19",
+    "Chiffres et seuils#5"
+   ],
+   "src": "C. consom., art. L. 121-2 (version en vigueur depuis le 28 mai 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044563114"
+  },
+  {
+   "t": "<b>Droit de gage général</b> : les biens du débiteur sont le gage commun de ses créanciers, payés au prorata sauf cause légitime de préférence. Sûretés réelles : gage d'un meuble corporel (écrit désignant la dette, la quantité et l'espèce des biens), nantissement d'un meuble incorporel, hypothèque d'un immeuble (acte notarié si conventionnelle).",
+   "base": [
+    "Définitions#7",
+    "Définitions#9",
+    "Règles essentielles#18"
+   ],
+   "src": "C. civ., art. 2284 et 2285",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006448032"
+  },
+  {
    "t": "<b>Nantissement du fonds de commerce</b> : le créancier ne peut se faire attribuer le fonds en paiement ; sauf désignation expresse et précise, le nantissement ne comprend que l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. Inscription dans les trente jours de l'acte, à peine de nullité.",
    "base": [
     "Règles essentielles#15"
    ],
    "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037"
+  },
+  {
+   "t": "<b>Cautionnement</b> (sûreté personnelle) : la caution s'oblige envers le créancier à payer la dette du débiteur en cas de défaillance de celui-ci. S'il est conclu depuis 2022, la caution personne physique appose elle-même une mention, à peine de nullité ; envers un créancier professionnel, son engagement manifestement disproportionné à ses revenus et patrimoine est réduit.",
+   "base": [
+    "Définitions#8",
+    "Règles essentielles#17",
+    "Ce qui a changé récemment#6"
+   ],
+   "src": "C. civ., art. 2288 et 2287-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044071209"
   },
   {
    "t": "<b>Sûreté pour dette ancienne</b> : en redressement judiciaire, est nulle de droit la sûreté réelle conventionnelle constituée depuis la cessation des paiements pour une dette antérieure, sauf exceptions, dont le remplacement d'une sûreté antérieure d'une nature et d'une assiette au moins équivalentes.",

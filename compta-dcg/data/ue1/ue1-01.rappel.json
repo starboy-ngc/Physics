@@ -4,10 +4,10 @@
  "ordre": 1,
  "title": "La règle de droit et ses sources",
  "maj": "2026-10-19",
- "resume": "Cette page remet en tête les sources du droit et leur hiérarchie, l'entrée en vigueur et la non-rétroactivité de la loi, ainsi que les contrôles de constitutionnalité et de conventionnalité.",
+ "resume": "Cette page remet en tête les sources du droit et leur hiérarchie, la procédure législative, l'entrée en vigueur et la non-rétroactivité de la loi, ainsi que les contrôles de constitutionnalité et de conventionnalité.",
  "rappels": [
   {
-   "t": "<b>Domaine de la loi</b> : l'article 34 réserve à la loi les règles concernant notamment la nationalité, l'état et la capacité des personnes, les crimes et délits, les impositions de toutes natures (assiette, taux, modalités de recouvrement). La loi détermine les principes fondamentaux du droit du travail, du droit syndical et de la sécurité sociale.",
+   "t": "<b>Domaine de la loi</b> : la loi fixe notamment les règles concernant l'état et la capacité des personnes, les crimes et délits, l'assiette, le taux et le recouvrement des impositions. Elle détermine les principes fondamentaux du droit du travail, du droit syndical et de la sécurité sociale.",
    "base": [
     "Définitions#0"
    ],
@@ -23,7 +23,7 @@
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000571356/LEGISCTA000006095825/"
   },
   {
-   "t": "<b>Ordonnance</b> : prise par le Gouvernement qu'une loi habilite, pendant un délai limité, à intervenir dans le domaine de la loi, elle entre en vigueur dès sa publication. Elle devient caduque faute de dépôt du projet de loi de ratification avant la date fixée par la loi d'habilitation ; sa ratification ne peut être qu'expresse.",
+   "t": "<b>Ordonnance</b> : prise par le Gouvernement qu'une loi habilite, pour un délai limité, à intervenir dans le domaine de la loi, elle entre en vigueur dès sa publication. Elle devient caduque faute de dépôt du projet de loi de ratification avant la date fixée par la loi d'habilitation ; sa ratification ne peut être qu'expresse.",
    "base": [
     "Définitions#2",
     "Règles essentielles#7"
@@ -32,24 +32,16 @@
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019241024"
   },
   {
-   "t": "<b>Loi impérative ou supplétive</b> : on ne peut déroger, par des conventions particulières, aux lois qui intéressent l'ordre public et les bonnes mœurs (C. civ., art. 6). <i>A contrario</i>, les règles qui n'intéressent ni l'ordre public ni les bonnes mœurs peuvent être écartées par les parties : elles sont supplétives de volonté.",
+   "t": "<b>Procédure législative</b> : l'initiative appartient concurremment au Premier ministre et aux membres du Parlement ; les deux assemblées examinent successivement le texte. Après échec de la commission mixte paritaire et nouvelle lecture, le Gouvernement peut demander à l'Assemblée nationale de statuer définitivement ; la loi est promulguée dans les quinze jours.",
    "base": [
-    "Définitions#4"
+    "Règles essentielles#18",
+    "Chiffres et seuils#4"
    ],
-   "src": "C. civ., art. 6",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419285"
+   "src": "Constitution du 4 octobre 1958, art. 39 et 45",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur"
   },
   {
-   "t": "<b>Droit des contrats</b> : selon le rapport au Président de la République sur l'ordonnance n° 2016-131, ses dispositions sont en principe supplétives (C. civ., art. 6, 1102 et 1103), sauf si le texte prévoit expressément leur caractère impératif. Ainsi, l'article 1104 (bonne foi) se déclare d'ordre public : aucune clause ne peut l'écarter.",
-   "base": [
-    "Règles essentielles#5",
-    "Points de vigilance#6"
-   ],
-   "src": "Rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016 ; C. civ., art. 6, 1102 et 1103",
-   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539"
-  },
-  {
-   "t": "<b>Entrée en vigueur</b> : la loi entre en vigueur à la date qu'elle fixe, sinon le lendemain de sa publication au Journal officiel, sauf report des dispositions dont l'exécution nécessite des mesures d'application. En cas d'urgence, elle entre en vigueur dès sa publication si le décret de promulgation le prescrit.",
+   "t": "<b>Entrée en vigueur</b> : à la date fixée par la loi, sinon le lendemain de sa publication au Journal officiel, sauf report des dispositions nécessitant des mesures d'application. En cas d'urgence, dès la publication si le décret de promulgation le prescrit.",
    "base": [
     "Règles essentielles#0",
     "Règles essentielles#1"
@@ -66,13 +58,48 @@
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419281"
   },
   {
-   "t": "<b>Le juge et la loi</b> : le juge qui refuse de juger sous prétexte du silence, de l'obscurité ou de l'insuffisance de la loi peut être poursuivi comme coupable de déni de justice (C. civ., art. 4). Mais il lui est défendu de prononcer par voie de disposition générale et réglementaire (art. 5).",
+   "t": "<b>Loi impérative ou supplétive</b> : on ne peut déroger, par des conventions particulières, aux lois qui intéressent l'ordre public et les bonnes mœurs (C. civ., art. 6). <i>A contrario</i>, les autres règles peuvent être écartées par les parties : elles sont supplétives de volonté.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. civ., art. 6",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419285"
+  },
+  {
+   "t": "<b>Droit des contrats</b> : selon le rapport au Président de la République sur l'ordonnance n° 2016-131, ses dispositions sont en principe supplétives (C. civ., art. 6, 1102 et 1103), sauf caractère impératif expressément prévu. Ainsi, l'article 1104 (bonne foi) est d'ordre public : aucune clause ne peut l'écarter.",
+   "base": [
+    "Règles essentielles#5",
+    "Points de vigilance#6"
+   ],
+   "src": "Rapport au Président de la République relatif à l'ordonnance n° 2016-131 du 10 février 2016 ; C. civ., art. 6, 1102 et 1103",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032004539"
+  },
+  {
+   "t": "<b>Le juge et la loi</b> : le juge qui refuse de juger sous prétexte du silence, de l'obscurité ou de l'insuffisance de la loi peut être poursuivi comme coupable de déni de justice (C. civ., art. 4) ; il ne peut prononcer par voie de disposition générale et réglementaire (art. 5).",
    "base": [
     "Règles essentielles#3",
     "Règles essentielles#4"
    ],
    "src": "C. civ., art. 4",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419283"
+  },
+  {
+   "t": "<b>Usage et Cour de cassation</b> : les contrats obligent aussi aux suites que leur donnent l'équité, l'usage ou la loi (C. civ., art. 1194). La Cour de cassation, unique, juge les pourvois contre les décisions judiciaires rendues en dernier ressort, sans connaître du fond, sauf loi contraire.",
+   "base": [
+    "Définitions#8",
+    "Définitions#7"
+   ],
+   "src": "C. civ., art. 1194",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041309"
+  },
+  {
+   "t": "<b>Hiérarchie des normes</b> : le bloc de constitutionnalité (Constitution, Préambule de 1946, Déclaration de 1789, Charte de l'environnement…) est au sommet de l'ordre interne, au-dessus des normes internationales. Un engagement international jugé par le Conseil constitutionnel contraire à la Constitution ne peut être ratifié qu'après révision (art. 54).",
+   "base": [
+    "Définitions#6",
+    "Règles essentielles#17"
+   ],
+   "src": "Guide de légistique (Légifrance), fiche 1.3.1 « Différentes normes »",
+   "url": "https://www.legifrance.gouv.fr/contenu/Media/files/autour-de-la-loi/guide-de-legistique/2024_02_07_fiche_1.3.1_differentes_normes.pdf"
   },
   {
    "t": "<b>Supériorité des traités</b> : les traités ou accords régulièrement ratifiés ou approuvés ont, dès leur publication, une autorité supérieure à celle des lois, sous réserve de leur application par l'autre partie (Constitution, art. 55).",
@@ -83,6 +110,15 @@
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006095826/"
   },
   {
+   "t": "<b>Contrôle a priori</b> : les lois organiques sont obligatoirement soumises au Conseil constitutionnel ; les autres peuvent lui être déférées par le Président de la République, le Premier ministre, le président d'une assemblée, soixante députés ou soixante sénateurs. Il statue en un mois (huit jours si urgence) ; la saisine suspend le délai de promulgation.",
+   "base": [
+    "Règles essentielles#13",
+    "Chiffres et seuils#1"
+   ],
+   "src": "Constitution du 4 octobre 1958, art. 61",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur"
+  },
+  {
    "t": "<b>Conventionnalité</b> : saisi au titre de l'article 61, le Conseil constitutionnel n'examine pas la conformité d'une loi à un traité, car une loi contraire à un traité n'est pas, de ce seul fait, contraire à la Constitution (n° 74-54 DC). Ce contrôle revient aux juridictions ordinaires.",
    "base": [
     "Règles essentielles#12"
@@ -91,7 +127,17 @@
    "url": "https://www.legifrance.gouv.fr/cons/id/CONSTEXT000017665674/"
   },
   {
-   "t": "<b>QPC</b> : elle confronte une disposition législative aux droits et libertés que la Constitution garantit. Le Conseil d'État ou la Cour de cassation décide sous trois mois du renvoi au Conseil constitutionnel, qui suppose notamment une question nouvelle ou présentant un caractère sérieux ; à défaut de décision dans ce délai, la question est transmise.",
+   "t": "<b>Juges ordinaires et droit de l'Union</b> : la Cour de cassation (Jacques Vabre, 1975) puis le Conseil d'État (Nicolo, 1989) contrôlent la compatibilité de la loi, même postérieure, avec le traité. Le règlement européen est directement applicable ; la directive lie l'État quant au résultat et doit être transposée (TFUE, art. 288).",
+   "base": [
+    "Règles essentielles#10",
+    "Règles essentielles#11",
+    "Définitions#3"
+   ],
+   "src": "Cass. ch. mixte, 24 mai 1975, n° 73-13.556 (Société des cafés Jacques Vabre)",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006994625/"
+  },
+  {
+   "t": "<b>QPC</b> : elle confronte une disposition législative aux droits et libertés que la Constitution garantit. Le Conseil d'État ou la Cour de cassation décide sous trois mois du renvoi au Conseil constitutionnel, qui suppose notamment une question nouvelle ou sérieuse ; faute de décision dans ce délai, la question est transmise.",
    "base": [
     "Règles essentielles#15",
     "Points de vigilance#0"
@@ -100,7 +146,7 @@
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000705065/LEGISCTA000021448078/"
   },
   {
-   "t": "<b>Effets des décisions du Conseil constitutionnel</b> (Constitution, art. 62) : une disposition déclarée inconstitutionnelle sur le fondement de l'article 61 ne peut être promulguée ni mise en application ; sur QPC, elle est abrogée à compter de la publication de la décision ou d'une date ultérieure qu'elle fixe.",
+   "t": "<b>Effets des décisions du Conseil constitutionnel</b> : une disposition déclarée inconstitutionnelle sur le fondement de l'article 61 ne peut être promulguée ni mise en application ; sur QPC, elle est abrogée à compter de la publication de la décision ou d'une date ultérieure qu'elle fixe.",
    "base": [
     "Règles essentielles#16"
    ],
@@ -108,7 +154,7 @@
    "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur"
   },
   {
-   "t": "<b>Ordonnance ratifiée ou non</b> : non ratifiée, elle est un acte de forme réglementaire relevant du juge administratif ; ratifiée, elle a valeur législative depuis sa signature. Mais dès l'expiration du délai d'habilitation, ses dispositions qui relèvent du domaine législatif peuvent faire l'objet d'une QPC (n° 2020-843 QPC).",
+   "t": "<b>Ordonnance ratifiée ou non</b> : non ratifiée, elle est un acte de forme réglementaire relevant du juge administratif ; ratifiée, elle a valeur législative depuis sa signature. Même non ratifiée, ses dispositions relevant du domaine législatif peuvent, dès l'expiration du délai d'habilitation, faire l'objet d'une QPC (n° 2020-843 QPC).",
    "base": [
     "Points de vigilance#2",
     "Points de vigilance#3"

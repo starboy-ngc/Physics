@@ -4,8 +4,17 @@
  "ordre": 7,
  "title": "La responsabilité civile de l'entrepreneur individuel",
  "maj": "2026-10-19",
- "resume": "Se remettre en tête la responsabilité contractuelle (force majeure, dommage réparable, clauses limitatives, faute lourde), la responsabilité extracontractuelle du fait personnel, du fait des choses et du fait des préposés, et le patrimoine que l'entrepreneur individuel engage envers ses créanciers professionnels.",
+ "resume": "Se remettre en tête la distinction entre responsabilité civile et pénale, la responsabilité contractuelle (force majeure, dommage réparable, clauses limitatives, faute lourde), le non-cumul des régimes, le préjudice réparable, la responsabilité extracontractuelle du fait personnel, du fait des choses et du fait des préposés, et le patrimoine que l'entrepreneur individuel engage envers ses créanciers professionnels.",
  "rappels": [
+  {
+   "t": "<b>Responsabilité civile et pénale</b> : l'action civile appartient à ceux qui ont personnellement souffert du dommage directement causé par l'infraction (C. pr. pén., art. 2). L'absence de faute pénale non intentionnelle n'empêche pas d'agir devant le juge civil sur le fondement de l'article 1241, si la faute civile est établie (art. 4-1).",
+   "base": [
+    "Définitions#7",
+    "Règles essentielles#15"
+   ],
+   "src": "C. pr. pén., art. 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024496925"
+  },
   {
    "t": "<b>Responsabilité contractuelle</b> : le débiteur est condamné, s'il y a lieu, à des dommages et intérêts pour inexécution de l'obligation ou retard dans l'exécution, sauf s'il justifie que l'exécution a été empêchée par la force majeure (art. 1231-1).",
    "base": [
@@ -60,6 +69,22 @@
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032021488/"
   },
   {
+   "t": "<b>Non-cumul</b> : le créancier d'une obligation contractuelle ne peut se prévaloir, contre le débiteur de cette obligation, des règles de la responsabilité délictuelle (Civ. 1re, 2 février 2022) ; s'il dispose d'une action contractuelle, le juge n'a pas à rechercher la responsabilité délictuelle du cocontractant (2021).",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "Cass. civ. 1re, 2 février 2022, n° 18-22.011 et 18-23.451 ; Cass. civ. 1re, 20 octobre 2021, n° 20-16.343",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000045133413"
+  },
+  {
+   "t": "<b>Préjudice réparable</b> : les dommages-intérêts réparent le préjudice subi sans perte ni profit pour la victime (réparation intégrale) ; seule constitue une perte de chance réparable la disparition actuelle et certaine d'une éventualité favorable (Civ. 3e, 20 mai 2021).",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "Cass. civ. 3e, 20 mai 2021, n° 20-10.905 ; Cass. civ. 2e, 8 décembre 2016, n° 13-22.961",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000043566057?isSuggest=true"
+  },
+  {
    "t": "<b>Fait des choses</b> : on est responsable du dommage causé par les choses que l'on a sous sa garde (art. 1242, al. 1er). La garde se rattache aux pouvoirs d'usage, de direction et de contrôle : le propriétaire qui en est privé par un vol n'est plus gardien (Ch. réunies, 2 décembre 1941).",
    "base": [
     "Définitions#3",
@@ -94,6 +119,15 @@
    ],
    "src": "Cass. ass. plén., 25 février 2000, n° 97-17.378 et 97-20.152",
    "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007043704/"
+  },
+  {
+   "t": "<b>Abus de fonctions, infraction intentionnelle</b> : le commettant ne s'exonère que si le préposé a agi hors de ses fonctions, sans autorisation et à des fins étrangères à ses attributions (1988). Le préposé condamné pour une infraction intentionnelle, même ordonnée par le commettant, ayant lésé un tiers engage envers lui sa responsabilité civile (2001).",
+   "base": [
+    "Règles essentielles#11",
+    "Règles essentielles#13"
+   ],
+   "src": "Cass. ass. plén., 19 mai 1988, n° 87-82.654",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020609/"
   },
   {
    "t": "<b>Patrimoine professionnel</b> : biens, droits, obligations et sûretés de l'entrepreneur individuel utiles à son activité professionnelle indépendante. Sauf sûretés conventionnelles ou renonciation, il n'est en principe tenu que sur ce patrimoine envers ses créanciers dont les droits sont nés à l'occasion de son exercice professionnel, après l'entrée en vigueur de la loi n° 2022-172.",
