@@ -5,7 +5,7 @@
   {
    "id": "ue2-04-k01",
    "type": "def",
-   "q": "Quel statut l'article L. 221-1 du Code de commerce attribue-t-il aux associés d'une société en nom collectif (SNC) ?",
+   "q": "Quel statut ont les associés d'une société en nom collectif (SNC) et comment répondent-ils des dettes sociales ?",
    "r": "<b>Ils ont tous la qualité de commerçant et répondent indéfiniment et solidairement des dettes sociales.</b> Le créancier ne peut poursuivre un associé qu'après avoir vainement mis en demeure la société par acte extrajudiciaire, à l'expiration d'un délai de huit jours que le président du tribunal de commerce, statuant en référé, peut proroger.",
    "base": [
     "Définitions#0",
@@ -127,7 +127,7 @@
   {
    "id": "ue2-04-k11",
    "type": "def",
-   "q": "Quelles sociétés ont le caractère civil selon l'article 1845 du Code civil ?",
+   "q": "Comment la loi détermine-t-elle quelles sociétés ont le caractère civil ?",
    "r": "<b>Toutes les sociétés auxquelles la loi n'attribue pas un autre caractère à raison de leur forme, de leur nature ou de leur objet.</b> Les articles 1845 et suivants s'appliquent à toutes les sociétés civiles, sauf dérogation prévue par le statut légal particulier auquel certaines d'entre elles sont assujetties.",
    "base": [
     "Définitions#2"
@@ -237,7 +237,7 @@
   {
    "id": "ue2-04-k20",
    "type": "comp",
-   "q": "Qu'a changé l'ordonnance n° 2025-229 du 12 mars 2025 pour les nullités dans les SNC, SCS et sociétés civiles ?",
+   "q": "Qu'a changé la réforme de 2025 du régime des nullités pour les SNC, les SCS et les sociétés civiles ?",
    "r": "<b>Le régime des nullités est unifié dans les dispositions du Code civil communes à toutes les sociétés</b>, donc applicable aussi aux SNC, SCS et sociétés civiles. Les causes de nullité de la société sont réduites, l'annulation d'une décision est subordonnée à un « triple test » et les actions en nullité se prescrivent par deux ans.",
    "base": [
     "Ce qui a changé récemment#1"
@@ -249,7 +249,7 @@
   {
    "id": "ue2-04-k21",
    "type": "comp",
-   "q": "Depuis la loi du 14 février 2022, qu'est-ce qui distingue la responsabilité de l'entrepreneur individuel de celle d'un associé de SNC ?",
+   "q": "Depuis la réforme de 2022 du statut d'entrepreneur individuel, qu'est-ce qui distingue sa responsabilité de celle d'un associé de SNC ?",
    "r": "<b>L'entrepreneur individuel n'est tenu de ses engagements professionnels que sur son patrimoine professionnel</b>, sauf sûretés conventionnelles ou renonciation, alors que <b>les associés de SNC et les commandités restent tenus indéfiniment des dettes sociales sur l'ensemble de leur patrimoine</b>.",
    "base": [
     "Ce qui a changé récemment#2"
@@ -261,7 +261,7 @@
   {
    "id": "ue2-04-k22",
    "type": "def",
-   "q": "Qu'est-ce qu'une société en participation au sens du Code civil ?",
+   "q": "En droit des sociétés, qu'est-ce qu'une société en participation ?",
    "r": "<b>Une société que les associés sont convenus de ne pas immatriculer</b> : elle n'est pas une personne morale, n'est pas soumise à publicité et peut être prouvée par tous moyens. Sauf organisation différente, les rapports entre associés suivent les règles de la société civile ou, si elle a un caractère commercial, celles de la SNC ; ces dispositions s'appliquent aussi aux sociétés créées de fait.",
    "base": [
     "Définitions#3"
@@ -285,7 +285,7 @@
   {
    "id": "ue2-04-k24",
    "type": "def",
-   "q": "Qu'est-ce qu'un groupement d'intérêt économique (GIE) selon le Code de commerce ?",
+   "q": "En droit des affaires, qu'est-ce qu'un groupement d'intérêt économique (GIE) ?",
    "r": "<b>Un groupement de deux ou plusieurs personnes physiques ou morales, constitué pour une durée déterminée afin de faciliter ou de développer l'activité économique de ses membres</b>, sans but de réaliser des bénéfices pour lui-même et dont l'activité n'a qu'un caractère auxiliaire. Il peut être constitué sans capital et jouit de la personnalité morale dès son immatriculation au registre du commerce et des sociétés.",
    "base": [
     "Définitions#4",
@@ -322,7 +322,7 @@
   {
    "id": "ue2-04-k27",
    "type": "comp",
-   "q": "Qu'a changé l'ordonnance n° 2023-77 du 8 février 2023 pour l'exercice en société des professions libérales réglementées ?",
+   "q": "Qu'a changé la réforme de 2023 pour l'exercice en société des professions libérales réglementées ?",
    "r": "<b>Elle réunit dans un texte unique les règles des sociétés civiles professionnelles, des sociétés d'exercice libéral, des sociétés de participations financières de professions libérales et des sociétés pluri-professionnelles d'exercice</b>, auparavant prévues par les lois de 1966 et de 1990. Elle répartit ces professions en trois familles : santé ; juridique et judiciaire ; technique et cadre de vie.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -334,7 +334,7 @@
   {
    "id": "ue2-04-k28",
    "type": "def",
-   "q": "Qu'est-ce qu'une association au sens de la loi du 1er juillet 1901 ?",
+   "q": "Comment le droit français définit-il une association ?",
    "r": "<b>Une convention par laquelle deux ou plusieurs personnes mettent en commun, d'une façon permanente, leurs connaissances ou leur activité</b> dans un but autre que de partager des bénéfices.",
    "base": [
     "Définitions#5"
@@ -346,7 +346,7 @@
   {
    "id": "ue2-04-k29",
    "type": "comp",
-   "q": "À quelle condition une association de la loi du 1er juillet 1901 acquiert-elle la capacité juridique ?",
+   "q": "À quelle condition une association acquiert-elle la capacité juridique ?",
    "r": "<b>Elle doit être rendue publique par une déclaration en préfecture suivie d'une insertion au Journal officiel</b>, même si elle se forme librement, sans autorisation ni déclaration préalable. Déclarée, elle peut alors, sans autorisation spéciale, ester en justice, recevoir des dons manuels, acquérir à titre onéreux, posséder et administrer les cotisations de ses membres, son local et les immeubles strictement nécessaires à son but.",
    "base": [
     "Règles essentielles#13"
@@ -370,7 +370,7 @@
   {
    "id": "ue2-04-k31",
    "type": "def",
-   "q": "Qu'est-ce que l'économie sociale et solidaire (ESS) au sens de la loi du 31 juillet 2014 ?",
+   "q": "Comment la loi définit-elle l'économie sociale et solidaire (ESS) ?",
    "r": "<b>Un mode d'entreprendre auquel adhèrent des personnes morales de droit privé remplissant trois conditions cumulatives</b> : un but autre que le seul partage des bénéfices ; une gouvernance démocratique définie et organisée par les statuts ; une gestion consacrant majoritairement les bénéfices au maintien ou au développement de l'activité, les réserves obligatoires, impartageables, ne pouvant pas être distribuées.",
    "base": [
     "Définitions#6"
@@ -382,7 +382,7 @@
   {
    "id": "ue2-04-k32",
    "type": "def",
-   "q": "Qu'est-ce qu'une coopérative au sens de la loi du 10 septembre 1947 ?",
+   "q": "Comment la loi définit-elle une société coopérative ?",
    "r": "<b>Une société constituée par plusieurs personnes volontairement réunies en vue de satisfaire à leurs besoins économiques ou sociaux par leur effort commun</b> et la mise en place des moyens nécessaires. Sauf dispositions spéciales à certaines catégories de coopératives, chaque membre coopérateur dispose d'une voix à l'assemblée générale.",
    "base": [
     "Règles essentielles#14"
@@ -394,7 +394,7 @@
   {
    "id": "ue2-04-k33",
    "type": "def",
-   "q": "Qu'est-ce qu'une fondation au sens de la loi du 23 juillet 1987 ?",
+   "q": "Comment le droit français définit-il une fondation ?",
    "r": "<b>L'acte par lequel une ou plusieurs personnes physiques ou morales décident l'affectation irrévocable de biens, droits ou ressources à la réalisation d'une œuvre d'intérêt général et à but non lucratif.</b> Lorsque l'acte crée une personne morale, celle-ci n'a en principe la capacité juridique qu'à compter de l'entrée en vigueur du décret en Conseil d'État accordant la reconnaissance d'utilité publique.",
    "base": [
     "Définitions#7"
@@ -406,7 +406,7 @@
   {
    "id": "ue2-04-k34",
    "type": "def",
-   "q": "Qu'est-ce qu'un fonds de dotation au sens de la loi du 4 août 2008 ?",
+   "q": "Comment le droit français définit-il un fonds de dotation ?",
    "r": "<b>Une personne morale de droit privé à but non lucratif, créée par déclaration à la préfecture</b>, qui reçoit et gère en les capitalisant des biens et droits apportés à titre gratuit et irrévocable, en vue d'une œuvre ou d'une mission d'intérêt général. Pour les fonds créés depuis le 25 janvier 2015, la dotation initiale, versée en numéraire, ne peut être inférieure à 15 000 €.",
    "base": [
     "Définitions#7",
@@ -419,7 +419,7 @@
   {
    "id": "ue2-04-k35",
    "type": "def",
-   "q": "Qu'est-ce qu'une SCOP au sens de la loi du 19 juillet 1978 ?",
+   "q": "Comment le droit français définit-il une société coopérative de production (SCOP) ?",
    "r": "<b>Une coopérative constituée sous forme de SA, de SARL ou de SAS, formée par des travailleurs associés pour exercer en commun leur profession</b> dans une entreprise qu'ils gèrent directement ou par des mandataires désignés par eux et en leur sein. Les associés salariés y détiennent au moins 51 % du capital (sauf, temporairement, dans la SCOP d'amorçage) et au moins 65 % des droits de vote.",
    "base": [
     "Règles essentielles#14",

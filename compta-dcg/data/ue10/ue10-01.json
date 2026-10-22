@@ -89,23 +89,6 @@
  ],
  "exercices": [
   {
-   "id": "ue10-01-0",
-   "type": "qcm",
-   "nature": "notion",
-   "q": "Quel texte constitue le Plan comptable général applicable aux comptes individuels des exercices ouverts à compter du 1er janvier 2025 ?",
-   "opts": [
-    "Le règlement ANC n° 2014-03 modifié",
-    "Le règlement (CE) n° 1606/2002 du 19 juillet 2002",
-    "Le règlement ANC n° 2020-01 du 9 octobre 2020",
-    "La directive 2013/34/UE du 26 juin 2013"
-   ],
-   "a": 0,
-   "why": "Le PCG est le règlement ANC n° 2014-03, consolidé au fil des règlements modificatifs ; le règlement 2022-06 (modernisation des états financiers) s'applique aux exercices ouverts à compter du 1er janvier 2025. Le règlement 1606/2002 impose les IFRS aux comptes consolidés des sociétés cotées, le règlement 2020-01 régit les comptes consolidés en règles françaises et la directive 2013/34 doit être transposée : elle ne s'applique pas directement.",
-   "src": "Règlement ANC n° 2014-03 ; règlement ANC n° 2022-06",
-   "fiab": "stable",
-   "niveau": 1
-  },
-  {
    "id": "ue10-01-1",
    "type": "qcm",
    "nature": "notion",
@@ -309,7 +292,7 @@
    "id": "ue10-01-11",
    "type": "qcm",
    "nature": "notion",
-   "q": "Selon le Code de commerce, les comptes annuels doivent être :",
+   "q": "Les comptes annuels établis par un commerçant doivent être :",
    "opts": [
     "Exacts, exhaustifs et certifiés chaque année",
     "Réguliers, sincères et donner une image fidèle",

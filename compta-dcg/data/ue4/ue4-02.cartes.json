@@ -296,7 +296,7 @@
   {
    "id": "ue4-02-k26",
    "type": "comp",
-   "q": "Quel avantage fiscal l'article 150-0 D ter du CGI accorde-t-il au dirigeant de PME partant à la retraite qui cède ses titres ?",
+   "q": "Quel avantage fiscal est accordé au dirigeant de PME partant à la retraite qui cède les titres de sa société ?",
    "r": "<b>Un abattement fixe de 500 000 € sur la plus-value de cession des titres</b>, quel que soit le mode d'imposition (PFU ou barème). Non cumulable avec les abattements proportionnels pour durée de détention, il ne s'applique qu'à l'impôt sur le revenu : les prélèvements sociaux restent dus.",
    "base": [
     "Règles essentielles#11"
@@ -381,7 +381,7 @@
   {
    "id": "ue4-02-k33",
    "type": "comp",
-   "q": "Comment la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025) modifie-t-elle le calcul de la plus-value immobilière d'un loueur en meublé non professionnel ?",
+   "q": "Depuis 2025, comment a été modifié le calcul de la plus-value immobilière réalisée par un loueur en meublé non professionnel qui cède son bien ?",
    "r": "<b>En principe, le prix d'acquisition retenu est minoré des amortissements admis en déduction pendant la location</b>, pour les cessions réalisées à compter du 15 février 2025, lendemain de la promulgation de la loi.",
    "base": [
     "Ce qui a changé récemment#4"

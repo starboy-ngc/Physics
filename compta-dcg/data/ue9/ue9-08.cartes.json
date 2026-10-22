@@ -53,7 +53,7 @@
   {
    "id": "ue9-08-k05",
    "type": "def",
-   "q": "Qu'est-ce qu'une lettre de change au sens du Code de commerce ?",
+   "q": "En droit des effets de commerce, qu'est-ce qu'une lettre de change ?",
    "r": "<b>Un titre qui contient notamment le mandat pur et simple de payer une somme déterminée</b> et le nom de celui qui doit payer, dénommé le tiré.",
    "base": [
     "Définitions#4"
@@ -65,7 +65,7 @@
   {
    "id": "ue9-08-k06",
    "type": "def",
-   "q": "Qu'est-ce qu'un billet à ordre au sens du Code de commerce ?",
+   "q": "En droit des effets de commerce, qu'est-ce qu'un billet à ordre ?",
    "r": "<b>Un titre qui contient notamment la promesse pure et simple de payer une somme déterminée</b>, la clause à ordre ou la dénomination du titre et l'indication de l'échéance. Il est signé par le souscripteur, débiteur qui s'engage à payer.",
    "base": [
     "Définitions#4"
@@ -114,7 +114,7 @@
   {
    "id": "ue9-08-k10",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quels comptes le PCG enregistre-t-il les intérêts courus sur emprunts, auparavant regroupés dans les sous-comptes du 1688 ?",
+   "q": "Depuis la réforme du plan comptable applicable en 2025, dans quels comptes enregistre-t-on les intérêts courus sur emprunts, auparavant regroupés dans les sous-comptes du 1688 ?",
    "r": "<b>Dans les comptes 1618, 1638 et 1648, selon la nature de la dette</b> : pour les emprunts bancaires, le 1648 remplace ainsi le 16884. Le compte 1688 ne subsiste que pour les intérêts courus sur autres emprunts et dettes assimilées.",
    "base": [
     "Ce qui a changé récemment#2"
@@ -188,7 +188,7 @@
   {
    "id": "ue9-08-k16",
    "type": "comp",
-   "q": "Selon l'article 312-1 du PCG, à quel rythme une subvention d'investissement inscrite en capitaux propres est-elle reprise au résultat ?",
+   "q": "En comptabilité, à quel rythme une subvention d'investissement inscrite en capitaux propres est-elle reprise au résultat ?",
    "r": "<b>Bien amortissable : sur la même durée et au même rythme que l'amortissement du bien financé</b>, par une quote-part virée au résultat à chaque clôture (comptes 139 et 747). Bien non amortissable : sur le nombre d'années d'inaliénabilité prévu au contrat ou, à défaut de clause, par dixième du montant de la subvention chaque exercice.",
    "base": [
     "Règles essentielles#7",
@@ -201,7 +201,7 @@
   {
    "id": "ue9-08-k17",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quelle partie du compte de résultat figure la quote-part de subvention d'investissement virée au résultat ?",
+   "q": "Depuis la réforme du plan comptable applicable en 2025, dans quelle partie du compte de résultat figure la quote-part de subvention d'investissement virée au résultat ?",
    "r": "<b>En résultat d'exploitation</b>, au compte 747 du compte 74 « Subventions », et non plus en produit exceptionnel au compte 777, pour les exercices ouverts à compter du 1er janvier 2025. La subvention d'équilibre figure, elle, au compte 742 (avant 2025 : 7715).",
    "base": [
     "Ce qui a changé récemment#0"
@@ -213,7 +213,7 @@
   {
    "id": "ue9-08-k18",
    "type": "comp",
-   "q": "Selon l'article 42 septies du CGI, comment une subvention d'équipement est-elle imposée ?",
+   "q": "En matière d'impôt sur les bénéfices, comment une subvention d'équipement reçue par une entreprise est-elle imposée ?",
    "r": "<b>Sans option, elle est imposable au titre de l'exercice d'attribution.</b> Sur option, elle est rapportée au résultat imposable en même temps et au même rythme que l'amortissement du bien financé ; pour un bien non amortissable, par fractions égales sur la durée d'inaliénabilité ou, à défaut de clause, sur les dix années suivant celle de l'attribution.",
    "base": [
     "Règles essentielles#8",
@@ -251,7 +251,7 @@
   {
    "id": "ue9-08-k21",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment s'exprime l'acceptation d'une lettre de change par le tiré ?",
+   "q": "Comment s'exprime l'acceptation d'une lettre de change par le tiré ?",
    "r": "<b>Elle est exprimée par le mot « accepté » ou tout autre mot équivalent et signée du tiré</b> ; la simple signature du tiré apposée au recto de la lettre vaut acceptation. C'est l'acceptation qui engage le tiré à payer à l'échéance.",
    "base": [
     "Règles essentielles#10"
@@ -375,7 +375,7 @@
   {
    "id": "ue9-08-k31",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, où classe-t-on une aide directement liée à un événement majeur et inhabituel et reçue en compensation de charges d'exploitation ?",
+   "q": "Depuis la réforme du plan comptable applicable en 2025, où classe-t-on une aide directement liée à un événement majeur et inhabituel et reçue en compensation de charges d'exploitation ?",
    "r": "<b>En résultat d'exploitation</b>, comme les remboursements et indemnités reçus dans les mêmes conditions. Le résultat exceptionnel est recentré sur les produits et charges directement liés à un événement majeur et inhabituel, mais ces compensations n'y vont pas.",
    "base": [
     "Ce qui a changé récemment#3"
@@ -387,7 +387,7 @@
   {
    "id": "ue9-08-k32",
    "type": "comp",
-   "q": "Sous quelle nouvelle forme la loi n° 2024-537 du 13 juin 2024 permet-elle d'établir la lettre de change et le billet à ordre ?",
+   "q": "Depuis mars 2025, sous quelle nouvelle forme la lettre de change et le billet à ordre peuvent-ils être établis ?",
    "r": "<b>Sous forme électronique</b> : la lettre de change et le billet à ordre peuvent être établis, signés, transférés, présentés, remis, modifiés et conservés sous cette forme (C. com., art. L. 511-1-1 et L. 512-1-1, en vigueur depuis le 14 mars 2025).",
    "base": [
     "Ce qui a changé récemment#4"
@@ -399,7 +399,7 @@
   {
    "id": "ue9-08-k33",
    "type": "comp",
-   "q": "Selon le règlement ANC n° 2024-07, dans quelle rubrique du bilan figurent les avances conditionnées ?",
+   "q": "Selon les règles comptables applicables à partir de 2026, dans quelle rubrique du bilan figurent les avances conditionnées ?",
    "r": "<b>Dans la rubrique « Autres fonds propres »</b>, qui comprend aussi les fonds non remboursables et les droits du concédant. Le règlement s'applique en principe aux exercices ouverts à compter du 1er janvier 2026, avec application anticipée possible.",
    "base": [
     "Ce qui a changé récemment#5"

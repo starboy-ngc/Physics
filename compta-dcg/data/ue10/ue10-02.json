@@ -487,7 +487,7 @@
    "id": "ue10-02-15",
    "type": "multi",
    "nature": "notion",
-   "q": "Quels critères l'article 212-3 du PCG exige-t-il pour activer des frais de développement ? (plusieurs réponses possibles)",
+   "q": "Quels critères faut-il réunir pour inscrire des frais de développement à l'actif du bilan ? (plusieurs réponses possibles)",
    "opts": [
     "La faisabilité technique de l'achèvement du projet",
     "L'intention d'achever le projet et de l'utiliser ou de le vendre",
@@ -756,7 +756,7 @@
    "id": "ue10-02-27",
    "type": "qcm",
    "nature": "notion",
-   "q": "Au DSCG (IFRS, IAS 16), quelle différence avec le PCG constate-t-on sur la comptabilisation des immobilisations corporelles ?",
+   "q": "En normes IFRS, quelle différence avec les règles comptables françaises constate-t-on sur la comptabilisation des immobilisations corporelles ?",
    "opts": [
     "Les IFRS interdisent l'approche par composants, obligatoire en PCG",
     "IAS 16 admet un modèle de réévaluation par catégorie d'actifs, là où le PCG retient le coût historique",

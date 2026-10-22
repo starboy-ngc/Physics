@@ -264,7 +264,7 @@
    "id": "ue4-03-9",
    "type": "qcm",
    "nature": "notion",
-   "q": "Une entreprise reçoit de la région une subvention d'équipement de 20 000 € pour financer une machine amortie sur 5 ans en linéaire. Que permet l'article 42 septies ?",
+   "q": "Une entreprise reçoit de la région une subvention d'équipement de 20 000 € pour financer une machine amortie sur 5 ans en linéaire. Sur option, quel traitement fiscal peut-elle appliquer à cette subvention ?",
    "opts": [
     "Imposer la subvention par cinquièmes, au rythme des amortissements de la machine",
     "Exonérer définitivement la subvention",
@@ -351,7 +351,7 @@
    "id": "ue4-03-12",
    "type": "qcm",
    "nature": "notion",
-   "q": "Parmi ces dépenses, laquelle est une dépense somptuaire non déductible au sens de l'article 39, 4 du CGI ?",
+   "q": "Parmi ces dépenses, laquelle est une dépense somptuaire non déductible du bénéfice imposable ?",
    "opts": [
     "Les frais d'entretien d'un pavillon de chasse utilisé pour les relations publiques",
     "Un repas d'affaires de 150 € avec un client",
@@ -428,7 +428,7 @@
    "id": "ue4-03-17",
    "type": "qcm",
    "nature": "notion",
-   "q": "Une entreprise déficitaire n'a pas comptabilisé d'amortissement sur une machine en N, alors que l'annuité linéaire aurait été de 8 000 €. Quelle est la conséquence fiscale (art. 39 B) ?",
+   "q": "Une entreprise déficitaire n'a pas comptabilisé d'amortissement sur une machine en N, alors que l'annuité linéaire aurait été de 8 000 €. Quelle est la conséquence fiscale au regard de la règle de l'amortissement minimal ?",
    "opts": [
     "La fraction irrégulièrement différée est définitivement perdue : le cumul des amortissements déduits ne peut être inférieur au cumul linéaire",
     "L'annuité est simplement reportée et déduite en N+1",
@@ -544,7 +544,7 @@
    "id": "ue4-03-24",
    "type": "calc",
    "nature": "calcul",
-   "q": "Une entreprise individuelle réalise en N une plus-value nette à court terme de 30 000 € et opte pour l'étalement de l'article 39 quaterdecies. Quel montant est imposable au titre de N ?",
+   "q": "Une entreprise individuelle réalise en N une plus-value nette à court terme de 30 000 € et opte pour l'étalement de l'imposition de cette plus-value. Quel montant est imposable au titre de N ?",
    "a": 10000,
    "unit": "€",
    "tol": 1,
@@ -557,7 +557,7 @@
    "id": "ue4-03-25",
    "type": "calc",
    "nature": "calcul",
-   "q": "Un commerçant (ventes) exerce depuis 8 ans. Sa moyenne de recettes HT des deux années précédant la cession est de 300 000 €. Il réalise une plus-value de 40 000 € sur la cession de son fonds. Exonération art. 151 septies : totale jusqu'à 250 000 € de recettes, dégressive jusqu'à 350 000 € selon la fraction (350 000 − recettes) / 100 000. Quel montant de plus-value reste imposable ?",
+   "q": "Un commerçant (ventes) exerce depuis 8 ans. Sa moyenne de recettes HT des deux années précédant la cession est de 300 000 €. Il réalise une plus-value de 40 000 € sur la cession de son fonds. Exonération des plus-values des petites entreprises : totale jusqu'à 250 000 € de recettes, dégressive jusqu'à 350 000 € selon la fraction (350 000 − recettes) / 100 000. Quel montant de plus-value reste imposable ?",
    "a": 20000,
    "unit": "€",
    "tol": 1,
@@ -570,7 +570,7 @@
    "id": "ue4-03-26",
    "type": "qcm",
    "nature": "notion",
-   "q": "Quelle condition de durée est exigée pour bénéficier de l'exonération des plus-values professionnelles de l'article 151 septies ?",
+   "q": "Quelle condition de durée faut-il remplir pour bénéficier de l'exonération des plus-values professionnelles accordée aux petites entreprises en fonction de leurs recettes ?",
    "opts": [
     "L'activité doit avoir été exercée depuis au moins 5 ans",
     "Le bien cédé doit avoir été détenu au moins 2 ans",
@@ -587,7 +587,7 @@
    "id": "ue4-03-27",
    "type": "qcm",
    "nature": "notion",
-   "q": "Un artisan cède l'intégralité de son entreprise (activité exercée depuis 12 ans) pour une valeur de 450 000 €, dégageant une plus-value de 120 000 €. Au titre de l'article 238 quindecies :",
+   "q": "Un artisan cède l'intégralité de son entreprise (activité exercée depuis 12 ans) pour une valeur de 450 000 €, dégageant une plus-value de 120 000 €. Au titre de l'exonération des plus-values professionnelles réalisées lors de la transmission d'une entreprise individuelle :",
    "opts": [
     "La plus-value est totalement exonérée, la valeur des éléments transmis n'excédant pas 500 000 €",
     "La plus-value est exonérée à 50 %",

@@ -5,7 +5,7 @@
   {
    "id": "ue4-03-k01",
    "type": "def",
-   "q": "Comment l'article 38 du CGI définit-il le bénéfice imposable d'une entreprise relevant des bénéfices industriels et commerciaux ?",
+   "q": "Comment se définit fiscalement le bénéfice imposable d'une entreprise relevant des bénéfices industriels et commerciaux ?",
    "r": "<b>Le bénéfice net déterminé d'après les résultats d'ensemble des opérations de toute nature effectuées par l'entreprise</b>, y compris les cessions d'éléments de l'actif, en cours ou en fin d'exploitation. C'est aussi la différence entre l'actif net à la clôture et à l'ouverture de l'exercice, corrigée des apports et prélèvements de l'exploitant.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue4-03-k02",
    "type": "def",
-   "q": "Qu'est-ce qu'une créance acquise au sens de l'article 38, 2 bis du CGI ?",
+   "q": "Pour le rattachement des produits au bénéfice imposable en BIC, qu'est-ce qu'une créance acquise ?",
    "r": "<b>Une créance certaine dans son principe et déterminée dans son montant.</b> Pour les prestations de services, le produit n'est en principe imposable que si la créance est acquise et la prestation achevée ; les prestations continues sont rattachées au fur et à mesure de leur exécution.",
    "base": [
     "Définitions#1",
@@ -43,7 +43,7 @@
   {
    "id": "ue4-03-k04",
    "type": "def",
-   "q": "Qu'est-ce que le régime micro-BIC prévu par l'article 50-0 du CGI ?",
+   "q": "En matière d'imposition des bénéfices industriels et commerciaux, qu'est-ce que le régime micro-BIC ?",
    "r": "<b>Le régime applicable lorsque le chiffre d'affaires hors taxes de l'année civile précédente ou de l'avant-dernière année n'excède pas les seuils de l'article 50-0.</b> Il n'est donc perdu qu'après deux années consécutives de dépassement ; le bénéfice y est égal au chiffre d'affaires diminué d'un abattement.",
    "base": [
     "Définitions#2"
@@ -140,7 +140,7 @@
   {
    "id": "ue4-03-k12",
    "type": "comp",
-   "q": "Outre la fraction excédentaire d'amortissement des véhicules de tourisme, quelles dépenses somptuaires l'article 39, 4 du CGI exclut-il des charges déductibles ?",
+   "q": "Outre la fraction excédentaire d'amortissement des véhicules de tourisme, quelles dépenses somptuaires sont exclues des charges déductibles en BIC ?",
    "r": "<b>Les dépenses de chasse, de pêche non professionnelle, de résidences de plaisance ou d'agrément, de yachts et bateaux de plaisance.</b> Elles restent déductibles si l'entreprise justifie qu'elles sont nécessaires à son activité ou présentent un caractère social.",
    "base": [
     "Règles essentielles#4"
@@ -189,7 +189,7 @@
   {
    "id": "ue4-03-k16",
    "type": "comp",
-   "q": "Quels biens ouvrent droit à l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
+   "q": "Quels biens ouvrent droit à l'amortissement dégressif fiscal pour une entreprise relevant des BIC ?",
    "r": "<b>Les biens d'équipement acquis neufs, dont la durée normale d'utilisation est d'au moins trois ans et qui figurent dans les catégories de l'annexe II</b>, pour l'essentiel des biens normalement utilisés dans les entreprises industrielles. Sont exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux hors de ces catégories (véhicules de tourisme, mobilier de bureau notamment).",
    "base": [
     "Règles essentielles#6",
@@ -214,7 +214,7 @@
   {
    "id": "ue4-03-k18",
    "type": "def",
-   "q": "Qu'impose la règle de l'amortissement minimal prévue par l'article 39 B du CGI ?",
+   "q": "Qu'impose la règle fiscale de l'amortissement minimal à une entreprise relevant des BIC ?",
    "r": "<b>À la clôture de chaque exercice, la somme des amortissements effectivement pratiqués depuis l'acquisition d'un élément ne peut être inférieure au cumul des amortissements linéaires</b> répartis sur la durée normale d'utilisation.",
    "base": [
     "Règles essentielles#7"
@@ -226,7 +226,7 @@
   {
    "id": "ue4-03-k19",
    "type": "comp",
-   "q": "Quelle est la conséquence du non-respect de l'amortissement minimal de l'article 39 B du CGI ?",
+   "q": "Quelle est la conséquence fiscale du non-respect de la règle de l'amortissement minimal en BIC ?",
    "r": "<b>L'entreprise perd définitivement le droit de déduire la fraction des amortissements ainsi différée.</b> Les amortissements régulièrement comptabilisés mais réputés différés en période déficitaire restent toutefois déductibles.",
    "base": [
     "Règles essentielles#7"
@@ -238,7 +238,7 @@
   {
    "id": "ue4-03-k20",
    "type": "def",
-   "q": "Comment l'article 39, 1-5° du CGI définit-il la provision déductible du bénéfice imposable ?",
+   "q": "Comment se définit la provision déductible du bénéfice imposable d'une entreprise relevant des BIC ?",
    "r": "<b>Une provision constituée en vue de faire face à une perte ou une charge nettement précisée, que des événements en cours rendent probable</b>, à condition d'avoir été effectivement constatée dans les écritures de l'exercice.",
    "base": [
     "Définitions#5"
@@ -299,7 +299,7 @@
   {
    "id": "ue4-03-k25",
    "type": "def",
-   "q": "Quelles plus-values professionnelles relèvent du régime du court terme selon l'article 39 duodecies du CGI ?",
+   "q": "Quelles plus-values professionnelles relèvent du régime du court terme pour une entreprise relevant des BIC ?",
    "r": "<b>Les plus-values sur éléments acquis ou créés depuis moins de deux ans</b> et, pour les éléments amortissables détenus depuis deux ans ou plus, la fraction correspondant aux amortissements déduits. Le surplus relève du long terme.",
    "base": [
     "Définitions#4"
@@ -347,7 +347,7 @@
   {
    "id": "ue4-03-k29",
    "type": "comp",
-   "q": "À quelles conditions l'article 151 septies du CGI exonère-t-il les plus-values professionnelles des petites entreprises BIC ?",
+   "q": "À quelles conditions les plus-values professionnelles des petites entreprises BIC sont-elles exonérées en fonction de leurs recettes ?",
    "r": "<b>Une activité exercée à titre professionnel pendant au moins cinq ans et des recettes limitées</b> : exonération totale jusqu'à 250 000 € (vente de marchandises, fourniture de logement) ou 90 000 € (autres activités non agricoles), partielle et dégressive jusqu'à 350 000 € et 126 000 €. Les recettes sont la moyenne hors taxes des exercices clos au cours des deux années civiles précédant la clôture de l'exercice de réalisation.",
    "base": [
     "Règles essentielles#12",
@@ -360,7 +360,7 @@
   {
    "id": "ue4-03-k30",
    "type": "comp",
-   "q": "À quelles conditions l'article 238 quindecies du CGI exonère-t-il les plus-values professionnelles réalisées lors d'une transmission d'activité ?",
+   "q": "À quelles conditions les plus-values professionnelles réalisées lors de la transmission d'une entreprise individuelle ou d'une branche d'activité sont-elles exonérées ?",
    "r": "<b>Sur option, pour la transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins cinq ans</b> : exonération totale si la valeur des éléments transmis n'excède pas 500 000 €, partielle entre 500 000 € et 1 000 000 €. Les plus-values sur biens immobiliers restent imposables et le régime ne se cumule pas avec l'article 151 septies.",
    "base": [
     "Règles essentielles#13"
@@ -384,7 +384,7 @@
   {
    "id": "ue4-03-k32",
    "type": "comp",
-   "q": "Comment l'option de l'article 42 septies du CGI modifie-t-elle l'imposition d'une subvention d'équipement publique en BIC ?",
+   "q": "Comment l'option d'étalement modifie-t-elle l'imposition d'une subvention d'équipement publique reçue par une entreprise BIC ?",
    "r": "<b>La subvention est rapportée au résultat au rythme de l'amortissement du bien financé</b> ; pour un bien non amortissable, par parts égales sur la durée d'inaliénabilité prévue au contrat ou, à défaut, sur les dix années suivant l'attribution. Sans option, elle est imposable l'année de son attribution ; en cas de cession du bien, le solde non encore rapporté est imposé.",
    "base": [
     "Règles essentielles#16"
@@ -420,7 +420,7 @@
   {
    "id": "ue4-03-k35",
    "type": "comp",
-   "q": "Comment s'obtient le taux de l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
+   "q": "Comment s'obtient le taux de l'amortissement dégressif fiscal d'un bien d'équipement ?",
    "r": "<b>En multipliant le taux linéaire par un coefficient fixé selon la durée normale d'utilisation du bien</b> : 1,25 pour trois ou quatre ans, 1,75 pour cinq ou six ans, 2,25 pour plus de six ans.",
    "base": [
     "Règles essentielles#6"

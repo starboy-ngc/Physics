@@ -5,7 +5,7 @@
   {
    "id": "ue4-01-k01",
    "type": "def",
-   "q": "Que recouvre le principe de légalité de l'impôt posé par l'article 34 de la Constitution ?",
+   "q": "Que recouvre le principe constitutionnel de légalité de l'impôt ?",
    "r": "<b>La loi fixe les règles concernant l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures.</b>",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue4-01-k02",
    "type": "comp",
-   "q": "En matière de recettes, que doit autoriser chaque année la première partie de la loi de finances de l'année (LOLF, art. 34) ?",
+   "q": "En matière de recettes, que doit autoriser chaque année la première partie de la loi de finances de l'année ?",
    "r": "<b>La perception, pour l'année, des ressources de l'État</b> et des impositions de toute nature affectées à des personnes morales autres que l'État.",
    "base": [
     "Définitions#0"
@@ -29,7 +29,7 @@
   {
    "id": "ue4-01-k03",
    "type": "def",
-   "q": "Que recouvre le principe de consentement à l'impôt énoncé par l'article 14 de la Déclaration des droits de l'homme et du citoyen ?",
+   "q": "Que recouvre le principe de valeur constitutionnelle de consentement à l'impôt ?",
    "r": "<b>Le droit des citoyens, par eux-mêmes ou par leurs représentants, de constater la nécessité de la contribution publique et de la consentir librement</b>, d'en suivre l'emploi et d'en déterminer la quotité, l'assiette, le recouvrement et la durée.",
    "base": [
     "Définitions#1"
@@ -41,7 +41,7 @@
   {
    "id": "ue4-01-k04",
    "type": "def",
-   "q": "Qu'énonce le principe d'égalité devant les charges publiques posé par l'article 13 de la Déclaration des droits de l'homme et du citoyen de 1789 ?",
+   "q": "Qu'énonce le principe constitutionnel d'égalité devant les charges publiques ?",
    "r": "<b>La contribution commune doit être également répartie entre tous les citoyens, en raison de leurs facultés.</b> Elle est indispensable pour l'entretien de la force publique et pour les dépenses d'administration.",
    "base": [
     "Définitions#2"
@@ -53,7 +53,7 @@
   {
    "id": "ue4-01-k05",
    "type": "def",
-   "q": "Qu'est-ce que la garantie d'opposabilité de la doctrine administrative prévue par l'article L. 80 A du Livre des procédures fiscales ?",
+   "q": "Qu'est-ce que la garantie d'opposabilité de la doctrine administrative fiscale dont bénéficie le contribuable de bonne foi ?",
    "r": "<b>Aucun rehaussement d'impositions antérieures ne peut être opéré</b> si le différend porte sur l'interprétation d'un texte fiscal par le redevable de bonne foi et que cette interprétation était alors formellement admise par l'administration. Il en va de même lorsque le redevable a appliqué un texte selon l'interprétation que l'administration avait fait connaître par ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations.",
    "base": [
     "Définitions#3"
@@ -65,7 +65,7 @@
   {
    "id": "ue4-01-k06",
    "type": "comp",
-   "q": "Selon le Conseil d'État, quel pouvoir l'article L. 80 A du LPF confère-t-il à l'administration fiscale lorsqu'elle publie sa doctrine ?",
+   "q": "Selon le Conseil d'État, quel pouvoir la garantie d'opposabilité de la doctrine confère-t-elle à l'administration fiscale lorsqu'elle publie sa doctrine ?",
    "r": "<b>Aucun pouvoir réglementaire</b> : il ne lui permet pas de déroger à la loi, et la doctrine ne crée pas de droit. Seule la dernière interprétation formellement admise peut être invoquée.",
    "base": [
     "Points de vigilance#0"
@@ -77,7 +77,7 @@
   {
    "id": "ue4-01-k07",
    "type": "comp",
-   "q": "Par quelle procédure l'administration peut-elle écarter la garantie de l'article L. 80 A du LPF lorsque la doctrine invoquée par le contribuable ajoute à la loi ?",
+   "q": "Par quelle procédure l'administration fiscale peut-elle écarter la garantie d'opposabilité de sa doctrine lorsque celle-ci, invoquée par le contribuable, ajoute à la loi ?",
    "r": "<b>Par la procédure de l'abus de droit (LPF, art. L. 64)</b>, si elle démontre la finalité abusive de l'opération. À défaut, le contribuable peut se prévaloir de l'interprétation même lorsqu'elle ajoute à la loi.",
    "base": [
     "Points de vigilance#0"
@@ -89,7 +89,7 @@
   {
    "id": "ue4-01-k08",
    "type": "def",
-   "q": "Quels sont les critères du domicile fiscal en France au sens de l'article 4 B du CGI ?",
+   "q": "Quels sont les critères du domicile fiscal en France pour l'impôt sur le revenu ?",
    "r": "<b>Le foyer ou le lieu du séjour principal en France, l'exercice en France d'une activité professionnelle (sauf activité accessoire), ou le centre des intérêts économiques en France.</b> Ces critères sont alternatifs : un seul suffit.",
    "base": [
     "Définitions#4"
@@ -101,7 +101,7 @@
   {
    "id": "ue4-01-k09",
    "type": "def",
-   "q": "Au sens du domicile fiscal de l'article 4 B du CGI, qu'est-ce que le foyer du contribuable ?",
+   "q": "Pour la détermination du domicile fiscal en France, qu'est-ce que le foyer du contribuable ?",
    "r": "<b>Le lieu où il habite normalement et a le centre de ses intérêts familiaux</b>, abstraction faite des séjours effectués temporairement ailleurs en raison des nécessités de la vie professionnelle ou de circonstances exceptionnelles. Le lieu du séjour principal ne détermine le domicile fiscal que s'il ne dispose pas de foyer.",
    "base": [
     "Règles essentielles#1"
@@ -113,7 +113,7 @@
   {
    "id": "ue4-01-k10",
    "type": "comp",
-   "q": "Comment une convention fiscale internationale peut-elle écarter le domicile fiscal en France résultant de l'article 4 B du CGI ?",
+   "q": "Comment une convention fiscale internationale peut-elle écarter le domicile fiscal en France résultant des critères du droit interne ?",
    "r": "<b>Les critères de l'article 4 B s'appliquent sous réserve des conventions internationales, qui l'emportent sur le droit interne</b> : une personne domiciliée en France au sens de l'article 4 B mais résidente de l'autre État au sens de la convention est regardée comme résidente de cet État pour l'application de la convention, qui peut retirer à la France le droit d'imposer certains revenus.",
    "base": [
     "Points de vigilance#1"
@@ -137,7 +137,7 @@
   {
    "id": "ue4-01-k12",
    "type": "def",
-   "q": "Selon l'article 6 du CGI, quelles personnes forment le foyer fiscal soumis à imposition commune à l'impôt sur le revenu, et sur quels revenus ?",
+   "q": "Quelles personnes forment le foyer fiscal soumis à imposition commune à l'impôt sur le revenu, et sur quels revenus ?",
    "r": "<b>Les personnes mariées et les partenaires liés par un PACS</b>, imposés en commun sur leurs revenus, ceux de leurs enfants et ceux des personnes à charge, sauf cas d'imposition distincte (séparation, abandon du domicile conjugal, année du divorce ou de la dissolution du PACS, option l'année du mariage ou du PACS).",
    "base": [
     "Définitions#5"
@@ -209,7 +209,7 @@
   {
    "id": "ue4-01-k18",
    "type": "comp",
-   "q": "Quels déficits catégoriels font exception à l'imputation sur le revenu global prévue par l'article 156, I du CGI ?",
+   "q": "À l'impôt sur le revenu, quels déficits catégoriels font exception à la règle de l'imputation sur le revenu global ?",
    "r": "<b>Notamment les déficits d'activités non professionnelles, les déficits fonciers au-delà de la limite légale et les déficits agricoles au-delà d'un seuil de revenus.</b> Les déficits de revenus de capitaux mobiliers ne s'imputent que sur les revenus de même nature des six années suivantes.",
    "base": [
     "Règles essentielles#4"
@@ -379,7 +379,7 @@
   {
    "id": "ue4-01-k32",
    "type": "comp",
-   "q": "Quelle majoration l'article 1758 A du CGI prévoit-il en cas de retard de déclaration d'impôt sur le revenu ou d'omissions qui minorent l'impôt dû ?",
+   "q": "Quelle majoration s'applique en cas de retard de déclaration d'impôt sur le revenu ou d'omissions qui minorent l'impôt dû ?",
    "r": "<b>Une majoration de 10 % des droits</b>, portée à 20 % en cas de dépôt tardif dans les trente jours d'une mise en demeure. Elle n'est pas appliquée si le contribuable corrige sa déclaration spontanément ou dans les trente jours d'une demande de l'administration.",
    "base": [
     "Règles essentielles#16"

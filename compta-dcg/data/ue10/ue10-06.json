@@ -332,7 +332,7 @@
    "id": "ue10-06-5",
    "type": "qcm",
    "nature": "notion",
-   "q": "Un actionnaire ne répond pas à l'appel du solde du capital malgré une mise en demeure. Que prévoit le Code de commerce ?",
+   "q": "Un actionnaire ne répond pas à l'appel du solde du capital malgré une mise en demeure. Que prévoit la loi dans ce cas ?",
    "opts": [
     "La société annule purement et simplement ses actions, sans indemnité",
     "La société peut vendre ses actions ; il supporte frais et intérêts de retard (compte 4566)",
@@ -491,7 +491,7 @@
    "id": "ue10-06-12",
    "type": "multi",
    "nature": "notion",
-   "q": "Selon le PCG, les frais d'augmentation de capital (honoraires, publicité, droits) peuvent être : (plusieurs réponses possibles)",
+   "q": "En comptabilité française, les frais d'augmentation de capital (honoraires, publicité, droits) peuvent être : (plusieurs réponses possibles)",
    "opts": [
     "Imputés sur la prime d'émission",
     "Comptabilisés en charges de l'exercice",
@@ -745,7 +745,7 @@
    "id": "ue10-06-23",
    "type": "qcm",
    "nature": "notion",
-   "q": "Le bénéfice distribuable au sens de l'article L. 232-11 du Code de commerce est :",
+   "q": "Le bénéfice distribuable d'une société commerciale est :",
    "opts": [
     "Le bénéfice net de l'exercice tel qu'il ressort du compte de résultat",
     "Le bénéfice diminué des pertes antérieures et des dotations aux réserves obligatoires, plus le report à nouveau bénéficiaire",
@@ -869,7 +869,7 @@
    "id": "ue10-06-29",
    "type": "qcm",
    "nature": "notion",
-   "q": "Au DSCG, l'analyse des capitaux propres selon le PCG retient comme capitaux propres :",
+   "q": "En comptabilité française, les capitaux propres d'une entreprise regroupent :",
    "opts": [
     "Le capital social et les réserves uniquement, hors résultat de l'exercice et report à nouveau",
     "Apports, écarts de réévaluation, résultats non distribués, subventions d'investissement, provisions réglementées",

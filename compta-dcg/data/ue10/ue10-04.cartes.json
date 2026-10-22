@@ -17,7 +17,7 @@
   {
    "id": "ue10-04-k02",
    "type": "def",
-   "q": "De quoi se compose le coût de production d'un bien en stock selon le Code de commerce et le PCG ?",
+   "q": "De quoi se compose le coût de production d'un bien en stock dans les comptes individuels ?",
    "r": "<b>Du coût d'acquisition des matières consommées augmenté des charges directes et indirectes de production</b> qui peuvent être raisonnablement rattachées à la production du bien. Pour les stocks, il comprend les coûts directement liés aux unités produites et l'affectation systématique des frais généraux de production, fixes et variables.",
    "base": [
     "Définitions#1"
@@ -90,7 +90,7 @@
   {
    "id": "ue10-04-k08",
    "type": "comp",
-   "q": "Quelles méthodes le Code de commerce admet-il pour évaluer les sorties de biens fongibles en stock ?",
+   "q": "Quelles méthodes sont admises pour évaluer les sorties de biens fongibles en stock dans les comptes individuels ?",
    "r": "<b>Le coût moyen pondéré (CMP) d'acquisition ou de production, ou la méthode « premier entré, premier sorti » (PEPS).</b> Aucune autre méthode n'est prévue : le « dernier entré, premier sorti » (LIFO) est exclu des comptes individuels. Les stocks non interchangeables ou affectés à des projets spécifiques sont évalués par identification spécifique de leurs coûts.",
    "base": [
     "Règles essentielles#4",
@@ -115,7 +115,7 @@
   {
    "id": "ue10-04-k10",
    "type": "comp",
-   "q": "Comment les stocks sont-ils évalués pour la détermination du résultat imposable selon l'article 38 du CGI ?",
+   "q": "Sur le plan fiscal, comment les stocks sont-ils évalués pour la détermination du bénéfice imposable ?",
    "r": "<b>Au prix de revient, ou au cours du jour de la clôture si ce cours est inférieur au prix de revient.</b> L'écart peut être constaté par une provision pour dépréciation, que l'entreprise doit justifier. Selon la doctrine administrative, les articles interchangeables non identifiables sont évalués au coût moyen pondéré ou, éventuellement, selon le PEPS, sans pouvoir considérer systématiquement comme sortis les articles entrés en dernier.",
    "base": [
     "Règles essentielles#5"
@@ -139,7 +139,7 @@
   {
    "id": "ue10-04-k12",
    "type": "def",
-   "q": "Qu'est-ce que la valeur actuelle d'un bien en stock selon le Code de commerce ?",
+   "q": "Qu'est-ce que la valeur actuelle d'un bien en stock dans les comptes individuels ?",
    "r": "<b>Une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise.</b> La valeur d'inventaire lui est égale ; elle est comparée au coût d'entrée à la clôture pour déterminer une éventuelle dépréciation.",
    "base": [
     "Définitions#2"
@@ -163,7 +163,7 @@
   {
    "id": "ue10-04-k14",
    "type": "comp",
-   "q": "À quels actifs le Code de commerce réserve-t-il la tolérance d'une valeur d'inventaire « pas notablement inférieure » à la valeur comptable nette ?",
+   "q": "Dans les comptes individuels, à quels actifs est réservée la tolérance d'une valeur d'inventaire « pas notablement inférieure » à la valeur nette comptable ?",
    "r": "<b>Aux seules immobilisations non financières</b> : la tolérance ne joue pas pour les stocks, dont la valeur nette comptable est ramenée à la valeur d'inventaire, que la dépréciation soit définitive ou non.",
    "base": [
     "Règles essentielles#7"
@@ -283,19 +283,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue10-04-k24",
-   "type": "comp",
-   "q": "Que prévoit le règlement ANC n° 2026-03 du 6 mars 2026 pour les contrats à long terme ?",
-   "r": "<b>Il abroge la section du PCG consacrée aux contrats à long terme (art. 622-1 et suivants) et reprend leur régime aux articles 523-1 à 523-8</b>, pour les exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible. La définition, le choix entre achèvement et avancement et la provision de la perte globale probable sont maintenus.",
-   "base": [
-    "Ce qui a changé récemment#3",
-    "Ce qui a changé récemment#2"
-   ],
-   "src": "Règlement ANC n° 2026-03 du 6 mars 2026 (PCG, art. 523-1 à 523-8) ; arrêté du 12 août 2026",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
-   "fiab": "stable"
-  },
-  {
    "id": "ue10-04-k25",
    "type": "def",
    "q": "Qu'est-ce qu'un écart de conversion sur une créance ou une dette en monnaie étrangère selon le PCG ?",
@@ -385,7 +372,7 @@
   {
    "id": "ue10-04-k32",
    "type": "comp",
-   "q": "Comment les écarts de conversion sur créances et dettes en devises sont-ils traités pour le résultat imposable selon l'article 38, 4 du CGI ?",
+   "q": "Comment les écarts de conversion sur créances et dettes en devises sont-ils traités pour la détermination du résultat imposable ?",
    "r": "<b>Ils sont pris en compte dans le résultat imposable de l'exercice</b>, de façon extra-comptable : déduction des pertes latentes (476) et réintégration des gains latents (477), qui ne sont jamais portés en résultat comptable. La provision pour pertes de change, qui couvre une perte déjà déduite, est réintégrée.",
    "base": [
     "Règles essentielles#17",

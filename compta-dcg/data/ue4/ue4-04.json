@@ -144,7 +144,7 @@
    "id": "ue4-04-2",
    "type": "multi",
    "nature": "notion",
-   "q": "Quelles conditions une SAS doit-elle remplir pour opter pour le régime des sociétés de personnes (article 239 bis AB) ? (plusieurs réponses possibles)",
+   "q": "Quelles conditions une SAS doit-elle remplir pour opter, à titre temporaire, pour le régime fiscal des sociétés de personnes ? (plusieurs réponses possibles)",
    "opts": [
     "Être créée depuis moins de 5 ans",
     "Employer moins de 50 salariés et réaliser un CA ou un total de bilan inférieur à 10 M€",
@@ -343,7 +343,7 @@
    "id": "ue4-04-14",
    "type": "qcm",
    "nature": "chiffre",
-   "q": "La contribution exceptionnelle sur les bénéfices des grandes entreprises instaurée par la loi de finances pour 2025 s'applique aux sociétés dont le chiffre d'affaires atteint au moins :",
+   "q": "Instaurée en 2025, la contribution exceptionnelle sur les bénéfices des grandes entreprises s'applique, pour le premier exercice clos à compter du 31 décembre 2025, aux sociétés dont le chiffre d'affaires atteint au moins :",
    "opts": [
     "1 milliard d'euros, au taux de 20,6 % de l'IS (41,2 % à partir de 3 milliards)",
     "7,63 millions d'euros, au taux de 3,3 %",

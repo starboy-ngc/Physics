@@ -66,7 +66,7 @@
   {
    "id": "ue10-03-k06",
    "type": "comp",
-   "q": "Selon l'article 39 A du CGI, à quelle catégorie de biens l'amortissement dégressif fiscal est-il réservé ?",
+   "q": "En droit fiscal, à quelle catégorie de biens l'amortissement dégressif est-il réservé ?",
    "r": "<b>Aux biens d'équipement</b>, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession.",
    "base": [
     "Règles essentielles#3"
@@ -103,7 +103,7 @@
   {
    "id": "ue10-03-k09",
    "type": "comp",
-   "q": "Que prévoit la règle de l'amortissement minimal posée par l'article 39 B du CGI ?",
+   "q": "En droit fiscal, que prévoit la règle de l'amortissement minimal applicable aux biens amortissables ?",
    "r": "<b>À chaque clôture, la somme des amortissements effectivement pratiqués depuis l'acquisition ou la création d'un élément ne peut être inférieure au montant cumulé des amortissements calculés suivant le mode linéaire</b> et répartis sur la durée normale d'utilisation. À défaut, l'entreprise perd définitivement le droit de déduire la fraction des amortissements ainsi différée.",
    "base": [
     "Règles essentielles#6"
@@ -115,7 +115,7 @@
   {
    "id": "ue10-03-k10",
    "type": "comp",
-   "q": "Selon le BOFiP, comment s'apprécie le respect de l'amortissement minimal de l'article 39 B du CGI ?",
+   "q": "Selon l'administration fiscale, comment s'apprécie le respect de la règle de l'amortissement minimal ?",
    "r": "<b>Avec souplesse, pour chaque bien, sur la masse globale des amortissements pratiqués à une date déterminée</b>, et non sur l'annuité de l'exercice. Pour un bien en dégressif, l'entreprise peut différer la fraction excédant l'annuité linéaire sans contrevenir à l'article 39 B.",
    "base": [
     "Points de vigilance#2"
@@ -188,7 +188,7 @@
   {
    "id": "ue10-03-k16",
    "type": "def",
-   "q": "Qu'est-ce qu'une dépréciation d'un actif selon le PCG et le Code de commerce ?",
+   "q": "En comptabilité, qu'est-ce que la dépréciation d'un actif ?",
    "r": "<b>La constatation que la valeur actuelle d'un actif est devenue inférieure à sa valeur nette comptable.</b> Selon le Code de commerce, la valeur nette comptable est alors ramenée à la valeur d'inventaire à la clôture, que la dépréciation soit définitive ou non.",
    "base": [
     "Définitions#2"
@@ -313,7 +313,7 @@
   {
    "id": "ue10-03-k27",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quel résultat classe-t-on les cessions d'immobilisations incorporelles et corporelles ?",
+   "q": "Depuis la réforme du plan comptable général entrée en vigueur en 2025, dans quel résultat classe-t-on les cessions d'immobilisations incorporelles et corporelles ?",
    "r": "<b>En résultat d'exploitation, et non plus en résultat exceptionnel.</b> Le résultat exceptionnel est désormais réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale, comme les amortissements dérogatoires.",
    "base": [
     "Ce qui a changé récemment#0",
@@ -350,7 +350,7 @@
   {
    "id": "ue10-03-k30",
    "type": "def",
-   "q": "Qu'est-ce qu'une opération de crédit-bail au sens du Code monétaire et financier ?",
+   "q": "Qu'est-ce qu'une opération de crédit-bail au sens juridique ?",
    "r": "<b>Une location de biens d'équipement ou d'immeubles à usage professionnel assortie, pour le locataire, de la possibilité d'acquérir le bien</b> (option d'achat).",
    "base": [
     "Définitions#4"
@@ -362,7 +362,7 @@
   {
    "id": "ue10-03-k31",
    "type": "comp",
-   "q": "En quoi le traitement d'un contrat de crédit-bail chez le preneur diffère-t-il entre ses comptes individuels et les comptes consolidés établis selon le règlement ANC n° 2020-01 ?",
+   "q": "En quoi le traitement d'un contrat de crédit-bail chez le preneur diffère-t-il entre ses comptes individuels et les comptes consolidés établis selon les règles françaises ?",
    "r": "<b>Dans les comptes individuels, il comptabilise en charges les sommes dues au titre de la location ; le bien reste hors bilan jusqu'à la levée de l'option</b> et fait l'objet d'une information en annexe. <b>Dans les comptes consolidés, le contrat est inscrit au bilan (immobilisation et emprunt correspondant) et au compte de résultat (dotation aux amortissements et charge financière).</b>",
    "base": [
     "Points de vigilance#6",
@@ -385,18 +385,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue10-03-k34",
-   "type": "comp",
-   "q": "Sauf application anticipée, quel texte régit la comptabilisation des cessions d'immobilisations des exercices ouverts en 2025 et en 2026, malgré l'adoption du règlement ANC n° 2026-03 ?",
-   "r": "<b>Le PCG issu du règlement ANC n° 2022-06.</b> Le règlement n° 2026-03, qui consacre une section aux produits des ventes de biens et de services et aux cessions d'immobilisations, s'applique aux exercices ouverts à compter du 1er janvier 2027, une application anticipée étant possible.",
-   "base": [
-    "Ce qui a changé récemment#2"
-   ],
-   "src": "Règlement ANC n° 2026-03 du 6 mars 2026 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04",
-   "url": "https://www.anc.gouv.fr/reglement-anc-ndeg2026-03-du-6-mars-2026",
-   "fiab": "stable"
-  },
-  {
    "id": "ue10-03-k35",
    "type": "comp",
    "q": "Depuis le PCG 2025, quelles sont les trois étapes de la comptabilisation de la cession d'une immobilisation corporelle amortissable ?",
@@ -412,7 +400,7 @@
   {
    "id": "ue10-03-k36",
    "type": "comp",
-   "q": "Selon l'article 39 A du CGI, comment s'obtiennent les taux de l'amortissement dégressif fiscal ?",
+   "q": "En droit fiscal, comment s'obtiennent les taux de l'amortissement dégressif ?",
    "r": "<b>En multipliant les taux d'amortissement linéaire par un coefficient fonction de la durée normale d'utilisation</b> : 1,25 pour trois ou quatre ans, 1,75 pour cinq ou six ans, 2,25 au-delà de six ans.",
    "base": [
     "Règles essentielles#3",
@@ -425,7 +413,7 @@
   {
    "id": "ue10-03-k37",
    "type": "comp",
-   "q": "Selon le BOFiP, à quelle condition une entreprise qui pratique l'amortissement dégressif fiscal peut-elle passer à l'annuité linéaire ?",
+   "q": "En droit fiscal, à quelle condition une entreprise qui pratique l'amortissement dégressif peut-elle passer à l'annuité linéaire ?",
    "r": "<b>Lorsque l'annuité dégressive devient inférieure à la valeur résiduelle (valeur restant à amortir) divisée par le nombre d'années restant à courir</b> : l'entreprise peut alors pratiquer cette dernière annuité. L'annuité dégressive s'applique à la valeur résiduelle.",
    "base": [
     "Règles essentielles#4"

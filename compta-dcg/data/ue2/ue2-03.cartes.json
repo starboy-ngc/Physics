@@ -224,7 +224,7 @@
   {
    "id": "ue2-03-k19",
    "type": "comp",
-   "q": "Depuis la loi n° 2024-537 du 13 juin 2024, comment le conseil d'administration d'une société anonyme (SA) peut-il délibérer sans réunion physique ?",
+   "q": "Comment le conseil d'administration d'une société anonyme (SA) peut-il désormais délibérer sans réunion physique de ses membres ?",
    "r": "<b>Par consultation écrite des administrateurs, y compris par voie électronique, si les statuts le prévoient</b>, chacun d'eux pouvant s'y opposer. Sauf disposition contraire des statuts ou du règlement intérieur, l'administrateur qui participe au conseil par un moyen de télécommunication est réputé présent pour le calcul du quorum et de la majorité.",
    "base": [
     "Ce qui a changé récemment#1"
@@ -346,7 +346,7 @@
   {
    "id": "ue2-03-k29",
    "type": "comp",
-   "q": "Quelles clauses relatives aux actions le Code de commerce permet-il spécialement de prévoir dans les statuts d'une SAS ?",
+   "q": "Quelles clauses relatives aux actions la loi permet-elle spécialement de prévoir dans les statuts d'une SAS ?",
    "r": "<b>L'inaliénabilité des actions pour dix ans au plus, l'agrément préalable de toute cession, l'exclusion (obligation pour un associé de céder ses actions) et la clause de changement de contrôle d'une société associée</b> (suspension de ses droits non pécuniaires et exclusion). Toute cession effectuée en violation de ces clauses est nulle. Ces règles ne s'appliquent pas à la SAS ne comprenant qu'un seul associé.",
    "base": [
     "Règles essentielles#13"
@@ -395,7 +395,7 @@
   {
    "id": "ue2-03-k33",
    "type": "comp",
-   "q": "Depuis l'ordonnance du 12 mars 2025, à quelle condition une décision de SAS prise en violation des statuts encourt-elle la nullité ?",
+   "q": "Dans une SAS, à quelle condition une décision prise en violation des statuts encourt-elle désormais la nullité ?",
    "r": "<b>Si les statuts prévoient la nullité des décisions prises en violation des règles qu'ils fixent</b> (C. com., art. L. 227-20-1). En principe, sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité (C. civ., art. 1844-10).",
    "base": [
     "Ce qui a changé récemment#0"
@@ -407,7 +407,7 @@
   {
    "id": "ue2-03-k34",
    "type": "comp",
-   "q": "Depuis la loi PACTE du 22 mai 2019, dans quels cas une société anonyme (SA) ou une SAS doit-elle désigner un commissaire aux comptes ?",
+   "q": "Dans quels cas une société anonyme (SA) ou une SAS doit-elle désormais désigner un commissaire aux comptes ?",
    "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret</b> ; une obligation propre, appréciée au regard de seuils, vise aussi les sociétés tête d'un groupe et leurs filiales significatives. En dessous des seuils, la désignation pour trois exercices est obligatoire si des associés représentant au moins le tiers du capital en font la demande motivée.",
    "base": [
     "Ce qui a changé récemment#5"

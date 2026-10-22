@@ -5,7 +5,7 @@
   {
    "id": "ue9-05-k01",
    "type": "def",
-   "q": "Selon l'article 211-1 du PCG, qu'est-ce qu'un actif ?",
+   "q": "Selon les règles comptables françaises, qu'est-ce qu'un actif ?",
    "r": "<b>Un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité</b>, c'est-à-dire générant une ressource qu'elle contrôle du fait d'évènements passés et dont elle attend des avantages économiques futurs.",
    "base": [
     "Définitions#0"
@@ -53,7 +53,7 @@
   {
    "id": "ue9-05-k05",
    "type": "comp",
-   "q": "Par quel dispositif le règlement ANC n° 2023-05 remplace-t-il les règles sur les logiciels et les sites internet ?",
+   "q": "Quel dispositif comptable a récemment remplacé les anciennes règles propres aux logiciels et aux sites internet ?",
    "r": "<b>Un dispositif sur les « solutions informatiques »</b> (PCG, art. 611-1 et s.), applicable aux exercices ouverts à compter du 1er janvier 2024 : le compte 205 enregistre désormais les dépenses d'acquisition ou de création de solutions informatiques.",
    "base": [
     "Ce qui a changé récemment#2"
@@ -77,7 +77,7 @@
   {
    "id": "ue9-05-k07",
    "type": "comp",
-   "q": "Selon l'article L. 123-18 du Code de commerce, à quelle valeur les biens sont-ils enregistrés à leur date d'entrée ?",
+   "q": "En comptabilité, à quelle valeur les biens sont-ils enregistrés à leur date d'entrée dans le patrimoine de l'entreprise ?",
    "r": "Biens acquis à titre onéreux : <b>coût d'acquisition</b> ; biens acquis à titre gratuit : <b>valeur vénale</b> ; biens produits : <b>coût de production</b>.",
    "base": [
     "Règles essentielles#1"
@@ -347,7 +347,7 @@
   {
    "id": "ue9-05-k32",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quel résultat figure en principe la cession d'une immobilisation corporelle ou incorporelle ?",
+   "q": "Depuis la réforme du plan comptable entrée en vigueur en 2025, dans quel résultat figure en principe la cession d'une immobilisation corporelle ou incorporelle ?",
    "r": "<b>Dans le résultat d'exploitation</b>, avec les comptes 657 et 757 ; les anciens comptes exceptionnels 675 et 775 ne figurent plus au plan de comptes. Le résultat exceptionnel est réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -359,7 +359,7 @@
   {
    "id": "ue9-05-k33",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, comment est en principe comptabilisée l'indemnité d'assurance reçue après un sinistre ?",
+   "q": "Depuis la réforme du plan comptable entrée en vigueur en 2025, comment est en principe comptabilisée l'indemnité d'assurance reçue après un sinistre ?",
    "r": "<b>En produit, au compte 7587 « Indemnités d'assurance »</b>, les transferts de charges étant supprimés. Même liées à un événement majeur et inhabituel, les indemnités reçues en compensation de charges d'exploitation restent en résultat d'exploitation.",
    "base": [
     "Ce qui a changé récemment#1"

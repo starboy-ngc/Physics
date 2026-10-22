@@ -5,7 +5,7 @@
   {
    "id": "ue3-05-k01",
    "type": "def",
-   "q": "Que recouvrent la liberté syndicale et le principe de participation des travailleurs selon le Préambule de la Constitution de 1946 ?",
+   "q": "Que recouvrent la liberté syndicale et le principe de participation des travailleurs, garantis au niveau constitutionnel ?",
    "r": "<b>Liberté syndicale</b> : tout homme peut défendre ses droits et ses intérêts par l'action syndicale et adhérer au syndicat de son choix (al. 6). <b>Participation</b> : tout travailleur participe, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail ainsi qu'à la gestion des entreprises (al. 8).",
    "base": [
     "Définitions#0"
@@ -54,7 +54,7 @@
   {
    "id": "ue3-05-k05",
    "type": "comp",
-   "q": "Quelle possibilité le Code du travail donne-t-il aux syndicats représentatifs pour disposer d'un délégué syndical dans un établissement de moins de cinquante salariés ?",
+   "q": "Comment un syndicat représentatif peut-il disposer d'un délégué syndical dans un établissement de moins de cinquante salariés ?",
    "r": "<b>En désignant un membre de la délégation du personnel au CSE comme délégué syndical</b>, pour la durée de son mandat. Le seuil de cinquante salariés n'interdit donc pas toute présence syndicale.",
    "base": [
     "Points de vigilance#2"
@@ -128,7 +128,7 @@
   {
    "id": "ue3-05-k12",
    "type": "comp",
-   "q": "Depuis la loi du 26 mai 2026, qu'est-ce qui remplace l'information directe des salariés sur un projet de cession d'une entreprise d'au moins cinquante salariés ?",
+   "q": "Depuis juillet 2026, qu'est-ce qui remplace l'information directe des salariés sur un projet de cession d'une entreprise d'au moins cinquante salariés ?",
    "r": "<b>L'information et la consultation du CSE</b>, depuis le 27 juillet 2026, lorsque le projet porte sur la cession du fonds de commerce ou de parts ou actions donnant la majorité du capital.",
    "base": [
     "Ce qui a changé récemment#4"
@@ -152,7 +152,7 @@
   {
    "id": "ue3-05-k14",
    "type": "comp",
-   "q": "Quelle différence de sanction le Code du travail fait-il entre l'entrave à la constitution du CSE et l'entrave à son fonctionnement régulier ?",
+   "q": "Quelle différence de sanction pénale existe-t-il entre l'entrave à la constitution du CSE et l'entrave à son fonctionnement régulier ?",
    "r": "<b>L'entrave à la constitution d'un CSE ou à la libre désignation de ses membres</b> est punie d'un an d'emprisonnement et de 7 500 € d'amende ; l'entrave à son fonctionnement régulier n'est punie que d'une amende de 7 500 €.",
    "base": [
     "Points de vigilance#5"
@@ -176,7 +176,7 @@
   {
    "id": "ue3-05-k16",
    "type": "def",
-   "q": "Qu'est-ce qu'un accord d'entreprise majoritaire au sens du Code du travail ?",
+   "q": "Qu'est-ce qu'un accord d'entreprise majoritaire en droit du travail ?",
    "r": "<b>Un accord signé par l'employeur et par une ou plusieurs organisations syndicales représentatives ayant recueilli plus de 50 % des suffrages exprimés</b> en faveur d'organisations représentatives au premier tour des dernières élections des titulaires au CSE. Cette règle s'applique à l'ensemble des accords d'entreprise depuis le 1er mai 2018, sauf exceptions.",
    "base": [
     "Définitions#3"
@@ -224,7 +224,7 @@
   {
    "id": "ue3-05-k20",
    "type": "comp",
-   "q": "Comment s'articulent l'accord de branche et l'accord d'entreprise selon les blocs de matières définis par le Code du travail ?",
+   "q": "Comment s'articulent l'accord de branche et l'accord d'entreprise selon les blocs de matières prévus en droit du travail ?",
    "r": "<b>Bloc 1 (treize matières)</b> : la branche prime ; <b>bloc 2 (quatre matières)</b> : elle prime sur l'accord d'entreprise postérieur si elle le stipule expressément ; dans ces deux blocs, sauf garanties au moins équivalentes de l'accord d'entreprise. <b>Toutes les autres matières</b> : l'accord d'entreprise, antérieur ou postérieur, prévaut sur l'accord de branche.",
    "base": [
     "Règles essentielles#3"
@@ -347,7 +347,7 @@
   {
    "id": "ue3-05-k32",
    "type": "comp",
-   "q": "À quelles procédures de règlement un conflit collectif de travail peut-il être soumis selon le Code du travail ?",
+   "q": "À quelles procédures de règlement un conflit collectif de travail peut-il être soumis ?",
    "r": "<b>À une procédure de conciliation, de médiation ou d'arbitrage.</b>",
    "base": [
     "Règles essentielles#15"
@@ -359,7 +359,7 @@
   {
    "id": "ue3-05-k33",
    "type": "comp",
-   "q": "Quelles entreprises doivent, à titre expérimental, mettre en place un dispositif de partage de la valeur selon la loi du 29 novembre 2023 ?",
+   "q": "Quelles entreprises doivent, à titre expérimental, mettre en place un dispositif de partage de la valeur avec leurs salariés ?",
    "r": "<b>Les entreprises d'au moins onze salariés non tenues à la participation</b> ayant réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires, pour les exercices ouverts à compter du 1er janvier 2025. Dispositifs : participation, intéressement, abondement d'un plan d'épargne salariale ou prime de partage de la valeur.",
    "base": [
     "Ce qui a changé récemment#2"

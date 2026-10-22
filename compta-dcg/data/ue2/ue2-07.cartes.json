@@ -5,7 +5,7 @@
   {
    "id": "ue2-07-k01",
    "type": "def",
-   "q": "Selon le Code de commerce, qui a la qualité de commerçant ?",
+   "q": "En droit commercial, qui a la qualité de commerçant ?",
    "r": "<b>Ceux qui exercent des actes de commerce et en font leur profession habituelle.</b> L'article L. 110-1 répute notamment actes de commerce tout achat de biens meubles pour les revendre et, entre toutes personnes, les lettres de change et, depuis le 1er janvier 2022, les cautionnements de dettes commerciales.",
    "base": [
     "Définitions#0",
@@ -79,7 +79,7 @@
   {
    "id": "ue2-07-k07",
    "type": "comp",
-   "q": "En principe, quelles obligations comptables et bancaires le Code de commerce impose-t-il à toute personne physique ou morale ayant la qualité de commerçant ?",
+   "q": "En principe, quelles obligations comptables et bancaires pèsent sur toute personne physique ou morale ayant la qualité de commerçant ?",
    "r": "<b>Enregistrer chronologiquement les mouvements affectant le patrimoine de son entreprise, contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs, et établir des comptes annuels à la clôture de l'exercice.</b> Documents comptables et pièces justificatives sont conservés dix ans ; le commerçant doit aussi se faire ouvrir un compte dans un établissement de crédit ou un bureau de chèques postaux.",
    "base": [
     "Règles essentielles#2"
@@ -104,7 +104,7 @@
   {
    "id": "ue2-07-k09",
    "type": "comp",
-   "q": "Quelle compétence la loi du 20 novembre 2023 confie-t-elle aux tribunaux des activités économiques mis en place à titre expérimental depuis le 1er janvier 2025 ?",
+   "q": "Quelle compétence est confiée aux tribunaux des activités économiques, mis en place à titre expérimental depuis le 1er janvier 2025 ?",
    "r": "<b>Les procédures amiables et collectives, quel que soit le statut du débiteur</b>, sauf exceptions légales. L'expérimentation dure quatre ans dans douze tribunaux de commerce désignés par l'arrêté du 5 juillet 2024.",
    "base": [
     "Ce qui a changé récemment#1"
@@ -203,7 +203,7 @@
   {
    "id": "ue2-07-k18",
    "type": "comp",
-   "q": "Selon le Code de commerce, jusqu'à quand le loueur d'un fonds de commerce en location-gérance est-il solidairement responsable des dettes d'exploitation du locataire-gérant ?",
+   "q": "Jusqu'à quand le loueur d'un fonds de commerce en location-gérance est-il solidairement responsable des dettes d'exploitation du locataire-gérant ?",
    "r": "<b>Jusqu'à la publication du contrat</b>, publié dans la quinzaine de sa date, pour les dettes contractées par le locataire-gérant à l'occasion de l'exploitation du fonds ; la prolongation de six mois a été supprimée par la loi du 9 décembre 2016. La fin de la location-gérance rend immédiatement exigibles les dettes afférentes à l'exploitation contractées par le locataire-gérant pendant la gérance.",
    "base": [
     "Règles essentielles#8",
@@ -211,18 +211,6 @@
    ],
    "src": "C. com., art. L. 144-7 (rédaction issue de la loi n° 2016-1691 du 9 décembre 2016) et L. 144-9 ; art. R. 144-1 à D. 144-5",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146039",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue2-07-k19",
-   "type": "comp",
-   "q": "Quelles règles de la vente et de la location-gérance du fonds de commerce la loi du 19 juillet 2019 a-t-elle abrogées ?",
-   "r": "<b>Les mentions obligatoires de l'acte de cession du fonds (ancien art. L. 141-1) et la condition d'exploitation préalable du fonds pendant deux ans imposée au loueur en location-gérance (ancien art. L. 144-3).</b> Des manuels les citent encore.",
-   "base": [
-    "Points de vigilance#3"
-   ],
-   "src": "Loi n° 2019-744 du 19 juillet 2019, art. 1er et 2 ; loi n° 2016-1691 du 9 décembre 2016 ; C. com., art. L. 144-7 et L. 141-6 (versions antérieures)",
-   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038792157",
    "fiab": "stable"
   },
   {
@@ -240,7 +228,7 @@
   {
    "id": "ue2-07-k21",
    "type": "def",
-   "q": "Qu'est-ce qu'un entrepreneur individuel au sens du Code de commerce ?",
+   "q": "Qu'est-ce qu'un entrepreneur individuel au sens du droit commercial ?",
    "r": "<b>Une personne physique qui exerce en son nom propre une ou plusieurs activités professionnelles indépendantes.</b> Le commerçant personne physique qui exerce sans constituer de société relève de ce statut ; les biens, droits, obligations et sûretés utiles à son activité forment son patrimoine professionnel, le reste son patrimoine personnel.",
    "base": [
     "Définitions#1"
@@ -326,7 +314,7 @@
   {
    "id": "ue2-07-k28",
    "type": "comp",
-   "q": "Quelle durée minimale le Code de commerce impose-t-il au bail commercial, et quand le preneur peut-il donner congé ?",
+   "q": "Quelle est la durée minimale d'un bail commercial, et quand le preneur peut-il donner congé ?",
    "r": "<b>Neuf ans ; le preneur peut donner congé à l'expiration de chaque période triennale, au moins six mois à l'avance</b>, par lettre recommandée avec demande d'avis de réception ou par acte extrajudiciaire, sauf stipulation contraire admise pour certains baux (baux de plus de neuf ans, locaux monovalents, locaux à usage exclusif de bureaux, locaux de stockage). Le bailleur n'a cette faculté que dans des cas limités.",
    "base": [
     "Règles essentielles#12"
@@ -399,7 +387,7 @@
   {
    "id": "ue2-07-k34",
    "type": "comp",
-   "q": "Qu'a changé la loi du 26 mai 2026 pour le dépôt de garantie et le paiement du loyer du preneur d'un local à usage commercial ou artisanal ?",
+   "q": "Quelles nouvelles règles encadrent, depuis 2026, le dépôt de garantie et le paiement du loyer du preneur d'un local à usage commercial ou artisanal ?",
    "r": "<b>Pour les baux conclus ou renouvelés depuis sa promulgation, le dépôt de garantie est limité au loyer d'un trimestre, sans intérêt</b>. Sa restitution dans les trois mois de la remise des clés vaut aussi pour les baux en cours si cette remise intervient trois mois ou plus après la promulgation. Le preneur sans arriéré obtient de droit, sur demande, le paiement mensuel du loyer, même en cours de bail.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -411,7 +399,7 @@
   {
    "id": "ue2-07-k35",
    "type": "comp",
-   "q": "Quelles sociétés le Code de commerce déclare-t-il commerciales à raison de leur forme, quel que soit leur objet ?",
+   "q": "Quelles sociétés sont commerciales à raison de leur forme, quel que soit leur objet ?",
    "r": "<b>Les sociétés en nom collectif, les sociétés en commandite simple, les sociétés à responsabilité limitée et les sociétés par actions.</b> Le caractère commercial d'une société est en effet déterminé par sa forme ou par son objet.",
    "base": [
     "Règles essentielles#4"

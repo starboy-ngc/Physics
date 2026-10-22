@@ -5,7 +5,7 @@
   {
    "id": "ue2-01-k01",
    "type": "def",
-   "q": "Comment l'article 1832 du Code civil définit-il la société ?",
+   "q": "Comment la loi définit-elle la société ?",
    "r": "<b>Un contrat par lequel deux ou plusieurs personnes affectent à une entreprise commune des biens ou leur industrie</b> en vue de partager le bénéfice ou de profiter de l'économie qui pourra en résulter. Elle peut aussi être instituée par la volonté d'une seule personne dans les cas prévus par la loi (EURL, SASU) ; les associés s'engagent à contribuer aux pertes.",
    "base": [
     "Définitions#0",
@@ -18,7 +18,7 @@
   {
    "id": "ue2-01-k02",
    "type": "def",
-   "q": "Comment se compose le patrimoine d'un entrepreneur individuel depuis la loi du 14 février 2022 ?",
+   "q": "Comment se compose le patrimoine d'un entrepreneur individuel depuis la réforme de son statut en 2022 ?",
    "r": "<b>Une seule personne juridique, mais deux patrimoines, séparés de plein droit.</b> Le patrimoine professionnel réunit les biens, droits, obligations et sûretés utiles à l'activité indépendante ; tout le reste forme le patrimoine personnel.",
    "base": [
     "Définitions#1",
@@ -67,7 +67,7 @@
   {
    "id": "ue2-01-k06",
    "type": "def",
-   "q": "Selon l'article 1843-3 du Code civil, sous quelles formes un associé peut-il s'engager à faire un apport à la société ?",
+   "q": "Sous quelles formes un associé peut-il s'engager à faire un apport à une société ?",
    "r": "<b>En nature, en numéraire ou en industrie</b> : chaque associé est débiteur envers la société de tout ce qu'il a promis de lui apporter. Les apports en nature se réalisent par le transfert des droits correspondants et la mise à la disposition effective des biens ; l'apporteur en industrie doit compte à la société de tous les gains réalisés par l'activité faisant l'objet de son apport.",
    "base": [
     "Définitions#3"
@@ -91,7 +91,7 @@
   {
    "id": "ue2-01-k08",
    "type": "def",
-   "q": "Selon l'article 1835 du Code civil, quelles mentions les statuts d'une société doivent-ils déterminer, outre les apports de chaque associé ?",
+   "q": "Quelles mentions les statuts d'une société doivent-ils déterminer, outre les apports de chaque associé ?",
    "r": "<b>La forme, l'objet, l'appellation, le siège social, le capital social, la durée de la société et les modalités de son fonctionnement.</b> Les statuts doivent en outre être établis par écrit.",
    "base": [
     "Définitions#5"
@@ -103,7 +103,7 @@
   {
    "id": "ue2-01-k09",
    "type": "def",
-   "q": "Qu'est-ce que la raison d'être que les statuts d'une société peuvent préciser depuis la loi PACTE ?",
+   "q": "Qu'est-ce que la raison d'être que les statuts d'une société peuvent préciser ?",
    "r": "<b>Les principes dont la société se dote et pour le respect desquels elle entend affecter des moyens</b> dans la réalisation de son activité. C'est une mention facultative, possible depuis la loi n° 2019-486 du 22 mai 2019.",
    "base": [
     "Définitions#5"
@@ -175,7 +175,7 @@
   {
    "id": "ue2-01-k15",
    "type": "comp",
-   "q": "Selon l'article 1844 du Code civil, en l'absence de dérogation statutaire, à qui appartient le droit de vote attaché à des parts sociales démembrées ?",
+   "q": "En l'absence de dérogation statutaire, à qui appartient le droit de vote attaché à des parts sociales démembrées entre usufruitier et nu-propriétaire ?",
    "r": "<b>Au nu-propriétaire, sauf pour les décisions concernant l'affectation des bénéfices, où il est réservé à l'usufruitier.</b> Pour les autres décisions, ils peuvent convenir que l'usufruitier votera, et les statuts peuvent déroger à cette répartition. Tous deux ont le droit de participer aux décisions collectives (art. 1844 du Code civil, rédaction de la loi du 19 juillet 2019).",
    "base": [
     "Règles essentielles#4",
@@ -200,7 +200,7 @@
   {
    "id": "ue2-01-k17",
    "type": "comp",
-   "q": "Selon le Code civil, quelle sanction encourt l'associé qui n'a pas versé à l'échéance la somme qu'il devait apporter à la société ?",
+   "q": "Quelle sanction encourt l'associé qui n'a pas versé à l'échéance la somme qu'il devait apporter à la société ?",
    "r": "<b>Il doit de plein droit les intérêts de cette somme</b> à compter du jour où elle devait être payée, sans mise en demeure, et peut en outre devoir des dommages-intérêts.",
    "base": [
     "Règles essentielles#6"
@@ -260,7 +260,7 @@
   {
    "id": "ue2-01-k22",
    "type": "comp",
-   "q": "Selon l'article 1844-5 du Code civil, quel est l'effet de la réunion de toutes les parts d'une société en une seule main ?",
+   "q": "Quel est l'effet de la réunion de toutes les parts d'une société en une seule main ?",
    "r": "<b>Elle n'entraîne pas la dissolution de plein droit.</b> Sauf dans la SARL et la SAS, tout intéressé peut demander la dissolution judiciaire si la situation n'a pas été régularisée dans le délai d'un an, le tribunal pouvant accorder un délai maximal de six mois. Si l'associé unique est une personne morale, la dissolution entraîne la transmission universelle du patrimoine de la société à cet associé, sans liquidation.",
    "base": [
     "Règles essentielles#10",
@@ -273,7 +273,7 @@
   {
    "id": "ue2-01-k23",
    "type": "comp",
-   "q": "Hors intervention du juge, quelles causes de dissolution d'une société l'article 1844-7 du Code civil prévoit-il ?",
+   "q": "Hors intervention du juge, quelles sont les causes de dissolution communes à toutes les sociétés ?",
    "r": "<b>L'expiration du temps pour lequel la société a été constituée, la réalisation ou l'extinction de son objet, la dissolution anticipée décidée par les associés</b> et toute autre cause prévue par les statuts.",
    "base": [
     "Règles essentielles#11"
@@ -285,7 +285,7 @@
   {
    "id": "ue2-01-k24",
    "type": "comp",
-   "q": "Quelles causes judiciaires de dissolution d'une société l'article 1844-7 du Code civil prévoit-il ?",
+   "q": "Quelles sont les causes judiciaires de dissolution communes à toutes les sociétés ?",
    "r": "<b>L'annulation du contrat de société, la dissolution judiciaire pour justes motifs</b> (inexécution de ses obligations par un associé, mésentente paralysant le fonctionnement), la dissolution judiciaire en cas de réunion des parts en une main non régularisée et le jugement de clôture de la liquidation judiciaire pour insuffisance d'actif.",
    "base": [
     "Règles essentielles#11"
@@ -370,7 +370,7 @@
   {
    "id": "ue2-01-k31",
    "type": "comp",
-   "q": "Selon l'article 1844-6 du Code civil, comment les associés décident-ils de proroger la société avant l'expiration de sa durée ?",
+   "q": "Comment les associés décident-ils de proroger la société avant l'expiration de sa durée ?",
    "r": "<b>À l'unanimité ou, si les statuts le prévoient, à la majorité prévue pour leur modification</b>, la durée de la société ne pouvant excéder 99 ans. Ils doivent être consultés un an au moins avant l'expiration ; à défaut, le président du tribunal, saisi sur requête dans l'année suivant l'expiration, peut constater leur intention de proroger et autoriser une consultation de régularisation.",
    "base": [
     "Chiffres et seuils#0"

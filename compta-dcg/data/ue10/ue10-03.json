@@ -301,7 +301,7 @@
    "id": "ue10-03-9",
    "type": "qcm",
    "nature": "notion",
-   "q": "Une petite entreprise au sens de l'article L. 123-16 du Code de commerce acquiert une machine non décomposable dont la durée d'usage fiscale est de 5 ans alors qu'elle prévoit de l'utiliser 8 ans. Que lui permet le PCG ?",
+   "q": "Une petite entreprise au sens du droit comptable acquiert une machine non décomposable dont la durée d'usage fiscale est de 5 ans, alors qu'elle prévoit de l'utiliser 8 ans. Que lui permet le PCG ?",
    "opts": [
     "De l'amortir sur 5 ans dans ses comptes individuels, par simplification, sans dérogatoire",
     "De ne pas l'amortir",
@@ -694,7 +694,7 @@
    "id": "ue10-03-27",
    "type": "qcm",
    "nature": "notion",
-   "q": "En IFRS (IFRS 16), le locataire d'un contrat de location de trois ans sur un matériel comptabilise, contrairement au PCG :",
+   "q": "En normes IFRS, le locataire d'un contrat de location de trois ans portant sur un matériel comptabilise, contrairement au PCG :",
    "opts": [
     "Une simple charge de loyer, comme en PCG",
     "Un droit d'utilisation à l'actif et une dette de location",

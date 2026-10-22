@@ -188,7 +188,7 @@
   {
    "id": "ue2-05-k16",
    "type": "comp",
-   "q": "Qu'impose la loi du 9 mars 2023 à une SA ou une SARL dont les capitaux propres n'ont pas été reconstitués dans le délai de deux exercices ?",
+   "q": "Que doit désormais faire une SA ou une SARL n'ayant pas reconstitué ses capitaux propres à la moitié du capital dans le délai de deux exercices ?",
    "r": "<b>Si son capital dépasse un seuil fixé par décret, elle doit le réduire pour le ramener au plus à ce seuil</b>, au plus tard à la clôture du deuxième exercice suivant. Le décret fixe ce seuil à 1 % du total du bilan, avec, dans la SA, le capital minimal comme plancher. Si ces dispositions ne sont pas respectées, la dissolution judiciaire reste encourue.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -212,7 +212,7 @@
   {
    "id": "ue2-05-k18",
    "type": "def",
-   "q": "Qu'est-ce que la transformation régulière d'une société au sens de l'article 1844-3 du Code civil ?",
+   "q": "Qu'est-ce que la transformation régulière d'une société ?",
    "r": "<b>Le changement de forme d'une société, qui devient une société d'une autre forme sans que soit créée une personne morale nouvelle.</b>",
    "base": [
     "Règles essentielles#10"
@@ -249,7 +249,7 @@
   {
    "id": "ue2-05-k21",
    "type": "def",
-   "q": "Qu'est-ce qui distingue une fusion d'une scission de sociétés au sens du Code de commerce ?",
+   "q": "Qu'est-ce qui distingue une fusion d'une scission de sociétés ?",
    "r": "<b>Par la fusion, une ou plusieurs sociétés transmettent leur patrimoine à une société existante ou nouvelle ; par la scission, une société transmet son patrimoine à plusieurs sociétés.</b> Dans les deux cas, les sociétés qui disparaissent sont dissoutes sans liquidation et leur patrimoine fait l'objet d'une transmission universelle aux sociétés bénéficiaires.",
    "base": [
     "Définitions#3"
@@ -273,7 +273,7 @@
   {
    "id": "ue2-05-k23",
    "type": "comp",
-   "q": "Quelles sont les étapes principales de la procédure de fusion de sociétés anonymes (SA) prévue par le Code de commerce ?",
+   "q": "Quelles sont les étapes principales de la procédure de fusion de sociétés anonymes (SA) ?",
    "r": "<ul><li><b>Projet de fusion arrêté par les organes de direction</b>, déposé au greffe et publié ;</li><li>rapport d'un ou plusieurs commissaires à la fusion désignés en justice, sauf décision unanime des associés de toutes les sociétés participantes de ne pas en désigner ;</li><li>approbation par l'assemblée générale extraordinaire de chaque société participante.</li></ul>",
    "base": [
     "Règles essentielles#12"
@@ -309,7 +309,7 @@
   {
    "id": "ue2-05-k26",
    "type": "def",
-   "q": "Qu'est-ce que la transmission universelle du patrimoine (TUP) prévue par l'article 1844-5 du Code civil ?",
+   "q": "Qu'est-ce que la transmission universelle du patrimoine (TUP) lors de la dissolution d'une société à associé unique ?",
    "r": "<b>Lorsque toutes les parts sont réunies entre les mains d'un associé unique personne morale, la dissolution de la société entraîne la transmission universelle de son patrimoine à cet associé, sans liquidation.</b> Les créanciers peuvent faire opposition à la dissolution dans les trente jours de sa publication.",
    "base": [
     "Définitions#4"
@@ -333,7 +333,7 @@
   {
    "id": "ue2-05-k28",
    "type": "comp",
-   "q": "Hors dissolution anticipée et liquidation judiciaire, quelles causes de fin d'une société l'article 1844-7 du Code civil énumère-t-il ?",
+   "q": "Hors dissolution anticipée et liquidation judiciaire, pour quelles causes une société prend-elle fin ?",
    "r": "<ul><li>L'expiration du temps pour lequel elle a été constituée, sauf prorogation ;</li><li>la réalisation ou l'extinction de son objet ;</li><li>l'annulation du contrat de société ;</li><li>toute autre cause prévue par les statuts.</li></ul>",
    "base": [
     "Règles essentielles#14"
@@ -345,7 +345,7 @@
   {
    "id": "ue2-05-k29",
    "type": "comp",
-   "q": "Selon l'article 1844-7 du Code civil, dans quels cas de dissolution anticipée ou de liquidation judiciaire une société prend-elle fin ?",
+   "q": "Dans quels cas de dissolution anticipée ou de liquidation judiciaire une société prend-elle fin ?",
    "r": "<ul><li>La dissolution anticipée décidée par les associés ;</li><li>la dissolution anticipée prononcée par le tribunal à la demande d'un associé pour justes motifs ;</li><li>la dissolution anticipée prononcée par le tribunal en cas de réunion de toutes les parts en une seule main ;</li><li>le jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif.</li></ul>",
    "base": [
     "Règles essentielles#14"
@@ -417,7 +417,7 @@
   {
    "id": "ue2-05-k35",
    "type": "comp",
-   "q": "Selon l'ordonnance du 12 mars 2025, par quel délai se prescrit, hors cas réservés, l'action en nullité d'une décision d'augmentation de capital d'une société par actions ?",
+   "q": "Depuis la réforme des nullités de 2025, par quel délai se prescrit, hors cas réservés, l'action en nullité d'une décision d'augmentation de capital d'une société par actions ?",
    "r": "<b>Par trois mois</b> à compter de la date à laquelle la décision contestée a été prise. Les actions en nullité de la société, d'apport ou de décisions sociales se prescrivent, elles, par deux ans au lieu de trois depuis le 1er octobre 2025.",
    "base": [
     "Ce qui a changé récemment#2"

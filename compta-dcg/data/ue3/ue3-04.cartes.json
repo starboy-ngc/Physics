@@ -18,7 +18,7 @@
   {
    "id": "ue3-04-k02",
    "type": "def",
-   "q": "Qu'est-ce qu'un licenciement pour motif économique selon le Code du travail ?",
+   "q": "Quelle est la définition légale du licenciement pour motif économique ?",
    "r": "<b>Un licenciement effectué pour un ou plusieurs motifs non inhérents à la personne du salarié</b>, résultant d'une suppression ou transformation d'emploi ou d'une modification, refusée par le salarié, d'un élément essentiel du contrat.",
    "base": [
     "Définitions#1"
@@ -30,7 +30,7 @@
   {
    "id": "ue3-04-k03",
    "type": "comp",
-   "q": "Selon le Code du travail, à quels événements notamment sont consécutives la suppression ou transformation d'emploi ou la modification du contrat justifiant un licenciement économique ?",
+   "q": "À quels événements, notamment, doivent être consécutives la suppression ou la transformation d'emploi ou la modification du contrat de travail pour justifier un licenciement économique ?",
    "r": "Notamment à <b>des difficultés économiques, des mutations technologiques, une réorganisation nécessaire à la sauvegarde de la compétitivité ou la cessation d'activité</b> de l'entreprise.",
    "base": [
     "Définitions#1"
@@ -54,7 +54,7 @@
   {
    "id": "ue3-04-k06",
    "type": "def",
-   "q": "Qu'est-ce que la présomption de démission prévue par le Code du travail ?",
+   "q": "Qu'est-ce que la présomption de démission en droit du travail ?",
    "r": "<b>Le salarié qui abandonne volontairement son poste et ne reprend pas le travail après avoir été mis en demeure de justifier son absence et de reprendre son poste, dans le délai fixé par l'employeur, est présumé avoir démissionné</b> à l'expiration de ce délai, sauf motif légitime faisant obstacle à la présomption.",
    "base": [
     "Définitions#3",
@@ -91,7 +91,7 @@
   {
    "id": "ue3-04-k09",
    "type": "comp",
-   "q": "Quelles sont les étapes de la procédure de licenciement pour motif personnel prévues par le Code du travail ?",
+   "q": "Quelles sont les étapes de la procédure légale de licenciement pour motif personnel ?",
    "r": "<b>Convocation à un entretien préalable</b> par lettre recommandée ou remise en main propre contre décharge, <b>entretien</b> au moins cinq jours ouvrables après la présentation de la lettre, où le salarié peut se faire assister, puis <b>notification par lettre recommandée avec avis de réception</b> énonçant le ou les motifs, expédiée au moins deux jours ouvrables après la date prévue de l'entretien.",
    "base": [
     "Règles essentielles#0"
@@ -103,7 +103,7 @@
   {
    "id": "ue3-04-k10",
    "type": "comp",
-   "q": "Comment le Code du travail caractérise-t-il les difficultés économiques pouvant justifier un licenciement pour motif économique ?",
+   "q": "Comment se caractérisent les difficultés économiques pouvant justifier un licenciement pour motif économique ?",
    "r": "<b>Notamment par l'évolution significative d'au moins un indicateur économique</b>, tel qu'une baisse des commandes ou du chiffre d'affaires, des pertes d'exploitation ou une dégradation de la trésorerie ou de l'excédent brut d'exploitation. Dans un groupe, elles s'apprécient au niveau du secteur d'activité commun aux entreprises du groupe établies sur le territoire national.",
    "base": [
     "Règles essentielles#1"
@@ -127,7 +127,7 @@
   {
    "id": "ue3-04-k12",
    "type": "comp",
-   "q": "Quels critères le Code du travail énumère-t-il pour fixer l'ordre des licenciements pour motif économique ?",
+   "q": "Quels critères légaux permettent de fixer l'ordre des licenciements pour motif économique ?",
    "r": "<b>Les charges de famille, l'ancienneté, la situation sociale rendant la réinsertion difficile et les qualités professionnelles.</b>",
    "base": [
     "Règles essentielles#2"
@@ -249,7 +249,7 @@
   {
    "id": "ue3-04-k23",
    "type": "comp",
-   "q": "Quand le barème d'indemnisation du licenciement sans cause réelle et sérieuse est-il écarté par le Code du travail ?",
+   "q": "Dans quels cas le barème d'indemnisation du licenciement sans cause réelle et sérieuse est-il écarté ?",
    "r": "<b>Lorsque le licenciement est entaché de nullité</b> (violation d'une liberté fondamentale, harcèlement moral ou sexuel, discrimination, salarié protégé…). À défaut de réintégration, l'indemnité ne peut alors être inférieure aux salaires des six derniers mois.",
    "base": [
     "Règles essentielles#11"
@@ -273,7 +273,7 @@
   {
    "id": "ue3-04-k25",
    "type": "def",
-   "q": "Qu'est-ce que la mise à la retraite d'un salarié selon le Code du travail ?",
+   "q": "Qu'est-ce que la mise à la retraite d'un salarié en droit du travail ?",
    "r": "<b>La possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge du taux plein automatique (67 ans)</b>, ou, dans le contrat expérimental de valorisation de l'expérience, dès qu'il remplit les conditions d'une pension à taux plein. Elle ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement ; le salarié qui part volontairement perçoit l'indemnité de départ à la retraite.",
    "base": [
     "Règles essentielles#13",
@@ -298,7 +298,7 @@
   {
    "id": "ue3-04-k27",
    "type": "def",
-   "q": "Qu'est-ce que la rupture conventionnelle collective prévue par le Code du travail ?",
+   "q": "Qu'est-ce que la rupture conventionnelle collective en droit du travail ?",
    "r": "<b>Un mode de rupture dont un accord collectif détermine le contenu, excluant tout licenciement pour atteindre les objectifs de suppression d'emplois.</b> L'accord fixe notamment le nombre maximal de départs envisagés et les modalités de calcul des indemnités de rupture, qui ne peuvent être inférieures aux indemnités légales dues en cas de licenciement ; il est validé par l'autorité administrative.",
    "base": [
     "Règles essentielles#16"
@@ -310,7 +310,7 @@
   {
    "id": "ue3-04-k28",
    "type": "comp",
-   "q": "Quelles précisions le décret du 17 avril 2023 et le Conseil d'État ont-ils apportées sur la mise en demeure fondant la présomption de démission ?",
+   "q": "Quelles exigences de délai et de contenu encadrent la mise en demeure adressée au salarié pour fonder la présomption de démission ?",
    "r": "<b>Le délai fixé par la mise en demeure ne peut être inférieur à quinze jours à compter de sa présentation</b> (décret), et <b>elle doit informer le salarié des conséquences de l'absence de reprise du travail</b> (Conseil d'État, 18 décembre 2024).",
    "base": [
     "Ce qui a changé récemment#0"
@@ -334,7 +334,7 @@
   {
    "id": "ue3-04-k30",
    "type": "comp",
-   "q": "Que permet à l'employeur le contrat de valorisation de l'expérience institué à titre expérimental par la loi du 24 octobre 2025 ?",
+   "q": "Que permet à l'employeur le contrat de valorisation de l'expérience, institué à titre expérimental pour l'emploi des salariés âgés ?",
    "r": "<b>Mettre le salarié à la retraite sans recueillir son accord, dès qu'il remplit les conditions d'une pension à taux plein.</b> Ce CDI est conclu avec un salarié recruté à 60 ans au moins (57 ans si un accord collectif le prévoit).",
    "base": [
     "Ce qui a changé récemment#2"
@@ -406,7 +406,7 @@
   {
    "id": "ue3-04-k36",
    "type": "comp",
-   "q": "En principe, quelle procédure préalable encadre la mise à la retraite d'un salarié par l'employeur selon le Code du travail ?",
+   "q": "En principe, quelle procédure préalable encadre la mise à la retraite d'un salarié par l'employeur ?",
    "r": "<b>Avant que le salarié atteigne l'âge du taux plein automatique, l'employeur l'interroge par écrit sur son intention de quitter volontairement l'entreprise pour bénéficier d'une pension de vieillesse.</b> En cas de réponse négative ou à défaut d'interrogation, il ne peut pas le mettre à la retraite pendant l'année qui suit ; la même procédure s'applique chaque année jusqu'au 69e anniversaire.",
    "base": [
     "Règles essentielles#13"

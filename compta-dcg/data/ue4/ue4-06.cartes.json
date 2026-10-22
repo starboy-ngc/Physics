@@ -5,7 +5,7 @@
   {
    "id": "ue4-06-k01",
    "type": "def",
-   "q": "Que l'article 34 de la Constitution réserve-t-il à la loi en matière d'impositions de toutes natures ?",
+   "q": "En matière d'impositions de toutes natures, quels éléments relèvent de la compétence exclusive du législateur ?",
    "r": "<b>L'assiette, le taux et les modalités de recouvrement.</b> Selon le Conseil constitutionnel, le législateur qui définit une imposition doit en déterminer les modalités de recouvrement, qui couvrent le contrôle, le recouvrement, le contentieux, les garanties et les sanctions.",
    "base": [
     "Définitions#1"
@@ -210,7 +210,7 @@
   {
    "id": "ue4-06-k19",
    "type": "def",
-   "q": "Qu'est-ce que la garantie contre les changements de doctrine prévue par l'article L. 80 A du LPF ?",
+   "q": "Qu'est-ce que la garantie contre les changements de doctrine administrative dont bénéficie le contribuable en matière fiscale ?",
    "r": "<b>Aucun rehaussement d'impositions antérieures ne peut être opéré</b> lorsque le différend porte sur l'interprétation du texte fiscal par un redevable de bonne foi, dès lors que cette interprétation avait été formellement admise par l'administration. Les instructions ou circulaires publiées et non rapportées à la date des opérations sont opposables, y compris celles relatives au recouvrement et aux pénalités.",
    "base": [
     "Définitions#2"
@@ -222,7 +222,7 @@
   {
    "id": "ue4-06-k20",
    "type": "comp",
-   "q": "Quelle prise de position de l'administration lors d'un contrôle fiscal est couverte par la garantie de l'article L. 80 A du LPF ?",
+   "q": "Quelle prise de position de l'administration lors d'un contrôle fiscal est couverte par la garantie contre les changements de doctrine ?",
    "r": "<b>La position prise sur les points examinés au cours d'un examen ou d'une vérification de comptabilité ou d'un examen contradictoire de la situation fiscale personnelle</b>, y compris tacitement lorsqu'elle ne les a pas rectifiés. La règle vaut pour les contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
    "base": [
     "Règles essentielles#12"
@@ -234,7 +234,7 @@
   {
    "id": "ue4-06-k21",
    "type": "comp",
-   "q": "Lorsque l'administration a successivement admis plusieurs interprétations d'un texte, laquelle le contribuable peut-il invoquer au titre de l'article L. 80 A du LPF ?",
+   "q": "Lorsque l'administration fiscale a successivement admis plusieurs interprétations d'un texte, laquelle le contribuable peut-il invoquer au titre de la garantie contre les changements de doctrine ?",
    "r": "<b>Seule la dernière interprétation formellement admise</b>, et uniquement si elle est antérieure à l'imposition primitive. L'article L. 80 A ne confère aucun pouvoir réglementaire à l'administration.",
    "base": [
     "Points de vigilance#5"
@@ -246,7 +246,7 @@
   {
    "id": "ue4-06-k22",
    "type": "comp",
-   "q": "Comment qualifier, au regard de l'article L. 80 A du LPF, la remise en cause d'un crédit d'impôt imputé sur l'imposition primitive ?",
+   "q": "Au regard de la garantie contre les changements de doctrine, comment qualifier la remise en cause d'un crédit d'impôt imputé sur l'imposition primitive ?",
    "r": "<b>Comme un rehaussement au sens de l'article L. 80 A.</b> Le contribuable peut donc invoquer la doctrine publiée.",
    "base": [
     "Points de vigilance#6"
@@ -294,7 +294,7 @@
   {
    "id": "ue4-06-k26",
    "type": "comp",
-   "q": "Quel effet produit le silence de l'administration pendant soixante jours sur les observations d'une entreprise vérifiée sous les seuils de chiffre d'affaires de l'article L. 57 A du LPF ?",
+   "q": "Lors de la vérification de comptabilité d'une petite entreprise sous les seuils légaux de chiffre d'affaires, quel effet produit le silence de l'administration pendant soixante jours sur ses observations ?",
    "r": "<b>Les observations du contribuable sont considérées comme acceptées.</b> Pour ces entreprises, l'administration doit répondre aux observations dans les soixante jours ; comme dans toute rectification contradictoire, si elle les rejette, sa réponse est motivée.",
    "base": [
     "Règles essentielles#11"
@@ -306,7 +306,7 @@
   {
    "id": "ue4-06-k27",
    "type": "comp",
-   "q": "Dans quel cas le délai de soixante jours de l'article L. 57 A du LPF ne s'applique-t-il à aucun exercice vérifié ?",
+   "q": "Dans quel cas le délai de soixante jours imparti à l'administration pour répondre aux observations d'une petite entreprise vérifiée ne s'applique-t-il à aucun exercice ?",
    "r": "<b>Lorsque l'entreprise vérifiée dépasse les seuils de chiffre d'affaires au titre de l'un quelconque des exercices vérifiés et rectifiés.</b> Le délai de réponse de l'administration aux observations n'est alors limité pour aucun exercice.",
    "base": [
     "Points de vigilance#3"
@@ -318,7 +318,7 @@
   {
    "id": "ue4-06-k28",
    "type": "comp",
-   "q": "Comment la majoration pour insuffisance de déclaration (CGI, art. 1729) est-elle graduée selon le comportement du contribuable ?",
+   "q": "Comment la majoration fiscale pour insuffisance de déclaration est-elle graduée selon le comportement du contribuable ?",
    "r": "<b>40 % en cas de manquement délibéré ; 80 % en cas d'abus de droit ou de manœuvres frauduleuses.</b> Pour l'abus de droit, elle est ramenée à 40 % s'il n'est pas établi que le contribuable en a eu l'initiative principale ou en a été le principal bénéficiaire.",
    "base": [
     "Règles essentielles#14"
@@ -330,7 +330,7 @@
   {
    "id": "ue4-06-k29",
    "type": "def",
-   "q": "Qu'est-ce que l'intérêt de retard prévu par l'article 1727 du CGI ?",
+   "q": "Qu'est-ce que l'intérêt de retard dû en matière fiscale ?",
    "r": "<b>Un intérêt dû sur toute créance de nature fiscale non acquittée dans le délai légal</b>, au taux de 0,20 % par mois, en sus des sanctions éventuelles. Il est réduit de 50 % en cas de dépôt spontané d'une déclaration rectificative, sous conditions.",
    "base": [
     "Règles essentielles#15"
@@ -342,7 +342,7 @@
   {
    "id": "ue4-06-k30",
    "type": "def",
-   "q": "Quels actes constituent un abus de droit fiscal que l'administration peut écarter (LPF, art. L. 64) ?",
+   "q": "Quels actes constituent un abus de droit fiscal que l'administration peut écarter ?",
    "r": "<b>Les actes fictifs</b>, ou ceux qui, recherchant le bénéfice d'une application littérale des textes ou de décisions à l'encontre des objectifs poursuivis par leurs auteurs, n'ont pu être inspirés par aucun autre motif que celui d'éluder ou d'atténuer les charges fiscales normalement supportées.",
    "base": [
     "Règles essentielles#16"
@@ -354,7 +354,7 @@
   {
    "id": "ue4-06-k31",
    "type": "comp",
-   "q": "Comment l'administration peut-elle écarter une interprétation formellement admise qui ajoute à la loi et dont se prévaut le redevable (LPF, art. L. 80 A) ?",
+   "q": "Comment l'administration fiscale peut-elle écarter une interprétation qu'elle a formellement admise, qui ajoute à la loi et dont se prévaut le redevable ?",
    "r": "<b>En mettant en œuvre la procédure de l'abus de droit</b>, si elle démontre, par des éléments objectifs, la finalité abusive de la situation. Hors ce cas, le redevable peut se prévaloir d'une telle interprétation même si elle ajoute à la loi.",
    "base": [
     "Points de vigilance#7"
@@ -415,7 +415,7 @@
   {
    "id": "ue4-06-k36",
    "type": "comp",
-   "q": "Comment la majoration pour défaut ou retard de déclaration prévue par l'article 1728 du CGI est-elle graduée ?",
+   "q": "Comment la majoration fiscale pour défaut ou retard de déclaration est-elle graduée ?",
    "r": "<b>10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure ; 40 % au-delà ; 80 % en cas de découverte d'une activité occulte.</b> Pour la déclaration d'impôt sur le revenu, la majoration de l'article 1758 A (10 %, portée à 20 % en cas de dépôt dans les trente jours d'une mise en demeure) est exclusive de ce taux de 10 %.",
    "base": [
     "Règles essentielles#14",

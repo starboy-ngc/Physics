@@ -189,7 +189,7 @@
   {
    "id": "ue2-02-k16",
    "type": "comp",
-   "q": "Hors incorporation de bénéfices ou de réserves, quels quorum et majorité s'appliquent aux modifications des statuts d'une SARL constituée avant ou après la loi du 2 août 2005 ?",
+   "q": "Hors incorporation de bénéfices ou de réserves, quels quorum et majorité s'appliquent aux modifications statutaires d'une SARL constituée avant ou après la réforme d'août 2005 ?",
    "r": "<b>Après : quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis deux tiers des parts des associés présents ou représentés</b>, les statuts pouvant prévoir des quorums ou une majorité plus élevés, sans exiger l'unanimité. <b>Avant : trois quarts des parts sociales, sans quorum</b>, sauf décision unanime des associés d'appliquer le nouveau régime.",
    "base": [
     "Règles essentielles#7"
@@ -213,7 +213,7 @@
   {
    "id": "ue2-02-k19",
    "type": "comp",
-   "q": "Quelle exception à la consultation écrite des associés de SARL la loi du 13 juin 2024 a-t-elle supprimée ?",
+   "q": "Quelle exception à la consultation écrite des associés de SARL a été supprimée en 2024 ?",
    "r": "<b>Celle de l'approbation des comptes annuels</b>, jusque-là réservée à l'assemblée : depuis le 14 septembre 2024, les statuts peuvent prévoir qu'elle se fait par consultation écrite, y compris par voie électronique. L'approbation intervient toujours dans les six mois de la clôture de l'exercice, sauf prolongation par décision de justice.",
    "base": [
     "Règles essentielles#13",
@@ -226,7 +226,7 @@
   {
    "id": "ue2-02-k20",
    "type": "comp",
-   "q": "Quels moyens le Code de commerce donne-t-il aux associés d'une SARL pour interroger le gérant ou faire contrôler une opération de gestion ?",
+   "q": "De quels moyens légaux disposent les associés d'une SARL pour interroger le gérant ou faire contrôler une opération de gestion ?",
    "r": "<b>Tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant</b> sur tout fait de nature à compromettre la continuité de l'exploitation. Un ou plusieurs associés représentant au moins le dixième du capital peuvent demander en justice la désignation d'experts chargés d'un rapport sur une ou plusieurs opérations de gestion.",
    "base": [
     "Règles essentielles#14"
@@ -286,7 +286,7 @@
   {
    "id": "ue2-02-k25",
    "type": "def",
-   "q": "Quelles sont les trois catégories de conventions entre une SARL et ses gérants ou associés que distingue le Code de commerce ?",
+   "q": "Quelles sont les trois catégories légales de conventions entre une SARL et ses gérants ou associés ?",
    "r": "<b>Les conventions réglementées</b> (rapport à l'assemblée, qui statue en principe après leur conclusion), <b>les conventions libres</b> (opérations courantes conclues à des conditions normales) et <b>les conventions interdites</b>, à peine de nullité du contrat.",
    "base": [
     "Définitions#4"
@@ -395,7 +395,7 @@
   {
    "id": "ue2-02-k34",
    "type": "comp",
-   "q": "Qu'a changé l'ordonnance du 12 mars 2025, applicable depuis le 1er octobre 2025, au régime des nullités dans les sociétés ?",
+   "q": "Qu'a changé la réforme applicable depuis le 1er octobre 2025 au régime des nullités dans les sociétés ?",
    "r": "<b>Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité</b> ; les actions en nullité de la société ou de ses actes et délibérations se prescrivent par deux ans au lieu de trois ; l'annulation d'une décision est subordonnée à un « triple test » : grief, influence de l'irrégularité sur le sens de la décision, conséquences non excessives pour l'intérêt social.",
    "base": [
     "Ce qui a changé récemment#4"

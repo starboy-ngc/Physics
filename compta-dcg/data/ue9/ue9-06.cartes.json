@@ -5,7 +5,7 @@
   {
    "id": "ue9-06-k01",
    "type": "def",
-   "q": "Selon le PCG, qu'est-ce qu'un stock ?",
+   "q": "En comptabilité générale, quelle est la définition d'un stock ?",
    "r": "<b>Un actif détenu pour être vendu dans le cours normal de l'activité</b>, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue9-06-k02",
    "type": "def",
-   "q": "Selon le Code de commerce, qu'est-ce que l'inventaire en comptabilité ?",
+   "q": "En comptabilité, qu'est-ce que l'inventaire qu'un commerçant doit établir ?",
    "r": "<b>Le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture.</b> Il est obligatoire au moins une fois tous les douze mois, stocks compris.",
    "base": [
     "Définitions#1",
@@ -30,7 +30,7 @@
   {
    "id": "ue9-06-k03",
    "type": "def",
-   "q": "Selon le PCG, qu'est-ce qu'un passif ?",
+   "q": "En comptabilité générale, quelle est la définition d'un passif ?",
    "r": "<b>Un élément du patrimoine ayant une valeur économique négative pour l'entité</b> : une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci. L'obligation peut être légale, réglementaire, contractuelle, ou découler des pratiques passées de l'entité.",
    "base": [
     "Définitions#2"
@@ -42,7 +42,7 @@
   {
    "id": "ue9-06-k04",
    "type": "def",
-   "q": "Selon le PCG, qu'est-ce qu'une provision, par différence avec une dette ?",
+   "q": "En comptabilité générale, qu'est-ce qu'une provision, par différence avec une dette ?",
    "r": "<b>Une provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b> La dette, elle, est un passif certain dont l'échéance et le montant sont fixés de façon précise.",
    "base": [
     "Définitions#2"
@@ -54,7 +54,7 @@
   {
    "id": "ue9-06-k05",
    "type": "def",
-   "q": "Selon le PCG et le Code de commerce, qu'est-ce que la dépréciation d'un actif ?",
+   "q": "En comptabilité générale, qu'est-ce que la dépréciation d'un actif ?",
    "r": "<b>La constatation que la valeur actuelle d'un actif est devenue inférieure à sa valeur nette comptable.</b> La valeur nette comptable est alors ramenée à la valeur d'inventaire à la clôture, que la dépréciation soit définitive ou non.",
    "base": [
     "Définitions#3"
@@ -66,7 +66,7 @@
   {
    "id": "ue9-06-k06",
    "type": "def",
-   "q": "Selon le Code de commerce et le PCG, qu'est-ce que la valeur actuelle d'un actif ?",
+   "q": "En comptabilité générale, qu'est-ce que la valeur actuelle d'un actif ?",
    "r": "<b>Une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise</b> ; pour le PCG, la plus élevée de la valeur vénale (montant qui pourrait être obtenu de la vente de l'actif à la clôture, net des coûts de sortie) et de la valeur d'usage. La valeur d'inventaire, comparée à la clôture au coût d'entrée d'un stock ou d'un titre, lui est égale.",
    "base": [
     "Définitions#4"
@@ -78,7 +78,7 @@
   {
    "id": "ue9-06-k07",
    "type": "comp",
-   "q": "Selon le PCG, comment sont classées les reprises sur amortissements, dépréciations et provisions au compte de résultat ?",
+   "q": "Comment sont classées les reprises sur amortissements, dépréciations et provisions au compte de résultat ?",
    "r": "<b>Ce sont des produits</b>, enregistrés aux comptes 781, 786 et 787 (comptes 78). Une reprise n'est pas une diminution des dotations : elle ne passe jamais au crédit d'un compte 68.",
    "base": [
     "Définitions#5",
@@ -91,7 +91,7 @@
   {
    "id": "ue9-06-k08",
    "type": "comp",
-   "q": "Selon le Code de commerce, quelle incidence l'absence ou l'insuffisance de bénéfice a-t-elle sur les amortissements, dépréciations et provisions ?",
+   "q": "Quelle incidence l'absence ou l'insuffisance de bénéfice a-t-elle sur les amortissements, dépréciations et provisions de l'exercice ?",
    "r": "<b>Aucune : il doit quand même être procédé aux amortissements, dépréciations et provisions nécessaires.</b> Une entreprise en perte constate donc la dépréciation d'un stock ou d'une créance.",
    "base": [
     "Règles essentielles#1"
@@ -103,7 +103,7 @@
   {
    "id": "ue9-06-k09",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment traite-t-on en principe, à la clôture, la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée ?",
+   "q": "À la clôture, comment traite-t-on en principe la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée ?",
    "r": "<b>Elle n'est pas comptabilisée</b>, car seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels. À l'inverse, une baisse de valeur sous la valeur nette comptable est constatée par une dépréciation.",
    "base": [
     "Règles essentielles#2"
@@ -115,7 +115,7 @@
   {
    "id": "ue9-06-k10",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment traite-t-on un passif né avant la clôture de l'exercice mais révélé entre la clôture et l'arrêté des comptes ?",
+   "q": "Comment traite-t-on un passif né avant la clôture de l'exercice mais révélé entre la clôture et l'arrêté des comptes ?",
    "r": "<b>Il est pris en compte dans l'exercice clos.</b> Le principe de prudence impose de tenir compte des passifs nés au cours de l'exercice ou d'un exercice antérieur, même s'ils sont connus entre la clôture et l'établissement des comptes.",
    "base": [
     "Points de vigilance#2",
@@ -128,7 +128,7 @@
   {
    "id": "ue9-06-k11",
    "type": "def",
-   "q": "En quoi consiste la méthode de l'inventaire intermittent pour comptabiliser les stocks selon le plan de comptes du PCG ?",
+   "q": "En quoi consiste la méthode de l'inventaire intermittent pour comptabiliser les stocks ?",
    "r": "<b>Les achats de l'exercice sont enregistrés en charges (comptes 60)</b> ; à la clôture, le stock initial est annulé et le stock final constaté par le compte 603 « Variations des stocks (approvisionnements et marchandises) » (6031 matières premières, 6037 marchandises), ou par le compte 7135 « Variation des stocks de produits » pour les produits.",
    "base": [
     "Règles essentielles#3"
@@ -152,7 +152,7 @@
   {
    "id": "ue9-06-k13",
    "type": "def",
-   "q": "Selon le Code de commerce et le PCG, à quelle valeur un stock est-il enregistré à son entrée dans le patrimoine ?",
+   "q": "En comptabilité générale, à quelle valeur un stock est-il enregistré à son entrée dans le patrimoine ?",
    "r": "<b>Au coût d'acquisition pour les biens achetés, au coût de production pour les biens produits</b> (à la valeur vénale pour les biens acquis à titre gratuit). Le coût des stocks comprend les coûts d'acquisition, de transformation et les autres coûts engagés pour amener les stocks à l'endroit et dans l'état où ils se trouvent, pertes et gaspillages exclus.",
    "base": [
     "Règles essentielles#5"
@@ -164,7 +164,7 @@
   {
    "id": "ue9-06-k14",
    "type": "def",
-   "q": "Selon le PCG, de quoi se compose le coût d'acquisition d'un stock acheté ?",
+   "q": "En comptabilité générale, de quoi se compose le coût d'acquisition d'un stock acheté ?",
    "r": "<b>Du prix d'achat</b> (droits de douane et autres taxes non récupérables compris, rabais commerciaux, remises et escomptes de règlement déduits) <b>et des frais de transport, de manutention et autres coûts directement attribuables à l'acquisition.</b>",
    "base": [
     "Règles essentielles#5"
@@ -176,7 +176,7 @@
   {
    "id": "ue9-06-k15",
    "type": "comp",
-   "q": "Selon le Code de commerce et le PCG, quelles méthodes peut-on retenir pour évaluer les biens fongibles en stock ?",
+   "q": "Quelles méthodes peut-on retenir pour évaluer les biens fongibles en stock ?",
    "r": "<b>Le coût moyen pondéré (CMP) d'acquisition ou de production, ou la méthode « premier entré, premier sorti » (PEPS).</b> Le CMP des articles interchangeables est calculé à chaque entrée ou sur une période n'excédant pas la durée moyenne de stockage ; la même méthode s'applique aux stocks de nature et d'usage similaires.",
    "base": [
     "Règles essentielles#6"
@@ -188,7 +188,7 @@
   {
    "id": "ue9-06-k16",
    "type": "comp",
-   "q": "Selon le plan de comptes du PCG, quels comptes enregistrent la dépréciation d'un stock constatée à la clôture ?",
+   "q": "Quels comptes enregistrent la dépréciation d'un stock constatée à la clôture ?",
    "r": "<b>Le débit du compte 68173 et le crédit d'un compte 39</b> (391 matières, 395 produits, 397 marchandises), lorsque la valeur d'inventaire du stock est inférieure à son coût d'entrée. À chaque clôture, la dépréciation est ajustée au montant nécessaire : dotation complémentaire, ou reprise au crédit de 78173.",
    "base": [
     "Règles essentielles#7"
@@ -200,7 +200,7 @@
   {
    "id": "ue9-06-k17",
    "type": "comp",
-   "q": "Selon le PCG, à quoi compare-t-on le coût d'entrée d'un stock destiné à la vente pour juger de sa dépréciation ?",
+   "q": "À quoi compare-t-on le coût d'entrée d'un stock destiné à la vente pour juger de sa dépréciation ?",
    "r": "<b>À sa valeur actuelle, c'est-à-dire au prix de vente probable net des coûts de sortie</b>, en tenant compte du prix et des perspectives de vente. Sur le plan fiscal, la dépréciation est admise lorsque le prix de revient des stocks dépasse leur valeur de marché.",
    "base": [
     "Règles essentielles#8"
@@ -212,7 +212,7 @@
   {
    "id": "ue9-06-k18",
    "type": "comp",
-   "q": "Selon le plan de comptes du PCG, comment traite-t-on une créance client devenue douteuse ?",
+   "q": "Comment traite-t-on en comptabilité une créance client devenue douteuse ?",
    "r": "<b>Elle est virée du compte 411 au compte 416 « Clients douteux ou litigieux » pour son montant TTC.</b> La dépréciation (68174 / 491) porte sur la perte probable, mesurée hors taxes : la TVA déjà exigible est récupérable si la créance devient irrécouvrable, et celle d'une prestation de services sans option pour les débits n'est exigible qu'à l'encaissement.",
    "base": [
     "Règles essentielles#9"
@@ -262,7 +262,7 @@
   {
    "id": "ue9-06-k22",
    "type": "comp",
-   "q": "Selon le plan de comptes du PCG, par quels comptes déprécie-t-on à la clôture la moins-value latente d'une ligne de titres ?",
+   "q": "Par quels comptes déprécie-t-on à la clôture la moins-value latente d'une ligne de titres ?",
    "r": "<b>Débit 6866, crédit 296 ou 297 pour les titres immobilisés, crédit 590 pour les valeurs mobilières de placement</b> ; la reprise passe par 7866. La plus-value latente, elle, n'est pas comptabilisée.",
    "base": [
     "Règles essentielles#12"
@@ -274,7 +274,7 @@
   {
    "id": "ue9-06-k23",
    "type": "comp",
-   "q": "Selon le PCG, qu'est-ce qui distingue la valeur d'inventaire des titres de participation de celle des valeurs mobilières de placement cotées ?",
+   "q": "Qu'est-ce qui distingue la valeur d'inventaire des titres de participation de celle des valeurs mobilières de placement cotées ?",
    "r": "<b>Les titres de participation sont évalués à leur valeur d'utilité</b> (rentabilité, capitaux propres, perspectives, conjoncture, cours moyens de bourse du dernier mois…) ; les valeurs mobilières de placement cotées le sont au cours moyen du dernier mois, comme les titres immobilisés cotés hors TIAP.",
    "base": [
     "Règles essentielles#13"
@@ -286,7 +286,7 @@
   {
    "id": "ue9-06-k24",
    "type": "comp",
-   "q": "Quel principe du Code de commerce empêche la plus-value latente d'une ligne de titres de compenser la moins-value latente d'une autre ?",
+   "q": "Quel principe comptable empêche la plus-value latente d'une ligne de titres de compenser la moins-value latente d'une autre ?",
    "r": "<b>L'évaluation séparée</b> : les éléments d'actif et de passif sont évalués séparément, sans compensation entre postes d'actif et de passif ni entre charges et produits, sauf cas exceptionnels prévus par un règlement de l'ANC.",
    "base": [
     "Règles essentielles#14"
@@ -298,7 +298,7 @@
   {
    "id": "ue9-06-k25",
    "type": "comp",
-   "q": "Selon le PCG, que fait-on lorsque le montant d'une obligation envers un tiers ne peut être évalué avec une fiabilité suffisante ?",
+   "q": "Comment traite-t-on en comptabilité une obligation envers un tiers dont le montant ne peut être évalué avec une fiabilité suffisante ?",
    "r": "<b>Aucun passif n'est comptabilisé</b>, ce qui reste un cas exceptionnel : l'annexe décrit la nature du passif et les incertitudes sur son montant ou son échéance.",
    "base": [
     "Règles essentielles#15"
@@ -310,7 +310,7 @@
   {
    "id": "ue9-06-k26",
    "type": "comp",
-   "q": "Dans le plan de comptes du PCG en vigueur, qu'est-ce qui distingue le compte 151 du compte 152 ?",
+   "q": "Dans le plan de comptes en vigueur, qu'est-ce qui distingue le compte 151 du compte 152 ?",
    "r": "<b>Le 151 enregistre les provisions pour risques</b> (litiges, garanties données aux clients, amendes et pénalités…), <b>le 152 les provisions pour charges</b> (pensions, restructurations, gros entretien ou grandes révisions…). Pour les exercices ouverts depuis le 1er janvier 2025, la racine 152 regroupe les anciens comptes 153 à 158.",
    "base": [
     "Règles essentielles#16",
@@ -323,7 +323,7 @@
   {
    "id": "ue9-06-k27",
    "type": "comp",
-   "q": "Dans le plan de comptes du PCG, quels comptes de dotation utilise-t-on pour une provision selon qu'elle relève de l'exploitation, du financier ou de l'exceptionnel ?",
+   "q": "Quels comptes de dotation utilise-t-on pour une provision selon qu'elle relève de l'exploitation, du financier ou de l'exceptionnel ?",
    "r": "<b>6815 en exploitation, 6865 en financier, 6875 en exceptionnel</b>, avec crédit d'un compte 15. La reprise, lorsque le risque disparaît ou que la charge se réalise, débite le compte 15 et crédite 7815, 7865 ou 7875.",
    "base": [
     "Règles essentielles#17"
@@ -335,7 +335,7 @@
   {
    "id": "ue9-06-k28",
    "type": "comp",
-   "q": "Selon le PCG, que doit-on faire des provisions déjà constituées à chaque date d'établissement des comptes ?",
+   "q": "Que doit-on faire des provisions déjà constituées à chaque date d'établissement des comptes ?",
    "r": "<b>Elles sont revues à chaque clôture et ajustées à la meilleure estimation</b> : dotation complémentaire si le besoin augmente, reprise s'il diminue ou disparaît. La reprise est un produit de l'exercice (comptes 78).",
    "base": [
     "Règles essentielles#19"
@@ -347,7 +347,7 @@
   {
    "id": "ue9-06-k29",
    "type": "comp",
-   "q": "Selon le PCG, à quel montant une provision est-elle évaluée ?",
+   "q": "En comptabilité générale, à quel montant une provision est-elle évaluée ?",
    "r": "<b>À la meilleure estimation de la sortie de ressources nécessaire pour éteindre l'obligation.</b> Pour une obligation unique, on retient en général l'hypothèse la plus probable ; pour un grand nombre d'obligations similaires (garanties données sur des produits, par exemple), la probabilité s'apprécie sur l'ensemble.",
    "base": [
     "Règles essentielles#18"
@@ -369,18 +369,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-06-k31",
-   "type": "comp",
-   "q": "Que devient, à compter du 1er janvier 2027, l'article 272 du CGI relatif à la TVA sur créances irrécouvrables ?",
-   "r": "<b>Il est abrogé</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la TVA dans le code des impositions sur les biens et services. Selon le BOFiP, les références aux anciennes dispositions du CGI s'entendent de celles de ce code qui les reprennent.",
-   "base": [
-    "Ce qui a changé récemment#4"
-   ],
-   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; ordonnance n° 2026-671 du 27 juillet 2026 et rapport au Président de la République ; CGI, art. 272 ; BOI-RES-TVA-000253",
-   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-06-k32",
    "type": "comp",
    "q": "Dans les comptes annuels, qu'est-ce qui distingue une dépréciation d'une provision ?",
@@ -395,7 +383,7 @@
   {
    "id": "ue9-06-k33",
    "type": "comp",
-   "q": "Selon le Code de commerce, à quels actifs est réservée la tolérance permettant de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
+   "q": "À la clôture, à quels actifs est réservée la tolérance permettant de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
    "r": "<b>Aux seules immobilisations non financières.</b> Pour un stock ou un titre, toute baisse de la valeur d'inventaire sous le coût d'entrée est dépréciée.",
    "base": [
     "Points de vigilance#3"
@@ -407,7 +395,7 @@
   {
    "id": "ue9-06-k34",
    "type": "comp",
-   "q": "Selon le PCG, à quelles conditions une provision est-elle, en principe, comptabilisée à la clôture de l'exercice ?",
+   "q": "À quelles conditions une provision est-elle, en principe, comptabilisée à la clôture de l'exercice ?",
    "r": "<b>L'entité a, à la clôture, une obligation à l'égard d'un tiers</b> dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci ; <b>son montant peut en outre être évalué avec une fiabilité suffisante.</b>",
    "base": [
     "Règles essentielles#15"
@@ -419,7 +407,7 @@
   {
    "id": "ue9-06-k35",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment les données d'inventaire doivent-elles être conservées et organisées ?",
+   "q": "Comment un commerçant doit-il conserver et organiser les données de son inventaire ?",
    "r": "<b>Elles sont conservées dans les conditions de l'article L. 123-22, soit dix ans</b> comme les documents comptables et pièces justificatives, et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan.",
    "base": [
     "Chiffres et seuils#1"

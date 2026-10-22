@@ -633,7 +633,7 @@
    "id": "ue4-06-32",
    "type": "qcm",
    "nature": "notion",
-   "q": "Qu'est-ce qu'un rescrit fiscal au sens de l'article L. 80 B du LPF ?",
+   "q": "Qu'est-ce qu'un rescrit fiscal ?",
    "opts": [
     "Une prise de position formelle de l'administration sur l'application d'un texte à la situation du contribuable, qui l'engage pour l'avenir",
     "Une remise gracieuse de pénalités",
@@ -650,7 +650,7 @@
    "id": "ue4-06-33",
    "type": "qcm",
    "nature": "notion",
-   "q": "Dans quel cas l'administration peut-elle mettre en œuvre la procédure de l'abus de droit de l'article L. 64 du LPF ?",
+   "q": "Dans quel cas l'administration fiscale peut-elle mettre en œuvre la procédure de l'abus de droit ?",
    "opts": [
     "Lorsque l'acte est fictif, ou lorsqu'il recherche le bénéfice d'une application littérale des textes contraire à leurs objectifs dans un but exclusivement fiscal",
     "Dès qu'un contribuable choisit la solution fiscalement la moins coûteuse",
@@ -667,7 +667,7 @@
    "id": "ue4-06-34",
    "type": "qcm",
    "nature": "notion",
-   "q": "Une transaction conclue avec l'administration fiscale (LPF, art. L. 247) peut porter :",
+   "q": "Une transaction conclue avec l'administration fiscale peut porter :",
    "opts": [
     "Sur les pénalités (majorations et intérêts de retard), jamais sur les droits en principal",
     "Sur les droits en principal et les pénalités",

@@ -5,7 +5,7 @@
   {
    "id": "ue6-02-k01",
    "type": "def",
-   "q": "Que décrit le bilan d'une entreprise selon le Code de commerce ?",
+   "q": "Que décrit le bilan d'une entreprise dans ses comptes annuels ?",
    "r": "Il <b>décrit séparément les éléments actifs et passifs</b> de l'entreprise et fait apparaître, de façon distincte, les <b>capitaux propres</b>. Le modèle du PCG présente l'actif en trois colonnes : brut, amortissements et dépréciations, net.",
    "base": [
     "Définitions#0"
@@ -103,7 +103,7 @@
   {
    "id": "ue6-02-k09",
    "type": "def",
-   "q": "Qu'est-ce que le crédit-bail au sens du Code monétaire et financier ?",
+   "q": "Selon sa définition légale, qu'est-ce qu'une opération de crédit-bail ?",
    "r": "<b>Une opération de location</b> de biens d'équipement ou de matériel d'outillage qui donne au locataire <b>la possibilité d'acquérir le bien loué</b> moyennant un prix convenu tenant compte, au moins pour partie, des loyers versés. Pour un bien immobilier à usage professionnel, le locataire peut en devenir propriétaire au plus tard à l'expiration du bail. Le bien n'est pas à l'actif du locataire.",
    "base": [
     "Définitions#5"
@@ -250,7 +250,7 @@
   {
    "id": "ue6-02-k23",
    "type": "comp",
-   "q": "Selon la règle générale de l'article L. 441-10 du Code de commerce, quels délais de paiement s'appliquent entre professionnels ?",
+   "q": "En règle générale, quels délais de paiement s'appliquent entre professionnels dans les relations commerciales ?",
    "r": "Sauf clause contraire, <b>trente jours</b> après la réception des marchandises ou l'exécution de la prestation ; le délai convenu ne peut dépasser <b>soixante jours</b> à compter de l'émission de la facture, ou <b>quarante-cinq jours fin de mois</b> par dérogation. Ces plafonds bornent le crédit clients et le crédit fournisseurs.",
    "base": [
     "Règles essentielles#10",
@@ -299,7 +299,7 @@
   {
    "id": "ue6-02-k27",
    "type": "comp",
-   "q": "Dans quel résultat le règlement ANC n° 2022-06 classe-t-il les cessions d'immobilisations incorporelles et corporelles ?",
+   "q": "Depuis la réforme des états financiers entrée en vigueur en 2025, dans quel résultat classe-t-on les cessions d'immobilisations incorporelles et corporelles ?",
    "r": "<b>En résultat d'exploitation</b>, pour les exercices ouverts à compter du 1er janvier 2025 : la lecture du résultat d'exploitation utilisé dans la rentabilité économique en est modifiée. Ce règlement modernise les états financiers (bilan, compte de résultat, annexe).",
    "base": [
     "Ce qui a changé récemment#1"
@@ -323,7 +323,7 @@
   {
    "id": "ue6-02-k29",
    "type": "def",
-   "q": "Qu'est-ce que la cessation des paiements au sens du Code de commerce ?",
+   "q": "Qu'est-ce que la cessation des paiements d'une entreprise, au sens du droit des entreprises en difficulté ?",
    "r": "<b>L'impossibilité de faire face au passif exigible avec l'actif disponible.</b> C'est la traduction juridique d'une crise de liquidité, distincte de l'insolvabilité (actif total inférieur aux dettes).",
    "base": [
     "Définitions#7"
@@ -347,7 +347,7 @@
   {
    "id": "ue6-02-k31",
    "type": "comp",
-   "q": "Selon l'article L. 232-11 du Code de commerce, quand une distribution aux actionnaires est-elle interdite ?",
+   "q": "Dans une société commerciale, quand une distribution aux actionnaires est-elle interdite ?",
    "r": "Hors réduction de capital, <b>lorsque les capitaux propres sont ou deviendraient inférieurs au capital augmenté des réserves que la loi ou les statuts ne permettent pas de distribuer</b>. Une telle distribution constitue un dividende fictif.",
    "base": [
     "Règles essentielles#12",

@@ -76,23 +76,6 @@
  ],
  "exercices": [
   {
-   "id": "ue3-01-0",
-   "type": "qcm",
-   "nature": "notion",
-   "niveau": 1,
-   "fiab": "stable",
-   "src": "C. trav., partie législative et réglementaire",
-   "q": "Dans le Code du travail, un article numéroté « R. 1234-2 » est :",
-   "opts": [
-    "Un article de loi votée par le Parlement",
-    "Un article issu d'un décret en Conseil d'État",
-    "Un article issu d'un décret simple",
-    "Une recommandation sans valeur contraignante"
-   ],
-   "a": 1,
-   "why": "La lettre indique la nature du texte : L pour la loi, R pour les décrets en Conseil d'État, D pour les décrets simples. R. 1234-2 (taux de l'indemnité légale de licenciement) est donc réglementaire, mais parfaitement contraignant : une partie R n'est pas une « recommandation ». Le chiffre 1 renvoie à la première partie (relations individuelles de travail)."
-  },
-  {
    "id": "ue3-01-1",
    "type": "qcm",
    "nature": "notion",
@@ -240,7 +223,7 @@
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 2253-3",
-   "q": "Depuis les ordonnances de 2017, un accord d'entreprise prévoit une prime d'ancienneté inférieure à celle fixée par la convention de branche, qui ne l'intègre pas dans les salaires minima hiérarchiques et n'a rien verrouillé sur ce point. Quel texte s'applique ?",
+   "q": "Un accord d'entreprise prévoit une prime d'ancienneté inférieure à celle fixée par la convention de branche, qui ne l'intègre pas dans les salaires minima hiérarchiques et n'a rien verrouillé sur ce point. Quel texte s'applique ?",
    "opts": [
     "La convention de branche, toujours plus favorable",
     "L'accord d'entreprise, car la prime d'ancienneté relève du bloc 3 où il prime",

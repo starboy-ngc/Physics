@@ -66,7 +66,7 @@
   {
    "id": "ue2-06-k06",
    "type": "def",
-   "q": "Qu'est-ce que la procédure de conciliation prévue par le Code de commerce pour les entreprises en difficulté ?",
+   "q": "Qu'est-ce que la procédure de conciliation ouverte aux entreprises en difficulté ?",
    "r": "<b>Une procédure amiable ouverte au débiteur qui éprouve une difficulté juridique, économique ou financière, avérée ou prévisible, et ne se trouve pas en cessation des paiements depuis plus de quarante-cinq jours.</b> Le conciliateur désigné par le président du tribunal favorise la conclusion, entre le débiteur et ses principaux créanciers, d'un accord amiable destiné à mettre fin aux difficultés.",
    "base": [
     "Définitions#2",
@@ -290,7 +290,7 @@
   {
    "id": "ue2-06-k24",
    "type": "comp",
-   "q": "Depuis la loi du 14 février 2022, sur quel patrimoine portent les procédures du livre VI du Code de commerce visant un entrepreneur individuel ?",
+   "q": "Depuis la réforme de 2022 du statut de l'entrepreneur individuel, sur quel patrimoine portent les procédures du droit des entreprises en difficulté qui le visent ?",
    "r": "<b>En principe, sur son seul patrimoine professionnel.</b> Cette règle, issue de la loi en faveur de l'activité professionnelle indépendante, s'applique depuis le 15 mai 2022 (titre VIII bis du livre VI du Code de commerce). D'autres patrimoines du débiteur peuvent toutefois être réunis au patrimoine visé par la procédure, notamment en cas de confusion avec celui-ci.",
    "base": [
     "Ce qui a changé récemment#1"
@@ -375,7 +375,7 @@
   {
    "id": "ue2-06-k31",
    "type": "def",
-   "q": "Qu'est-ce que le délit d'escroquerie réprimé par le Code pénal ?",
+   "q": "Qu'est-ce que le délit d'escroquerie en droit pénal ?",
    "r": "<b>Le fait de tromper une personne pour la déterminer à remettre des fonds, des valeurs ou un bien quelconque, à fournir un service ou à consentir un acte opérant obligation ou décharge</b>, par l'usage d'un faux nom ou d'une fausse qualité, par l'abus d'une qualité vraie ou par l'emploi de manœuvres frauduleuses.",
    "base": [
     "Règles essentielles#13"
@@ -387,7 +387,7 @@
   {
    "id": "ue2-06-k32",
    "type": "def",
-   "q": "Qu'est-ce que le délit d'abus de confiance réprimé par le Code pénal ?",
+   "q": "Qu'est-ce que le délit d'abus de confiance en droit pénal ?",
    "r": "<b>Le fait de détourner, au préjudice d'autrui, des fonds, des valeurs ou un bien quelconque remis et acceptés à charge de les rendre, de les représenter ou d'en faire un usage déterminé.</b>",
    "base": [
     "Règles essentielles#13"

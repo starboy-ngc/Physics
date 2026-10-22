@@ -102,7 +102,7 @@
   {
    "id": "ue4-04-k09",
    "type": "def",
-   "q": "Comment le CGI définit-il le bénéfice net imposable d'une société soumise à l'impôt sur les sociétés ?",
+   "q": "Comment se définit le bénéfice net imposable d'une société soumise à l'impôt sur les sociétés ?",
    "r": "<b>La variation de l'actif net entre l'ouverture et la clôture de l'exercice</b>, diminuée des suppléments d'apport et augmentée des prélèvements. Il est déterminé selon les règles des BIC, auxquelles renvoie l'article 209, I.",
    "base": [
     "Définitions#2"
@@ -138,7 +138,7 @@
   {
    "id": "ue4-04-k12",
    "type": "def",
-   "q": "Que recouvre la notion de revenus distribués au sens du Code général des impôts ?",
+   "q": "Que recouvre, en droit fiscal, la notion de revenus distribués par une société ?",
    "r": "<b>Les bénéfices ou produits qui ne sont pas mis en réserve ou incorporés au capital</b>, ainsi que les sommes ou valeurs mises à la disposition des associés et non prélevées sur les bénéfices.",
    "base": [
     "Définitions#3"
@@ -150,7 +150,7 @@
   {
    "id": "ue4-04-k13",
    "type": "comp",
-   "q": "Quelles opérations d'une société le Code général des impôts considère-t-il notamment comme des revenus distribués (art. 111) ?",
+   "q": "Quelles opérations d'une société sont notamment considérées, en droit fiscal, comme des revenus distribués ?",
    "r": "<b>Les avances ou prêts consentis aux associés (sauf preuve contraire), les rémunérations et avantages occultes, et la fraction des rémunérations jugée excessive.</b> Chez l'associé personne physique, ces revenus sont imposés comme revenus de capitaux mobiliers.",
    "base": [
     "Définitions#3"
@@ -186,7 +186,7 @@
   {
    "id": "ue4-04-k16",
    "type": "comp",
-   "q": "Qu'a changé la loi de finances pour 2026 dans la déduction des intérêts au taux de marché prévue à l'article 212 du CGI ?",
+   "q": "Qu'est-ce qui a changé en 2026 dans la déduction, au taux de marché, des intérêts des sommes avancées à une société soumise à l'IS ?",
    "r": "<b>Réservée jusque-là aux sommes avancées par des entreprises liées, elle est étendue aux entreprises associées non liées</b>, pour les exercices clos à compter du 31 décembre 2025 : la société peut déduire les intérêts jusqu'au taux qu'elle aurait pu obtenir d'un établissement financier indépendant, si elle le justifie. La condition de libération intégrale du capital demeure.",
    "base": [
     "Ce qui a changé récemment#2",
@@ -223,7 +223,7 @@
   {
    "id": "ue4-04-k19",
    "type": "def",
-   "q": "Qu'est-ce qu'une plus-value à court terme au sens du Code général des impôts ?",
+   "q": "Qu'est-ce qu'une plus-value à court terme en matière d'imposition des bénéfices professionnels ?",
    "r": "<b>La plus-value de cession d'un élément acquis ou créé depuis moins de deux ans</b> et, pour un élément détenu depuis deux ans au moins, la fraction qui correspond aux amortissements déduits ; le surplus est une plus-value à long terme.",
    "base": [
     "Définitions#4"
@@ -380,7 +380,7 @@
   {
    "id": "ue4-04-k32",
    "type": "comp",
-   "q": "Selon l'article 515-1 du PCG, réécrit par le règlement ANC n° 2026-04, à quel exercice et à quel taux l'impôt sur les bénéfices est-il comptabilisé ?",
+   "q": "Dans les comptes annuels, à quel exercice et à quel taux l'impôt sur les bénéfices est-il comptabilisé ?",
    "r": "<b>À l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture</b>, dans la rubrique « Impôts sur les bénéfices », avec les contributions qui s'y rattachent.",
    "base": [
     "Ce qui a changé récemment#6"
@@ -416,7 +416,7 @@
   {
    "id": "ue4-04-k35",
    "type": "comp",
-   "q": "Qu'a changé la loi de finances pour 2025 pour le crédit d'impôt innovation des PME ?",
+   "q": "Quelles modifications ont été apportées en 2025 au crédit d'impôt innovation des PME ?",
    "r": "<b>Il est prorogé jusqu'au 31 décembre 2027, mais son taux de droit commun est abaissé de 30 % à 20 %</b>, les dépenses d'innovation (conception de prototypes ou d'installations pilotes de produits nouveaux) restant retenues dans la limite globale de 400 000 € par an.",
    "base": [
     "Ce qui a changé récemment#3",

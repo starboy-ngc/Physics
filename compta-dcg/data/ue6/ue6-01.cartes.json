@@ -5,7 +5,7 @@
   {
    "id": "ue6-01-k01",
    "type": "def",
-   "q": "Qu'est-ce que le compte de résultat selon l'article L. 123-13 du Code de commerce ?",
+   "q": "Qu'est-ce que le compte de résultat que tout commerçant doit établir à la clôture de l'exercice ?",
    "r": "<b>Le document qui récapitule les produits et les charges de l'exercice.</b> Le résultat de l'exercice y est calculé après déduction des amortissements, des dépréciations et des provisions.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue6-01-k02",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment les charges et les produits sont-ils classés dans le compte de résultat ?",
+   "q": "Comment les charges et les produits sont-ils classés dans le compte de résultat des comptes annuels ?",
    "r": "<b>Charges</b> : d'exploitation, financières et exceptionnelles, puis participation des salariés et impôt sur le bénéfice. <b>Produits</b> : d'exploitation, financiers et exceptionnels. Le compte se termine par le résultat de l'exercice.",
    "base": [
     "Règles essentielles#0"
@@ -29,7 +29,7 @@
   {
    "id": "ue6-01-k03",
    "type": "comp",
-   "q": "Quelle règle le Code de commerce pose-t-il sur la compensation entre postes de charges et de produits du compte de résultat ?",
+   "q": "Quelle règle s'applique à la compensation entre postes de charges et de produits du compte de résultat ?",
    "r": "<b>Aucune compensation ne peut être opérée</b>, sauf dans des cas exceptionnels prévus par un règlement de l'ANC. Les soldes intermédiaires de gestion se calculent donc sur des montants bruts.",
    "base": [
     "Règles essentielles#9"
@@ -343,7 +343,7 @@
   {
    "id": "ue6-01-k28",
    "type": "comp",
-   "q": "Selon le Code de commerce, quel organe d'une société attribue un dividende aux associés, et à quel moment ?",
+   "q": "Dans une société commerciale, quel organe attribue un dividende aux associés, et à quel moment ?",
    "r": "<b>L'assemblée générale, après approbation des comptes annuels et constatation de l'existence de sommes distribuables.</b> Elle détermine alors la part attribuée aux associés sous forme de dividende.",
    "base": [
     "Définitions#7"
@@ -355,7 +355,7 @@
   {
    "id": "ue6-01-k29",
    "type": "def",
-   "q": "Comment le Code de commerce définit-il le bénéfice distribuable d'une société ?",
+   "q": "Comment se définit le bénéfice distribuable d'une société commerciale ?",
    "r": "<b>Le bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve</b> en application de la loi ou des statuts, <b>et augmenté du report bénéficiaire</b>.",
    "base": [
     "Règles essentielles#13"

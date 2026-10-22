@@ -5,7 +5,7 @@
   {
    "id": "ue3-01-k01",
    "type": "def",
-   "q": "Quels droits sociaux le Préambule de la Constitution du 27 octobre 1946 garantit-il en ses alinéas 6, 7 et 8 ?",
+   "q": "Quels sont les trois droits collectifs des travailleurs qui ont valeur constitutionnelle en droit français ?",
    "r": "<b>La liberté syndicale</b> (al. 6), <b>le droit de grève</b>, qui s'exerce dans le cadre des lois qui le réglementent (al. 7), et <b>la participation</b> de tout travailleur, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail et à la gestion des entreprises (al. 8). Le Conseil constitutionnel impose au législateur de concilier le droit de grève avec les autres principes de valeur constitutionnelle.",
    "base": [
     "Définitions#4"
@@ -17,7 +17,7 @@
   {
    "id": "ue3-01-k02",
    "type": "def",
-   "q": "Qu'est-ce qu'une convention collective de travail au sens du Code du travail ?",
+   "q": "En droit du travail, qu'est-ce qu'une convention collective, par opposition à un simple accord collectif ?",
    "r": "<b>Un texte qui a vocation à traiter de l'ensemble des matières</b> de l'article L. 2221-1 (conditions d'emploi, de formation professionnelle et de travail, garanties sociales) pour toutes les catégories professionnelles intéressées. L'accord collectif, lui, ne traite qu'un ou plusieurs sujets déterminés dans cet ensemble.",
    "base": [
     "Définitions#0"
@@ -29,7 +29,7 @@
   {
    "id": "ue3-01-k03",
    "type": "def",
-   "q": "En principe, qui sont les parties à une convention ou à un accord collectif de travail selon l'article L. 2231-1 du Code du travail ?",
+   "q": "En principe, qui sont les parties à une convention ou à un accord collectif de travail ?",
    "r": "<b>Côté salariés</b> : une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de l'accord. <b>Côté employeurs</b> : une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement.",
    "base": [
     "Définitions#1"
@@ -102,7 +102,7 @@
   {
    "id": "ue3-01-k09",
    "type": "comp",
-   "q": "Dans les 13 matières du bloc 1 (art. L. 2253-1 du Code du travail), quelle norme prévaut entre convention de branche et convention d'entreprise ?",
+   "q": "Dans les 13 matières du bloc 1, quelle norme prévaut entre convention de branche et convention d'entreprise ?",
    "r": "<b>La convention de branche prévaut</b> sur la convention d'entreprise conclue antérieurement ou postérieurement, sauf lorsque celle-ci assure des garanties au moins équivalentes, appréciées par ensemble de garanties se rapportant à la même matière. Ces matières sont notamment les salaires minima hiérarchiques, les classifications, les garanties collectives complémentaires et l'égalité professionnelle.",
    "base": [
     "Règles essentielles#1"
@@ -114,7 +114,7 @@
   {
    "id": "ue3-01-k10",
    "type": "comp",
-   "q": "Dans les matières du bloc 2 (art. L. 2253-2 du Code du travail), à quelle condition la convention de branche prime-t-elle sur un accord d'entreprise conclu après elle ?",
+   "q": "Dans les matières du bloc 2, à quelle condition la convention de branche prime-t-elle sur un accord d'entreprise conclu après elle ?",
    "r": "<b>Seulement si elle le stipule expressément</b>, et sauf garanties au moins équivalentes dans l'accord d'entreprise. Ce bloc vise la prévention des effets de l'exposition aux facteurs de risques professionnels, l'insertion professionnelle et le maintien dans l'emploi des travailleurs handicapés, l'effectif à partir duquel les délégués syndicaux peuvent être désignés, leur nombre et la valorisation de leur parcours syndical, et les primes pour travaux dangereux ou insalubres.",
    "base": [
     "Règles essentielles#2"
@@ -126,7 +126,7 @@
   {
    "id": "ue3-01-k11",
    "type": "comp",
-   "q": "Dans le bloc 3 (toutes les autres matières, art. L. 2253-3 du Code du travail), quelle norme prévaut entre accord de branche et accord d'entreprise ?",
+   "q": "Dans le bloc 3, qui couvre toutes les autres matières, quelle norme prévaut entre accord de branche et accord d'entreprise ?",
    "r": "<b>L'accord d'entreprise</b>, conclu avant ou après l'accord de branche, prévaut sur les stipulations de la branche ayant le même objet. En l'absence d'accord d'entreprise, l'accord de branche s'applique.",
    "base": [
     "Règles essentielles#3"
@@ -138,7 +138,7 @@
   {
    "id": "ue3-01-k12",
    "type": "comp",
-   "q": "Quelles règles les ordonnances du 22 septembre 2017 ont-elles posées pour contester la légalité d'une convention ou d'un accord collectif ?",
+   "q": "Quelles règles encadrent l'action en contestation de la légalité d'une convention ou d'un accord collectif de travail ?",
    "r": "<b>L'action en nullité est enfermée dans un délai de deux mois</b>, à peine d'irrecevabilité, à compter, selon le cas, de la notification ou de la publication de l'accord (L. 2262-14), et <b>la charge de la preuve de l'illégalité pèse sur celui qui la conteste</b> (L. 2262-13) : il lui appartient de démontrer que l'accord n'est pas conforme aux conditions légales qui le régissent.",
    "base": [
     "Ce qui a changé récemment#0",
@@ -163,7 +163,7 @@
   {
    "id": "ue3-01-k14",
    "type": "comp",
-   "q": "Qu'a changé la loi du 22 avril 2024 pour les congés payés des salariés en arrêt pour maladie ou accident non professionnel ?",
+   "q": "Depuis 2024, quels droits à congés payés ont les salariés en arrêt pour maladie ou accident non professionnel ?",
    "r": "<b>Ces arrêts ouvrent droit à congés payés</b> à raison de 2 jours ouvrables par mois, dans la limite de 24 jours ouvrables par période de référence ; le salarié qui n'a pu prendre ses congés pour cause de maladie ou d'accident bénéficie d'une période de report de 15 mois. La loi adapte ainsi le droit national au droit de l'Union (directive 2003/88).",
    "base": [
     "Ce qui a changé récemment#1"
@@ -223,7 +223,7 @@
   {
    "id": "ue3-01-k19",
    "type": "def",
-   "q": "Qu'est-ce que le règlement intérieur d'une entreprise au sens du Code du travail ?",
+   "q": "Qu'est-ce que le règlement intérieur d'une entreprise et quelles matières fixe-t-il exclusivement ?",
    "r": "<b>Le document écrit par lequel l'employeur fixe exclusivement</b> :<ul><li>les mesures d'application de la réglementation en matière de santé et de sécurité ;</li><li>les conditions dans lesquelles les salariés peuvent être appelés à participer au rétablissement de conditions de travail protectrices lorsqu'elles sont compromises ;</li><li>les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions.</li></ul>",
    "base": [
     "Définitions#2"
@@ -271,7 +271,7 @@
   {
    "id": "ue3-01-k23",
    "type": "comp",
-   "q": "Depuis la loi du 26 mai 2026 de simplification de la vie économique, quand un règlement intérieur peut-il entrer en vigueur ?",
+   "q": "Depuis mai 2026, à quelle date un règlement intérieur peut-il entrer en vigueur dans l'entreprise ?",
    "r": "<b>À une date postérieure d'un mois à l'accomplissement des seules formalités de publicité</b> : les mots « de dépôt et » ont été supprimés de l'article L. 1321-4. L'avis préalable du CSE et la communication du règlement, avec cet avis, à l'inspecteur du travail sont maintenus.",
    "base": [
     "Ce qui a changé récemment#3"
@@ -283,7 +283,7 @@
   {
    "id": "ue3-01-k24",
    "type": "def",
-   "q": "Qu'appelle-t-on agents de contrôle de l'inspection du travail dans le Code du travail ?",
+   "q": "Qui sont les agents de contrôle de l'inspection du travail et quelle est leur mission ?",
    "r": "<b>Les membres du corps des inspecteurs du travail</b> (ou du corps des contrôleurs du travail jusqu'à son extinction). Ils veillent au respect du Code du travail, des autres dispositions relatives au régime du travail et des conventions et accords collectifs, et constatent les infractions concurremment avec les officiers de police judiciaire ; leur indépendance est garantie par les conventions de l'OIT.",
    "base": [
     "Définitions#3"
@@ -307,7 +307,7 @@
   {
    "id": "ue3-01-k26",
    "type": "comp",
-   "q": "Dans le régime de l'article L. 8115-1 du Code du travail, quelle autorité peut sanctionner certains manquements par une amende administrative, et à quelles conditions ?",
+   "q": "Quelle autorité peut sanctionner certains manquements au droit du travail par une amende administrative, et à quelles conditions ?",
    "r": "<b>Le directeur régional de l'économie, de l'emploi, du travail et des solidarités</b>, sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales : il peut adresser un avertissement ou prononcer une amende, notamment en matière de durées maximales de travail, de repos, de salaire minimum et de salaires minima conventionnels, d'installations sanitaires et d'hébergement. La décision se conteste devant le tribunal administratif.",
    "base": [
     "Règles essentielles#14"
@@ -319,7 +319,7 @@
   {
    "id": "ue3-01-k27",
    "type": "comp",
-   "q": "Quel manquement l'amende administrative de l'article L. 8115-1 du Code du travail sanctionne-t-elle aussi depuis le 27 juin 2026 ?",
+   "q": "Quel manquement l'amende administrative prononcée par l'administration du travail sanctionne-t-elle aussi depuis le 27 juin 2026 ?",
    "r": "<b>L'absence de document unique d'évaluation des risques professionnels</b>, qui s'ajoute aux manquements déjà visés, notamment les durées maximales de travail, les repos, le salaire minimum, les installations sanitaires et l'hébergement.",
    "base": [
     "Ce qui a changé récemment#4"
@@ -392,7 +392,7 @@
   {
    "id": "ue3-01-k33",
    "type": "comp",
-   "q": "En principe, quels délais de prescription l'article L. 1471-1 du Code du travail fixe-t-il pour les actions portant sur l'exécution et sur la rupture du contrat ?",
+   "q": "En principe, quels délais de prescription s'appliquent aux actions portant sur l'exécution et sur la rupture du contrat de travail ?",
    "r": "<b>Exécution : 2 ans</b> à compter du jour où celui qui exerce l'action a connu ou aurait dû connaître les faits. <b>Rupture : 12 mois</b> à compter de la notification de la rupture.",
    "base": [
     "Chiffres et seuils#0"
@@ -416,7 +416,7 @@
   {
    "id": "ue3-01-k35",
    "type": "comp",
-   "q": "Quelles actions échappent aux délais de deux ans et de douze mois de l'article L. 1471-1 du Code du travail ?",
+   "q": "Quelles actions échappent aux délais de prescription de deux ans pour l'exécution et de douze mois pour la rupture du contrat de travail ?",
    "r": "<b>Les actions en réparation d'un dommage corporel causé à l'occasion de l'exécution du contrat</b>, les actions en paiement ou en répétition du salaire (3 ans, L. 3245-1) et les actions fondées sur la discrimination (5 ans à compter de sa révélation, L. 1134-5) ou le harcèlement. Ces délais ne font pas obstacle aux délais plus courts prévus par le code, par exemple pour la rupture conventionnelle.",
    "base": [
     "Points de vigilance#1",

@@ -53,7 +53,7 @@
   {
    "id": "ue3-02-k05",
    "type": "def",
-   "q": "Que prohibe le principe de non-discrimination à l'embauche posé par le Code du travail ?",
+   "q": "Que prohibe le principe de non-discrimination à l'embauche en droit du travail ?",
    "r": "<b>Écarter une personne d'une procédure de recrutement ou de nomination</b>, ou de l'accès à un stage ou à une période de formation en entreprise, en raison d'un motif prohibé (origine, sexe, âge, état de santé, handicap, opinions politiques…).",
    "base": [
     "Définitions#1"
@@ -126,7 +126,7 @@
   {
    "id": "ue3-02-k11",
    "type": "comp",
-   "q": "Quelle limite générale le Code du travail impose-t-il à l'objet d'un contrat à durée déterminée (CDD) ?",
+   "q": "Quelle limite générale la loi impose-t-elle à l'objet d'un contrat à durée déterminée (CDD) en droit du travail ?",
    "r": "<b>Le CDD ne peut avoir ni pour objet ni pour effet de pourvoir durablement un emploi lié à l'activité normale et permanente de l'entreprise.</b>",
    "base": [
     "Règles essentielles#2"
@@ -138,7 +138,7 @@
   {
    "id": "ue3-02-k12",
    "type": "comp",
-   "q": "Quels sont les principaux cas de recours au contrat à durée déterminée (CDD) prévus par le Code du travail ?",
+   "q": "Quels sont les principaux cas dans lesquels un employeur peut légalement recourir au contrat à durée déterminée (CDD) ?",
    "r": "<b>Le remplacement d'un salarié absent ou dont le contrat est suspendu, l'attente de l'entrée en service d'un salarié recruté en CDI, l'accroissement temporaire d'activité, les emplois à caractère saisonnier ou d'usage, le remplacement d'un chef d'entreprise ou d'exploitation agricole et le CDD à objet défini.</b> Le recours au CDD n'est permis que dans les cas limitativement énumérés par la loi.",
    "base": [
     "Règles essentielles#2"
@@ -150,7 +150,7 @@
   {
    "id": "ue3-02-k13",
    "type": "comp",
-   "q": "Dans quels cas le Code du travail interdit-il expressément de conclure un contrat à durée déterminée (CDD) ?",
+   "q": "Dans quels cas la loi interdit-elle expressément de conclure un contrat à durée déterminée (CDD) ?",
    "r": "<b>Pour remplacer un salarié gréviste ou pour certains travaux particulièrement dangereux.</b> Le CDD est aussi interdit pour un accroissement temporaire d'activité dans les six mois suivant un licenciement économique sur le poste, sauf contrat de trois mois au plus non renouvelable ou commande exceptionnelle à l'exportation.",
    "base": [
     "Règles essentielles#2"
@@ -199,7 +199,7 @@
   {
    "id": "ue3-02-k17",
    "type": "comp",
-   "q": "Quelle limite d'âge le Code du travail fixe-t-il, en principe, pour être engagé en contrat d'apprentissage ?",
+   "q": "Quelle limite d'âge s'applique, en principe, pour être engagé en contrat d'apprentissage ?",
    "r": "<b>De 16 ans à 29 ans révolus au début de l'apprentissage</b>, et dès 15 ans pour le jeune qui a accompli la scolarité du premier cycle de l'enseignement secondaire. La limite de 29 ans connaît des dérogations, notamment pour les travailleurs handicapés, les créateurs d'entreprise et les sportifs de haut niveau. Le contrat d'apprentissage est un contrat de travail de type particulier.",
    "base": [
     "Règles essentielles#7"
@@ -370,7 +370,7 @@
   {
    "id": "ue3-02-k31",
    "type": "comp",
-   "q": "Quelle différence de sanction le Code du travail fait-il entre un CDD sans écrit et un CDD transmis tardivement ?",
+   "q": "Quelle différence de sanction existe-t-il entre un contrat à durée déterminée (CDD) conclu sans écrit et un CDD transmis tardivement au salarié ?",
    "r": "<b>Le CDD sans écrit ou sans définition précise de son motif est réputé conclu pour une durée indéterminée.</b> La seule transmission au-delà de deux jours ouvrables n'entraîne pas la requalification, mais ouvre droit à une indemnité au plus égale à un mois de salaire.",
    "base": [
     "Points de vigilance#1",

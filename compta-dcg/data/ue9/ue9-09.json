@@ -176,7 +176,7 @@
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
-   "q": "Le règlement ANC n° 2022-06 modernisant le PCG s'applique obligatoirement :",
+   "q": "La réforme modernisant le Plan comptable général, adoptée par l'ANC en 2022, s'applique obligatoirement :",
    "opts": [
     "Aux exercices ouverts à compter du 1er janvier 2023",
     "Aux exercices ouverts à compter du 1er janvier 2025",
@@ -193,7 +193,7 @@
    "type": "multi",
    "nature": "notion",
    "niveau": 1,
-   "q": "Quelles sont les principales nouveautés du PCG 2025 issues du règlement ANC n° 2022-06 ? (plusieurs réponses possibles)",
+   "q": "Quelles sont les principales nouveautés du Plan comptable général applicable aux exercices ouverts à compter du 1er janvier 2025 ? (plusieurs réponses possibles)",
    "opts": [
     "Les cessions d'immobilisations corporelles passent par 657/757 dans l'exploitation",
     "Les comptes de transferts de charges (791, 796, 797) sont supprimés",

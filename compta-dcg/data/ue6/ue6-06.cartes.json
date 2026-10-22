@@ -54,7 +54,7 @@
   {
    "id": "ue6-06-k05",
    "type": "comp",
-   "q": "Selon le CGI, quand la TVA devient-elle en principe exigible pour les ventes de biens et pour les prestations de services ?",
+   "q": "Quand la TVA devient-elle en principe exigible pour les ventes de biens et pour les prestations de services ?",
    "r": "<b>À la livraison pour les ventes de biens, à l'encaissement pour les prestations de services</b> (sauf option pour les débits). Le budget de TVA respecte ces règles pour dater la TVA collectée et déductible.",
    "base": [
     "Règles essentielles#1"
@@ -78,7 +78,7 @@
   {
    "id": "ue6-06-k07",
    "type": "comp",
-   "q": "Selon le Code de commerce, dans quel délai maximal les dividendes doivent-ils être mis en paiement ?",
+   "q": "Dans quel délai maximal les dividendes d'une société doivent-ils être mis en paiement après la clôture de l'exercice ?",
    "r": "<b>Dans les neuf mois après la clôture de l'exercice</b>, sauf prolongation par décision de justice. Le dividende est fixé par l'assemblée générale après approbation des comptes ; le budget inscrit le décaissement au mois de la mise en paiement qu'elle décide.",
    "base": [
     "Règles essentielles#10",
@@ -91,7 +91,7 @@
   {
    "id": "ue6-06-k08",
    "type": "def",
-   "q": "Selon le tableau de financement du PCG, de quoi se compose la trésorerie nette d'une entreprise ?",
+   "q": "Dans le tableau de financement, de quoi se compose la trésorerie nette d'une entreprise ?",
    "r": "<b>Des disponibilités (512, 53) diminuées des concours bancaires courants (519) et des soldes créditeurs de banques.</b> C'est la trésorerie que le budget prévoit et que le tableau de financement explique.",
    "base": [
     "Règles essentielles#4"
@@ -127,7 +127,7 @@
   {
    "id": "ue6-06-k11",
    "type": "comp",
-   "q": "Quelle situation, définie par le Code de commerce, menace une entreprise dont le déficit de trésorerie n'est pas financé ?",
+   "q": "Quelle situation juridique menace une entreprise dont le déficit de trésorerie n'est pas financé ?",
    "r": "<b>À la cessation des paiements</b>, c'est-à-dire l'impossibilité de faire face au passif exigible avec l'actif disponible. L'équilibrage du budget de trésorerie n'est donc pas facultatif.",
    "base": [
     "Points de vigilance#3"
@@ -139,7 +139,7 @@
   {
    "id": "ue6-06-k12",
    "type": "comp",
-   "q": "Selon le Code monétaire et financier, à quelles conditions une banque peut-elle réduire ou interrompre un concours à durée indéterminée, autre qu'occasionnel, consenti à une entreprise ?",
+   "q": "À quelles conditions une banque peut-elle réduire ou interrompre un concours à durée indéterminée, autre qu'occasionnel, consenti à une entreprise ?",
    "r": "<b>Sur notification écrite et après un préavis fixé lors de l'octroi, qui ne peut être inférieur à soixante jours.</b> Exceptions : comportement gravement répréhensible ou situation irrémédiablement compromise.",
    "base": [
     "Règles essentielles#5",
@@ -164,7 +164,7 @@
   {
    "id": "ue6-06-k14",
    "type": "def",
-   "q": "Qu'est-ce que la cession Dailly prévue par le Code monétaire et financier ?",
+   "q": "Qu'est-ce que la cession Dailly dans le financement à court terme d'une entreprise ?",
    "r": "<b>La cession ou le nantissement de créances professionnelles à un établissement de crédit par la simple remise d'un bordereau</b>, en garantie ou en propriété d'un crédit. Contrairement à l'escompte, elle ne nécessite pas d'effet de commerce.",
    "base": [
     "Définitions#3",
@@ -201,7 +201,7 @@
   {
    "id": "ue6-06-k17",
    "type": "comp",
-   "q": "Selon le PCG 2025, comment classe-t-on les intérêts d'escompte ou de découvert et les commissions rémunérant des services bancaires ?",
+   "q": "En comptabilité, comment classe-t-on les intérêts d'escompte ou de découvert et les commissions rémunérant des services bancaires ?",
    "r": "<b>Les intérêts sont des charges financières (6616 « Intérêts bancaires et sur opérations de financement »)</b> ; ces commissions sont des charges externes (627 « Services bancaires et assimilés », dont 6275 « Frais sur effets »).",
    "base": [
     "Règles essentielles#7"
@@ -225,7 +225,7 @@
   {
    "id": "ue6-06-k19",
    "type": "comp",
-   "q": "Depuis le PCG 2025, dans quel compte enregistre-t-on les intérêts courus sur les emprunts bancaires ?",
+   "q": "Dans le plan comptable actuel, dans quel compte enregistre-t-on les intérêts courus sur les emprunts bancaires ?",
    "r": "<b>Au compte 1648</b> : depuis le règlement ANC n° 2022-06, les intérêts courus sur emprunts sont enregistrés par nature. Les comptes de trésorerie (50, 51, 519) sont, eux, inchangés.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -237,7 +237,7 @@
   {
    "id": "ue6-06-k20",
    "type": "def",
-   "q": "Que sont les titres de créances négociables selon le Code monétaire et financier ?",
+   "q": "En finance d'entreprise, que sont les titres de créances négociables ?",
    "r": "<b>Des titres émis au gré de l'émetteur, négociables sur un marché réglementé ou de gré à gré, représentant un droit de créance</b> (NEU CP à court terme, NEU MTN à moyen terme). Les entreprises en émettent pour se financer ou en acquièrent pour placer leurs excédents.",
    "base": [
     "Définitions#5"
@@ -274,7 +274,7 @@
   {
    "id": "ue6-06-k23",
    "type": "def",
-   "q": "Que sont les valeurs mobilières de placement dans le plan comptable général 2025 ?",
+   "q": "Que sont les valeurs mobilières de placement et dans quelle classe de comptes les enregistre-t-on ?",
    "r": "<b>Des titres acquis pour placer des excédents de trésorerie, enregistrés en classe 5 (compte 50)</b> : actions (503), obligations (506), bons du Trésor et bons de caisse à court terme (507), autres valeurs mobilières (508).",
    "base": [
     "Définitions#7"
@@ -286,7 +286,7 @@
   {
    "id": "ue6-06-k24",
    "type": "comp",
-   "q": "Qu'est-ce qui distingue les valeurs mobilières de placement des titres immobilisés ou de participation dans le PCG 2025 ?",
+   "q": "En comptabilité, qu'est-ce qui distingue les valeurs mobilières de placement des titres immobilisés ou de participation ?",
    "r": "<b>Leur destination et leur classe</b> : les valeurs mobilières de placement placent des excédents de trésorerie (classe 5, compte 50) ; les titres immobilisés ou de participation sont des emplois stables (classe 2, comptes 26 et 27).",
    "base": [
     "Points de vigilance#2"
@@ -322,7 +322,7 @@
   {
    "id": "ue6-06-k27",
    "type": "def",
-   "q": "Que recouvrent les instruments financiers au sens du Code monétaire et financier ?",
+   "q": "En droit financier, que recouvre la notion d'instruments financiers ?",
    "r": "<b>Les titres financiers (titres de capital, titres de créance, parts d'organismes de placement collectif) et les contrats financiers (contrats à terme, options, échanges).</b> Les contrats financiers peuvent servir à couvrir les risques de taux et de change.",
    "base": [
     "Règles essentielles#12",
@@ -335,7 +335,7 @@
   {
    "id": "ue6-06-k28",
    "type": "comp",
-   "q": "Dans une société anonyme, quel principe l'article L. 225-122 du Code de commerce pose-t-il pour le droit de vote attaché aux actions ?",
+   "q": "Dans une société anonyme, quel principe régit le droit de vote attaché aux actions ?",
    "r": "<b>Le droit de vote est proportionnel à la quotité de capital que les actions représentent</b>, et chaque action donne droit à une voix au moins.",
    "base": [
     "Règles essentielles#9"
@@ -347,7 +347,7 @@
   {
    "id": "ue6-06-k29",
    "type": "def",
-   "q": "Qu'est-ce qu'une obligation au sens du Code de commerce ?",
+   "q": "Qu'est-ce qu'une obligation émise par une société ?",
    "r": "<b>Un titre négociable qui confère, dans une même émission, les mêmes droits de créance pour une même valeur nominale.</b> Le coupon est calculé sur le nominal et le remboursement s'effectue au prix de remboursement.",
    "base": [
     "Règles essentielles#11"
@@ -384,7 +384,7 @@
   {
    "id": "ue6-06-k33",
    "type": "comp",
-   "q": "Selon le PCG, où inscrit-on les écarts de conversion constatés à la clôture sur les créances et dettes en monnaies étrangères ?",
+   "q": "En comptabilité, où inscrit-on les écarts de conversion constatés à la clôture sur les créances et dettes en monnaies étrangères ?",
    "r": "<b>En comptes transitoires : 476 pour une perte latente, 477 pour un gain latent.</b> Ces écarts résultent de la conversion des créances et dettes au dernier cours de change.",
    "base": [
     "Règles essentielles#13"

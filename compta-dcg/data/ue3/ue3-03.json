@@ -236,7 +236,7 @@
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 3141-19-1 et L. 3141-19-2",
-   "q": "Un salarié n'a pas pu prendre ses congés acquis en raison d'un arrêt maladie de longue durée. Depuis la loi du 22 avril 2024, ces congés :",
+   "q": "Un salarié n'a pas pu prendre ses congés payés acquis en raison d'un arrêt maladie de longue durée. Selon les règles actuelles du droit du travail, ces congés :",
    "opts": [
     "Sont définitivement perdus à la fin de la période de prise",
     "Sont reportés pendant 15 mois à compter de l'information donnée par l'employeur après la reprise",
@@ -407,7 +407,7 @@
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1226-1 et D. 1226-1",
-   "q": "Le maintien légal de salaire par l'employeur en cas de maladie non professionnelle (loi de mensualisation) suppose notamment :",
+   "q": "Le maintien légal de salaire par l'employeur en cas de maladie non professionnelle suppose notamment :",
    "opts": [
     "Aucune condition d'ancienneté",
     "Une ancienneté d'au moins un an et un délai de carence de 7 jours",
@@ -424,7 +424,7 @@
    "niveau": 3,
    "fiab": "stable",
    "src": "C. trav., art. D. 1226-1 et D. 1226-2",
-   "q": "Un salarié ayant 12 ans d'ancienneté est en arrêt pour maladie non professionnelle. Pendant combien de jours au total (à 90 % puis aux 2/3) l'employeur doit-il lui maintenir son salaire au titre de la loi de mensualisation, après le délai de carence ?",
+   "q": "Un salarié ayant 12 ans d'ancienneté est en arrêt pour maladie non professionnelle. Pendant combien de jours au total (à 90 % puis aux 2/3) l'employeur doit-il lui maintenir son salaire au titre du maintien légal, après le délai de carence ?",
    "a": 100,
    "unit": "jours",
    "tol": 0.5,

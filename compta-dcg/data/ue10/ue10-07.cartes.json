@@ -17,7 +17,7 @@
   {
    "id": "ue10-07-k02",
    "type": "comp",
-   "q": "Selon l'article 515-1 du PCG, dans quel exercice et à quel taux comptabilise-t-on l'impôt sur les bénéfices ?",
+   "q": "Dans quel exercice et à quel taux comptabilise-t-on l'impôt sur les bénéfices dans les comptes de l'entreprise ?",
    "r": "<b>Dans le compte de résultat de l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture.</b> La règle vaut aussi pour les contributions qui s'y rattachent ; l'impôt et ces contributions sont comptabilisés dans la rubrique « Impôts sur les bénéfices ».",
    "base": [
     "Définitions#0"
@@ -29,7 +29,7 @@
   {
    "id": "ue10-07-k03",
    "type": "def",
-   "q": "Comment la formule légale du Code du travail définit-elle la réserve spéciale de participation (RSP) des salariés ?",
+   "q": "Comment la formule légale définit-elle la réserve spéciale de participation (RSP) des salariés aux résultats ?",
    "r": "<b>La moitié du chiffre obtenu en appliquant au bénéfice net, diminué d'une rémunération de 5 % des capitaux propres, le rapport des salaires à la valeur ajoutée</b> : RSP = ½ × (B − 5 % C) × S / VA. Le bénéfice net est le bénéfice fiscal diminué de l'impôt correspondant.",
    "base": [
     "Définitions#1"
@@ -41,7 +41,7 @@
   {
    "id": "ue10-07-k04",
    "type": "def",
-   "q": "Qu'est-ce que l'intéressement des salariés au sens du Code du travail ?",
+   "q": "En droit du travail, qu'est-ce que l'intéressement des salariés ?",
    "r": "<b>Un dispositif facultatif d'association des salariés aux résultats ou aux performances de l'entreprise</b>, mis en place en principe par accord. La participation, elle, est obligatoire dans les entreprises et les unités économiques et sociales d'au moins cinquante salariés.",
    "base": [
     "Définitions#2"
@@ -53,7 +53,7 @@
   {
    "id": "ue10-07-k05",
    "type": "def",
-   "q": "Qu'est-ce qu'une subvention d'investissement au sens de l'article 312-1 du PCG ?",
+   "q": "Qu'est-ce qu'une subvention d'investissement et comment peut-on la comptabiliser ?",
    "r": "<b>Une subvention finançant une immobilisation.</b> L'entité peut la comptabiliser immédiatement en produit, ou la maintenir au passif (compte 13, dont 131 Subventions d'investissement octroyées) et la reprendre au résultat de façon échelonnée, au débit du compte 139 et au crédit du produit 747.",
    "base": [
     "Définitions#3"
@@ -65,7 +65,7 @@
   {
    "id": "ue10-07-k06",
    "type": "def",
-   "q": "Selon le BOFiP, quand un abandon de créance a-t-il un caractère commercial ?",
+   "q": "En matière fiscale, quand un abandon de créance a-t-il un caractère commercial ?",
    "r": "<b>Lorsque la créance est née de relations commerciales et que l'abandon est consenti pour maintenir des débouchés ou préserver des sources d'approvisionnement.</b>",
    "base": [
     "Définitions#4"
@@ -77,7 +77,7 @@
   {
    "id": "ue10-07-k07",
    "type": "def",
-   "q": "Selon le BOFiP, quand un abandon de créance doit-il être qualifié de financier ?",
+   "q": "En matière fiscale, quand un abandon de créance doit-il être qualifié de financier ?",
    "r": "<b>Lorsque, simultanément, la nature de la créance (prêt, avance…), les liens entre créancier et débiteur, exclusifs de toute relation commerciale, et les motivations de l'abandon présentent un caractère strictement financier.</b>",
    "base": [
     "Définitions#4"
@@ -89,7 +89,7 @@
   {
    "id": "ue10-07-k08",
    "type": "def",
-   "q": "Que recouvre le résultat exceptionnel dans le PCG modifié par le règlement ANC n° 2022-06 ?",
+   "q": "Depuis la réforme des états financiers entrée en vigueur en 2025, que recouvre le résultat exceptionnel en comptabilité française ?",
    "r": "<b>Les produits et charges directement liés à un événement majeur et inhabituel.</b> Un événement est présumé inhabituel lorsqu'il ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains. Les aides, remboursements et indemnités compensant des charges d'exploitation liées à cet événement restent en résultat d'exploitation.",
    "base": [
     "Définitions#5"
@@ -101,7 +101,7 @@
   {
    "id": "ue10-07-k09",
    "type": "def",
-   "q": "Qu'est-ce que la contribution sociale sur l'impôt sur les sociétés prévue par l'article 235 ter ZC du CGI ?",
+   "q": "Qu'est-ce que la contribution sociale sur l'impôt sur les sociétés et quelles entreprises en sont exonérées ?",
    "r": "<b>Une contribution égale à 3,3 % de l'impôt sur les sociétés diminué d'un abattement</b> plafonné à 763 000 € par période de douze mois, enregistrée au compte 6952. Sont exonérés les redevables dont le chiffre d'affaires est inférieur à 7 630 000 € et dont le capital, entièrement libéré, est détenu de manière continue pour 75 % au moins par des personnes physiques ou une société remplissant ces conditions.",
    "base": [
     "Règles essentielles#1",
@@ -114,7 +114,7 @@
   {
    "id": "ue10-07-k10",
    "type": "comp",
-   "q": "Qu'est-ce qui ne peut pas être imputé sur la contribution sociale sur l'impôt sur les sociétés (CGI, art. 235 ter ZC) ?",
+   "q": "Qu'est-ce qui ne peut pas être imputé sur la contribution sociale sur l'impôt sur les sociétés ?",
    "r": "<b>Les crédits d'impôt de toute nature et la créance de report en arrière des déficits</b> (carry-back, CGI, art. 220 quinquies) : la contribution sociale ne peut être réduite par aucun d'eux.",
    "base": [
     "Règles essentielles#1",
@@ -139,7 +139,7 @@
   {
    "id": "ue10-07-k12",
    "type": "comp",
-   "q": "Selon la FAQ CNCC-CNOEC, comment comptabilise-t-on un crédit d'impôt imputable sur l'IS, comme le crédit d'impôt recherche ?",
+   "q": "Selon la doctrine comptable, comment comptabilise-t-on un crédit d'impôt imputable sur l'impôt sur les sociétés, comme le crédit d'impôt recherche ?",
    "r": "<b>Au crédit du compte 695, en diminution de la charge d'impôt sur les bénéfices</b>, et non en subvention d'exploitation (compte 74) : une écriture 441 / 741 pour un CIR n'est pas conforme à cette position.",
    "base": [
     "Points de vigilance#0",
@@ -252,7 +252,7 @@
   {
    "id": "ue10-07-k22",
    "type": "comp",
-   "q": "Selon le PCG, à quel rythme reprend-on au résultat une subvention d'investissement finançant une immobilisation amortissable ?",
+   "q": "En comptabilité française, à quel rythme reprend-on au résultat une subvention d'investissement finançant une immobilisation amortissable ?",
    "r": "<b>Sur la même durée et au même rythme que l'amortissement de l'immobilisation financée</b>, au débit du compte 139 et au crédit du compte 747. Des dérogations peuvent être admises lorsque des circonstances particulières le justifient.",
    "base": [
     "Règles essentielles#13"
@@ -264,7 +264,7 @@
   {
    "id": "ue10-07-k23",
    "type": "comp",
-   "q": "Selon le PCG, comment reprend-on au résultat une subvention d'investissement finançant une immobilisation non amortissable ?",
+   "q": "En comptabilité française, comment reprend-on au résultat une subvention d'investissement finançant une immobilisation non amortissable ?",
    "r": "<b>Sur le nombre d'années pendant lequel l'immobilisation est inaliénable aux termes du contrat</b> ou, à défaut de clause d'inaliénabilité, par dixième chaque année.",
    "base": [
     "Règles essentielles#13"
@@ -276,7 +276,7 @@
   {
    "id": "ue10-07-k24",
    "type": "comp",
-   "q": "Sous le régime optionnel de l'article 42 septies du CGI, comment une subvention d'équipement est-elle rapportée au résultat imposable ?",
+   "q": "Sous le régime fiscal optionnel d'étalement, comment une subvention d'équipement est-elle rapportée au résultat imposable ?",
    "r": "<b>Au rythme de l'amortissement fiscal de l'immobilisation financée, amortissement dérogatoire compris</b> ; pour une immobilisation non amortissable, par fractions égales sur la période d'inaliénabilité prévue au contrat ou, à défaut, sur les dix années suivant l'attribution. En cas de cession du bien, le solde non encore rapporté est imposable au titre de l'exercice de cession, sauf apport sous le régime de l'article 151 octies.",
    "base": [
     "Règles essentielles#14"
@@ -288,7 +288,7 @@
   {
    "id": "ue10-07-k25",
    "type": "comp",
-   "q": "Pourquoi la reprise comptable d'une subvention d'investissement peut-elle différer de son étalement fiscal selon l'article 42 septies du CGI ?",
+   "q": "Pourquoi la reprise comptable d'une subvention d'investissement peut-elle différer de son étalement fiscal optionnel ?",
    "r": "<b>La reprise comptable suit l'amortissement de l'immobilisation, alors que l'étalement fiscal suit l'amortissement fiscal, amortissement dérogatoire compris.</b> Un amortissement dégressif fiscal peut donc créer un écart extra-comptable.",
    "base": [
     "Points de vigilance#3"
@@ -349,7 +349,7 @@
   {
    "id": "ue10-07-k30",
    "type": "comp",
-   "q": "À quelles conditions l'abandon de créance consenti par une société mère, au sens de l'article 145 du CGI, échappe-t-il à l'imposition chez sa filiale ?",
+   "q": "À quelles conditions l'abandon de créance consenti à sa filiale par une société mère éligible au régime mère-fille échappe-t-il à l'imposition chez la filiale ?",
    "r": "<b>L'abandon doit être non déductible chez la mère, et la filiale doit s'engager, dans sa déclaration de résultats, à augmenter son capital au profit de la mère d'un montant au moins égal avant la clôture du second exercice suivant</b>, en numéraire ou par conversion de créance, non par incorporation de réserves. À défaut, l'abandon, en principe imposable, est rapporté au résultat de l'exercice de l'abandon.",
    "base": [
     "Règles essentielles#17"
@@ -373,7 +373,7 @@
   {
    "id": "ue10-07-k32",
    "type": "comp",
-   "q": "Quelle obligation la loi du 29 novembre 2023 sur le partage de la valeur crée-t-elle pour les sociétés d'au moins 11 salariés non tenues à la participation ?",
+   "q": "Quelle obligation de partage de la valeur pèse, depuis 2025, sur les sociétés d'au moins 11 salariés non tenues à la participation ?",
    "r": "<b>Mettre en place un accord de participation ou d'intéressement, un abondement sur un plan d'épargne salariale ou une prime de partage de la valeur</b>, si elles ont réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires. Cette expérimentation de cinq ans vise les exercices ouverts à compter du 1er janvier 2025.",
    "base": [
     "Ce qui a changé récemment#3"

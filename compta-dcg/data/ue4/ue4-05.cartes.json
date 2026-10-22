@@ -382,19 +382,6 @@
    "fiab": "stable"
   },
   {
-   "id": "ue4-05-k33",
-   "type": "comp",
-   "q": "En quoi consiste la recodification de la TVA opérée par l'ordonnance du 17 décembre 2025 ?",
-   "r": "<b>Le transfert des dispositions législatives relatives à la TVA du CGI vers le livre II du code des impositions sur les biens et services (CIBS).</b> Son entrée en vigueur a été reportée au 1er janvier 2027 : jusqu'au 31 décembre 2026, les articles du CGI restent applicables.",
-   "base": [
-    "Ce qui a changé récemment#5",
-    "Points de vigilance#5"
-   ],
-   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, et rapport au Président de la République ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17 ; BOFiP, ACTU-2026-00126 ; loi n° 2025-127 du 14 février 2025, art. 38, VI",
-   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054497326",
-   "fiab": "stable"
-  },
-  {
    "id": "ue4-05-k34",
    "type": "comp",
    "q": "Outre l'identité des parties, la date, le numéro séquentiel et la dénomination des biens ou services, quelles mentions liées à la TVA une facture doit-elle notamment comporter ?",

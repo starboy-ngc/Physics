@@ -76,23 +76,6 @@
  ],
  "exercices": [
   {
-   "id": "ue4-01-0",
-   "type": "qcm",
-   "nature": "notion",
-   "q": "Quel texte réserve au Parlement la fixation de l'assiette, du taux et des modalités de recouvrement des impositions de toutes natures ?",
-   "opts": [
-    "L'article 34 de la Constitution",
-    "L'article 1er du Code général des impôts",
-    "L'article L. 80 A du Livre des procédures fiscales",
-    "Le règlement de l'Assemblée nationale"
-   ],
-   "a": 0,
-   "why": "Le principe de légalité de l'impôt découle de l'article 34 de la Constitution : seule la loi fixe l'assiette, le taux et le recouvrement. Le CGI est lui-même une loi, il ne fonde pas la compétence du Parlement. L'article L. 80 A du LPF traite de l'opposabilité de la doctrine administrative, pas de la compétence législative.",
-   "src": "Constitution, art. 34",
-   "fiab": "stable",
-   "niveau": 1
-  },
-  {
    "id": "ue4-01-1",
    "type": "qcm",
    "nature": "notion",
@@ -186,7 +169,7 @@
    "id": "ue4-01-6",
    "type": "multi",
    "nature": "notion",
-   "q": "Selon l'article 4 B du CGI, quels critères suffisent, chacun à lui seul, à fixer le domicile fiscal d'une personne en France ? (plusieurs réponses possibles)",
+   "q": "Quels critères suffisent, chacun à lui seul, à fixer le domicile fiscal d'une personne en France pour l'impôt sur le revenu ? (plusieurs réponses possibles)",
    "opts": [
     "Avoir son foyer ou son lieu de séjour principal en France",
     "Exercer en France son activité professionnelle principale",

@@ -224,7 +224,7 @@
    "id": "ue2-04-9",
    "type": "qcm",
    "nature": "notion",
-   "q": "Un créancier d'une société civile professionnelle d'architectes veut poursuivre directement un associé pour une dette sociale. Quelle condition préalable l'article 1858 du Code civil lui impose-t-il ?",
+   "q": "Un créancier d'une société civile professionnelle d'architectes veut poursuivre directement un associé pour une dette sociale. Quelle condition préalable doit-il remplir ?",
    "opts": [
     "Avoir obtenu l'accord du gérant",
     "Avoir préalablement et vainement poursuivi la société",
@@ -275,7 +275,7 @@
    "id": "ue2-04-12",
    "type": "multi",
    "nature": "notion",
-   "q": "À propos des sociétés d'exercice libéral après l'ordonnance n° 2023-77, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "q": "La réforme de 2023 de l'exercice en société des professions libérales réglementées a été opérée par ordonnance. À propos des sociétés d'exercice libéral depuis cette réforme, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "L'ordonnance est entrée en vigueur le 1er septembre 2024",
     "Plus de la moitié du capital et des droits de vote doit être détenue par des professionnels exerçant au sein de la société",
@@ -348,7 +348,7 @@
    "id": "ue2-04-16",
    "type": "qcm",
    "nature": "notion",
-   "q": "Une association loi 1901 réalise un excédent de 12 000 € sur l'exercice. Peut-elle le distribuer à ses membres ?",
+   "q": "Une association réalise un excédent de 12 000 € sur l'exercice. Peut-elle le distribuer à ses membres ?",
    "opts": [
     "Oui, à proportion des cotisations versées",
     "Non : l'association ne peut pas partager des bénéfices entre ses membres, l'excédent reste affecté à son objet",
@@ -556,7 +556,7 @@
    "id": "ue2-04-26",
    "type": "calc",
    "nature": "calcul",
-   "q": "Des salariés veulent transformer leur entreprise en SCOP sous forme de SARL au capital de 200 000 €. Quel montant minimal de capital (en €) les salariés associés doivent-ils détenir ensemble pour respecter la loi sur les SCOP ?",
+   "q": "Des salariés veulent transformer leur entreprise en SCOP sous forme de SARL au capital de 200 000 €. Quel montant minimal de capital (en €) les salariés associés doivent-ils détenir ensemble pour respecter le statut des SCOP ?",
    "a": 102000,
    "unit": "€",
    "tol": 0.5,

@@ -89,7 +89,7 @@
   {
    "id": "ue3-03-k08",
    "type": "comp",
-   "q": "Depuis la loi du 22 avril 2024, quels droits à congés payés ouvrent les arrêts de travail pour maladie ou accident ?",
+   "q": "Quels droits à congés payés ouvrent aujourd'hui les arrêts de travail pour maladie ou accident, professionnel ou non ?",
    "r": "<b>Un arrêt pour maladie ou accident non professionnel ouvre droit à 2 jours ouvrables par mois, dans la limite de 24 jours par période de référence.</b> Un arrêt pour accident du travail ou maladie professionnelle est assimilé à du travail effectif sans limite de durée. Le travail effectif ouvre, lui, 2,5 jours ouvrables par mois, dans la limite de 30 jours ouvrables.",
    "base": [
     "Règles essentielles#3",
@@ -102,7 +102,7 @@
   {
    "id": "ue3-03-k09",
    "type": "comp",
-   "q": "Selon la loi du 22 avril 2024, que deviennent les congés payés non pris du fait d'une maladie ou d'un accident ?",
+   "q": "Que deviennent aujourd'hui les congés payés qu'un salarié n'a pas pu prendre du fait d'une maladie ou d'un accident ?",
    "r": "<b>Ils bénéficient d'une période de report de 15 mois</b>, l'employeur informant le salarié dans le mois suivant la reprise. Cette loi met en conformité avec le droit de l'Union européenne les règles des congés payés en cas de maladie.",
    "base": [
     "Ce qui a changé récemment#4"

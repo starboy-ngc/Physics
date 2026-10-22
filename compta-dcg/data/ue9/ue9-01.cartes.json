@@ -5,7 +5,7 @@
   {
    "id": "ue9-01-k01",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il la comptabilité ?",
+   "q": "En droit comptable français, comment définit-on la comptabilité ?",
    "r": "<b>Un système d'organisation de l'information financière</b> permettant de saisir, classer, enregistrer des données de base chiffrées et de présenter des états reflétant une image fidèle du patrimoine, de la situation financière et du résultat de l'entité à la date de clôture.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue9-01-k02",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il un actif ?",
+   "q": "En comptabilité générale, comment définit-on un actif ?",
    "r": "<b>Un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité</b>, c'est-à-dire un élément générant une ressource qu'elle contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
    "base": [
     "Définitions#1"
@@ -29,7 +29,7 @@
   {
    "id": "ue9-01-k03",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il un passif ?",
+   "q": "En comptabilité générale, comment définit-on un passif ?",
    "r": "<b>Un élément du patrimoine ayant une valeur économique négative pour l'entité</b>, c'est-à-dire une obligation envers un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci.",
    "base": [
     "Définitions#2"
@@ -41,7 +41,7 @@
   {
    "id": "ue9-01-k04",
    "type": "def",
-   "q": "Comment le Code de commerce définit-il l'actif immobilisé du bilan ?",
+   "q": "Comment définit-on l'actif immobilisé du bilan d'une entreprise ?",
    "r": "<b>Les éléments destinés à servir de façon durable à l'activité de l'entreprise.</b> L'actif du bilan présente ensuite l'actif circulant : stocks et en-cours, avances et acomptes versés sur commandes, créances, valeurs mobilières de placement et disponibilités.",
    "base": [
     "Définitions#3"
@@ -53,7 +53,7 @@
   {
    "id": "ue9-01-k05",
    "type": "comp",
-   "q": "Selon le PCG et le Code de commerce, qu'est-ce qui distingue un stock d'une immobilisation ?",
+   "q": "En comptabilité, qu'est-ce qui distingue un stock d'une immobilisation ?",
    "r": "<b>Leur destination.</b> L'immobilisation est destinée à servir de façon durable à l'activité ; le stock est notamment un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente. Le stock relève donc de l'actif circulant.",
    "base": [
     "Définitions#4",
@@ -66,7 +66,7 @@
   {
    "id": "ue9-01-k06",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il les charges ?",
+   "q": "En comptabilité générale, comment définit-on les charges d'une entité ?",
    "r": "<b>Notamment comme les sommes ou valeurs versées ou à verser</b> en contrepartie de marchandises, approvisionnements, travaux et services consommés, ou en exécution d'une obligation légale. Elles sont enregistrées par nature dans la classe 6.",
    "base": [
     "Définitions#5",
@@ -79,7 +79,7 @@
   {
    "id": "ue9-01-k07",
    "type": "comp",
-   "q": "Selon le PCG, où comptabiliser une dépense qui ne remplit pas les conditions de définition et de comptabilisation d'un actif ?",
+   "q": "En comptabilité générale, où comptabiliser une dépense qui ne remplit pas les conditions de définition et de comptabilisation d'un actif ?",
    "r": "<b>En charges</b>, si elle n'est pas non plus incorporable au coût d'un actif, sous réserve des articles 212-9 à 212-11 du PCG.",
    "base": [
     "Définitions#5"
@@ -91,7 +91,7 @@
   {
    "id": "ue9-01-k08",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il les produits ?",
+   "q": "En comptabilité générale, comment définit-on les produits d'une entité ?",
    "r": "<b>Les sommes ou actifs reçus ou à recevoir</b>, soit en contrepartie de l'activité de l'entité, soit sans contrepartie. Ils comprennent aussi les reprises sur amortissements, dépréciations et provisions. Ils sont enregistrés dans la classe 7, hors taxes collectées.",
    "base": [
     "Définitions#6",
@@ -104,7 +104,7 @@
   {
    "id": "ue9-01-k09",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il le résultat de l'exercice ?",
+   "q": "En comptabilité générale, comment définit-on le résultat de l'exercice ?",
    "r": "<b>Comme la différence entre les produits et les charges.</b> Il est aussi égal à la variation des capitaux propres entre le début et la fin de l'exercice, sauf pour les opérations qui affectent directement le montant des capitaux propres.",
    "base": [
     "Définitions#7"
@@ -116,7 +116,7 @@
   {
    "id": "ue9-01-k10",
    "type": "def",
-   "q": "Quels documents composent les comptes annuels d'un commerçant selon le Code de commerce ?",
+   "q": "Quels documents composent les comptes annuels d'un commerçant ?",
    "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable. Ils sont établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire. Par dérogation, les micro-entreprises sont dispensées d'annexe, sauf exceptions.",
    "base": [
     "Définitions#8",
@@ -129,7 +129,7 @@
   {
    "id": "ue9-01-k11",
    "type": "comp",
-   "q": "Que doit contrôler un commerçant par inventaire, au moins une fois tous les douze mois, selon le Code de commerce ?",
+   "q": "Que doit contrôler un commerçant par inventaire, au moins une fois tous les douze mois ?",
    "r": "<b>L'existence et la valeur des éléments actifs et passifs</b> du patrimoine de son entreprise. Il doit par ailleurs enregistrer chronologiquement les mouvements affectant ce patrimoine.",
    "base": [
     "Règles essentielles#1",
@@ -142,7 +142,7 @@
   {
    "id": "ue9-01-k12",
    "type": "def",
-   "q": "Selon le Code de commerce, que décrit le bilan d'une entreprise ?",
+   "q": "Dans les comptes annuels, que décrit le bilan d'une entreprise ?",
    "r": "<b>Séparément, les éléments actifs et passifs de l'entreprise</b> ; il fait aussi apparaître, de façon distincte, les capitaux propres.",
    "base": [
     "Règles essentielles#2"
@@ -154,7 +154,7 @@
   {
    "id": "ue9-01-k13",
    "type": "def",
-   "q": "Selon le Code de commerce, que récapitule le compte de résultat ?",
+   "q": "Que récapitule le compte de résultat d'une entreprise ?",
    "r": "<b>Les produits et les charges de l'exercice, sans tenir compte de leur date d'encaissement ou de paiement.</b> Il fait apparaître, par différence après déduction des amortissements, des dépréciations et des provisions, le bénéfice ou la perte de l'exercice.",
    "base": [
     "Règles essentielles#3"
@@ -179,7 +179,7 @@
   {
    "id": "ue9-01-k15",
    "type": "comp",
-   "q": "Quel est le rôle de l'annexe dans les comptes annuels selon le Code de commerce ?",
+   "q": "Quel est le rôle de l'annexe dans les comptes annuels d'une entreprise ?",
    "r": "<b>Elle complète et commente l'information donnée par le bilan et le compte de résultat.</b> Outre les informations obligatoires, elle comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise.",
    "base": [
     "Règles essentielles#4"
@@ -191,7 +191,7 @@
   {
    "id": "ue9-01-k16",
    "type": "comp",
-   "q": "Quelles trois qualités le Code de commerce exige-t-il des comptes annuels d'un commerçant ?",
+   "q": "Quelles trois qualités les comptes annuels d'un commerçant doivent-ils présenter ?",
    "r": "<b>Être réguliers, sincères et donner une image fidèle</b> du patrimoine, de la situation financière et du résultat de l'entreprise.",
    "base": [
     "Règles essentielles#5"
@@ -203,7 +203,7 @@
   {
    "id": "ue9-01-k17",
    "type": "comp",
-   "q": "Selon le Code de commerce, que faire lorsqu'une prescription comptable se révèle, dans un cas exceptionnel, impropre à donner une image fidèle ?",
+   "q": "Que faire lorsqu'une prescription comptable se révèle, dans un cas exceptionnel, impropre à donner une image fidèle ?",
    "r": "<b>Il doit y être dérogé</b> : la dérogation est mentionnée et motivée dans l'annexe, avec l'indication de son influence sur le patrimoine, la situation financière et le résultat. Si la prescription ne suffit simplement pas, des informations complémentaires sont fournies dans l'annexe.",
    "base": [
     "Règles essentielles#6"
@@ -215,7 +215,7 @@
   {
    "id": "ue9-01-k18",
    "type": "def",
-   "q": "Que signifie le principe de non-compensation applicable aux comptes annuels selon le Code de commerce ?",
+   "q": "Que signifie le principe de non-compensation applicable aux comptes annuels ?",
    "r": "<b>Aucune compensation n'est opérée entre postes d'actif et de passif du bilan, ni entre postes de charges et de produits du compte de résultat</b>, sauf cas exceptionnels prévus par un règlement de l'ANC. Les éléments d'actif et de passif sont évalués séparément.",
    "base": [
     "Règles essentielles#7"
@@ -227,7 +227,7 @@
   {
    "id": "ue9-01-k19",
    "type": "def",
-   "q": "Selon le Code de commerce, qu'impose le principe d'intangibilité du bilan d'ouverture ?",
+   "q": "Qu'impose le principe comptable d'intangibilité du bilan d'ouverture ?",
    "r": "<b>Le bilan d'ouverture d'un exercice doit correspondre au bilan de clôture de l'exercice précédent.</b>",
    "base": [
     "Règles essentielles#7"
@@ -239,7 +239,7 @@
   {
    "id": "ue9-01-k20",
    "type": "comp",
-   "q": "Selon le Code de commerce, sur quelle présomption les comptes annuels d'un commerçant sont-ils établis ?",
+   "q": "Sur quelle présomption les comptes annuels d'un commerçant sont-ils établis ?",
    "r": "<b>Le commerçant est présumé poursuivre ses activités</b> (continuité d'exploitation). Les comptes respectent aussi le principe de prudence. Même en cas d'absence ou d'insuffisance du bénéfice, il est procédé aux amortissements, dépréciations et provisions nécessaires.",
    "base": [
     "Règles essentielles#8"
@@ -251,7 +251,7 @@
   {
    "id": "ue9-01-k21",
    "type": "comp",
-   "q": "En principe, selon le Code de commerce, quels bénéfices peuvent être inscrits dans les comptes annuels d'un exercice ?",
+   "q": "En principe, quels bénéfices peuvent être inscrits dans les comptes annuels d'un exercice ?",
    "r": "<b>Seuls les bénéfices réalisés à la date de clôture de l'exercice.</b> Un gain latent n'est donc pas un produit.",
    "base": [
     "Règles essentielles#9"
@@ -263,7 +263,7 @@
   {
    "id": "ue9-01-k22",
    "type": "def",
-   "q": "Que pose le principe de permanence des méthodes comptables selon le Code de commerce ?",
+   "q": "Que pose le principe de permanence des méthodes comptables ?",
    "r": "<b>Les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre</b>, sauf cas exceptionnels, afin de donner une image fidèle et dans les conditions prévues par un règlement de l'ANC.",
    "base": [
     "Règles essentielles#10"
@@ -275,7 +275,7 @@
   {
    "id": "ue9-01-k23",
    "type": "comp",
-   "q": "Selon le Code de commerce, dans quelle rubrique du passif du bilan figurent les subventions d'investissement et les provisions réglementées ?",
+   "q": "Dans quelle rubrique du passif du bilan figurent les subventions d'investissement et les provisions réglementées ?",
    "r": "<b>Dans les capitaux propres</b>, aux côtés notamment du capital, des primes d'émission, des écarts de réévaluation, des réserves et du résultat de l'exercice. Le passif présente ensuite les autres fonds propres, les provisions, les dettes, puis les comptes de régularisation et écarts de conversion.",
    "base": [
     "Règles essentielles#11"
@@ -287,7 +287,7 @@
   {
    "id": "ue9-01-k24",
    "type": "def",
-   "q": "Selon le PCG modifié par le règlement ANC n° 2022-06, sur quels produits et charges le résultat exceptionnel est-il recentré ?",
+   "q": "Depuis la réforme comptable de 2025, sur quels produits et charges le résultat exceptionnel est-il recentré ?",
    "r": "<b>Sur les produits et charges directement liés à un événement majeur et inhabituel.</b> Y restent toutefois, notamment, les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées), aux comptes 687 et 787. Le Code de commerce définit ce résultat comme celui dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise.",
    "base": [
     "Règles essentielles#13",
@@ -300,7 +300,7 @@
   {
    "id": "ue9-01-k25",
    "type": "comp",
-   "q": "Selon le PCG, quels critères rendent un événement majeur et présumé inhabituel, pour le classement en résultat exceptionnel ?",
+   "q": "Pour le classement en résultat exceptionnel, quels critères rendent un événement « majeur » et « présumé inhabituel » ?",
    "r": "<b>Majeur</b> : ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse. <b>Présumé inhabituel</b> : il ne s'est pas produit au cours des derniers exercices et il est peu probable qu'il se reproduise au cours des prochains.",
    "base": [
     "Règles essentielles#13"
@@ -325,7 +325,7 @@
   {
    "id": "ue9-01-k28",
    "type": "comp",
-   "q": "Selon le Code de commerce, à quelle condition dépasser ou cesser de dépasser deux des trois seuils des micro, petites et moyennes entreprises a-t-il une incidence ?",
+   "q": "À quelle condition le fait de dépasser, ou de cesser de dépasser, deux des trois seuils des micro, petites et moyennes entreprises a-t-il une incidence ?",
    "r": "<b>Si cela se produit pendant deux exercices consécutifs.</b> La catégorie s'apprécie au titre du dernier exercice comptable clos et sur une base annuelle.",
    "base": [
     "Chiffres et seuils#3"
@@ -337,7 +337,7 @@
   {
    "id": "ue9-01-k29",
    "type": "comp",
-   "q": "Que deviennent les transferts de charges dans le PCG depuis le règlement ANC n° 2022-06 ?",
+   "q": "Depuis la réforme comptable applicable aux exercices ouverts à compter du 1er janvier 2025, que deviennent les transferts de charges ?",
    "r": "<b>Ils disparaissent</b> : la mention « les transferts de charges » est supprimée de l'article 512-1 du PCG, pour les exercices ouverts à compter du 1er janvier 2025.",
    "base": [
     "Ce qui a changé récemment#1",
@@ -350,7 +350,7 @@
   {
    "id": "ue9-01-k30",
    "type": "comp",
-   "q": "Selon le PCG modifié par le règlement ANC n° 2022-06, où classer les aides, remboursements et indemnités directement liés à un événement majeur et inhabituel compensant des charges d'exploitation ?",
+   "q": "Depuis la réforme comptable de 2025, où classer les aides, remboursements et indemnités directement liés à un événement majeur et inhabituel compensant des charges d'exploitation ?",
    "r": "<b>En résultat d'exploitation</b>, et non en résultat exceptionnel, bien qu'ils soient directement liés à l'événement majeur et inhabituel.",
    "base": [
     "Ce qui a changé récemment#2"
@@ -360,22 +360,9 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-01-k31",
-   "type": "comp",
-   "q": "Que devient la définition du résultat exceptionnel issue du règlement ANC n° 2022-06 avec le règlement ANC n° 2026-03 du 6 mars 2026 ?",
-   "r": "<b>Elle est reprise</b> (événement majeur et inhabituel) par ce règlement, qui modifie par ailleurs le PCG sur la comptabilisation des produits des ventes. Il s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible sur l'exercice en cours à sa date de publication au Journal officiel.",
-   "base": [
-    "Ce qui a changé récemment#4",
-    "Règles essentielles#13"
-   ],
-   "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 4 ; arrêté du 12 août 2026",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-01-k32",
    "type": "comp",
-   "q": "Quelles micro-entreprises restent tenues d'établir une annexe, malgré la dispense prévue par le Code de commerce ?",
+   "q": "Quelles micro-entreprises restent tenues d'établir une annexe à leurs comptes annuels, malgré la dispense d'annexe accordée en principe aux micro-entreprises ?",
    "r": "<b>Celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières.</b> La dispense ne s'applique pas non plus aux entités visées par l'article L. 123-16-2, notamment les établissements de crédit et les entreprises d'assurance et de réassurance.",
    "base": [
     "Points de vigilance#2"
@@ -387,7 +374,7 @@
   {
    "id": "ue9-01-k33",
    "type": "comp",
-   "q": "En principe, depuis le règlement ANC n° 2022-06, dans quelle partie du compte de résultat se classe la cession d'une immobilisation, selon sa nature ?",
+   "q": "En principe, depuis la réforme comptable de 2025, dans quelle partie du compte de résultat se classe la cession d'une immobilisation, selon sa nature ?",
    "r": "<b>Immobilisation incorporelle ou corporelle : exploitation</b> (comptes 657 / 757) ; <b>immobilisation financière : résultat financier</b> (comptes 6671 / 7671). Les anciens comptes 675 et 775 sont supprimés.",
    "base": [
     "Points de vigilance#4"
@@ -399,7 +386,7 @@
   {
    "id": "ue9-01-k34",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, dans quel compte inscrire la quote-part de subvention d'investissement virée au résultat ?",
+   "q": "Depuis la réforme comptable de 2025, dans quel compte inscrire la quote-part de subvention d'investissement virée au résultat ?",
    "r": "<b>Au compte 747.</b> Un manuel antérieur à la réforme peut encore classer ce produit en 77, parmi les produits exceptionnels.",
    "base": [
     "Points de vigilance#4"
@@ -411,7 +398,7 @@
   {
    "id": "ue9-01-k35",
    "type": "comp",
-   "q": "Selon le Plan comptable général (PCG), à quelles conditions une entité peut-elle changer de méthode comptable de sa propre initiative ?",
+   "q": "À quelles conditions une entité peut-elle changer de méthode comptable de sa propre initiative ?",
    "r": "<b>Le changement suppose un choix entre plusieurs méthodes conformes et une meilleure information financière.</b> L'autre origine de changement admise par le PCG, un changement de réglementation comptable, s'impose à l'entité.",
    "base": [
     "Règles essentielles#10"
@@ -423,7 +410,7 @@
   {
    "id": "ue9-01-k36",
    "type": "comp",
-   "q": "Selon le Code de commerce, pendant combien de temps un commerçant conserve-t-il ses documents comptables et ses pièces justificatives ?",
+   "q": "Pendant combien de temps un commerçant doit-il conserver ses documents comptables et ses pièces justificatives ?",
    "r": "<b>Pendant dix ans</b>, qu'il s'agisse des documents comptables ou des pièces justificatives.",
    "base": [
     "Chiffres et seuils#4"

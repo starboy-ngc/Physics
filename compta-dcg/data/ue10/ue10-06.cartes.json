@@ -5,7 +5,7 @@
   {
    "id": "ue10-06-k01",
    "type": "def",
-   "q": "Comment le PCG définit-il les capitaux propres d'une entreprise ?",
+   "q": "Comment se définissent, en comptabilité, les capitaux propres d'une entreprise ?",
    "r": "<b>La somme algébrique des apports (capital, primes liées au capital), des écarts de réévaluation, des écarts d'équivalence et des bénéfices non distribués, diminuée des pertes</b>, à laquelle s'ajoutent les subventions d'investissement et les provisions réglementées. La situation nette en exclut les subventions d'investissement et les provisions réglementées ; les autres fonds propres forment une rubrique distincte.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue10-06-k02",
    "type": "def",
-   "q": "Comment le PCG subdivise-t-il le compte 101 Capital pour suivre la libération du capital souscrit ?",
+   "q": "Comment le compte 101 Capital est-il subdivisé pour suivre la libération du capital souscrit ?",
    "r": "<b>En 1011 capital souscrit non appelé, 1012 capital souscrit appelé non versé et 1013 capital souscrit appelé versé.</b> La fraction non appelée a pour contrepartie le compte 109 Actionnaires : capital souscrit – non appelé, présenté distinctement en premier poste de l'actif.",
    "base": [
     "Définitions#1"
@@ -29,7 +29,7 @@
   {
    "id": "ue10-06-k03",
    "type": "comp",
-   "q": "Quelle rubrique du bilan le règlement ANC n° 2024-07 distingue-t-il des dettes ?",
+   "q": "Quelle rubrique du passif regroupe des financements qui ne sont ni des dettes ni des capitaux propres ?",
    "r": "<b>Les « autres fonds propres »</b>, que le règlement distingue des dettes. Ils ne font pas non plus partie des capitaux propres tels que le PCG les définit : ils forment une rubrique distincte et sont exclus de la situation nette.",
    "base": [
     "Ce qui a changé récemment#4",
@@ -42,7 +42,7 @@
   {
    "id": "ue10-06-k04",
    "type": "comp",
-   "q": "Quelle libération minimale des apports en numéraire le Code de commerce exige-t-il à la constitution d'une SARL et d'une SA ?",
+   "q": "Quelle libération minimale des apports en numéraire est exigée à la constitution d'une SARL et d'une SA ?",
    "r": "<b>Au moins un cinquième de leur montant dans la SARL et la moitié de la valeur nominale des actions dans la SA</b>, le solde dans les cinq ans de l'immatriculation (appelé par le gérant en SARL, sur décision du conseil d'administration ou du directoire en SA). Dans la SARL, les apports en nature sont intégralement libérés dès la souscription.",
    "base": [
     "Règles essentielles#0",
@@ -80,7 +80,7 @@
   {
    "id": "ue10-06-k07",
    "type": "comp",
-   "q": "Quelle est la méthode de référence du PCG pour comptabiliser les frais de constitution d'une société ?",
+   "q": "Quelle est la méthode comptable de référence pour comptabiliser les frais de constitution d'une société ?",
    "r": "<b>La comptabilisation en charges.</b> Ces frais peuvent aussi être inscrits à l'actif en frais d'établissement, amortis selon un plan et dans un délai maximal de cinq ans.",
    "base": [
     "Règles essentielles#18"
@@ -154,7 +154,7 @@
   {
    "id": "ue10-06-k13",
    "type": "comp",
-   "q": "Quelle procédure spécifique le Code de commerce ouvre-t-il à une SA contre l'actionnaire qui ne paie pas les sommes appelées sur ses actions ?",
+   "q": "Quelle procédure spécifique une SA peut-elle mettre en œuvre contre l'actionnaire qui ne paie pas les sommes appelées sur ses actions ?",
    "r": "<b>Après une mise en demeure restée sans effet un mois au moins, elle poursuit sans autorisation de justice la vente des actions</b>, en bourse si elles sont cotées, aux enchères publiques sinon. L'actionnaire défaillant reste débiteur de la différence ou en profite, et il est tenu solidairement du montant non libéré avec les cessionnaires successifs et les souscripteurs.",
    "base": [
     "Règles essentielles#7"
@@ -190,7 +190,7 @@
   {
    "id": "ue10-06-k16",
    "type": "comp",
-   "q": "Selon l'article 212-9 du PCG, à quels postes du bilan une société peut-elle inscrire ou imputer ses frais d'augmentation de capital ?",
+   "q": "À quels postes du bilan une société peut-elle inscrire ou imputer ses frais d'augmentation de capital ?",
    "r": "<b>À l'actif en frais d'établissement, ou par imputation sur les primes d'émission et de fusion</b> ; en cas d'insuffisance de la prime, ils sont comptabilisés en charges. Depuis le règlement ANC n° 2018-01, l'imputation sur la prime n'est plus qualifiée de « méthode préférentielle » (piège des manuels anciens).",
    "base": [
     "Points de vigilance#5",
@@ -203,7 +203,7 @@
   {
    "id": "ue10-06-k17",
    "type": "comp",
-   "q": "Depuis l'ordonnance n° 2025-229, dans quel délai se prescrit en règle générale l'action en nullité d'une décision d'augmentation de capital d'une société par actions ?",
+   "q": "Dans quel délai se prescrit désormais, en règle générale, l'action en nullité d'une décision d'augmentation de capital d'une société par actions ?",
    "r": "<b>Trois mois à compter de la date à laquelle la décision contestée a été prise</b> (C. com., art. L. 225-149-4), sous réserve des cas particuliers que ce texte prévoit. L'ordonnance ramène aussi de trois à deux ans la prescription des actions en nullité de la société, d'apport ou de décisions sociales.",
    "base": [
     "Ce qui a changé récemment#1"
@@ -264,7 +264,7 @@
   {
    "id": "ue10-06-k22",
    "type": "comp",
-   "q": "Depuis la loi n° 2023-171, que doit faire une SA ou une SARL n'ayant pas reconstitué dans le délai légal ses capitaux propres inférieurs à la moitié du capital ?",
+   "q": "Que doit désormais faire une SA ou une SARL n'ayant pas reconstitué dans le délai légal ses capitaux propres inférieurs à la moitié du capital ?",
    "r": "<b>Réduire son capital pour le ramener au plus au seuil fixé par décret</b>, si son capital dépasse ce seuil, au plus tard à la clôture du deuxième exercice suivant. Le seuil est de 1 % du total du bilan (en SA, le capital minimal sert de plancher) ; à défaut, tout intéressé peut demander la dissolution en justice, le tribunal pouvant accorder six mois au plus pour régulariser.",
    "base": [
     "Ce qui a changé récemment#0",
@@ -277,7 +277,7 @@
   {
    "id": "ue10-06-k23",
    "type": "def",
-   "q": "Comment le Code de commerce définit-il le bénéfice distribuable d'une société ?",
+   "q": "Comment se définit le bénéfice distribuable d'une société commerciale ?",
    "r": "<b>Le bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire.</b> Tout dividende distribué en violation de ces règles est un dividende fictif.",
    "base": [
     "Définitions#4"
@@ -302,7 +302,7 @@
   {
    "id": "ue10-06-k26",
    "type": "comp",
-   "q": "Hors réduction du capital, quand toute distribution aux actionnaires est-elle interdite selon l'article L. 232-11 du Code de commerce ?",
+   "q": "Hors réduction du capital, dans quel cas toute distribution aux actionnaires d'une société commerciale est-elle interdite ?",
    "r": "<b>Lorsque les capitaux propres sont ou deviendraient, à la suite de la distribution, inférieurs au montant du capital augmenté des réserves que la loi ou les statuts ne permettent pas de distribuer.</b> L'écart de réévaluation n'est pas distribuable.",
    "base": [
     "Règles essentielles#13"
@@ -338,7 +338,7 @@
   {
    "id": "ue10-06-k29",
    "type": "comp",
-   "q": "Quelle est la qualification d'un acompte sur dividendes distribué sans respecter les conditions de l'article L. 232-12 du Code de commerce ?",
+   "q": "Quelle est la qualification d'un acompte sur dividendes versé en méconnaissance des conditions légales ?",
    "r": "<b>C'est un dividende fictif.</b> Sa ratification a posteriori par l'assemblée générale ne le régularise pas (CA Bastia, 5 octobre 2016).",
    "base": [
     "Points de vigilance#3"
@@ -398,7 +398,7 @@
   {
    "id": "ue10-06-k34",
    "type": "comp",
-   "q": "Quelle extension la loi de finances pour 2026 apporte-t-elle à la déduction des intérêts au taux de marché prévue à l'article 212 du CGI ?",
+   "q": "Quelle extension la loi a-t-elle récemment apportée à la déduction fiscale des intérêts au taux de marché, jusque-là réservée aux intérêts servis à des entreprises liées ?",
    "r": "<b>Elle l'étend aux intérêts servis aux entreprises associées mais non liées</b>, pour les exercices clos à compter du 31 décembre 2025 ; elle était jusque-là réservée aux intérêts servis à des entreprises liées. La condition de capital entièrement libéré demeure.",
    "base": [
     "Ce qui a changé récemment#3"

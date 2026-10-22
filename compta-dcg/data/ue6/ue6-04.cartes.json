@@ -53,7 +53,7 @@
   {
    "id": "ue6-04-k05",
    "type": "def",
-   "q": "Comment le PCG définit-il le coût d'acquisition d'une immobilisation ?",
+   "q": "Comment se définit, en comptabilité, le coût d'acquisition d'une immobilisation ?",
    "r": "<b>Le prix d'achat</b>, après déduction des remises et des taxes récupérables, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner.",
    "base": [
     "Définitions#3"
@@ -90,7 +90,7 @@
   {
    "id": "ue6-04-k08",
    "type": "def",
-   "q": "Qu'est-ce que l'amortissement selon le PCG ?",
+   "q": "Qu'est-ce que l'amortissement d'un actif au sens comptable ?",
    "r": "<b>La répartition systématique du montant amortissable d'un actif en fonction de son utilisation.</b> Ce n'est pas un décaissement : il n'entre dans les flux d'un projet que par l'économie d'impôt qu'il procure.",
    "base": [
     "Définitions#4"
@@ -174,7 +174,7 @@
   {
    "id": "ue6-04-k15",
    "type": "comp",
-   "q": "Qu'a changé le règlement ANC n° 2022-06 pour la cession d'un bien en fin de projet d'investissement ?",
+   "q": "Qu'a changé la réforme du plan comptable entrée en vigueur en 2025 pour la cession d'un bien en fin de projet d'investissement ?",
    "r": "<b>La cession passe par les comptes 657 / 757, en exploitation</b>, pour les exercices ouverts à compter du 1er janvier 2025. Le traitement fiscal de la plus-value est inchangé.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -198,7 +198,7 @@
   {
    "id": "ue6-04-k17",
    "type": "def",
-   "q": "Comment le PCG définit-il la valeur d'usage d'un actif ?",
+   "q": "Comment définit-on, en comptabilité, la valeur d'usage d'un actif ?",
    "r": "<b>La valeur des avantages économiques futurs attendus de l'utilisation de l'actif et de sa sortie.</b> Dans la généralité des cas, elle est déterminée en fonction des flux nets de trésorerie attendus.",
    "base": [
     "Définitions#2"
@@ -210,7 +210,7 @@
   {
    "id": "ue6-04-k18",
    "type": "comp",
-   "q": "En comptabilité, à quel test portant sur les immobilisations sert la valeur d'usage définie par le PCG ?",
+   "q": "En comptabilité, à quel test portant sur les immobilisations sert la valeur d'usage d'un actif ?",
    "r": "<b>Au test de dépréciation des immobilisations.</b> Déterminée, dans la généralité des cas, en fonction des flux nets de trésorerie attendus, elle constitue la base comptable de l'évaluation d'un investissement par ses flux.",
    "base": [
     "Points de vigilance#3",

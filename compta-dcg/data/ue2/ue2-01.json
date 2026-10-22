@@ -83,7 +83,7 @@
    "id": "ue2-01-0",
    "type": "qcm",
    "nature": "notion",
-   "q": "Parmi les éléments suivants, lequel n'est PAS une condition spécifique du contrat de société au sens de l'article 1832 du Code civil ?",
+   "q": "Parmi les éléments suivants, lequel n'est PAS une condition spécifique du contrat de société ?",
    "opts": [
     "La réalisation d'apports par chaque associé",
     "La vocation à partager les bénéfices et à contribuer aux pertes",
@@ -565,7 +565,7 @@
    "id": "ue2-01-26",
    "type": "qcm",
    "nature": "notion",
-   "q": "Le tribunal prononce la nullité d'une SARL constituée par deux fondateurs qui étaient tous deux frappés d'incapacité lors de la signature des statuts (cause de nullité de l'art. 1844-10 C. civ.), trois ans après son immatriculation. Quel est l'effet de cette nullité ?",
+   "q": "Le tribunal prononce la nullité d'une SARL constituée par deux fondateurs qui étaient tous deux frappés d'incapacité lors de la signature des statuts, trois ans après son immatriculation. Quel est l'effet de cette nullité ?",
    "opts": [
     "Elle efface rétroactivement tous les actes passés par la société",
     "Elle met fin à la société sans rétroactivité, comme une dissolution, et entraîne sa liquidation",

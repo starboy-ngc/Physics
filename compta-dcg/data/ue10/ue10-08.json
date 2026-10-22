@@ -192,7 +192,7 @@
    "id": "ue10-08-3",
    "type": "qcm",
    "nature": "notion",
-   "q": "Le bénévolat dont bénéficie une association, significatif et quantifiable, est, selon le règlement ANC 2018-06 :",
+   "q": "Dans les comptes d'une association, le bénévolat dont elle bénéficie, significatif et quantifiable, est :",
    "opts": [
     "Comptabilisé en charges de personnel 641 avec une contrepartie en produits 74",
     "Inscrit en classe 8 (contributions volontaires en nature) au pied du compte de résultat, sans effet sur le résultat",
@@ -242,7 +242,7 @@
    "id": "ue10-08-5",
    "type": "multi",
    "nature": "notion",
-   "q": "Quelles particularités du règlement ANC 2018-06 distinguent les comptes d'une association de ceux d'une société commerciale ? (plusieurs réponses possibles)",
+   "q": "Quelles particularités comptables distinguent les comptes d'une association de ceux d'une société commerciale ? (plusieurs réponses possibles)",
    "opts": [
     "Le résultat est qualifié d'excédent ou de déficit",
     "Les ressources affectées non utilisées sont reportées en fonds dédiés",
@@ -387,7 +387,7 @@
    "id": "ue10-08-12",
    "type": "qcm",
    "nature": "notion",
-   "q": "Selon l'article L. 233-16 du Code de commerce, le contrôle exclusif de fait est présumé lorsqu'une société :",
+   "q": "En matière de comptes consolidés, le contrôle exclusif de fait est présumé lorsqu'une société :",
    "opts": [
     "Détient plus de 20 % des droits de vote dans la société",
     "Dispose de plus de 40 % des droits de vote, aucun autre associé n'en détenant davantage",
@@ -404,7 +404,7 @@
    "id": "ue10-08-13",
    "type": "tri",
    "nature": "notion",
-   "q": "Associez chaque situation à la méthode de consolidation applicable en règles françaises (règlement ANC 2020-01).",
+   "q": "Associez chaque situation à la méthode de consolidation applicable selon les règles françaises.",
    "cats": [
     "Intégration globale",
     "Intégration proportionnelle",
@@ -485,7 +485,7 @@
    "id": "ue10-08-17",
    "type": "calc",
    "nature": "calcul",
-   "q": "En 2025, un groupe non coté présente, pour la deuxième année, un total de bilan cumulé de 28 M€, un chiffre d'affaires cumulé de 65 M€ et 300 salariés. Les seuils du grand groupe (art. D. 230-2), en deçà desquels l'ensemble est exempté de consolidation, sont 30 M€ de bilan, 60 M€ de chiffre d'affaires et 250 salariés. Combien de seuils sont dépassés ?",
+   "q": "En 2025, un groupe non coté présente, pour la deuxième année, un total de bilan cumulé de 28 M€, un chiffre d'affaires cumulé de 65 M€ et 300 salariés. Les seuils du grand groupe, en deçà desquels l'ensemble est exempté de consolidation, sont 30 M€ de bilan, 60 M€ de chiffre d'affaires et 250 salariés. Combien de seuils sont dépassés ?",
    "a": 2,
    "unit": "",
    "tol": 0,
@@ -537,7 +537,7 @@
    "id": "ue10-08-20",
    "type": "qcm",
    "nature": "notion",
-   "q": "Le seuil de signification fixé par le commissaire aux comptes (NEP 320) est :",
+   "q": "En audit légal, le seuil de signification fixé par le commissaire aux comptes est :",
    "opts": [
     "Le montant minimal des honoraires fixés par le barème",
     "Le montant au-delà duquel une anomalie peut influencer le jugement d'un utilisateur des comptes",

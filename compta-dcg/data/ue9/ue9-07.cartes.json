@@ -77,7 +77,7 @@
   {
    "id": "ue9-07-k07",
    "type": "def",
-   "q": "Comment le Plan comptable général (PCG) définit-il le résultat de l'exercice ?",
+   "q": "En comptabilité générale, comment se définit le résultat de l'exercice d'une entreprise ?",
    "r": "<b>La différence entre les produits et les charges</b>, égale aussi à la variation des capitaux propres entre le début et la fin de l'exercice, hors opérations affectant directement les capitaux propres.",
    "base": [
     "Définitions#4"
@@ -89,7 +89,7 @@
   {
    "id": "ue9-07-k08",
    "type": "def",
-   "q": "Qu'est-ce que la réserve légale (compte 1061) prévue par le Code de commerce ?",
+   "q": "En droit des sociétés, qu'est-ce que la réserve légale (compte 1061) ?",
    "r": "<b>Un fonds de réserve alimenté par un prélèvement obligatoire sur le bénéfice</b>, imposé dans les SARL et les sociétés par actions.",
    "base": [
     "Définitions#5"
@@ -101,7 +101,7 @@
   {
    "id": "ue9-07-k09",
    "type": "comp",
-   "q": "Selon l'article L. 123-12 du Code de commerce, quel est l'objet de l'inventaire d'une entreprise ?",
+   "q": "Quel est l'objet de l'inventaire qu'un commerçant doit établir ?",
    "r": "<b>Contrôler l'existence et la valeur des éléments actifs et passifs</b>, au moins une fois tous les douze mois. Les comptes annuels sont établis à la clôture au vu des enregistrements comptables et de l'inventaire.",
    "base": [
     "Règles essentielles#0"
@@ -113,7 +113,7 @@
   {
    "id": "ue9-07-k10",
    "type": "comp",
-   "q": "Selon le principe de prudence du Code de commerce, quels passifs doivent être pris en compte dans les comptes de l'exercice ?",
+   "q": "En vertu du principe de prudence, quels passifs doivent être pris en compte dans les comptes annuels de l'exercice ?",
    "r": "<b>Les passifs nés au cours de l'exercice ou d'un exercice antérieur</b>, même s'ils ne sont connus qu'entre la date de clôture et celle de l'établissement des comptes.",
    "base": [
     "Règles essentielles#1"
@@ -125,7 +125,7 @@
   {
    "id": "ue9-07-k11",
    "type": "comp",
-   "q": "En principe, selon le Code de commerce, quels bénéfices peuvent être inscrits dans les comptes annuels d'un exercice ?",
+   "q": "En principe, quels bénéfices une entreprise peut-elle inscrire dans les comptes annuels d'un exercice ?",
    "r": "<b>Seuls les bénéfices réalisés à la date de clôture.</b> Un produit à recevoir suppose donc un produit acquis à la clôture : livraison faite, prestation exécutée.",
    "base": [
     "Règles essentielles#7"
@@ -150,7 +150,7 @@
   {
    "id": "ue9-07-k14",
    "type": "comp",
-   "q": "Depuis le plan de comptes issu du règlement ANC n° 2022-06, sur quel compte porte-t-on les intérêts courus non échus d'un emprunt bancaire ?",
+   "q": "Dans le plan de comptes applicable depuis 2025, sur quel compte porte-t-on les intérêts courus non échus d'un emprunt bancaire ?",
    "r": "<b>Au crédit du compte 1648</b> (avant 2025 : 16884), par le débit du compte 661. Le compte 1688 ne sert plus qu'aux intérêts courus sur les autres emprunts et dettes assimilées.",
    "base": [
     "Règles essentielles#4",
@@ -187,7 +187,7 @@
   {
    "id": "ue9-07-k17",
    "type": "comp",
-   "q": "En fiscalité (CGI, art. 38, 2 bis), à quel exercice rattacher une vente facturée avant la clôture mais livrée après ?",
+   "q": "Pour le calcul du bénéfice imposable, à quel exercice rattacher une vente facturée avant la clôture mais livrée après ?",
    "r": "<b>À l'exercice de la livraison</b> : ce n'est pas un produit de l'exercice clos, mais un produit constaté d'avance. Les prestations se rattachent à leur achèvement, ou au fur et à mesure de leur exécution si elles sont continues ou à échéances successives.",
    "base": [
     "Points de vigilance#4"
@@ -199,7 +199,7 @@
   {
    "id": "ue9-07-k18",
    "type": "comp",
-   "q": "Selon le Plan comptable général (PCG), que doit faire apparaître le classement des produits et des charges au compte de résultat ?",
+   "q": "En comptabilité générale, que doit faire apparaître le classement des produits et des charges au compte de résultat ?",
    "r": "<b>Les différents niveaux de résultat</b> : exploitation, financier et exceptionnel, puis participation des salariés et impôt sur les bénéfices.",
    "base": [
     "Règles essentielles#8"
@@ -211,7 +211,7 @@
   {
    "id": "ue9-07-k19",
    "type": "comp",
-   "q": "Depuis le règlement ANC n° 2022-06, quel est en principe le critère de classement d'un produit ou d'une charge en résultat exceptionnel ?",
+   "q": "Depuis la réforme du plan comptable entrée en vigueur en 2025, quel est en principe le critère de classement d'un produit ou d'une charge en résultat exceptionnel ?",
    "r": "<b>Un lien direct avec un événement majeur et inhabituel.</b> Par exception, restent notamment en résultat exceptionnel les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées), en 687 / 787.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -223,7 +223,7 @@
   {
    "id": "ue9-07-k20",
    "type": "def",
-   "q": "Selon le règlement ANC n° 2022-06, quand un événement est-il présumé inhabituel pour le classement en résultat exceptionnel ?",
+   "q": "Depuis la réforme du plan comptable entrée en vigueur en 2025, quand un événement est-il présumé inhabituel pour le classement en résultat exceptionnel ?",
    "r": "<b>Lorsqu'un même événement ne s'est pas produit au cours des derniers exercices comptables</b> et qu'il est peu probable qu'il se reproduise au cours des prochains exercices comptables.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -259,7 +259,7 @@
   {
    "id": "ue9-07-k23",
    "type": "comp",
-   "q": "Selon l'article 515-1 du PCG, à quelle date s'apprécie le taux à appliquer pour comptabiliser l'impôt sur les bénéfices de l'exercice ?",
+   "q": "En comptabilité générale, à quelle date s'apprécie le taux à appliquer pour comptabiliser l'impôt sur les bénéfices de l'exercice ?",
    "r": "<b>À la date de clôture : on applique le taux en vigueur à cette date.</b> L'impôt et les contributions qui s'y rattachent sont inscrits dans la rubrique « Impôts sur les bénéfices » de l'exercice au titre duquel l'entreprise en est redevable.",
    "base": [
     "Règles essentielles#11"
@@ -271,7 +271,7 @@
   {
    "id": "ue9-07-k24",
    "type": "comp",
-   "q": "Selon le PCG, quel exercice supporte l'effet d'une modification du taux d'impôt sur les bénéfices votée après la clôture ?",
+   "q": "En comptabilité générale, quel exercice supporte l'effet d'une modification du taux d'impôt sur les bénéfices votée après la clôture ?",
    "r": "<b>L'exercice au cours duquel le vote intervient</b>, et non l'exercice clôturé.",
    "base": [
     "Points de vigilance#3"
@@ -332,7 +332,7 @@
   {
    "id": "ue9-07-k29",
    "type": "comp",
-   "q": "Qu'a changé l'ordonnance n° 2025-229 du 12 mars 2025 à l'article L. 232-10 du Code de commerce sur la réserve légale ?",
+   "q": "Qu'a changé la réforme des nullités en droit des sociétés de 2025 dans les règles de la réserve légale ?",
    "r": "<b>Elle a supprimé la formule « à peine de nullité de toute délibération contraire »</b>, depuis le 1er octobre 2025. Le taux (un vingtième) et le plafond (dixième du capital) de la réserve légale sont inchangés.",
    "base": [
     "Ce qui a changé récemment#4"
@@ -344,7 +344,7 @@
   {
    "id": "ue9-07-k30",
    "type": "def",
-   "q": "Comment le Code de commerce définit-il le bénéfice distribuable d'une société ?",
+   "q": "Comment se définit le bénéfice distribuable d'une société commerciale ?",
    "r": "<b>Le bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, augmenté du report bénéficiaire.</b> Les dividendes sont prélevés par priorité sur le bénéfice distribuable de l'exercice.",
    "base": [
     "Règles essentielles#14"
@@ -356,7 +356,7 @@
   {
    "id": "ue9-07-k31",
    "type": "comp",
-   "q": "Hors réduction du capital, quand le Code de commerce interdit-il toute distribution aux actionnaires d'une société ?",
+   "q": "Hors réduction du capital, dans quel cas toute distribution aux actionnaires d'une société commerciale est-elle interdite ?",
    "r": "<b>Lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au capital augmenté des réserves non distribuables</b>, c'est-à-dire des réserves que la loi ou les statuts ne permettent pas de distribuer.",
    "base": [
     "Règles essentielles#16"
@@ -368,7 +368,7 @@
   {
    "id": "ue9-07-k32",
    "type": "def",
-   "q": "Qu'est-ce qu'un dividende fictif au sens du Code de commerce ?",
+   "q": "En droit des sociétés commerciales, qu'est-ce qu'un dividende fictif ?",
    "r": "<b>Un dividende distribué en violation des règles de distribution</b> : dividendes déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables, capitaux propres maintenus au moins au niveau du capital et des réserves non distribuables. Sa répartition entre les associés par les dirigeants est un délit lorsqu'elle est opérée en l'absence d'inventaire ou au moyen d'inventaires frauduleux.",
    "base": [
     "Règles essentielles#16"
@@ -404,7 +404,7 @@
   {
    "id": "ue9-07-k35",
    "type": "comp",
-   "q": "Selon l'article L. 232-13 du Code de commerce, dans quel délai la mise en paiement des dividendes doit-elle intervenir ?",
+   "q": "Dans une société commerciale, dans quel délai la mise en paiement des dividendes doit-elle intervenir ?",
    "r": "<b>Dans un délai maximal de neuf mois après la clôture de l'exercice</b> ; ce délai peut être prolongé par décision de justice.",
    "base": [
     "Chiffres et seuils#1"
@@ -416,7 +416,7 @@
   {
    "id": "ue9-07-k36",
    "type": "comp",
-   "q": "Dans le plan de comptes issu du règlement ANC n° 2022-06, sur quel compte enregistre-t-on les charges fiscales sur congés à payer ?",
+   "q": "Dans le plan de comptes applicable depuis 2025, sur quel compte enregistre-t-on les charges fiscales sur congés à payer ?",
    "r": "<b>Sur le compte 44811 « Charges fiscales sur congés à payer »</b> (plan 2024 : 4482), subdivision de 4481 « État – Charges à payer ». Piège : le compte 4482 désigne désormais « État – Produits à recevoir » (plan 2024 : 4487).",
    "base": [
     "Ce qui a changé récemment#2",

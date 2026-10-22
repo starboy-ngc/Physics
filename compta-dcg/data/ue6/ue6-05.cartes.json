@@ -5,7 +5,7 @@
   {
    "id": "ue6-05-k01",
    "type": "def",
-   "q": "Qu'est-ce que l'autofinancement au sens du tableau de financement du PCG ?",
+   "q": "En comptabilité, qu'est-ce que l'autofinancement au sens du tableau de financement ?",
    "r": "<b>La capacité d'autofinancement diminuée des distributions mises en paiement au cours de l'exercice.</b> Les dividendes sont fixés par l'assemblée générale après approbation des comptes.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue6-05-k02",
    "type": "def",
-   "q": "Selon le Code de commerce, de quoi est constitué le bénéfice distribuable d'une SARL ou d'une société par actions ?",
+   "q": "De quoi est constitué le bénéfice distribuable d'une SARL ou d'une société par actions ?",
    "r": "<b>Du bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire.</b> La réserve légale est dotée d'au moins 5 % du bénéfice de l'exercice, diminué des pertes antérieures, jusqu'à ce qu'elle atteigne 10 % du capital social.",
    "base": [
     "Règles essentielles#12",
@@ -42,7 +42,7 @@
   {
    "id": "ue6-05-k04",
    "type": "def",
-   "q": "Selon le PCG, qu'est-ce qu'une subvention d'investissement ?",
+   "q": "En comptabilité générale, qu'est-ce qu'une subvention d'investissement ?",
    "r": "<b>Une subvention reçue pour acquérir ou créer des immobilisations.</b> Inscrite en capitaux propres (compte 131), elle est rapportée au résultat (compte 747) au rythme des amortissements lorsque l'immobilisation financée est amortissable.",
    "base": [
     "Définitions#6",
@@ -55,7 +55,7 @@
   {
    "id": "ue6-05-k05",
    "type": "comp",
-   "q": "Selon le PCG, comment une subvention d'investissement finançant une immobilisation non amortissable est-elle rapportée au résultat ?",
+   "q": "Comment une subvention d'investissement finançant une immobilisation non amortissable est-elle rapportée au résultat ?",
    "r": "<b>Par fractions égales sur la durée d'inaliénabilité ou, à défaut, sur dix ans.</b> Si l'immobilisation financée est amortissable, la subvention est rapportée au résultat proportionnellement aux amortissements.",
    "base": [
     "Règles essentielles#9"
@@ -79,7 +79,7 @@
   {
    "id": "ue6-05-k07",
    "type": "comp",
-   "q": "Selon l'article 39, 1-3° du CGI, à quelles conditions les intérêts servis aux associés sur leurs comptes courants sont-ils déductibles ?",
+   "q": "À quelles conditions les intérêts servis aux associés sur leurs comptes courants sont-ils déductibles du résultat imposable ?",
    "r": "<b>Dans la limite d'un taux maximal</b>, égal à la moyenne annuelle des taux effectifs moyens pratiqués par les établissements de crédit pour des prêts à taux variable aux entreprises d'une durée initiale supérieure à deux ans, <b>et à condition que le capital soit entièrement libéré.</b>",
    "base": [
     "Règles essentielles#8"
@@ -91,7 +91,7 @@
   {
    "id": "ue6-05-k08",
    "type": "comp",
-   "q": "Selon le Code monétaire et financier, à quoi les prêts participatifs sont-ils assimilés pour l'appréciation de la situation financière des entreprises qui en bénéficient ?",
+   "q": "À quoi les prêts participatifs sont-ils assimilés pour l'appréciation de la situation financière des entreprises qui en bénéficient ?",
    "r": "<b>À des fonds propres.</b> Le prêt participatif est ainsi classé parmi les quasi-fonds propres.",
    "base": [
     "Définitions#5"
@@ -103,7 +103,7 @@
   {
    "id": "ue6-05-k09",
    "type": "def",
-   "q": "Qu'est-ce que le financement participatif encadré par le Code monétaire et financier ?",
+   "q": "En finance d'entreprise, qu'est-ce que le financement participatif ?",
    "r": "<b>La mise en relation, par une plateforme, de porteurs de projet et de personnes finançant ce projet</b> sous forme de prêts (avec ou sans intérêt), de dons ou de titres.",
    "base": [
     "Définitions#9"
@@ -115,7 +115,7 @@
   {
    "id": "ue6-05-k10",
    "type": "comp",
-   "q": "Depuis l'ordonnance du 22 décembre 2021, quel statut européen peuvent obtenir les plateformes de financement participatif ?",
+   "q": "Quel statut européen les plateformes de financement participatif peuvent-elles obtenir depuis la fin de l'année 2021 ?",
    "r": "<b>Celui de prestataire européen de services de financement participatif, agréé</b> selon le règlement (UE) 2020/1503. Le financement participatif devient ainsi un mode de financement reconnu des PME.",
    "base": [
     "Ce qui a changé récemment#4",
@@ -128,7 +128,7 @@
   {
    "id": "ue6-05-k11",
    "type": "def",
-   "q": "Selon le Code de commerce, par quels deux procédés portant sur les actions s'opère l'augmentation de capital d'une société anonyme ?",
+   "q": "Par quels deux procédés portant sur les actions s'opère l'augmentation de capital d'une société anonyme ?",
    "r": "<b>Par émission d'actions nouvelles ou par majoration du montant nominal des actions existantes.</b> Les actions nouvelles sont émises à leur nominal ou à ce montant majoré d'une prime d'émission.",
    "base": [
     "Définitions#1"
@@ -200,7 +200,7 @@
   {
    "id": "ue6-05-k17",
    "type": "comp",
-   "q": "Selon le plan de comptes PCG 2025, où enregistre-t-on les intérêts courus sur un emprunt auprès des établissements de crédit ?",
+   "q": "Depuis 2025, sur quel compte enregistre-t-on les intérêts courus sur un emprunt auprès des établissements de crédit ?",
    "r": "<b>Au compte 1648</b> (avant 2025 : 1688), rattaché aux emprunts auprès des établissements de crédit (164). Le PCG 2025 enregistre les intérêts courus par nature d'emprunt : 1618, 1638 ou 1648.",
    "base": [
     "Règles essentielles#4",
@@ -213,7 +213,7 @@
   {
    "id": "ue6-05-k18",
    "type": "def",
-   "q": "Selon le Code de commerce, que sont les obligations émises par une société ?",
+   "q": "En droit des sociétés, que sont les obligations émises par une société ?",
    "r": "<b>Des titres négociables qui, dans une même émission, confèrent les mêmes droits de créance pour une même valeur nominale.</b> Les obligations convertibles ou remboursables en actions sont des valeurs mobilières donnant accès au capital.",
    "base": [
     "Définitions#3"
@@ -237,7 +237,7 @@
   {
    "id": "ue6-05-k20",
    "type": "comp",
-   "q": "Selon le PCG, comment traite-t-on la prime de remboursement et les frais d'émission d'un emprunt obligataire ?",
+   "q": "En comptabilité, comment traite-t-on la prime de remboursement et les frais d'émission d'un emprunt obligataire ?",
    "r": "<b>La prime de remboursement (compte 169) est amortie sur la durée de l'emprunt</b> ; les frais d'émission peuvent être étalés sur cette durée (compte 481). Le coût actuariel de l'emprunt tient compte, lui, des flux réels : prix d'émission, coupons, prix de remboursement, frais.",
    "base": [
     "Règles essentielles#3"
@@ -261,7 +261,7 @@
   {
    "id": "ue6-05-k22",
    "type": "def",
-   "q": "Selon le Code monétaire et financier, qu'est-ce qu'une opération de crédit-bail ?",
+   "q": "Dans le financement des entreprises, qu'est-ce qu'une opération de crédit-bail ?",
    "r": "<b>Une location de biens d'équipement, ou de biens immobiliers à usage professionnel, qui permet au locataire d'acquérir tout ou partie des biens loués</b>, pour un bien d'équipement moyennant un prix convenu tenant compte, au moins pour partie, des loyers versés. Le bien loué reste la propriété du bailleur.",
    "base": [
     "Définitions#4"
@@ -312,7 +312,7 @@
   {
    "id": "ue6-05-k26",
    "type": "comp",
-   "q": "Selon l'article 212 bis du CGI, dans quelle limite les charges financières nettes d'une entreprise sont-elles déductibles ?",
+   "q": "En matière d'impôt sur les sociétés, dans quelle limite les charges financières nettes d'une entreprise sont-elles déductibles ?",
    "r": "<b>En principe, dans la limite du plus élevé de 3 millions d'euros ou de 30 % de l'EBITDA fiscal</b>, avec des règles particulières pour les entreprises sous-capitalisées. L'économie d'impôt sur les intérêts suppose le respect de cette limite.",
    "base": [
     "Règles essentielles#7",

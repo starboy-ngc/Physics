@@ -264,7 +264,7 @@
   {
    "id": "ue9-03-k22",
    "type": "comp",
-   "q": "Selon le PCG, que comprend le prix d'achat retenu dans le coût d'acquisition d'une immobilisation corporelle, et qu'en déduit-on ?",
+   "q": "Que comprend le prix d'achat retenu dans le coût d'acquisition d'une immobilisation corporelle, et qu'en déduit-on ?",
    "r": "<b>Il comprend les droits de douane et taxes non récupérables ; on en déduit les remises, rabais commerciaux et escomptes de règlement.</b> Le coût d'acquisition y ajoute les coûts directement attribuables engagés pour mettre l'actif en place et en état de fonctionner, ainsi que l'estimation initiale des coûts de démantèlement, d'enlèvement et de restauration du site.",
    "base": [
     "Règles essentielles#9"
@@ -337,7 +337,7 @@
   {
    "id": "ue9-03-k28",
    "type": "comp",
-   "q": "Comment comptabilise-t-on, depuis le règlement ANC n° 2022-06, des frais refacturés à un tiers ?",
+   "q": "Selon les règles comptables applicables depuis 2025, comment comptabilise-t-on des frais engagés par l'entreprise puis refacturés à un tiers ?",
    "r": "<b>Comme un produit</b>, que l'ANC rattache au compte 708 « Produits des activités annexes », la charge restant inscrite à son compte. Les transferts de charges ne sont plus prévus par l'article 512-1 du PCG et aucune compensation n'est admise entre charges et produits, sauf exception prévue par un règlement de l'ANC.",
    "base": [
     "Règles essentielles#14",
@@ -398,7 +398,7 @@
   {
    "id": "ue9-03-k33",
    "type": "comp",
-   "q": "Au titre du Code de commerce, quelles mentions relatives au règlement du prix une facture doit-elle comporter ?",
+   "q": "Entre professionnels, quelles mentions relatives au règlement du prix une facture doit-elle obligatoirement comporter ?",
    "r": "<b>La date de règlement</b>, <b>les conditions d'escompte</b>, <b>le taux des pénalités de retard</b> et <b>le montant de l'indemnité forfaitaire pour frais de recouvrement</b>.",
    "base": [
     "Règles essentielles#4"
@@ -408,21 +408,9 @@
    "fiab": "stable"
   },
   {
-   "id": "ue9-03-k34",
-   "type": "comp",
-   "q": "Dans quel code la recodification de la TVA opérée par l'ordonnance du 17 décembre 2025 transfère-t-elle cette taxe ?",
-   "r": "<b>Dans le code des impositions sur les biens et services.</b> L'entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au 1er janvier 2027 : jusqu'au 31 décembre 2026, les articles du CGI relatifs à la TVA restent applicables.",
-   "base": [
-    "Ce qui a changé récemment#6"
-   ],
-   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
-   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
-   "fiab": "stable"
-  },
-  {
    "id": "ue9-03-k35",
    "type": "comp",
-   "q": "Entre professionnels, quel délai de paiement maximal le Code de commerce permet-il en principe de convenir pour régler une facture ?",
+   "q": "Entre professionnels, quel délai de paiement maximal les parties peuvent-elles en principe convenir pour le règlement d'une facture ?",
    "r": "<b>Soixante jours à compter de la date d'émission de la facture</b>, ou quarante-cinq jours fin de mois si ce délai est expressément stipulé et ne constitue pas un abus manifeste à l'égard du créancier.",
    "base": [
     "Chiffres et seuils#1"

@@ -5,7 +5,7 @@
   {
    "id": "ue10-05-k01",
    "type": "def",
-   "q": "Selon le Code de commerce, qu'est-ce qu'une participation ?",
+   "q": "En droit comptable, qu'est-ce qu'une participation détenue par une société ?",
    "r": "<b>Des droits dans le capital d'autres personnes morales</b>, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. En comptabilité, ils sont inscrits au compte 261 « Titres de participation ».",
    "base": [
     "Définitions#0"
@@ -30,7 +30,7 @@
   {
    "id": "ue10-05-k03",
    "type": "def",
-   "q": "Que sont les titres immobilisés inscrits aux comptes 271 et 272 du Plan comptable général ?",
+   "q": "En comptabilité, que sont les titres immobilisés inscrits aux comptes 271 et 272 ?",
    "r": "<b>Des titres, autres que les titres de participation, que l'entreprise a l'intention de conserver durablement</b> ou qu'elle n'a pas la possibilité de revendre à bref délai. Compte 271 : droit de propriété ; compte 272 : droit de créance.",
    "base": [
     "Définitions#1"
@@ -54,7 +54,7 @@
   {
    "id": "ue10-05-k05",
    "type": "def",
-   "q": "Que sont les valeurs mobilières de placement (compte 50) dans le plan de comptes du PCG ?",
+   "q": "En comptabilité, que sont les valeurs mobilières de placement inscrites au compte 50 ?",
    "r": "<b>Des titres acquis en vue de réaliser un gain à brève échéance.</b> Les actions sont inscrites au compte 503, les obligations au compte 506 ; le compte 501 « Parts dans des entreprises liées » est supprimé depuis 2025.",
    "base": [
     "Définitions#2"
@@ -66,7 +66,7 @@
   {
    "id": "ue10-05-k06",
    "type": "comp",
-   "q": "Comment le PCG permet-il de traiter les frais liés à l'acquisition de titres (droits de mutation, honoraires, commissions, frais d'actes) ?",
+   "q": "Comment peut-on traiter en comptabilité les frais liés à l'acquisition de titres (droits de mutation, honoraires, commissions, frais d'actes) ?",
    "r": "<b>Sur option, ils sont rattachés au coût d'acquisition ou comptabilisés en charges.</b> L'option retenue vaut pour l'ensemble des titres immobilisés et des titres de placement, indépendamment de celle retenue pour les immobilisations corporelles et incorporelles.",
    "base": [
     "Règles essentielles#1"
@@ -103,7 +103,7 @@
   {
    "id": "ue10-05-k09",
    "type": "comp",
-   "q": "Quel principe le Code de commerce pose-t-il pour une plus-value latente constatée sur des titres à la clôture ?",
+   "q": "Quel traitement comptable reçoit une plus-value latente constatée sur des titres à la clôture de l'exercice ?",
    "r": "<b>Elle n'est pas comptabilisée</b> : l'écart positif entre la valeur d'inventaire et la valeur d'entrée n'est pas enregistré, alors qu'une valeur d'inventaire inférieure à la valeur nette comptable est constatée par une dépréciation.",
    "base": [
     "Règles essentielles#2"
@@ -140,7 +140,7 @@
   {
    "id": "ue10-05-k12",
    "type": "comp",
-   "q": "Quelle exception le PCG admet-il au principe de non-compensation entre lignes de titres lors de l'évaluation à la clôture ?",
+   "q": "Quelle exception est admise au principe de non-compensation entre lignes de titres lors de leur évaluation à la clôture ?",
    "r": "<b>La baisse anormale et momentanée des cours</b> : pour les titres cotés autres que les titres de participation et les TIAP, titres de placement compris, l'entité n'est pas obligée de constituer une dépréciation à concurrence des plus-values latentes normales constatées sur d'autres titres.",
    "base": [
     "Règles essentielles#4"
@@ -152,7 +152,7 @@
   {
    "id": "ue10-05-k13",
    "type": "comp",
-   "q": "Selon le Code de commerce, à quelles immobilisations est réservée la tolérance qui permet de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
+   "q": "À quelles immobilisations est réservée la tolérance qui permet de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
    "r": "<b>Aux seules immobilisations non financières.</b> Pour les titres, dès que la valeur d'inventaire devient inférieure à la valeur nette comptable, celle-ci est en principe ramenée à la valeur d'inventaire, même si l'écart n'est pas notable.",
    "base": [
     "Points de vigilance#5",
@@ -165,7 +165,7 @@
   {
    "id": "ue10-05-k14",
    "type": "comp",
-   "q": "Comment le règlement ANC n° 2022-06 modifie-t-il l'enregistrement de la cession de titres de participation ?",
+   "q": "Comment la réforme du plan comptable applicable depuis 2025 a-t-elle modifié l'enregistrement de la cession de titres de participation ?",
    "r": "<b>La cession quitte le résultat exceptionnel pour le résultat financier</b> : la valeur comptable des titres cédés est débitée au compte 6671 et le prix de cession crédité au compte 7671, en montants bruts. Les anciens comptes 675 et 775 ne figurent plus au plan de comptes.",
    "base": [
     "Ce qui a changé récemment#0",
@@ -178,7 +178,7 @@
   {
    "id": "ue10-05-k15",
    "type": "comp",
-   "q": "Comment est enregistrée, selon le PCG 2025, la cession de TIAP ou de valeurs mobilières de placement ?",
+   "q": "Depuis la réforme comptable de 2025, comment enregistre-t-on la cession de titres immobilisés de l'activité de portefeuille (TIAP) ou de valeurs mobilières de placement ?",
    "r": "<b>Pour son résultat net</b> : en 7672 (produits nets) ou 6672 (charges nettes) pour les TIAP, en 7673 (produits nets) ou 6673 (charges nettes) pour les VMP. Le compte de titres est crédité du coût d'entrée.",
    "base": [
     "Règles essentielles#6"
@@ -190,7 +190,7 @@
   {
    "id": "ue10-05-k16",
    "type": "comp",
-   "q": "Selon le Code de commerce, comment détermine-t-on le coût d'entrée des titres cédés lorsque des titres de même nature ont été acquis à des prix différents ?",
+   "q": "Comment détermine-t-on le coût d'entrée des titres cédés lorsque des titres de même nature ont été acquis à des prix différents ?",
    "r": "<b>Au coût moyen pondéré d'acquisition ou selon la méthode « premier entré, premier sorti »</b>, les deux méthodes que le Code de commerce prévoit pour les biens fongibles.",
    "base": [
     "Règles essentielles#7"
@@ -265,7 +265,7 @@
   {
    "id": "ue10-05-k22",
    "type": "comp",
-   "q": "Selon le PCG 2025, dans quels comptes enregistre-t-on à la clôture les intérêts courus sur emprunts ?",
+   "q": "Depuis la réforme comptable de 2025, dans quels comptes enregistre-t-on à la clôture les intérêts courus sur emprunts ?",
    "r": "<b>Dans un compte propre à chaque nature d'emprunt</b> : 1618 pour les emprunts obligataires convertibles (ancien 16881), 1638 pour les autres emprunts obligataires (ancien 16883), 1648 pour les emprunts auprès des établissements de crédit (ancien 16884). Le compte 1688 ne vise plus que les autres emprunts et dettes assimilées.",
    "base": [
     "Règles essentielles#12"
@@ -277,7 +277,7 @@
   {
    "id": "ue10-05-k23",
    "type": "def",
-   "q": "Comment le Plan comptable général définit-il un passif ?",
+   "q": "Comment définit-on un passif en comptabilité générale française ?",
    "r": "<b>Un élément du patrimoine ayant une valeur économique négative pour l'entité</b> : une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci.",
    "base": [
     "Définitions#3"
@@ -289,7 +289,7 @@
   {
    "id": "ue10-05-k24",
    "type": "def",
-   "q": "Qu'est-ce qu'une provision au sens du Plan comptable général ?",
+   "q": "Qu'est-ce qu'une provision au sens de la comptabilité générale française ?",
    "r": "<b>Un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b> C'est ce qui la distingue d'une dette (fournisseurs, emprunts), passif certain dont l'échéance et le montant sont fixés de façon précise.",
    "base": [
     "Définitions#4",
@@ -302,7 +302,7 @@
   {
    "id": "ue10-05-k26",
    "type": "def",
-   "q": "Qu'est-ce qu'un passif éventuel au sens du Plan comptable général ?",
+   "q": "Qu'est-ce qu'un passif éventuel au sens de la comptabilité générale française ?",
    "r": "<b>Il s'agit notamment d'une obligation potentielle de l'entité à l'égard d'un tiers, née d'événements dont l'existence reste incertaine.</b> Il n'est pas comptabilisé au bilan mais mentionné en annexe.",
    "base": [
     "Définitions#4"
@@ -314,7 +314,7 @@
   {
    "id": "ue10-05-k27",
    "type": "comp",
-   "q": "Selon le Plan comptable général, à quelles conditions une provision doit-elle être comptabilisée à la clôture ?",
+   "q": "À quelles conditions une provision doit-elle être comptabilisée à la clôture de l'exercice ?",
    "r": "<b>Lorsque, à la clôture, l'entité a une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources</b> sans contrepartie au moins équivalente, et que son montant peut être évalué avec une fiabilité suffisante. Elle est évaluée à la meilleure estimation de la sortie de ressources.",
    "base": [
     "Règles essentielles#13"
@@ -326,7 +326,7 @@
   {
    "id": "ue10-05-k28",
    "type": "comp",
-   "q": "Comment le Plan comptable général traite-t-il un passif dont le montant ne peut être évalué avec une fiabilité suffisante ?",
+   "q": "Comment traite-t-on en comptabilité un passif dont le montant ne peut être évalué avec une fiabilité suffisante ?",
    "r": "<b>Il n'est pas comptabilisé au bilan : il est seulement mentionné en annexe.</b> Il reçoit ainsi le même traitement qu'un passif éventuel, qui n'est jamais comptabilisé au bilan.",
    "base": [
     "Règles essentielles#13",
@@ -339,7 +339,7 @@
   {
    "id": "ue10-05-k29",
    "type": "comp",
-   "q": "Selon le Code de commerce, quelle règle s'applique aux amortissements, dépréciations et provisions d'un exercice sans bénéfice ou au bénéfice insuffisant ?",
+   "q": "Quelle règle s'applique aux amortissements, dépréciations et provisions lorsque l'exercice ne dégage aucun bénéfice ou un bénéfice insuffisant ?",
    "r": "<b>Il doit quand même être procédé aux amortissements, dépréciations et provisions nécessaires.</b> Il est aussi tenu compte des passifs nés au cours de l'exercice ou d'un exercice antérieur, même connus entre la clôture et l'établissement des comptes.",
    "base": [
     "Règles essentielles#14"
@@ -351,7 +351,7 @@
   {
    "id": "ue10-05-k30",
    "type": "comp",
-   "q": "Selon le Code de commerce et le PCG, comment les engagements de retraite d'une entreprise sont-ils traduits dans ses comptes annuels ?",
+   "q": "Comment les engagements de retraite d'une entreprise sont-ils traduits dans ses comptes annuels ?",
    "r": "<b>Leur montant est indiqué dans l'annexe</b> ; l'entreprise peut l'inscrire, en tout ou partie, en provision au compte 1521. Le provisionnement de la totalité des engagements est la méthode de référence (appelée « méthode préférentielle » avant le règlement ANC n° 2018-01).",
    "base": [
     "Règles essentielles#15"
@@ -363,7 +363,7 @@
   {
    "id": "ue10-05-k31",
    "type": "comp",
-   "q": "À quelles conditions une provision est-elle déductible du résultat fiscal selon l'article 39, 1-5° du CGI ?",
+   "q": "Pour l'impôt sur les bénéfices, à quelles conditions une provision est-elle déductible du résultat fiscal ?",
    "r": "<b>Elle doit faire face à des pertes ou charges nettement précisées que des événements en cours rendent probables</b>, et avoir été effectivement constatée dans les écritures de l'exercice. Le texte exclut notamment les provisions constituées en vue du versement d'allocations en raison du départ à la retraite ou en préretraite.",
    "base": [
     "Règles essentielles#16"
@@ -387,7 +387,7 @@
   {
    "id": "ue10-05-k33",
    "type": "def",
-   "q": "Quelles provisions le PCG 2025 enregistre-t-il respectivement aux comptes 151 et 152 ?",
+   "q": "Depuis la réforme comptable de 2025, quelles provisions enregistre-t-on respectivement aux comptes 151 et 152 ?",
    "r": "<b>151 : provisions pour risques</b>, par exemple litiges, garanties données aux clients, pertes de change ; <b>152 : provisions pour charges</b>, par exemple pensions, restructurations, gros entretien ou grandes révisions. La racine 152 regroupe depuis 2025 les anciens comptes 153 à 158.",
    "base": [
     "Règles essentielles#17",
@@ -400,7 +400,7 @@
   {
    "id": "ue10-05-k34",
    "type": "def",
-   "q": "Que sont les provisions réglementées (compte 14) du Plan comptable général ?",
+   "q": "Que sont les provisions réglementées enregistrées au compte 14 ?",
    "r": "<b>Des provisions comptabilisées en application de dispositions légales, le plus souvent fiscales, et non pour couvrir une obligation envers un tiers.</b> Elles figurent dans les capitaux propres et permettent de bénéficier d'un avantage fiscal subordonné à leur comptabilisation (143 hausse des prix, 145 amortissements dérogatoires, 148 autres).",
    "base": [
     "Définitions#6",
@@ -413,7 +413,7 @@
   {
    "id": "ue10-05-k35",
    "type": "comp",
-   "q": "Selon le PCG, dans quel résultat les dotations et reprises de provisions réglementées (compte 14) sont-elles comptabilisées ?",
+   "q": "Dans quel résultat les dotations et reprises de provisions réglementées (compte 14) sont-elles comptabilisées ?",
    "r": "<b>En résultat exceptionnel</b> : ce sont des écritures d'origine purement fiscale, que le PCG classe dans ce résultat. Les amortissements dérogatoires, par exemple, sont dotés au compte 68725 et repris au compte 78725.",
    "base": [
     "Points de vigilance#4",
@@ -421,18 +421,6 @@
    ],
    "src": "PCG, plan de comptes 2026, comptes 14, 6872 à 6874 et 7872 à 7874 ; PCG, art. 513-5 (repris à l'art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue10-05-k36",
-   "type": "comp",
-   "q": "Dans des comptes consolidés établis selon les normes IFRS adoptées par l'Union européenne, quelle norme régit la comptabilisation et l'évaluation des instruments financiers, et laquelle les provisions ?",
-   "r": "<b>IFRS 9 pour les instruments financiers et IAS 37 pour les provisions.</b> Les sociétés qui établissent leurs comptes consolidés selon ces normes internationales sont dispensées des règles françaises de consolidation.",
-   "base": [
-    "Points de vigilance#6"
-   ],
-   "src": "C. com., art. L. 233-24 ; C. com., art. L. 123-18",
-   "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330",
    "fiab": "stable"
   }
  ]

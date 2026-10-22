@@ -29,7 +29,7 @@
   {
    "id": "ue6-03-k03",
    "type": "def",
-   "q": "Dans le modèle de tableau des flux de trésorerie du règlement ANC n° 2020-01 établi à partir du résultat net, qu'est-ce que la marge brute d'autofinancement des sociétés intégrées ?",
+   "q": "Dans le tableau des flux de trésorerie consolidé établi à partir du résultat net, qu'est-ce que la marge brute d'autofinancement des sociétés intégrées ?",
    "r": "<b>Le résultat net des sociétés intégrées corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité</b> (amortissements et provisions, plus-values de cession nettes d'impôt). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
    "base": [
     "Définitions#2"
@@ -260,7 +260,7 @@
   {
    "id": "ue6-03-k23",
    "type": "comp",
-   "q": "Selon le Code de commerce, dans quel délai maximal les dividendes en numéraire doivent-ils être mis en paiement ?",
+   "q": "Dans quel délai maximal une société commerciale doit-elle mettre en paiement les dividendes en numéraire ?",
    "r": "<b>Au plus tard neuf mois après la clôture de l'exercice</b>, sauf prolongation par décision de justice.",
    "base": [
     "Chiffres et seuils#1"

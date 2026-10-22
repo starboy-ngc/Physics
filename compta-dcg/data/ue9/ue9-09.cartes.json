@@ -5,7 +5,7 @@
   {
    "id": "ue9-09-k01",
    "type": "def",
-   "q": "Selon le Plan comptable général (art. 121-1), qu'est-ce que la comptabilité ?",
+   "q": "Comment le Plan comptable général définit-il la comptabilité ?",
    "r": "<b>Un système d'organisation de l'information financière</b> permettant de saisir, classer, enregistrer des données de base chiffrées et de présenter des états reflétant une image fidèle du patrimoine, de la situation financière et du résultat de l'entité à la date de clôture.",
    "base": [
     "Définitions#0"
@@ -17,7 +17,7 @@
   {
    "id": "ue9-09-k02",
    "type": "def",
-   "q": "Selon l'article L. 123-12 du Code de commerce, de quels documents se composent en principe les comptes annuels d'un commerçant ?",
+   "q": "De quels documents se composent en principe les comptes annuels d'un commerçant ?",
    "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable, établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire. Les micro-entreprises sont toutefois, sauf exceptions, dispensées d'annexe.",
    "base": [
     "Définitions#1",
@@ -30,7 +30,7 @@
   {
    "id": "ue9-09-k03",
    "type": "def",
-   "q": "Quelles sont les principales missions de l'Autorité des normes comptables (ANC), créée par l'ordonnance du 22 janvier 2009 ?",
+   "q": "Quelles sont les principales missions de l'Autorité des normes comptables (ANC) ?",
    "r": "<b>Elle établit, sous forme de règlements, les prescriptions comptables générales et sectorielles.</b> Elle donne un avis sur les projets de textes législatifs ou réglementaires de nature comptable (depuis le 1er janvier 2024, aussi sur ceux imposant la publication d'informations environnementales, sociales et de gouvernance) et participe aux travaux européens et internationaux de normalisation comptable.",
    "base": [
     "Définitions#2",
@@ -38,18 +38,6 @@
    ],
    "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1er",
    "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
-   "fiab": "stable"
-  },
-  {
-   "id": "ue9-09-k04",
-   "type": "def",
-   "q": "Sous quelle forme juridique le Plan comptable général (PCG) se présente-t-il ?",
-   "r": "<b>Un règlement de l'Autorité des normes comptables : le règlement n° 2014-03</b>, modifié notamment par le règlement n° 2022-06. L'ANC en publie des versions consolidées.",
-   "base": [
-    "Définitions#3"
-   ],
-   "src": "Règlement ANC n° 2014-03 (PCG), version consolidée au 1er janvier 2026",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "fiab": "stable"
   },
   {
@@ -129,7 +117,7 @@
   {
    "id": "ue9-09-k11",
    "type": "comp",
-   "q": "Selon l'article L. 123-22 du Code de commerce, quelles exigences de forme s'imposent aux documents comptables d'un commerçant ?",
+   "q": "Quelles exigences de forme s'imposent aux documents comptables d'un commerçant ?",
    "r": "<b>Ils sont établis en euros et en langue française.</b> Ceux relatifs à l'enregistrement des opérations et à l'inventaire sont établis et tenus sans blanc ni altération d'aucune sorte.",
    "base": [
     "Règles essentielles#3"
@@ -153,7 +141,7 @@
   {
    "id": "ue9-09-k13",
    "type": "def",
-   "q": "Selon l'article L. 123-14 du Code de commerce, quelles qualités les comptes annuels doivent-ils présenter ?",
+   "q": "Quelles qualités les comptes annuels d'un commerçant doivent-ils présenter ?",
    "r": "<b>Être réguliers, sincères et donner une image fidèle</b> du patrimoine, de la situation financière et du résultat de l'entreprise.",
    "base": [
     "Règles essentielles#5"
@@ -213,7 +201,7 @@
   {
    "id": "ue9-09-k18",
    "type": "comp",
-   "q": "En cas d'absence ou d'insuffisance du bénéfice, quel sort l'article L. 123-20 du Code de commerce réserve-t-il aux amortissements, dépréciations et provisions ?",
+   "q": "En cas d'absence ou d'insuffisance du bénéfice, quel sort est réservé aux amortissements, dépréciations et provisions dans les comptes d'un commerçant ?",
    "r": "<b>Il est quand même procédé aux amortissements, dépréciations et provisions nécessaires.</b> Le même article impose aussi aux comptes annuels de respecter le principe de prudence.",
    "base": [
     "Règles essentielles#8"
@@ -298,7 +286,7 @@
   {
    "id": "ue9-09-k25",
    "type": "comp",
-   "q": "Lors du dépôt de leurs comptes annuels au greffe, quelle faculté l'article L. 232-25 du Code de commerce ouvre-t-il aux micro-entreprises ?",
+   "q": "Lors du dépôt de leurs comptes annuels au greffe, de quelle faculté disposent les micro-entreprises ?",
    "r": "<b>Déclarer que leurs comptes annuels ne seront pas rendus publics</b>, sauf sociétés visées à l'article L. 123-16-2 et sociétés de gestion de titres. Cette déclaration ne dispense pas du dépôt des comptes au greffe.",
    "base": [
     "Règles essentielles#14",
@@ -359,7 +347,7 @@
   {
    "id": "ue9-09-k30",
    "type": "comp",
-   "q": "Quels sont les principaux changements apportés par le règlement ANC n° 2022-06 pour les exercices ouverts à compter du 1er janvier 2025 ?",
+   "q": "Quels sont les principaux changements apportés au Plan comptable général pour les exercices ouverts à compter du 1er janvier 2025 ?",
    "r": "<ul><li>de nouveaux modèles de comptes annuels ;</li><li>un résultat exceptionnel limité aux événements majeurs et inhabituels ;</li><li>la suppression des transferts de charges ;</li><li>un plan de comptes à l'article 1121-1 du PCG.</li></ul>",
    "base": [
     "Ce qui a changé récemment#0"
@@ -371,7 +359,7 @@
   {
    "id": "ue9-09-k31",
    "type": "comp",
-   "q": "Selon le règlement ANC n° 2022-06, quand un événement est-il présumé inhabituel pour la qualification du résultat exceptionnel ?",
+   "q": "Selon le Plan comptable général applicable depuis 2025, quand un événement est-il présumé inhabituel pour la qualification du résultat exceptionnel ?",
    "r": "<b>Lorsqu'un même événement ne s'est pas produit au cours des derniers exercices comptables</b> et qu'il est peu probable qu'il se reproduise au cours des prochains exercices comptables.",
    "base": [
     "Ce qui a changé récemment#0"
@@ -383,7 +371,7 @@
   {
    "id": "ue9-09-k32",
    "type": "comp",
-   "q": "Quel changement la loi n° 2026-534 du 25 juin 2026 apporte-t-elle au délai fiscal de conservation des documents comptables ?",
+   "q": "Quel changement a été apporté en 2026 au délai fiscal de conservation des documents comptables ?",
    "r": "<b>Le délai de l'article L. 102 B du LPF passe de six à dix ans</b> à compter de la date de la dernière opération, pour les livres, registres, documents et pièces dont le délai de conservation expire après le 1er janvier 2027.",
    "base": [
     "Ce qui a changé récemment#5"

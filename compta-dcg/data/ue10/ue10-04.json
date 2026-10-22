@@ -462,7 +462,7 @@
    "id": "ue10-04-12",
    "type": "qcm",
    "nature": "notion",
-   "q": "Pour les contrats à long terme, la méthode de référence selon le PCG (la « méthode préférentielle » des manuels antérieurs au règlement ANC n° 2018-01) est :",
+   "q": "Dans les comptes individuels, quelle est la méthode de référence pour les contrats à long terme, autrefois qualifiée de « méthode préférentielle » ?",
    "opts": [
     "La méthode à l'achèvement",
     "La méthode à l'avancement",
@@ -763,7 +763,7 @@
    "id": "ue10-04-27",
    "type": "qcm",
    "nature": "notion",
-   "q": "Au DSCG, en IFRS (IFRS 15), la comptabilisation du chiffre d'affaires des contrats de construction repose sur :",
+   "q": "En normes IFRS, sur quoi repose la comptabilisation du chiffre d'affaires des contrats de construction ?",
    "opts": [
     "Le libre choix entre achèvement et avancement, comme en PCG",
     "La reconnaissance progressive du revenu à mesure du transfert du contrôle au client",
