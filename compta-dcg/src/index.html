@@ -145,6 +145,9 @@ code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--ru
 .seg button[aria-pressed="true"] .n { background: var(--c, var(--accent)); color: var(--o, var(--accent-ink)); }
 .subnav { margin-bottom: 18px; }
 [hidden] { display: none !important; }
+.boot-msg { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 18px; line-height: 1.5; }
+#fatal { position: fixed; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(90px + env(safe-area-inset-bottom, 0px)); z-index: 60; background: var(--bad-soft); color: var(--ink); border: 1px solid var(--bad); border-radius: 12px; padding: 12px 14px; max-height: 45vh; overflow: auto; }
+#fatal pre { white-space: pre-wrap; font: 0.8rem var(--mono); margin: 0 0 8px; }
 @media (max-width: 480px) { .subnav .wide { display: none; } .subnav .seg button { padding: 7px 12px; } }
 .sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
 .sources li { margin-bottom: 3px; }
@@ -483,7 +486,8 @@ ol.worst .q { display: block; }
       <button role="tab" data-tab="analyse" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg><span>Analyse</span></button>
     </nav>
   </header>
-  <main id="main"></main>
+  <main id="main"><div class="boot-msg" id="bootMsg"><b>Chargement de l'application…</b><br>Si ce message reste affiché, le fichier est ouvert dans un aperçu qui n'exécute pas le JavaScript (aperçu de fichiers du téléphone, de la messagerie ou d'un stockage en ligne). Enregistrez le fichier sur l'ordinateur, puis ouvrez-le avec Chrome, Edge, Firefox ou Safari (clic droit, « Ouvrir avec »).</div></main>
+  <noscript><div class="boot-msg"><b>JavaScript est désactivé.</b> L'application en a besoin : ouvrez le fichier avec Chrome, Edge, Firefox ou Safari, JavaScript activé.</div></noscript>
   <details class="save">
     <summary>Sauvegarde, transfert et informations</summary>
     <p id="buildInfo"></p>
@@ -497,6 +501,22 @@ ol.worst .q { display: block; }
   </details>
 </div>
 <div class="toast" id="toast"></div>
+<script>
+// Toute erreur est affichée en clair plutôt que de laisser une page figée.
+(function () {
+  function show(msg) {
+    try {
+      var box = document.getElementById("fatal");
+      if (!box) { box = document.createElement("div"); box.id = "fatal"; box.setAttribute("role", "alert"); (document.body || document.documentElement).appendChild(box); }
+      var t = "Une erreur empêche l'application de fonctionner correctement. Merci de copier ce message pour le signaler :\n\n" + msg + "\n\nNavigateur : " + navigator.userAgent;
+      box.textContent = ""; var pre = document.createElement("pre"); pre.textContent = t; box.appendChild(pre);
+      var b = document.createElement("button"); b.className = "btn"; b.textContent = "Fermer"; b.onclick = function () { box.remove(); }; box.appendChild(b);
+    } catch (e) { }
+  }
+  window.addEventListener("error", function (e) { show((e.message || "erreur") + (e.filename ? " (" + (e.lineno || "?") + ":" + (e.colno || "?") + ")" : "")); });
+  window.addEventListener("unhandledrejection", function (e) { show("Promesse rejetée : " + (e.reason && e.reason.message || e.reason)); });
+})();
+</script>
 <script>
 const DATA = /*__DATA__*/null;
 </script>
