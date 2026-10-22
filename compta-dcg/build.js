@@ -56,7 +56,13 @@ const tpl = fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8");
 const json = JSON.stringify(data).replace(/<\/script/gi, "<\\/script");
 const out = tpl.replace("/*__DATA__*/null", json);
 fs.mkdirSync(path.join(ROOT, "dist"), { recursive: true });
-fs.writeFileSync(path.join(ROOT, "dist/DebitCredit.html"), out);
+// Fichier à télécharger : document HTML complet (doctype, encodage, affichage mobile), qui s'ouvre tel quel par double-clic.
+// src/index.html est un fragment (en-tête puis contenu) : la partie avant la fin de la feuille de style va dans <head>.
+const cut = out.indexOf("</style>") + "</style>".length;
+const page = `<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n${out.slice(0, cut)}\n</head>\n<body>\n${out.slice(cut).trim()}\n</body>\n</html>\n`;
+fs.writeFileSync(path.join(ROOT, "dist/DebitCredit.html"), page);
+// Variante pour une page hébergée qui fournit elle-même l'enveloppe du document : node build.js --fragment <fichier>
+const fi = process.argv.indexOf("--fragment"); if (fi > 0 && process.argv[fi + 1]) fs.writeFileSync(process.argv[fi + 1], out);
 const nEx = chapitres.reduce((a, c) => a + c.exercices.length, 0);
 const nCartes = chapitres.reduce((a, c) => a + (c.cartes || []).length, 0);
 const nNotion = chapitres.reduce((a, c) => a + c.exercices.filter(e => e.nature === "notion").length, 0);
