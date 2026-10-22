@@ -2,14 +2,11 @@
 
 Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières complètes et des pages de
 rappels pour l'UE1, une fiche documentaire sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
-1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
-test quotidien, révisions espacées sur 1 436 cartes de notions (définitions et compréhension, sans calcul) avec
-plateau d'avancement par thème, plan comptable général 2025 commenté
-compte par compte (612 comptes), les annales officielles des cinq dernières sessions et les sujets zéro du programme
-2027 en composition chronométrée, un observatoire à remplir (chaque chapitre acquis révèle une cible des catalogues Messier et NGC, l'XP fait passer de
-l'œil nu au télescope James-Webb puis à l'ELT) et 141 succès à débloquer (bronze, argent, or) dans sept catégories :
-régularité, précision, maîtrise, matières, exploration, observatoire et annales. Chaque matière a la couleur d'une bande du
-spectre électromagnétique (radio, micro-ondes, infrarouge, visible, ultraviolet, X, gamma).
+1 165 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
+test quotidien réparti sur plusieurs matières, révisions espacées sur 1 423 cartes de notions (définitions et
+compréhension, sans calcul), plan comptable général 2025 commenté compte par compte (612 comptes), les annales
+officielles des cinq dernières sessions et les sujets zéro du programme 2027 en composition chronométrée, et une
+analyse détaillée des performances. Chaque matière garde une couleur d'identité, toujours accompagnée de son code.
 
 ## Utiliser
 
@@ -21,15 +18,48 @@ aucun serveur. La progression est gardée dans le navigateur ; un code de sauveg
 | Matière | Chapitres | Exercices |
 |---|---|---|
 | UE9 Comptabilité | 9 | 232 |
-| UE10 Comptabilité approfondie | 8 | 229 |
+| UE10 Comptabilité approfondie | 8 | 228 |
 | UE2 Droit des sociétés et des affaires | 7 | 203 |
-| UE3 Droit social | 6 | 171 |
-| UE4 Droit fiscal | 6 | 176 |
+| UE3 Droit social | 6 | 170 |
+| UE4 Droit fiscal | 6 | 175 |
 | UE6 Finance d'entreprise | 6 | 157 |
 | UE1 Fondamentaux du droit | 7 pages de rappels (126 rappels) | — |
 
 Référentiel : PCG 2025 (règlement ANC n° 2022-06), droit et fiscalité 2025-2026. Les chiffres qui changent
 chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé et signalés « chiffres 2025 ».
+
+## Journée de travail
+
+L'accueil propose chaque jour une séance en trois temps, sur plusieurs matières :
+
+1. **Notions à revoir** : les révisions espacées dues, puis les nouvelles notions, en alternant les matières.
+2. **Test du jour** : 20 questions ; les révisions dues d'abord, puis une question par matière à tour de rôle
+   (les matières du programme du jour en premier), en reprenant d'abord les questions ratées.
+3. **Cours du jour** : un chapitre dans trois matières, en rotation (celles qui n'ont pas été travaillées depuis le
+   plus longtemps passent en premier), plus une page de rappels de l'UE1.
+
+## Analyse des performances
+
+Chaque réponse est enregistrée (heure, juste ou fausse, temps de réponse, marche des révisions espacées). La page
+Analyse en tire, sur 7, 30 ou 90 jours ou depuis le début :
+
+- une synthèse (réussite et évolution par rapport à la période précédente, volume, notions mémorisées, couverture
+  des exercices, temps médian par question) ;
+- des priorités calculées (révisions en retard, erreurs à reprendre, chapitres fragiles, matières délaissées,
+  format de question le plus faible, rythme insuffisant pour la date d'examen, annales) ;
+- le diagnostic par matière (réussite, tendance, couverture, mémorisation, temps médian, dernière séance) ;
+- l'évolution de la réussite sur 7 jours glissants, par matière, et le volume de travail ;
+- les points faibles : chapitres, formats de question, nature (notion ou calcul), niveau, questions les plus ratées,
+  avec une séance « Mes erreurs » ;
+- la mémoire : taux de rappel selon l'intervalle de révision et plateau des notions ;
+- la régularité (calendrier, réussite selon le moment de la journée), les tests du jour et les annales.
+
+## Questions sur les articles
+
+Les questions qui demandaient le numéro d'un article ou le nom d'un texte, ou l'inverse (« que prévoit
+l'article… ? »), ont été supprimées ; celles qui citaient un article en simple contexte ont été reformulées sans la
+référence, la réponse restant la même et la source restant citée dans l'explication. Détail :
+`data/QUESTIONS-ARTICLES.md`.
 
 ## UE1 : pages de rappels
 
@@ -73,7 +103,7 @@ Chaque notion avance sur une échelle de rappel :
 - erreur : une marche vers la gauche, et la notion revient selon le délai de cette marche (une erreur à « 10 jours » la ramène à « 5 jours ») ;
 - une bonne réponse donnée avant l'échéance (en refaisant un chapitre, par exemple) ne fait pas monter la notion.
 
-L'onglet Révisions affiche le plateau d'avancement (nombre de notions sur chaque marche) pour l'ensemble, pour
+L'onglet Réviser affiche le plateau d'avancement (nombre de notions sur chaque marche) pour l'ensemble, pour
 chaque matière et pour le plan comptable, avec le détail par chapitre ou par classe de comptes, la part de notions
 mémorisées (10 jours et plus), la réussite sur 30 jours, la tendance sur 7 jours, la charge des 14 prochains jours
 et la courbe de réussite sur 30 jours. Les nouvelles notions arrivent en alternant les thèmes, en commençant par
