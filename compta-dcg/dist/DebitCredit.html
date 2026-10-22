@@ -309,7 +309,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .plan-card .verdict.ok { color: var(--ok); } .plan-card .verdict.late { color: var(--bad); }
 .plan-card form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 /* Analyse */
-.prog { display: grid; gap: 8px; }
+.prog-list { display: grid; gap: 8px; }
 .hb { display: grid; gap: 6px; margin: 8px 0 12px; }
 .hb-row { display: grid; grid-template-columns: minmax(0, 15rem) minmax(60px, 1fr) 7.5rem; gap: 10px; align-items: center; }
 .hb-l { display: flex; gap: 8px; align-items: center; min-width: 0; font-size: 0.9rem; }
@@ -446,7 +446,7 @@ ol.worst .q { display: block; }
 .chart .bar { fill: var(--viz1); }
 .chart .hit { fill: transparent; cursor: default; }
 .chart .hit:hover + .bar, .chart .hit:focus + .bar { opacity: 0.8; }
-.chart .line { fill: none; stroke: var(--viz1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .line { vector-effect: non-scaling-stroke; fill: none; stroke: var(--viz1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .chart .area { fill: var(--viz1); opacity: 0.1; }
 .chart .dot { fill: var(--viz1); stroke: var(--card); stroke-width: 2; }
 .chart .xh { stroke: var(--muted); stroke-width: 1; }
@@ -578,17 +578,17 @@ const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "E
 const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
 function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
 function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
-const EMPTY = () => ({ cards: {}, days: {}, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, hist: {}, log: [], prog: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, rappels: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
-function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); delete o.xp; delete o.succes; o.log = Array.isArray(o.log) ? o.log : []; o.prog = o.prog || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; o.rappels = o.rappels || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
+const EMPTY = () => ({ cards: {}, days: {}, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, hist: {}, log: [], prog: {}, progLast: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, rappels: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
+function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); delete o.xp; delete o.succes; o.log = Array.isArray(o.log) ? o.log : []; o.prog = o.prog || {}; o.progLast = o.progLast || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; o.rappels = o.rappels || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
-function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
+function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { if (!persist.warned) { persist.warned = true; toast("Enregistrement impossible : stockage du navigateur plein. Copiez le code de sauvegarde."); } } const d = document.querySelector("details.save"); if (d && d.open) refreshSaveBox(); }
 function save() { persist(); }
 function card(id) { return state.cards[id] || { s: 0, due: 0, n: 0, ok: 0 }; }
 // Journal des réponses, pour l'analyse des performances. Une entrée par réponse :
 // [horodatage en secondes, id, juste (1/0), mode (t test du jour, r révision, c chapitre), temps de réponse en secondes ou null,
 //  marche des révisions espacées avant la réponse (-1 nouvelle, null hors révisions espacées), 1 si la notion était due].
-const LOG_MAX = 50000;
+const LOG_MAX = 20000;
 let shownAt = 0; // affichage de la question en cours
 function record(id, ok, mode) {
   const c = card(id); const ex = EXO[id]; const it = SRS[id]; const now = Date.now();
@@ -598,6 +598,7 @@ function record(id, ok, mode) {
   if (!it) { moved = false; c.s = ok ? Math.min((c.s || 0) + 1, ACQUIS) : Math.max((c.s || 0) - 1, 0); } // calcul ou écriture : simple compteur de maîtrise du chapitre, hors révisions espacées
   else if (!seen) c.s = ok ? 1 : 0;
   else if (ok) { if (isDue) c.s = Math.min((c.s || 0) + 1, MAX_STEP); else moved = false; }
+  else if (!isDue && mode === "erreurs") moved = false; // séance « Mes erreurs » : entraînement, sans effet sur une notion pas encore due
   else c.s = Math.max((c.s || 0) - 1, 0);
   if (it && moved) c.due = dueAfter(c.s, now);
   c.last = now; if (!seen) c.first = todayKey();
@@ -793,31 +794,38 @@ function runSeries(host, list, labelFn, onEach, onEnd, progressEl) {
 // (matières du programme du jour d'abord), en commençant par les questions ratées, puis les questions jamais vues.
 function dailyPlan(dateKey) {
   const old = state.daily[dateKey];
-  if (old && old.ids && (old.v === 2 || old.done || Object.keys(old.answers || {}).length)) return old;
-  const rng = mulberry(hashStr(dateKey + "|dc2"));
+  if (old && old.ids && (old.v === 3 || old.done || Object.keys(old.answers || {}).length)) return old;
+  const rng = mulberry(hashStr(dateKey + "|dc3"));
   const N = 20; const chosen = [];
   chosen.push(...shuffle(dueList().filter(id => EXO[id]), rng).slice(0, 8));
   const prog = programmeDuJour().map(c => c.ue);
   const order = UES.map((u, i) => ({ code: u.code, i, p: prog.indexOf(u.code) })).sort((a, b) => (a.p < 0) - (b.p < 0) || a.p - b.p || ueMastery(a.code) - ueMastery(b.code) || a.i - b.i);
+  // Chapitres retenus : cours ouvert, ou chapitre du programme du jour ; à défaut, le premier chapitre de la matière.
+  // Une notion vue en révision ne suffit pas à faire entrer tout un chapitre dans le test.
+  const eligible = code => { const cs = ueChaps(code); const cur = prog.includes(code) ? currentChapter(code) : null; const o = cs.filter(c => state.read[c.id] || c === cur); return o.length ? o : cs.slice(0, 1); };
+  const byLast = (a, b) => (card(a).last || 0) - (card(b).last || 0);
   const pools = order.map(({ code }) => {
-    const cs = ueChaps(code); const cur = prog.includes(code) ? currentChapter(code) : null;
-    const ex = cs.filter(c => chapStarted(c) || c === cur).flatMap(c => c.exercices);
-    const failed = shuffle(ex.filter(e => card(e.id).n > 0 && (card(e.id).s || 0) === 0 && !SRS[e.id]).map(e => e.id), rng);
-    const fresh = shuffle(ex.filter(e => card(e.id).n === 0).map(e => e.id), rng);
-    return [...failed, ...fresh].filter(id => !chosen.includes(id));
+    const ex = eligible(code).flatMap(c => c.exercices).map(e => e.id).filter(id => !chosen.includes(id));
+    const seenEx = ex.filter(id => !SRS[id] && card(id).n > 0);
+    const failed = shuffle(seenEx.filter(id => (card(id).s || 0) === 0), rng);
+    const fresh = shuffle(ex.filter(id => card(id).n === 0), rng);
+    const toAcq = seenEx.filter(id => card(id).s > 0 && card(id).s < ACQUIS).sort(byLast); // vus, pas encore acquis, les plus anciens d'abord
+    const rest = seenEx.filter(id => card(id).s >= ACQUIS).sort(byLast);
+    return [...failed, ...fresh, ...toAcq, ...rest];
   });
-  for (let k = 0; chosen.length < N && pools.some(p => k < p.length); k++) for (const p of pools) { if (chosen.length >= N) break; if (k < p.length && !chosen.includes(p[k])) chosen.push(p[k]); }
-  // banque épuisée (début de parcours) : compléter avec le premier chapitre des matières suivantes, en alternance
-  if (chosen.length < N) { const more = UES.map(u => shuffle(ueChaps(u.code)[0].exercices.map(e => e.id), rng).filter(id => !chosen.includes(id))); for (let k = 0; chosen.length < N && more.some(p => k < p.length); k++) for (const p of more) { if (chosen.length >= N) break; if (k < p.length) chosen.push(p[k]); } }
-  // au moins 60 % de questions à choix, remplacées dans la même matière
+  // tour de rôle entre matières, plafonné : aucune matière ne remplit seule le test
+  const cap = Math.ceil((N - chosen.length) / Math.max(1, pools.filter(p => p.length).length)) + 1; const taken = pools.map(() => 0);
+  for (let k = 0; chosen.length < N && pools.some(p => k < p.length); k++) pools.forEach((p, j) => { if (chosen.length < N && k < p.length && taken[j] < cap && !chosen.includes(p[k])) { chosen.push(p[k]); taken[j]++; } });
+  for (let k = 0; chosen.length < N && pools.some(p => k < p.length); k++) pools.forEach(p => { if (chosen.length < N && k < p.length && !chosen.includes(p[k])) chosen.push(p[k]); });
+  // au moins 60 % de questions à choix, remplacées dans les chapitres retenus de la même matière
   const isQ = id => /^(qcm|multi)$/.test(EXO[id].type);
   let q = chosen.filter(isQ).length;
   for (let i = chosen.length - 1; i >= 0 && q < Math.ceil(N * 0.6); i--) {
     if (isQ(chosen[i])) continue; const ue = CHAP_BY[EXO[chosen[i]].chap].ue;
-    const alt = shuffle(ueChaps(ue).filter(c => chapStarted(c) || prog.includes(ue)).flatMap(c => c.exercices).filter(e => isQ(e.id) && !chosen.includes(e.id)).map(e => e.id), rng)[0];
+    const alt = shuffle(eligible(ue).flatMap(c => c.exercices).filter(e => isQ(e.id) && !chosen.includes(e.id)).map(e => e.id), rng)[0];
     if (alt) { chosen[i] = alt; q++; }
   }
-  const plan = { v: 2, ids: shuffle(chosen.slice(0, N), rng), answers: {}, done: false, score: 0 };
+  const plan = { v: 3, ids: shuffle(chosen.slice(0, N), rng), answers: {}, done: false, score: 0 };
   state.daily[dateKey] = plan; save();
   return plan;
 }
@@ -903,7 +911,7 @@ function renderAccueil() {
 ${compoBanner()}
 <h3>Cours du jour</h3>
 <p class="muted small" style="margin-top:-4px">${prog.length} matières aujourd'hui, en rotation : celles que vous n'avez pas travaillées depuis le plus longtemps passent en premier.</p>
-<div class="prog">${prog.map(c => { const m = chapMastery(c); return `<button class="next-chap" data-chap="${c.id}" style="${ucol(c.ue)}"><span class="code">${esc(c.ue)}</span><span><b>${esc(c.title)}</b><br><span class="muted small">Chapitre ${c.ordre} · ${esc(UE_BY[c.ue].nom)} · ${chapStarted(c) ? `${Math.round(m * 100)} % acquis` : "à commencer"}</span></span><span class="go">Ouvrir →</span></button>`; }).join("")}
+<div class="prog-list">${prog.map(c => { const m = chapMastery(c); return `<button class="next-chap" data-chap="${c.id}" style="${ucol(c.ue)}"><span class="code">${esc(c.ue)}</span><span><b>${esc(c.title)}</b><br><span class="muted small">Chapitre ${c.ordre} · ${esc(UE_BY[c.ue].nom)} · ${chapStarted(c) ? `${Math.round(m * 100)} % acquis` : "à commencer"}</span></span><span class="go">Ouvrir →</span></button>`; }).join("")}
 ${rap ? `<button class="next-chap" id="goRap" style="${ucol(RAP.ue.code)}"><span class="code">${esc(RAP.ue.code)}</span><span><b>Rappels : ${esc(rap.title)}</b><br><span class="muted small">${esc(RAP.ue.nom)} · une page à relire${state.rappels[rap.id] ? ` (relue le ${dateFr(state.rappels[rap.id])})` : ""}</span></span><span class="go">Lire →</span></button>` : ""}</div>
 ${planHTML()}
 <div class="stats">
@@ -917,7 +925,7 @@ ${planHTML()}
   const b1 = main.querySelector("#goSeance"); if (b1) b1.onclick = () => startSession("Tous", { chain: true });
   const b2 = main.querySelector("#goTest"); if (b2) b2.onclick = () => go({ tab: "test" });
   const b3 = main.querySelector("#goMore"); if (b3) b3.onclick = () => go({ tab: "revisions" });
-  main.querySelectorAll(".prog button[data-chap]").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.chap }));
+  main.querySelectorAll(".prog-list button[data-chap]").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.chap }));
   const gr = main.querySelector("#goRap"); if (gr) gr.onclick = () => { go({ tab: "rappels" }); const el = document.getElementById("r-" + rap.id); if (el) el.scrollIntoView(); };
   main.querySelector("#goAna").onclick = () => go({ tab: "analyse" });
 }
@@ -952,7 +960,7 @@ function renderFiches() {
   draw("");
 }
 function renderUe(code) {
-  const u = UE_BY[code]; const cs = ueChaps(code); const nc = cs.find(c => chapMastery(c) < 0.999); const mu = ueMastery(code);
+  const u = UE_BY[code]; const cs = ueChaps(code); const nc = currentChapter(code); const mu = ueMastery(code);
   const ids = SRS_IDS.filter(id => SRS[id].th === code);
   main.innerHTML = `<div class="crumb"><button id="back">← Toutes les matières</button></div>
 <div class="chead" style="${ucol(code)}"><div class="eyebrow"><b>${esc(u.code)}</b>${cs.length} chapitres</div><h2>${esc(u.nom)}</h2><p>${esc(u.intro)}</p><div class="kp"><span><b>${Math.round(mu * 100)} %</b> des exercices acquis</span><span><b>${fmt(memorized(ids))}</b> / ${fmt(ids.length)} notions mémorisées</span><span>${esc(u.programme)}</span></div></div>
@@ -1044,7 +1052,7 @@ function renderTest() {
     host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); host.querySelector("#toR").onclick = () => go({ tab: "revisions" });
   };
   if (!remaining.length) { finishScreen(); return; }
-  runSeries(host, remaining, chapLabel, (ex, ok) => { plan.answers[ex.id] = ok; moveNote(host, record(ex.id, ok, "test")); save(); }, finishScreen, { set textContent(v) { const done = list.length - remaining.length; const i = parseInt(v) || 0; prog.textContent = `Question ${done + i} / ${list.length}`; } });
+  runSeries(host, remaining, chapLabel, (ex, ok) => { plan.answers[ex.id] = ok; moveNote(host, record(ex.id, ok, "test")); }, finishScreen, { set textContent(v) { const done = list.length - remaining.length; const i = parseInt(v) || 0; prog.textContent = `Question ${done + i} / ${list.length}`; } });
 }
 
 // ---------- Révisions espacées ----------
@@ -1083,7 +1091,7 @@ function niceMax(v) { if (v <= 4) return 4; const p = Math.pow(10, Math.floor(Ma
 function bindTip(box, items) {
   const tip = box.querySelector(".tip");
   box.querySelectorAll("[data-i]").forEach(el => {
-    const show = () => { const it = items[+el.dataset.i]; tip.textContent = ""; const b = document.createElement("b"); b.textContent = it.v; tip.appendChild(b); tip.appendChild(document.createElement("br")); tip.appendChild(document.createTextNode(it.l)); const r = el.getBoundingClientRect(), br = box.getBoundingClientRect(); tip.classList.add("show"); const x = Math.min(Math.max(r.left - br.left + r.width / 2 - tip.offsetWidth / 2, 4), br.width - tip.offsetWidth - 4); tip.style.left = x + "px"; tip.style.top = Math.max(r.top - br.top - tip.offsetHeight - 6, 0) + "px"; if (el.dataset.x) { const xh = box.querySelector(".xh"); if (xh) { xh.setAttribute("x1", el.dataset.x); xh.setAttribute("x2", el.dataset.x); xh.style.display = ""; } } };
+    const show = () => { const it = items[+el.dataset.i]; tip.textContent = ""; const b = document.createElement("b"); b.textContent = it.v; tip.appendChild(b); tip.appendChild(document.createElement("br")); tip.appendChild(document.createTextNode(it.l)); const r = el.getBoundingClientRect(), br = box.getBoundingClientRect(); tip.classList.add("show"); const x = Math.min(Math.max(r.left - br.left + r.width / 2 - tip.offsetWidth / 2, 4), br.width - tip.offsetWidth - 4); tip.style.left = x + "px"; const above = r.top - br.top - tip.offsetHeight - 6; tip.style.top = (above >= 0 ? above : br.height + 4) + "px"; if (el.dataset.x) { const xh = box.querySelector(".xh"); if (xh) { xh.setAttribute("x1", el.dataset.x); xh.setAttribute("x2", el.dataset.x); xh.style.display = ""; } } };
     const hide = () => { tip.classList.remove("show"); const xh = box.querySelector(".xh"); if (xh) xh.style.display = "none"; };
     el.addEventListener("pointerenter", show); el.addEventListener("focus", show); el.addEventListener("pointerleave", hide); el.addEventListener("blur", hide);
   });
@@ -1172,9 +1180,9 @@ function startSession(th, opts) {
   const queue = [...due.slice(0, 60), ...fresh].map(itemObj).filter(Boolean);
   if (!queue.length) { renderRevisions(); return; }
   const moves = { up: 0, down: 0, stay: 0, nouv: 0 };
-  const fromHome = !!(opts && opts.chain);
-  const back = () => chapSess ? go({ tab: "chap", id: th, start: "cartes" }) : fromHome ? go({ tab: "accueil" }) : renderRevisions();
-  main.innerHTML = `<div class="crumb"><button id="back">← ${chapSess ? "Notions du chapitre" : fromHome ? "Accueil" : "Tableau des révisions"}</button><span class="progress" id="prog"></span></div><h2>Séance de révision</h2><p class="muted small">${due.length} notion${due.length > 1 ? "s" : ""} due${due.length > 1 ? "s" : ""}${due.length > 60 ? " (60 premières dans cette séance)" : ""} et ${fresh.length} nouvelle${fresh.length > 1 ? "s" : ""}. ${esc(thNom(th))}.</p><div id="host"></div>`;
+  const fromHome = !!(opts && opts.chain), fromAna = !!(opts && opts.from === "analyse");
+  const back = () => chapSess ? go({ tab: "chap", id: th, start: "cartes" }) : fromAna ? go({ tab: "analyse" }) : fromHome ? go({ tab: "accueil" }) : renderRevisions();
+  main.innerHTML = `<div class="crumb"><button id="back">← ${chapSess ? "Notions du chapitre" : fromAna ? "Analyse" : fromHome ? "Accueil" : "Tableau des révisions"}</button><span class="progress" id="prog"></span></div><h2>Séance de révision</h2><p class="muted small">${due.length} notion${due.length > 1 ? "s" : ""} due${due.length > 1 ? "s" : ""}${due.length > 60 ? " (60 premières dans cette séance)" : ""} et ${fresh.length} nouvelle${fresh.length > 1 ? "s" : ""}. ${esc(thNom(th))}.</p><div id="host"></div>`;
   main.querySelector("#back").onclick = back;
   const host = main.querySelector("#host");
   runSeries(host, queue, itemLabel, (ex, ok) => {
@@ -1223,17 +1231,27 @@ function renderPcg() {
 const PROG_N = 3;
 const dayKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 function lastActivity(code) { let best = null; for (const k in state.hist) { const h = state.hist[k]; if (h.ue && h.ue[code] && h.ue[code][0] && (!best || k > best)) best = k; } return best; }
-function currentChapter(code) { const cs = ueChaps(code); return cs.find(c => chapStarted(c) && chapMastery(c) < 0.999) || cs.find(c => chapMastery(c) < 0.999) || null; }
+// Chapitre parcouru : série d'exercices terminée au moins une fois et 70 % des exercices déjà réussis au moins une fois.
+// Ces compteurs ne font que croître : le chapitre du jour n'avance jamais à reculons après une erreur de révision.
+const chapParcouru = c => !!state.done[c.id] && c.exercices.filter(e => (card(e.id).ok || 0) > 0).length >= 0.7 * c.exercices.length;
+function currentChapter(code) { const cs = ueChaps(code); return cs.find(c => !chapParcouru(c)) || cs.find(c => chapMastery(c) < 0.999) || null; }
+// Rotation : une matière compte comme travaillée le dernier jour où elle était au programme ou travaillée en chapitre.
+// Les révisions espacées et le test du jour touchent toutes les matières chaque jour : ils ne comptent pas ici.
+function lastCours(code) {
+  let best = state.progLast[code] || null;
+  for (let i = state.log.length - 1; i >= 0; i--) { const x = state.log[i]; if (x[3] !== "c" || itemUe(x[1]) !== code) continue; const k = dayKey(new Date(x[0] * 1000)); if (!best || k > best) best = k; break; }
+  return best;
+}
 function programmeDuJour() {
   const k = todayKey(); const saved = state.prog[k];
   if (Array.isArray(saved) && saved.length && saved.every(id => CHAP_BY[id])) return saved.map(id => CHAP_BY[id]);
-  const today = k;
-  const cands = UES.map((u, i) => ({ i, c: currentChapter(u.code), last: lastActivity(u.code) })).filter(x => x.c);
-  // une matière déjà travaillée aujourd'hui compte comme travaillée la veille, pour ne pas l'exclure du programme du jour
-  cands.sort((a, b) => ((a.last === today ? "" : a.last) || "").localeCompare((b.last === today ? "" : b.last) || "") || a.i - b.i);
-  const pick = cands.slice(0, PROG_N).map(x => x.c.id);
-  state.prog = { [k]: pick }; persist();
-  return pick.map(id => CHAP_BY[id]);
+  const cands = UES.map((u, i) => ({ i, code: u.code, c: currentChapter(u.code), last: lastCours(u.code) })).filter(x => x.c);
+  // une matière déjà travaillée aujourd'hui, avant ce calcul, compte comme travaillée la veille
+  cands.sort((a, b) => ((a.last === k ? "" : a.last) || "").localeCompare((b.last === k ? "" : b.last) || "") || a.i - b.i);
+  const pick = cands.slice(0, PROG_N);
+  pick.forEach(x => { state.progLast[x.code] = k; });
+  state.prog = { [k]: pick.map(x => x.c.id) }; persist();
+  return pick.map(x => x.c);
 }
 // Page de rappels de l'UE1 conseillée : la première jamais relue, sinon celle relue il y a le plus longtemps.
 function rappelDuJour() { if (!RAP) return null; return RAP.pages.find(p => !state.rappels[p.id]) || RAP.pages.slice().sort((a, b) => state.rappels[a.id].localeCompare(state.rappels[b.id]))[0]; }
@@ -1275,7 +1293,7 @@ function hbars(rows, opts) {
 }
 // Courbe d'un taux (0 à 1) jour par jour ; les jours sans mesure ne sont pas tracés.
 function rateLineSVG(pts, opts) {
-  const o = opts || {}; const W = 640, H = 200, L = 40, R = 48, T = 14, B = 26, n = pts.length, step = n > 1 ? (W - L - R) / (n - 1) : 0;
+  const o = opts || {}; const W = o.w || 640, H = 200, L = 40, R = 48, T = 14, B = 26, n = pts.length, step = n > 1 ? (W - L - R) / (n - 1) : 0;
   const x = i => L + step * i, y = v => T + (H - T - B) * (1 - v);
   let g = `<g class="grid">${[0, 0.5, 1].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
   g += [0, 0.5, 1].map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)} %</text>`).join("");
@@ -1285,7 +1303,7 @@ function rateLineSVG(pts, opts) {
   g += `<line class="xh" x1="0" x2="0" y1="${T}" y2="${y(0)}" style="display:none"/>`;
   const lastI = pts.map((p, i) => p.v != null ? i : -1).filter(i => i >= 0).pop();
   if (lastI != null) g += `<circle class="dot" cx="${x(lastI)}" cy="${y(pts[lastI].v)}" r="4"${o.color ? ` style="fill:${o.color}"` : ""}/><text class="val" x="${x(lastI) + 8}" y="${y(pts[lastI].v) + 4}">${Math.round(pts[lastI].v * 100)} %</text>`;
-  const ticks = n <= 1 ? [0] : [0, Math.round((n - 1) / 3), Math.round(2 * (n - 1) / 3), n - 1];
+  const ticks = n <= 1 ? [0] : W < 420 ? [0, Math.round((n - 1) / 2), n - 1] : [0, Math.round((n - 1) / 3), Math.round(2 * (n - 1) / 3), n - 1];
   [...new Set(ticks)].forEach(i => { g += `<text x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === n - 1 ? "end" : "middle"}">${i === n - 1 && pts[i].k === todayKey() ? "auj." : new Date(pts[i].k + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</text>`; });
   pts.forEach((p, i) => { g += `<rect class="hit" data-i="${i}" data-x="${x(i)}" tabindex="-1" x="${x(i) - Math.max(step, 2) / 2}" y="${T}" width="${Math.max(step, 2)}" height="${H - T - B}"></rect>`; });
   g += `<g class="axis"><line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/></g>`;
@@ -1293,7 +1311,7 @@ function rateLineSVG(pts, opts) {
 }
 // Colonnes (volume) ; au-delà de 120 jours, regroupement par semaine.
 function volumeSVG(cols, opts) {
-  const o = opts || {}; const W = 640, H = 170, L = 36, R = 8, T = 16, B = 26, n = cols.length, slot = (W - L - R) / n, bw = Math.max(1.5, Math.min(18, slot * 0.7));
+  const o = opts || {}; const W = o.w || 640, H = 170, L = 36, R = 8, T = 16, B = 26, n = cols.length, slot = (W - L - R) / n, bw = Math.max(1.5, Math.min(18, slot * 0.7));
   const max = niceMax(Math.max(1, ...cols.map(d => d.n))); const y = v => T + (H - T - B) * (1 - v / max);
   let g = `<g class="grid">${[0, max / 2, max].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
   g += [0, max / 2, max].map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`).join("");
@@ -1311,7 +1329,7 @@ function volumeSVG(cols, opts) {
 function priorites(ctx) {
   const out = [];
   const due = dueFor("Tous").length;
-  if (due) out.push({ ic: "↻", t: `<b>${due} notion${due > 1 ? "s" : ""} en attente de révision.</b> Une révision faite à temps fixe la notion ; en retard, elle se perd.`, act: "Réviser", go: () => startSession("Tous", { chain: true }) });
+  if (due) out.push({ ic: "↻", t: `<b>${due} notion${due > 1 ? "s" : ""} en attente de révision.</b> Une révision faite à temps fixe la notion ; en retard, elle se perd.`, act: "Réviser", go: () => startSession("Tous", { from: "analyse" }) });
   const errs = errorItems().length;
   if (errs >= 3) out.push({ ic: "✎", t: `<b>${errs} questions ratées à la dernière tentative.</b> Les reprendre tant qu'elles sont fraîches.`, act: "Retravailler mes erreurs", go: startErreurs });
   ctx.weakChaps.slice(0, 2).forEach(c => out.push({ ic: "!", t: `<b>${esc(c.ch.ue)} · ${esc(c.ch.title)}</b> : ${Math.round(c.r * 100)} % de réussite sur ${c.n} réponses. Relire le cours avant de refaire les exercices.`, act: "Relire le cours", go: () => go({ tab: "chap", id: c.ch.id }) }));
@@ -1347,6 +1365,7 @@ function startErreurs() {
   window.scrollTo({ top: 0 });
 }
 function renderAnalyse() {
+  const cw = Math.round(Math.max(280, Math.min(640, (main.clientWidth || 640) - 22)));
   const nd = periodDays(anaPer); const keys = keysBack(nd); const prevKeys = anaPer ? keysBack(nd, nd) : [];
   const tot = sumHist(keys), prev = anaPer ? sumHist(prevKeys) : { r: null };
   const daysOn = keys.filter(k => state.hist[k] && state.hist[k].n).length;
@@ -1370,7 +1389,7 @@ function renderAnalyse() {
   const byNiv = aggCards(id => EXO[id] ? (EXO[id].niveau || 1) : null);
   const byNat = aggCards(id => EXO[id] ? (EXO[id].nature === "notion" ? "Définitions et compréhension" : EXO[id].nature === "chiffre" ? "Chiffres de l'année" : "Calculs et écritures") : CARTE[id] ? "Définitions et compréhension" : null);
   // Évolution : taux glissant sur 7 jours, matière choisie
-  const evo = keys.map((k, i) => { const w = keys.slice(Math.max(0, i - 6), i + 1); const s = sumHist(w, anaUe); return { k, v: s.n >= 5 ? s.r : null, n: s.n, ok: s.ok }; });
+  const ext = keysBack(nd + 6); const evo = keys.map((k, i) => { const w = ext.slice(i, i + 7); const s = sumHist(w, anaUe); return { k, v: s.n >= 5 ? s.r : null, n: s.n, ok: s.ok }; });
   const weekly = nd > 120;
   const vol = []; if (weekly) { for (let i = 0; i < keys.length; i += 7) { const w = keys.slice(i, i + 7); const s = sumHist(w, anaUe); vol.push({ n: s.n, ok: s.ok, lab: new Date(w[0] + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" }), tip: `Semaine du ${new Date(w[0] + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}` }); } }
   else keys.forEach((k, i) => { const s = sumHist([k], anaUe); vol.push({ n: s.n, ok: s.ok, lab: i === keys.length - 1 ? "auj." : new Date(k + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" }), tip: new Date(k + "T12:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) }); });
@@ -1410,9 +1429,9 @@ ${hbars(ues.map(u => ({ code: u.code, label: u.nom, v: u.r, sub: u.n ? ` · ${fm
 <h3>Évolution</h3>
 <div class="chips" role="group" aria-label="Matière">${["Tous", ...UES.map(u => u.code)].map(c => `<button data-ana-ue="${c}" aria-pressed="${c === anaUe}" ${c === "Tous" ? "" : `style="${ucol(c)}"`}>${c === "Tous" ? "Toutes matières" : c}</button>`).join("")}</div>
 <p class="muted small">Réussite sur les 7 derniers jours glissants (tracée dès 5 réponses dans la fenêtre)${anaUe === "Tous" ? "" : ` · ${esc(UE_BY[anaUe].nom)}`}.</p>
-<div class="chart" id="chEvo">${rateLineSVG(evo, { label: "Réussite sur 7 jours glissants", color: anaUe === "Tous" ? null : `var(--c-${anaUe})` })}<div class="tip"></div></div>
+<div class="chart" id="chEvo">${rateLineSVG(evo, { w: cw, label: "Réussite sur 7 jours glissants", color: anaUe === "Tous" ? null : `var(--c-${anaUe})` })}<div class="tip"></div></div>
 <p class="muted small" style="margin-top:12px">Réponses par ${weekly ? "semaine" : "jour"}.</p>
-<div class="chart" id="chVol">${volumeSVG(vol, { label: "Nombre de réponses" })}<div class="tip"></div></div>
+<div class="chart" id="chVol">${volumeSVG(vol, { w: cw, label: "Nombre de réponses" })}<div class="tip"></div></div>
 <h3>Points faibles</h3>
 <div class="grid2">
 <div><h4>Chapitres les plus fragiles</h4>${weakChaps.length ? `<ol class="weak">${weakChaps.slice(0, 8).map(c => `<li style="${ucol(c.ch.ue)}"><button class="linkbtn" data-chap="${c.ch.id}"><span class="dotc"></span>${esc(c.ch.ue)} · ${esc(c.ch.title)}</button><span class="mono small">${Math.round(c.r * 100)} % · ${c.n} rép.</span></li>`).join("")}</ol>` : `<p class="muted small">Aucun chapitre sous 60 % de réussite (à partir de 8 réponses).</p>`}</div>
@@ -1432,7 +1451,7 @@ ${plateauHTML(SRS_IDS)}
 <p class="muted small">Série en cours : ${streak()} jour${streak() > 1 ? "s" : ""}. ${Object.keys(bySlot).length ? `Réussite selon le moment ${perLbl} : ${Object.entries(bySlot).map(([k, o]) => `${k.split(" (")[0].toLowerCase()} ${Math.round(o.ok / o.n * 100)} % (${o.n})`).join(" · ")}.` : ""}</p>
 ${heat.html}
 <h3>Tests du jour</h3>
-${tests.length ? `<p class="muted small">${tests.length} test${tests.length > 1 ? "s" : ""} ${perLbl} · moyenne ${Math.round(tests.reduce((a, t) => a + t.v, 0) / tests.length * 100)} % · meilleur ${Math.round(Math.max(...tests.map(t => t.v)) * 100)} %.</p><div class="chart" id="chTest">${rateLineSVG(testPts, { label: "Score des tests du jour", connect: true })}<div class="tip"></div></div>` : `<p class="muted small">Aucun test du jour terminé ${perLbl}.</p>`}
+${tests.length ? `<p class="muted small">${tests.length} test${tests.length > 1 ? "s" : ""} ${perLbl} · moyenne ${Math.round(tests.reduce((a, t) => a + t.v, 0) / tests.length * 100)} % · meilleur ${Math.round(Math.max(...tests.map(t => t.v)) * 100)} %.</p><div class="chart" id="chTest">${rateLineSVG(testPts, { w: cw, label: "Score des tests du jour", connect: true })}<div class="tip"></div></div>` : `<p class="muted small">Aucun test du jour terminé ${perLbl}.</p>`}
 ${ANN_KEYS.length ? `<h3>Annales</h3>${ann.length ? `<div class="twrap"><table class="ana" style="min-width:0"><thead><tr><th>Matière</th><th>Compositions</th><th>Meilleure note</th><th>Dernière note</th></tr></thead><tbody>${ann.map(a => `<tr style="${ucol(a.code)}"><td><span class="dotc"></span>${esc(a.code)} <span class="small muted">${esc(a.nom)}</span></td><td class="n">${a.n}</td><td class="n">${note20(a.best)}</td><td class="n">${note20(a.lastE.note)} <span class="small muted">(${dateFr(a.lastE.date)})</span></td></tr>`).join("")}</tbody></table></div>` : `<p class="muted small">Aucune annale composée pour l'instant.</p>`}` : ""}
 <details class="datatab"><summary>Voir les données des graphiques</summary><table><thead><tr><th>Jour</th><th>Réponses</th><th>Justes</th><th>Réussite 7 j</th></tr></thead><tbody>${evo.filter(d => state.hist[d.k] && state.hist[d.k].n).map(d => { const s = sumHist([d.k], anaUe); return `<tr><td>${new Date(d.k + "T12:00").toLocaleDateString("fr-FR")}</td><td>${s.n}</td><td>${s.ok}</td><td>${pct(d.v)}</td></tr>`; }).join("") || `<tr><td colspan="4">Aucune réponse sur la période.</td></tr>`}</tbody></table>
 <table><thead><tr><th>Chapitre</th><th>Réponses</th><th>Réussite</th><th>Exercices tentés</th><th>Série terminée</th></tr></thead><tbody>${chaps.map(c => `<tr><td>${esc(c.ch.ue)} · ${esc(c.ch.title)}</td><td>${c.n}</td><td>${pct(c.r)}</td><td>${Math.round(c.cov * 100)} %</td><td>${c.done ? "oui" : "non"}</td></tr>`).join("")}</tbody></table></details>`;
@@ -1577,9 +1596,13 @@ function go(v) {
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go({ tab: b.dataset.tab }));
 document.getElementById("brand").onclick = () => go({ tab: "accueil" });
+// Les graphiques de l'analyse sont dessinés à la largeur réelle : on les redessine si la fenêtre change de largeur.
+let resizeT = 0, lastW = innerWidth;
+window.addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => { if (view.tab === "analyse" && Math.abs(innerWidth - lastW) > 40) { lastW = innerWidth; const y = window.scrollY; renderAnalyse(); addSubnav("analyse"); window.scrollTo({ top: y }); } }, 250); });
 
 // ---------- Sauvegarde ----------
 function refreshSaveBox() { const box = document.getElementById("saveBox"); if (box && document.activeElement !== box) { try { box.value = btoa(unescape(encodeURIComponent(JSON.stringify(state)))); } catch (e) { } } }
+document.querySelector("details.save").addEventListener("toggle", e => { if (e.target.open) refreshSaveBox(); });
 document.getElementById("copySave").onclick = () => { const box = document.getElementById("saveBox"); refreshSaveBox(); (navigator.clipboard ? navigator.clipboard.writeText(box.value) : Promise.reject()).then(() => toast("Code copié.")).catch(() => { box.select(); toast("Sélectionnez et copiez le code."); }); };
 document.getElementById("restoreSave").onclick = () => { const box = document.getElementById("saveBox"); try { const s = JSON.parse(decodeURIComponent(escape(atob(box.value.trim())))); if (!s.cards) throw 0; state = normalize(s); save(); go({ tab: "accueil" }); toast("Progression restaurée."); } catch (e) { toast("Code illisible."); } };
 let resetArmed = false;
