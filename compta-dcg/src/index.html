@@ -486,7 +486,7 @@ ol.worst .q { display: block; }
       <button role="tab" data-tab="analyse" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg><span>Analyse</span></button>
     </nav>
   </header>
-  <main id="main"><div class="boot-msg" id="bootMsg"><b>Chargement de l'application…</b><br>Si ce message reste affiché, le fichier est ouvert dans un aperçu qui n'exécute pas le JavaScript (aperçu de fichiers du téléphone, de la messagerie ou d'un stockage en ligne). Enregistrez le fichier sur l'ordinateur, puis ouvrez-le avec Chrome, Edge, Firefox ou Safari (clic droit, « Ouvrir avec »).</div></main>
+  <main id="main"><div class="boot-msg" id="bootMsg"><b>Chargement de l'application…</b><br>Si ce message reste affiché, le fichier est ouvert dans un aperçu qui n'exécute pas le JavaScript (visionneuse de fichiers du téléphone, de la messagerie ou d'un stockage en ligne).<br><b>Sur ordinateur :</b> enregistrez le fichier, puis ouvrez-le avec Chrome, Edge, Firefox ou Safari (clic droit, « Ouvrir avec »).<br><b>Sur téléphone :</b> utilisez la version en ligne dans votre navigateur, ou ouvrez ce fichier avec Chrome (application Fichiers, appui long sur le fichier, « Ouvrir avec », Chrome).</div></main>
   <noscript><div class="boot-msg"><b>JavaScript est désactivé.</b> L'application en a besoin : ouvrez le fichier avec Chrome, Edge, Firefox ou Safari, JavaScript activé.</div></noscript>
   <details class="save">
     <summary>Sauvegarde, transfert et informations</summary>
@@ -601,6 +601,8 @@ function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >
 const EMPTY = () => ({ cards: {}, days: {}, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, hist: {}, log: [], prog: {}, progLast: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, rappels: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
 function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); delete o.xp; delete o.succes; o.log = Array.isArray(o.log) ? o.log : []; o.prog = o.prog || {}; o.progLast = o.progLast || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; o.rappels = o.rappels || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
+// Le stockage local peut être refusé selon la façon dont le fichier est ouvert (certains navigateurs de téléphone).
+let storageOk = true; try { localStorage.setItem("_t", "1"); localStorage.removeItem("_t"); } catch (e) { storageOk = false; }
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { if (!persist.warned) { persist.warned = true; toast("Enregistrement impossible : stockage du navigateur plein. Copiez le code de sauvegarde."); } } const d = document.querySelector("details.save"); if (d && d.open) refreshSaveBox(); }
 function save() { persist(); }
@@ -928,7 +930,7 @@ function renderAccueil() {
   </ol>
   <div class="go">${btn}</div>
 </section>
-${compoBanner()}
+${storageOk ? "" : `<div class="boot-msg" role="alert" style="margin-top:14px"><b>Votre progression ne peut pas être enregistrée</b> avec ce mode d'ouverture : le navigateur refuse le stockage local. Sur téléphone, utilisez la version en ligne ; sinon, copiez le code de sauvegarde (en bas de page) avant de fermer.</div>`}${compoBanner()}
 <h3>Cours du jour</h3>
 <p class="muted small" style="margin-top:-4px">${prog.length} matières aujourd'hui, en rotation : celles que vous n'avez pas travaillées depuis le plus longtemps passent en premier.</p>
 <div class="prog-list">${prog.map(c => { const m = chapMastery(c); return `<button class="next-chap" data-chap="${c.id}" style="${ucol(c.ue)}"><span class="code">${esc(c.ue)}</span><span><b>${esc(c.title)}</b><br><span class="muted small">Chapitre ${c.ordre} · ${esc(UE_BY[c.ue].nom)} · ${chapStarted(c) ? `${Math.round(m * 100)} % acquis` : "à commencer"}</span></span><span class="go">Ouvrir →</span></button>`; }).join("")}
