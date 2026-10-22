@@ -1,6 +1,6 @@
 <title>Objectif DSCG</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Réviser le DCG pour viser le DSCG : cours, fiches officielles, révisions espacées, test du jour et un observatoire à remplir.">
+<meta name="description" content="Réviser le DCG pour viser le DSCG : cours, fiches officielles, révisions espacées, test du jour, annales et analyse de vos performances.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -58,9 +58,6 @@ header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; 
 .reticle::after { content: ""; position: absolute; inset: 0; background: linear-gradient(var(--ink), var(--ink)) center / 2px 100% no-repeat, linear-gradient(var(--ink), var(--ink)) center / 100% 2px no-repeat; -webkit-mask: radial-gradient(circle, transparent 2.5px, #000 3px, #000 8px, transparent 8.5px); mask: radial-gradient(circle, transparent 2.5px, #000 3px, #000 8px, transparent 8.5px); }
 .brand .dscg { background: linear-gradient(90deg, var(--c-UE2), var(--c-PCG) 22%, var(--c-UE3) 38%, var(--c-UE9) 55%, var(--c-UE10) 70%, var(--c-UE4) 85%, var(--c-UE6)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .tagline { display: none; }
-.rank { margin-left: auto; display: flex; align-items: center; gap: 8px; font: 600 0.82rem var(--body); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px 5px 6px; white-space: nowrap; }
-.rank .lvl { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 700 0.75rem var(--mono); }
-.rank .xp { font: 500 0.78rem var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 nav.tabs { display: flex; gap: 4px; }
 nav.tabs button { position: relative; display: flex; align-items: center; gap: 7px; background: none; border: none; color: var(--muted); font: 600 0.93rem var(--body); padding: 8px 12px; cursor: pointer; border-radius: 999px; white-space: nowrap; }
 nav.tabs button svg { width: 19px; height: 19px; flex: none; }
@@ -75,7 +72,6 @@ nav.tabs button[aria-selected="true"] { color: var(--accent); background: var(--
   nav.tabs .lg-l { display: none; } nav.tabs .sm-l { display: inline; }
   nav.tabs .badge { position: absolute; top: 1px; left: calc(50% + 6px); margin: 0; }
   .wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
-  .rank .xp { display: none; }
 }
 button:focus-visible, select:focus-visible, input:focus-visible, .row:focus-visible, .acct:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .badge { display: inline-block; min-width: 1.5em; text-align: center; padding: 0 5px; border-radius: 999px; background: var(--margin); color: var(--card); font: 600 0.68rem/1.5 var(--mono); margin-left: 2px; }
@@ -129,7 +125,7 @@ p { margin: 0 0 10px; max-width: 70ch; }
 .lesson table { border-collapse: collapse; margin: 8px 0 12px; font-size: 0.92rem; }
 .lesson th, .lesson td { border: 1px solid var(--rule); padding: 5px 8px; text-align: left; vertical-align: top; }
 .lesson th { background: var(--rule-soft); font-weight: 600; }
-.twrap-l { overflow-x: auto; }
+.twrap-l, .twrap { overflow-x: auto; max-width: 100%; }
 .note { border-left: 4px solid var(--c, var(--accent)); padding: 10px 14px; background: color-mix(in srgb, var(--c, var(--accent)) 9%, var(--card)); margin: 14px 0; max-width: 70ch; border-radius: 0 12px 12px 0; }
 .note b { color: var(--ink); }
 code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--rule-soft); padding: 0 4px; border-radius: 3px; }
@@ -222,9 +218,6 @@ tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
 .acct-body p { max-width: 72ch; }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
 .filters label { font-size: 0.86rem; color: var(--muted); display: flex; gap: 4px; align-items: center; }
-.sky { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: var(--sky1); margin-bottom: 14px; }
-.sky canvas { display: block; width: 100%; height: auto; }
-.sky .legend { position: absolute; right: 12px; bottom: 10px; text-align: right; color: #dfe7f3; font: 500 0.78rem var(--mono); letter-spacing: 0.05em; text-transform: uppercase; text-shadow: 0 1px 2px #000; }
 .hist { display: flex; gap: 3px; align-items: flex-end; height: 70px; margin: 8px 0 4px; }
 .hist i { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-width: 4px; opacity: 0.85; }
 .hist i.none { background: var(--rule-soft); }
@@ -233,8 +226,6 @@ details.save summary { cursor: pointer; }
 details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono); margin-top: 8px; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 8px; }
 .toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); z-index: 45; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 90vw; }
 .toast.show { opacity: 1; }
-.xp-pop { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(96px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: var(--card); font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
-.xp-pop.show { opacity: 1; transform: translateY(0); }
 .ladder { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; margin: 10px 0 4px; max-width: 640px; }
 .ladder span { text-align: center; font: 500 0.74rem var(--mono); padding: 6px 2px; border-radius: 4px; }
 .plat { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; }
@@ -299,9 +290,6 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .chead { border-radius: 20px; padding: clamp(16px, 4vw, 24px); background: color-mix(in srgb, var(--c) 11%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 30%, var(--rule)); display: grid; gap: 8px; margin-bottom: 16px; }
 .chead .eyebrow { color: var(--ink); }
 .chead .eyebrow b { color: var(--o); background: var(--c); border-radius: 6px; padding: 1px 7px; margin-right: 6px; letter-spacing: 0.02em; }
-.cible { display: inline-flex; align-items: center; gap: 8px; font-size: 0.86rem; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 12px 4px 6px; justify-self: start; }
-.cible .reti { width: 18px; height: 18px; flex: none; color: var(--c); }
-.cible .des { font: 600 0.8rem var(--mono); }
 .chead h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); }
 .chead p { margin: 0; color: var(--muted); }
 .chead .kp { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.86rem; color: var(--muted); }
@@ -309,34 +297,6 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .ref-note { font-size: 0.86rem; color: var(--muted); margin: 10px 0 0; }
 .fiche details.fref { border: 1px solid var(--rule); border-radius: 12px; padding: 10px 14px; margin: 10px 0; background: var(--paper); }
 .fiche details.fref summary { cursor: pointer; font-weight: 600; }
-.obs-sky { position: relative; border-radius: 22px; overflow: hidden; background: var(--night1); border: 1px solid var(--night-line); }
-.obs-sky canvas { display: block; width: 100%; height: auto; }
-.obs-sky .cap { padding: 10px 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--night-muted); font: 500 0.76rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; pointer-events: none; }
-.instr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 14px; margin: 16px 0; }
-.instr .now { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
-.instr .now b { font: 700 1.35rem var(--display); letter-spacing: -0.01em; }
-.instr .now .ap { font: 500 0.85rem var(--mono); color: var(--muted); }
-.instr ol { list-style: none; margin: 0; padding: 10px; background: var(--card); border: 1px solid var(--rule); border-radius: 18px; display: grid; gap: 2px; }
-.instr li { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 10px; font-size: 0.9rem; color: var(--muted); }
-.instr li .i { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--rule); justify-self: center; }
-.instr li.got { color: var(--ink); }
-.instr li.got .i { background: var(--accent); border-color: var(--accent); }
-.instr li.cur { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
-.instr li .x { font: 500 0.78rem var(--mono); font-variant-numeric: tabular-nums; }
-.spectre { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; margin: 8px 0 4px; }
-.spectre div { border-radius: 10px; padding: 8px 8px 7px; background: var(--c); color: var(--o); display: grid; gap: 1px; min-width: 0; }
-.spectre b { font: 700 0.82rem var(--body); overflow-wrap: anywhere; }
-.spectre span { font: 500 0.7rem var(--mono); opacity: 0.9; }
-.cat { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
-.obj { display: grid; gap: 3px; text-align: left; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 11px 13px; cursor: pointer; color: inherit; font: inherit; }
-.obj:hover { border-color: var(--c); }
-.obj .des { font: 700 1.05rem var(--mono); color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
-.obj .nm { font-weight: 600; }
-.obj .ty { font-size: 0.8rem; color: var(--muted); }
-.obj .ch { font-size: 0.8rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 5px; margin-top: 3px; }
-.obj.seen { border-color: color-mix(in srgb, var(--c) 45%, var(--rule)); background: color-mix(in srgb, var(--c) 7%, var(--card)); }
-.obj .pill.seen { background: var(--c); color: var(--o); }
-@media (max-width: 700px) { .instr { grid-template-columns: 1fr; } .spectre { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .plan-card { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 16px 18px; display: grid; gap: 10px; margin-top: 16px; }
 .plan-card .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; }
 .plan-card .j { font: 800 1.9rem var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
@@ -348,6 +308,39 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .plan-card .verdict { font-size: 0.92rem; }
 .plan-card .verdict.ok { color: var(--ok); } .plan-card .verdict.late { color: var(--bad); }
 .plan-card form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+/* Analyse */
+.prog { display: grid; gap: 8px; }
+.hb { display: grid; gap: 6px; margin: 8px 0 12px; }
+.hb-row { display: grid; grid-template-columns: minmax(0, 15rem) minmax(60px, 1fr) 7.5rem; gap: 10px; align-items: center; }
+.hb-l { display: flex; gap: 8px; align-items: center; min-width: 0; font-size: 0.9rem; }
+.hb-l .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hb-l .code { font: 700 0.74rem var(--mono); color: var(--o); background: var(--c); border-radius: 6px; padding: 2px 6px; flex: none; }
+.hb-t { height: 12px; background: var(--rule-soft); border-radius: 4px; overflow: hidden; }
+.hb-t i { display: block; height: 100%; background: var(--viz1); border-radius: 0 4px 4px 0; }
+.hb-t.id i { background: var(--c); }
+.hb-v { font: 600 0.88rem var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hb-v small { font-weight: 400; color: var(--muted); }
+@media (max-width: 560px) { .hb-row { grid-template-columns: minmax(0, 1fr) 6.5rem; } .hb-t { grid-column: 1 / -1; grid-row: 2; } }
+table.ana { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.88rem; background: var(--card); }
+table.ana th { text-align: left; font: 500 0.7rem var(--mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+table.ana td { padding: 7px 8px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; }
+table.ana td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.up { color: var(--ok); font-weight: 600; } .down { color: var(--bad); font-weight: 600; }
+.dg { display: inline-flex; gap: 5px; align-items: center; font: 600 0.78rem var(--body); padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.dg.good { background: var(--ok-soft); color: var(--ok); } .dg.warn { background: var(--warn-soft); color: var(--warn); } .dg.bad { background: var(--bad-soft); color: var(--bad); } .dg.none { background: var(--rule-soft); color: var(--muted); }
+ol.prio { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+ol.prio li { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 14px; }
+ol.prio .pi { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+@media (max-width: 560px) { ol.prio li { grid-template-columns: 30px minmax(0, 1fr); } ol.prio li .btn { grid-column: 2; justify-self: start; } }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 6px 24px; }
+.grid2 h4, main h4 { margin: 14px 0 4px; font: 600 0.95rem var(--display); }
+ol.weak, ol.worst { margin: 6px 0 0; padding-left: 1.4em; display: grid; gap: 6px; font-size: 0.9rem; }
+ol.weak li, ol.worst li { padding-left: 2px; }
+ol.weak li { display: list-item; }
+ol.weak .linkbtn { text-align: left; }
+.grid2 .hb-row { grid-template-columns: minmax(0, 1fr) 7rem; } .grid2 .hb-t { grid-column: 1 / -1; grid-row: 2; }
+ol.weak .mono, ol.worst .mono { display: block; color: var(--muted); }
+ol.worst .q { display: block; }
 /* Rappels (UE1) */
 .rappel { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--c); border-radius: 16px; padding: 14px clamp(14px, 3vw, 20px); margin-top: 14px; scroll-margin-top: 80px; }
 .rappel h3 { margin: 0 0 2px; }
@@ -460,32 +453,16 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .tip { position: absolute; pointer-events: none; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 9px; font-size: 0.8rem; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); opacity: 0; transition: opacity .12s; white-space: nowrap; z-index: 5; }
 .tip b { font-size: 0.95rem; }
 .tip.show { opacity: 1; }
-.datatab { font-size: 0.82rem; }
+.datatab { font-size: 0.82rem; max-width: 100%; overflow-x: auto; }
 .datatab table { border-collapse: collapse; margin-top: 6px; }
 .datatab td, .datatab th { padding: 3px 10px 3px 0; text-align: left; font-variant-numeric: tabular-nums; }
 .setting { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.86rem; color: var(--muted); }
 .setting select { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 8px; }
 @media (max-width: 480px) { .plat .cell .l { font-size: 0.6rem; } .plat .cell .v { font-size: 0.92rem; } }
-.sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
-.succ { border: 1px solid var(--rule); border-radius: 14px; padding: 12px 14px; background: var(--card); display: grid; grid-template-columns: 42px 1fr; gap: 3px 10px; align-content: start; }
-.succ .ic { font-size: 1.6rem; line-height: 1.1; grid-row: span 4; text-align: center; }
-.succ.locked .ic { filter: grayscale(1); opacity: 0.45; }
-.succ.locked b { color: var(--muted); }
-.succ .d { font-size: 0.84rem; color: var(--muted); }
-.succ .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font: 0.74rem var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-.succ .bar { margin-top: 2px; }
-.succ.unlocked.or { border-color: var(--gold); }
-.succ.unlocked.argent { border-color: var(--silver); }
-.tier { font: 500 0.66rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 7px; border-radius: 999px; border: 1px solid currentColor; }
-.tier.bronze { color: var(--bronze); } .tier.argent { color: var(--silver); } .tier.or { color: var(--gold); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
 .chips button { font: 500 0.84rem var(--body); border: 1px solid var(--rule); background: var(--card); color: var(--muted); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
 .chips button[aria-pressed="true"] { border-color: var(--c, var(--accent)); color: var(--ink); background: color-mix(in srgb, var(--c, var(--accent)) 14%, var(--card)); }
-.succ-pop { position: fixed; left: 50%; top: calc(16px + env(safe-area-inset-top, 0px)); transform: translate(-50%, -12px); background: var(--card); color: var(--ink); border: 1px solid var(--gold); border-radius: 10px; padding: 10px 16px; display: flex; gap: 12px; align-items: center; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none; z-index: 50; max-width: 92vw; width: max-content; }
-.succ-pop.show { opacity: 1; transform: translate(-50%, 0); }
-.succ-pop .ic { font-size: 1.9rem; }
-.succ-pop .k { font: 500 0.7rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
-@media (prefers-reduced-motion: reduce) { .toast, .xp-pop, .succ-pop { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 @media (max-width: 480px) {
   .row { grid-template-columns: 40px 1fr; }
   .row .right { grid-column: 2; text-align: left; }
@@ -503,9 +480,8 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
       <button role="tab" data-tab="revisions" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="2.5"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/></svg><span>Réviser</span><span class="badge zero" id="dueBadge">0</span></button>
       <button role="tab" data-tab="matieres" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20v3H6.5"/></svg><span>Cours</span></button>
       <button role="tab" data-tab="pcg" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M12 3v18M3 9h18M3 15h18"/></svg><span>Comptes</span></button>
-      <button role="tab" data-tab="observatoire" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 15 13-7 2 4-13 7z"/><path d="m11 14-2 7M12 14l3 7"/><path d="M17 8l1.5-1"/><circle cx="20.5" cy="4.5" r="1"/></svg><span>Progression</span><span class="badge zero" id="succBadge">0</span></button>
+      <button role="tab" data-tab="analyse" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg><span>Analyse</span></button>
     </nav>
-    <div class="rank" id="rankBox"></div>
   </header>
   <main id="main"></main>
   <details class="save">
@@ -521,8 +497,6 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
   </details>
 </div>
 <div class="toast" id="toast"></div>
-<div class="xp-pop" id="xpPop"></div>
-<div class="succ-pop" id="succPop" role="status" aria-live="polite"></div>
 <script>
 const DATA = /*__DATA__*/null;
 </script>
@@ -604,13 +578,18 @@ const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "E
 const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
 function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
 function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, rappels: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
-function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; o.rappels = o.rappels || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
+const EMPTY = () => ({ cards: {}, days: {}, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, hist: {}, log: [], prog: {}, newIntro: {}, newPerDay: 10, exam: null, annales: {}, compo: null, rappels: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0, early: 0, late: 0, sessions: 0, perfect: 0 } });
+function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); delete o.xp; delete o.succes; o.log = Array.isArray(o.log) ? o.log : []; o.prog = o.prog || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; o.annales = o.annales || {}; o.rappels = o.rappels || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
-function save() { persist(); clearTimeout(save.h); save.h = setTimeout(() => checkSucces(false), 0); }
+function save() { persist(); }
 function card(id) { return state.cards[id] || { s: 0, due: 0, n: 0, ok: 0 }; }
+// Journal des réponses, pour l'analyse des performances. Une entrée par réponse :
+// [horodatage en secondes, id, juste (1/0), mode (t test du jour, r révision, c chapitre), temps de réponse en secondes ou null,
+//  marche des révisions espacées avant la réponse (-1 nouvelle, null hors révisions espacées), 1 si la notion était due].
+const LOG_MAX = 50000;
+let shownAt = 0; // affichage de la question en cours
 function record(id, ok, mode) {
   const c = card(id); const ex = EXO[id]; const it = SRS[id]; const now = Date.now();
   const seen = (c.n || 0) > 0; const from = seen ? (c.s || 0) : null; const isDue = !seen || c.due <= now;
@@ -627,11 +606,10 @@ function record(id, ok, mode) {
   const h = state.hist[d] || (state.hist[d] = { n: 0, ok: 0, ue: {} }); h.n++; if (ok) h.ok++;
   const ue = it ? it.th : ex && CHAP_BY[ex.chap] ? CHAP_BY[ex.chap].ue : "?"; const hu = h.ue[ue] || (h.ue[ue] = [0, 0]); hu[0]++; if (ok) hu[1]++;
   if (it) { h.r = h.r || [0, 0]; h.r[0]++; if (ok) h.r[1]++; h.ru = h.ru || {}; const hr = h.ru[it.th] || (h.ru[it.th] = [0, 0]); hr[0]++; if (ok) hr[1]++; }
-  if (ok) { state.stats.run++; state.stats.best = Math.max(state.stats.best, state.stats.run); } else state.stats.run = 0;
-  if (mode === "revision") state.stats.revs++;
-  const hr = new Date().getHours(); if (hr < 7) state.stats.early++; if (hr >= 22) state.stats.late++;
-  if (ok) addXp(ex ? (mode === "revision" ? 5 : 10) * (ex.niveau || 1) : 5);
-  save(); updateBadge(); renderRank();
+  const dt = shownAt ? Math.round((now - shownAt) / 1000) : null;
+  state.log.push([Math.round(now / 1000), id, ok ? 1 : 0, mode === "test" ? "t" : mode === "revision" ? "r" : mode === "erreurs" ? "e" : "c", dt != null && dt <= 1800 ? dt : null, it ? (seen ? from : -1) : null, it && seen && isDue ? 1 : 0]);
+  if (state.log.length > LOG_MAX) state.log.splice(0, state.log.length - LOG_MAX);
+  save(); updateBadge();
   return { srs: !!it, from, to: c.s, moved, due: c.due, ok, isNew: !seen };
 }
 function fmtDue(t) { const days = Math.round((startOfDay(t) - startOfDay(Date.now())) / DAY); if (days <= 0) return "aujourd'hui"; if (days === 1) return "demain"; return `le ${new Date(t).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}`; }
@@ -645,24 +623,15 @@ function moveNote(host, mv) {
   else t = mv.to === mv.from ? `Erreur : elle reste à l'étape ${nom(mv.to)} et reviendra ${fmtDue(mv.due)}.` : `Erreur : retour de l'étape ${nom(mv.from)} à ${nom(mv.to)}. Elle reviendra ${fmtDue(mv.due)}.`;
   const div = document.createElement("div"); div.className = "move"; div.innerHTML = `<div>${esc(t)}</div>${ladderHTML(mv.to)}`; fb.appendChild(div);
 }
-function addXp(n) { state.xp = (state.xp || 0) + n; const p = document.getElementById("xpPop"); p.textContent = `+${n} XP`; p.classList.add("show"); clearTimeout(addXp.h); addXp.h = setTimeout(() => p.classList.remove("show"), 1200); }
-// Grades = instruments, de l'œil nu au plus grand télescope en construction. [XP, nom, ouverture, nom court]
-const RANKS = [[0, "Œil nu", "pupille d'environ 7 mm", "Œil nu"], [400, "Jumelles 10 × 50", "deux objectifs de 50 mm", "Jumelles"], [1200, "Lunette de 80 mm", "objectif de 80 mm", "Lunette"], [2500, "Télescope de Newton de 200 mm", "miroir de 200 mm", "Newton"], [4500, "Dobson de 400 mm", "miroir de 400 mm", "Dobson"], [7500, "Télescope d'un mètre du Pic du Midi", "miroir de 1,06 m", "Pic du Midi"], [12000, "Télescope spatial Hubble", "miroir de 2,4 m", "Hubble"], [18000, "Very Large Telescope (VLT)", "quatre miroirs de 8,2 m", "VLT"], [26000, "Télescope spatial James-Webb", "miroir de 6,5 m, en infrarouge", "JWST"], [36000, "Extremely Large Telescope (ELT)", "miroir de 39 m, en construction au Chili", "ELT"]];
-function rank() { let r = RANKS[0], next = null; for (let i = 0; i < RANKS.length; i++) { if (state.xp >= RANKS[i][0]) { r = RANKS[i]; next = RANKS[i + 1] || null; } } return { name: r[1], from: r[0], next }; }
-function renderRank() { const r = rank(); const i = RANKS.findIndex(x => x[1] === r.name); const box = document.getElementById("rankBox"); box.title = `${r.name}${r.next ? ` · ${fmt(r.next[0] - state.xp)} XP avant : ${r.next[1]}` : " · instrument maximal"}`; box.innerHTML = `<span class="lvl">${i + 1}</span><span>${esc(RANKS[i][3])}</span><span class="xp">${fmt(state.xp)} XP</span>`; box.onclick = () => go({ tab: "observatoire" }); box.style.cursor = "pointer"; }
 function chapMastery(ch) { if (!ch.exercices.length) return 0; return ch.exercices.reduce((a, e) => a + Math.min(card(e.id).s, ACQUIS), 0) / (ch.exercices.length * ACQUIS); }
 function ueChaps(code) { return CHAPS.filter(c => c.ue === code); }
 function ueMastery(code) { const cs = ueChaps(code); const n = cs.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return cs.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
-function globalMastery() { const n = CHAPS.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return CHAPS.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
 function chapStarted(ch) { return state.read[ch.id] || ch.exercices.some(e => card(e.id).n > 0); }
 function dueList() { const now = Date.now(); return Object.keys(state.cards).filter(id => SRS[id] && state.cards[id].n > 0 && state.cards[id].due <= now); }
 function updateBadge() { const b = document.getElementById("dueBadge"); const n = dueList().length; b.textContent = n; b.classList.toggle("zero", n === 0); }
 function streak() { let n = 0; const d = new Date(); const k = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; if (!state.days[k(d)]) d.setDate(d.getDate() - 1); while (state.days[k(d)]) { n++; d.setDate(d.getDate() - 1); } return n; }
 // Notions mémorisées : arrivées à l'étape « 10 jours » des révisions espacées.
 function memorized(ids, min) { return ids.filter(id => card(id).n > 0 && (card(id).s || 0) >= (min || ACQUIS)).length; }
-function acquiredCount() { return memorized(SRS_IDS); }
-function exMastered() { return Object.keys(EXO).filter(id => card(id).s >= ACQUIS).length; }
-function nextChapter() { for (const u of UES) { const c = ueChaps(u.code).find(ch => chapMastery(ch) < 0.999); if (c) return c; } return null; }
 
 // ---------- Journal ----------
 function journalHTML(lines, lib, caption) {
@@ -771,6 +740,7 @@ function renderExercise(ex, host, onDone, meta) {
 function itemObj(id) { return EXO[id] || CARTE[id] || (COMPTE[id] ? { id } : null); }
 function itemLabel(o) { const it = SRS[o.id]; if (it && it.kind === "compte") return `Plan comptable · classe ${o.id[4]}`; const ch = CHAP_BY[(EXO[o.id] || CARTE[o.id] || {}).chap]; return ch ? `${ch.ue} · ${ch.title}` : ""; }
 function renderItem(o, host, onDone, meta) {
+  shownAt = Date.now();
   const th = (SRS[o.id] || {}).th || (CHAP_BY[o.chap] || {}).ue; if (th) { host.style.setProperty("--c", `var(--c-${th})`); host.style.setProperty("--o", `var(--o-${th})`); }
   return CARTE[o.id] || COMPTE[o.id] ? renderFlash(o, host, onDone, meta) : renderExercise(o, host, onDone, meta);
 }
@@ -819,207 +789,38 @@ function runSeries(host, list, labelFn, onEach, onEnd, progressEl) {
 </script>
 <script>
 // ---------- Test du jour ----------
+// Le test du jour mélange les matières : révisions dues, puis une question par matière à tour de rôle
+// (matières du programme du jour d'abord), en commençant par les questions ratées, puis les questions jamais vues.
 function dailyPlan(dateKey) {
-  if (state.daily[dateKey] && state.daily[dateKey].ids) return state.daily[dateKey];
-  const rng = mulberry(hashStr(dateKey + "|dc"));
-  const N = 20;
-  const chosen = [];
-  const due = shuffle(dueList().filter(id => EXO[id]), rng).slice(0, 10);
-  chosen.push(...due);
-  const started = CHAPS.filter(chapStarted);
-  const pool = (started.length ? started : CHAPS.slice(0, 3));
-  const weak = pool.slice().sort((a, b) => ueMastery(a.ue) - ueMastery(b.ue) || rng() - 0.5);
-  const fresh = [];
-  for (const ch of weak) for (const e of shuffle(ch.exercices, rng)) if (card(e.id).n === 0 && !chosen.includes(e.id)) fresh.push(e.id);
-  // garantir ≥ 60 % de questions à choix
+  const old = state.daily[dateKey];
+  if (old && old.ids && (old.v === 2 || old.done || Object.keys(old.answers || {}).length)) return old;
+  const rng = mulberry(hashStr(dateKey + "|dc2"));
+  const N = 20; const chosen = [];
+  chosen.push(...shuffle(dueList().filter(id => EXO[id]), rng).slice(0, 8));
+  const prog = programmeDuJour().map(c => c.ue);
+  const order = UES.map((u, i) => ({ code: u.code, i, p: prog.indexOf(u.code) })).sort((a, b) => (a.p < 0) - (b.p < 0) || a.p - b.p || ueMastery(a.code) - ueMastery(b.code) || a.i - b.i);
+  const pools = order.map(({ code }) => {
+    const cs = ueChaps(code); const cur = prog.includes(code) ? currentChapter(code) : null;
+    const ex = cs.filter(c => chapStarted(c) || c === cur).flatMap(c => c.exercices);
+    const failed = shuffle(ex.filter(e => card(e.id).n > 0 && (card(e.id).s || 0) === 0 && !SRS[e.id]).map(e => e.id), rng);
+    const fresh = shuffle(ex.filter(e => card(e.id).n === 0).map(e => e.id), rng);
+    return [...failed, ...fresh].filter(id => !chosen.includes(id));
+  });
+  for (let k = 0; chosen.length < N && pools.some(p => k < p.length); k++) for (const p of pools) { if (chosen.length >= N) break; if (k < p.length && !chosen.includes(p[k])) chosen.push(p[k]); }
+  // banque épuisée (début de parcours) : compléter avec le premier chapitre des matières suivantes, en alternance
+  if (chosen.length < N) { const more = UES.map(u => shuffle(ueChaps(u.code)[0].exercices.map(e => e.id), rng).filter(id => !chosen.includes(id))); for (let k = 0; chosen.length < N && more.some(p => k < p.length); k++) for (const p of more) { if (chosen.length >= N) break; if (k < p.length) chosen.push(p[k]); } }
+  // au moins 60 % de questions à choix, remplacées dans la même matière
   const isQ = id => /^(qcm|multi)$/.test(EXO[id].type);
-  for (const id of fresh) { if (chosen.length >= N) break; chosen.push(id); }
-  if (chosen.length < N) for (const ch of CHAPS) for (const e of ch.exercices) { if (chosen.length >= N) break; if (!chosen.includes(e.id)) chosen.push(e.id); }
   let q = chosen.filter(isQ).length;
-  if (q < Math.ceil(N * 0.6)) {
-    const extraQ = Object.keys(EXO).filter(id => isQ(id) && !chosen.includes(id)).sort(() => rng() - 0.5);
-    for (let i = chosen.length - 1; i >= 0 && q < Math.ceil(N * 0.6) && extraQ.length; i--) if (!isQ(chosen[i])) { chosen[i] = extraQ.pop(); q++; }
+  for (let i = chosen.length - 1; i >= 0 && q < Math.ceil(N * 0.6); i--) {
+    if (isQ(chosen[i])) continue; const ue = CHAP_BY[EXO[chosen[i]].chap].ue;
+    const alt = shuffle(ueChaps(ue).filter(c => chapStarted(c) || prog.includes(ue)).flatMap(c => c.exercices).filter(e => isQ(e.id) && !chosen.includes(e.id)).map(e => e.id), rng)[0];
+    if (alt) { chosen[i] = alt; q++; }
   }
-  const plan = { ids: shuffle(chosen.slice(0, N), rng), answers: {}, done: false, score: 0 };
+  const plan = { v: 2, ids: shuffle(chosen.slice(0, N), rng), answers: {}, done: false, score: 0 };
   state.daily[dateKey] = plan; save();
   return plan;
 }
-function dailyHistory(days) { const out = []; const d = new Date(); for (let i = days - 1; i >= 0; i--) { const x = new Date(d); x.setDate(d.getDate() - i); const k = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; const p = state.daily[k]; out.push({ k, p: p && p.done ? p.score / p.ids.length : null }); } return out; }
-
-// ---------- Succès ----------
-const TIER_XP = { bronze: 20, argent: 50, or: 100 };
-const SUCC_CATS = ["Régularité", "Précision", "Maîtrise", "Matières", "Exploration", "Observatoire", "Annales"];
-function okBy(types) { let n = 0; for (const id in state.cards) { const e = EXO[id]; if (e && types.includes(e.type)) n += state.cards[id].ok || 0; } return n; }
-function okIn(ids) { let n = 0; for (const id of ids) n += (state.cards[id] && state.cards[id].ok) || 0; return n; }
-function totalOk() { let n = 0; for (const id in state.cards) n += state.cards[id].ok || 0; return n; }
-function answered() { let n = 0; for (const id in state.cards) n += state.cards[id].n || 0; return n; }
-const testsDone = () => Object.values(state.daily).filter(p => p.done).length;
-const perfects = () => Object.values(state.daily).filter(p => p.done && p.score === p.ids.length).length;
-const campsLit = () => CHAPS.filter(c => chapMastery(c) >= 0.999).length;
-const uesStarted = () => UES.filter(u => ueChaps(u.code).some(c => chapMastery(c) >= 0.999)).length;
-const daysStudied = () => Object.keys(state.days).length;
-const bestDay = () => Math.max(0, ...Object.values(state.days));
-// Un samedi et le dimanche qui suit, tous deux travaillés.
-const weekends = () => Object.keys(state.days).filter(k => { const d = new Date(k + "T12:00:00"); if (d.getDay() !== 6) return false; d.setDate(d.getDate() + 1); return !!state.days[`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`]; }).length;
-const ueNotionsPct = code => { const ids = SRS_IDS.filter(id => SRS[id].th === code); return ids.length ? Math.floor(memorized(ids) / ids.length * 100) : 0; };
-const S = (id, cat, tier, ic, nom, desc, prog, target) => ({ id, cat, tier, ic, nom, desc, prog, target });
-const UE_SUCC = { UE9: ["📒", "Maître des comptes"], UE10: ["🏛", "Expert en évaluation"], UE2: ["⚖", "Juriste d'affaires"], UE3: ["🤝", "Spécialiste du droit social"], UE4: ["🧾", "Fiscaliste"], UE6: ["📈", "Directeur financier"] };
-const SUCCES = [
-  // Régularité
-  S("premier-pas", "Régularité", "bronze", "✨", "Première lumière", "Répondre à une première question, comme un télescope qui capte sa première lumière", answered, 1),
-  S("rituel", "Régularité", "bronze", "☀", "Rituel", "Terminer un test du jour", testsDone, 1),
-  S("tests-10", "Régularité", "argent", "📅", "Dix rendez-vous", "Terminer 10 tests du jour", testsDone, 10),
-  S("tests-25", "Régularité", "argent", "📆", "Vingt-cinq rendez-vous", "Terminer 25 tests du jour", testsDone, 25),
-  S("tests-50", "Régularité", "or", "🗓", "Cinquante rendez-vous", "Terminer 50 tests du jour", testsDone, 50),
-  S("tests-100", "Régularité", "or", "🏅", "Centurion", "Terminer 100 tests du jour", testsDone, 100),
-  S("tests-200", "Régularité", "or", "🛰", "Mission longue durée", "Terminer 200 tests du jour", testsDone, 200),
-  S("tests-365", "Régularité", "or", "🌍", "Une révolution", "Terminer 365 tests du jour, le temps d'un tour de la Terre autour du Soleil", testsDone, 365),
-  S("serie-3", "Régularité", "bronze", "🔥", "Trois nuits", "Travailler 3 jours d'affilée", streak, 3),
-  S("serie-7", "Régularité", "bronze", "🔥", "Une semaine", "Travailler 7 jours d'affilée", streak, 7),
-  S("serie-14", "Régularité", "argent", "🔥", "Deux semaines", "Travailler 14 jours d'affilée", streak, 14),
-  S("serie-30", "Régularité", "argent", "🌙", "Une lunaison", "Travailler 30 jours d'affilée, le temps d'un cycle de la Lune", streak, 30),
-  S("serie-60", "Régularité", "or", "🌗", "Deux lunaisons", "Travailler 60 jours d'affilée", streak, 60),
-  S("serie-100", "Régularité", "or", "🌌", "Cent nuits", "Travailler 100 jours d'affilée", streak, 100),
-  S("serie-200", "Régularité", "or", "🔭", "Veille permanente", "Travailler 200 jours d'affilée", streak, 200),
-  S("serie-365", "Régularité", "or", "🪐", "Année d'observation", "Travailler 365 jours d'affilée", streak, 365),
-  S("jours-50", "Régularité", "argent", "🗒", "Carnet d'observation", "Travailler 50 jours au total", daysStudied, 50),
-  S("jours-150", "Régularité", "or", "📔", "Journal de bord", "Travailler 150 jours au total", daysStudied, 150),
-  S("revs-50", "Régularité", "bronze", "🔁", "Mémoire courte", "Faire 50 révisions", () => state.stats.revs, 50),
-  S("revs-250", "Régularité", "argent", "🔁", "Mémoire longue", "Faire 250 révisions", () => state.stats.revs, 250),
-  S("revs-1000", "Régularité", "or", "🧠", "Mémoire d'éléphant", "Faire 1 000 révisions", () => state.stats.revs, 1000),
-  S("revs-2500", "Régularité", "or", "💫", "Mémoire stellaire", "Faire 2 500 révisions", () => state.stats.revs, 2500),
-  S("revs-5000", "Régularité", "or", "🌠", "Mémoire galactique", "Faire 5 000 révisions", () => state.stats.revs, 5000),
-  S("seances-10", "Régularité", "bronze", "⏱", "Dix séances", "Terminer 10 séances de révision", () => state.stats.sessions, 10),
-  S("seances-50", "Régularité", "argent", "⏱", "Cinquante séances", "Terminer 50 séances de révision", () => state.stats.sessions, 50),
-  S("seances-200", "Régularité", "or", "⏳", "Deux cents séances", "Terminer 200 séances de révision", () => state.stats.sessions, 200),
-  S("nuit-50", "Régularité", "argent", "🌃", "Belle nuit", "Répondre à 50 questions dans la même journée", bestDay, 50),
-  S("marathon-messier", "Régularité", "or", "🏃", "Marathon Messier", "Répondre à 110 questions dans la même journée, autant que d'objets au catalogue de Messier", bestDay, 110),
-  S("aube", "Régularité", "bronze", "🌅", "Aube astronomique", "Répondre à une question avant 7 heures du matin", () => state.stats.early, 1),
-  S("nuit-noire", "Régularité", "bronze", "🌑", "Nuit noire", "Répondre à une question après 22 heures", () => state.stats.late, 1),
-  S("week-end", "Régularité", "bronze", "🏕", "Week-end d'observation", "Travailler un samedi et le dimanche qui suit", weekends, 1),
-  S("week-ends-10", "Régularité", "argent", "🏕", "Dix week-ends d'observation", "Travailler le samedi et le dimanche, dix week-ends", weekends, 10),
-  // Précision
-  S("premiere-ligne", "Précision", "bronze", "✎", "Première ligne", "Une réponse juste du premier coup", totalOk, 1),
-  S("justes-100", "Précision", "bronze", "✔", "Cent bonnes réponses", "100 réponses justes du premier coup", totalOk, 100),
-  S("justes-500", "Précision", "argent", "✔", "Cinq cents bonnes réponses", "500 réponses justes du premier coup", totalOk, 500),
-  S("justes-1500", "Précision", "or", "💎", "Infaillible", "1 500 réponses justes du premier coup", totalOk, 1500),
-  S("justes-3000", "Précision", "or", "💎", "Optique parfaite", "3 000 réponses justes du premier coup", totalOk, 3000),
-  S("justes-5000", "Précision", "or", "🔬", "Résolution maximale", "5 000 réponses justes du premier coup", totalOk, 5000),
-  S("lancee-10", "Précision", "bronze", "🎯", "Sur sa lancée", "10 bonnes réponses d'affilée", () => state.stats.best, 10),
-  S("lancee-25", "Précision", "argent", "🎯", "Dans le mille", "25 bonnes réponses d'affilée", () => state.stats.best, 25),
-  S("lancee-50", "Précision", "or", "🏹", "Imbattable", "50 bonnes réponses d'affilée", () => state.stats.best, 50),
-  S("lancee-100", "Précision", "or", "☄", "Comète", "100 bonnes réponses d'affilée", () => state.stats.best, 100),
-  S("sans-faute", "Précision", "argent", "★", "Sans faute", "Un test du jour à 20 sur 20", perfects, 1),
-  S("sans-faute-5", "Précision", "or", "🌟", "Cinq sans-faute", "Cinq tests du jour à 20 sur 20", perfects, 5),
-  S("sans-faute-10", "Précision", "or", "🌟", "Dix sans-faute", "Dix tests du jour à 20 sur 20", perfects, 10),
-  S("seance-parfaite", "Précision", "argent", "🎯", "Mise au point parfaite", "Une séance de révision d'au moins 10 notions sans aucune erreur", () => state.stats.perfect, 1),
-  S("seances-parfaites-10", "Précision", "or", "🎯", "Optique adaptative", "Dix séances de révision d'au moins 10 notions sans erreur", () => state.stats.perfect, 10),
-  S("partie-double", "Précision", "bronze", "⚖", "Partie double", "Une écriture au journal juste du premier coup", () => okBy(["ecriture"]), 1),
-  S("teneur-livres", "Précision", "argent", "📓", "Teneur de livres", "25 écritures justes du premier coup", () => okBy(["ecriture"]), 25),
-  S("grand-livre", "Précision", "or", "📚", "Grand livre", "100 écritures justes du premier coup", () => okBy(["ecriture"]), 100),
-  S("calculateur", "Précision", "argent", "🧮", "Calculateur", "50 calculs justes du premier coup", () => okBy(["calc"]), 50),
-  S("calculateur-150", "Précision", "or", "🧮", "Calculateur de trajectoires", "150 calculs justes du premier coup", () => okBy(["calc"]), 150),
-  S("oeil-exerce", "Précision", "argent", "🔍", "Œil exercé", "50 QCM à réponses multiples justes", () => okBy(["multi"]), 50),
-  S("oeil-exerce-150", "Précision", "or", "🔍", "Œil de lynx", "150 QCM à réponses multiples justes", () => okBy(["multi"]), 150),
-  S("cartes-sues-100", "Précision", "bronze", "📇", "Cent cartes sues", "Répondre « Je savais » à 100 cartes de notions", () => okIn(Object.keys(CARTE)), 100),
-  S("cartes-sues-500", "Précision", "argent", "📇", "Cinq cents cartes sues", "Répondre « Je savais » à 500 cartes de notions", () => okIn(Object.keys(CARTE)), 500),
-  S("cartes-sues-2000", "Précision", "or", "🗂", "Deux mille cartes sues", "Répondre « Je savais » à 2 000 cartes de notions", () => okIn(Object.keys(CARTE)), 2000),
-  // Maîtrise
-  S("notions-10", "Maîtrise", "bronze", "🌱", "Dix notions", "10 notions mémorisées (étape « 10 jours » atteinte)", acquiredCount, 10),
-  S("notions-50", "Maîtrise", "bronze", "🌿", "Cinquante notions", "50 notions mémorisées", acquiredCount, 50),
-  S("notions-100", "Maîtrise", "argent", "🌳", "Cent notions", "100 notions mémorisées", acquiredCount, 100),
-  S("catalogue-messier", "Maîtrise", "argent", "🔭", "Catalogue de Messier", "110 notions mémorisées, autant que d'objets au catalogue de Messier", acquiredCount, 110),
-  S("notions-250", "Maîtrise", "argent", "🌲", "Deux cent cinquante notions", "250 notions mémorisées", acquiredCount, 250),
-  S("notions-500", "Maîtrise", "or", "🏞", "Cinq cents notions", "500 notions mémorisées", acquiredCount, 500),
-  S("notions-1000", "Maîtrise", "or", "🗺", "Mille notions", "1 000 notions mémorisées", acquiredCount, 1000),
-  S("notions-1500", "Maîtrise", "or", "🌌", "Mille cinq cents notions", "1 500 notions mémorisées", acquiredCount, 1500),
-  S("notions-2000", "Maîtrise", "or", "🌌", "Deux mille notions", "2 000 notions mémorisées", acquiredCount, 2000),
-  S("notions-toutes", "Maîtrise", "or", "🪐", "New General Catalogue", "Toutes les notions mémorisées", acquiredCount, SRS_IDS.length),
-  S("ancrage", "Maîtrise", "argent", "⚓", "Ancrage", "10 notions arrivées à l'étape « chaque mois »", () => memorized(SRS_IDS, MAX_STEP), 10),
-  S("memoire-acier", "Maîtrise", "or", "🛡", "Mémoire d'acier", "100 notions arrivées à l'étape « chaque mois »", () => memorized(SRS_IDS, MAX_STEP), 100),
-  S("ancrees-500", "Maîtrise", "or", "🛡", "Orbite stable", "500 notions arrivées à l'étape « chaque mois »", () => memorized(SRS_IDS, MAX_STEP), 500),
-  S("lexique", "Maîtrise", "argent", "📇", "Lexique", "100 cartes de notions mémorisées", () => memorized(Object.keys(CARTE)), 100),
-  S("lexique-500", "Maîtrise", "or", "📖", "Encyclopédie", "500 cartes de notions mémorisées", () => memorized(Object.keys(CARTE)), 500),
-  S("lexique-1000", "Maîtrise", "or", "📚", "Bibliothèque d'Alexandrie", "1 000 cartes de notions mémorisées", () => memorized(Object.keys(CARTE)), 1000),
-  S("comptes-tete", "Maîtrise", "argent", "🔢", "Comptes en tête", "50 comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), 50),
-  S("pcg-coeur", "Maîtrise", "or", "📘", "Le plan par cœur", "300 comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), 300),
-  S("pcg-entier", "Maîtrise", "or", "📗", "Fond diffus cosmologique", "Tous les comptes du plan comptable mémorisés", () => memorized(Object.keys(COMPTE)), Object.keys(COMPTE).length),
-  S("chapitre-fini", "Maîtrise", "bronze", "📖", "Chapitre bouclé", "Terminer la série d'exercices d'un chapitre", () => Object.keys(state.done).length, 1),
-  S("chapitres-10", "Maîtrise", "argent", "📚", "Dix chapitres bouclés", "Terminer la série d'exercices de 10 chapitres", () => Object.keys(state.done).length, 10),
-  S("chapitres-tous", "Maîtrise", "or", "🏛", "Programme bouclé", `Terminer la série d'exercices des ${CHAPS.length} chapitres`, () => Object.keys(state.done).length, CHAPS.length),
-  // Matières
-  ...UES.map(u => S("ue-" + u.code.toLowerCase(), "Matières", "or", (UE_SUCC[u.code] || ["🎓"])[0], (UE_SUCC[u.code] || ["", u.nom])[1], `${u.code} ${u.nom} : tous les exercices acquis (en %)`, () => Math.floor(ueMastery(u.code) * 100), 100)),
-  ...UES.map(u => S("notions-moitie-" + u.code.toLowerCase(), "Matières", "argent", "🌓", `${u.code} à moitié en mémoire`, `${u.code} ${u.nom} : la moitié des notions mémorisées (en %)`, () => ueNotionsPct(u.code), 50)),
-  ...UES.map(u => S("notions-" + u.code.toLowerCase(), "Matières", "or", "🌕", `${u.code} en pleine lumière`, `${u.code} ${u.nom} : toutes les notions mémorisées (en %)`, () => ueNotionsPct(u.code), 100)),
-  S("polyvalent", "Matières", "argent", "🧭", "Toutes les bandes du spectre", "Au moins un chapitre acquis dans chacune des matières", uesStarted, UES.length),
-  S("expert", "Matières", "or", "🎓", "Prêt pour le DSCG", "Toutes les matières entièrement acquises", () => UES.filter(u => ueMastery(u.code) >= 0.999).length, UES.length),
-  // Exploration
-  S("premier-dossier", "Exploration", "bronze", "🗂", "Premier dossier", "Lire une fiche documentaire", () => Object.keys(state.fiches).length, 1),
-  S("dix-dossiers", "Exploration", "argent", "🗃", "Dix dossiers", "Lire 10 fiches documentaires", () => Object.keys(state.fiches).length, 10),
-  S("bibliothecaire", "Exploration", "or", "🏛", "Bibliothécaire", `Lire les ${CHAPS.length} fiches documentaires`, () => Object.keys(state.fiches).length, CHAPS.length),
-  S("cours-10", "Exploration", "bronze", "📖", "Dix cours ouverts", "Ouvrir le cours de 10 chapitres", () => Object.keys(state.read).length, 10),
-  S("cours-tous", "Exploration", "argent", "📚", "Tous les cours ouverts", `Ouvrir le cours des ${CHAPS.length} chapitres`, () => Object.keys(state.read).length, CHAPS.length),
-  S("a-la-source", "Exploration", "bronze", "🔗", "À la source", "Ouvrir un texte officiel depuis une fiche", () => state.stats.src, 1),
-  S("documentaliste", "Exploration", "argent", "📜", "Documentaliste", "Ouvrir 25 textes officiels", () => state.stats.src, 25),
-  S("archiviste", "Exploration", "or", "🗄", "Archiviste", "Ouvrir 100 textes officiels", () => state.stats.src, 100),
-  S("fouille", "Exploration", "bronze", "🔎", "Fouille", "Faire une recherche dans les fiches", () => state.stats.search, 1),
-  S("fouilles-25", "Exploration", "argent", "🔎", "Grand relevé", "Faire 25 recherches dans les fiches", () => state.stats.search, 25),
-  S("comptes-50", "Exploration", "bronze", "🔢", "Plan comptable", "Consulter 50 comptes", () => Object.keys(state.seen).length, 50),
-  S("comptes-200", "Exploration", "argent", "🔢", "Nomenclature", "Consulter 200 comptes", () => Object.keys(state.seen).length, 200),
-  S("comptes-tous", "Exploration", "or", "🧾", "Tout le PCG", "Consulter tous les comptes du plan", () => Object.keys(state.seen).length, PCG.length),
-  // Observatoire
-  ...RANKS.slice(1).map(([xp, nom], i) => S("grade-" + (i + 1), "Observatoire", i < 2 ? "bronze" : i < 5 ? "argent" : "or", ["👀", "🔭", "🔭", "🔭", "⛰", "🛰", "🏔", "🛰", "🌌"][i] || "🔭", nom, `Obtenir l'instrument : ${nom} (${fmt(xp)} XP)`, () => state.xp || 0, xp)),
-  S("premier-camp", "Observatoire", "argent", "🔭", "Premier objet observé", "Un chapitre entièrement acquis : sa cible apparaît dans le ciel", campsLit, 1),
-  S("objets-5", "Observatoire", "argent", "✨", "Cinq objets", "Observer 5 cibles du ciel profond", campsLit, 5),
-  S("dix-camps", "Observatoire", "or", "🌌", "Dix objets", "Observer 10 cibles du ciel profond", campsLit, 10),
-  S("objets-25", "Observatoire", "or", "🌌", "Vingt-cinq objets", "Observer 25 cibles du ciel profond", campsLit, 25),
-  S("tous-camps", "Observatoire", "or", "🗺", "Catalogue complet", `Observer les ${CHAPS.length} cibles`, campsLit, CHAPS.length),
-  S("jwst", "Observatoire", "or", "🛰", "Premières images", "Observer les six cibles du James-Webb (tous les chapitres de l'UE3 acquis)", () => ueChaps("UE3").filter(c => chapMastery(c) >= 0.999).length, ueChaps("UE3").length),
-  S("aurore-25", "Observatoire", "argent", "🌄", "Un quart du ciel", "Un quart du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 25),
-  S("aurore-50", "Observatoire", "or", "🌗", "La moitié du ciel", "La moitié du parcours d'exercices acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
-  S("ciel-75", "Observatoire", "or", "🌖", "Trois quarts du ciel", "Les trois quarts du parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 75),
-  S("aurore-100", "Observatoire", "or", "🌕", "Le ciel entier", "Tout le parcours d'exercices acquis (en %)", () => Math.floor(globalMastery() * 100), 100),
-  ...(RAP ? [S("rappels-ue1", "Exploration", "argent", "⚖", "Bases du droit rafraîchies", `Relire les ${RAP.pages.length} pages de rappels de l'UE1`, rapLus, RAP.pages.length)] : []),
-  // Annales
-  ...(ANN_KEYS.length ? [
-    S("annale-1", "Annales", "bronze", "📝", "Première nuit d'observation", "Composer une annale officielle en temps réel et se noter", annCount, 1),
-    S("annale-temps", "Annales", "argent", "⏱", "Dans la fenêtre d'observation", "Rendre une composition dans la durée officielle de l'épreuve", () => annEssais().filter(e => e.temps).length, 1),
-    S("annale-10", "Annales", "bronze", "🌅", "Au-dessus de l'horizon", "Obtenir au moins 10/20 à une annale", annBestAll, 10),
-    S("annale-14", "Annales", "argent", "🌠", "Belle nuit", "Obtenir au moins 14/20 à une annale", annBestAll, 14),
-    S("annale-16", "Annales", "or", "💎", "Seeing d'exception", "Obtenir au moins 16/20 à une annale", annBestAll, 16),
-    S("annale-5", "Annales", "argent", "🗒", "Campagne d'observation", "Composer 5 annales différentes", annCount, 5),
-    S("annale-serie", "Annales", "or", "📚", "Série complète", "Composer toutes les sessions d'une même matière", () => Math.max(0, ...ANN_UES.map(u => annDoneUe(u.code) / ANN.epreuves[u.code].sessions.length)) >= 1 ? 1 : 0, 1),
-    S("annale-spectre", "Annales", "or", "🌈", "Tout le spectre en conditions réelles", "Composer au moins une annale dans chaque matière", () => ANN_UES.filter(u => annDoneUe(u.code)).length, ANN_UES.length),
-    S("annale-15", "Annales", "or", "🏛", "Programme d'observation", "Composer 15 annales différentes", annCount, Math.min(15, ANN_KEYS.length)),
-  ] : []),
-];
-const SUCC_BY = Object.fromEntries(SUCCES.map(x => [x.id, x]));
-const succQueue = [];
-function checkSucces(silent) {
-  const fresh = [];
-  for (let guard = 0; guard < 6; guard++) {
-    const now = SUCCES.filter(x => !state.succes[x.id] && x.prog() >= x.target);
-    if (!now.length) break;
-    for (const x of now) { state.succes[x.id] = Date.now(); state.xp = (state.xp || 0) + TIER_XP[x.tier]; fresh.push(x); }
-  }
-  if (!fresh.length) return;
-  if (!silent) { state.stats.unseen += fresh.length; succQueue.push(...fresh); showNextSucc(); }
-  persist(); updateSuccBadge(); renderRank();
-}
-function showNextSucc() {
-  const p = document.getElementById("succPop");
-  if (showNextSucc.busy || !succQueue.length || !p) return;
-  const x = succQueue.shift(); showNextSucc.busy = true;
-  p.innerHTML = `<span class="ic">${x.ic}</span><span><span class="k">Succès débloqué · ${x.tier}</span><br><b>${esc(x.nom)}</b> <span class="mono small" style="color:var(--ok)">+${TIER_XP[x.tier]} XP</span><br><span class="small muted">${esc(x.desc)}</span></span>`;
-  p.classList.add("show");
-  setTimeout(() => { p.classList.remove("show"); setTimeout(() => { showNextSucc.busy = false; showNextSucc(); }, 350); }, 3400);
-}
-function updateSuccBadge() { const b = document.getElementById("succBadge"); if (!b) return; const u = state.stats.unseen || 0; b.textContent = u ? "+" + u : "0"; b.classList.toggle("zero", !u); }
-function succCard(x) {
-  const got = state.succes[x.id]; const cur = Math.min(x.prog(), x.target); const pct = Math.round(cur / x.target * 100);
-  return `<div class="succ ${got ? "unlocked" : "locked"} ${x.tier}"><span class="ic" aria-hidden="true">${x.ic}</span><b>${esc(x.nom)}</b><span class="d">${esc(x.desc)}</span><span class="meta"><span class="tier ${x.tier}">${x.tier}</span>${got ? `obtenu le ${new Date(got).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}` : `${fmt(cur)} / ${fmt(x.target)}`}<span>+${TIER_XP[x.tier]} XP</span></span>${got ? "" : `<div class="bar"><i style="width:${pct}%"></i></div>`}</div>`;
-}
-function nextSucces(n) { return SUCCES.filter(x => !state.succes[x.id]).map(x => ({ x, r: Math.min(1, x.prog() / x.target) })).sort((a, b) => b.r - a.r || TIER_XP[a.x.tier] - TIER_XP[b.x.tier]).slice(0, n).map(o => o.x); }
 
 // ---------- Vues ----------
 const main = document.getElementById("main");
@@ -1082,54 +883,47 @@ function seance() {
   return { due, nouv, notions: due + nouv, testDone: !!(plan && plan.done), nAns, plan };
 }
 function renderAccueil() {
-  const S = seance(); const nc = nextChapter(); const hist = dailyHistory(30); const st = streak(); const heat = heatHTML(innerWidth < 600 ? 17 : innerWidth < 1000 ? 30 : 52);
+  const S = seance(); const st = streak(); const prog = programmeDuJour(); const rap = rappelDuJour();
   const s1 = S.notions ? "cur" : "done", s2 = S.testDone ? "done" : s1 === "done" ? "cur" : "todo";
   const mins = Math.max(1, Math.round(Math.min(S.notions, 70) * 0.4)) + (S.testDone ? 0 : 20);
   const dateTxt = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
   const btn = S.notions ? `<button class="btn big" id="goSeance">${S.nAns ? "Reprendre" : "Commencer"} la séance</button>`
     : !S.testDone ? `<button class="btn big" id="goTest">${S.nAns ? "Reprendre le test du jour" : "Passer au test du jour"}</button>`
     : `<span class="pill done">Séance du jour terminée</span><button class="btn ghost" id="goMore">Réviser d'autres notions</button>`;
-  const mem = acquiredCount();
+  const r7 = sumHist(keysBack(7)), r7p = sumHist(keysBack(7, 7)); const ues = [...new Set(S.plan ? S.plan.ids.map(id => EXO[id] && CHAP_BY[EXO[id].chap] ? CHAP_BY[EXO[id].chap].ue : null).filter(Boolean) : [])];
   main.innerHTML = `
 <section class="hero" aria-labelledby="hTitle">
-  <div><div class="eyebrow">${esc(dateTxt)}${st ? ` · série de ${st} jour${st > 1 ? "s" : ""}` : ""}</div><h2 id="hTitle">Ma séance du jour</h2><p class="lead">${S.notions || !S.testDone ? `Environ ${mins} minutes : d'abord les notions à revoir, puis le test du jour.` : "Tout est fait pour aujourd'hui. Revenez demain pour la suite."}</p></div>
+  <div><div class="eyebrow">${esc(dateTxt)}${st ? ` · ${st} jour${st > 1 ? "s" : ""} de travail d'affilée` : ""}</div><h2 id="hTitle">Ma séance du jour</h2><p class="lead">${S.notions || !S.testDone ? `Environ ${mins} minutes : d'abord les notions à revoir, puis le test du jour, puis le cours du jour.` : "Révisions et test faits. Il reste le cours du jour ci-dessous."}</p></div>
   <ol class="steps">
-    <li class="${s1}"><span class="k">${s1 === "done" ? "✓" : "1"}</span><div><b>Notions à revoir</b><span class="d">${S.notions ? `${S.due} à revoir · ${S.nouv} nouvelle${S.nouv > 1 ? "s" : ""} · définitions et compréhension, sans calcul` : "Toutes les notions prévues aujourd'hui sont revues."}</span></div><span class="st">${s1 === "done" ? "fait" : `${S.notions} notion${S.notions > 1 ? "s" : ""}`}</span></li>
-    <li class="${s2}"><span class="k">${s2 === "done" ? "✓" : "2"}</span><div><b>Test du jour</b><span class="d">${S.testDone ? `Score : ${S.plan.score} / ${S.plan.ids.length}` : `20 questions de vos matières, calculs compris${S.nAns ? ` · ${S.nAns} / 20 répondues` : ""}`}</span></div><span class="st">${S.testDone ? "fait" : "≈ 20 min"}</span></li>
+    <li class="${s1}"><span class="k">${s1 === "done" ? "✓" : "1"}</span><div><b>Notions à revoir</b><span class="d">${S.notions ? `${S.due} à revoir · ${S.nouv} nouvelle${S.nouv > 1 ? "s" : ""} · toutes matières, en alternance` : "Toutes les notions prévues aujourd'hui sont revues."}</span></div><span class="st">${s1 === "done" ? "fait" : `${S.notions} notion${S.notions > 1 ? "s" : ""}`}</span></li>
+    <li class="${s2}"><span class="k">${s2 === "done" ? "✓" : "2"}</span><div><b>Test du jour</b><span class="d">${S.testDone ? `Score : ${S.plan.score} / ${S.plan.ids.length}` : `20 questions${ues.length ? ` sur ${ues.length} matière${ues.length > 1 ? "s" : ""} (${ues.join(", ")})` : ", plusieurs matières"}${S.nAns ? ` · ${S.nAns} / 20 répondues` : ""}`}</span></div><span class="st">${S.testDone ? "fait" : "≈ 20 min"}</span></li>
   </ol>
   <div class="go">${btn}</div>
 </section>
-${compoBanner()}${planHTML()}
+${compoBanner()}
+<h3>Cours du jour</h3>
+<p class="muted small" style="margin-top:-4px">${prog.length} matières aujourd'hui, en rotation : celles que vous n'avez pas travaillées depuis le plus longtemps passent en premier.</p>
+<div class="prog">${prog.map(c => { const m = chapMastery(c); return `<button class="next-chap" data-chap="${c.id}" style="${ucol(c.ue)}"><span class="code">${esc(c.ue)}</span><span><b>${esc(c.title)}</b><br><span class="muted small">Chapitre ${c.ordre} · ${esc(UE_BY[c.ue].nom)} · ${chapStarted(c) ? `${Math.round(m * 100)} % acquis` : "à commencer"}</span></span><span class="go">Ouvrir →</span></button>`; }).join("")}
+${rap ? `<button class="next-chap" id="goRap" style="${ucol(RAP.ue.code)}"><span class="code">${esc(RAP.ue.code)}</span><span><b>Rappels : ${esc(rap.title)}</b><br><span class="muted small">${esc(RAP.ue.nom)} · une page à relire${state.rappels[rap.id] ? ` (relue le ${dateFr(state.rappels[rap.id])})` : ""}</span></span><span class="go">Lire →</span></button>` : ""}</div>
+${planHTML()}
 <div class="stats">
-  <div class="stat" title="Notions arrivées à l'étape « 10 jours » ou au-delà, sur ${fmt(SRS_IDS.length)}"><span class="v">${fmt(mem)}</span><span class="l">notions mémorisées</span></div>
-  <div class="stat" title="Part des exercices des ${CHAPS.length} chapitres acquis"><span class="v">${Math.round(globalMastery() * 100)}<small> %</small></span><span class="l">exercices acquis</span></div>
-  <div class="stat" title="${state.days[todayKey()] || 0} réponse(s) aujourd'hui"><span class="v">${st}</span><span class="l">jour${st > 1 ? "s" : ""} d'affilée</span></div>
-  <div class="stat" title="Chapitres entièrement acquis"><span class="v">${observed()}<small> / ${CHAPS.length}</small></span><span class="l">objets observés</span></div>
+  <div class="stat"><span class="v">${pct(r7.r)}</span><span class="l">de bonnes réponses sur 7 jours${r7.r != null && r7p.r != null ? ` · ${deltaTxt(r7.r, r7p.r)}` : ""}</span></div>
+  <div class="stat"><span class="v">${fmt(memorized(SRS_IDS))}<small> / ${fmt(SRS_IDS.length)}</small></span><span class="l">notions mémorisées</span></div>
+  <div class="stat"><span class="v">${fmt(r7.n)}</span><span class="l">réponses sur 7 jours</span></div>
+  <div class="stat"><span class="v">${errorItems().length}</span><span class="l">erreurs à retravailler</span></div>
 </div>
-${nc ? `<h3>Reprendre le cours</h3><button class="next-chap" id="goNext" style="${ucol(nc.ue)}"><span class="code">${esc(nc.ue)}</span><span><b>${esc(nc.title)}</b><br><span class="muted small">Chapitre ${nc.ordre} · ${esc(UE_BY[nc.ue].nom)}${CIBLE[nc.id] ? ` · cible ${esc(CIBLE[nc.id].des)}, ${esc(CIBLE[nc.id].nom)}` : ""}</span></span><span class="go">Ouvrir →</span></button>` : ""}
-<h3>Plateau des notions</h3>
-${plateauHTML(SRS_IDS)}
-<div class="legend" style="margin-top:6px">${BANDS.map((b, i) => `<span><i style="background:var(${i === 0 ? "--rule-soft" : `--st${i}`})"></i>${esc(b.nom)}</span>`).join("")}</div>
-<h3>Par matière</h3>
-<div class="ueprog">${UES.map(u => { const m = ueMastery(u.code); const ids = SRS_IDS.filter(id => SRS[id].th === u.code); const mm = ids.length ? memorized(ids) / ids.length : 0; return `<button data-ue="${u.code}" style="${ucol(u.code)}"><span class="code">${esc(u.code)}</span><span class="nm">${esc(u.nom)}<small>Notions mémorisées : ${Math.round(mm * 100)} %</small></span><div class="bar" title="Exercices acquis"><i style="width:${Math.round(m * 100)}%"></i></div><span class="pc">${Math.round(m * 100)} %</span></button>`; }).join("")}</div>
-<p class="muted small" style="margin-top:6px">La barre et le pourcentage indiquent la part des exercices acquis dans la matière.</p>
-<h3>Prochains succès</h3>
-<div class="sgrid">${nextSucces(3).map(succCard).join("")}</div>
-<div class="actions" style="margin-top:8px"><button class="btn quiet" id="goSucc">Tous les succès (${Object.keys(state.succes).length} / ${SUCCES.length})</button></div>
-<h3>Calendrier d'activité</h3>
-${heat.html}
-<details class="datatab"><summary>Scores des tests du jour, 30 derniers jours</summary><div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div><p class="muted small">Chaque barre est le score d'un test du jour ; les barres grises sont les jours sans test.</p></details>`;
-  bindTip(main.querySelector("#heatBox"), heat.items); bindPlan(main);
+<div class="actions" style="margin-top:8px"><button class="btn ghost" id="goAna">Voir l'analyse détaillée →</button></div>`;
+  bindPlan(main);
   const b1 = main.querySelector("#goSeance"); if (b1) b1.onclick = () => startSession("Tous", { chain: true });
   const b2 = main.querySelector("#goTest"); if (b2) b2.onclick = () => go({ tab: "test" });
   const b3 = main.querySelector("#goMore"); if (b3) b3.onclick = () => go({ tab: "revisions" });
-  main.querySelector("#goSucc").onclick = () => go({ tab: "succes" });
-  main.querySelectorAll(".ueprog button").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
-  if (nc) main.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
+  main.querySelectorAll(".prog button[data-chap]").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.chap }));
+  const gr = main.querySelector("#goRap"); if (gr) gr.onclick = () => { go({ tab: "rappels" }); const el = document.getElementById("r-" + rap.id); if (el) el.scrollIntoView(); };
+  main.querySelector("#goAna").onclick = () => go({ tab: "analyse" });
 }
 
 function renderMatieres() {
-  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.${RAP ? ` Les ${esc(RAP.ue.nom.toLowerCase())} (${esc(RAP.ue.code)}) se révisent par des pages de rappels courts.` : ""}</p><div class="ues">${rapCard(UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; })).join("")}</div>`;
+  main.innerHTML = `<h2>Cours</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre se travaille en trois étapes : le cours, les notions à mémoriser, puis les exercices. La fiche officielle sert de référence.${RAP ? ` Les ${esc(RAP.ue.nom.toLowerCase())} (${esc(RAP.ue.code)}) se révisent par des pages de rappels courts.` : ""}</p><div class="ues">${rapCard(UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">${cs.length} chapitres</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; })).join("")}</div>`;
   main.querySelectorAll(".ue[data-ue]").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
   main.querySelectorAll(".ue[data-rap]").forEach(b => b.onclick = () => go({ tab: "rappels" }));
 }
@@ -1188,7 +982,7 @@ function renderChap(id, startAt) {
   const c = CHAP_BY[id]; const u = UE_BY[c.ue]; const cs = ueChaps(c.ue); const idx = cs.indexOf(c);
   const chIds = SRS_IDS.filter(id => SRS[id].chap === c.id); const nNotions = chIds.length; const exOk = c.exercices.filter(e => card(e.id).s >= ACQUIS).length;
   main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} · ${esc(u.nom)}</button></div>
-<div class="chead" style="${ucol(c.ue)}"><div class="eyebrow"><b>${esc(u.code)}</b>Chapitre ${idx + 1} sur ${cs.length} · ${esc(c.duree)}</div><h2>${esc(c.title)}</h2><p>${esc(c.resume)}</p><div class="kp"><span><b>${fmt(memorized(chIds))}</b> / ${fmt(nNotions)} notions mémorisées</span><span><b>${exOk}</b> / ${c.exercices.length} exercices acquis</span></div>${CIBLE[c.id] ? `<span class="cible" title="Acquérez le chapitre pour observer cette cible dans l'Observatoire">${RETI}<span class="des">${esc(CIBLE[c.id].des)}</span>${esc(CIBLE[c.id].nom)}${chapMastery(c) >= 0.999 ? " · observé" : ""}</span>` : ""}</div><div id="stage" style="${ucol(c.ue)}"></div>`;
+<div class="chead" style="${ucol(c.ue)}"><div class="eyebrow"><b>${esc(u.code)}</b>Chapitre ${idx + 1} sur ${cs.length} · ${esc(c.duree)}</div><h2>${esc(c.title)}</h2><p>${esc(c.resume)}</p><div class="kp"><span><b>${fmt(memorized(chIds))}</b> / ${fmt(nNotions)} notions mémorisées</span><span><b>${exOk}</b> / ${c.exercices.length} exercices acquis</span></div></div><div id="stage" style="${ucol(c.ue)}"></div>`;
   main.querySelector("#back").onclick = () => go({ tab: "ue", code: c.ue });
   const stage = main.querySelector("#stage");
   const seg = mode => `<div class="crumb"><span class="seg" role="group" aria-label="Étapes du chapitre"><button data-m="lesson" aria-pressed="${mode === "lesson"}"><span class="n">1</span>Cours</button>${nNotions ? `<button data-m="cartes" aria-pressed="${mode === "cartes"}"><span class="n">2</span>Notions</button>` : ""}<button data-m="ex" aria-pressed="${mode === "ex"}"><span class="n">${nNotions ? 3 : 2}</span>Exercices</button>${c.fiche ? `<button data-m="fiche" aria-pressed="${mode === "fiche"}">Fiche<span class="lg"> officielle</span></button>` : ""}</span></div>`;
@@ -1222,7 +1016,7 @@ ${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.so
     bindSeg(); stage.querySelector("#toLesson").onclick = showLesson;
     const host = stage.querySelector("#host"); const prog = stage.querySelector("#prog");
     const series = runSeries(host, c.exercices, () => `${u.code} · ${c.title}`, (ex, ok) => moveNote(host, record(ex.id, ok)), score => {
-      state.done[c.id] = (state.done[c.id] || 0) + 1; addXp(30); save();
+      state.done[c.id] = (state.done[c.id] || 0) + 1; save();
       const nc = cs[idx + 1];
       host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Chapitre terminé</h3><p>${score} exercice${score > 1 ? "s" : ""} sur ${c.exercices.length} réussi${score > 1 ? "s" : ""} du premier coup. Les questions de définition et de compréhension entrent dans les révisions espacées : ratées, elles reviendront demain, réussies dans deux jours, puis 5, 10, 20, 30 jours et chaque mois. Les calculs et écritures se retravaillent ici et dans le test du jour.</p><div class="actions">${nc ? `<button class="btn" id="goNext">Chapitre suivant : ${esc(nc.title)}</button>` : ""}<button class="btn ghost" id="redo">Refaire les exercices</button><button class="btn quiet" id="toUe">Retour à la matière</button></div></div>`;
       prog.textContent = "Terminé";
@@ -1239,11 +1033,11 @@ function renderTest() {
   const list = plan.ids.map(id => EXO[id]).filter(Boolean);
   if (!list.length) { main.innerHTML = `<h2>Test du jour</h2><p>Aucune question disponible.</p>`; return; }
   const remaining = list.filter(e => !(e.id in plan.answers));
-  main.innerHTML = `<h2>Test du jour · ${new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}</h2><p class="muted">${list.length} questions : révisions dues en priorité, puis notions nouvelles des matières les plus fragiles. Le score du jour est enregistré une fois le test terminé.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
+  main.innerHTML = `<h2>Test du jour · ${new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}</h2><p class="muted">${list.length} questions : révisions dues d'abord, puis une question par matière à tour de rôle (les matières du programme du jour en premier), en reprenant d'abord les questions ratées. Le score du jour est enregistré une fois le test terminé.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
   const host = main.querySelector("#host"); const prog = main.querySelector("#prog");
   const finishScreen = () => {
     const score = Object.values(plan.answers).filter(Boolean).length;
-    if (!plan.done) { plan.done = true; plan.score = score; addXp(50 + (score === list.length ? 100 : 0)); save(); }
+    if (!plan.done) { plan.done = true; plan.score = score; save(); }
     prog.textContent = "Terminé";
     const byUe = {}; list.forEach(e => { const ue = CHAP_BY[e.chap].ue; byUe[ue] = byUe[ue] || [0, 0]; byUe[ue][1]++; if (plan.answers[e.id]) byUe[ue][0]++; });
     host.innerHTML = `<div class="exo"><h3 style="margin-top:0">${plan.score} / ${list.length}${plan.score === list.length ? " · sans faute" : ""}</h3><p>${Object.entries(byUe).map(([u, [a, b]]) => `${esc(u)} : ${a}/${b}`).join(" · ")}</p><p class="muted small">Les questions de définition et de compréhension ratées reviendront demain dans les révisions espacées ; les calculs se retravaillent dans les chapitres. Revenez demain pour un nouveau test.</p><div class="actions"><button class="btn" id="toA">Retour à l'accueil</button><button class="btn ghost" id="toR">Réviser maintenant</button></div></div>`;
@@ -1423,107 +1217,235 @@ function renderPcg() {
   draw();
 }
 
-// ---------- Succès (vue) ----------
-let succFilter = "Tous";
-function renderSucces() {
-  state.stats.unseen = 0; persist(); updateSuccBadge();
-  const got = SUCCES.filter(x => state.succes[x.id]);
-  const xpS = got.reduce((a, x) => a + TIER_XP[x.tier], 0);
-  const byTier = t => got.filter(x => x.tier === t).length;
-  const nx = nextSucces(1)[0];
-  main.innerHTML = `<h2>Succès</h2><p class="muted">${SUCCES.length} succès en ${SUCC_CATS.length === 7 ? "sept" : "six"} catégories, de la régularité aux annales. Chacun se débloque automatiquement et rapporte de l'XP : 20 pour le bronze, 50 pour l'argent, 100 pour l'or.</p>
-<div class="board"><div class="tile"><div class="big">${got.length}<span class="muted" style="font-size:1rem"> / ${SUCCES.length}</span></div><div class="lab">succès débloqués</div></div><div class="tile"><div class="big">${byTier("or")} · ${byTier("argent")} · ${byTier("bronze")}</div><div class="lab">or · argent · bronze</div></div><div class="tile"><div class="big">${fmt(xpS)}</div><div class="lab">XP gagnés grâce aux succès</div></div></div>
-${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.toLowerCase())} (${fmt(Math.min(nx.prog(), nx.target))} / ${fmt(nx.target)}).</p>` : ""}
-<div class="chips" role="group" aria-label="Catégories">${["Tous", ...SUCC_CATS].map(c => { const list = c === "Tous" ? SUCCES : SUCCES.filter(x => x.cat === c); return `<button data-c="${c}" aria-pressed="${c === succFilter}">${c} <span class="mono">${list.filter(x => state.succes[x.id]).length}/${list.length}</span></button>`; }).join("")}</div>
-<div class="sgrid" id="sg"></div>`;
-  const draw = () => {
-    const list = succFilter === "Tous" ? SUCCES : SUCCES.filter(x => x.cat === succFilter);
-    main.querySelector("#sg").innerHTML = list.map(succCard).join("");
-    main.querySelectorAll(".chips button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.c === succFilter)));
-  };
-  main.querySelectorAll(".chips button").forEach(b => b.onclick = () => { succFilter = b.dataset.c; draw(); });
-  draw();
+// ---------- Programme du jour : plusieurs matières chaque jour ----------
+// Chaque jour, trois matières : celles qui n'ont pas été travaillées depuis le plus longtemps passent en premier
+// (ordre conseillé des matières en cas d'égalité). Le choix est figé pour la journée.
+const PROG_N = 3;
+const dayKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+function lastActivity(code) { let best = null; for (const k in state.hist) { const h = state.hist[k]; if (h.ue && h.ue[code] && h.ue[code][0] && (!best || k > best)) best = k; } return best; }
+function currentChapter(code) { const cs = ueChaps(code); return cs.find(c => chapStarted(c) && chapMastery(c) < 0.999) || cs.find(c => chapMastery(c) < 0.999) || null; }
+function programmeDuJour() {
+  const k = todayKey(); const saved = state.prog[k];
+  if (Array.isArray(saved) && saved.length && saved.every(id => CHAP_BY[id])) return saved.map(id => CHAP_BY[id]);
+  const today = k;
+  const cands = UES.map((u, i) => ({ i, c: currentChapter(u.code), last: lastActivity(u.code) })).filter(x => x.c);
+  // une matière déjà travaillée aujourd'hui compte comme travaillée la veille, pour ne pas l'exclure du programme du jour
+  cands.sort((a, b) => ((a.last === today ? "" : a.last) || "").localeCompare((b.last === today ? "" : b.last) || "") || a.i - b.i);
+  const pick = cands.slice(0, PROG_N).map(x => x.c.id);
+  state.prog = { [k]: pick }; persist();
+  return pick.map(id => CHAP_BY[id]);
 }
+// Page de rappels de l'UE1 conseillée : la première jamais relue, sinon celle relue il y a le plus longtemps.
+function rappelDuJour() { if (!RAP) return null; return RAP.pages.find(p => !state.rappels[p.id]) || RAP.pages.slice().sort((a, b) => state.rappels[a.id].localeCompare(state.rappels[b.id]))[0]; }
 
-// ---------- Observatoire ----------
-// Chaque matière est observée dans une bande du spectre ; chaque chapitre acquis permet d'observer une cible des catalogues Messier et NGC.
-const BANDES = { UE2: ["Radio", "plus de 1 m"], UE1: ["Micro-ondes", "1 mm à 1 m"], UE3: ["Infrarouge", "700 nm à 1 mm"], UE9: ["Visible", "400 à 700 nm"], UE10: ["Ultraviolet", "10 à 400 nm"], UE4: ["Rayons X", "0,01 à 10 nm"], UE6: ["Rayons gamma", "moins de 0,01 nm"], PCG: ["Lumière blanche", "toutes les longueurs d'onde"] };
-const SPECTRE = ["UE2", "UE1", "UE3", "UE9", "UE10", "UE4", "UE6"].filter(c => c === "PCG" || UE_BY[c] || (RAP && c === RAP.ue.code));
-const TYPE_OBJ = { neb: "nébuleuse diffuse", pla: "nébuleuse planétaire", gal: "galaxie", glo: "amas globulaire", ouv: "amas ouvert", snr: "rémanent de supernova", ref: "nébuleuse par réflexion", nua: "nuage stellaire" };
-const CIBLES_UE = {
-  UE1: [["M6", "Amas du Papillon", "ouv", "Scorpion"], ["M7", "Amas de Ptolémée", "ouv", "Scorpion"], ["M35", "Amas ouvert M35", "ouv", "Gémeaux"], ["M41", "Amas ouvert M41", "ouv", "Grand Chien"], ["M47", "Amas ouvert M47", "ouv", "Poupe"], ["M46", "Amas ouvert M46", "ouv", "Poupe"], ["M39", "Amas ouvert M39", "ouv", "Cygne"]],
-  UE9: [["M42", "Grande nébuleuse d'Orion", "neb", "Orion"], ["M45", "Les Pléiades", "ouv", "Taureau"], ["M31", "Galaxie d'Andromède", "gal", "Andromède"], ["M13", "Grand amas d'Hercule", "glo", "Hercule"], ["M57", "Nébuleuse de l'Anneau", "pla", "Lyre"], ["M27", "Nébuleuse de l'Haltère", "pla", "Petit Renard"], ["M44", "Amas de la Ruche", "ouv", "Cancer"], ["M8", "Nébuleuse de la Lagune", "neb", "Sagittaire"], ["M51", "Galaxie du Tourbillon", "gal", "Chiens de chasse"]],
-  UE10: [["M33", "Galaxie du Triangle", "gal", "Triangle"], ["M81", "Galaxie de Bode", "gal", "Grande Ourse"], ["M101", "Galaxie du Moulinet", "gal", "Grande Ourse"], ["M104", "Galaxie du Sombrero", "gal", "Vierge"], ["M63", "Galaxie du Tournesol", "gal", "Chiens de chasse"], ["M64", "Galaxie de l'Œil noir", "gal", "Chevelure de Bérénice"], ["M83", "Galaxie du Moulinet austral", "gal", "Hydre"], ["M106", "Galaxie spirale M106", "gal", "Chiens de chasse"]],
-  UE2: [["M1", "Nébuleuse du Crabe", "snr", "Taureau"], ["M87", "Virgo A, au trou noir imagé en 2019", "gal", "Vierge"], ["M82", "Galaxie du Cigare", "gal", "Grande Ourse"], ["M77", "Galaxie de Seyfert M77", "gal", "Baleine"], ["M84", "Radiogalaxie M84", "gal", "Vierge"], ["M17", "Nébuleuse Oméga", "neb", "Sagittaire"], ["M20", "Nébuleuse Trifide", "neb", "Sagittaire"]],
-  UE3: [["M16", "Piliers de la création (nébuleuse de l'Aigle)", "neb", "Serpent"], ["NGC 3132", "Nébuleuse de l'Anneau austral", "pla", "Voiles"], ["NGC 3324", "Falaises cosmiques de la Carène", "neb", "Carène"], ["NGC 7319", "Quintette de Stephan", "gal", "Pégase"], ["NGC 2070", "Nébuleuse de la Tarentule", "neb", "Dorade"], ["NGC 628", "Galaxie fantôme (M74)", "gal", "Poissons"]],
-  UE4: [["M3", "Amas globulaire M3", "glo", "Chiens de chasse"], ["M4", "Amas globulaire M4", "glo", "Scorpion"], ["M5", "Amas globulaire M5", "glo", "Serpent"], ["M15", "Amas globulaire M15", "glo", "Pégase"], ["M22", "Amas globulaire M22", "glo", "Sagittaire"], ["M92", "Amas globulaire M92", "glo", "Hercule"]],
-  UE6: [["M97", "Nébuleuse du Hibou", "pla", "Grande Ourse"], ["M76", "Petite Haltère", "pla", "Persée"], ["M78", "Nébuleuse M78", "ref", "Orion"], ["M43", "Nébuleuse de De Mairan", "neb", "Orion"], ["M24", "Nuage stellaire du Sagittaire", "nua", "Sagittaire"], ["M11", "Amas du Canard sauvage", "ouv", "Écu de Sobieski"]],
-};
-const CIBLE = {};
-UES.forEach(u => ueChaps(u.code).forEach((c, i) => { const t = (CIBLES_UE[u.code] || [])[i]; if (t) CIBLE[c.id] = { des: t[0], nom: t[1], type: t[2], cons: t[3] }; }));
-const observed = () => CHAPS.filter(c => chapMastery(c) >= 0.999).length;
-const RETI = `<svg class="reti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 1v6M12 17v6M1 12h6M17 12h6"/></svg>`;
-function renderObservatoire() {
-  const r = rank(); const i = RANKS.findIndex(x => x[1] === r.name); const nObs = observed();
-  const nextC = nextChapter(); const pc = r.next ? Math.round((state.xp - r.from) / (r.next[0] - r.from) * 100) : 100;
-  main.innerHTML = `<h2>Observatoire</h2>
-<p class="muted">Chaque chapitre acquis vous permet d'observer une cible du ciel profond, tirée des catalogues Messier et NGC, dont plusieurs objets des premières images du télescope spatial James-Webb. Chaque matière est observée dans sa bande du spectre électromagnétique. Votre XP fait progresser votre instrument, de l'œil nu jusqu'au plus grand télescope en construction.</p>
-<div class="obs-sky"><canvas id="skyC" width="1040" height="520" role="img" aria-label="Carte du ciel : ${nObs} objets observés sur ${CHAPS.length}"></canvas><div class="cap"><span>${nObs} / ${CHAPS.length} objets observés</span><span>${nextC && CIBLE[nextC.id] ? `Prochaine cible : ${esc(CIBLE[nextC.id].des)}` : "Catalogue complet"}</span></div></div>
-<div class="instr">
-  <div class="now"><span class="eyebrow">Votre instrument</span><b>${esc(r.name)}</b><span class="ap">${esc(RANKS[i][2])}</span><div class="bar"><i style="width:${pc}%"></i></div><span class="muted small">${fmt(state.xp)} XP${r.next ? ` · ${fmt(r.next[0] - state.xp)} XP avant : ${esc(r.next[1])}` : " · instrument maximal"}</span></div>
-  <ol aria-label="Instruments">${RANKS.map((x, k) => `<li class="${k < i ? "got" : k === i ? "got cur" : ""}"><span class="i"></span><span>${esc(x[1])}</span><span class="x">${fmt(x[0])} XP</span></li>`).join("")}</ol>
-</div>
-<h3>Le spectre des matières</h3>
-<div class="spectre">${SPECTRE.map(code => `<div style="${ucol(code)}"><b>${esc(BANDES[code][0])}</b><span>${code === "PCG" ? "Plan comptable" : code}</span><span>${esc(BANDES[code][1])}</span></div>`).join("")}</div>
-<p class="muted small">Des grandes longueurs d'onde (radio) aux plus courtes (gamma). Les fondamentaux du droit sont le fond diffus cosmologique : on les capte en micro-ondes, partout. Le plan comptable est la lumière blanche, qui contient toutes les couleurs : il sert dans toutes les matières. Longueurs d'onde indicatives.</p>
-${UES.map(u => `<h3><span class="dotc" style="${ucol(u.code)}"></span>${esc(u.code)} · ${esc(u.nom)} <span class="muted small">bande ${esc(BANDES[u.code][0].toLowerCase())}</span></h3><div class="cat" style="${ucol(u.code)}">${ueChaps(u.code).map(c => { const t = CIBLE[c.id]; if (!t) return ""; const m = chapMastery(c); const st = m >= 0.999 ? "seen" : chapStarted(c) ? "prog" : ""; return `<button class="obj ${st}" data-c="${c.id}"><span class="des">${esc(t.des)}${st === "seen" ? '<span class="pill seen">observé</span>' : st === "prog" ? `<span class="pill prog">${Math.round(m * 100)} %</span>` : '<span class="pill">à observer</span>'}</span><span class="nm">${esc(t.nom)}</span><span class="ty">${esc(TYPE_OBJ[t.type])} · ${esc(t.cons)}</span><span class="ch">Chapitre ${c.ordre} · ${esc(c.title)}</span></button>`; }).join("")}</div>`).join("")}
-<h3>Derniers succès</h3>${(() => { const last = SUCCES.filter(x => state.succes[x.id]).sort((a, b) => state.succes[b.id] - state.succes[a.id]).slice(0, 4); return last.length ? `<div class="sgrid">${last.map(succCard).join("")}</div>` : `<p class="muted">Aucun succès pour l'instant. Le premier se débloque dès la première réponse.</p>`; })()}
-<div class="actions"><button class="btn ghost" id="toSucc">Voir les ${SUCCES.length} succès</button></div>
-<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision, 5 par carte sue), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute${ANN_KEYS.length ? ", 150 par annale composée (50 quand on la recompose)" : ""}${RAP ? ", 10 par page de rappels relue" : ""}, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
-  main.querySelector("#toSucc").onclick = () => go({ tab: "succes" });
-  main.querySelectorAll(".obj").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
-  drawCiel(main.querySelector("#skyC"));
+// ---------- Analyse des performances ----------
+let anaPer = 30, anaUe = "Tous";
+const PERIODES = [[7, "7 jours"], [30, "30 jours"], [90, "90 jours"], [0, "Depuis le début"]];
+const TYPE_NOM = { qcm: "QCM à réponse unique", multi: "QCM à réponses multiples", calc: "Calculs", tri: "Classements", ecriture: "Écritures au journal", carte: "Cartes de notions", compte: "Comptes du plan comptable" };
+function keysBack(n, offset) { const out = []; const d = new Date(); d.setDate(d.getDate() - (offset || 0) - n + 1); for (let i = 0; i < n; i++) { out.push(dayKey(d)); d.setDate(d.getDate() + 1); } return out; }
+function firstDay() { const ks = Object.keys(state.hist).filter(k => state.hist[k].n).sort(); return ks[0] || todayKey(); }
+function periodDays(per) { if (per) return per; const f = new Date(firstDay() + "T12:00"); return Math.max(1, Math.min(730, Math.round((startOfDay(Date.now()) - startOfDay(f)) / DAY) + 1)); }
+function sumHist(keys, code) { let n = 0, ok = 0; for (const k of keys) { const h = state.hist[k]; if (!h) continue; if (!code || code === "Tous") { n += h.n || 0; ok += h.ok || 0; } else if (h.ue && h.ue[code]) { n += h.ue[code][0]; ok += h.ue[code][1]; } } return { n, ok, r: n ? ok / n : null }; }
+// Thème d'un item (matière, ou PCG pour les comptes), sa nature et son type.
+function itemUe(id) { const it = SRS[id]; if (it) return it.th; const e = EXO[id]; return e && CHAP_BY[e.chap] ? CHAP_BY[e.chap].ue : null; }
+function itemChap(id) { const it = SRS[id]; if (it) return it.chap; const e = EXO[id]; return e ? e.chap : null; }
+function itemType(id) { if (CARTE[id]) return "carte"; if (COMPTE[id]) return "compte"; const e = EXO[id]; return e ? e.type : null; }
+function itemText(id) { const e = EXO[id]; if (e) return e.q; const k = CARTE[id]; if (k) return k.q; const a = COMPTE[id]; return a ? `Compte ${a.num} ${a.label}` : id; }
+// Agrégats sur toute la période d'utilisation, à partir des compteurs par question (n tentatives, ok réussites).
+function aggCards(keyFn) { const out = {}; for (const id in state.cards) { if (!EXO[id] && !SRS[id]) continue; const c = state.cards[id]; if (!c.n) continue; const k = keyFn(id); if (k == null) continue; const o = out[k] || (out[k] = { n: 0, ok: 0, items: 0 }); o.n += c.n; o.ok += c.ok || 0; o.items++; } for (const k in out) out[k].r = out[k].n ? out[k].ok / out[k].n : null; return out; }
+const logSince = days => { const t = days ? (startOfDay(Date.now()) - (days - 1) * DAY) / 1000 : 0; return state.log.filter(x => x[0] >= t); };
+const median = a => { if (!a.length) return null; const s = a.slice().sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const relDay = k => { if (!k) return "jamais"; const d = Math.round((startOfDay(Date.now()) - startOfDay(new Date(k + "T12:00"))) / DAY); return d <= 0 ? "aujourd'hui" : d === 1 ? "hier" : `il y a ${d} jours`; };
+const fmtSec = s => s == null ? "–" : s < 60 ? `${Math.round(s)} s` : `${Math.floor(s / 60)} min ${String(Math.round(s % 60)).padStart(2, "0")}`;
+// Diagnostic d'une matière ou d'un chapitre (toujours affiché avec son libellé, jamais par la couleur seule).
+function diag(r, n) {
+  if (!n) return { cls: "none", ic: "○", t: "Pas commencé" };
+  if (n < 10) return { cls: "none", ic: "…", t: "Trop peu de réponses" };
+  if (r >= 0.8) return { cls: "good", ic: "✓", t: "Point fort" };
+  if (r >= 0.65) return { cls: "good", ic: "✓", t: "Solide" };
+  if (r >= 0.5) return { cls: "warn", ic: "!", t: "À consolider" };
+  return { cls: "bad", ic: "✕", t: "Prioritaire" };
 }
-let skyAnim = 0;
-// Carte du ciel : étoiles et Voie lactée, puis les cibles (une par chapitre) regroupées par matière, en couleur une fois observées.
-function drawCiel(cv) {
-  cancelAnimationFrame(skyAnim);
-  const box = cv.parentElement.clientWidth || 960; const dpr = Math.min(2, window.devicePixelRatio || 1);
-  const W = Math.round(box), H = Math.round(box < 640 ? box * 1.25 : box * 0.5);
-  cv.width = W * dpr; cv.height = H * dpr; cv.style.height = H + "px"; const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
-  const narrow = W < 640; const K = Math.min(W, H) / 520;
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const css = getComputedStyle(document.documentElement); const col = code => css.getPropertyValue(`--c-${code}`).trim() || "#7da2ff";
-  const rs = mulberry(42);
-  const stars = Array.from({ length: 260 }, () => { const band = rs() < 0.45; const tt = rs(); const x = band ? tt * W : rs() * W; const y = band ? H * 0.82 - tt * H * 0.6 + (rs() - 0.5) * 120 : rs() * H; return { x, y, r: rs() < 0.08 ? 1.6 : 0.5 + rs() * 0.9, a: 0.35 + rs() * 0.65, ph: rs() * 6.28 }; });
-  const bg = document.createElement("canvas"); bg.width = W * dpr; bg.height = H * dpr; const b = bg.getContext("2d"); b.scale(dpr, dpr);
-  const gr = b.createLinearGradient(0, 0, W, H); gr.addColorStop(0, "#0b1430"); gr.addColorStop(1, "#04060f"); b.fillStyle = gr; b.fillRect(0, 0, W, H);
-  for (let k = 0; k < 90; k++) { const tt = rs(); const x = tt * W, y = H * 0.82 - tt * H * 0.6 + (rs() - 0.5) * 90; const g = b.createRadialGradient(x, y, 0, x, y, 40 + rs() * 70); g.addColorStop(0, `rgba(170,180,230,${0.035 + rs() * 0.04})`); g.addColorStop(1, "rgba(170,180,230,0)"); b.fillStyle = g; b.beginPath(); b.arc(x, y, 110, 0, 7); b.fill(); }
-  const groups = UES.map((u, gi) => { const t = (gi + 0.5) / UES.length; return narrow ? { code: u.code, cx: W * (gi % 2 ? 0.7 : 0.3), cy: H * (0.88 - t * 0.78) } : { code: u.code, cx: 80 + t * (W - 160), cy: Math.min(H - 100 * K - 30, Math.max(96 * K + 22, H * 0.74 - t * H * 0.46 + (gi % 2 ? 46 : -34) * K)) }; });
-  const objs = [];
-  groups.forEach(g => { const cs = ueChaps(g.code); cs.forEach((c, k) => { const ang = -Math.PI / 2 + k / cs.length * Math.PI * 2 + (g.code.length % 7); const rad = (narrow ? 34 : 46 + (k % 2) * 22) * (narrow ? 1 : K); objs.push({ c, t: CIBLE[c.id], x: g.cx + Math.cos(ang) * rad * (narrow ? 1.5 : 1.25), y: g.cy + Math.sin(ang) * rad * (narrow ? 0.95 : 0.85), col: col(g.code), m: chapMastery(c), st: chapStarted(c), code: g.code }); }); });
-  const nc = nextChapter();
-  const shape = (o, alpha) => {
-    const { x, y } = o; ctx.save(); ctx.globalAlpha = alpha; const c = o.col; const ty = o.t ? o.t.type : "neb";
-    if (ty === "gal") { ctx.translate(x, y); ctx.rotate(((x * 7) % 3) - 1.2); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 16); g.addColorStop(0, "#ffffff"); g.addColorStop(0.25, c); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.scale(1, 0.42); ctx.beginPath(); ctx.arc(0, 0, 16, 0, 7); ctx.fill(); }
-    else if (ty === "pla") { ctx.strokeStyle = c; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(x, y, 7, 0, 7); ctx.stroke(); ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x, y, 1.4, 0, 7); ctx.fill(); }
-    else if (ty === "glo") { const g = ctx.createRadialGradient(x, y, 0, x, y, 11); g.addColorStop(0, "#fff"); g.addColorStop(0.35, c); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 11, 0, 7); ctx.fill(); }
-    else if (ty === "ouv" || ty === "nua") { const r2 = mulberry(Math.round(x * 13 + y)); ctx.fillStyle = c; for (let k = 0; k < (ty === "nua" ? 22 : 9); k++) { ctx.beginPath(); ctx.arc(x + (r2() - 0.5) * 22, y + (r2() - 0.5) * 18, 1 + r2() * 1.4, 0, 7); ctx.fill(); } ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x, y, 1.6, 0, 7); ctx.fill(); }
-    else { for (let k = 0; k < 3; k++) { const ox = [0, 6, -5][k], oy = [0, -4, 5][k]; const g = ctx.createRadialGradient(x + ox, y + oy, 0, x + ox, y + oy, 13); g.addColorStop(0, c); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x + ox, y + oy, 13, 0, 7); ctx.fill(); } }
-    ctx.restore();
-  };
-  const frame = t => {
-    ctx.drawImage(bg, 0, 0);
-    stars.forEach(s => { ctx.fillStyle = `rgba(235,240,255,${s.a * (reduce ? 1 : 0.7 + 0.3 * Math.sin(t / 700 + s.ph))})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill(); });
-    groups.forEach(g => { const os = objs.filter(o => o.code === g.code); ctx.strokeStyle = "rgba(170,181,214,0.16)"; ctx.setLineDash([3, 5]); ctx.lineWidth = 1; ctx.beginPath(); os.forEach((o, k) => k ? ctx.lineTo(o.x, o.y) : ctx.moveTo(o.x, o.y)); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = "rgba(220,228,255,0.75)"; ctx.font = "600 13px Sora, Segoe UI, sans-serif"; ctx.textAlign = "center"; ctx.fillText(`${g.code} · ${BANDES[g.code][0]}`, g.cx, g.cy - (narrow ? 50 : 96 * K)); });
-    objs.forEach(o => { const seen = o.m >= 0.999; if (seen) shape(o, 1); else if (o.st) shape(o, 0.35); else { ctx.strokeStyle = "rgba(170,181,214,0.35)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(o.x, o.y, 4, 0, 7); ctx.stroke(); }
-      if (seen || o.st) { ctx.fillStyle = seen ? "rgba(238,242,255,0.95)" : "rgba(170,181,214,0.7)"; ctx.font = "500 11px IBM Plex Mono, monospace"; ctx.textAlign = "center"; ctx.fillText(o.t ? o.t.des : "", o.x, o.y + 26); } });
-    const tgt = nc && objs.find(o => o.c.id === nc.id);
-    if (tgt) { const rr = 17 + (reduce ? 0 : Math.sin(t / 400) * 2); ctx.strokeStyle = "#eef2ff"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(tgt.x, tgt.y, rr, 0, 7); ctx.stroke(); [[0, -1], [0, 1], [-1, 0], [1, 0]].forEach(([dx, dy]) => { ctx.beginPath(); ctx.moveTo(tgt.x + dx * (rr - 6), tgt.y + dy * (rr - 6)); ctx.lineTo(tgt.x + dx * (rr + 7), tgt.y + dy * (rr + 7)); ctx.stroke(); }); ctx.fillStyle = "#eef2ff"; ctx.font = "600 12px IBM Plex Mono, monospace"; ctx.textAlign = "center"; ctx.fillText(tgt.t ? tgt.t.des : "", tgt.x, tgt.y - rr - 10); }
-    ctx.textAlign = "left";
-    if (!reduce) skyAnim = requestAnimationFrame(frame);
-  };
-  frame(0);
+const diagPill = d => `<span class="dg ${d.cls}"><span aria-hidden="true">${d.ic}</span> ${d.t}</span>`;
+const deltaTxt = (a, b) => { if (a == null || b == null) return `<span class="muted">–</span>`; const d = Math.round((a - b) * 100); return d === 0 ? `<span class="muted">= 0 pt</span>` : `<span class="${d > 0 ? "up" : "down"}">${d > 0 ? "▲ +" : "▼ −"}${Math.abs(d)} pt${Math.abs(d) > 1 ? "s" : ""}</span>`; };
+// Barres horizontales en HTML (libellé, barre, valeur) : lisibles à toutes les largeurs.
+function hbars(rows, opts) {
+  const o = opts || {};
+  return `<div class="hb" role="list" ${o.label ? `aria-label="${esc(o.label)}"` : ""}>${rows.map(r => `<div class="hb-row" role="listitem" ${r.code ? `style="${ucol(r.code)}"` : ""} title="${esc(r.tip || "")}"><span class="hb-l">${r.code ? `<span class="code">${esc(r.code)}</span>` : ""}<span class="nm">${esc(r.label)}</span></span><span class="hb-t ${r.code ? "id" : ""}">${r.v == null ? "" : `<i style="width:${Math.max(1.5, Math.round(r.v * 1000) / 10)}%"></i>`}</span><span class="hb-v">${r.v == null ? "–" : `${Math.round(r.v * 100)} %`}<small>${esc(r.sub || "")}</small></span></div>`).join("")}</div>`;
+}
+// Courbe d'un taux (0 à 1) jour par jour ; les jours sans mesure ne sont pas tracés.
+function rateLineSVG(pts, opts) {
+  const o = opts || {}; const W = 640, H = 200, L = 40, R = 48, T = 14, B = 26, n = pts.length, step = n > 1 ? (W - L - R) / (n - 1) : 0;
+  const x = i => L + step * i, y = v => T + (H - T - B) * (1 - v);
+  let g = `<g class="grid">${[0, 0.5, 1].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
+  g += [0, 0.5, 1].map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)} %</text>`).join("");
+  const segs = []; let cur = []; pts.forEach((p, i) => { if (p.v == null) { if (cur.length && !o.connect) { segs.push(cur); cur = []; } } else cur.push([x(i), y(p.v)]); }); if (cur.length) segs.push(cur);
+  const st = o.color ? ` style="stroke:${o.color}"` : "";
+  segs.forEach(sg => { g += sg.length > 1 ? `<path class="line" d="M${sg.map(p => p.join(",")).join("L")}"${st}/>` : `<circle class="dot" cx="${sg[0][0]}" cy="${sg[0][1]}" r="4"${o.color ? ` style="fill:${o.color}"` : ""}/>`; });
+  g += `<line class="xh" x1="0" x2="0" y1="${T}" y2="${y(0)}" style="display:none"/>`;
+  const lastI = pts.map((p, i) => p.v != null ? i : -1).filter(i => i >= 0).pop();
+  if (lastI != null) g += `<circle class="dot" cx="${x(lastI)}" cy="${y(pts[lastI].v)}" r="4"${o.color ? ` style="fill:${o.color}"` : ""}/><text class="val" x="${x(lastI) + 8}" y="${y(pts[lastI].v) + 4}">${Math.round(pts[lastI].v * 100)} %</text>`;
+  const ticks = n <= 1 ? [0] : [0, Math.round((n - 1) / 3), Math.round(2 * (n - 1) / 3), n - 1];
+  [...new Set(ticks)].forEach(i => { g += `<text x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === n - 1 ? "end" : "middle"}">${i === n - 1 && pts[i].k === todayKey() ? "auj." : new Date(pts[i].k + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</text>`; });
+  pts.forEach((p, i) => { g += `<rect class="hit" data-i="${i}" data-x="${x(i)}" tabindex="-1" x="${x(i) - Math.max(step, 2) / 2}" y="${T}" width="${Math.max(step, 2)}" height="${H - T - B}"></rect>`; });
+  g += `<g class="axis"><line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/></g>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "")}">${g}</svg>`;
+}
+// Colonnes (volume) ; au-delà de 120 jours, regroupement par semaine.
+function volumeSVG(cols, opts) {
+  const o = opts || {}; const W = 640, H = 170, L = 36, R = 8, T = 16, B = 26, n = cols.length, slot = (W - L - R) / n, bw = Math.max(1.5, Math.min(18, slot * 0.7));
+  const max = niceMax(Math.max(1, ...cols.map(d => d.n))); const y = v => T + (H - T - B) * (1 - v / max);
+  let g = `<g class="grid">${[0, max / 2, max].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
+  g += [0, max / 2, max].map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`).join("");
+  cols.forEach((d, i) => {
+    const cx = L + slot * i + slot / 2, x0 = cx - bw / 2, top = y(d.n), base = y(0), h = base - top, r = Math.min(4, h, bw / 2);
+    if (h > 0) g += `<path class="bar" d="M${x0},${base}V${top + r}Q${x0},${top} ${x0 + r},${top}H${x0 + bw - r}Q${x0 + bw},${top} ${x0 + bw},${top + r}V${base}Z"/>`;
+    g += `<rect class="hit" data-i="${i}" tabindex="-1" x="${L + slot * i}" y="${T}" width="${slot}" height="${H - T - B}"></rect>`;
+  });
+  const ticks = n <= 1 ? [0] : [0, Math.round((n - 1) / 2), n - 1];
+  [...new Set(ticks)].forEach(i => { g += `<text x="${L + slot * i + slot / 2}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === n - 1 ? "end" : "middle"}">${cols[i].lab}</text>`; });
+  g += `<g class="axis"><line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/></g>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "")}">${g}</svg>`;
+}
+// Priorités : ce qui ferait le plus progresser, calculé à partir des réponses.
+function priorites(ctx) {
+  const out = [];
+  const due = dueFor("Tous").length;
+  if (due) out.push({ ic: "↻", t: `<b>${due} notion${due > 1 ? "s" : ""} en attente de révision.</b> Une révision faite à temps fixe la notion ; en retard, elle se perd.`, act: "Réviser", go: () => startSession("Tous", { chain: true }) });
+  const errs = errorItems().length;
+  if (errs >= 3) out.push({ ic: "✎", t: `<b>${errs} questions ratées à la dernière tentative.</b> Les reprendre tant qu'elles sont fraîches.`, act: "Retravailler mes erreurs", go: startErreurs });
+  ctx.weakChaps.slice(0, 2).forEach(c => out.push({ ic: "!", t: `<b>${esc(c.ch.ue)} · ${esc(c.ch.title)}</b> : ${Math.round(c.r * 100)} % de réussite sur ${c.n} réponses. Relire le cours avant de refaire les exercices.`, act: "Relire le cours", go: () => go({ tab: "chap", id: c.ch.id }) }));
+  const neglected = ctx.ues.filter(u => u.last && u.days >= 7).sort((a, b) => b.days - a.days);
+  if (neglected.length) out.push({ ic: "⏱", t: `<b>${neglected.map(u => esc(u.code)).join(", ")}</b> : pas travaillée${neglected.length > 1 ? "s" : ""} depuis ${neglected[0].days} jours ou plus. Ce qui n'est pas revu s'oublie.`, act: "Ouvrir", go: () => go({ tab: "ue", code: neglected[0].code }) });
+  const never = ctx.ues.filter(u => !u.last);
+  if (never.length && never.length < UES.length) out.push({ ic: "○", t: `<b>Pas encore commencées : ${never.map(u => esc(u.code)).join(", ")}.</b> Le programme du jour les fera entrer en rotation.`, act: "Voir le programme", go: () => go({ tab: "accueil" }) });
+  const wt = ctx.types.filter(t => t.n >= 10 && t.r < 0.55).sort((a, b) => a.r - b.r)[0];
+  if (wt) out.push({ ic: "!", t: `<b>${esc(TYPE_NOM[wt.k] || wt.k)} : ${Math.round(wt.r * 100)} % de réussite</b> sur ${wt.n} réponses, votre format le plus fragile.`, act: null });
+  const P = planTravail();
+  if (P && P.jours > 0 && P.restantes && !P.aTemps) out.push({ ic: "⚑", t: `<b>Rythme insuffisant pour l'examen du ${new Date(state.exam + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}</b> : passer à ${NPD_CHOIX.find(v => v >= P.conseil) || 60} nouvelles notions par jour.`, act: "Voir le plan", go: () => go({ tab: "accueil" }) });
+  if (ANN_KEYS.length && !annCount() && state.exam && P && P.jours > 0 && P.jours <= 120) out.push({ ic: "⧗", t: `<b>Aucune annale composée</b> à ${P.jours} jours de l'examen. Une épreuve en conditions réelles révèle ce que les questions isolées ne montrent pas.`, act: "Annales", go: () => go({ tab: "annales" }) });
+  return out.slice(0, 6);
+}
+// Questions dont la dernière réponse est fausse (journal), ou ratées sans être remontées (compteurs).
+function errorItems() {
+  const last = {}; for (const x of state.log) last[x[1]] = x[2];
+  const out = [];
+  for (const id in state.cards) { if (!EXO[id] && !SRS[id]) continue; const c = state.cards[id]; if (!c.n) continue; const l = last[id]; if (l === 0 || (l === undefined && c.ok < c.n && (c.s || 0) === 0)) out.push(id); }
+  return out.sort((a, b) => ((state.cards[b].n - state.cards[b].ok) - (state.cards[a].n - state.cards[a].ok)) || state.cards[b].last - state.cards[a].last);
+}
+function startErreurs() {
+  const ids = errorItems().slice(0, 40); const queue = ids.map(itemObj).filter(Boolean);
+  if (!queue.length) { toast("Aucune erreur à retravailler."); return; }
+  main.innerHTML = `<div class="crumb"><button id="back">← Analyse</button><span class="progress" id="prog"></span></div><h2>Mes erreurs</h2><p class="muted small">${queue.length} question${queue.length > 1 ? "s" : ""} ratée${queue.length > 1 ? "s" : ""} à la dernière tentative, les plus souvent manquées d'abord. Une notion pas encore due ne change pas de marche dans les révisions espacées.</p><div id="host"></div>`;
+  main.querySelector("#back").onclick = () => go({ tab: "analyse" });
+  const host = main.querySelector("#host");
+  runSeries(host, queue, itemLabel, (ex, ok) => moveNote(host, record(ex.id, ok, "erreurs")), score => {
+    main.querySelector("#prog").textContent = "Terminé";
+    host.innerHTML = `<div class="exo"><h3 style="margin-top:0">${score} sur ${queue.length} réussies cette fois</h3><p class="muted">Les questions encore ratées resteront dans la liste de vos erreurs.</p><div class="actions"><button class="btn" id="toA">Retour à l'analyse</button></div></div>`;
+    host.querySelector("#toA").onclick = () => go({ tab: "analyse" });
+  }, main.querySelector("#prog"));
+  window.scrollTo({ top: 0 });
+}
+function renderAnalyse() {
+  const nd = periodDays(anaPer); const keys = keysBack(nd); const prevKeys = anaPer ? keysBack(nd, nd) : [];
+  const tot = sumHist(keys), prev = anaPer ? sumHist(prevKeys) : { r: null };
+  const daysOn = keys.filter(k => state.hist[k] && state.hist[k].n).length;
+  const memAll = memorized(SRS_IDS); const seenEx = Object.keys(EXO).filter(id => card(id).n > 0).length;
+  const lg = logSince(anaPer); const times = lg.map(x => x[4]).filter(v => v != null);
+  const perLbl = anaPer ? `sur ${anaPer} jours` : "depuis le début";
+  // Matières
+  const ues = UES.map(u => {
+    const p = sumHist(keys, u.code), q = anaPer ? sumHist(prevKeys, u.code) : { r: null };
+    const ex = ueChaps(u.code).flatMap(c => c.exercices); const seen = ex.filter(e => card(e.id).n > 0).length;
+    const ids = SRS_IDS.filter(id => SRS[id].th === u.code); const last = lastActivity(u.code);
+    const tm = median(lg.filter(x => itemUe(x[1]) === u.code && x[4] != null).map(x => x[4]));
+    return { code: u.code, nom: u.nom, n: p.n, r: p.r, rPrev: q.r, cov: ex.length ? seen / ex.length : 0, mem: ids.length ? memorized(ids) / ids.length : 0, last, days: last ? Math.round((startOfDay(Date.now()) - startOfDay(new Date(last + "T12:00"))) / DAY) : null, tm };
+  });
+  // Chapitres (toute la période d'utilisation)
+  const byChap = aggCards(itemChap);
+  const chaps = CHAPS.map(ch => { const a = byChap[ch.id]; const seen = ch.exercices.filter(e => card(e.id).n > 0).length; return { ch, n: a ? a.n : 0, r: a ? a.r : null, cov: seen / ch.exercices.length, done: !!state.done[ch.id] }; });
+  const weakChaps = chaps.filter(c => c.n >= 8 && c.r < 0.6).sort((a, b) => a.r - b.r);
+  // Formats de question, niveau, nature
+  const byType = aggCards(itemType); const types = Object.keys(TYPE_NOM).filter(k => byType[k]).map(k => ({ k, ...byType[k] }));
+  const byNiv = aggCards(id => EXO[id] ? (EXO[id].niveau || 1) : null);
+  const byNat = aggCards(id => EXO[id] ? (EXO[id].nature === "notion" ? "Définitions et compréhension" : EXO[id].nature === "chiffre" ? "Chiffres de l'année" : "Calculs et écritures") : CARTE[id] ? "Définitions et compréhension" : null);
+  // Évolution : taux glissant sur 7 jours, matière choisie
+  const evo = keys.map((k, i) => { const w = keys.slice(Math.max(0, i - 6), i + 1); const s = sumHist(w, anaUe); return { k, v: s.n >= 5 ? s.r : null, n: s.n, ok: s.ok }; });
+  const weekly = nd > 120;
+  const vol = []; if (weekly) { for (let i = 0; i < keys.length; i += 7) { const w = keys.slice(i, i + 7); const s = sumHist(w, anaUe); vol.push({ n: s.n, ok: s.ok, lab: new Date(w[0] + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" }), tip: `Semaine du ${new Date(w[0] + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}` }); } }
+  else keys.forEach((k, i) => { const s = sumHist([k], anaUe); vol.push({ n: s.n, ok: s.ok, lab: i === keys.length - 1 ? "auj." : new Date(k + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" }), tip: new Date(k + "T12:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) }); });
+  // Mémoire : taux de rappel quand une notion due est révisée, selon la marche où elle se trouvait
+  const ret = STEPS.map((s, i) => { const xs = lg.filter(x => x[5] === i && x[6] === 1); return { s, n: xs.length, r: xs.length ? xs.filter(x => x[2]).length / xs.length : null }; });
+  const retN = ret.reduce((a, x) => a + x.n, 0);
+  // Moment de la journée
+  const slot = h => h < 12 ? "Matin (avant 12 h)" : h < 18 ? "Après-midi (12 h – 18 h)" : "Soir (après 18 h)";
+  const bySlot = {}; lg.forEach(x => { const k = slot(new Date(x[0] * 1000).getHours()); const o = bySlot[k] || (bySlot[k] = { n: 0, ok: 0 }); o.n++; o.ok += x[2]; });
+  // Tests du jour
+  const tests = Object.keys(state.daily).filter(k => state.daily[k].done && keys.includes(k)).sort().map(k => ({ k, v: state.daily[k].score / state.daily[k].ids.length, s: state.daily[k].score, N: state.daily[k].ids.length }));
+  const testPts = keys.map(k => { const t = tests.find(x => x.k === k); return { k, v: t ? t.v : null, t }; });
+  // Annales
+  const ann = ANN_UES.map(u => { const es = ANN_KEYS.filter(k => k.startsWith(u.code + "-")).flatMap(k => annEssais(k).map(e => ({ ...e, k }))); return { code: u.code, nom: u.nom, n: es.length, best: es.length ? Math.max(...es.map(e => e.note)) : null, lastE: es.sort((a, b) => a.date.localeCompare(b.date)).pop() }; }).filter(a => a.n);
+  const ctx = { ues, weakChaps, types };
+  const pri = priorites(ctx);
+  const err = errorItems();
+  const worst = Object.keys(state.cards).filter(id => (EXO[id] || SRS[id]) && state.cards[id].n - (state.cards[id].ok || 0) >= 2).sort((a, b) => (state.cards[b].n - state.cards[b].ok) - (state.cards[a].n - state.cards[a].ok) || (state.cards[a].ok / state.cards[a].n) - (state.cards[b].ok / state.cards[b].n)).slice(0, 10);
+  const heat = heatHTML(innerWidth < 600 ? 17 : innerWidth < 1000 ? 30 : 52);
+  const empty = !Object.keys(state.hist).length;
+  main.innerHTML = `<h2>Analyse de vos performances</h2>
+<p class="muted">Calculée à partir de chacune de vos réponses : où vous en êtes, ce qui progresse, ce qui résiste, et quoi travailler ensuite.</p>
+${empty ? `<div class="exo"><p style="margin:0">Pas encore de réponse enregistrée. Faites la séance du jour ou un chapitre : l'analyse se remplira au fil de vos réponses.</p></div>` : ""}
+<div class="chips" role="group" aria-label="Période">${PERIODES.map(([v, l]) => `<button data-per="${v}" aria-pressed="${v === anaPer}">${l}</button>`).join("")}</div>
+<div class="board">
+  <div class="tile"><div class="big">${pct(tot.r)}</div><div class="lab">de bonnes réponses ${perLbl}${anaPer ? ` · ${deltaTxt(tot.r, prev.r)} <span class="muted">vs ${anaPer} jours précédents</span>` : ""}</div></div>
+  <div class="tile"><div class="big">${fmt(tot.n)}</div><div class="lab">réponses ${perLbl} · ${daysOn} jour${daysOn > 1 ? "s" : ""} travaillé${daysOn > 1 ? "s" : ""} sur ${nd}</div></div>
+  <div class="tile"><div class="big">${fmt(memAll)}<span class="muted" style="font-size:1rem"> / ${fmt(SRS_IDS.length)}</span></div><div class="lab">notions mémorisées (révisées avec succès à 10 jours ou plus)</div></div>
+  <div class="tile"><div class="big">${Math.round(seenEx / Math.max(1, Object.keys(EXO).length) * 100)} %</div><div class="lab">des exercices déjà tentés (${fmt(seenEx)} sur ${fmt(Object.keys(EXO).length)})</div></div>
+  <div class="tile"><div class="big">${fmtSec(median(times))}</div><div class="lab">temps médian par question ${perLbl}</div></div>
+</div>
+${pri.length ? `<h3>Priorités</h3><ol class="prio">${pri.map((p, i) => `<li><span class="pi" aria-hidden="true">${p.ic}</span><span>${p.t}</span>${p.act ? `<button class="btn ghost" data-pri="${i}">${esc(p.act)}</button>` : "<span></span>"}</li>`).join("")}</ol>` : ""}
+<h3>Par matière</h3>
+<p class="muted small">Réussite ${perLbl}, comparée à la période précédente ; couverture et mémorisation sur l'ensemble du programme.</p>
+${hbars(ues.map(u => ({ code: u.code, label: u.nom, v: u.r, sub: u.n ? ` · ${fmt(u.n)} rép.` : "", tip: `${u.code} : ${u.n ? `${Math.round(u.r * 100)} % sur ${u.n} réponses` : "aucune réponse sur la période"}` })), { label: "Réussite par matière" })}
+<div class="twrap"><table class="ana"><thead><tr><th>Matière</th><th>Réponses</th><th>Réussite</th><th>Évolution</th><th>Exercices tentés</th><th>Notions mémorisées</th><th>Temps médian</th><th>Dernière séance</th><th>Diagnostic</th></tr></thead><tbody>${ues.map(u => `<tr style="${ucol(u.code)}"><td><button class="linkbtn" data-ue="${u.code}"><span class="dotc"></span>${esc(u.code)}</button> <span class="small muted">${esc(u.nom)}</span></td><td class="n">${fmt(u.n)}</td><td class="n">${pct(u.r)}</td><td class="n">${anaPer ? deltaTxt(u.r, u.rPrev) : "–"}</td><td class="n">${Math.round(u.cov * 100)} %</td><td class="n">${Math.round(u.mem * 100)} %</td><td class="n">${fmtSec(u.tm)}</td><td>${relDay(u.last)}</td><td>${diagPill(diag(u.r, u.n))}</td></tr>`).join("")}</tbody></table></div>
+<h3>Évolution</h3>
+<div class="chips" role="group" aria-label="Matière">${["Tous", ...UES.map(u => u.code)].map(c => `<button data-ana-ue="${c}" aria-pressed="${c === anaUe}" ${c === "Tous" ? "" : `style="${ucol(c)}"`}>${c === "Tous" ? "Toutes matières" : c}</button>`).join("")}</div>
+<p class="muted small">Réussite sur les 7 derniers jours glissants (tracée dès 5 réponses dans la fenêtre)${anaUe === "Tous" ? "" : ` · ${esc(UE_BY[anaUe].nom)}`}.</p>
+<div class="chart" id="chEvo">${rateLineSVG(evo, { label: "Réussite sur 7 jours glissants", color: anaUe === "Tous" ? null : `var(--c-${anaUe})` })}<div class="tip"></div></div>
+<p class="muted small" style="margin-top:12px">Réponses par ${weekly ? "semaine" : "jour"}.</p>
+<div class="chart" id="chVol">${volumeSVG(vol, { label: "Nombre de réponses" })}<div class="tip"></div></div>
+<h3>Points faibles</h3>
+<div class="grid2">
+<div><h4>Chapitres les plus fragiles</h4>${weakChaps.length ? `<ol class="weak">${weakChaps.slice(0, 8).map(c => `<li style="${ucol(c.ch.ue)}"><button class="linkbtn" data-chap="${c.ch.id}"><span class="dotc"></span>${esc(c.ch.ue)} · ${esc(c.ch.title)}</button><span class="mono small">${Math.round(c.r * 100)} % · ${c.n} rép.</span></li>`).join("")}</ol>` : `<p class="muted small">Aucun chapitre sous 60 % de réussite (à partir de 8 réponses).</p>`}</div>
+<div><h4>Par format de question</h4>${types.length ? hbars(types.map(t => ({ label: TYPE_NOM[t.k], v: t.r, sub: ` · ${fmt(t.n)} rép.`, tip: `${TYPE_NOM[t.k]} : ${t.ok} justes sur ${t.n}` })), { label: "Réussite par format" }) : `<p class="muted small">Pas encore de données.</p>`}</div>
+<div><h4>Par nature</h4>${Object.keys(byNat).length ? hbars(Object.entries(byNat).map(([k, a]) => ({ label: k, v: a.r, sub: ` · ${fmt(a.n)} rép.` })), { label: "Réussite par nature" }) : `<p class="muted small">Pas encore de données.</p>`}</div>
+<div><h4>Par niveau de difficulté</h4>${Object.keys(byNiv).length ? hbars(Object.entries(byNiv).sort().map(([k, a]) => ({ label: ["", "Niveau 1 · fondamental", "Niveau 2 · intermédiaire", "Niveau 3 · approfondi"][k] || `Niveau ${k}`, v: a.r, sub: ` · ${fmt(a.n)} rép.` })), { label: "Réussite par niveau" }) : `<p class="muted small">Pas encore de données.</p>`}</div>
+</div>
+<h4>Questions les plus souvent ratées</h4>
+${worst.length ? `<ol class="worst">${worst.map(id => { const c = state.cards[id]; const ue = itemUe(id); return `<li style="${ue ? ucol(ue) : ""}"><span class="q">${esc(itemText(id).slice(0, 140))}${itemText(id).length > 140 ? "…" : ""}</span><span class="mono small">${ue ? `<span class="dotc"></span>${esc(ue)} · ` : ""}${c.n - (c.ok || 0)} erreur${c.n - (c.ok || 0) > 1 ? "s" : ""} sur ${c.n}</span></li>`; }).join("")}</ol>` : `<p class="muted small">Aucune question ratée deux fois.</p>`}
+${err.length ? `<div class="actions" style="margin-top:6px"><button class="btn" id="goErr">Retravailler mes erreurs (${err.length})</button></div>` : ""}
+<h3>Mémoire</h3>
+<p class="muted small">Taux de rappel des notions révisées à leur date, selon l'intervalle depuis la révision précédente. Un taux qui chute sur les longs intervalles signale une mémorisation fragile.</p>
+${retN >= 10 ? hbars(ret.filter(x => x.n).map(x => ({ label: x.s.nom, v: x.r, sub: ` · ${x.n} rév.` })), { label: "Taux de rappel par intervalle" }) : `<p class="muted small">Il faut au moins 10 révisions faites à leur date pour mesurer la rétention (${retN} pour l'instant).</p>`}
+${plateauHTML(SRS_IDS)}
+<div class="legend" style="margin-top:6px">${BANDS.map((b, i) => `<span><i style="background:var(${i === 0 ? "--rule-soft" : `--st${i}`})"></i>${esc(b.nom)}</span>`).join("")}</div>
+<h3>Régularité</h3>
+<p class="muted small">Série en cours : ${streak()} jour${streak() > 1 ? "s" : ""}. ${Object.keys(bySlot).length ? `Réussite selon le moment ${perLbl} : ${Object.entries(bySlot).map(([k, o]) => `${k.split(" (")[0].toLowerCase()} ${Math.round(o.ok / o.n * 100)} % (${o.n})`).join(" · ")}.` : ""}</p>
+${heat.html}
+<h3>Tests du jour</h3>
+${tests.length ? `<p class="muted small">${tests.length} test${tests.length > 1 ? "s" : ""} ${perLbl} · moyenne ${Math.round(tests.reduce((a, t) => a + t.v, 0) / tests.length * 100)} % · meilleur ${Math.round(Math.max(...tests.map(t => t.v)) * 100)} %.</p><div class="chart" id="chTest">${rateLineSVG(testPts, { label: "Score des tests du jour", connect: true })}<div class="tip"></div></div>` : `<p class="muted small">Aucun test du jour terminé ${perLbl}.</p>`}
+${ANN_KEYS.length ? `<h3>Annales</h3>${ann.length ? `<div class="twrap"><table class="ana" style="min-width:0"><thead><tr><th>Matière</th><th>Compositions</th><th>Meilleure note</th><th>Dernière note</th></tr></thead><tbody>${ann.map(a => `<tr style="${ucol(a.code)}"><td><span class="dotc"></span>${esc(a.code)} <span class="small muted">${esc(a.nom)}</span></td><td class="n">${a.n}</td><td class="n">${note20(a.best)}</td><td class="n">${note20(a.lastE.note)} <span class="small muted">(${dateFr(a.lastE.date)})</span></td></tr>`).join("")}</tbody></table></div>` : `<p class="muted small">Aucune annale composée pour l'instant.</p>`}` : ""}
+<details class="datatab"><summary>Voir les données des graphiques</summary><table><thead><tr><th>Jour</th><th>Réponses</th><th>Justes</th><th>Réussite 7 j</th></tr></thead><tbody>${evo.filter(d => state.hist[d.k] && state.hist[d.k].n).map(d => { const s = sumHist([d.k], anaUe); return `<tr><td>${new Date(d.k + "T12:00").toLocaleDateString("fr-FR")}</td><td>${s.n}</td><td>${s.ok}</td><td>${pct(d.v)}</td></tr>`; }).join("") || `<tr><td colspan="4">Aucune réponse sur la période.</td></tr>`}</tbody></table>
+<table><thead><tr><th>Chapitre</th><th>Réponses</th><th>Réussite</th><th>Exercices tentés</th><th>Série terminée</th></tr></thead><tbody>${chaps.map(c => `<tr><td>${esc(c.ch.ue)} · ${esc(c.ch.title)}</td><td>${c.n}</td><td>${pct(c.r)}</td><td>${Math.round(c.cov * 100)} %</td><td>${c.done ? "oui" : "non"}</td></tr>`).join("")}</tbody></table></details>`;
+  main.querySelectorAll("button[data-per]").forEach(b => b.onclick = () => { anaPer = +b.dataset.per; renderAnalyse(); });
+  main.querySelectorAll("button[data-ana-ue]").forEach(b => b.onclick = () => { anaUe = b.dataset.anaUe; const y = window.scrollY; renderAnalyse(); window.scrollTo({ top: y }); });
+  main.querySelectorAll("button[data-pri]").forEach(b => b.onclick = () => pri[+b.dataset.pri].go());
+  main.querySelectorAll("button[data-ue]").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  main.querySelectorAll("button[data-chap]").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.chap }));
+  const ge = main.querySelector("#goErr"); if (ge) ge.onclick = startErreurs;
+  bindTip(main.querySelector("#chEvo"), evo.map(d => ({ v: d.v == null ? "pas assez de réponses" : pct(d.v), l: `${new Date(d.k + "T12:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })} · 7 derniers jours : ${d.ok} / ${d.n}` })));
+  bindTip(main.querySelector("#chVol"), vol.map(d => ({ v: `${d.n} réponse${d.n > 1 ? "s" : ""}${d.n ? ` · ${Math.round(d.ok / d.n * 100)} % justes` : ""}`, l: d.tip })));
+  const ct = main.querySelector("#chTest"); if (ct) bindTip(ct, testPts.map(d => ({ v: d.t ? `${d.t.s} / ${d.t.N}` : "pas de test", l: new Date(d.k + "T12:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) })));
+  bindTip(main.querySelector("#heatBox"), heat.items);
 }
 
 // ---------- Rappels (UE1) ----------
@@ -1531,7 +1453,7 @@ function drawCiel(cv) {
 function rapCard(cards) {
   if (!RAP) return cards;
   const n = RAP.pages.length, lus = rapLus(), u = RAP.ue;
-  const card = `<button class="ue" data-rap="1" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">rappels · bande ${esc(BANDES[u.code][0].toLowerCase())}</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${lus === n ? "full" : ""}"><i style="width:${Math.round(lus / n * 100)}%"></i></span><span class="mono muted small">${n} pages de rappels · ${lus} relue${lus > 1 ? "s" : ""}</span></button>`;
+  const card = `<button class="ue" data-rap="1" style="${ucol(u.code)}"><span class="top"><span class="code">${esc(u.code)}</span><span class="band">rappels</span></span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${lus === n ? "full" : ""}"><i style="width:${Math.round(lus / n * 100)}%"></i></span><span class="mono muted small">${n} pages de rappels · ${lus} relue${lus > 1 ? "s" : ""}</span></button>`;
   const i = UES.findIndex(x => x.code === "UE2"); const out = cards.slice(); out.splice(i < 0 ? out.length : i, 0, card); return out;
 }
 const rapHtml = t => esc(t).replace(/&lt;(\/?)(b|i)&gt;/g, "<$1$2>");
@@ -1540,7 +1462,7 @@ function renderRappels() {
   if (!RAP) { renderMatieres(); return; }
   const u = RAP.ue, col = ucol(u.code);
   main.innerHTML = `<div class="crumb"><button id="back">← Cours</button></div>
-<header class="chead" style="${col}"><div class="eyebrow"><b>${esc(u.code)}</b>Rappels · bande ${esc(BANDES[u.code][0].toLowerCase())}</div><h2 style="margin:0">${esc(u.nom)}</h2><p class="muted" style="margin:0">L'essentiel à se remettre en tête avant le DSCG : ${RAP.pages.length} pages courtes, sans exercices. Chaque rappel renvoie à son texte officiel.</p></header>
+<header class="chead" style="${col}"><div class="eyebrow"><b>${esc(u.code)}</b>Rappels</div><h2 style="margin:0">${esc(u.nom)}</h2><p class="muted" style="margin:0">L'essentiel à se remettre en tête avant le DSCG : ${RAP.pages.length} pages courtes, sans exercices. Chaque rappel renvoie à son texte officiel.</p></header>
 <div class="chips" role="group" aria-label="Chapitres" style="margin-top:12px">${RAP.pages.map(p => `<button data-go="${p.id}" style="${col}" aria-pressed="${!!state.rappels[p.id]}">${p.ordre}. ${esc(p.title.split(/ :|,/)[0])}</button>`).join("")}</div>
 ${RAP.pages.map(p => `<section class="rappel" id="r-${p.id}" style="${col}" aria-labelledby="rh-${p.id}"><h3 id="rh-${p.id}">${p.ordre}. ${esc(p.title)}</h3><p class="muted small">${esc(p.resume)}</p>
 <ol>${p.rappels.map(r => `<li>${rapHtml(r.t)}<span class="rsrc">${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.src)} ↗</a>` : esc(r.src)}</span></li>`).join("")}</ol>
@@ -1548,7 +1470,7 @@ ${RAP.pages.map(p => `<section class="rappel" id="r-${p.id}" style="${col}" aria
 <p class="muted small" style="margin-top:16px">Chaque rappel est tiré de la fiche documentaire du chapitre, vérifiée sur les textes officiels. Programme : ${esc(u.programme)}.</p>`;
   main.querySelector("#back").onclick = () => go({ tab: "matieres" });
   main.querySelectorAll("button[data-go]").forEach(b => b.onclick = () => { const el = document.getElementById("r-" + b.dataset.go); if (el) el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
-  main.querySelectorAll("button[data-lu]").forEach(b => b.onclick = () => { const id = b.dataset.lu; if (!state.rappels[id]) { state.rappels[id] = todayKey(); addXp(10); save(); } b.outerHTML = `<span class="pill done">Relue le ${dateFr(state.rappels[id])}</span>`; const c = main.querySelector(`button[data-go="${id}"]`); if (c) c.setAttribute("aria-pressed", "true"); });
+  main.querySelectorAll("button[data-lu]").forEach(b => b.onclick = () => { const id = b.dataset.lu; if (!state.rappels[id]) { state.rappels[id] = todayKey(); save(); } b.outerHTML = `<span class="pill done">Relue le ${dateFr(state.rappels[id])}</span>`; const c = main.querySelector(`button[data-go="${id}"]`); if (c) c.setAttribute("aria-pressed", "true"); });
 }
 
 // ---------- Annales ----------
@@ -1626,7 +1548,7 @@ ${essais.length ? `<p class="small" style="margin:0"><b>Vos essais :</b> ${essai
     const c = state.compo; const sec = Math.round(compoElapsed(c));
     const a = state.annales[k] || (state.annales[k] = { essais: [] });
     const first = !a.essais.length; a.essais.push({ date: todayKey(), note: Math.round(n * 4) / 4, sec, temps: sec <= D });
-    state.compo = null; addXp(first ? 150 : 50); save(); toast(`Note enregistrée : ${note20(Math.round(n * 4) / 4)}.`); go({ tab: "annales" });
+    state.compo = null; save(); toast(`Note enregistrée : ${note20(Math.round(n * 4) / 4)}.`); go({ tab: "annales" });
   };
   draw();
   compoTick = setInterval(() => { if (!document.body.contains(clk)) { clearInterval(compoTick); wake(false); return; } tick(); }, 1000);
@@ -1634,8 +1556,8 @@ ${essais.length ? `<p class="small" style="margin:0"><b>Vos essais :</b> ${essai
 
 // ---------- Navigation ----------
 // Cinq rubriques ; certaines regroupent deux pages, reliées par une sous-navigation.
-const GROUP = { rappels: "matieres", accueil: "accueil", revisions: "revisions", test: "revisions", annales: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", observatoire: "observatoire", succes: "observatoire" };
-const SUBNAV = { revisions: [["revisions", "Révisions<span class=\"wide\"> espacées</span>"], ["test", "Test du jour"], ...(ANN_KEYS.length ? [["annales", "Annales"]] : [])], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]], observatoire: [["observatoire", "Observatoire"], ["succes", "Succès"]] };
+const GROUP = { rappels: "matieres", accueil: "accueil", revisions: "revisions", test: "revisions", annales: "revisions", matieres: "matieres", fiches: "matieres", ue: "matieres", chap: "matieres", pcg: "pcg", analyse: "analyse" };
+const SUBNAV = { revisions: [["revisions", "Révisions<span class=\"wide\"> espacées</span>"], ["test", "Test du jour"], ...(ANN_KEYS.length ? [["annales", "Annales"]] : [])], matieres: [["matieres", "Matières"], ["fiches", "Fiches documentaires"]] };
 function addSubnav(tab) {
   const items = SUBNAV[GROUP[tab]]; if (!items || !items.some(x => x[0] === tab)) return;
   const d = document.createElement("div"); d.className = "subnav";
@@ -1644,14 +1566,14 @@ function addSubnav(tab) {
   main.prepend(d);
 }
 function go(v) {
-  cancelAnimationFrame(skyAnim); clearInterval(compoTick);
+  clearInterval(compoTick);
   view = v;
   const tab = GROUP[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, annales: () => v.k ? renderCompo(v.k) : renderAnnales(), revisions: renderRevisions, rappels: renderRappels, pcg: renderPcg, observatoire: renderObservatoire, expedition: renderObservatoire, succes: renderSucces })[v.tab]();
+  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, annales: () => v.k ? renderCompo(v.k) : renderAnnales(), revisions: renderRevisions, rappels: renderRappels, pcg: renderPcg, analyse: renderAnalyse })[v.tab]();
   addSubnav(v.tab);
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
-  updateBadge(); renderRank(); window.scrollTo({ top: 0 });
+  updateBadge(); window.scrollTo({ top: 0 });
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go({ tab: b.dataset.tab }));
 document.getElementById("brand").onclick = () => go({ tab: "accueil" });
@@ -1667,13 +1589,10 @@ document.getElementById("resetSave").onclick = e => { if (!resetArmed) { resetAr
 load();
 document.getElementById("buildInfo").textContent = `Version du ${DATA.build.date} · ${CHAPS.length} chapitres · ${Object.keys(EXO).length} exercices · ${Object.keys(CARTE).length} cartes de notions · ${PCG.length} comptes. Ce fichier fonctionne hors ligne : enregistrez-le et ouvrez-le avec un navigateur.`;
 refreshSaveBox();
-if (!state.stats.init) { checkSucces(true); state.stats.init = 1; persist(); }
-updateSuccBadge();
-document.addEventListener("click", e => { const a = e.target.closest && e.target.closest(".fsrc a, .fiche table a, .fiche .small a"); if (a) { state.stats.src++; save(); } });
 (function boot() {
   const h = (location.hash || "").slice(1);
-  if (h === "expedition") go({ tab: "observatoire" });
-  else if (["matieres", "fiches", "test", "revisions", "pcg", "observatoire", "succes"].includes(h) || (h === "annales" && ANN_KEYS.length) || (h === "rappels" && RAP)) go({ tab: h });
+  if (["observatoire", "succes", "expedition"].includes(h)) go({ tab: "analyse" });
+  else if (["matieres", "fiches", "test", "revisions", "pcg", "analyse"].includes(h) || (h === "annales" && ANN_KEYS.length) || (h === "rappels" && RAP)) go({ tab: h });
   else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
   else if (CHAP_BY[h]) go({ tab: "chap", id: h });
   else go({ tab: "accueil" });
