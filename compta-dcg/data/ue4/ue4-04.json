@@ -76,6 +76,7 @@
  ],
  "exercices": [
   {
+   "id": "ue4-04-0",
    "type": "tri",
    "nature": "notion",
    "q": "Classez ces sociétés selon leur régime d'imposition de plein droit (en l'absence de toute option).",
@@ -123,6 +124,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-04-1",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une SNC exerçant une activité commerciale réalise un bénéfice de 90 000 € réparti entre deux associés personnes physiques à parts égales, et n'en distribue que 20 000 €. Comment ce bénéfice est-il imposé ?",
@@ -139,6 +141,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-04-2",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles conditions une SAS doit-elle remplir pour opter pour le régime des sociétés de personnes (article 239 bis AB) ? (plusieurs réponses possibles)",
@@ -160,6 +163,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-04-3",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SA française exploite une succursale (sans personnalité juridique) en Espagne qui dégage une perte de 300 000 €. Au regard de l'IS français :",
@@ -176,6 +180,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-4",
    "type": "qcm",
    "nature": "calcul",
    "q": "Le président d'une SAS perçoit une rémunération de 300 000 € alors que la société réalise 400 000 € de CA et que sa fonction est exercée à mi-temps. L'administration estime la rémunération normale à 120 000 €. Quelle conséquence ?",
@@ -192,6 +197,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-5",
    "type": "calc",
    "nature": "calcul",
    "q": "Un associé personne physique d'une SARL (capital entièrement libéré, exercice de 12 mois clos le 31 décembre 2025) laisse 200 000 € en compte courant toute l'année, rémunérés au taux de 6 %. Le taux maximal d'intérêts déductibles pour cet exercice est de 4,55 %. Quel montant d'intérêts doit être réintégré au résultat fiscal ?",
@@ -204,6 +210,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-6",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle condition, en plus du plafonnement du taux, est exigée pour déduire les intérêts versés aux associés au titre de leurs comptes courants ?",
@@ -220,6 +227,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-04-7",
    "type": "calc",
    "nature": "calcul",
    "q": "La SA Horizon détient 30 % de la SAS Delta depuis 4 ans et a opté pour le régime mère-fille. Elle reçoit en 2025 un dividende de 50 000 €. Quel montant relatif à ce dividende reste finalement compris dans son résultat imposable ?",
@@ -232,6 +240,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-8",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles conditions doivent être réunies pour appliquer le régime des sociétés mères et filiales ? (plusieurs réponses possibles)",
@@ -253,6 +262,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-9",
    "type": "calc",
    "nature": "calcul",
    "q": "Une société à l'IS cède pour 500 000 € des titres de participation acquis 300 000 € il y a 3 ans. Quel montant est finalement soumis à l'IS au titre de cette cession ?",
@@ -265,6 +275,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-10",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une SARL dont le capital, entièrement libéré, est détenu par trois personnes physiques réalise un CA HT de 2 000 000 € et un bénéfice imposable de 100 000 € (exercice de 12 mois en 2025). Quel est son IS ?",
@@ -281,6 +292,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-11",
    "type": "calc",
    "nature": "calcul",
    "q": "Une SAS (CA HT 1,5 M€, capital de 100 000 € entièrement libéré, détenu à 80 % par des personnes physiques et 20 % par une holding) réalise un bénéfice fiscal de 60 000 € sur un exercice de 12 mois en 2025. Calculez son IS.",
@@ -293,6 +305,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-12",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles conditions une société doit-elle remplir pour bénéficier du taux réduit d'IS de 15 % ? (plusieurs réponses possibles)",
@@ -314,6 +327,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-13",
    "type": "calc",
    "nature": "calcul",
    "q": "Une société dont le CA est de 50 M€ est redevable d'un IS de 1 000 000 € au titre de 2025. Calculez sa contribution sociale sur les bénéfices (3,3 % de l'IS après abattement de 763 000 €).",
@@ -326,6 +340,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-14",
    "type": "qcm",
    "nature": "chiffre",
    "q": "La contribution exceptionnelle sur les bénéfices des grandes entreprises instaurée par la loi de finances pour 2025 s'applique aux sociétés dont le chiffre d'affaires atteint au moins :",
@@ -342,6 +357,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-04-15",
    "type": "calc",
    "nature": "calcul",
    "q": "Une société dispose d'un déficit reportable de 3 000 000 € et réalise en N un bénéfice fiscal de 2 500 000 €. Le déficit imputable est plafonné à 1 000 000 € majoré de 50 % du bénéfice excédant 1 000 000 €. Quel est le bénéfice imposable de N ?",
@@ -354,6 +370,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-04-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Une société a réalisé en N-1 un bénéfice de 2 000 000 € intégralement soumis à l'IS au taux de 25 % et non distribué. Elle subit en N un déficit de 1 500 000 € et opte pour le report en arrière. Quel est le montant de sa créance de carry-back ?",
@@ -366,6 +383,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-04-17",
    "type": "qcm",
    "nature": "notion",
    "q": "La créance de carry-back non utilisée pour payer l'IS est remboursée :",
@@ -382,6 +400,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-18",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles sont les dates limites de versement des acomptes d'IS pour une société clôturant au 31 décembre ? (plusieurs réponses possibles)",
@@ -405,6 +424,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-04-19",
    "type": "calc",
    "nature": "calcul",
    "q": "Une SA (CA 20 M€, non éligible au taux réduit) a réalisé en N-1 un bénéfice imposable de 400 000 € taxé à 25 %. Quel est le montant de chaque acompte d'IS à verser en N ?",
@@ -417,6 +437,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-20",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SARL a payé 2 400 € d'IS au titre de l'exercice N-1. Pour l'exercice N, elle :",
@@ -433,6 +454,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-04-21",
    "type": "qcm",
    "nature": "calcul",
    "q": "Pour une société clôturant son exercice le 30 juin N, à quelle date le solde de l'IS doit-il être versé ?",
@@ -449,6 +471,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-22",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une PME engage en 2025 des dépenses de recherche éligibles de 800 000 €. Quel est le montant de son crédit d'impôt recherche ?",
@@ -465,6 +488,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-23",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel pourcentage minimal de détention du capital des filiales est exigé pour constituer un groupe fiscalement intégré ?",
@@ -481,6 +505,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-04-24",
    "type": "multi",
    "nature": "notion",
    "q": "Quels sont les avantages de l'intégration fiscale ? (plusieurs réponses possibles)",
@@ -502,6 +527,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-04-25",
    "type": "qcm",
    "nature": "notion",
    "q": "Un gérant associé d'une SARL à l'IS utilise à titre personnel un véhicule de la société sans que cet avantage soit déclaré ni comptabilisé. Pour l'administration, la dépense correspondante constitue :",
@@ -518,6 +544,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-04-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Une société à l'IS cède une machine (VNC 10 000 €) pour 25 000 €, après 4 ans de détention. Comment la plus-value de 15 000 € est-elle imposée ?",

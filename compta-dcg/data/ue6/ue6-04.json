@@ -60,6 +60,7 @@
  ],
  "exercices": [
   {
+   "id": "ue6-04-0",
    "type": "qcm",
    "nature": "notion",
    "q": "L'actualisation consiste à :",
@@ -76,6 +77,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-1",
    "type": "calc",
    "nature": "calcul",
    "q": "Un capital de 10 000 € est placé pendant 3 ans à 5 % l'an, à intérêts composés. Calculez la valeur acquise au bout de 3 ans, arrondie à l'euro.",
@@ -88,6 +90,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-2",
    "type": "qcm",
    "nature": "calcul",
    "q": "Quelle est la valeur actuelle de 20 000 € reçus dans 4 ans, au taux de 6 % (1,06^-4 = 0,7921) ?",
@@ -104,6 +107,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-3",
    "type": "calc",
    "nature": "calcul",
    "q": "Un projet procure 4 000 € par an, en fin d'année, pendant 5 ans. Taux d'actualisation 8 %. Coefficient (1 − 1,08^-5) / 0,08 = 3,9927. Calculez la valeur actuelle de ces flux, arrondie à l'euro.",
@@ -116,6 +120,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-4",
    "type": "qcm",
    "nature": "calcul",
    "q": "Quelle est la valeur actuelle d'une rente perpétuelle de 3 000 € par an au taux de 6 % ?",
@@ -132,6 +137,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-5",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments entrent dans l'investissement initial d'un projet (flux de la date 0) ?",
@@ -153,6 +159,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-6",
    "type": "calc",
    "nature": "calcul",
    "q": "IS à 25 %. Un projet génère chaque année un chiffre d'affaires de 300 000 €, des charges d'exploitation décaissables de 180 000 € et une dotation aux amortissements de 40 000 €. Calculez le flux net de trésorerie d'exploitation annuel (en euros).",
@@ -165,6 +172,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-7",
    "type": "qcm",
    "nature": "calcul",
    "q": "IS à 25 %. Un matériel est amorti de 40 000 € par an. Quelle économie d'impôt annuelle cet amortissement procure-t-il ?",
@@ -181,6 +189,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-8",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments doivent être exclus du calcul des flux nets de trésorerie d'exploitation d'un projet ?",
@@ -200,6 +209,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-9",
    "type": "calc",
    "nature": "calcul",
    "q": "IS à 25 %. Dernière année d'un projet : FNT d'exploitation 100 000 € ; le matériel, totalement amorti, est revendu 20 000 € (plus-value imposée au taux de l'IS) ; le BFR de 30 000 € constitué au départ est récupéré. Calculez le flux de trésorerie total de la dernière année (en euros).",
@@ -212,6 +222,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-04-10",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque élément selon sa place dans l'échéancier des flux d'un projet d'investissement.",
@@ -265,6 +276,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel taux d'actualisation utilise-t-on normalement pour calculer la VAN d'un projet ?",
@@ -281,6 +293,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-12",
    "type": "calc",
    "nature": "calcul",
    "q": "Investissement initial 24 000 €. Flux nets de trésorerie de 10 000 € par an pendant 3 ans (fin d'année). Taux d'actualisation 10 %. Utilisez le coefficient (1 − 1,1^-3) / 0,1 = 2,4869. Calculez la VAN, arrondie à l'euro.",
@@ -293,6 +306,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Une VAN positive signifie que :",
@@ -309,6 +323,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-14",
    "type": "qcm",
    "nature": "calcul",
    "q": "Valeur actuelle des flux d'un projet : 300 000 € ; investissement initial : 250 000 €. Quel est l'indice de profitabilité ?",
@@ -325,6 +340,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Le taux de rentabilité interne (TRI) d'un projet est :",
@@ -341,6 +357,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-04-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Pour un projet, la VAN vaut +1 252 € au taux de 9 % et −526 € au taux de 10 %. Calculez le TRI par interpolation linéaire, en %, arrondi à 0,01 %.",
@@ -353,6 +370,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-17",
    "type": "calc",
    "nature": "calcul",
    "q": "Investissement initial 200 000 €. Flux nets de trésorerie : 60 000 € (année 1), 70 000 € (année 2), 80 000 € (année 3), 90 000 € (année 4), supposés répartis uniformément dans l'année. Calculez le délai de récupération non actualisé, en années, arrondi à 2 décimales.",
@@ -365,6 +383,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la principale limite du délai de récupération comme critère de choix ?",
@@ -381,6 +400,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-19",
    "type": "qcm",
    "nature": "notion",
    "q": "Deux projets exclusifs : le projet A a la VAN la plus élevée, le projet B le TRI le plus élevé. Que faire ?",
@@ -397,6 +417,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-04-20",
    "type": "qcm",
    "nature": "notion",
    "q": "La VAN globale d'un projet se calcule :",
@@ -413,6 +434,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-04-21",
    "type": "calc",
    "nature": "calcul",
    "q": "Un projet de 4 ans a une VAN de 12 000 € au taux de 8 %. Coefficient (1 − 1,08^-4) / 0,08 = 3,3121. Calculez l'annuité équivalente, arrondie à l'euro.",
@@ -425,6 +447,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-04-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Pour comparer deux projets de durées différentes (4 ans et 6 ans), quelle méthode est appropriée ?",
@@ -441,6 +464,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-23",
    "type": "qcm",
    "nature": "calcul",
    "q": "Le taux d'actualisation nominal est de 10,25 % et l'inflation attendue de 5 %. Quel est le taux réel selon la relation de Fisher ?",
@@ -457,6 +481,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-24",
    "type": "calc",
    "nature": "calcul",
    "q": "Trois scénarios pour la VAN d'un projet : −20 000 € avec une probabilité de 0,2 ; 30 000 € avec une probabilité de 0,5 ; 60 000 € avec une probabilité de 0,3. Calculez l'espérance mathématique de la VAN (en euros).",
@@ -469,6 +494,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-04-25",
    "type": "calc",
    "nature": "calcul",
    "q": "Mêmes données : VAN de −20 000 € (p = 0,2), 30 000 € (p = 0,5), 60 000 € (p = 0,3), espérance 29 000 €. Calculez l'écart-type de la VAN, arrondi à l'euro.",
@@ -481,6 +507,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-04-26",
    "type": "qcm",
    "nature": "calcul",
    "q": "Projet X : E(VAN) = 29 000 €, σ = 27 731 €. Projet Y : E(VAN) = 20 000 €, σ = 8 000 €. Quel projet est le moins risqué relativement à son espérance de gain ?",
@@ -497,6 +524,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-04-27",
    "type": "qcm",
    "nature": "calcul",
    "q": "Charges fixes annuelles d'un projet 120 000 €, taux de marge sur coût variable 40 %. Quel chiffre d'affaires annuel minimum rend le projet rentable au sens du seuil de rentabilité ?",

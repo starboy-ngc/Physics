@@ -76,6 +76,7 @@
  ],
  "exercices": [
   {
+   "id": "ue2-02-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le nombre maximal d'associés d'une SARL ?",
@@ -92,6 +93,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-02-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le capital social minimum d'une SARL ?",
@@ -108,6 +110,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-02-2",
    "type": "calc",
    "nature": "calcul",
    "q": "La SARL Belair est constituée avec un capital de 40 000 € intégralement souscrit en numéraire. Quel est le montant minimal (en €) que les associés doivent libérer au moment de la constitution ?",
@@ -120,6 +123,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-02-3",
    "type": "qcm",
    "nature": "calcul",
    "q": "Trois personnes constituent une SARL au capital de 40 000 € : 15 000 € en numéraire et un véhicule utilitaire évalué à 25 000 €. Elles souhaitent, à l'unanimité, ne pas désigner de commissaire aux apports. Est-ce possible ?",
@@ -136,6 +140,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-4",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles conditions doivent être réunies pour que les associés fondateurs d'une SARL puissent se dispenser de commissaire aux apports ? (plusieurs réponses possibles)",
@@ -157,6 +162,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-5",
    "type": "qcm",
    "nature": "notion",
    "q": "La SAS Holdco, associée majoritaire d'une SARL, souhaite être nommée gérante de cette SARL. Est-ce possible ?",
@@ -173,6 +179,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-02-6",
    "type": "qcm",
    "nature": "calcul",
    "q": "Paul est gérant d'une SARL et détient 45 % des parts ; son épouse, non gérante, en détient 10 % ; un tiers détient le reste. Quel est le statut social de Paul ?",
@@ -189,6 +196,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-7",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une SARL a trois cogérants détenant respectivement 20 %, 15 % et 20 % des parts, le solde appartenant à des associés non gérants. Quel est le statut social de chacun des cogérants ?",
@@ -205,6 +213,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-8",
    "type": "qcm",
    "nature": "notion",
    "q": "Le gérant majoritaire d'une SARL souhaite cumuler son mandat avec un contrat de travail de directeur commercial. Qu'en est-il ?",
@@ -221,6 +230,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-9",
    "type": "qcm",
    "nature": "notion",
    "q": "Les associés représentant 60 % des parts d'une SARL révoquent le gérant sans invoquer aucun motif. Quelle est la conséquence ?",
@@ -237,6 +247,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-10",
    "type": "qcm",
    "nature": "calcul",
    "q": "Le capital d'une SARL est divisé en 1 000 parts. Lors d'une première consultation ordinaire, 600 parts sont présentes ou représentées ; 450 votent pour l'approbation des comptes et 150 contre. Les statuts ne prévoient rien. La résolution est-elle adoptée ?",
@@ -253,6 +264,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-11",
    "type": "calc",
    "nature": "calcul",
    "q": "Une SARL constituée en 2010 a un capital divisé en 2 000 parts. À une assemblée extraordinaire sur première convocation, 1 200 parts sont présentes ou représentées. Combien de parts favorables au minimum sont nécessaires pour adopter la modification des statuts ?",
@@ -265,6 +277,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-12",
    "type": "calc",
    "nature": "calcul",
    "q": "Une SARL constituée en 2015 a un capital de 2 000 parts. Quel est le nombre minimal de parts qui doivent être présentes ou représentées pour que l'assemblée extraordinaire puisse valablement délibérer sur première convocation ?",
@@ -277,6 +290,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SARL constituée en 1998 n'a jamais modifié ses statuts sur ce point. Quelle majorité s'applique au changement de dénomination sociale ?",
@@ -293,6 +307,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-14",
    "type": "qcm",
    "nature": "notion",
    "q": "Laquelle de ces décisions exige l'unanimité des associés d'une SARL ?",
@@ -309,6 +324,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SARL compte quatre associés : Anna (55 % des parts), Bob (20 %), Carl (15 %) et Dina (10 %). Anna veut céder la moitié de ses parts à un tiers. Anna vote pour l'agrément, les trois autres votent contre. Les statuts ne prévoient rien. Le tiers est-il agréé ?",
@@ -325,6 +341,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-16",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un associé notifie à sa SARL et à ses coassociés un projet de cession de parts à un tiers le 1er février. Au 15 mai, la société n'a toujours pas fait connaître sa décision. Quelle est la situation ?",
@@ -341,6 +358,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-17",
    "type": "calc",
    "nature": "calcul",
    "q": "Le capital d'une SARL est divisé en 1 000 parts. Un associé cède 300 parts à un tiers pour 90 000 €. Calculez les droits d'enregistrement dus (en €, arrondi à l'euro).",
@@ -353,6 +371,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans une SARL dont les statuts ne contiennent aucune clause d'agrément, un associé cède ses parts à un autre associé. Quelle procédure s'applique ?",
@@ -369,6 +388,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-19",
    "type": "multi",
    "nature": "notion",
    "q": "Concernant les conventions entre une SARL et ses dirigeants ou associés, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -390,6 +410,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-20",
    "type": "qcm",
    "nature": "chiffre",
    "q": "À la clôture de son exercice 2025, une SARL présente un total de bilan de 3 M€, un chiffre d'affaires HT de 12 M€ et 30 salariés. En application des seuils en vigueur pour les exercices ouverts depuis 2024, doit-elle nommer un commissaire aux comptes ?",
@@ -406,6 +427,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-21",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une SARL clôture son exercice le 31 décembre. Avant quelle date l'assemblée d'approbation des comptes doit-elle en principe se tenir ?",
@@ -422,6 +444,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-02-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Sophie, personne physique, crée une EURL dont elle est l'associée unique et la gérante. Quel est le régime fiscal applicable à défaut d'option ?",
@@ -438,6 +461,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-23",
    "type": "qcm",
    "nature": "notion",
    "q": "La SAS Groupe détient 100 % des parts d'une EURL. Quel est le régime fiscal de cette EURL ?",
@@ -454,6 +478,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans une EURL dont l'associé unique personne physique est également gérant, comment les comptes annuels sont-ils approuvés ?",
@@ -470,6 +495,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-25",
    "type": "tri",
    "nature": "notion",
    "q": "Attribuez chaque règle à la forme sociale qu'elle caractérise exclusivement.",
@@ -518,6 +544,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-02-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Un associé a acquis ses parts de SARL il y a dix-huit mois par achat. Il notifie un projet de cession à un tiers ; l'agrément est refusé. Peut-il exiger que les associés ou la société rachètent ses parts ?",
@@ -534,6 +561,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-02-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une SARL, modifiés en 2026, prévoient que toutes les décisions collectives peuvent être prises par consultation écrite des associés. L'approbation annuelle des comptes peut-elle être adoptée par cette voie ?",

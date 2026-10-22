@@ -76,6 +76,7 @@
  ],
  "exercices": [
   {
+   "id": "ue4-05-0",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque opération au regard de la TVA.",
@@ -120,6 +121,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Qu'est-ce qu'un assujetti à la TVA ?",
@@ -136,6 +138,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-2",
    "type": "qcm",
    "nature": "notion",
    "q": "Un propriétaire loue des bureaux nus à une société. En matière de TVA, cette location est :",
@@ -152,6 +155,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-3",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise française vend des machines à une société italienne assujettie, qui communique son numéro de TVA intracommunautaire ; les biens sont transportés en Italie. Quel est le traitement de la vente en France ?",
@@ -168,6 +172,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Une société française importe des composants de Chine en 2025. Comment la TVA à l'importation est-elle acquittée ?",
@@ -184,6 +189,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-5",
    "type": "qcm",
    "nature": "notion",
    "q": "Un site français de vente en ligne réalise 60 000 € de ventes de biens à des particuliers allemands et belges en 2025 (ses ventes à distance intracommunautaires totales dépassent 10 000 €). Quelle TVA applique-t-il à ces ventes ?",
@@ -200,6 +206,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-05-6",
    "type": "qcm",
    "nature": "notion",
    "q": "Un cabinet de conseil français facture une prestation d'étude à une société assujettie établie en Espagne. Quel est le lieu d'imposition et qui paie la TVA ?",
@@ -216,6 +223,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-7",
    "type": "multi",
    "nature": "notion",
    "q": "Pour quelles prestations le lieu d'imposition déroge aux règles générales B2B/B2C ? (plusieurs réponses possibles)",
@@ -237,6 +245,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-8",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise vend des marchandises : prix catalogue 1 000 € HT, frais de port facturés 50 € HT, escompte de 2 % pour paiement comptant accordé sur le prix catalogue, et 100 € de débours (droits avancés au nom du client sur mandat). Quelle est la base d'imposition à la TVA (en €) ?",
@@ -249,6 +258,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-9",
    "type": "tri",
    "nature": "notion",
    "q": "Indiquez le taux de TVA applicable en France continentale à chaque opération.",
@@ -298,6 +308,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Un plombier n'ayant pas opté pour les débits termine un chantier le 20 mars, facture le 2 avril et est payé le 15 mai. Quand la TVA est-elle exigible ?",
@@ -314,6 +325,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise vend une machine (livraison de biens) : commande le 10 janvier avec acompte de 30 % encaissé le même jour, livraison le 20 février, solde payé le 30 mars. Quand la TVA devient-elle exigible ?",
@@ -330,6 +342,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-12",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est l'intérêt de l'option pour le paiement de la TVA d'après les débits pour un prestataire de services ?",
@@ -346,6 +359,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-13",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise réalise en janvier 2025 des ventes de 50 000 € HT au taux de 20 %. Elle a acheté des marchandises pour 30 000 € HT et une machine pour 10 000 € HT, le tout au taux de 20 % et intégralement déductible. Quel est le montant de TVA à payer au titre de janvier ?",
@@ -358,6 +372,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-14",
    "type": "multi",
    "nature": "notion",
    "q": "Sur quelles dépenses la TVA n'est-elle pas déductible, même pour une entreprise entièrement assujettie ? (plusieurs réponses possibles)",
@@ -379,6 +394,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-15",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise achète pour 1 000 € HT d'essence pour la voiture particulière de son commercial (taux 20 %). La TVA sur l'essence utilisée par un véhicule de tourisme est déductible à 80 %. Quel montant de TVA peut-elle déduire ?",
@@ -391,6 +407,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Un assujetti partiel utilise un ordinateur (TVA facturée 4 000 €) pour l'ensemble de ses activités. Coefficient d'assujettissement : 1 ; coefficient de taxation forfaitaire : 0,80 (80 % de son chiffre d'affaires ouvre droit à déduction) ; coefficient d'admission : 1. Quel montant de TVA peut-il déduire ?",
@@ -403,6 +420,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-17",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une entreprise réalise 800 000 € de chiffre d'affaires soumis à TVA et 200 000 € d'opérations exonérées n'ouvrant pas droit à déduction (locations nues). Quel est son coefficient de taxation forfaitaire ?",
@@ -419,6 +437,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-18",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise a acquis un immeuble en N et déduit 100 000 € de TVA. Elle le cède en N+6 (7e année de détention), sans soumettre la cession à la TVA. Quel montant de TVA doit-elle reverser (régularisation globale sur 20 ans) ?",
@@ -431,6 +450,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-05-19",
    "type": "qcm",
    "nature": "notion",
    "q": "Pendant quelle durée une immobilisation corporelle (autre qu'un immeuble) est-elle soumise aux régularisations de TVA ?",
@@ -447,6 +467,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-20",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise au réel normal (CA3 mensuelle) dégage un crédit de TVA de 900 € en mars. Peut-elle en demander le remboursement ?",
@@ -463,6 +484,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-21",
    "type": "qcm",
    "nature": "chiffre",
    "q": "En 2025, un consultant indépendant réalise 30 000 € HT de recettes annuelles. Les seuils de la franchise en base pour les prestations de services sont de 37 500 € (seuil de base) et 41 250 € (seuil majoré). Quelle est sa situation ?",
@@ -479,6 +501,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Un commerçant bénéficiant de la franchise en base (seuils 2025 : 85 000 € et seuil majoré 93 500 €) réalise 90 000 € de ventes en 2025, puis 70 000 € en 2026. Que se passe-t-il ?",
@@ -495,6 +518,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-05-23",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise au régime simplifié d'imposition a acquitté 20 000 € de TVA (hors TVA sur immobilisations) au titre de l'exercice 2025. Quel est le montant de l'acompte de juillet 2026 ?",
@@ -507,6 +531,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-24",
    "type": "qcm",
    "nature": "chiffre",
    "q": "Une entreprise relevant du régime simplifié pour ses BIC a une TVA annuelle de 25 000 € en 2025. En matière de TVA pour 2026, elle :",
@@ -523,6 +548,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-25",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles mentions sont obligatoires sur une facture entre assujettis ? (plusieurs réponses possibles)",
@@ -544,6 +570,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-05-26",
    "type": "qcm",
    "nature": "chiffre",
    "q": "À partir de quelle date une PME établie en France doit-elle être en mesure de recevoir des factures électroniques, et à partir de quand doit-elle en émettre ?",
@@ -560,6 +587,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Un sous-traitant réalise des travaux de maçonnerie pour une entreprise générale du bâtiment assujettie à la TVA. Comment facture-t-il ?",
@@ -576,6 +604,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-05-28",
    "type": "qcm",
    "nature": "notion",
    "q": "Une société vend un immeuble de bureaux achevé il y a 3 ans. Au regard de la TVA, la cession est :",

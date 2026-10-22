@@ -37,6 +37,8 @@ function checkChapter(ch, errs) {
   if (!Array.isArray(ch.sources) || ch.sources.length < 2) errs.push("sources : au moins 2 références");
   const ex = ch.exercices || [];
   if (ex.length < 18) errs.push(`exercices : ${ex.length} (minimum 18)`);
+  const exIds = new Set();
+  ex.forEach((e, i) => { if (e.id === undefined) return; if (!new RegExp(`^${ch.id}-\\d+$`).test(e.id)) errs.push(`exercices[${i}] : id invalide ${e.id}`); if (exIds.has(e.id)) errs.push(`exercices[${i}] : id en double ${e.id}`); exIds.add(e.id); });
   const counts = {};
   ex.forEach((e, i) => {
     const w = `exercices[${i}]`; counts[e.type] = (counts[e.type] || 0) + 1;

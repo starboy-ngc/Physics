@@ -80,6 +80,7 @@
  ],
  "exercices": [
   {
+   "id": "ue2-01-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Parmi les éléments suivants, lequel n'est PAS une condition spécifique du contrat de société au sens de l'article 1832 du Code civil ?",
@@ -96,6 +97,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Marc exerce une activité de plombier en entreprise individuelle depuis 2023. La séparation entre son patrimoine professionnel et son patrimoine personnel résulte :",
@@ -112,6 +114,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-2",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une SNC prévoient que l'associé Durand percevra 100 % des bénéfices et sera dispensé de toute contribution aux pertes. Quelle est la sanction ?",
@@ -128,6 +131,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-3",
    "type": "multi",
    "nature": "notion",
    "q": "À propos de l'apport en industrie, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -149,6 +153,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-4",
    "type": "calc",
    "nature": "calcul",
    "q": "La SARL Trivex a trois associés : Anne a apporté 60 000 €, Bruno 30 000 € et Chloé 10 000 €, tous en numéraire. Les statuts ne contiennent aucune clause de répartition particulière. L'assemblée décide de distribuer 25 000 € de bénéfice. Quel montant revient à Bruno (en €) ?",
@@ -161,6 +166,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-5",
    "type": "calc",
    "nature": "calcul",
    "q": "Dans la SNC Alba, Aline a apporté 40 000 € en numéraire, Benoît un matériel évalué à 20 000 € et Clément son industrie. Les statuts ne fixent pas la part de l'apporteur en industrie. Le bénéfice distribué est de 36 000 €. Quelle est la part de Clément (en €) ?",
@@ -173,6 +179,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-6",
    "type": "qcm",
    "nature": "notion",
    "q": "Deux entreprises concluent un contrat de société en participation pour réaliser un chantier commun. Quelle est la caractéristique de cette société ?",
@@ -189,6 +196,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-7",
    "type": "qcm",
    "nature": "notion",
    "q": "Deux concubins exploitent ensemble un restaurant pendant huit ans, partagent les recettes et les décisions, sans jamais rédiger de statuts ni s'immatriculer. Comment le juge qualifie-t-il leur relation s'il constate apports, partage des résultats et affectio societatis ?",
@@ -205,6 +213,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-8",
    "type": "qcm",
    "nature": "notion",
    "q": "À quel moment une SARL acquiert-elle la personnalité morale ?",
@@ -221,6 +230,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-9",
    "type": "multi",
    "nature": "notion",
    "q": "Quels sont les attributs d'une société dotée de la personnalité morale ? (plusieurs réponses possibles)",
@@ -242,6 +252,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Avant l'immatriculation de la SAS Novalis, le fondateur signe un bail commercial « au nom et pour le compte de la société en formation ». Ce bail figure dans l'état des actes annexé aux statuts. Quelle est la situation après l'immatriculation ?",
@@ -258,6 +269,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Trois fondateurs d'une SARL ont acheté du matériel pour la société en formation. L'acte n'a été ni annexé aux statuts, ni couvert par un mandat, ni repris après l'immatriculation. Qui est tenu envers le fournisseur ?",
@@ -274,6 +286,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-12",
    "type": "multi",
    "nature": "notion",
    "q": "Quels droits appartiennent à tout associé, quelle que soit la forme de la société ? (plusieurs réponses possibles)",
@@ -295,6 +308,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Depuis douze ans, les associés majoritaires d'une SARL, également gérants, font voter la mise en réserve intégrale des bénéfices tout en augmentant chaque année leur rémunération. Aucun projet d'investissement ne justifie ces réserves. Comment qualifier ces décisions ?",
@@ -311,6 +325,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-14",
    "type": "qcm",
    "nature": "notion",
    "q": "Des associés minoritaires refusent sans motif légitime de voter une augmentation de capital indispensable à la survie de la société. Le juge constate un abus de minorité. Que peut-il décider ?",
@@ -327,6 +342,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Le gérant d'une SARL dont l'objet est la vente de matériel informatique achète, au nom de la société, un véhicule de collection sans rapport avec l'activité. Le vendeur ignorait l'objet social. La société est-elle engagée ?",
@@ -343,6 +359,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-16",
    "type": "qcm",
    "nature": "notion",
    "q": "Le gérant d'une SNC de transport routier souscrit au nom de la société un emprunt destiné à acheter un hôtel, activité étrangère à l'objet social. La banque n'a pas vérifié les statuts. La SNC est-elle engagée ?",
@@ -359,6 +376,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-17",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une SAS interdisent au président de conclure tout contrat supérieur à 50 000 € sans l'accord du comité stratégique. Le président signe seul un contrat de 80 000 € avec un fournisseur. Quelle est la portée de cette clause à l'égard du fournisseur ?",
@@ -375,6 +393,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Un fournisseur subit un préjudice du fait d'une faute du gérant d'une SARL. Dans quel cas peut-il engager la responsabilité personnelle du gérant plutôt que celle de la société ?",
@@ -391,6 +410,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-19",
    "type": "qcm",
    "nature": "notion",
    "q": "Un associé détenant 3 % des parts d'une SARL agit en justice contre le gérant pour une faute de gestion ayant causé une perte de 200 000 € à la société. Il exerce l'action sociale ut singuli. À qui seront versés les dommages-intérêts en cas de succès ?",
@@ -407,6 +427,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-01-20",
    "type": "calc",
    "nature": "calcul",
    "q": "La SARL Horizon, au capital de 100 000 € (Alex 70 %, Betty 30 %), est dissoute. Après réalisation de l'actif et paiement de toutes les dettes et frais, il reste 160 000 € à partager. Les statuts ne contiennent aucune clause de répartition particulière. Quel montant total (remboursement d'apport et boni) Betty reçoit-elle (en €) ?",
@@ -419,6 +440,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-21",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la durée maximale pour laquelle une société peut être constituée ?",
@@ -435,6 +457,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-01-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans une SARL à deux associés égalitaires, les relations sont rompues : aucune décision collective n'est possible depuis deux ans, les comptes ne sont plus approuvés. Quel fondement permet à un associé d'obtenir la dissolution ?",
@@ -451,6 +474,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-23",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque événement selon son effet sur une SARL pluripersonnelle (statuts sans clause particulière).",
@@ -499,6 +523,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SAS est dissoute par décision de ses associés le 1er mars. La liquidation dure dix mois. Pendant cette période, la société :",
@@ -515,6 +540,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-25",
    "type": "multi",
    "nature": "notion",
    "q": "Concernant la révocation des dirigeants, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -536,6 +562,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-01-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Le tribunal prononce la nullité d'une SARL constituée par deux fondateurs qui étaient tous deux frappés d'incapacité lors de la signature des statuts (cause de nullité de l'art. 1844-10 C. civ.), trois ans après son immatriculation. Quel est l'effet de cette nullité ?",
@@ -552,6 +579,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-01-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Un mineur non émancipé de 16 ans reçoit par donation des titres de société. Peut-il être associé ?",

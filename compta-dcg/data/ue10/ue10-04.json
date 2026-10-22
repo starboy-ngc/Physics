@@ -177,6 +177,7 @@
  ],
  "exercices": [
   {
+   "id": "ue10-04-0",
    "type": "multi",
    "nature": "notion",
    "q": "Quels éléments entrent dans le coût d'acquisition d'un stock de marchandises ? (plusieurs réponses possibles)",
@@ -198,6 +199,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-1",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise a produit 8 000 unités d'un produit en N alors que sa capacité normale est de 10 000 unités. Coûts de production de l'exercice : matières 120 000 €, main-d'œuvre directe 80 000 €, charges indirectes variables de production 40 000 €, charges indirectes fixes de production 50 000 €, frais d'administration générale 30 000 €. Calculez le coût de production total à retenir pour valoriser la production de N (en euros).",
@@ -210,6 +212,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-2",
    "type": "qcm",
    "nature": "notion",
    "q": "Parmi les méthodes suivantes de valorisation des sorties de stocks de biens interchangeables, laquelle est interdite dans les comptes individuels français ?",
@@ -226,6 +229,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-3",
    "type": "calc",
    "nature": "calcul",
    "q": "Article Z : stock initial 100 unités à 10 € ; entrée le 1er mars de 200 unités à 13 € ; sortie le 15 mars de 150 unités ; entrée le 1er avril de 100 unités à 16 € ; sortie le 20 avril de 200 unités. Valorisez le stock final (50 unités) selon la méthode du CMP calculé après chaque entrée (en euros).",
@@ -238,6 +242,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-4",
    "type": "calc",
    "nature": "calcul",
    "q": "Mêmes données : stock initial 100 unités à 10 € ; entrée le 1er mars de 200 unités à 13 € ; sortie le 15 mars de 150 unités ; entrée le 1er avril de 100 unités à 16 € ; sortie le 20 avril de 200 unités. Valorisez le stock final (50 unités) selon la méthode PEPS (en euros).",
@@ -250,6 +255,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-5",
    "type": "qcm",
    "nature": "calcul",
    "q": "Mêmes données : stock initial 100 unités à 10 € ; entrées de 200 unités à 13 € et de 100 unités à 16 € ; sorties totales 350 unités au cours de la période. Quelle est la valeur du stock final de 50 unités selon le CMP calculé en fin de période ?",
@@ -266,6 +272,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-6",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Inventaire intermittent. Stock de marchandises au 1er janvier N : 30 000 €. Stock au 31 décembre N : 42 000 €. Enregistrez les écritures de clôture relatives au stock de marchandises (annulation du stock initial et constatation du stock final).",
@@ -320,6 +327,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-7",
    "type": "qcm",
    "nature": "notion",
    "q": "Le compte 713 « Variation des stocks (en-cours de production, produits) » présente à la clôture un solde créditeur de 25 000 €. Cela signifie :",
@@ -336,6 +344,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-8",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Au 31 décembre N, le stock de produits finis est évalué à 60 000 € au coût de production. Son prix de vente probable est de 64 000 € et les frais de commercialisation restant à engager sont estimés à 7 000 €. Aucune dépréciation n'existait. Enregistrez l'écriture nécessaire.",
@@ -368,6 +377,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-9",
    "type": "qcm",
    "nature": "notion",
    "q": "À la clôture, le prix de vente des produits finis reste supérieur à leur coût de production, mais le cours de la matière première qu'ils incorporent a chuté de 20 % par rapport au coût du stock de matières. Faut-il déprécier le stock de matières ?",
@@ -384,6 +394,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-04-10",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque élément selon qu'il est inclus ou exclu du coût de production d'un stock de produits finis.",
@@ -431,6 +442,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle caractéristique est nécessaire pour qualifier un contrat de « contrat à long terme » au sens du PCG ?",
@@ -447,6 +459,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-12",
    "type": "qcm",
    "nature": "notion",
    "q": "Pour les contrats à long terme, la méthode de référence selon le PCG (la « méthode préférentielle » des manuels antérieurs au règlement ANC n° 2018-01) est :",
@@ -463,6 +476,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-13",
    "type": "calc",
    "nature": "calcul",
    "q": "Contrat à long terme : prix de vente 1 000 000 € HT, coût total estimé 800 000 €, coûts engagés à la clôture N 320 000 € (avancement mesuré par les coûts). Méthode à l'avancement. Calculez le chiffre d'affaires à constater en N (en euros).",
@@ -475,6 +489,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-14",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Au 31 décembre N, le chiffre d'affaires à l'avancement d'un contrat s'élève à 400 000 € HT ; aucune facture n'a encore été émise au client. TVA 20 %. Enregistrez le produit à recevoir.",
@@ -512,6 +527,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Un client verse un acompte de 100 000 € sur un contrat à long terme avant tout commencement des travaux. Dans quel compte cet acompte est-il enregistré chez l'entreprise qui réalise le contrat ?",
@@ -528,6 +544,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-16",
    "type": "qcm",
    "nature": "notion",
    "q": "Avec la méthode à l'achèvement, en cours de contrat, les coûts engagés sur un chantier non terminé sont :",
@@ -544,6 +561,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-17",
    "type": "calc",
    "nature": "calcul",
    "q": "Contrat au prix de 900 000 € HT comptabilisé à l'avancement. À la clôture N, le coût total est réévalué à 1 000 000 € et l'avancement est de 30 %. Calculez la provision pour perte à terminaison à constituer au 31 décembre N (en euros).",
@@ -556,6 +574,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-04-18",
    "type": "multi",
    "nature": "notion",
    "q": "Concernant la perte à terminaison d'un contrat à long terme, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -577,6 +596,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-04-19",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une entreprise française facture le 15 novembre N un client américain 10 000 USD, cours 1 USD = 0,92 €. Au 31 décembre N, 1 USD = 0,90 €. Quelle écriture passe-t-on à la clôture ?",
@@ -593,6 +613,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-20",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Au 31 décembre N, une dette fournisseur de 20 000 USD comptabilisée à 0,91 € (18 200 €) doit être réévaluée au cours de clôture de 0,94 €. Enregistrez l'écart de conversion et la provision correspondante.",
@@ -636,6 +657,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-21",
    "type": "calc",
    "nature": "calcul",
    "q": "Une créance de 10 000 USD comptabilisée 9 200 € (cours 0,92) est encaissée le 20 février N+1 au cours de 0,89 €. L'écart de conversion constaté à la clôture a été contrepassé à l'ouverture. Calculez la perte de change réalisée enregistrée en 656 Pertes de change sur créances et dettes commerciales (en euros).",
@@ -648,6 +670,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-22",
    "type": "qcm",
    "nature": "calcul",
    "q": "Au 31 décembre N, une entreprise détient 50 000 USD sur un compte bancaire en devises, comptabilisés 46 000 € ; le cours de clôture donne 45 500 €. Quel traitement ?",
@@ -664,6 +687,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-04-23",
    "type": "multi",
    "nature": "notion",
    "q": "Dans quels cas la provision pour perte de change peut-elle être limitée ou non constituée malgré une perte latente ? (plusieurs réponses possibles)",
@@ -685,6 +709,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-04-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Fiscalement, la provision pour perte de change (1515) constituée à la clôture est :",
@@ -701,6 +726,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-04-25",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans quel compte figure, au bilan de clôture, un gain latent de change sur une dette fournisseur en yens ?",
@@ -717,6 +743,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-04-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est l'effet du choix du PEPS plutôt que du CMP sur le résultat d'une entreprise commerciale en période de hausse continue des prix d'achat ?",
@@ -733,6 +760,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-04-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Au DSCG, en IFRS (IFRS 15), la comptabilisation du chiffre d'affaires des contrats de construction repose sur :",

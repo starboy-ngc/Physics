@@ -201,6 +201,7 @@
  ],
  "exercices": [
   {
+   "id": "ue9-08-0",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -217,6 +218,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-1",
    "type": "calc",
    "nature": "calcul",
    "niveau": 1,
@@ -229,6 +231,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-2",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -241,6 +244,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-3",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -253,6 +257,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-4",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 2,
@@ -289,6 +294,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-5",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -305,6 +311,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-6",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -326,6 +333,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-7",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 1,
@@ -368,6 +376,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-8",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 2,
@@ -405,6 +414,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-9",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -421,6 +431,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-10",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -442,6 +453,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-11",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -458,6 +470,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-12",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -474,6 +487,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-13",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -490,6 +504,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-14",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 2,
@@ -522,6 +537,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-15",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -534,6 +550,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-16",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -550,6 +567,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-17",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -566,6 +584,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-18",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 1,
@@ -597,6 +616,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-19",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -613,6 +633,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-20",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -625,6 +646,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-21",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 2,
@@ -673,6 +695,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-22",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -694,6 +717,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-23",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -710,6 +734,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-24",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -726,6 +751,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-25",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -742,6 +768,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-26",
    "type": "ecriture",
    "nature": "calcul",
    "niveau": 2,
@@ -774,6 +801,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-27",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -790,6 +818,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-28",
    "type": "multi",
    "nature": "notion",
    "niveau": 3,
@@ -812,6 +841,7 @@
    "fiab": "stable"
   },
   {
+   "id": "ue9-08-29",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 3,

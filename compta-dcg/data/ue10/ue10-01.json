@@ -89,6 +89,7 @@
  ],
  "exercices": [
   {
+   "id": "ue10-01-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel texte constitue le Plan comptable général applicable aux comptes individuels des exercices ouverts à compter du 1er janvier 2025 ?",
@@ -105,6 +106,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Un règlement de l'Autorité des normes comptables devient obligatoire :",
@@ -121,6 +123,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-2",
    "type": "qcm",
    "nature": "notion",
    "q": "Les normes IFRS sont obligatoires en France pour :",
@@ -137,6 +140,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-3",
    "type": "multi",
    "nature": "notion",
    "q": "Parmi les propositions suivantes concernant l'Autorité des normes comptables, lesquelles sont exactes ? (plusieurs réponses possibles)",
@@ -158,6 +162,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Depuis le 1er janvier 2024, l'autorité de supervision des commissaires aux comptes en France est :",
@@ -174,6 +179,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-5",
    "type": "qcm",
    "nature": "notion",
    "q": "Les normes d'exercice professionnel (NEP) des commissaires aux comptes sont rendues obligatoires par :",
@@ -190,6 +196,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-6",
    "type": "qcm",
    "nature": "chiffre",
    "q": "En 2025, une SAS doit nommer un commissaire aux comptes dès lors qu'elle dépasse, à la clôture de l'exercice, deux des trois seuils suivants :",
@@ -206,6 +213,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-7",
    "type": "calc",
    "nature": "calcul",
    "q": "En 2025, la SAS Verdon présente à la clôture un total de bilan de 5 200 000 €, un chiffre d'affaires HT de 9 400 000 € et 62 salariés. Combien de seuils de nomination obligatoire d'un commissaire aux comptes (5 M€ de bilan, 10 M€ de CA, 50 salariés) sont dépassés ?",
@@ -218,6 +226,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-8",
    "type": "qcm",
    "nature": "notion",
    "q": "La durée du mandat d'un commissaire aux comptes nommé dans le cadre d'une mission classique est de :",
@@ -234,6 +243,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-9",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles affirmations distinguent correctement l'expert-comptable du commissaire aux comptes ? (plusieurs réponses possibles)",
@@ -255,6 +265,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-10",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque mission normalisée de l'expert-comptable selon le niveau d'assurance qu'elle procure.",
@@ -295,6 +306,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Selon le Code de commerce, les comptes annuels doivent être :",
@@ -311,6 +323,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-12",
    "type": "tri",
    "nature": "notion",
    "q": "Associez chaque situation au principe comptable qu'elle illustre.",
@@ -353,6 +366,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-01-13",
    "type": "qcm",
    "nature": "notion",
    "q": "La valeur actuelle d'un actif, au sens du PCG, est :",
@@ -369,6 +383,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-14",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles opérations constituent un changement de méthode comptable au sens du PCG ? (plusieurs réponses possibles)",
@@ -390,6 +405,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-15",
    "type": "qcm",
    "nature": "notion",
    "q": "L'effet d'un changement de méthode comptable à l'initiative de l'entreprise est, sauf disposition fiscale contraire, comptabilisé :",
@@ -406,6 +422,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Une machine acquise 120 000 € le 1er janvier N est amortie en linéaire sur 10 ans sans valeur résiduelle. Au 1er janvier N+3, l'entreprise révise la durée d'utilité résiduelle : la machine ne servira plus que 4 ans. Calculez la dotation aux amortissements de l'exercice N+3 (en euros).",
@@ -418,6 +435,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-17",
    "type": "qcm",
    "nature": "notion",
    "q": "En N, une entreprise découvre qu'une facture de maintenance de 30 000 € relative à N−2 n'a jamais été comptabilisée. Comment traiter cette correction d'erreur selon le PCG ?",
@@ -434,6 +452,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Clôture au 31 décembre N, arrêté des comptes le 15 mars N+1. Le 20 janvier N+1, un client dont la créance de 40 000 € figurait au bilan, déjà en redressement judiciaire en décembre, est mis en liquidation. Quel traitement dans les comptes de N ?",
@@ -450,6 +469,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-19",
    "type": "qcm",
    "nature": "notion",
    "q": "Le 10 février N+1, avant l'arrêté des comptes de N, un incendie détruit un entrepôt de l'entreprise, sans remettre en cause la continuité d'exploitation. Dans les comptes de N :",
@@ -466,6 +486,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-20",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles informations figurent obligatoirement dans l'annexe des comptes annuels d'une société de taille moyenne ? (plusieurs réponses possibles)",
@@ -487,6 +508,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-21",
    "type": "qcm",
    "nature": "notion",
    "q": "En 2025, une SARL commerciale ne dépassant pas deux des seuils 450 000 € de total de bilan, 900 000 € de chiffre d'affaires net et 10 salariés :",
@@ -503,6 +525,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-22",
    "type": "calc",
    "nature": "calcul",
    "q": "En 2025, la SAS Mirabel affiche un total de bilan de 6 800 000 €, un chiffre d'affaires net de 16 200 000 € et 45 salariés. Les seuils de la catégorie « petite entreprise » sont 7 500 000 € de bilan, 15 000 000 € de CA et 50 salariés (il faut dépasser deux critères pour changer de catégorie). Combien de ces seuils la société dépasse-t-elle ?",
@@ -515,6 +538,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-23",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise déroge à une prescription comptable parce que son application donnerait une image non fidèle. Quelle obligation en découle ?",
@@ -531,6 +555,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-24",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles entités sont tenues d'établir des comptes annuels conformes au PCG ? (plusieurs réponses possibles)",
@@ -552,6 +577,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-01-25",
    "type": "qcm",
    "nature": "notion",
    "q": "Au DSCG, l'UE 4 (comptabilité et audit) s'appuie sur la hiérarchie des normes vue au DCG. Quelle affirmation est exacte concernant l'articulation PCG / IFRS ?",

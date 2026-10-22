@@ -80,6 +80,7 @@
  ],
  "exercices": [
   {
+   "id": "ue4-02-0",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque revenu dans sa catégorie d'imposition à l'IR.",
@@ -131,6 +132,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-1",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un salarié a perçu en 2024 un salaire de base de 30 000 € et 9 000 € d'heures supplémentaires. Quel montant d'heures supplémentaires est imposable à l'IR ?",
@@ -147,6 +149,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-2",
    "type": "calc",
    "nature": "calcul",
    "q": "Revenus 2024 : un cadre a perçu un salaire net imposable de 180 000 € et n'opte pas pour les frais réels. La déduction forfaitaire de 10 % est plafonnée à 14 426 €. Quel est son salaire net imposable après déduction des frais professionnels ?",
@@ -159,6 +162,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-3",
    "type": "calc",
    "nature": "calcul",
    "q": "Revenus 2024 : un étudiant a perçu un salaire imposable de 4 000 € pour un job d'été. La déduction forfaitaire de 10 % ne peut être inférieure à 504 €. Quel est son salaire net imposable ?",
@@ -171,6 +175,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Un salarié opte pour la déduction de ses frais réels. Quelle conséquence oublie-t-on souvent ?",
@@ -187,6 +192,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-5",
    "type": "qcm",
    "nature": "notion",
    "q": "La rémunération versée par une SARL soumise à l'IS à son gérant majoritaire est imposée :",
@@ -203,6 +209,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-6",
    "type": "calc",
    "nature": "calcul",
    "q": "Revenus 2024 : un retraité perçoit 30 000 € de pensions. L'abattement de 10 % sur les pensions a un minimum de 450 € par pensionné et un plafond de 4 399 € par foyer. Quel est le montant net imposable de ses pensions ?",
@@ -215,6 +222,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-7",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une personne de 65 ans vend sa maison en viager et perçoit une rente viagère de 12 000 € par an. Quelle fraction de la rente est imposable ?",
@@ -231,6 +239,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-8",
    "type": "calc",
    "nature": "calcul",
    "q": "En 2025, un contribuable célibataire perçoit 10 000 € de dividendes d'une SA française. Il n'opte pas pour le barème. Quel est le montant total des prélèvements (impôt sur le revenu au PFU et prélèvements sociaux) sur ces dividendes ?",
@@ -243,6 +252,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-9",
    "type": "calc",
    "nature": "calcul",
    "q": "Un contribuable perçoit 10 000 € de dividendes et opte pour l'imposition au barème progressif (option globale). Quel est le montant de dividendes soumis au barème après abattement ?",
@@ -255,6 +265,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-10",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un contribuable dont le taux marginal d'imposition est de 11 % perçoit 5 000 € de dividendes. Quelle option minimise son impôt sur le revenu (hors prélèvements sociaux) ?",
@@ -271,6 +282,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-11",
    "type": "multi",
    "nature": "notion",
    "q": "Quels produits sont exonérés d'impôt sur le revenu ? (plusieurs réponses possibles)",
@@ -292,6 +304,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-12",
    "type": "qcm",
    "nature": "notion",
    "q": "Le prélèvement forfaitaire non libératoire de 12,8 % opéré par la banque sur des intérêts est :",
@@ -308,6 +321,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-13",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un contribuable perçoit 12 000 € de loyers bruts d'un appartement loué nu (aucun régime spécial). Il ne fait aucune option. Quel est son revenu foncier net imposable ?",
@@ -324,6 +338,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-14",
    "type": "calc",
    "nature": "calcul",
    "q": "Régime réel : un propriétaire encaisse en 2025 9 000 € de loyers d'un appartement loué nu. Il paie 4 000 € d'intérêts d'emprunt et 18 000 € de travaux de réparation déductibles. Quel montant de déficit foncier peut-il imputer sur son revenu global de 2025 (plafond de droit commun) ?",
@@ -336,6 +351,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-02-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle fraction d'un déficit foncier ne peut jamais s'imputer sur le revenu global ?",
@@ -352,6 +368,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-16",
    "type": "multi",
    "nature": "notion",
    "q": "Parmi ces charges, lesquelles sont déductibles des revenus fonciers au régime réel ? (plusieurs réponses possibles)",
@@ -373,6 +390,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-17",
    "type": "calc",
    "nature": "calcul",
    "q": "Un particulier vend en 2025 un appartement locatif détenu depuis 10 années pleines, avec une plus-value brute (après frais et forfaits) de 40 000 €. Abattement pour durée de détention au titre de l'IR : 6 % par an de la 6e à la 21e année. Taux d'IR : 19 %. Quel est le montant de l'impôt sur le revenu (hors prélèvements sociaux) ?",
@@ -385,6 +403,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-02-18",
    "type": "qcm",
    "nature": "calcul",
    "q": "Après quelle durée de détention une plus-value immobilière d'un particulier est-elle totalement exonérée d'impôt sur le revenu, puis de prélèvements sociaux ?",
@@ -401,6 +420,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-02-19",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles cessions immobilières sont exonérées de l'impôt sur la plus-value ? (plusieurs réponses possibles)",
@@ -422,6 +442,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-20",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un particulier a réalisé en 2025 une plus-value de 20 000 € sur des actions acquises en 2021 et une moins-value de 8 000 € sur d'autres actions. Sans option pour le barème, quelle est la base soumise au PFU ?",
@@ -438,6 +459,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-21",
    "type": "qcm",
    "nature": "notion",
    "q": "Pour quels titres l'abattement pour durée de détention (50 %, 65 %, voire 85 %) est-il encore possible en cas d'option pour le barème ?",
@@ -454,6 +476,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-02-22",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un consultant indépendant a encaissé 60 000 € HT d'honoraires en 2024 et 65 000 € en 2025, sans option. Quel est son régime d'imposition et son bénéfice imposable 2025 ?",
@@ -470,6 +493,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-23",
    "type": "qcm",
    "nature": "notion",
    "q": "En déclaration contrôlée, le bénéfice non commercial est déterminé en principe :",
@@ -486,6 +510,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Un exploitant agricole réalise une moyenne triennale de recettes de 90 000 € (seuil du micro-BA : 120 000 € en 2025). Comment est déterminé son bénéfice agricole ?",
@@ -502,6 +527,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-25",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un particulier loue en 2025 via une plateforme un studio en meublé de tourisme non classé et encaisse 12 000 € de loyers. Sans option pour le réel, quel est son bénéfice imposable ?",
@@ -518,6 +544,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-02-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Un loueur en meublé non professionnel (LMNP) au régime réel dégage un déficit de 3 000 € en 2025. Ce déficit :",
@@ -534,6 +561,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-02-27",
    "type": "qcm",
    "nature": "notion",
    "q": "À quelles conditions un loueur en meublé est-il qualifié de professionnel (LMP) ?",

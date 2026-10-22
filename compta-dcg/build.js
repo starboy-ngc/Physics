@@ -20,7 +20,8 @@ for (const p of plan.chapitres) {
   let ok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), f], { stdio: "pipe" }); } catch (e) { ok = false; }
   if (!ok && !lenient) { skipped.push(p.id + " (invalide)"); continue; }
   const ch = JSON.parse(fs.readFileSync(f, "utf8"));
-  ch.exercices.forEach((e, i) => { e.id = `${ch.id}-${i}`; e.chap = ch.id; });
+  // Identifiant stable écrit dans les données (la progression y est attachée) : une suppression ne décale rien.
+  ch.exercices.forEach((e, i) => { e.id = e.id || `${ch.id}-${i}`; e.chap = ch.id; });
   const ff = f.replace(/\.json$/, ".fiche.json");
   if (fs.existsSync(ff)) {
     let fok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), ff], { stdio: "pipe" }); } catch (e) { fok = false; }

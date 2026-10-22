@@ -84,6 +84,7 @@
  ],
  "exercices": [
   {
+   "id": "ue3-04-0",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -100,6 +101,7 @@
    "why": "La démission est un acte unilatéral qui n'exige ni forme ni motif ni acceptation : seule compte la volonté claire et non équivoque du salarié. Une démission donnée sous la colère puis rétractée, ou assortie de reproches à l'employeur, est équivoque et peut être requalifiée en prise d'acte. L'homologation par la DREETS ne concerne que la rupture conventionnelle."
   },
   {
+   "id": "ue3-04-1",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -116,6 +118,7 @@
    "why": "Depuis la loi du 21 décembre 2022 et le décret du 17 avril 2023 (R. 1237-13), la présomption suppose une mise en demeure par lettre recommandée ou remise contre décharge, laissant au salarié au moins 15 jours à compter de sa présentation ; le Conseil d'État (18 décembre 2024) exige que la lettre indique les conséquences du défaut de reprise. C'est le salarié, non l'employeur, qui peut saisir le CPH pour contester la présomption. Le salarié présumé démissionnaire n'a pas droit à l'allocation chômage."
   },
   {
+   "id": "ue3-04-2",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -132,6 +135,7 @@
    "why": "La cause réelle est celle qui existe, qui est exacte (le motif invoqué est le véritable motif) et objective (fait vérifiable, non une simple impression). Le caractère sérieux (option A) est la seconde exigence : la gravité suffisante pour rendre impossible la poursuite du contrat. La cause n'est pas nécessairement fautive (insuffisance professionnelle, inaptitude), et le CSE n'intervient pas dans un licenciement individuel pour motif personnel."
   },
   {
+   "id": "ue3-04-3",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -148,6 +152,7 @@
    "why": "La faute grave rend impossible le maintien du salarié dans l'entreprise, même pendant le préavis : elle prive du préavis (L. 1234-1) et de l'indemnité de licenciement (L. 1234-9). En revanche, les congés payés acquis et non pris sont toujours indemnisés (L. 3141-28), y compris en cas de faute lourde depuis la décision du Conseil constitutionnel de 2016. Le salarié conserve aussi ses droits à l'allocation chômage."
   },
   {
+   "id": "ue3-04-4",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -164,6 +169,7 @@
    "why": "La faute lourde est celle commise avec l'intention de nuire à l'employeur ; la seule gravité du préjudice ou la récidive ne suffit pas (jurisprudence constante). Elle a les mêmes effets que la faute grave sur le préavis et l'indemnité de licenciement, mais elle seule permet d'engager la responsabilité pécuniaire du salarié. Depuis 2016, elle ne prive plus de l'indemnité compensatrice de congés payés."
   },
   {
+   "id": "ue3-04-5",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -180,6 +186,7 @@
    "why": "L'entretien ne peut avoir lieu moins de 5 jours ouvrables après la présentation de la convocation (L. 1232-2) : le jour de présentation ne compte pas, le salarié doit disposer de 5 jours ouvrables pleins (Cass. soc., 3 juin 2015), et un délai qui expire un samedi, un dimanche ou un jour férié est prorogé au premier jour ouvrable suivant (R. 1231-1). Jours ouvrables décomptés : mercredi 5, jeudi 6, vendredi 7, samedi 8 (le samedi est ouvrable) et lundi 10 ; le délai expire le lundi 10 à minuit, l'entretien est donc possible à partir du mardi 11 mars. Avec une convocation présentée le lundi 3, le délai expirerait le samedi 8 et serait prorogé au lundi 10 : entretien au plus tôt le mardi 11 également."
   },
   {
+   "id": "ue3-04-6",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -196,6 +203,7 @@
    "why": "L'article L. 1232-6 impose un délai minimal de 2 jours ouvrables après l'entretien, délai de réflexion de l'employeur. Lorsque le licenciement est disciplinaire, la règle de l'article L. 1332-2 ajoute un délai maximal d'un mois après l'entretien, passé lequel la sanction est irrégulière et injustifiée. Le délai de 5 jours ouvrables est celui qui sépare la convocation de l'entretien."
   },
   {
+   "id": "ue3-04-7",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -212,6 +220,7 @@
    "why": "Lorsque le licenciement est justifié au fond mais que la procédure est irrégulière, l'article L. 1235-2 accorde au salarié une indemnité qui ne peut être supérieure à un mois de salaire. L'irrégularité ne rend ni nul ni injustifié le licenciement. Avant 2017, elle n'était sanctionnée que dans les entreprises de 11 salariés et plus ; la règle s'applique désormais à toutes."
   },
   {
+   "id": "ue3-04-8",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -228,6 +237,7 @@
    "why": "L'article L. 1233-3 gradue la durée de la baisse selon l'effectif, en comparaison avec la même période de l'année précédente : 1 trimestre pour moins de 11 salariés, 2 trimestres consécutifs de 11 à 49, 3 trimestres de 50 à 299 et 4 trimestres à partir de 300 salariés. Une entreprise de 30 salariés relève de la tranche 11-49. D'autres indicateurs (pertes d'exploitation, dégradation de la trésorerie ou de l'EBE) peuvent aussi caractériser les difficultés."
   },
   {
+   "id": "ue3-04-9",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -249,6 +259,7 @@
    "why": "L'article L. 1233-3 vise notamment les difficultés économiques, les mutations technologiques, la réorganisation nécessaire à la sauvegarde de la compétitivité et la cessation d'activité. L'insuffisance de résultats est un motif personnel (inhérent à la personne). La simple recherche d'une amélioration des profits sans menace sur la compétitivité n'est pas un motif économique admis par la jurisprudence."
   },
   {
+   "id": "ue3-04-10",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -265,6 +276,7 @@
    "why": "L'article L. 1233-61 impose un PSE dans les entreprises d'au moins 50 salariés lorsque le projet porte sur au moins 10 licenciements sur une même période de 30 jours. Les deux conditions sont cumulatives : une entreprise de 40 salariés licenciant 12 personnes n'est pas soumise au PSE (mais consulte le CSE). Le PSE est validé (accord majoritaire) ou homologué (document unilatéral) par la DREETS."
   },
   {
+   "id": "ue3-04-11",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -281,6 +293,7 @@
    "why": "La priorité de réembauche (L. 1233-45) dure un an à compter de la rupture du contrat et suppose que le salarié manifeste le souhait d'en user au cours de cette année. Elle porte sur les emplois compatibles avec sa qualification, y compris ceux acquis par une formation ultérieure dont il informe l'employeur. Elle est indépendante du CSP et doit être mentionnée dans la lettre de licenciement."
   },
   {
+   "id": "ue3-04-12",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -297,6 +310,7 @@
    "why": "Le délai de rétractation est de 15 jours calendaires à compter du lendemain de la signature (L. 1237-13) ; il se décompte tous les jours de la semaine, dimanches et fêtes inclus, et s'exerce par lettre attestant de sa date de réception. Les 15 jours ouvrables correspondent au délai d'instruction de la DREETS pour l'homologation, qui ne commence qu'après la fin de la rétractation. Confondre les deux est le piège classique."
   },
   {
+   "id": "ue3-04-13",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -313,6 +327,7 @@
    "why": "Le délai de 15 jours calendaires court à compter du lendemain de la signature, soit du 4 mars, et expire le 15e jour à 24 heures : le 18 mars 2025. La demande d'homologation ne peut être adressée à la DREETS qu'à l'issue de ce délai, soit au plus tôt le 19 mars. Compter à partir du jour de signature donnerait le 17 mars ; compter en jours ouvrables conduirait au 20 mars."
   },
   {
+   "id": "ue3-04-14",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -329,6 +344,7 @@
    "why": "L'article L. 1237-14 dispose qu'à défaut de notification dans le délai d'instruction de 15 jours ouvrables (à compter du lendemain de la réception de la demande), l'homologation est réputée acquise. L'administration vérifie la liberté du consentement, le respect des délais et le montant de l'indemnité. Tout litige relatif à la convention ou à l'homologation relève du conseil de prud'hommes dans les 12 mois."
   },
   {
+   "id": "ue3-04-15",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -350,6 +366,7 @@
    "why": "La rupture conventionnelle ne concerne que le CDI (L. 1237-11) ; l'indemnité spécifique est au moins égale à l'indemnité légale de licenciement (L. 1237-13), voire conventionnelle pour les employeurs relevant de l'ANI de 2008 ; pour les salariés protégés, l'autorisation de l'inspecteur du travail remplace l'homologation (L. 1237-15). Le salarié bénéficie de l'allocation chômage. Aucun préavis n'est prévu : la date de rupture est fixée librement, au plus tôt le lendemain de l'homologation."
   },
   {
+   "id": "ue3-04-16",
    "type": "qcm",
    "nature": "notion",
    "niveau": 3,
@@ -366,6 +383,7 @@
    "why": "La prise d'acte rompt immédiatement le contrat. Si les manquements reprochés à l'employeur sont établis et suffisamment graves pour empêcher la poursuite du contrat, elle produit les effets d'un licenciement sans cause réelle et sérieuse (nul pour un salarié protégé) : indemnités de préavis, de licenciement et dommages-intérêts. Dans le cas contraire, elle produit les effets d'une démission. Le CPH statue dans le mois (L. 1451-1)."
   },
   {
+   "id": "ue3-04-17",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -382,6 +400,7 @@
    "why": "Entre 67 ans (âge du taux plein automatique) et 69 ans, la mise à la retraite requiert l'accord du salarié : l'employeur l'interroge par écrit trois mois avant la date anniversaire, le salarié répond dans le mois, et un refus bloque la mise à la retraite pendant un an (L. 1237-5). À partir de 70 ans, la mise à la retraite est possible d'office. Un licenciement fondé sur l'âge serait discriminatoire et nul."
   },
   {
+   "id": "ue3-04-18",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -398,6 +417,7 @@
    "why": "L'article L. 1234-1 prévoit un préavis d'un mois entre 6 mois et 2 ans d'ancienneté et de 2 mois à partir de 2 ans ; en dessous de 6 mois, la loi renvoie à la convention ou à l'usage. Avec 18 mois d'ancienneté, le préavis est d'un mois. Les conventions collectives prévoient souvent des durées plus longues (3 mois pour les cadres), qui s'appliquent alors."
   },
   {
+   "id": "ue3-04-19",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -410,6 +430,7 @@
    "why": "Avec au moins 2 ans d'ancienneté, le préavis légal est de 2 mois (L. 1234-1). La dispense à l'initiative de l'employeur ouvre droit à une indemnité compensatrice égale au salaire que la salariée aurait perçu en travaillant (L. 1234-5) : 2 × 2 000 = 4 000 €. Si la dispense avait été demandée par la salariée, aucune indemnité ne serait due. Un préavis d'un mois (2 000 €) ne vaut qu'entre 6 mois et 2 ans d'ancienneté."
   },
   {
+   "id": "ue3-04-20",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -422,6 +443,7 @@
    "why": "Barème de l'article R. 1234-2 : 1/4 de mois par année pour les 10 premières années et 1/3 de mois au-delà. 10 × 2 400 / 4 = 6 000 € ; 2,5 × 2 400 / 3 = 2 000 € ; total 8 000 €. Appliquer 1/4 à toute l'ancienneté donnerait 7 500 € et 1/3 à toute l'ancienneté 10 000 € : ce sont les erreurs classiques. L'année incomplète (6 mois) compte au prorata."
   },
   {
+   "id": "ue3-04-21",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -434,6 +456,7 @@
    "why": "Ancienneté inférieure à 10 ans : 1/4 de mois par année, les mois incomplets étant proratisés (R. 1234-1) : 2 100 / 4 × (3 + 4/12) = 525 × 3,333 = 1 750 €. L'indemnité est due car l'ancienneté dépasse 8 mois et l'inaptitude non professionnelle n'est pas une faute grave. Ignorer les 4 mois donnerait 1 575 €. Pour une inaptitude d'origine professionnelle, l'indemnité serait doublée (3 500 €)."
   },
   {
+   "id": "ue3-04-22",
    "type": "calc",
    "nature": "calcul",
    "niveau": 3,
@@ -446,6 +469,7 @@
    "why": "L'article R. 1234-4 retient la formule la plus avantageuse : moyenne des 12 derniers mois = (9 × 2 400 + 3 × 2 500 + 3 000) / 12 = 32 100 / 12 = 2 675 € ; moyenne des 3 derniers mois, la prime annuelle n'étant prise en compte qu'au prorata (3 000 × 3/12 = 750 €) = (3 × 2 500 + 750) / 3 = 2 750 €. Le salaire de référence est donc 2 750 €. Intégrer la prime en totalité dans les 3 mois (3 500 €) serait l'erreur à éviter."
   },
   {
+   "id": "ue3-04-23",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -458,6 +482,7 @@
    "why": "Pour 5 ans d'ancienneté, le barème fixe un plancher de 3 mois et un plafond de 6 mois de salaire brut dans les entreprises d'au moins 11 salariés : maximum 6 × 2 000 = 12 000 €, minimum 6 000 €. Le barème ne s'applique pas si le licenciement est nul (6 mois minimum sans plafond). Le juge peut en outre tenir compte des indemnités de rupture déjà versées, à l'exception de l'indemnité légale de licenciement."
   },
   {
+   "id": "ue3-04-24",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -474,6 +499,7 @@
    "why": "Le licenciement prononcé en violation de la protection liée à la maternité est nul (L. 1225-4). L'article L. 1235-3-1 écarte alors le barème : la salariée qui ne demande pas sa réintégration obtient une indemnité au moins égale aux 6 derniers mois de salaire, sans plafond, en plus des indemnités de rupture et des salaires de la période couverte par la nullité. Les cas de nullité incluent aussi la discrimination, le harcèlement, les salariés protégés et la violation d'une liberté fondamentale."
   },
   {
+   "id": "ue3-04-25",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -490,6 +516,7 @@
    "why": "Le reçu pour solde de tout compte peut être dénoncé dans les six mois suivant sa signature ; au-delà, il devient libératoire pour l'employeur pour les sommes qui y sont mentionnées (L. 1234-20). Les sommes non mentionnées restent soumises aux prescriptions ordinaires (3 ans pour les salaires). Le délai de 12 mois concerne la contestation de la rupture, non le reçu."
   },
   {
+   "id": "ue3-04-26",
    "type": "qcm",
    "nature": "notion",
    "niveau": 3,
@@ -506,6 +533,7 @@
    "why": "La transaction (C. civ., art. 2044) n'est pas un mode de rupture : elle règle un litige né d'une rupture déjà intervenue. La Cour de cassation exige qu'elle soit conclue après la notification du licenciement (le salarié doit connaître les motifs) et qu'elle comporte des concessions réciproques réelles, faute de quoi elle est nulle. Aucune homologation administrative n'est requise ; c'est la rupture conventionnelle qui est homologuée par la DREETS."
   },
   {
+   "id": "ue3-04-27",
    "type": "tri",
    "nature": "notion",
    "niveau": 2,

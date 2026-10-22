@@ -174,6 +174,7 @@
  ],
  "exercices": [
   {
+   "id": "ue10-05-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Une société acquiert 15 % du capital d'une autre société afin de peser sur sa stratégie et de nouer des relations commerciales durables. Dans quel compte inscrit-elle ces actions ?",
@@ -190,6 +191,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-1",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque titre dans le compte approprié selon l'intention de l'entreprise.",
@@ -231,6 +233,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-2",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Holdex acquiert le 3 mai N 500 actions de sa filiale à 40 € l'unité. Frais de courtage : 300 € HT, TVA 60 €. L'entreprise a opté pour la comptabilisation des frais d'acquisition de titres en charges. Règlement par banque. Enregistrez l'opération.",
@@ -296,6 +299,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-3",
    "type": "qcm",
    "nature": "notion",
    "q": "À la clôture, les titres de participation sont évalués à leur :",
@@ -312,6 +316,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-4",
    "type": "calc",
    "nature": "calcul",
    "q": "Placia détient 200 actions cotées en VMP acquises 45 € l'unité. Le cours moyen du mois de décembre N est de 41 € ; le cours au 31 décembre est de 43 €. Calculez la dépréciation à constater au 31 décembre N (en euros).",
@@ -324,6 +329,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-5",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Au 31 décembre N, les 500 titres de participation Holdex (coût 20 000 €) ont une valeur d'utilité de 18 000 €. Aucune dépréciation n'existait. Enregistrez l'écriture d'inventaire.",
@@ -356,6 +362,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-6",
    "type": "multi",
    "nature": "notion",
    "q": "Concernant la dépréciation des titres à la clôture, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -377,6 +384,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-7",
    "type": "qcm",
    "nature": "notion",
    "q": "Sous le PCG 2025, la cession de titres de participation s'enregistre avec :",
@@ -393,6 +401,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-8",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Placia cède 100 actions détenues en VMP, acquises 5 000 €, pour 5 400 € encaissés par banque. Enregistrez la cession.",
@@ -431,6 +440,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-9",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise détient 100 actions X acquises 50 € en mars N et 100 actions X acquises 60 € en septembre N, classées en VMP et valorisées au coût moyen pondéré. Le 10 décembre N, elle cède 150 actions à 58 €. Calculez le résultat net de cession (en euros, négatif si perte).",
@@ -443,6 +453,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-10",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une participation (coût 20 000 €, dépréciée de 2 000 €) est cédée 26 000 €. Quel est l'ensemble des écritures correctes ?",
@@ -459,6 +470,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-05-11",
    "type": "calc",
    "nature": "calcul",
    "q": "Placia détient en VMP 100 obligations de nominal 1 000 €, taux 4 %, coupon annuel payable le 1er avril. Calculez les intérêts courus non échus à rattacher à l'exercice clos le 31 décembre N (en euros).",
@@ -471,6 +483,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-12",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans quel compte figure, au bilan, la dépréciation d'actions cotées classées en valeurs mobilières de placement ?",
@@ -487,6 +500,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-13",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une obligation de nominal 1 000 € est acquise le 1er septembre 1 030 € coupon couru inclus ; le coupon annuel de 4 % est payable le 1er juin. Comment traiter la fraction de coupon couru acquise (10 €) ?",
@@ -503,6 +517,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-14",
    "type": "qcm",
    "nature": "notion",
    "q": "Un dividende voté par l'assemblée de la filiale le 15 juin N et mis en paiement le 10 juillet N est comptabilisé chez la société mère :",
@@ -519,6 +534,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-15",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Oblix émet le 1er juillet N 1 000 obligations de valeur nominale 500 €, au prix d'émission de 490 €, remboursables in fine dans 5 ans au prix de 510 €. Les fonds sont encaissés le jour même. Enregistrez l'émission (hors frais).",
@@ -557,6 +573,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Emprunt obligataire : 1 000 obligations, nominal 500 €, prix d'émission 490 €, prix de remboursement 510 €, durée 5 ans, émis le 1er janvier N. La prime de remboursement est amortie linéairement sur la durée de l'emprunt. Calculez la dotation annuelle d'amortissement de la prime (en euros).",
@@ -569,6 +586,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-17",
    "type": "multi",
    "nature": "notion",
    "q": "Concernant les frais d'émission d'un emprunt obligataire (commissions bancaires, frais de publicité légale), quelles options sont admises ? (plusieurs réponses possibles)",
@@ -589,6 +607,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-18",
    "type": "qcm",
    "nature": "calcul",
    "q": "Emprunt obligataire de 2 000 000 € (nominal), taux 3 %, coupon payable le 1er octobre, émis le 1er octobre N−1. Au 31 décembre N, quelle écriture d'inventaire passe-t-on ?",
@@ -605,6 +624,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-19",
    "type": "qcm",
    "nature": "notion",
    "q": "Un emprunt obligataire est remboursé par « amortissements constants ». Cela signifie que :",
@@ -621,6 +641,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-20",
    "type": "qcm",
    "nature": "notion",
    "q": "Selon le PCG, une provision est un passif :",
@@ -637,6 +658,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-21",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles conditions doivent être réunies à la clôture pour comptabiliser une provision pour risques et charges ? (plusieurs réponses possibles)",
@@ -658,6 +680,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-22",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Un ancien salarié a assigné la société Sitral aux prud'hommes et réclame 40 000 €. Au 31 décembre N, l'avocat estime probable une condamnation de 15 000 €. Enregistrez la provision.",
@@ -690,6 +713,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-05-23",
    "type": "calc",
    "nature": "calcul",
    "q": "Électra accorde une garantie d'un an sur ses ventes. Statistiquement, les coûts de garantie représentent 1,5 % du chiffre d'affaires ; le chiffre d'affaires de N est de 2 000 000 €. La provision pour garanties figurant au bilan d'ouverture est de 22 000 €. Calculez la dotation (en euros) à comptabiliser au 31 décembre N pour porter la provision au niveau requis.",
@@ -702,6 +726,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-24",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque situation à la clôture N selon son traitement comptable.",
@@ -747,6 +772,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-25",
    "type": "qcm",
    "nature": "notion",
    "q": "Une société envisage de fermer un site. Au 31 décembre N, la direction a établi un plan détaillé mais ne l'a annoncé ni aux salariés ni aux représentants du personnel ; l'annonce est prévue en février N+1. Peut-on provisionner les coûts de restructuration dans les comptes de N ?",
@@ -763,6 +789,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-05-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Concernant les engagements de retraite (indemnités de fin de carrière) dans les comptes individuels, le PCG prévoit :",
@@ -779,6 +806,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-27",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles provisions sont déductibles du résultat fiscal lorsqu'elles sont correctement comptabilisées et chiffrées ? (plusieurs réponses possibles)",
@@ -800,6 +828,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-05-28",
    "type": "qcm",
    "nature": "notion",
    "q": "Les provisions réglementées (compte 14) se distinguent des provisions pour risques et charges (compte 15) parce qu'elles :",
@@ -816,6 +845,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-05-29",
    "type": "qcm",
    "nature": "notion",
    "q": "Le prix de cession de titres de participation est encaissé mais la société a oublié de reprendre la dépréciation de 2 000 € qui existait sur ces titres. Quelle est la conséquence ?",

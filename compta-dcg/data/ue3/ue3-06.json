@@ -84,6 +84,7 @@
  ],
  "exercices": [
   {
+   "id": "ue3-06-0",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -100,6 +101,7 @@
    "why": "La loi du 7 août 2020 a créé la branche autonomie, gérée par la Caisse nationale de solidarité pour l'autonomie (CNSA), à côté des branches maladie, AT/MP, famille et vieillesse ; le recouvrement constitue une sixième mission confiée aux URSSAF. L'assurance chômage n'est pas une branche de la sécurité sociale (régime paritaire Unédic/France Travail), pas plus que la retraite complémentaire Agirc-Arrco."
   },
   {
+   "id": "ue3-06-1",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -116,6 +118,7 @@
    "why": "Le régime social des indépendants (RSI) a été supprimé par la LFSS pour 2018 ; après une période transitoire achevée en 2020, les indépendants relèvent du régime général (CPAM pour la maladie, CARSAT pour la retraite de base, URSSAF pour le recouvrement), avec des règles de cotisation propres. La MSA concerne le secteur agricole et l'Unédic l'assurance chômage des salariés."
   },
   {
+   "id": "ue3-06-2",
    "type": "qcm",
    "nature": "chiffre",
    "niveau": 1,
@@ -132,6 +135,7 @@
    "why": "Le PASS 2025 s'élève à 47 100 € par an, soit 3 925 € par mois (hausse de 1,6 % par rapport à 46 368 € en 2024). Il sert d'assiette plafond à la cotisation vieillesse plafonnée et à la tranche 1 Agirc-Arrco, et de référence à de nombreux plafonds d'exonération (indemnités de rupture, épargne salariale). Il est revalorisé chaque 1er janvier : c'est un chiffre millésimé."
   },
   {
+   "id": "ue3-06-3",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -153,6 +157,7 @@
    "why": "Depuis 2018, la cotisation maladie n'a plus de part salariale (hors Alsace-Moselle) ; les allocations familiales et l'AT/MP sont depuis toujours patronales, de même que la contribution d'assurance chômage (4,05 %, ramenée à 4,00 % depuis le 1er mai 2025). La cotisation vieillesse plafonnée est partagée (6,90 % salarié / 8,55 % employeur) et la CSG est une contribution salariale (9,2 %), précomptée mais à la charge du salarié."
   },
   {
+   "id": "ue3-06-4",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -165,6 +170,7 @@
    "why": "Assiette : 3 000 × 98,25 % = 2 947,50 €. CSG déductible : 2 947,50 × 6,8 % = 200,43 €. La CSG non déductible (2,4 %) s'élève à 70,74 € et la CRDS (0,5 %) à 14,74 €, soit un total CSG-CRDS de 285,91 €. Oublier l'abattement de 1,75 % (calcul sur 3 000 €) donnerait 204 €. L'abattement ne s'applique que dans la limite de 4 PASS et uniquement aux revenus d'activité."
   },
   {
+   "id": "ue3-06-5",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -177,6 +183,7 @@
    "why": "La cotisation plafonnée se calcule sur la rémunération limitée au plafond : 3 925 × 6,90 % = 270,83 €. La cotisation déplafonnée porte sur la totalité : 4 500 × 0,40 % = 18,00 €. Total : 288,83 €. Appliquer 6,90 % aux 4 500 € (310,50 €) oublierait le plafonnement, qui est précisément la raison d'être du PASS."
   },
   {
+   "id": "ue3-06-6",
    "type": "qcm",
    "nature": "chiffre",
    "niveau": 2,
@@ -193,6 +200,7 @@
    "why": "La réduction générale (L. 241-13) est dégressive : maximale au niveau du SMIC, elle s'annule lorsque la rémunération annuelle atteint 1,6 SMIC. Son coefficient vaut (T/0,6) × (1,6 × SMIC annuel / rémunération − 1). La LFSS pour 2025 prévoit sa fusion avec les réductions de taux maladie et famille en une réduction unique dégressive jusqu'à 3 SMIC à compter de 2026 : le seuil de 1,6 SMIC est donc millésimé."
   },
   {
+   "id": "ue3-06-7",
    "type": "calc",
    "nature": "calcul",
    "niveau": 3,
@@ -205,6 +213,7 @@
    "why": "1,6 × 21 621,60 = 34 594,56 € ; 34 594,56 / 24 000 = 1,44144 ; 1,44144 − 1 = 0,44144 ; coefficient = (0,32 / 0,6) × 0,44144 = 0,23544. Réduction = 0,23544 × 24 000 ≈ 5 650 €. La rémunération (1,11 SMIC) est bien inférieure à 1,6 SMIC. À 1,6 SMIC exactement (34 594,56 €), le coefficient serait nul ; au SMIC, il serait égal à T, soit une réduction de 0,32 × 21 621,60 = 6 919 €."
   },
   {
+   "id": "ue3-06-8",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -221,6 +230,7 @@
    "why": "Les cotisations se prescrivent par trois ans à compter de l'expiration de l'année civile au titre de laquelle elles sont dues (L. 244-3) : pour 2022, le délai court du 1er janvier 2023 au 31 décembre 2025. La mise en demeure doit donc être envoyée avant cette date. En cas de travail dissimulé constaté par procès-verbal, le délai est porté à cinq ans (31 décembre 2027)."
   },
   {
+   "id": "ue3-06-9",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -237,6 +247,7 @@
    "why": "Le délai de carence des IJ maladie est de trois jours (R. 323-1) : l'indemnisation commence le quatrième jour. Il ne s'applique pas en cas de prolongation d'un arrêt ou d'arrêts successifs liés à une affection de longue durée, ni en cas d'accident du travail (le jour de l'accident est payé par l'employeur). Le délai de 7 jours est celui du maintien de salaire par l'employeur au titre de la loi de mensualisation."
   },
   {
+   "id": "ue3-06-10",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -249,6 +260,7 @@
    "why": "Salaire journalier de base = (3 × 2 100) / 91,25 = 6 300 / 91,25 = 69,04 €. IJ = 50 % × 69,04 = 34,52 €. Le salaire mensuel de 2 100 € est inférieur au plafond de 1,4 SMIC (2 522,52 € en 2025), le plafonnement ne joue donc pas. L'IJ est versée à partir du 4e jour d'arrêt, après la carence de 3 jours, et l'employeur peut compléter au titre de la mensualisation."
   },
   {
+   "id": "ue3-06-11",
    "type": "calc",
    "nature": "calcul",
    "niveau": 3,
@@ -261,6 +273,7 @@
    "why": "Salaire mensuel plafonné : 1,4 × 1 801,80 = 2 522,52 € (inférieur aux 3 600 € perçus). Salaire journalier de base = 3 × 2 522,52 / 91,25 = 82,93 €. IJ = 50 % × 82,93 = 41,47 €. C'est l'IJ maximale de 2025 ; avant le 1er avril 2025, avec le plafond de 1,8 SMIC, elle atteignait 53,31 €. La perte est généralement compensée par l'employeur ou la prévoyance d'entreprise."
   },
   {
+   "id": "ue3-06-12",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -277,6 +290,7 @@
    "why": "L'article L. 411-1 pose une présomption d'imputabilité : toute lésion survenue au temps et au lieu du travail est présumée accident du travail, sans que le salarié ait à prouver une faute de quiconque. Cette présomption ne tombe que si la caisse ou l'employeur établit que la lésion a une cause totalement étrangère au travail. L'employeur peut émettre des réserves motivées, mais il ne détient pas de droit de veto sur la reconnaissance."
   },
   {
+   "id": "ue3-06-13",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -293,6 +307,7 @@
    "why": "Le salarié informe l'employeur dans les 24 heures (sauf force majeure) et l'employeur déclare l'accident à la caisse dans les 48 heures, dimanches et jours fériés non compris (L. 441-2, R. 441-3), en pouvant formuler des réserves motivées dans les 10 jours. À défaut de déclaration, le salarié peut la faire lui-même dans les deux ans et l'employeur encourt une amende et le remboursement des prestations. Le délai de 8 jours concerne la DPAE, le délai d'un mois rien de pertinent ici."
   },
   {
+   "id": "ue3-06-14",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -305,6 +320,7 @@
    "why": "Les IJ accident du travail sont égales à 60 % du salaire journalier pendant les 28 premiers jours (80 × 60 % = 48 €) puis à 80 % à compter du 29e jour (80 × 80 % = 64 €), dans la limite de plafonds réglementaires. Il n'y a pas de délai de carence : le jour de l'accident est payé par l'employeur et les IJ courent dès le lendemain. En maladie ordinaire, l'IJ serait de 50 % après trois jours de carence."
   },
   {
+   "id": "ue3-06-15",
    "type": "qcm",
    "nature": "notion",
    "niveau": 3,
@@ -321,6 +337,7 @@
    "why": "Depuis les arrêts « amiante » du 28 février 2002, la faute inexcusable résulte du manquement à l'obligation de sécurité lorsque l'employeur avait ou aurait dû avoir conscience du danger et n'a pas pris les mesures nécessaires. L'intention de nuire caractériserait une faute intentionnelle, régime distinct. La reconnaissance ouvre droit à la majoration de la rente et à la réparation des préjudices personnels, que la caisse avance puis récupère auprès de l'employeur."
   },
   {
+   "id": "ue3-06-16",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -337,6 +354,7 @@
    "why": "L'invalidité suppose une réduction d'au moins 2/3 de la capacité de travail ou de gain (L. 341-1). La catégorie 1 vise l'invalide capable d'exercer une activité (30 % du salaire annuel moyen des 10 meilleures années), la catégorie 2 celui qui est absolument incapable d'exercer une profession (50 %), la catégorie 3 celui qui a de plus besoin de l'assistance d'une tierce personne (50 % + majoration). La pension est remplacée par la retraite à l'âge légal."
   },
   {
+   "id": "ue3-06-17",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -353,6 +371,7 @@
    "why": "Les allocations familiales sont dues à partir du deuxième enfant à charge de moins de 20 ans (L. 521-1) ; depuis le 1er juillet 2015, leur montant est modulé en trois tranches selon les ressources du foyer, mais elles ne sont pas supprimées pour les hauts revenus. Le complément familial concerne les familles de trois enfants et plus sous condition de ressources ; le premier enfant ouvre droit à d'autres prestations (PAJE)."
   },
   {
+   "id": "ue3-06-18",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -365,6 +384,7 @@
    "why": "Seuil de validation : 150 × 11,88 = 1 782 €. Nombre de trimestres = 5 500 / 1 782 = 3,09, arrondi à l'entier inférieur : 3 trimestres. Pour en valider 4, il aurait fallu au moins 7 128 €. Le nombre de trimestres validés dans une année civile est plafonné à 4, quel que soit le salaire, et ne dépend pas de la durée effectivement travaillée mais du montant cotisé."
   },
   {
+   "id": "ue3-06-19",
    "type": "qcm",
    "nature": "chiffre",
    "niveau": 2,
@@ -381,6 +401,7 @@
    "why": "La loi du 14 avril 2023 relève l'âge légal de 62 à 64 ans à raison de trois mois par génération à partir des assurés nés le 1er septembre 1961 (64 ans pour la génération 1968), et accélère le passage à 172 trimestres (43 ans) dès la génération 1965 ; l'âge du taux plein automatique reste fixé à 67 ans. La loi de financement de la sécurité sociale pour 2026 a suspendu ce calendrier jusqu'au 1er janvier 2028 (62 ans et 9 mois et 170 trimestres pour la génération 1964, âge légal décalé d'un trimestre pour les générations 1965 à 1968, pour les pensions prenant effet à compter du 1er septembre 2026) : la cible de 64 ans reste celle de la loi de 2023, mais sa montée en charge est interrompue."
   },
   {
+   "id": "ue3-06-20",
    "type": "calc",
    "nature": "calcul",
    "niveau": 3,
@@ -393,6 +414,7 @@
    "why": "Décote = 4 × 1,25 % = 5 % du taux plein ; taux = 50 % × (1 − 0,05) = 47,5 %, soit une baisse de 0,625 point par trimestre manquant. La pension est en outre proratisée (trimestres validés / durée requise), ce qui constitue une seconde minoration. La décote est plafonnée à 20 trimestres et disparaît à l'âge du taux plein automatique (67 ans). Retrancher 5 points (45 %) serait l'erreur classique."
   },
   {
+   "id": "ue3-06-21",
    "type": "qcm",
    "nature": "chiffre",
    "niveau": 2,
@@ -409,6 +431,7 @@
    "why": "La condition d'affiliation minimale est de 6 mois, soit 130 jours travaillés ou 910 heures, au cours des 24 mois précédant la fin du contrat (36 mois pour les allocataires d'au moins 55 ans depuis le 1er avril 2025). Les 4 mois sur 28 correspondent aux règles antérieures à 2019. Il faut en outre être inscrit à France Travail, rechercher activement un emploi, être apte et ne pas avoir atteint l'âge de la retraite à taux plein."
   },
   {
+   "id": "ue3-06-22",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -431,6 +454,7 @@
    "why": "La privation involontaire d'emploi couvre tous les licenciements, quel qu'en soit le motif y compris la faute grave ou lourde, les fins de CDD et de mission, et la rupture conventionnelle, assimilée par la loi. La démission n'ouvre droit à l'ARE que si elle est légitime (suivi de conjoint, non-paiement des salaires, violences, projet de reconversion après 5 ans d'activité…) ou après réexamen de la situation au bout de 4 mois ; une démission pour convenance personnelle n'est pas indemnisée."
   },
   {
+   "id": "ue3-06-23",
    "type": "qcm",
    "nature": "chiffre",
    "niveau": 2,
@@ -447,6 +471,7 @@
    "why": "Depuis la réforme de 2023, la durée d'indemnisation (un jour par jour d'affiliation) est réduite de 25 % par le coefficient de contracyclicité tant que le chômage reste inférieur à 9 %, avec un plancher de 6 mois et un plafond de 18 mois (548 jours) pour les moins de 55 ans ; les plafonds sont de 22,5 mois à 55-56 ans et de 27 mois à partir de 57 ans (règles applicables depuis le 1er avril 2025). Les 24 mois correspondent au régime antérieur à 2023."
   },
   {
+   "id": "ue3-06-24",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -463,6 +488,7 @@
    "why": "La lettre d'observations ouvre une période contradictoire de 30 jours pendant laquelle le cotisant peut répondre, par lui-même ou par un conseil ; ce délai peut être prolongé de 30 jours à sa demande, sauf en cas de travail dissimulé (R. 243-59). L'inspecteur répond aux observations avant que l'URSSAF n'engage le recouvrement par mise en demeure. Le non-respect de cette procédure contradictoire entraîne la nullité du redressement."
   },
   {
+   "id": "ue3-06-25",
    "type": "multi",
    "nature": "notion",
    "niveau": 3,
@@ -485,6 +511,7 @@
    "why": "Le travail dissimulé déclenche un cumul de sanctions : majoration du redressement de 25 %, portée à 40 % en cas de mineur, de personne vulnérable ou de bande organisée (L. 243-7-7) ; annulation des exonérations (L. 133-4-2) ; indemnité forfaitaire de 6 mois au salarié dont le contrat est rompu (C. trav., L. 8223-1) ; prescription de 5 ans (L. 244-3) ; sanctions pénales (3 ans et 45 000 € pour une personne physique) et exclusion des aides publiques. Un simple rappel à la loi est exclu."
   },
   {
+   "id": "ue3-06-26",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -501,6 +528,7 @@
    "why": "Le recours préalable devant la commission de recours amiable (CRA) de l'organisme est obligatoire et doit être formé dans les deux mois de la notification (R. 142-1). Le silence de la CRA pendant deux mois vaut rejet ; le cotisant saisit alors, dans les deux mois, le pôle social du tribunal judiciaire (L. 142-8), puis la cour d'appel. Le CPH ne connaît que des litiges employeur-salarié et le tribunal administratif ne traite pas du contentieux général de la sécurité sociale."
   },
   {
+   "id": "ue3-06-27",
    "type": "tri",
    "nature": "notion",
    "niveau": 2,

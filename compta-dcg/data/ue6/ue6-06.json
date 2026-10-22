@@ -64,6 +64,7 @@
  ],
  "exercices": [
   {
+   "id": "ue6-06-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans un budget de trésorerie, les ventes et les achats soumis à TVA sont inscrits :",
@@ -80,6 +81,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-1",
    "type": "calc",
    "nature": "calcul",
    "q": "Société Lumen. Ventes HT : janvier 100 000 €, février 120 000 €, mars 150 000 €, toutes soumises à la TVA à 20 %. Les clients paient 40 % au comptant et 60 % à 30 jours. Calculez les encaissements du mois de mars (en euros).",
@@ -92,6 +94,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-2",
    "type": "calc",
    "nature": "calcul",
    "q": "Société Lumen, mois de mars (régime réel normal, pas de crédit de TVA antérieur). Ventes HT 150 000 € ; achats de biens et services HT 80 000 € ; acquisition d'une immobilisation : TVA déductible 10 000 €. Taux de TVA 20 %. Calculez la TVA à décaisser au titre de mars (en euros).",
@@ -104,6 +107,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-3",
    "type": "qcm",
    "nature": "notion",
    "q": "La TVA à décaisser calculée au titre du mois de mars (régime réel normal) apparaît dans le budget de trésorerie :",
@@ -120,6 +124,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-4",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments ne figurent pas dans un budget de trésorerie ?",
@@ -140,6 +145,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-5",
    "type": "calc",
    "nature": "calcul",
    "q": "Trésorerie au 1er janvier : 15 000 €. Soldes mensuels prévus (encaissements − décaissements) : janvier −8 000 €, février +3 000 €, mars −12 000 €. Calculez la trésorerie prévue au 31 mars (en euros, signe compris).",
@@ -152,6 +158,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-6",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise a été à découvert de 50 000 € pendant 20 jours. Taux du découvert 9 % (année de 360 jours). Commission du plus fort découvert : 0,05 % du plus fort solde débiteur du mois (50 000 €). Calculez le total des agios du mois (en euros).",
@@ -164,6 +171,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-7",
    "type": "qcm",
    "nature": "notion",
    "q": "La commission du plus fort découvert (CPFD) se calcule :",
@@ -180,6 +188,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-8",
    "type": "calc",
    "nature": "calcul",
    "q": "Un effet de commerce de 36 000 € est remis à l'escompte 58 jours avant son échéance. Conditions : taux d'escompte 7,5 %, commission d'endos 0,6 % (proportionnelle, même base que l'escompte), 2 jours de banque, commission fixe de 12 € HT. Année de 360 jours. Calculez le total des agios HT (en euros).",
@@ -192,6 +201,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-9",
    "type": "calc",
    "nature": "calcul",
    "q": "Suite : agios de 498 € sur un effet de 36 000 € ; montant net reçu 35 502 € ; durée réelle du crédit 58 jours. Calculez le taux réel de l'escompte, en %, arrondi à 0,01 % (année de 360 jours).",
@@ -204,6 +214,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-06-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Les « jours de banque » ajoutés par la banque lors d'un escompte ont pour effet :",
@@ -220,6 +231,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-11",
    "type": "calc",
    "nature": "calcul",
    "q": "Une entreprise cède 100 000 € de créances à un factor. Conditions : commission d'affacturage 1,5 % du montant cédé ; commission de financement 6 % l'an pour 60 jours (année de 360 jours) ; retenue de garantie 10 %, restituée à l'encaissement. Calculez le montant immédiatement mis à disposition (en euros).",
@@ -232,6 +244,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-12",
    "type": "qcm",
    "nature": "notion",
    "q": "La cession de créances professionnelles « Dailly » se caractérise par :",
@@ -248,6 +261,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Les NEU CP (anciens billets de trésorerie) sont :",
@@ -264,6 +278,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-14",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque instrument selon sa fonction principale pour le trésorier.",
@@ -320,6 +335,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le rôle de l'Autorité des marchés financiers (AMF) ?",
@@ -336,6 +352,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-16",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels droits sont attachés à une action ordinaire ?",
@@ -359,6 +376,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-17",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une action cote 60 € et verse un dividende de 3 €. Quel est son rendement ?",
@@ -375,6 +393,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-18",
    "type": "calc",
    "nature": "calcul",
    "q": "Une société a réalisé un résultat net de 4 000 000 € pour 1 000 000 d'actions ; son cours est de 60 €. Calculez le PER (price earning ratio), arrondi à 0,1.",
@@ -387,6 +406,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-06-19",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une obligation de nominal 1 000 € cote 98,5 % au pied du coupon ; le coupon couru est de 2 %. Quel prix l'acheteur paie-t-il ?",
@@ -403,6 +423,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-20",
    "type": "calc",
    "nature": "calcul",
    "q": "Obligation de nominal 1 000 €, coupon annuel 5 %, remboursée au pair dans 3 ans (le prochain coupon est dans un an). Taux du marché pour cette échéance : 6 %. Coefficients d'actualisation à 6 % : 0,9434 (1 an), 0,8900 (2 ans), 0,8396 (3 ans). Calculez la valeur de l'obligation, arrondie à l'euro.",
@@ -415,6 +436,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-06-21",
    "type": "qcm",
    "nature": "notion",
    "q": "Les taux d'intérêt du marché augmentent. Quel est l'effet sur le prix des obligations à taux fixe déjà émises ?",
@@ -431,6 +453,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-22",
    "type": "qcm",
    "nature": "notion",
    "q": "La sensibilité d'une obligation :",
@@ -447,6 +470,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-06-23",
    "type": "qcm",
    "nature": "notion",
    "q": "Un exportateur français facture 500 000 dollars payables dans 90 jours et craint une baisse du dollar. Quelle couverture ferme est adaptée ?",
@@ -463,6 +487,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Un swap de taux d'intérêt consiste à :",
@@ -479,6 +504,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-06-25",
    "type": "qcm",
    "nature": "notion",
    "q": "La diversification d'un portefeuille de titres permet de :",

@@ -60,6 +60,7 @@
  ],
  "exercices": [
   {
+   "id": "ue6-02-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Pourquoi le bilan fonctionnel est-il établi en valeurs brutes ?",
@@ -76,6 +77,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans le bilan fonctionnel, les concours bancaires courants et soldes créditeurs de banque sont classés :",
@@ -92,6 +94,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-2",
    "type": "qcm",
    "nature": "notion",
    "q": "L'annexe indique des effets escomptés non échus (EENE) de 24 000 €. Quel retraitement opérer dans le bilan fonctionnel ?",
@@ -108,6 +111,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-3",
    "type": "qcm",
    "nature": "notion",
    "q": "Le capital souscrit non appelé (compte 109) figure à l'actif pour 50 000 €. Dans le bilan fonctionnel, il est :",
@@ -124,6 +128,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Les intérêts courus non échus sur emprunts (3 000 €) sont inclus dans le poste « Emprunts et dettes auprès des établissements de crédit ». Dans le bilan fonctionnel, ils sont :",
@@ -140,6 +145,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-5",
    "type": "qcm",
    "nature": "notion",
    "q": "Un écart de conversion actif de 2 000 € provient d'une créance client en dollars dont le cours a baissé. Quel retraitement dans le bilan fonctionnel ?",
@@ -156,6 +162,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-02-6",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque poste dans la masse du bilan fonctionnel qui lui correspond.",
@@ -216,6 +223,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-7",
    "type": "calc",
    "nature": "calcul",
    "q": "Société Nordia. Capitaux propres 300 000 € ; amortissements et dépréciations 120 000 € ; emprunts auprès des établissements de crédit 180 000 € (sans concours bancaires courants) ; immobilisations brutes 480 000 €. Calculez le FRNG (en euros).",
@@ -228,6 +236,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-8",
    "type": "calc",
    "nature": "calcul",
    "q": "Société Nordia. Stocks 90 000 € ; créances clients 110 000 € ; charges constatées d'avance (exploitation) 5 000 € ; dettes fournisseurs 85 000 € ; dettes fiscales et sociales (hors IS) 30 000 €. Calculez le BFR d'exploitation (en euros).",
@@ -240,6 +249,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-9",
    "type": "calc",
    "nature": "calcul",
    "q": "Société Nordia. FRNG 120 000 € ; BFR d'exploitation 90 000 € ; BFR hors exploitation 10 000 €. Calculez la trésorerie nette (en euros).",
@@ -252,6 +262,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-10",
    "type": "calc",
    "nature": "calcul",
    "q": "Un matériel financé par crédit-bail a une valeur d'origine de 100 000 € ; s'il avait été acheté, il serait amorti à hauteur de 40 000 € à la clôture. Quel montant est ajouté aux dettes financières (ressources stables) lors du retraitement du bilan fonctionnel (en euros) ?",
@@ -264,6 +275,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-11",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Le retraitement d'un bien en crédit-bail dans le bilan fonctionnel a pour effets :",
@@ -285,6 +297,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-12",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la relation fondamentale du bilan fonctionnel ?",
@@ -301,6 +314,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise présente un FRNG de 80 000 €, un BFR de 150 000 € et donc une trésorerie nette de −70 000 €. Quel diagnostic ?",
@@ -317,6 +331,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-14",
    "type": "qcm",
    "nature": "calcul",
    "q": "Capitaux propres 400 000 €, dettes financières 250 000 €. Quel est le ratio d'autonomie financière défini comme capitaux propres / dettes financières ?",
@@ -333,6 +348,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-15",
    "type": "qcm",
    "nature": "calcul",
    "q": "Dettes financières 480 000 €, CAF 160 000 €. Quelle est la capacité de remboursement et comment l'interpréter ?",
@@ -349,6 +365,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Créances clients 120 000 € ; effets escomptés non échus 24 000 € ; chiffre d'affaires HT 900 000 €, intégralement soumis à la TVA au taux de 20 %. Calculez la durée du crédit clients en jours (année de 360 jours, arrondir à l'entier).",
@@ -361,6 +378,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-17",
    "type": "calc",
    "nature": "calcul",
    "q": "Dettes fournisseurs 96 000 € ; achats et services extérieurs HT de l'exercice 480 000 €, tous soumis à la TVA à 20 %. Calculez la durée du crédit fournisseurs en jours (année de 360 jours, arrondir à l'entier).",
@@ -373,6 +391,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-18",
    "type": "calc",
    "nature": "calcul",
    "q": "Stock de marchandises : 40 000 € à l'ouverture, 50 000 € à la clôture. Achats de marchandises de l'exercice : 300 000 €. Calculez la durée de rotation du stock de marchandises en jours, à partir du stock moyen (année de 360 jours, arrondir à l'entier).",
@@ -385,6 +404,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-19",
    "type": "qcm",
    "nature": "calcul",
    "q": "BFR d'exploitation 90 000 €, chiffre d'affaires HT 900 000 €. Quel est le BFRE exprimé en jours de chiffre d'affaires (année de 360 jours) ?",
@@ -401,6 +421,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-20",
    "type": "qcm",
    "nature": "notion",
    "q": "La rentabilité économique se mesure par :",
@@ -417,6 +438,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-02-21",
    "type": "calc",
    "nature": "calcul",
    "q": "IS à 25 %. Résultat d'exploitation 120 000 € ; capitaux propres 500 000 € ; dettes financières 300 000 € au taux de 4 %. Aucun autre élément de résultat. Calculez la rentabilité financière (résultat net / capitaux propres), en %, arrondie à 0,1 %.",
@@ -429,6 +451,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-02-22",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une entreprise a une rentabilité économique de 5 % et emprunte à 7 %. Quel est l'effet de l'endettement sur sa rentabilité financière ?",
@@ -445,6 +468,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-23",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quelles affirmations décrivent correctement le bilan financier (bilan liquidité) ?",
@@ -466,6 +490,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-24",
    "type": "qcm",
    "nature": "calcul",
    "q": "Stocks 100 000 €, créances à moins d'un an 150 000 €, disponibilités 50 000 €, dettes à moins d'un an 200 000 €. Quel est le ratio de liquidité réduite ?",
@@ -482,6 +507,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-02-25",
    "type": "qcm",
    "nature": "notion",
    "q": "La solvabilité d'une entreprise désigne :",

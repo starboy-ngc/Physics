@@ -80,6 +80,7 @@
  ],
  "exercices": [
   {
+   "id": "ue4-06-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la base d'imposition de la cotisation foncière des entreprises (CFE) ?",
@@ -96,6 +97,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SARL est créée le 1er mars 2025 et occupe un local commercial. Quelle est sa situation au regard de la CFE ?",
@@ -112,6 +114,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-2",
    "type": "qcm",
    "nature": "notion",
    "q": "À partir de quel chiffre d'affaires hors taxes une entreprise est-elle redevable de la cotisation sur la valeur ajoutée des entreprises (CVAE) ?",
@@ -128,6 +131,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-3",
    "type": "qcm",
    "nature": "chiffre",
    "q": "Pour l'année 2025, quelles dispositions la loi de finances pour 2025 a-t-elle retenues pour la CVAE ?",
@@ -144,6 +148,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Comment est calculée la base de la taxe foncière sur les propriétés bâties ?",
@@ -160,6 +165,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-5",
    "type": "qcm",
    "nature": "notion",
    "q": "Un commerçant loue le local dans lequel il exploite son magasin. Qui est redevable de la taxe foncière et de la CFE ?",
@@ -176,6 +182,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-6",
    "type": "multi",
    "nature": "notion",
    "q": "Quels employeurs sont redevables de la taxe sur les salaires ? (plusieurs réponses possibles)",
@@ -197,6 +204,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-7",
    "type": "calc",
    "nature": "calcul",
    "q": "Barème 2025 de la taxe sur les salaires (par salarié et par an) : 4,25 % jusqu'à 9 147 € ; 8,50 % de 9 147 à 18 259 € ; 13,60 % au-delà. Une association non assujettie à la TVA (aucun abattement ni franchise applicable ici) verse à son unique salarié une rémunération annuelle brute de 30 000 €. Calculez la taxe sur les salaires due, arrondie à l'euro.",
@@ -209,6 +217,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-8",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le taux de la taxe d'apprentissage (hors Alsace-Moselle) ?",
@@ -225,6 +234,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-9",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise emploie 60 salariés depuis plus de cinq ans. Quelle obligation de participation à l'effort de construction (PEEC) a-t-elle ?",
@@ -241,6 +251,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Depuis 2024, les sociétés doivent déclarer deux taxes annuelles sur leurs véhicules de tourisme (anciennement TVS). Lesquelles ?",
@@ -257,6 +268,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-11",
    "type": "calc",
    "nature": "calcul",
    "q": "Un associé cède la totalité des parts d'une SARL (non à prépondérance immobilière) pour 150 000 €. Droit d'enregistrement : 3 % après abattement de 23 000 €. Calculez les droits dus.",
@@ -269,6 +281,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-12",
    "type": "calc",
    "nature": "calcul",
    "q": "Un associé cède 50 % des parts d'une SARL pour 100 000 €. L'abattement de 23 000 € est proratisé au pourcentage de parts cédées et le droit est de 3 %. Calculez les droits d'enregistrement.",
@@ -281,6 +294,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-13",
    "type": "calc",
    "nature": "calcul",
    "q": "Un actionnaire cède des actions d'une SAS (non à prépondérance immobilière) pour 500 000 €. Quel est le montant des droits d'enregistrement ?",
@@ -293,6 +307,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-14",
    "type": "calc",
    "nature": "calcul",
    "q": "Un fonds de commerce (hors marchandises) est cédé pour 300 000 €. Barème : 0 % jusqu'à 23 000 €, 3 % de 23 000 à 200 000 €, 5 % au-delà de 200 000 €. Calculez les droits d'enregistrement.",
@@ -305,6 +320,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Lors de la constitution d'une SAS, une personne physique apporte un immeuble en échange d'actions (apport pur et simple) sans prendre l'engagement de conserver les titres reçus pendant trois ans. Quel droit d'enregistrement est dû sur cet apport ?",
@@ -321,6 +337,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Un fils hérite de 250 000 € de son père en 2025. Abattement en ligne directe : 100 000 €. Barème : 5 % jusqu'à 8 072 € ; 10 % de 8 072 à 12 109 € ; 15 % de 12 109 à 15 932 € ; 20 % de 15 932 à 552 324 €. Calculez les droits de succession, arrondis à l'euro.",
@@ -333,6 +350,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-17",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le régime du conjoint survivant en matière de droits de succession ?",
@@ -349,6 +367,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-18",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un père a donné 100 000 € à sa fille en 2015. Il décède en 2025 en lui laissant 150 000 €. Quel abattement reste disponible pour la succession ?",
@@ -365,6 +384,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-19",
    "type": "qcm",
    "nature": "notion",
    "q": "À partir de quel montant de patrimoine immobilier net taxable un foyer est-il redevable de l'IFI, et à partir de quel montant le barème s'applique-t-il ?",
@@ -381,6 +401,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-20",
    "type": "calc",
    "nature": "calcul",
    "q": "Un foyer détient au 1er janvier 2025 un patrimoine immobilier net taxable de 1 500 000 € (après abattement sur la résidence principale et déduction des dettes). Barème IFI : 0,50 % de 800 000 à 1 300 000 € ; 0,70 % de 1 300 000 à 2 570 000 €. Calculez l'IFI dû (aucune décote au-delà de 1,4 M€).",
@@ -393,6 +414,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-21",
    "type": "multi",
    "nature": "notion",
    "q": "Quels éléments sont exonérés ou bénéficient d'un abattement dans l'assiette de l'IFI ? (plusieurs réponses possibles)",
@@ -413,6 +435,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la durée maximale, en principe, d'une vérification de comptabilité sur place pour une entreprise dont le chiffre d'affaires n'excède pas les limites du régime simplifié ?",
@@ -429,6 +452,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-23",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles garanties entourent une vérification de comptabilité ? (plusieurs réponses possibles)",
@@ -450,6 +474,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-24",
    "type": "calc",
    "nature": "calcul",
    "q": "Un contribuable a perçu des revenus en 2023, déclarés en 2024. Jusqu'au 31 décembre de quelle année l'administration peut-elle rectifier son impôt sur le revenu (délai de reprise de droit commun) ? Indiquez l'année.",
@@ -462,6 +487,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-25",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une succession ouverte en 2020 n'a donné lieu à aucune déclaration. Jusqu'à quand l'administration peut-elle réclamer les droits de succession ?",
@@ -478,6 +504,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Un contribuable reçoit une proposition de rectification le 10 mars. De quel délai dispose-t-il pour présenter ses observations ?",
@@ -494,6 +521,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Un contribuable n'a pas déposé sa déclaration de revenus malgré une mise en demeure restée sans réponse pendant plus de 30 jours. Quelle procédure l'administration applique-t-elle et avec quelle majoration ?",
@@ -510,6 +538,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-28",
    "type": "tri",
    "nature": "notion",
    "q": "Associez chaque situation à la sanction fiscale applicable (hors intérêt de retard).",
@@ -554,6 +583,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-29",
    "type": "calc",
    "nature": "calcul",
    "q": "Un contribuable a sous-évalué son impôt sur le revenu de 10 000 €. Le retard est de 8 mois. Intérêt de retard : 0,20 % par mois. Calculez le montant de l'intérêt de retard (hors majorations).",
@@ -566,6 +596,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-30",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un avis d'imposition d'IR est mis en recouvrement le 31 juillet 2025. Jusqu'à quelle date le contribuable peut-il déposer une réclamation contentieuse ?",
@@ -582,6 +613,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-31",
    "type": "qcm",
    "nature": "notion",
    "q": "Après rejet de sa réclamation relative à des droits d'enregistrement, quel tribunal le contribuable doit-il saisir ?",
@@ -598,6 +630,7 @@
    "niveau": 2
   },
   {
+   "id": "ue4-06-32",
    "type": "qcm",
    "nature": "notion",
    "q": "Qu'est-ce qu'un rescrit fiscal au sens de l'article L. 80 B du LPF ?",
@@ -614,6 +647,7 @@
    "niveau": 1
   },
   {
+   "id": "ue4-06-33",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans quel cas l'administration peut-elle mettre en œuvre la procédure de l'abus de droit de l'article L. 64 du LPF ?",
@@ -630,6 +664,7 @@
    "niveau": 3
   },
   {
+   "id": "ue4-06-34",
    "type": "qcm",
    "nature": "notion",
    "q": "Une transaction conclue avec l'administration fiscale (LPF, art. L. 247) peut porter :",

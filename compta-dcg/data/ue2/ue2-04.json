@@ -76,6 +76,7 @@
  ],
  "exercices": [
   {
+   "id": "ue2-04-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle qualité ont obligatoirement tous les associés d'une société en nom collectif ?",
@@ -92,6 +93,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-04-1",
    "type": "qcm",
    "nature": "notion",
    "q": "La SNC Lambert et Fils doit 50 000 € à un fournisseur et ne paie pas. Que doit faire le fournisseur avant de poursuivre personnellement un associé ?",
@@ -108,6 +110,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-04-2",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une SNC prévoient que les cessions de parts à des tiers sont autorisées à la majorité des deux tiers des associés. Quelle est la valeur de cette clause ?",
@@ -124,6 +127,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-3",
    "type": "qcm",
    "nature": "notion",
    "q": "Un associé d'une SNC décède. Les statuts ne contiennent aucune clause relative au décès. Quelle est la conséquence ?",
@@ -140,6 +144,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SNC composée de deux personnes physiques réalise un bénéfice de 80 000 € et n'a exercé aucune option fiscale. Comment ce bénéfice est-il imposé ?",
@@ -156,6 +161,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-5",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans une société en commandite simple, un associé commanditaire signe au nom de la société un contrat avec un fournisseur, muni d'une procuration du gérant commandité. Quelle est la sanction ?",
@@ -172,6 +178,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-6",
    "type": "qcm",
    "nature": "notion",
    "q": "Comment les associés d'une société civile immobilière répondent-ils des dettes sociales ?",
@@ -188,6 +195,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-04-7",
    "type": "calc",
    "nature": "calcul",
    "q": "La SCI Les Tilleuls doit 120 000 € à une banque et ne peut pas payer ; la banque a vainement poursuivi la société. Les associés détiennent respectivement 50 % (Alain), 30 % (Brigitte) et 20 % (Carole) du capital. Quel montant maximal (en €) la banque peut-elle réclamer à Brigitte ?",
@@ -200,6 +208,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-8",
    "type": "calc",
    "nature": "calcul",
    "q": "La SNC Delta doit 120 000 € à un fournisseur. Les trois associés détiennent 50 %, 30 % et 20 % du capital. Après mise en demeure de la société restée vaine depuis plus de huit jours, quel montant maximal (en €) le fournisseur peut-il réclamer à l'associé détenant 20 % ?",
@@ -212,6 +221,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-9",
    "type": "qcm",
    "nature": "notion",
    "q": "Un créancier d'une société civile professionnelle d'architectes veut poursuivre directement un associé pour une dette sociale. Quelle condition préalable l'article 1858 du Code civil lui impose-t-il ?",
@@ -228,6 +238,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une société civile ne contiennent aucune clause sur la cession des parts. Un associé veut vendre ses parts à un tiers. Quelle règle s'applique ?",
@@ -244,6 +255,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Trois médecins créent une structure pour partager un secrétariat, des locaux et du matériel, chacun continuant à exercer et à facturer ses patients en son nom. Quelle forme correspond à ce projet ?",
@@ -260,6 +272,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-12",
    "type": "multi",
    "nature": "notion",
    "q": "À propos des sociétés d'exercice libéral après l'ordonnance n° 2023-77, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -281,6 +294,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Deux entreprises de BTP constituent une société en participation occulte pour répondre à un appel d'offres ; l'une d'elles, désignée gérante, signe seule les contrats avec les tiers en son nom. Qui est engagé envers ces tiers ?",
@@ -297,6 +311,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-14",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le but légal d'un groupement d'intérêt économique ?",
@@ -313,6 +328,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Quatre PME constituent un GIE sans capital pour mutualiser leurs achats. Le GIE ne paie pas une facture de 90 000 €. Que peut faire le fournisseur ?",
@@ -329,6 +345,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-16",
    "type": "qcm",
    "nature": "notion",
    "q": "Une association loi 1901 réalise un excédent de 12 000 € sur l'exercice. Peut-elle le distribuer à ses membres ?",
@@ -345,6 +362,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-04-17",
    "type": "qcm",
    "nature": "notion",
    "q": "Un club de randonnée fonctionne depuis cinq ans sans avoir déposé de déclaration en préfecture. Peut-il agir en justice contre un fournisseur ?",
@@ -361,6 +379,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Une association de soutien scolaire est gérée par des bénévoles, propose ses services à un public défavorisé à des prix très inférieurs au marché et ne fait aucune publicité commerciale. Quel est son régime fiscal ?",
@@ -377,6 +396,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-19",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel principe de vote caractérise les sociétés coopératives ?",
@@ -393,6 +413,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-20",
    "type": "qcm",
    "nature": "notion",
    "q": "Qu'est-ce qui distingue fondamentalement une SCIC d'une SCOP ?",
@@ -409,6 +430,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-21",
    "type": "qcm",
    "nature": "notion",
    "q": "Une entreprise souhaite créer rapidement une structure philanthropique capable de recevoir des dons et de financer des projets d'intérêt général, sans attendre un décret en Conseil d'État. Quelle structure est adaptée ?",
@@ -425,6 +447,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-22",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque groupement selon le régime de responsabilité de ses associés ou membres pour les dettes du groupement.",
@@ -473,6 +496,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-23",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles formes limitent la responsabilité de tous leurs associés au montant de leurs apports ? (plusieurs réponses possibles)",
@@ -495,6 +519,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SNC a opté pour l'impôt sur les sociétés au titre de l'exercice 2023. Ses associés souhaitent revenir à l'impôt sur le revenu. Est-ce possible ?",
@@ -511,6 +536,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-04-25",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la condition propre au groupement européen d'intérêt économique par rapport au GIE français ?",
@@ -527,6 +553,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-26",
    "type": "calc",
    "nature": "calcul",
    "q": "Des salariés veulent transformer leur entreprise en SCOP sous forme de SARL au capital de 200 000 €. Quel montant minimal de capital (en €) les salariés associés doivent-ils détenir ensemble pour respecter la loi sur les SCOP ?",
@@ -539,6 +566,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-04-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans une société en commandite simple, un associé commanditaire décède. Les statuts sont muets. Quelle est la conséquence ?",

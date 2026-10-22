@@ -76,6 +76,7 @@
  ],
  "exercices": [
   {
+   "id": "ue2-07-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Selon l'article L. 121-1 du Code de commerce, qui est commerçant ?",
@@ -92,6 +93,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Un professeur de lycée signe une lettre de change pour un achat personnel. Quelle est la nature de cet acte ?",
@@ -108,6 +110,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-2",
    "type": "qcm",
    "nature": "notion",
    "q": "Lequel de ces professionnels a la qualité de commerçant ?",
@@ -124,6 +127,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-3",
    "type": "qcm",
    "nature": "notion",
    "q": "Deux commerçants sont en litige sur un contrat de 30 000 € conclu oralement. Comment ce contrat peut-il être prouvé ?",
@@ -140,6 +144,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le délai de prescription des obligations nées à l'occasion de leur commerce entre commerçants ?",
@@ -156,6 +161,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-5",
    "type": "calc",
    "nature": "calcul",
    "q": "Une créance entre deux commerçants est devenue exigible le 15 janvier 2021 ; aucun acte n'a interrompu ni suspendu la prescription. En quelle année l'action en paiement sera-t-elle prescrite ?",
@@ -168,6 +174,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-6",
    "type": "qcm",
    "nature": "notion",
    "q": "Un particulier achète une cuisine à un commerçant et souhaite l'assigner pour défaut de livraison. Quelle juridiction peut-il saisir ?",
@@ -184,6 +191,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-7",
    "type": "qcm",
    "nature": "notion",
    "q": "Depuis le 1er janvier 2025, une SCI en cessation des paiements dont le siège est à Lyon relève, pour sa procédure collective, de quelle juridiction ?",
@@ -200,6 +208,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-8",
    "type": "multi",
    "nature": "notion",
    "q": "À propos de l'expérimentation des tribunaux des activités économiques, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -221,6 +230,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-9",
    "type": "qcm",
    "nature": "notion",
    "q": "Depuis le 1er janvier 2023, où un commerçant personne physique dépose-t-il sa demande d'immatriculation ?",
@@ -237,6 +247,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Deux commerçants achètent ensemble un stock à un grossiste, sans préciser la répartition de la dette. Le grossiste peut-il réclamer la totalité du prix à l'un d'eux ?",
@@ -253,6 +264,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel élément est indispensable à l'existence d'un fonds de commerce ?",
@@ -269,6 +281,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-12",
    "type": "multi",
    "nature": "notion",
    "q": "Parmi les éléments suivants, lesquels font partie du fonds de commerce d'une boulangerie exploitée dans des locaux loués ? (plusieurs réponses possibles)",
@@ -291,6 +304,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la nature juridique du fonds de commerce ?",
@@ -307,6 +321,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-14",
    "type": "calc",
    "nature": "calcul",
    "q": "Un fonds de commerce est vendu 150 000 € (hors marchandises). Calculez les droits d'enregistrement dus par l'acquéreur (en €).",
@@ -319,6 +334,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-15",
    "type": "calc",
    "nature": "calcul",
    "q": "Un fonds de commerce est vendu 350 000 € (hors marchandises). Calculez les droits d'enregistrement dus par l'acquéreur (en €).",
@@ -331,6 +347,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-16",
    "type": "qcm",
    "nature": "calcul",
    "q": "La vente d'un fonds de commerce est publiée au BODACC le 3 mars. Jusqu'à quelle date les créanciers du vendeur peuvent-ils faire opposition au paiement du prix ?",
@@ -347,6 +364,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-17",
    "type": "qcm",
    "nature": "notion",
    "q": "Qu'est-ce qui caractérise le nantissement conventionnel d'un fonds de commerce ?",
@@ -363,6 +381,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Un commerçant donne son fonds en location-gérance ; le contrat est publié le 10 février 2025. Un fournisseur du locataire-gérant détient une facture d'exploitation impayée née le 15 mai 2025. Peut-il poursuivre le propriétaire du fonds ?",
@@ -379,6 +398,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-19",
    "type": "calc",
    "nature": "calcul",
    "q": "Un bail commercial prévoit un loyer annuel de 24 000 €. À l'occasion de la révision triennale, l'indice des loyers commerciaux est passé de 118,0 (dernière fixation) à 124,5. En l'absence de motif de déplafonnement, quel est le nouveau loyer annuel maximal (en €, arrondi à l'euro) ?",
@@ -391,6 +411,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-20",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un bailleur et un commerçant signent un bail de deux ans « hors statut », puis un second de deux ans pour les mêmes locaux. Quelle est la situation à la fin du second bail si le commerçant reste dans les lieux ?",
@@ -407,6 +428,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-21",
    "type": "qcm",
    "nature": "notion",
    "q": "Un locataire commerçant souhaite quitter ses locaux à la fin de la première période triennale de son bail de neuf ans. Quelle formalité doit-il respecter ?",
@@ -423,6 +445,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-22",
    "type": "qcm",
    "nature": "notion",
    "q": "À l'expiration d'un bail commercial, le bailleur refuse le renouvellement sans invoquer aucun motif. Que doit-il au locataire ?",
@@ -439,6 +462,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-23",
    "type": "qcm",
    "nature": "notion",
    "q": "Un locataire exploitant une librairie souhaite vendre aussi de la papeterie. Quelle procédure doit-il suivre ?",
@@ -455,6 +479,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Un bail commercial interdit toute cession du bail sans l'accord du bailleur. Le locataire vend son fonds de commerce et entend céder le bail à l'acquéreur. Quelle est la portée de la clause ?",
@@ -471,6 +496,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-25",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans quel cas le loyer peut-il être déplafonné lors d'une révision triennale ?",
@@ -487,6 +513,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-07-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la durée de protection d'une marque déposée à l'INPI et d'un brevet d'invention ?",
@@ -503,6 +530,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-07-27",
    "type": "tri",
    "nature": "notion",
    "q": "Associez chaque règle à la durée ou au délai correspondant.",
@@ -554,6 +582,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-28",
    "type": "qcm",
    "nature": "notion",
    "q": "Un micro-entrepreneur a réalisé 12 000 € de chiffre d'affaires en 2023 et 14 000 € en 2024. Est-il tenu d'ouvrir un compte bancaire dédié à son activité ?",
@@ -570,6 +599,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-07-29",
    "type": "qcm",
    "nature": "notion",
    "q": "Un mineur de 17 ans émancipé souhaite exploiter un commerce de vente en ligne. Est-ce possible ?",

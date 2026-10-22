@@ -80,6 +80,7 @@
  ],
  "exercices": [
   {
+   "id": "ue2-03-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Quel est le capital social minimum d'une société anonyme non cotée ?",
@@ -96,6 +97,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-03-1",
    "type": "qcm",
    "nature": "notion",
    "q": "Combien d'actionnaires au minimum faut-il pour constituer une SA dont les actions ne sont pas admises aux négociations sur un marché ?",
@@ -112,6 +114,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-03-2",
    "type": "calc",
    "nature": "calcul",
    "q": "Une SA est constituée avec un capital de 100 000 € entièrement souscrit en numéraire. Quel montant minimal (en €) doit être libéré lors de la souscription ?",
@@ -124,6 +127,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-03-3",
    "type": "qcm",
    "nature": "notion",
    "q": "Un ingénieur souhaite entrer dans une SA en apportant exclusivement son savoir-faire technique. Est-ce possible ?",
@@ -140,6 +144,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-03-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la composition légale du conseil d'administration d'une SA (hors cas de fusion) ?",
@@ -156,6 +161,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-5",
    "type": "qcm",
    "nature": "notion",
    "q": "La SAS Capital Invest est nommée administratrice d'une SA. Quelle obligation en découle ?",
@@ -172,6 +178,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-6",
    "type": "qcm",
    "nature": "calcul",
    "q": "Les statuts d'une SA ne contiennent aucune disposition sur l'âge des administrateurs. Le conseil compte 9 membres. Combien peuvent, au maximum, avoir plus de 70 ans ?",
@@ -188,6 +195,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-7",
    "type": "qcm",
    "nature": "notion",
    "q": "L'assemblée générale ordinaire d'une SA révoque un administrateur en cours de mandat, sans motif et sans que la question figure à l'ordre du jour. Cette révocation est-elle valable ?",
@@ -204,6 +212,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-8",
    "type": "multi",
    "nature": "notion",
    "q": "À propos de la direction générale d'une SA à conseil d'administration, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -225,6 +234,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-9",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SA à directoire a un capital de 120 000 €. Peut-elle n'avoir qu'un seul dirigeant exécutif ?",
@@ -241,6 +251,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-10",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans une SA dualiste, qui exerce le contrôle permanent de la gestion de la société ?",
@@ -257,6 +268,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Le directeur général d'une SA souhaite louer à la société un entrepôt dont il est propriétaire. Quelle est la première étape obligatoire de la procédure ?",
@@ -273,6 +285,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-12",
    "type": "qcm",
    "nature": "notion",
    "q": "Parmi ces opérations, laquelle est interdite dans une SA, à peine de nullité ?",
@@ -289,6 +302,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-13",
    "type": "calc",
    "nature": "calcul",
    "q": "Le capital d'une SA est composé de 50 000 actions ayant toutes le droit de vote. Combien d'actions au minimum doivent être présentes ou représentées pour que l'assemblée générale ordinaire délibère valablement sur première convocation ?",
@@ -301,6 +315,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-14",
    "type": "calc",
    "nature": "calcul",
    "q": "Lors d'une assemblée générale extraordinaire de SA, 30 000 voix sont exprimées (votes pour et contre, hors abstentions). Combien de voix favorables au minimum sont nécessaires pour adopter la modification des statuts ?",
@@ -313,6 +328,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Faute de quorum, une AGO de SA n'a pu se tenir sur première convocation. Quel quorum est exigé sur seconde convocation ?",
@@ -329,6 +345,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-16",
    "type": "qcm",
    "nature": "calcul",
    "q": "Lors d'une AGO de SA, 1 000 voix sont présentes : 450 pour, 400 contre, 150 abstentions. La résolution est-elle adoptée ?",
@@ -345,6 +362,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-17",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une SA non cotée instituent un droit de vote double. Quelle condition légale minimale les actions doivent-elles remplir ?",
@@ -361,6 +379,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SA non cotée emploie 20 salariés, réalise 4 M€ de chiffre d'affaires et présente un bilan de 2 M€. Doit-elle obligatoirement avoir un commissaire aux comptes ?",
@@ -377,6 +396,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-19",
    "type": "qcm",
    "nature": "chiffre",
    "q": "À la clôture de l'exercice 2025, une SAS présente un total de bilan de 6 M€, un chiffre d'affaires HT de 9 M€ et 60 salariés. Au regard des seuils applicables aux exercices ouverts depuis 2024, doit-elle nommer un commissaire aux comptes ?",
@@ -393,6 +413,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-20",
    "type": "qcm",
    "nature": "notion",
    "q": "Qui peut être président d'une SAS ?",
@@ -409,6 +430,7 @@
    "niveau": 1
   },
   {
+   "id": "ue2-03-21",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles décisions doivent obligatoirement être prises collectivement par les associés d'une SAS, quelle que soit la rédaction des statuts ? (plusieurs réponses possibles)",
@@ -432,6 +454,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Les statuts d'une SAS stipulent que les actions sont inaliénables pendant quinze ans à compter de l'immatriculation. Quelle est la portée de cette clause ?",
@@ -448,6 +471,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-23",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SAS en croissance souhaite lever des fonds en proposant ses actions au grand public via une introduction en bourse. Est-ce possible ?",
@@ -464,6 +488,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Julie est présidente et associée à 80 % d'une SAS ; elle perçoit une rémunération pour son mandat. Quel est son statut social ?",
@@ -480,6 +505,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-25",
    "type": "tri",
    "nature": "notion",
    "q": "Attribuez chaque caractéristique à la forme sociale qu'elle désigne exclusivement.",
@@ -528,6 +554,7 @@
    "niveau": 2
   },
   {
+   "id": "ue2-03-26",
    "type": "qcm",
    "nature": "notion",
    "q": "Des actionnaires détenant ensemble 6 % du capital d'une SA s'inquiètent d'une opération de gestion. Que doivent-ils faire avant de pouvoir demander en justice une expertise de gestion ?",
@@ -544,6 +571,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-03-27",
    "type": "qcm",
    "nature": "notion",
    "q": "Une SA a émis des actions de préférence à dividende prioritaire. Une modification des droits attachés à ces actions est envisagée. Quel organe doit, outre l'AGE, l'approuver ?",
@@ -560,6 +588,7 @@
    "niveau": 3
   },
   {
+   "id": "ue2-03-28",
    "type": "qcm",
    "nature": "notion",
    "q": "Marc crée seul une société par actions simplifiée. Comment cette société est-elle désignée et qui exerce les pouvoirs de la collectivité des associés ?",

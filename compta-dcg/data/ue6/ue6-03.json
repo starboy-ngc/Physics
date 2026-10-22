@@ -60,6 +60,7 @@
  ],
  "exercices": [
   {
+   "id": "ue6-03-0",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans le tableau de financement du PCG, la capacité d'autofinancement est :",
@@ -76,6 +77,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-1",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments sont des ressources durables dans la première partie du tableau de financement ?",
@@ -98,6 +100,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-2",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments sont des emplois stables dans la première partie du tableau de financement ?",
@@ -119,6 +122,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-3",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une immobilisation de valeur nette comptable 20 000 € est cédée pour 35 000 €. Pour quel montant la cession figure-t-elle dans les ressources durables du tableau de financement ?",
@@ -135,6 +139,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-4",
    "type": "qcm",
    "nature": "notion",
    "q": "Une société augmente son capital de 100 000 € par incorporation de réserves. Dans le tableau de financement, cette opération :",
@@ -151,6 +156,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-5",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans le tableau de financement, les concours bancaires courants sont traités :",
@@ -167,6 +173,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-6",
    "type": "qcm",
    "nature": "notion",
    "q": "Les frais d'émission d'un emprunt, portés à l'actif en charges à répartir (compte 481), figurent dans le tableau de financement :",
@@ -183,6 +190,7 @@
    "niveau": 3
   },
   {
+   "id": "ue6-03-7",
    "type": "calc",
    "nature": "calcul",
    "q": "Société Orbis, exercice N. Ressources durables : CAF 200 000 €, prix de cession d'immobilisations 30 000 €, nouvel emprunt 120 000 €. Emplois stables : dividendes versés 50 000 €, acquisitions d'immobilisations 200 000 €, remboursements d'emprunts 40 000 €. Calculez la variation du FRNG (en euros).",
@@ -195,6 +203,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-8",
    "type": "calc",
    "nature": "calcul",
    "q": "Immobilisations corporelles brutes : 800 000 € au bilan N−1, 920 000 € au bilan N. Au cours de N, un matériel de valeur d'origine 60 000 € a été cédé. Calculez le montant des acquisitions d'immobilisations corporelles de l'exercice N (en euros).",
@@ -207,6 +216,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-9",
    "type": "calc",
    "nature": "calcul",
    "q": "Dettes financières (hors concours bancaires courants et intérêts courus) : 300 000 € au bilan N−1, 340 000 € au bilan N. Un nouvel emprunt de 100 000 € a été souscrit en N. Calculez les remboursements d'emprunts de l'exercice N (en euros).",
@@ -219,6 +229,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-10",
    "type": "calc",
    "nature": "calcul",
    "q": "Résultat de l'exercice N−1 : 80 000 €. Réserves : 200 000 € au bilan N−1, 250 000 € au bilan N. Report à nouveau nul aux deux dates, aucune incorporation au capital. Calculez les dividendes versés au cours de N (en euros).",
@@ -231,6 +242,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-11",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans la deuxième partie du tableau de financement, une augmentation des créances clients de 35 000 € est présentée comme :",
@@ -247,6 +259,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-12",
    "type": "calc",
    "nature": "calcul",
    "q": "EBE de l'exercice 150 000 €. Variations des postes d'exploitation : stocks +20 000 €, créances d'exploitation +35 000 €, dettes d'exploitation +15 000 €. Calculez l'excédent de trésorerie d'exploitation (en euros).",
@@ -259,6 +272,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-13",
    "type": "qcm",
    "nature": "notion",
    "q": "Quelle est la formule de l'excédent de trésorerie d'exploitation (ETE) ?",
@@ -275,6 +289,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-14",
    "type": "qcm",
    "nature": "calcul",
    "q": "Une entreprise en forte croissance voit son EBE passer de 100 000 € à 130 000 € tandis que son ETE passe de 90 000 € à 40 000 €. Quelle explication ?",
@@ -291,6 +306,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-15",
    "type": "multi",
    "nature": "notion",
    "q": "Plusieurs réponses possibles. Quelles affirmations sur la CAF et le flux de trésorerie d'activité sont exactes ?",
@@ -311,6 +327,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-16",
    "type": "calc",
    "nature": "calcul",
    "q": "Tableau de flux de trésorerie (modèle OEC). CAF de l'exercice 200 000 € ; variation du BFR lié à l'activité +45 000 €. Calculez le flux net de trésorerie généré par l'activité (en euros).",
@@ -323,6 +340,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-17",
    "type": "calc",
    "nature": "calcul",
    "q": "Tableau de flux de trésorerie (modèle OEC). Acquisitions d'immobilisations de l'exercice 180 000 € ; prix de cession des immobilisations 30 000 € encaissé ; les dettes sur immobilisations ont augmenté de 10 000 €. Calculez le flux net de trésorerie lié aux opérations d'investissement (en euros, signe compris).",
@@ -335,6 +353,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-18",
    "type": "calc",
    "nature": "calcul",
    "q": "Tableau de flux de trésorerie (modèle OEC). Flux d'activité +155 000 € ; flux d'investissement −140 000 € ; emprunt souscrit 100 000 € ; remboursements d'emprunts 60 000 € ; dividendes versés 30 000 €. Calculez la variation de trésorerie de l'exercice (en euros).",
@@ -347,6 +366,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-19",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque flux dans la fonction du tableau des flux de trésorerie de l'OEC qui lui correspond.",
@@ -395,6 +415,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-20",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans le tableau des flux de trésorerie de l'OEC, les dividendes versés aux associés figurent :",
@@ -411,6 +432,7 @@
    "niveau": 1
   },
   {
+   "id": "ue6-03-21",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans le modèle OEC, les charges d'intérêts payées sur les emprunts sont classées :",
@@ -427,6 +449,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-22",
    "type": "qcm",
    "nature": "notion",
    "q": "En méthode indirecte, pourquoi retranche-t-on la plus-value de cession d'immobilisation du résultat net pour obtenir le flux d'activité ?",
@@ -443,6 +466,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-23",
    "type": "qcm",
    "nature": "notion",
    "q": "Une subvention d'investissement de 50 000 € est encaissée en N. Comment est-elle traitée dans les tableaux de flux ?",
@@ -459,6 +483,7 @@
    "niveau": 2
   },
   {
+   "id": "ue6-03-24",
    "type": "qcm",
    "nature": "calcul",
    "q": "Le flux de trésorerie d'activité d'une entreprise est de 80 000 € ; elle a investi 200 000 €, emprunté 150 000 € et versé 20 000 € de dividendes. Quelle lecture ?",

@@ -144,6 +144,7 @@
  ],
  "exercices": [
   {
+   "id": "ue10-03-0",
    "type": "qcm",
    "nature": "notion",
    "q": "La durée d'amortissement comptable d'une immobilisation est en principe :",
@@ -160,6 +161,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-03-1",
    "type": "calc",
    "nature": "calcul",
    "q": "Un camion acquis 50 000 € le 1er janvier N a une durée d'utilisation de 4 ans ; l'entreprise prévoit de le revendre 10 000 € à l'issue de cette période (valeur résiduelle significative et mesurable). Calculez la dotation linéaire annuelle (en euros).",
@@ -172,6 +174,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-03-2",
    "type": "calc",
    "nature": "calcul",
    "q": "Une machine de 90 000 € est amortie en unités d'œuvre : production totale prévue 300 000 pièces, valeur résiduelle nulle. En N, elle a produit 45 000 pièces. Calculez la dotation de N (en euros).",
@@ -184,6 +187,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-3",
    "type": "calc",
    "nature": "calcul",
    "q": "Un matériel de 60 000 € HT est acquis et mis en service le 1er avril N. Durée fiscale 5 ans, mode dégressif (coefficient 1,75). Calculez l'annuité d'amortissement dégressif fiscal de N (en euros).",
@@ -196,6 +200,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-4",
    "type": "calc",
    "nature": "calcul",
    "q": "Suite : le même matériel (60 000 €, 1er avril N, dégressif 35 %, annuité N de 15 750 €). Calculez l'annuité dégressive de N+1 (en euros, deux décimales).",
@@ -208,6 +213,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-5",
    "type": "calc",
    "nature": "calcul",
    "q": "Matériel de 60 000 € mis en service le 1er avril N : amortissement comptable linéaire sur 5 ans, amortissement fiscal dégressif de 15 750 € en N. Calculez l'amortissement dérogatoire à doter en N (en euros).",
@@ -220,6 +226,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-6",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Au 31 décembre N, l'amortissement fiscal d'un matériel s'élève à 15 750 € et son amortissement comptable à 9 000 €. L'écriture de dotation comptable (6811 / 28154) a déjà été passée. Enregistrez l'amortissement dérogatoire.",
@@ -252,6 +259,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-7",
    "type": "qcm",
    "nature": "calcul",
    "q": "En N+4, l'amortissement comptable d'un bien est de 12 000 € et son amortissement fiscal de 8 000 €. Le compte 145 présente un solde créditeur de 9 000 € relatif à ce bien. Quelle écriture passe-t-on ?",
@@ -268,6 +276,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-8",
    "type": "multi",
    "nature": "notion",
    "q": "Quelles conditions l'amortissement dégressif fiscal exige-t-il ? (plusieurs réponses possibles)",
@@ -289,6 +298,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-9",
    "type": "qcm",
    "nature": "notion",
    "q": "Une petite entreprise au sens de l'article L. 123-16 du Code de commerce acquiert une machine non décomposable dont la durée d'usage fiscale est de 5 ans alors qu'elle prévoit de l'utiliser 8 ans. Que lui permet le PCG ?",
@@ -305,6 +315,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-10",
    "type": "qcm",
    "nature": "calcul",
    "q": "Machine acquise 100 000 € le 1er janvier N, amortie en linéaire sur 10 ans. Début N+4, l'entreprise estime que la durée résiduelle n'est plus que de 3 ans. Quelle est la dotation de N+4 ?",
@@ -321,6 +332,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-11",
    "type": "multi",
    "nature": "notion",
    "q": "Parmi les situations suivantes, lesquelles constituent un indice de perte de valeur imposant un test de dépréciation ? (plusieurs réponses possibles)",
@@ -342,6 +354,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-12",
    "type": "calc",
    "nature": "calcul",
    "q": "À la clôture N, une installation a une VNC de 60 000 €. Un indice de perte de valeur existe : sa valeur vénale nette est estimée à 42 000 € et sa valeur d'usage à 48 000 €. Calculez la dépréciation à comptabiliser (en euros).",
@@ -354,6 +367,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-13",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Au 31 décembre N, le test de dépréciation d'un matériel industriel (VNC 60 000 €, valeur actuelle 48 000 €) conduit à constater une dépréciation. Enregistrez-la.",
@@ -386,6 +400,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-14",
    "type": "qcm",
    "nature": "calcul",
    "q": "Après la dépréciation de 12 000 € constatée fin N, la VNC du matériel est de 48 000 € pour une durée résiduelle de 4 ans (linéaire). Quelle est la dotation aux amortissements de N+1 ?",
@@ -402,6 +417,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-15",
    "type": "qcm",
    "nature": "notion",
    "q": "Fin N+1, les raisons qui avaient motivé la dépréciation du matériel constatée en N ont cessé d'exister. Quelle règle s'applique ?",
@@ -418,6 +434,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-03-16",
    "type": "multi",
    "nature": "notion",
    "q": "Concernant le fonds commercial dans les comptes individuels, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
@@ -439,6 +456,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-17",
    "type": "qcm",
    "nature": "chiffre",
    "q": "Le fonds commercial acquis par une petite entreprise en 2024 et amorti comptablement sur dix ans :",
@@ -455,6 +473,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-03-18",
    "type": "qcm",
    "nature": "notion",
    "q": "Sous le PCG 2025, la cession d'un matériel industriel se comptabilise avec les comptes :",
@@ -471,6 +490,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-03-19",
    "type": "ecriture",
    "nature": "calcul",
    "q": "Le 30 juin N, Transmo cède un véhicule utilitaire (coût 30 000 €, amortissements cumulés à cette date après dotation complémentaire : 25 000 €) pour 12 000 € HT, TVA 20 %, à crédit. Enregistrez le prix de cession et la sortie de l'actif.",
@@ -525,6 +545,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-20",
    "type": "calc",
    "nature": "calcul",
    "q": "Un matériel acquis 48 000 € le 1er janvier N−3 est amorti en linéaire sur 6 ans. Il est cédé le 30 juin N pour 22 000 € HT. Calculez le résultat de cession (en euros ; nombre négatif si moins-value).",
@@ -537,6 +558,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-21",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un matériel totalement obsolète (coût 20 000 €, amortissements cumulés 17 000 €) est mis au rebut sans aucune valeur de récupération. Quelle affirmation est exacte ?",
@@ -553,6 +575,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-22",
    "type": "qcm",
    "nature": "notion",
    "q": "Un entrepôt détruit par un incendie donne lieu à une indemnité d'assurance de 180 000 €. Sous le PCG 2025, l'indemnité est enregistrée :",
@@ -569,6 +592,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-23",
    "type": "multi",
    "nature": "notion",
    "q": "Lors de la cession d'une immobilisation, quelles opérations complémentaires doivent être réalisées ? (plusieurs réponses possibles)",
@@ -590,6 +614,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-03-24",
    "type": "qcm",
    "nature": "notion",
    "q": "Dans les comptes individuels du preneur, la redevance annuelle d'un crédit-bail mobilier de 9 000 € HT est comptabilisée :",
@@ -606,6 +631,7 @@
    "niveau": 1
   },
   {
+   "id": "ue10-03-25",
    "type": "qcm",
    "nature": "notion",
    "q": "À la levée d'option d'un crédit-bail, le prix de levée est de 3 000 € pour un matériel dont la valeur d'origine était de 45 000 € et dont l'entreprise prévoit encore 2 ans d'utilisation. Que fait-on ?",
@@ -622,6 +648,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-26",
    "type": "tri",
    "nature": "notion",
    "q": "Classez chaque élément selon le compte où il figure dans les comptes individuels sous le PCG 2025.",
@@ -664,6 +691,7 @@
    "niveau": 2
   },
   {
+   "id": "ue10-03-27",
    "type": "qcm",
    "nature": "notion",
    "q": "En IFRS (IFRS 16), le locataire d'un contrat de location de trois ans sur un matériel comptabilise, contrairement au PCG :",
@@ -680,6 +708,7 @@
    "niveau": 3
   },
   {
+   "id": "ue10-03-28",
    "type": "qcm",
    "nature": "calcul",
    "q": "Un bien acquis 36 000 € est amorti en linéaire sur 6 ans en comptabilité ; fiscalement l'entreprise applique la durée d'usage de 4 ans en linéaire. Quelle est la dotation aux amortissements dérogatoires de la première année pleine ?",

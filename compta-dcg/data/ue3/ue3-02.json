@@ -84,6 +84,7 @@
  ],
  "exercices": [
   {
+   "id": "ue3-02-0",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -100,6 +101,7 @@
    "why": "Prestation et rémunération existent aussi dans un contrat d'entreprise ou un mandat. Seul le lien de subordination, c'est-à-dire le pouvoir de donner des ordres, d'en contrôler l'exécution et de sanctionner les manquements (arrêt Société Générale, 1996), caractérise le contrat de travail. L'intitulé donné par les parties est indifférent : la qualification est indisponible et le juge se fonde sur les conditions réelles d'exécution."
   },
   {
+   "id": "ue3-02-1",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -116,6 +118,7 @@
    "why": "La présomption de non-salariat des travailleurs immatriculés (L. 8221-6) est simple : elle tombe lorsque l'intéressé fournit des prestations dans des conditions le plaçant dans un lien de subordination permanent. Géolocalisation, directives et pouvoir de sanction sont précisément les indices retenus dans les arrêts Take Eat Easy (2018) et Uber (2020). L'absence d'écrit est sans incidence puisque le contrat de travail peut être verbal."
   },
   {
+   "id": "ue3-02-2",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -132,6 +135,7 @@
    "why": "L'article L. 1221-19 fixe les durées maximales initiales à 2 mois pour les ouvriers et employés, 3 mois pour les agents de maîtrise et techniciens, 4 mois pour les cadres. Ces durées peuvent être renouvelées une fois si un accord de branche étendu le permet (total 8 mois pour un cadre). Depuis la loi du 9 mars 2023, les anciens accords de branche prévoyant des durées plus longues ne s'appliquent plus."
   },
   {
+   "id": "ue3-02-3",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -153,6 +157,7 @@
    "why": "Trois conditions cumulatives : un accord de branche étendu autorisant le renouvellement (L. 1221-21), une clause du contrat ou de la lettre d'engagement le prévoyant (L. 1221-23) et l'accord exprès et non équivoque du salarié, donné pendant l'essai initial (jurisprudence constante). L'inspection du travail n'intervient pas. Pour un employé, la durée totale renouvellement compris ne peut dépasser 4 mois, jamais 12."
   },
   {
+   "id": "ue3-02-4",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -169,6 +174,7 @@
    "why": "L'article L. 1221-25 prévoit 24 heures en dessous de 8 jours de présence, 48 heures entre 8 jours et un mois, deux semaines après un mois et un mois après trois mois. Six semaines de présence placent le salarié dans la tranche « après un mois » : deux semaines. Si l'employeur ne respecte pas ce délai, il doit une indemnité compensatrice, mais la rupture reste une rupture d'essai et non un licenciement."
   },
   {
+   "id": "ue3-02-5",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -185,6 +191,7 @@
    "why": "Le salarié qui rompt l'essai respecte un délai de prévenance de 48 heures, ramené à 24 heures s'il est présent depuis moins de 8 jours (L. 1221-26). Les délais de deux semaines et d'un mois ne concernent que la rupture à l'initiative de l'employeur. Le délai de prévenance n'est donc pas réservé à l'employeur, contrairement à une idée répandue."
   },
   {
+   "id": "ue3-02-6",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -197,6 +204,7 @@
    "why": "Pour un cadre, la durée initiale maximale est de 4 mois (L. 1221-19) et la durée totale renouvellement compris ne peut excéder 8 mois (L. 1221-21), soit jusqu'au 31 octobre 2025 ici. Pour un employé on aurait 2 + 2 = 4 mois, pour un agent de maîtrise 3 + 3 = 6 mois. Le renouvellement n'est possible qu'une seule fois."
   },
   {
+   "id": "ue3-02-7",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -213,6 +221,7 @@
    "why": "Pour un CDD, l'essai est d'un jour par semaine de contrat, dans la limite de deux semaines si le contrat ne dépasse pas six mois et d'un mois au-delà (L. 1242-10). Quatre mois représentent environ 17 semaines, donc 17 jours théoriques, ramenés au plafond de deux semaines. Les durées de 2 à 4 mois sont celles du CDI."
   },
   {
+   "id": "ue3-02-8",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -229,6 +238,7 @@
    "why": "La DPAE est une formalité unique transmise à l'URSSAF (ou à la MSA) qui regroupe l'immatriculation du salarié, l'affiliation à l'assurance chômage et la demande d'adhésion au service de santé au travail. Elle doit intervenir avant l'embauche, dans les 8 jours qui la précèdent. Son omission constitue un indice de travail dissimulé. Ni l'inspection du travail ni France Travail ne reçoivent la DPAE."
   },
   {
+   "id": "ue3-02-9",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -250,6 +260,7 @@
    "why": "Les arrêts du 10 juillet 2002 posent quatre conditions cumulatives : protection des intérêts légitimes de l'entreprise, limitation dans le temps et l'espace, prise en compte des spécificités de l'emploi et contrepartie financière. À défaut, la clause est nulle et seul le salarié peut s'en prévaloir. Le CSE n'a pas à l'approuver. Une interdiction générale de toute activité serait disproportionnée et porterait atteinte à la liberté du travail."
   },
   {
+   "id": "ue3-02-10",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -266,6 +277,7 @@
    "why": "L'absence de contrepartie financière entraîne la nullité de la clause, que seul le salarié peut invoquer. Le salarié qui a néanmoins respecté une clause nulle peut obtenir des dommages-intérêts, à condition de prouver le préjudice subi (Cass. soc., 25 mai 2016 : le préjudice n'est plus présumé). Le juge peut réduire une contrepartie dérisoire ou une durée excessive, mais il ne crée pas une contrepartie absente. La nullité ne frappe que la clause, pas le contrat."
   },
   {
+   "id": "ue3-02-11",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -282,6 +294,7 @@
    "why": "Le remplacement d'un salarié absent est un cas de recours légal (L. 1242-2, 1°). Un poste permanent relève de l'activité normale et permanente de l'entreprise : CDD interdit (L. 1242-1). Le remplacement de grévistes (L. 1242-6) et les travaux dangereux listés par arrêté sont expressément interdits. Un CDD conclu hors de ces cas est requalifié en CDI."
   },
   {
+   "id": "ue3-02-12",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -298,6 +311,7 @@
    "why": "L'écrit comportant la définition précise du motif est obligatoire et doit être transmis dans les deux jours ouvrables suivant l'embauche (L. 1242-13). L'absence d'écrit entraîne la requalification en CDI ; depuis 2017, la seule transmission tardive n'entraîne plus la requalification mais une indemnité plafonnée à un mois de salaire (L. 1245-1). Les délais de 8 jours et d'un mois n'ont aucun fondement ici."
   },
   {
+   "id": "ue3-02-13",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -314,6 +328,7 @@
    "why": "Depuis la loi Rebsamen de 2015, le CDD peut être renouvelé deux fois (L. 1243-13-1), sans que la durée totale, renouvellements compris, dépasse 18 mois (L. 1242-8-1) pour l'accroissement d'activité. Les 24 mois concernent des cas spécifiques (exécution à l'étranger, commande exceptionnelle à l'exportation, départ définitif précédant une suppression de poste). Un accord de branche peut modifier ces règles (bloc 1)."
   },
   {
+   "id": "ue3-02-14",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -326,6 +341,7 @@
    "why": "La durée totale du contrat, renouvellements compris, ne peut dépasser 18 mois (L. 1242-8-1). Déjà consommés : 7 + 5 = 12 mois. Second renouvellement maximal : 18 − 12 = 6 mois, soit un terme au 31 juillet 2026. Un troisième renouvellement serait impossible (deux maximum, L. 1243-13-1) et tout dépassement entraînerait la requalification en CDI."
   },
   {
+   "id": "ue3-02-15",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -338,6 +354,7 @@
    "why": "Pour un contrat d'une durée de 14 jours ou plus, le délai de carence est égal au tiers de sa durée, renouvellements compris : 60 / 3 = 20 jours, décomptés en jours d'ouverture de l'entreprise (L. 1244-3-1, à défaut de stipulation de branche). Pour un contrat de moins de 14 jours, ce serait la moitié. Il n'y a pas de carence pour un remplacement lié à une nouvelle absence, un emploi saisonnier ou d'usage."
   },
   {
+   "id": "ue3-02-16",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -350,6 +367,7 @@
    "why": "Le contrat ayant duré moins de 14 jours, la carence est égale à la moitié de sa durée : 10 / 2 = 5 jours d'ouverture (L. 1244-3-1, 2°). Appliquer le tiers (3,33 jours) serait l'erreur classique : le tiers ne vaut que pour les contrats de 14 jours et plus. Un accord de branche peut fixer d'autres modalités de calcul."
   },
   {
+   "id": "ue3-02-17",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -362,6 +380,7 @@
    "why": "L'indemnité de précarité est égale à 10 % de la rémunération brute totale versée pendant le contrat (L. 1243-8) : 6 × 2 200 = 13 200 € ; 13 200 × 10 % = 1 320 €. Elle se calcule hors indemnité compensatrice de congés payés, laquelle s'ajoute ensuite. Un accord de branche étendu ou un accord d'entreprise peut la ramener à 6 % en contrepartie d'un accès privilégié à la formation (L. 1243-9)."
   },
   {
+   "id": "ue3-02-18",
    "type": "multi",
    "nature": "notion",
    "niveau": 2,
@@ -384,6 +403,7 @@
    "why": "L'article L. 1243-10 exclut l'indemnité pour les contrats saisonniers et d'usage, les contrats conclus avec des jeunes pendant leurs vacances, le refus d'un CDI pour le même emploi, la poursuite en CDI, la rupture anticipée par le salarié ou pour faute grave. Le CDD de remplacement arrivé à son terme ouvre droit à l'indemnité de 10 % comme tout CDD classique : c'est le distracteur."
   },
   {
+   "id": "ue3-02-19",
    "type": "qcm",
    "nature": "calcul",
    "niveau": 2,
@@ -400,6 +420,7 @@
    "why": "L'embauche en CDI est un cas légal de rupture anticipée à l'initiative du salarié (L. 1243-2). Le préavis est d'un jour par semaine compte tenu de la durée totale du contrat (ou de la durée effectuée si le terme est imprécis), dans la limite de deux semaines : 12 mois représentent environ 52 semaines, donc deux semaines de préavis. Les autres cas de rupture anticipée sont l'accord des parties, la faute grave, la force majeure et l'inaptitude."
   },
   {
+   "id": "ue3-02-20",
    "type": "qcm",
    "nature": "notion",
    "niveau": 3,
@@ -416,6 +437,7 @@
    "why": "Le dépassement de la durée maximale (18 mois) et la succession sans carence pour pourvoir durablement un emploi permanent entraînent la requalification en CDI (L. 1245-1). Le salarié obtient une indemnité de requalification au moins égale à un mois de salaire (L. 1245-2) et, le contrat ayant pris fin sans procédure de licenciement, les indemnités de licenciement sans cause réelle et sérieuse. L'affaire est portée directement devant le bureau de jugement, qui statue dans le mois."
   },
   {
+   "id": "ue3-02-21",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -432,6 +454,7 @@
    "why": "L'intérim repose sur deux contrats : le contrat de mise à disposition (commercial) entre l'ETT et l'entreprise utilisatrice, et le contrat de mission (de travail) entre l'ETT et l'intérimaire, écrit et transmis dans les deux jours ouvrables. Il n'existe aucun contrat entre l'intérimaire et l'utilisatrice, même si celle-ci dirige le travail au quotidien et répond des conditions d'exécution (durée, sécurité)."
   },
   {
+   "id": "ue3-02-22",
    "type": "qcm",
    "nature": "notion",
    "niveau": 1,
@@ -448,6 +471,7 @@
    "why": "Depuis la loi de sécurisation de l'emploi de 2013, la durée minimale est de 24 heures hebdomadaires ou l'équivalent mensuel (L. 3123-27). Des dérogations existent : demande écrite et motivée du salarié, étudiant de moins de 26 ans, accord de branche étendu, CDD de 7 jours au plus ou de remplacement. Le mi-temps (17 h 30) n'est pas un minimum légal."
   },
   {
+   "id": "ue3-02-23",
    "type": "calc",
    "nature": "calcul",
    "niveau": 3,
@@ -460,6 +484,7 @@
    "why": "Heures complémentaires : 28 − 24 = 4 h. Dans la limite du dixième (24/10 = 2,4 h) : majoration légale de 10 % → 2,4 × 12 × 1,10 = 31,68 €. Au-delà du dixième jusqu'au tiers : majoration de 25 % → 1,6 × 12 × 1,25 = 24,00 €. Total = 55,68 €. Appliquer 25 % à toutes les heures (60 €) ou 10 % à toutes (52,80 €) est faux ; la durée reste sous 35 h, il n'y a donc pas d'heures supplémentaires."
   },
   {
+   "id": "ue3-02-24",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -476,6 +501,7 @@
    "why": "L'article L. 3123-9 interdit que les heures complémentaires portent la durée du travail au niveau de la durée légale (35 h) ou conventionnelle. Peu importe que le plafond du tiers (10 h ici) ne soit pas dépassé : atteindre 35 h suffit à justifier la requalification en temps complet par le juge. Un salarié à temps partiel ne fait pas d'heures supplémentaires et le repos compensateur ne concerne pas les heures complémentaires."
   },
   {
+   "id": "ue3-02-25",
    "type": "calc",
    "nature": "calcul",
    "niveau": 2,
@@ -488,6 +514,7 @@
    "why": "Rémunération minimale = 43 % × 1 801,80 = 774,77 €. Le pourcentage dépend de l'âge (18 à 20 ans ici) et de l'année d'exécution du contrat (D. 6222-26). Pour un apprenti de moins de 18 ans on appliquerait 27 % (486,49 €), pour 21-25 ans 53 % (954,95 €) et 100 % à partir de 26 ans. Le montant en euros est millésimé puisqu'il suit le SMIC."
   },
   {
+   "id": "ue3-02-26",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -504,6 +531,7 @@
    "why": "L'article L. 6222-18 autorise la rupture unilatérale sans motif ni indemnité pendant les 45 premiers jours de formation pratique en entreprise (les jours en CFA ne comptent pas). Au-delà, la rupture suppose un accord écrit, une faute grave, une inaptitude, l'exclusion du CFA, ou la démission de l'apprenti après saisine du médiateur. L'apprenti est bien un salarié titulaire d'un contrat de travail de type particulier."
   },
   {
+   "id": "ue3-02-27",
    "type": "qcm",
    "nature": "notion",
    "niveau": 2,
@@ -520,6 +548,7 @@
    "why": "Depuis l'ordonnance de 2017, le télétravail est mis en place par accord collectif ou, à défaut, par charte après avis du CSE ; en l'absence de l'un et de l'autre, un accord formalisé par tout moyen entre l'employeur et le salarié suffit (L. 1222-9). Le refus du salarié d'un poste en télétravail n'est pas un motif de rupture, et l'employeur qui refuse le télétravail à un salarié éligible doit motiver sa décision. Aucune homologation administrative n'existe."
   },
   {
+   "id": "ue3-02-28",
    "type": "tri",
    "nature": "notion",
    "niveau": 2,
