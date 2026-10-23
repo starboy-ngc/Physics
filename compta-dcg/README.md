@@ -32,11 +32,20 @@ chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé 
 
 L'accueil propose chaque jour une séance en trois temps, sur plusieurs matières :
 
-1. **Notions à revoir** : les révisions espacées dues, puis les nouvelles notions, en alternant les matières.
-2. **Test du jour** : 20 questions ; les révisions dues d'abord, puis une question par matière à tour de rôle
+1. **Cours du jour** : une fiche de cours par matière, dans trois matières en rotation (celles qui n'ont pas été
+   travaillées depuis le plus longtemps passent en premier), plus une page de rappels de l'UE1. Une fiche est un
+   morceau du cours du chapitre (une ou plusieurs parties consécutives, 4 à 6 minutes de lecture) ; le cours avance
+   dans l'ordre des chapitres, fiche après fiche. « J'ai lu cette fiche » enregistre la lecture ; les questions du
+   chapitre entrent alors dans les tests du jour. Quand tout le cours d'une matière est lu, la fiche du jour est une
+   relecture (la partie lue il y a le plus longtemps).
+2. **Notions à revoir** : les révisions espacées dues, puis les nouvelles notions, en alternant les matières.
+3. **Test du jour** : 20 questions ; les révisions dues d'abord, puis une question par matière à tour de rôle
    (les matières du programme du jour en premier), en reprenant d'abord les questions ratées.
-3. **Cours du jour** : un chapitre dans trois matières, en rotation (celles qui n'ont pas été travaillées depuis le
-   plus longtemps passent en premier), plus une page de rappels de l'UE1.
+
+Sous chaque correction (exercice ou carte), « Revoir dans le cours » déplie la partie du cours du chapitre qui traite
+la question. Le rattachement est calculé à la construction (`build.js`, proximité du vocabulaire entre la question,
+sa correction et chaque partie du cours) : une partie quand elle se détache nettement, les deux plus proches sinon,
+aucune quand le lien est trop faible (97 questions sur 2 588).
 
 ## Analyse des performances
 

@@ -2,6 +2,27 @@
 // Assemble src/index.html + data/**/*.json → dist/DebitCredit.html (fichier unique, hors ligne). Usage : node build.js [--lenient]
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
 const ROOT = __dirname; const lenient = process.argv.includes("--lenient"); const strict = process.argv.includes("--strict");
+// Renvoi vers le cours : pour chaque exercice et chaque carte, la partie de la leçon du chapitre dont le vocabulaire est le plus proche
+// (TF-IDF calculé sur les parties du chapitre). Nette avance sur la deuxième : une partie ; sinon les deux plus proches ; trop faible : aucune.
+const STOP = new Set("dans pour avec sans sous entre plus moins etre avoir fait faire elle elles ils leur leurs cette ces cet celui celle ceux sont sera peut doit tout tous toute toutes quel quelle quels quelles lorsque quand comme mais donc ainsi alors aussi meme autre autres selon apres avant encore tres bien deux trois entreprise societe article code compte comptes vrai faux question reponse exemple".split(" "));
+const toks = s => String(s || "").replace(/<[^>]+>/g, " ").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(/[^a-z0-9]+/).filter(w => w.length >= 4 && !STOP.has(w)).map(w => w.replace(/(aux|s|x)$/, ""));
+const bag = ws => { const m = new Map(); ws.forEach(w => m.set(w, (m.get(w) || 0) + 1)); return m; };
+function lessonLinks(ch) {
+  const L = ch.lecon || []; if (L.length < 2) return;
+  const secs = L.map(s => bag(toks(`${s.h || ""} ${s.h || ""} ${s.html} ${JSON.stringify(s.entry || "")}`)));
+  const df = new Map(); secs.forEach(v => v.forEach((_, w) => df.set(w, (df.get(w) || 0) + 1)));
+  const idf = w => Math.log((secs.length + 1) / ((df.get(w) || 0) + 0.5));
+  const norm = v => Math.sqrt([...v].reduce((a, [w, c]) => a + (c * idf(w)) ** 2, 0)) || 1;
+  const sn = secs.map(norm);
+  const link = (o, text) => {
+    const v = bag(toks(text)); const vn = norm(v);
+    const sc = secs.map((s, i) => { let d = 0; v.forEach((c, w) => { if (s.has(w)) d += c * s.get(w) * idf(w) ** 2; }); return [d / (vn * sn[i]), i]; }).sort((a, b) => b[0] - a[0]);
+    if (sc[0][0] < 0.06) return;
+    o.sec = sc[0][0] >= 1.3 * sc[1][0] ? [sc[0][1]] : [sc[0][1], sc[1][1]];
+  };
+  ch.exercices.forEach(e => link(e, [e.q, ...(e.opts || []), e.why, ...(e.items || []).map(x => x[0])].join(" ")));
+  (ch.cartes || []).forEach(k => link(k, `${k.q} ${k.r}`));
+}
 const plan = JSON.parse(fs.readFileSync(path.join(ROOT, "data/plan.json"), "utf8"));
 const order = Object.fromEntries(plan.ues.map((u, i) => [u.code, i]));
 const chapitres = []; const skipped = []; const rappels = [];
@@ -32,6 +53,7 @@ for (const p of plan.chapitres) {
     let cok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), fc], { stdio: "pipe" }); } catch (e) { cok = false; }
     if ((cok || lenient) && ch.fiche) ch.cartes = JSON.parse(fs.readFileSync(fc, "utf8")).cartes; else skipped.push(p.id + " (cartes invalides)");
   } else if (strict) skipped.push(p.id + " (cartes absentes)");
+  lessonLinks(ch);
   chapitres.push(ch);
 }
 chapitres.sort((a, b) => order[a.ue] - order[b.ue] || a.ordre - b.ordre);
